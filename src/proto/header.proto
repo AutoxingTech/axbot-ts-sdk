@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package ros_messages;
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// Header message matching ROS std_msgs/Header
+message Header {
+    uint32 seq = 1;
+    uint64 stamp_sec = 2;
+    uint64 stamp_nsec = 3;
+    string frame_id = 4;
+}

@@ -1,0 +1,54 @@
+{
+  "name": "axbot-sdk",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./msgs": {
+      "import": "./dist/msgs.js",
+      "types": "./dist/msgs.d.ts"
+    },
+    "./geojson": {
+      "import": "./dist/geojson.js",
+      "types": "./dist/geojson.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils.js",
+      "types": "./dist/utils.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "msgs": [
+        "./src/msgs.ts"
+      ],
+      "geojson": [
+        "./src/geojson.ts"
+      ],
+      "utils": [
+        "./src/utils.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/postbuild.mjs",
+    "typecheck": "tsc --noEmit",
+    "proto": "node scripts/compile-proto.mjs",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "protobufjs": "^7.4.0"
+  },
+  "devDependencies": {
+    "protobufjs-cli": "^1.1.3",
+    "typescript": "^5.4.0"
+  }
+}

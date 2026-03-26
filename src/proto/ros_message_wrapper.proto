@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ros_messages;
+
+import "point_cloud.proto";
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// Generic ROS message wrapper for extensibility
+message RosMessageWrapper {
+    enum MessageType {
+        UNKNOWN = 0;
+        POINT_CLOUD = 1;
+        // Add new message types here as needed
+    }
+    
+    MessageType type = 1;
+    uint64 timestamp_ns = 2;  // Unix timestamp in nanoseconds
+    uint32 sequence_id = 3;   // For ordering/packet loss detection
+
+    oneof payload {
+        PointCloud point_cloud = 10;
+        bytes raw_data = 11;  // For unknown message types
+        // Add new message payloads here as needed
+    }
+}

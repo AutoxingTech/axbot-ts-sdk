@@ -1,0 +1,5 @@
+CHANGELOG
+==========
+
+- 2026-03-26 axbot-sdk: Add topicMessages, geojson, and utils as sub-path exports (msgs, geojson, utils)
+- 2026-03-26 axbot-sdk: Add proto compilation pipeline with protobufjs-cli; add prepublishOnly build step

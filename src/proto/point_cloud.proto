@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package ros_messages;
+
+import "header.proto";
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// Simplified PointCloud message
+// Points are stored as offsets from center (in resolution units)
+// Actual position = center + (xs[i] * resolution, ys[i] * resolution, zs[i] * resolution)
+message PointCloud {
+    Header header = 1;
+    uint32 point_number = 2;
+    double center_x = 3;
+    double center_y = 4;
+    double center_z = 5;
+    float resolution = 6;           // meters per unit
+    repeated sint32 xs = 7 [packed=true];  // x offsets (sint32 for negative values, zigzag encoded)
+    repeated sint32 ys = 8 [packed=true];  // y offsets
+    repeated sint32 zs = 9 [packed=true];  // z offsets (optional, can be empty for 2D)
+    bytes intensities = 10;         // intensity values 0-255, one byte per point
+}
