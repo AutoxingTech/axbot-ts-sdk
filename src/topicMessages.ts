@@ -91,7 +91,7 @@ export interface OccupancyGridMsg extends TopicMsg {
   data_url?: string;
 }
 
-export interface PoseMsg extends TopicMsg, PoseType {}
+export interface PoseMsg extends TopicMsg, PoseType { }
 
 export interface TrackedPoseMsg extends TopicMsg, PoseType {
   cov: [[number, number], [number, number]];
@@ -337,9 +337,9 @@ export interface WsConnectionsMsg extends TopicMsg {
   connections: WsConnection[];
 }
 
-export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection {}
+export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection { }
 
-export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection {}
+export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection { }
 
 export interface MoveBasePathPoint {
   x: number;
@@ -682,6 +682,7 @@ export interface DeviceInfo {
     wheel_distance: number;
     width: number;
     charge_contact?: { pose_2d: [number, number, number]; size?: [number, number] };
+    visualization_topics?: string[] // like ["/lf_laser_3d/scan", ...]
   };
   caps: RobotCaps;
   remote_params?: {
