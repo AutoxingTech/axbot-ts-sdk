@@ -612,6 +612,7 @@ export interface RobotCaps {
   supportsImuBiasTemperatureCurve?: boolean; // since 2.5.0. Supports`GET /device/imu_bias_temperature_curve`
 
   supportsAppStore?: boolean; // since 2.5.0. Supports '/app_store'
+  supportsForklift?: boolean;
 
   // since 2.5.0. Supports `GET/PUT/DELETE /device/usb_devices/saved`,
   // `GET /device/usb_devices`, `POST /services/reset_usb_devices`
