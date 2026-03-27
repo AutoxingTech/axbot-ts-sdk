@@ -28,6 +28,10 @@
     "./decoder": {
       "import": "./dist/binaryMessageDecoder.js",
       "types": "./dist/binaryMessageDecoder.d.ts"
+    },
+    "./robotApi": {
+      "import": "./dist/robotApi.js",
+      "types": "./dist/robotApi.d.ts"
     }
   },
   "typesVersions": {
@@ -46,6 +50,9 @@
       ],
       "decoder": [
         "./src/binaryMessageDecoder.ts"
+      ],
+      "robotApi": [
+        "./src/robotApi.ts"
       ]
     }
   },
