@@ -150,6 +150,9 @@ export namespace ros_messages {
 
         /** PointCloud intensities */
         intensities?: (Uint8Array|null);
+
+        /** PointCloud isDeltaEncoded */
+        isDeltaEncoded?: (boolean|null);
     }
 
     /** Represents a PointCloud. */
@@ -190,6 +193,9 @@ export namespace ros_messages {
 
         /** PointCloud intensities. */
         public intensities: Uint8Array;
+
+        /** PointCloud isDeltaEncoded. */
+        public isDeltaEncoded: boolean;
 
         /**
          * Creates a new PointCloud instance using the specified properties.

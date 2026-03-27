@@ -335,6 +335,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {Array.<number>|null} [ys] PointCloud ys
          * @property {Array.<number>|null} [zs] PointCloud zs
          * @property {Uint8Array|null} [intensities] PointCloud intensities
+         * @property {boolean|null} [isDeltaEncoded] PointCloud isDeltaEncoded
          */
 
         /**
@@ -436,6 +437,14 @@ export const ros_messages = $root.ros_messages = (() => {
         PointCloud.prototype.intensities = $util.newBuffer([]);
 
         /**
+         * PointCloud isDeltaEncoded.
+         * @member {boolean} isDeltaEncoded
+         * @memberof ros_messages.PointCloud
+         * @instance
+         */
+        PointCloud.prototype.isDeltaEncoded = false;
+
+        /**
          * Creates a new PointCloud instance using the specified properties.
          * @function create
          * @memberof ros_messages.PointCloud
@@ -491,6 +500,8 @@ export const ros_messages = $root.ros_messages = (() => {
             }
             if (message.intensities != null && Object.hasOwnProperty.call(message, "intensities"))
                 writer.uint32(/* id 10, wireType 2 =*/82).bytes(message.intensities);
+            if (message.isDeltaEncoded != null && Object.hasOwnProperty.call(message, "isDeltaEncoded"))
+                writer.uint32(/* id 11, wireType 0 =*/88).bool(message.isDeltaEncoded);
             return writer;
         };
 
@@ -588,6 +599,10 @@ export const ros_messages = $root.ros_messages = (() => {
                         message.intensities = reader.bytes();
                         break;
                     }
+                case 11: {
+                        message.isDeltaEncoded = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -667,6 +682,9 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.intensities != null && message.hasOwnProperty("intensities"))
                 if (!(message.intensities && typeof message.intensities.length === "number" || $util.isString(message.intensities)))
                     return "intensities: buffer expected";
+            if (message.isDeltaEncoded != null && message.hasOwnProperty("isDeltaEncoded"))
+                if (typeof message.isDeltaEncoded !== "boolean")
+                    return "isDeltaEncoded: boolean expected";
             return null;
         };
 
@@ -723,6 +741,8 @@ export const ros_messages = $root.ros_messages = (() => {
                     $util.base64.decode(object.intensities, message.intensities = $util.newBuffer($util.base64.length(object.intensities)), 0);
                 else if (object.intensities.length >= 0)
                     message.intensities = object.intensities;
+            if (object.isDeltaEncoded != null)
+                message.isDeltaEncoded = Boolean(object.isDeltaEncoded);
             return message;
         };
 
@@ -758,6 +778,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     if (options.bytes !== Array)
                         object.intensities = $util.newBuffer(object.intensities);
                 }
+                object.isDeltaEncoded = false;
             }
             if (message.header != null && message.hasOwnProperty("header"))
                 object.header = $root.ros_messages.Header.toObject(message.header, options);
@@ -788,6 +809,8 @@ export const ros_messages = $root.ros_messages = (() => {
             }
             if (message.intensities != null && message.hasOwnProperty("intensities"))
                 object.intensities = options.bytes === String ? $util.base64.encode(message.intensities, 0, message.intensities.length) : options.bytes === Array ? Array.prototype.slice.call(message.intensities) : message.intensities;
+            if (message.isDeltaEncoded != null && message.hasOwnProperty("isDeltaEncoded"))
+                object.isDeltaEncoded = message.isDeltaEncoded;
             return object;
         };
 

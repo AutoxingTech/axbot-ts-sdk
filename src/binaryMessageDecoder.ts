@@ -77,16 +77,36 @@ function pointCloudToMsg(pc: ros_messages.IPointCloud): PointCloudMsg {
   const ys = pc.ys ?? [];
   const zs = pc.zs ?? [];
   const intensities = pc.intensities ?? new Uint8Array();
+  const isDeltaEncoded = pc.isDeltaEncoded ?? false;
   const count = xs.length;
 
   const points: [number, number, number, number?][] = new Array(count);
-  for (let i = 0; i < count; i++) {
-    points[i] = [
-      cx + xs[i] * res,
-      cy + ys[i] * res,
-      zs.length > i ? cz + zs[i] * res : 0,
-      intensities.length > i ? intensities[i] : 0,
-    ];
+
+  if (isDeltaEncoded) {
+    let prevX = 0;
+    let prevY = 0;
+    let prevZ = 0;
+    for (let i = 0; i < count; i++) {
+      prevX += xs[i];
+      prevY += ys[i];
+      if (zs.length > i) prevZ += zs[i];
+
+      points[i] = [
+        cx + prevX * res,
+        cy + prevY * res,
+        zs.length > i ? cz + prevZ * res : 0,
+        intensities.length > i ? intensities[i] : 0,
+      ];
+    }
+  } else {
+    for (let i = 0; i < count; i++) {
+      points[i] = [
+        cx + xs[i] * res,
+        cy + ys[i] * res,
+        zs.length > i ? cz + zs[i] * res : 0,
+        intensities.length > i ? intensities[i] : 0,
+      ];
+    }
   }
 
   return { topic: '', points };
