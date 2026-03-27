@@ -76,14 +76,16 @@ function pointCloudToMsg(pc: ros_messages.IPointCloud): PointCloudMsg {
   const xs = pc.xs ?? [];
   const ys = pc.ys ?? [];
   const zs = pc.zs ?? [];
+  const intensities = pc.intensities ?? new Uint8Array();
   const count = xs.length;
 
-  const points: [number, number, number][] = new Array(count);
+  const points: [number, number, number, number?][] = new Array(count);
   for (let i = 0; i < count; i++) {
     points[i] = [
       cx + xs[i] * res,
       cy + ys[i] * res,
       zs.length > i ? cz + zs[i] * res : 0,
+      intensities.length > i ? intensities[i] : 0,
     ];
   }
 
