@@ -484,11 +484,19 @@ export class RobotApi {
   }
 
   async calibrateForkliftBackwardCameras(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_forklift_backward_camera', {}), 'Forklift Backward Depth Camera Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_forklift_backward_camera', {}),
+      'Forklift Backward Depth Camera Calibration',
+      false,
+    );
   }
 
   async calibrateForkliftLidarPoses(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_forklift_lidar_poses', {}), 'Forklift Lidar Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_forklift_lidar_poses', {}),
+      'Forklift Lidar Calibration',
+      false,
+    );
   }
 
   /**
@@ -749,3 +757,9 @@ export interface BagPlayerMessage {
   __stamp: number;
   [key: string]: unknown;
 }
+
+/**
+ * Singleton RobotApi instance.
+ * Call `robotApi.init(config)` once at app startup to configure it.
+ */
+export const robotApi = new RobotApi();

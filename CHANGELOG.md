@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-03-27 objectStore: Add objectStore for device info, some map list, bag list etc.
 - 2026-03-27 robotApi: Add RobotApi class for calling REST APIs of the robot
 - 2026-03-27 axbot-sdk: Add binary message decoder (binaryMessageDecoder.ts)
 - 2026-03-26 axbot-sdk: Add topicMessages, geojson, and utils as sub-path exports (msgs, geojson, utils)

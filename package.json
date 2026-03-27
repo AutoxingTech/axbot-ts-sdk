@@ -32,6 +32,10 @@
     "./robotApi": {
       "import": "./dist/robotApi.js",
       "types": "./dist/robotApi.d.ts"
+    },
+    "./objectStore": {
+      "import": "./dist/objectStore.js",
+      "types": "./dist/objectStore.d.ts"
     }
   },
   "typesVersions": {
@@ -53,6 +57,9 @@
       ],
       "robotApi": [
         "./src/robotApi.ts"
+      ],
+      "objectStore": [
+        "./src/objectStore.ts"
       ]
     }
   },
