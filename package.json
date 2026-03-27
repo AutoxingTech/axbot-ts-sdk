@@ -20,6 +20,14 @@
     "./utils": {
       "import": "./dist/utils.js",
       "types": "./dist/utils.d.ts"
+    },
+    "./proto": {
+      "import": "./dist/proto/generated.js",
+      "types": "./dist/proto/generated.d.ts"
+    },
+    "./decoder": {
+      "import": "./dist/binaryMessageDecoder.js",
+      "types": "./dist/binaryMessageDecoder.d.ts"
     }
   },
   "typesVersions": {
@@ -32,6 +40,12 @@
       ],
       "utils": [
         "./src/utils.ts"
+      ],
+      "proto": [
+        "./src/proto/generated.d.ts"
+      ],
+      "decoder": [
+        "./src/binaryMessageDecoder.ts"
       ]
     }
   },
@@ -45,6 +59,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
+    "fflate": "^0.8.2",
     "protobufjs": "^7.4.0"
   },
   "devDependencies": {
