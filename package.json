@@ -36,6 +36,10 @@
     "./objectStore": {
       "import": "./dist/objectStore.js",
       "types": "./dist/objectStore.d.ts"
+    },
+    "./mapInfo": {
+      "import": "./dist/mapInfo.js",
+      "types": "./dist/mapInfo.d.ts"
     }
   },
   "typesVersions": {
@@ -60,6 +64,9 @@
       ],
       "objectStore": [
         "./src/objectStore.ts"
+      ],
+      "mapInfo": [
+        "./src/mapInfo.ts"
       ]
     }
   },

@@ -90,3 +90,24 @@ export function humanFileSize(bytes: number, si = false, dp = 1) {
 
   return bytes.toFixed(dp) + ' ' + units[u];
 }
+
+/**
+ * Simple point-in-polygon test using ray casting.
+ * @param point [x, y] coordinates
+ * @param polygon array of [x, y] coordinates forming the polygon
+ */
+export function pointInPolygon(point: [number, number], polygon: [number, number][]): boolean {
+  const x = point[0];
+  const y = point[1];
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0],
+      yi = polygon[i][1];
+    const xj = polygon[j][0],
+      yj = polygon[j][1];
+
+    const intersect = yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi + 0.0) + xi;
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
