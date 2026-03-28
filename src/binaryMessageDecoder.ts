@@ -5,12 +5,12 @@
  *   [topic_len: 1 byte] [topic_name: topic_len bytes] [gzipped?: 1 byte] [protobuf: remaining]
  *
  * The gzipped protobuf is a RosMessageWrapper containing one of several payload types.
- * Currently supports: POINT_CLOUD → PointCloudMsg conversion.
+ * Currently supports: POINT_CLOUD → PointCloudBufferMsg conversion.
  */
 
 import { gunzipSync } from 'fflate';
 import { ros_messages } from './proto/generated.js';
-import type { PointCloudMsg } from './topicMessages';
+import { PointCloudPbMsg } from './pbMessages.js';
 
 /**
  * Decode a binary WebSocket frame into a topic name and typed payload.
@@ -57,57 +57,10 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
 
   // 4. Convert payload based on message type
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.pointCloud) {
-    return { topic, payload: pointCloudToMsg(wrapper.pointCloud) };
+    const pbMsg: PointCloudPbMsg = { topic, pb: wrapper.pointCloud };
+    return { topic, payload: pbMsg };
   }
 
   console.warn('binaryMessageDecoder: unsupported message type', wrapper.type, 'for', topic);
   return null;
-}
-
-/**
- * Convert protobuf PointCloud (center + offsets * resolution) to PointCloudMsg
- * compatible with the existing pointCloudMsgToXyzBuffer() pipeline.
- */
-function pointCloudToMsg(pc: ros_messages.IPointCloud): PointCloudMsg {
-  const cx = pc.centerX ?? 0;
-  const cy = pc.centerY ?? 0;
-  const cz = pc.centerZ ?? 0;
-  const res = pc.resolution ?? 1;
-  const xs = pc.xs ?? [];
-  const ys = pc.ys ?? [];
-  const zs = pc.zs ?? [];
-  const intensities = pc.intensities ?? new Uint8Array();
-  const isDeltaEncoded = pc.isDeltaEncoded ?? false;
-  const count = xs.length;
-
-  const points: [number, number, number, number?][] = new Array(count);
-
-  if (isDeltaEncoded) {
-    let prevX = 0;
-    let prevY = 0;
-    let prevZ = 0;
-    for (let i = 0; i < count; i++) {
-      prevX += xs[i];
-      prevY += ys[i];
-      if (zs.length > i) prevZ += zs[i];
-
-      points[i] = [
-        cx + prevX * res,
-        cy + prevY * res,
-        zs.length > i ? cz + prevZ * res : 0,
-        intensities.length > i ? intensities[i] : 0,
-      ];
-    }
-  } else {
-    for (let i = 0; i < count; i++) {
-      points[i] = [
-        cx + xs[i] * res,
-        cy + ys[i] * res,
-        zs.length > i ? cz + zs[i] * res : 0,
-        intensities.length > i ? intensities[i] : 0,
-      ];
-    }
-  }
-
-  return { topic: '', points };
 }

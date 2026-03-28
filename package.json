@@ -40,6 +40,14 @@
     "./mapInfo": {
       "import": "./dist/mapInfo.js",
       "types": "./dist/mapInfo.d.ts"
+    },
+    "./pointCloudParser": {
+      "import": "./dist/pointCloudParser.js",
+      "types": "./dist/pointCloudParser.d.ts"
+    },
+    "./pbMessages": {
+      "import": "./dist/pbMessages.js",
+      "types": "./dist/pbMessages.d.ts"
     }
   },
   "typesVersions": {
@@ -67,6 +75,12 @@
       ],
       "mapInfo": [
         "./src/mapInfo.ts"
+      ],
+      "pointCloudParser": [
+        "./src/pointCloudParser.ts"
+      ],
+      "pbMessages": [
+        "./src/pbMessages.ts"
       ]
     }
   },
