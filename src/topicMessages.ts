@@ -149,8 +149,7 @@ export interface PointCloudGeneralMsg extends TopicMsg {
 }
 
 export interface PathMsg extends TopicMsg {
-  positions: [number, number][];
-  orientations: [number];
+    positions: [number, number, number?][];
 }
 
 export type MoveState = 'none' | 'idle' | 'moving' | 'succeeded' | 'failed' | 'cancelled';
