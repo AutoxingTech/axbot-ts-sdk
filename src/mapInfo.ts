@@ -164,6 +164,7 @@ export class MapPoint extends MapFeature {
   pose: Pose2;
   barcodeId?: string; // barcode type only
   landmarkId?: string; // landmark type only
+  ref?: string; // rack type only
   rackZoneName?: string; // rack point associated rack zone name
   rackZoneId?: string; // rack point associated rack zone id
 
@@ -309,6 +310,7 @@ export class MapInfo {
         this.chargers.push(obj);
         break;
       case MapPointType.rackPoint:
+        obj.ref = (feature.properties as any).ref;
         this.rackDetectionPoints.push(obj);
         break;
       case MapPointType.barcode:
