@@ -1,7 +1,8 @@
 CHANGELOG
 ==========
 
-- 2026-04-01 map: more advanced multi-level grids
+- 2026-04-01 map: Show scale indicator.
+- 2026-04-01 map: Advanced multi-level grids
 - 2026-03-27 objectStore: Add objectStore for device info, some map list, bag list etc.
 - 2026-03-27 robotApi: Add RobotApi class for calling REST APIs of the robot
 - 2026-03-27 axbot-sdk: Add binary message decoder (binaryMessageDecoder.ts)
