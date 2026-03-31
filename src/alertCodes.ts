@@ -34,6 +34,8 @@ export enum AlertCode {
   planningFallRiskAhead = 1012,
   /** 任务中，但是长时间没有收到定位 */
   planningNoPositionWhenMoving = 1013,
+  /** bot_control 节点未运行 */
+  planningBotControlNodeNotRunning = 1014,
   /** 运动过程中卡死(已弃用) */
   planningNotMoveInMovingState_deprecated = 1501,
 
@@ -57,6 +59,8 @@ export enum AlertCode {
   wheelStartupError = 2009,
   /** 云杉叉车轮子驱动器找零失败 */
   wheelYunshanFalseZero = 2010,
+  /** 转向轮转角错误 */
+  wheelSteeringWrongAngle = 2011,
   /** 轮子打滑 */
   wheelSlipping = 2501,
   /** 急停被按下，但是没有松轮 */
@@ -174,6 +178,8 @@ export enum AlertCode {
   positioningQualityNotReliableFromLidar = 7004,
   /** 定位已丢失 */
   positioningQualityLost = 7005,
+  /** /devpvt/low_frequency RTK 消息超时未收到 */
+  positioningRtkNoData = 7006,
   /** 激光雷达点云和地图不匹配 */
   positioningLidarAndMapMismatch = 7501,
 
@@ -213,6 +219,8 @@ export enum AlertCode {
   baseboardCellVoltageDifferenceIsLarge = 8503,
   /** 叉车收到 touch 信号比电流小于0更慢，充电板可能有故障 */
   baseboardBatteryContactTouchTooLate = 8504,
+  /** CAN 帧超时 */
+  baseboardCanFrameTimeout = 8015,
 
   /** 充电桩/电梯门状态识别的 /detectors 节点未运行 */
   otherDetectorsNotRunning = 9001,
@@ -258,12 +266,16 @@ export enum AlertCode {
   otherPushHandleDeviceNotFound = 9021,
   /** 手柄异常 */
   otherPushHandleGeneralError = 9022,
+  /** /sensor_hub_server 节点未运行 */
+  otherSensorHubServerNotRunning = 9023,
   /** 调试节点打开 */
   otherDebugNodeIsRunning = 9501,
   /** ax-cache下存在.params.yaml, 该配置文件已弃用 */
   otherAxCacheParamsExists = 9502,
   /** 检测到 ESP-NOW 硬件，但是没有配置使用 */
   otherBtmSensorExistsButNotEnabled = 9503,
+  /** bottom sensor 固件版本过低 */
+  otherBtmSensorFirmwareVersionTooLow = 9504,
 
   /** 对桩超过重试次数，未检测到touch信号 */
   chargingChargeRetryCountExceeded = 10001,
