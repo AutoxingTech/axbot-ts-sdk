@@ -51,6 +51,89 @@ export class ApiError extends Error {
 export class RobotApi {
   private config: RobotApiConfig | undefined;
 
+  // Keep user-facing transport errors short enough for compact UI surfaces.
+  private truncateErrorText(text: string): string {
+    return text.length > 200 ? text.slice(0, 200) : text;
+  }
+
+  // Normalize small wording differences so duplicate HTTP status messages collapse cleanly.
+  private normalizeErrorText(text: string): string {
+    return text
+      .toLowerCase()
+      .replace(/^\d+\s+/, '')
+      .replace(/\btemporarily\b/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  private looksLikeHtml(text: string): boolean {
+    return /<\s*html[\s>]|<\s*body[\s>]|<\s*head[\s>]|<\s*title[\s>]|<\s*h1[\s>]|<!doctype\s+html/i.test(text);
+  }
+
+  // Strip simple HTML error pages down to readable text before surfacing them in the UI.
+  private extractHtmlText(text: string): string | null {
+    const stripped = text
+      .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+      .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&amp;/gi, '&')
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;/gi, "'")
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    return stripped || null;
+  }
+
+  // Prefer structured API errors, but fall back to sanitized plain text for proxy/server error pages.
+  private async formatErrorDetail(res: Response): Promise<string> {
+    const statusDetail = `${res.status} ${res.statusText}`;
+
+    try {
+      const text = (await res.text()).trim();
+      if (!text) {
+        return statusDetail;
+      }
+
+      try {
+        const json = JSON.parse(text);
+        if (json.detail) {
+          return this.truncateErrorText(typeof json.detail === 'string' ? json.detail : JSON.stringify(json.detail));
+        }
+        if (json.message) {
+          return this.truncateErrorText(json.message);
+        }
+        return this.truncateErrorText(text);
+      } catch {
+        const contentType = res.headers.get('content-type')?.toLowerCase() || '';
+        if (contentType.includes('text/html') || this.looksLikeHtml(text)) {
+          const htmlText = this.extractHtmlText(text);
+          if (!htmlText) {
+            return statusDetail;
+          }
+
+          if (
+            htmlText.startsWith(`${res.status} `) ||
+            this.normalizeErrorText(htmlText) === this.normalizeErrorText(statusDetail)
+          ) {
+            return this.truncateErrorText(htmlText);
+          }
+
+          return htmlText.toLowerCase() === statusDetail.toLowerCase()
+            ? statusDetail
+            : this.truncateErrorText(`${statusDetail}\n${htmlText}`);
+        }
+
+        return this.truncateErrorText(text);
+      }
+    } catch {
+      return statusDetail;
+    }
+  }
+
   /**
    * Initialize the RobotApi with configuration.
    * Must be called before making any API calls.
@@ -115,27 +198,7 @@ export class RobotApi {
    * Extract error message from a Response object.
    */
   private async extractErrorMessage(res: Response): Promise<string> {
-    let detail = `${res.status} ${res.statusText}`;
-    try {
-      const text = await res.text();
-      if (text) {
-        try {
-          const json = JSON.parse(text);
-          if (json.detail) {
-            detail = typeof json.detail === 'string' ? json.detail : JSON.stringify(json.detail);
-          } else if (json.message) {
-            detail = json.message;
-          } else {
-            detail = text;
-          }
-        } catch {
-          detail = text;
-        }
-      }
-    } catch {
-      // Ignore read errors
-    }
-    return detail;
+    return this.formatErrorDetail(res);
   }
 
   /**
@@ -214,29 +277,7 @@ export class RobotApi {
     }
 
     if (res instanceof Response) {
-      let detail = `${res.status} ${res.statusText}`;
-      // Try to extract error detail from response body
-      try {
-        const text = await res.text();
-        if (text) {
-          // Try to parse as JSON first
-          try {
-            const json = JSON.parse(text);
-            if (json.detail) {
-              detail = typeof json.detail === 'string' ? json.detail : JSON.stringify(json.detail);
-            } else if (json.message) {
-              detail = json.message;
-            } else {
-              detail = text;
-            }
-          } catch {
-            // Not JSON, use text directly
-            detail = text;
-          }
-        }
-      } catch {
-        // Ignore read errors
-      }
+      const detail = await this.formatErrorDetail(res);
       message = message + detail;
     } else if (res?.message) {
       message = message + res.message;
