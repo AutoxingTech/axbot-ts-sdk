@@ -1,5 +1,17 @@
 import { DeviceInfo, CollectedDataItem, CollectedDataFile } from './topicMessages';
 
+export interface BootProgressLog {
+  stamp: number;
+  progress: number;
+  msg: string;
+}
+
+export interface BootProgress {
+  start_time: number;
+  progress: number;
+  logs: BootProgressLog[];
+}
+
 /**
  * Virtual interface for publishing notifications.
  * The host application injects a concrete implementation.
@@ -64,13 +76,14 @@ export class RobotApi {
     if (method === 'GET' || method === 'DELETE') {
       return fetch(`${base}/${url}`, {
         method,
+        headers: { Accept: 'application/json' },
         credentials: 'include', // Include cookies in requests
         signal,
       });
     } else {
       return fetch(`${base}/${url}`, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         credentials: 'include', // Include cookies in requests
         body: JSON.stringify(data),
         signal,
@@ -171,6 +184,13 @@ export class RobotApi {
       throw new Error(detail);
     }
     return res;
+  }
+
+  /**
+   * Perform a GET request. Returns the raw Response without throwing on errors.
+   */
+  async getResponse(url: string, signal?: AbortSignal): Promise<Response> {
+    return this.getImpl(url, signal);
   }
 
   /**
@@ -417,6 +437,18 @@ export class RobotApi {
     const res = await this.getImpl('device/info');
     const data = await res.json();
     return data as DeviceInfo;
+  }
+
+  async getBootProgress(): Promise<BootProgress | null> {
+    try {
+      const res = await this.getResponse('device/boot_progress');
+      if (!res.ok) return null;
+      const contentType = res.headers.get('Content-Type') || '';
+      if (!contentType.includes('application/json')) return null;
+      return (await res.json()) as BootProgress;
+    } catch {
+      return null;
+    }
   }
 
   async getWifiInfo(): Promise<any> {
