@@ -95,6 +95,7 @@ export interface PoseMsg extends TopicMsg, PoseType { }
 
 export interface TrackedPoseMsg extends TopicMsg, PoseType {
   cov: [[number, number], [number, number]];
+  quat?: [number, number, number, number];
 }
 
 export type GateStateMsg = 'unknown' | 'open' | 'closed';
