@@ -13,6 +13,20 @@ export interface BootProgress {
 }
 
 /**
+ * Move type for createMove.
+ */
+export type MoveType =
+  | 'standard'
+  | 'charge' // Go to the charger and dock with it.
+  | 'return_to_elevator_waiting_point'
+  | 'enter_elevator'
+  | 'leave_elevator' // Deprecated. Do not use.
+  | 'along_given_route' // Follow a specified path.
+  | 'align_with_rack' // Crawl under a rack (to jack it up later).
+  | 'to_unload_point' // Move to a rack unload point (to jack it down later).
+  | 'follow_target'; // Follow a moving target.
+
+/**
  * Virtual interface for publishing notifications.
  * The host application injects a concrete implementation.
  */
@@ -296,10 +310,12 @@ export class RobotApi {
 
   /**
    * Set the robot pose on the server. x,y in meters and theta in radians.
+   * @param opts.adjust_position - If true, attempt to correct initial position errors within a small area.
+   *   If false, no correction will be attempted. If not provided, behavior is version-dependent.
    */
-  async setPose(x: number, y: number, theta: number): Promise<boolean> {
-    const pose = { position: [x, y], ori: theta };
-    return this.apiCall(() => this.postImpl('chassis/pose', pose), 'Set Pose', false);
+  async setPose(x: number, y: number, theta: number, opts?: { adjust_position?: boolean }): Promise<boolean> {
+    const requestData = { position: [x, y], ori: theta, ...opts };
+    return this.apiCall(() => this.postImpl('chassis/pose', requestData), 'Set Pose', false);
   }
 
   /**
@@ -373,7 +389,7 @@ export class RobotApi {
   }
 
   async createMove(opts: {
-    type?: string;
+    type?: MoveType;
     target_x?: number;
     target_y?: number;
     target_ori?: number;
