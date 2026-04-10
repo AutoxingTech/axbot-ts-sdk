@@ -1,10 +1,7 @@
 export type Subscriber<T> = (items: T) => void;
 
 import { robotApi } from './robotApi';
-import type { BagItem, MapItem, DeviceInfo, CoreDumpItem, MappingTaskItem, VideoFileItem } from './msgs';
-import type { MoveAction } from './robotApi';
-
-export type { BagItem, MapItem, DeviceInfo, CoreDumpItem, MappingTaskItem, VideoFileItem, MoveAction };
+import type { BagItem, MapItem, CoreDumpItem, MappingTaskItem, VideoFileItem, DeviceInfo } from './robotApiType';
 
 export class ObjectStore<T> {
   protected stored_object: T | null = null;

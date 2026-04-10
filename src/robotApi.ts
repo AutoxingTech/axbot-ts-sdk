@@ -1,5 +1,5 @@
-import { CollectedDataItem, CollectedDataFile } from './topicMessages';
-import { StartMappingRequest, StopMappingRequest, RobotCaps, DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice, BootProgressLog, BootProgress, MoveType, MoveState, MoveActionCreate, MoveOptions, MoveAction, MoveFailReason, NotificationSink, RobotApiConfig, ApiError, BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse, BagPlayerMessage } from './robotApiType';
+import { CollectedDataFile } from './topicMessages';
+import { CollectedDataItem, MapItem, StartMappingRequest, StopMappingRequest, RobotCaps, DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice, BootProgressLog, BootProgress, MoveType, MoveState, MoveActionCreate, MoveOptions, MoveAction, MoveFailReason, NotificationSink, RobotApiConfig, ApiError, BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse, BagPlayerMessage } from './robotApiType';
 export * from './robotApiType';
 export class RobotApi {
   private config: RobotApiConfig | undefined;
@@ -138,7 +138,16 @@ export class RobotApi {
   protected async postImpl(url: string, data: any, signal?: AbortSignal): Promise<Response> {
     return this.doRequest('POST', url, data, signal);
   }
-
+  protected async postFormDataImpl(url: string, formData: FormData, signal?: AbortSignal): Promise<Response> {
+    const base = this.getConfig().getApiBase();
+    return fetch(`${base}/${url}`, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      credentials: 'include',
+      body: formData,
+      signal,
+    });
+  }
   protected async deleteImpl(url: string, signal?: AbortSignal): Promise<Response> {
     return this.doRequest('DELETE', url, null, signal);
   }
@@ -395,6 +404,18 @@ export class RobotApi {
 
   async deleteMap(mapId: number): Promise<boolean> {
     return this.apiCall(() => this.deleteImpl(`maps/${mapId}`), 'Delete Map', false);
+  }
+
+  async getMap(id: number): Promise<MapItem | null> {
+    return this.apiCall(() => this.getImpl(`maps/${id}`), 'Get Map', null);
+  }
+
+  async updateMap(id: number, patch: Partial<MapItem>): Promise<boolean> {
+    return this.apiCall(() => this.patchImpl(`maps/${id}`, patch), 'Update Map', false);
+  }
+
+  async uploadMap(formData: FormData): Promise<MapItem | null> {
+    return this.apiCall(() => this.postFormDataImpl('maps/', formData), 'Upload Map', null);
   }
 
   async setControlMode(mode: string): Promise<boolean> {

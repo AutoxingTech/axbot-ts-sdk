@@ -394,3 +394,84 @@ export interface BagPlayerMessage {
   [key: string]: unknown;
 }
 
+export type MapItem = {
+  id: number;
+  uid: string;
+  map_name: string;
+  create_time: number;
+  last_modified_time?: number;
+  map_version: number;
+  overlays_version: number;
+  thumbnail_url?: string;
+  image_url?: string;
+  pbstream_url?: string;
+  url?: string;
+  // Grid info (returned from detail endpoint)
+  grid_origin_x?: number;
+  grid_origin_y?: number;
+  grid_resolution?: number;
+  // Overlays JSON string containing POI data
+  overlays?: string;
+};
+
+export type MappingTaskItem = {
+  id: number;
+
+  // timing / state
+  start_time?: number;
+  end_time?: number;
+  state?: 'finished' | 'running' | 'cancelled';
+
+  // mapping specific
+  continue_mapping?: boolean;
+  thumbnail_url?: string;
+  image_url?: string; // the full resolution image
+
+  // grid info
+  grid_origin_x?: number;
+  grid_origin_y?: number;
+  grid_resolution?: number;
+
+  // urls
+  url?: string;
+  bag_url?: string;
+  download_url?: string;
+  pbstream_url?: string;
+  landmark_url?: string;
+  trajectories_url?: string;
+  properties_url?: string;
+};
+
+export type BagItem = {
+  filename: string; // "8981307a02163yT_2025-11-17_07-50-00.bag"
+  size: string; // "607.4KB"
+  size_bytes: number; // 621988
+  end: string; // "17-Nov-2025 08:00:00"
+  download_url: string; // "bags/8981307a02163yT_2025-11-17_07-50-00.bag/download"
+};
+
+export type VideoFileItem = {
+  filename: string;
+  size: string;
+  size_bytes: number;
+  end: string;
+  url: string;
+  download_url: string;
+};
+
+export interface CoreDumpItem {
+  filename: string;
+  size: string;
+  size_bytes: number;
+  modify_time: string;
+  url: string;
+}
+
+export interface CollectedDataItem {
+  filename: string;
+  size: string;
+  size_bytes: number;
+  modified_time: string;
+  download_url: string;
+}
+
