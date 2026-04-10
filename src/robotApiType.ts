@@ -148,7 +148,7 @@ export interface UsbDevice {
   port: number;
   full_port: string;
   level: number;
-  devices?: UsbDevice[];
+  children?: UsbDevice[];
 }
 
 export interface BootProgressLog {
