@@ -26,6 +26,142 @@ export type MoveType =
   | 'to_unload_point' // Move to a rack unload point (to jack it down later).
   | 'follow_target'; // Follow a moving target.
 
+export type MoveState = 'idle' | 'moving' | 'succeeded' | 'failed' | 'cancelled';
+
+/**
+ * Payload for creating a move action.
+ */
+export interface MoveActionCreate {
+  type?: MoveType;
+  /** The initiator of the action (for diagnostic purposes only). */
+  creator?: string;
+  target_x?: number;
+  target_y?: number;
+  target_z?: number;
+  target_ori?: number | null;
+  /** In meters. */
+  target_accuracy?: number | null;
+  /**
+   * A path to follow. Only valid when `type` is `along_given_route`.
+   * A list of coordinates as a comma-separated string, in the format "x1, y1, x2, y2".
+   */
+  route_coordinates?: string;
+  /**
+   * The allowed detour distance when navigating around an obstacle while following a specified path.
+   * Only valid when `type` is `along_given_route`.
+   * When 0, the robot will stop and wait before an obstacle instead of going around it.
+   */
+  detour_tolerance?: number;
+  /** If true, the action succeeds immediately when within the radius of `target_accuracy`. */
+  use_target_zone?: boolean | null;
+  /** Number of retries before the `charge` action fails. */
+  charge_retry_count?: number;
+  rack_area_id?: string;
+  /** Optional properties. Available since 2.11.0. */
+  properties?: {
+    /** Strictly rotate without any linear velocity. Available since 2.11.0. */
+    inplace_rotate?: boolean;
+    /** Index into the layers of a rack stack. For `align_with_rack` and `to_unload_point`. */
+    rack_layer?: number;
+  };
+}
+
+/**
+ * Backward-compatible alias for move creation options.
+ */
+export type MoveOptions = MoveActionCreate;
+
+export interface MoveAction extends MoveActionCreate {
+  id: number;
+  state: MoveState;
+  is_charging: boolean | null;
+  fail_reason: MoveFailReason;
+  /** Internal failure message for debugging. */
+  fail_reason_str: string;
+  /** Internal failure message in Chinese for debugging. */
+  fail_message: string;
+  /** Unix timestamp in seconds. */
+  create_time: number;
+  /** Unix timestamp in seconds. */
+  last_modified_time: number;
+}
+
+/**
+ * Numeric reason codes for why a move action failed (`fail_reason` field).
+ */
+export enum MoveFailReason {
+  None = 0,
+  Unknown = 1,
+  GetMapFailed = 2,
+  StartingPointOutOfMap = 3,
+  EndingPointOutOfMap = 4,
+  StartingPointNotInGround = 5,
+  EndingPointNotInGround = 6,
+  StartingEqualEnding = 7,
+  CalculateGlobalPathExtendedDataError = 8,
+  /** Roads are not connected. */
+  CalculationFailed = 9,
+  CalculationTimeout = 10,
+  NoGlobalPath = 11,
+  NotGrabStartIndexOnGlobalPath = 12,
+  NotGrabEndIndexOnGlobalPath = 13,
+  PlanningTimeout = 14,
+  MoveTimeout = 15,
+  /** Local obstacle avoidance map data error / sensor data anomaly. */
+  ControlCostmapError = 16,
+  PowerCableConnected = 17,
+  RotateTimeout = 18,
+  ChargeRetryCountExceeded = 100,
+  ChargeDockDetectionError = 101,
+  /** Did not receive successful docking signal from charge dock. */
+  ChargeDockSignalError = 102,
+  InvalidChargeDock = 103,
+  AlreadyCharging = 104,
+  /** No charge current received for a long time after contact. */
+  NoChargeCurrent = 105,
+  InvalidCabinetPos = 200,
+  CabinetDetectionError = 201,
+  NoDockWithConveyer = 202,
+  NoApproachConveyer = 203,
+  ElevatorPointOccupied = 300,
+  ElevatorClosed = 301,
+  ElevatorPointObscuredTimeout = 302,
+  ElevatorPointOccupancyDetectionTimeout = 303,
+  ElevatorEnterProgressUpdateTimeout = 304,
+  /** Number of input coordinates is not even, or number of track points < 2. */
+  InvalidTrackPoints = 400,
+  TooFarFromStartOfTrack = 401,
+  InvalidRackDetectionPos = 500,
+  RackDetectionError = 501,
+  RackRetryCountExceeded = 502,
+  UnloadPointOccupied = 503,
+  UnloadPointUnreachable = 504,
+  RackMoved = 505,
+  JackInUpState = 506,
+  InvalidRackAreaId = 507,
+  /** Invalid rack area (no rack positions). */
+  InvalidRackArea = 508,
+  UnknownRackSpaceState = 509,
+  NoRackInRackArea = 510,
+  AlignFailedInRackArea = 511,
+  NoFreeSpaceInRackArea = 512,
+  FailedToUnloadInRackArea = 513,
+  /** Follow target lost. */
+  FollowFailed = 600,
+  PoiDetectionError = 700,
+  PoiUnreachable = 701,
+  BarcodeDetectionError = 702,
+  /** System exception. */
+  PlatformAlertError = 1000,
+  /** Service call error (REST API usage). */
+  ServiceCallError = 1001,
+  /** Internal ASSERT error. */
+  InternalError = 1002,
+  /** Map changed or cleared during task execution. */
+  MapChanged = 1003,
+  MoveActionTypeDeprecated = 1004,
+}
+
 /**
  * Virtual interface for publishing notifications.
  * The host application injects a concrete implementation.
@@ -60,6 +196,41 @@ export class ApiError extends Error {
     super(message);
     this.name = 'ApiError';
   }
+}
+
+// ========== Bag Player Types ==========
+
+/**
+ * Prefix for the bag player API.
+ */
+export type BagPlayerPrefix = 'bags' | 'recording';
+
+/**
+ * Bag player metadata response.
+ */
+export interface BagPlayerMetadata {
+  total_messages: number;
+  start_time: number;
+  end_time: number;
+}
+
+/**
+ * Bag player chunk response with messages.
+ */
+export interface BagPlayerChunkResponse {
+  total_messages: number;
+  start_time: number;
+  end_time: number;
+  messages: BagPlayerMessage[];
+}
+
+/**
+ * A single message from a bag file.
+ */
+export interface BagPlayerMessage {
+  topic: string;
+  __stamp: number;
+  [key: string]: unknown;
 }
 
 export class RobotApi {
@@ -388,22 +559,8 @@ export class RobotApi {
     return this.apiCall(() => this.patchImpl('chassis/moves/current', { state: 'cancelled' }), 'Cancel Move', false);
   }
 
-  async createMove(opts: {
-    type?: MoveType;
-    target_x?: number;
-    target_y?: number;
-    target_ori?: number;
-    charge_retry_count?: number;
-    rack_area_id?: string;
-  }): Promise<boolean> {
-    const body: Record<string, any> = {
-      type: opts.type || 'standard',
-    };
-    if (opts.target_x !== undefined) body.target_x = opts.target_x;
-    if (opts.target_y !== undefined) body.target_y = opts.target_y;
-    if (opts.charge_retry_count !== undefined) body.charge_retry_count = opts.charge_retry_count;
-    if (opts.target_ori !== undefined) body.target_ori = opts.target_ori;
-    if (opts.rack_area_id !== undefined) body.rack_area_id = opts.rack_area_id;
+  async createMove(opts: MoveActionCreate): Promise<boolean> {
+    const body = { ...opts, type: opts.type ?? 'standard' };
     return this.apiCall(() => this.postImpl('chassis/moves', body), 'Create Move', false);
   }
 
@@ -422,11 +579,11 @@ export class RobotApi {
     }
   }
 
-  async getMoves(): Promise<any[]> {
+  async getMoves(): Promise<MoveAction[]> {
     return this.apiCall(() => this.getImpl('chassis/moves'), 'Get Moves', []);
   }
 
-  async getMoveById(id: number): Promise<any | null> {
+  async getMoveById(id: number): Promise<MoveAction | null> {
     return this.apiCall(() => this.getImpl(`chassis/moves/${id}`), 'Get Move', null);
   }
 
@@ -844,41 +1001,6 @@ export class RobotApi {
     });
     return this.get(`${prefix}/${encodeURIComponent(filename)}/player?${params}`, signal);
   }
-}
-
-// ========== Bag Player Types ==========
-
-/**
- * Prefix for the bag player API.
- */
-export type BagPlayerPrefix = 'bags' | 'recording';
-
-/**
- * Bag player metadata response.
- */
-export interface BagPlayerMetadata {
-  total_messages: number;
-  start_time: number;
-  end_time: number;
-}
-
-/**
- * Bag player chunk response with messages.
- */
-export interface BagPlayerChunkResponse {
-  total_messages: number;
-  start_time: number;
-  end_time: number;
-  messages: BagPlayerMessage[];
-}
-
-/**
- * A single message from a bag file.
- */
-export interface BagPlayerMessage {
-  topic: string;
-  __stamp: number;
-  [key: string]: unknown;
 }
 
 /**
