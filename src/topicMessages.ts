@@ -561,6 +561,7 @@ export type MappingTaskItem = {
   bag_url?: string;
   download_url?: string;
   pbstream_url?: string;
+  landmark_url?: string;
   trajectories_url?: string;
   properties_url?: string;
 };

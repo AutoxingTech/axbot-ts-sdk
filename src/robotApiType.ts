@@ -1,4 +1,14 @@
 
+export interface StartMappingRequest {
+  continue_mapping?: boolean;
+  start_pose_type?: 'zero' | 'current_pose';
+}
+
+export interface StopMappingRequest {
+  state: 'finished' | 'cancelled';
+  new_map_only?: boolean;
+}
+
 export interface RobotCaps {
   supportsImuRecalibrateService?: boolean;
   supportsShutdownService?: boolean;

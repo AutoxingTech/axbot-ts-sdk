@@ -1,5 +1,5 @@
 import { CollectedDataItem, CollectedDataFile } from './topicMessages';
-import { RobotCaps ,DeviceInfo ,BriefDeviceInfo ,WifiNetwork ,SensorsList ,UsbDevice ,BootProgressLog ,BootProgress ,MoveType ,MoveState ,MoveActionCreate ,MoveOptions ,MoveAction ,MoveFailReason ,NotificationSink ,RobotApiConfig ,ApiError ,BagPlayerPrefix ,BagPlayerMetadata ,BagPlayerChunkResponse ,BagPlayerMessage } from './robotApiType';
+import { StartMappingRequest, StopMappingRequest, RobotCaps, DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice, BootProgressLog, BootProgress, MoveType, MoveState, MoveActionCreate, MoveOptions, MoveAction, MoveFailReason, NotificationSink, RobotApiConfig, ApiError, BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse, BagPlayerMessage } from './robotApiType';
 export * from './robotApiType';
 export class RobotApi {
   private config: RobotApiConfig | undefined;
@@ -359,20 +359,22 @@ export class RobotApi {
     return this.apiCall(() => this.postImpl('recording/', {}), 'Save Bag', null);
   }
 
-  async startMapping(continueMapping = false): Promise<boolean> {
-    return this.apiCall(
-      () => this.postImpl('mappings/', { continue_mapping: continueMapping }),
-      'Start Mapping',
-      false,
-    );
+  async startMapping(req: StartMappingRequest = {}): Promise<boolean> {
+    const payload = {
+      continue_mapping: req.continue_mapping ?? false,
+      start_pose_type: req.start_pose_type ?? 'zero',
+    };
+    return this.apiCall(() => this.postImpl('mappings/', payload), 'Start Mapping', false);
   }
 
-  async stopMapping(): Promise<boolean> {
-    return this.apiCall(() => this.patchImpl('mappings/current', { state: 'finished' }), 'Stop Mapping', false);
+  async stopMapping(req: Omit<StopMappingRequest, 'state'> = {}): Promise<boolean> {
+    const payload: StopMappingRequest = { state: 'finished', new_map_only: req.new_map_only ?? false };
+    return this.apiCall(() => this.patchImpl('mappings/current', payload), 'Stop Mapping', false);
   }
 
   async abortMapping(): Promise<boolean> {
-    return this.apiCall(() => this.patchImpl('mappings/current', { state: 'cancelled' }), 'Abort Mapping', false);
+    const payload: StopMappingRequest = { state: 'cancelled' };
+    return this.apiCall(() => this.patchImpl('mappings/current', payload), 'Abort Mapping', false);
   }
 
   async saveMappingAsMap(mappingId: number, mapName: string): Promise<boolean> {
@@ -385,6 +387,10 @@ export class RobotApi {
 
   async deleteMappingTask(mappingId: number): Promise<boolean> {
     return this.apiCall(() => this.deleteImpl(`mappings/${mappingId}`), 'Delete Mapping Task', false);
+  }
+
+  async deleteAllMappingTasks(): Promise<boolean> {
+    return this.apiCall(() => this.deleteImpl(`mappings/`), 'Delete All Mapping Tasks', false);
   }
 
   async deleteMap(mapId: number): Promise<boolean> {
