@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-04-11 robotApi: Extract types to robotApiType
 - 2026-04-07 robotApi: Improve HTTP error message formatting
 - 2026-04-01 map: Show scale indicator.
 - 2026-04-01 map: Advanced multi-level grids

@@ -1,238 +1,6 @@
-import { DeviceInfo, CollectedDataItem, CollectedDataFile } from './topicMessages';
-
-export interface BootProgressLog {
-  stamp: number;
-  progress: number;
-  msg: string;
-}
-
-export interface BootProgress {
-  start_time: number;
-  progress: number;
-  logs: BootProgressLog[];
-}
-
-/**
- * Move type for createMove.
- */
-export type MoveType =
-  | 'standard'
-  | 'charge' // Go to the charger and dock with it.
-  | 'return_to_elevator_waiting_point'
-  | 'enter_elevator'
-  | 'leave_elevator' // Deprecated. Do not use.
-  | 'along_given_route' // Follow a specified path.
-  | 'align_with_rack' // Crawl under a rack (to jack it up later).
-  | 'to_unload_point' // Move to a rack unload point (to jack it down later).
-  | 'follow_target'; // Follow a moving target.
-
-export type MoveState = 'idle' | 'moving' | 'succeeded' | 'failed' | 'cancelled';
-
-/**
- * Payload for creating a move action.
- */
-export interface MoveActionCreate {
-  type?: MoveType;
-  /** The initiator of the action (for diagnostic purposes only). */
-  creator?: string;
-  target_x?: number;
-  target_y?: number;
-  target_z?: number;
-  target_ori?: number | null;
-  /** In meters. */
-  target_accuracy?: number | null;
-  /**
-   * A path to follow. Only valid when `type` is `along_given_route`.
-   * A list of coordinates as a comma-separated string, in the format "x1, y1, x2, y2".
-   */
-  route_coordinates?: string;
-  /**
-   * The allowed detour distance when navigating around an obstacle while following a specified path.
-   * Only valid when `type` is `along_given_route`.
-   * When 0, the robot will stop and wait before an obstacle instead of going around it.
-   */
-  detour_tolerance?: number;
-  /** If true, the action succeeds immediately when within the radius of `target_accuracy`. */
-  use_target_zone?: boolean | null;
-  /** Number of retries before the `charge` action fails. */
-  charge_retry_count?: number;
-  rack_area_id?: string;
-  /** Optional properties. Available since 2.11.0. */
-  properties?: {
-    /** Strictly rotate without any linear velocity. Available since 2.11.0. */
-    inplace_rotate?: boolean;
-    /** Index into the layers of a rack stack. For `align_with_rack` and `to_unload_point`. */
-    rack_layer?: number;
-  };
-}
-
-/**
- * Backward-compatible alias for move creation options.
- */
-export type MoveOptions = MoveActionCreate;
-
-export interface MoveAction extends MoveActionCreate {
-  id: number;
-  state: MoveState;
-  is_charging: boolean | null;
-  fail_reason: MoveFailReason;
-  /** Internal failure message for debugging. */
-  fail_reason_str: string;
-  /** Internal failure message in Chinese for debugging. */
-  fail_message: string;
-  /** Unix timestamp in seconds. */
-  create_time: number;
-  /** Unix timestamp in seconds. */
-  last_modified_time: number;
-}
-
-/**
- * Numeric reason codes for why a move action failed (`fail_reason` field).
- */
-export enum MoveFailReason {
-  None = 0,
-  Unknown = 1,
-  GetMapFailed = 2,
-  StartingPointOutOfMap = 3,
-  EndingPointOutOfMap = 4,
-  StartingPointNotInGround = 5,
-  EndingPointNotInGround = 6,
-  StartingEqualEnding = 7,
-  CalculateGlobalPathExtendedDataError = 8,
-  /** Roads are not connected. */
-  CalculationFailed = 9,
-  CalculationTimeout = 10,
-  NoGlobalPath = 11,
-  NotGrabStartIndexOnGlobalPath = 12,
-  NotGrabEndIndexOnGlobalPath = 13,
-  PlanningTimeout = 14,
-  MoveTimeout = 15,
-  /** Local obstacle avoidance map data error / sensor data anomaly. */
-  ControlCostmapError = 16,
-  PowerCableConnected = 17,
-  RotateTimeout = 18,
-  ChargeRetryCountExceeded = 100,
-  ChargeDockDetectionError = 101,
-  /** Did not receive successful docking signal from charge dock. */
-  ChargeDockSignalError = 102,
-  InvalidChargeDock = 103,
-  AlreadyCharging = 104,
-  /** No charge current received for a long time after contact. */
-  NoChargeCurrent = 105,
-  InvalidCabinetPos = 200,
-  CabinetDetectionError = 201,
-  NoDockWithConveyer = 202,
-  NoApproachConveyer = 203,
-  ElevatorPointOccupied = 300,
-  ElevatorClosed = 301,
-  ElevatorPointObscuredTimeout = 302,
-  ElevatorPointOccupancyDetectionTimeout = 303,
-  ElevatorEnterProgressUpdateTimeout = 304,
-  /** Number of input coordinates is not even, or number of track points < 2. */
-  InvalidTrackPoints = 400,
-  TooFarFromStartOfTrack = 401,
-  InvalidRackDetectionPos = 500,
-  RackDetectionError = 501,
-  RackRetryCountExceeded = 502,
-  UnloadPointOccupied = 503,
-  UnloadPointUnreachable = 504,
-  RackMoved = 505,
-  JackInUpState = 506,
-  InvalidRackAreaId = 507,
-  /** Invalid rack area (no rack positions). */
-  InvalidRackArea = 508,
-  UnknownRackSpaceState = 509,
-  NoRackInRackArea = 510,
-  AlignFailedInRackArea = 511,
-  NoFreeSpaceInRackArea = 512,
-  FailedToUnloadInRackArea = 513,
-  /** Follow target lost. */
-  FollowFailed = 600,
-  PoiDetectionError = 700,
-  PoiUnreachable = 701,
-  BarcodeDetectionError = 702,
-  /** System exception. */
-  PlatformAlertError = 1000,
-  /** Service call error (REST API usage). */
-  ServiceCallError = 1001,
-  /** Internal ASSERT error. */
-  InternalError = 1002,
-  /** Map changed or cleared during task execution. */
-  MapChanged = 1003,
-  MoveActionTypeDeprecated = 1004,
-}
-
-/**
- * Virtual interface for publishing notifications.
- * The host application injects a concrete implementation.
- */
-export interface NotificationSink {
-  showNotification(notification: {
-    title?: string;
-    message: string;
-    type?: 'warning' | 'danger' | 'success';
-    dismissible?: boolean;
-  }): void;
-}
-
-/**
- * Configuration for RobotApi. Injected by the host application.
- */
-export interface RobotApiConfig {
-  /** Returns the base URL prefix for all API calls, e.g. "/robot_api/v1/{SN}" */
-  getApiBase(): string;
-  /** Notification sink for error display. If not provided, errors are only logged to console. */
-  notification?: NotificationSink;
-}
-
-/**
- * Custom error class that includes HTTP status code
- */
-export class ApiError extends Error {
-  constructor(
-    message: string,
-    public status: number,
-  ) {
-    super(message);
-    this.name = 'ApiError';
-  }
-}
-
-// ========== Bag Player Types ==========
-
-/**
- * Prefix for the bag player API.
- */
-export type BagPlayerPrefix = 'bags' | 'recording';
-
-/**
- * Bag player metadata response.
- */
-export interface BagPlayerMetadata {
-  total_messages: number;
-  start_time: number;
-  end_time: number;
-}
-
-/**
- * Bag player chunk response with messages.
- */
-export interface BagPlayerChunkResponse {
-  total_messages: number;
-  start_time: number;
-  end_time: number;
-  messages: BagPlayerMessage[];
-}
-
-/**
- * A single message from a bag file.
- */
-export interface BagPlayerMessage {
-  topic: string;
-  __stamp: number;
-  [key: string]: unknown;
-}
-
+import { CollectedDataItem, CollectedDataFile } from './topicMessages';
+import { RobotCaps ,DeviceInfo ,BriefDeviceInfo ,WifiNetwork ,SensorsList ,UsbDevice ,BootProgressLog ,BootProgress ,MoveType ,MoveState ,MoveActionCreate ,MoveOptions ,MoveAction ,MoveFailReason ,NotificationSink ,RobotApiConfig ,ApiError ,BagPlayerPrefix ,BagPlayerMetadata ,BagPlayerChunkResponse ,BagPlayerMessage } from './robotApiType';
+export * from './robotApiType';
 export class RobotApi {
   private config: RobotApiConfig | undefined;
 
@@ -685,6 +453,77 @@ export class RobotApi {
     const res = await this.getImpl('device/info');
     const data = await res.json();
     return data as DeviceInfo;
+  }
+
+  async getBriefDeviceInfo(): Promise<BriefDeviceInfo> {
+    const res = await this.getImpl('device/info/brief');
+    const data = await res.json();
+    return data as BriefDeviceInfo;
+  }
+
+  async getAvailableWifis(): Promise<WifiNetwork[]> {
+    const res = await this.getImpl('device/available_wifis');
+    const data = await res.json();
+    return data as WifiNetwork[];
+  }
+
+  async getUsbDevices(): Promise<UsbDevice[]> {
+    const res = await this.getImpl('device/usb_devices');
+    const data = await res.json();
+    return data as UsbDevice[];
+  }
+
+  async getSavedUsbDevices(): Promise<UsbDevice[]> {
+    const res = await this.getImpl('device/usb_devices/saved');
+    const data = await res.json();
+    return data as UsbDevice[];
+  }
+
+  async saveUsbDevices(devices: UsbDevice[]): Promise<boolean> {
+    return this.apiCall(() => this.putImpl('device/usb_devices/saved', devices), 'Save USB Devices', false);
+  }
+
+  async clearSavedUsbDevices(): Promise<boolean> {
+    return this.apiCall(() => this.deleteImpl('device/usb_devices/saved'), 'Clear Saved USB Devices', false);
+  }
+
+  async getChronyConfig(): Promise<string> {
+    const res = await this.get('device/chrony/chrony.conf');
+    return res.text();
+  }
+
+  async getChronySources(): Promise<string[]> {
+    const res = await this.getImpl('device/chrony/sources');
+    const data = await res.json();
+    return data as string[];
+  }
+
+  async setChronySources(sources: string[]): Promise<boolean> {
+    return this.apiCall(() => this.putImpl('device/chrony/sources', sources), 'Set Chrony Sources', false);
+  }
+
+  async restoreChronySources(): Promise<boolean> {
+    return this.apiCall(() => this.deleteImpl('device/chrony/sources'), 'Restore Chrony Sources', false);
+  }
+
+  async getChronyAllows(): Promise<string[]> {
+    const res = await this.getImpl('device/chrony/allows');
+    const data = await res.json();
+    return data as string[];
+  }
+
+  async setChronyAllows(allows: string[]): Promise<boolean> {
+    return this.apiCall(() => this.putImpl('device/chrony/allows', allows), 'Set Chrony Allows', false);
+  }
+
+  async disableNtpServer(): Promise<boolean> {
+    return this.apiCall(() => this.deleteImpl('device/chrony/allows'), 'Disable NTP Server', false);
+  }
+
+  async getSensors(): Promise<SensorsList> {
+    const res = await this.getImpl('device/sensors');
+    const data = await res.json();
+    return data as SensorsList;
   }
 
   async getBootProgress(): Promise<BootProgress | null> {

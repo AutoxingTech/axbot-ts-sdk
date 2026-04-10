@@ -3,7 +3,7 @@ import { base64ToArrayBuffer } from './utils';
 
 export type RobotControlMode = 'unknown' | 'auto' | 'manual' | 'remote';
 
-class TopicNames {
+export class TopicNames {
   public static MAP_TOPIC_OLD = '/chassis/occupancy_grid';
   public static MAP_TOPIC = '/map';
   public static MAP_TOPIC_V2 = '/map_v2';
@@ -150,7 +150,7 @@ export interface PointCloudGeneralMsg extends TopicMsg {
 }
 
 export interface PathMsg extends TopicMsg {
-    positions: [number, number, number?][];
+  positions: [number, number, number?][];
 }
 
 export type MoveState = 'none' | 'idle' | 'moving' | 'succeeded' | 'failed' | 'cancelled';
@@ -581,120 +581,7 @@ export type VideoFileItem = {
   url: string;
   download_url: string;
 };
-
-export interface RobotCaps {
-  supportsImuRecalibrateService?: boolean;
-  supportsShutdownService?: boolean;
-  supportsRestartService?: boolean;
-  supportsResetOccupancyGridService?: boolean;
-
-  supportsImuRecalibrationFeedback?: boolean;
-  supportsSetControlModeService?: boolean;
-  supportsSetEmergencyStopService?: boolean;
-  supportsWheelStateTopic?: boolean;
-  supportsWsV2?: boolean;
-  supportsRgbCamera?: boolean;
-  supportsExternalRgbCamera?: boolean;
-
-  supportsWakeUpDevice?: boolean; // supports /services/wake_up_device
-  supportsCalibrateImuPose?: boolean; // supports /services/imu/recalibrate with { "calibrate_pose": true }
-  supportsInitialPositionAdjustment?: boolean; // supports POST /chassis/pose with { "adjust_position": true }
-  supportsCleanDiskService?: boolean; // supports GET/POST /services/clean_disk.
-  supportsMonitorRecheckErrors?: boolean; // supports POST /services/monitor_recheck_errors
-  supportsCalibrateDepthCameras?: boolean; // supports POST /services/calibrate_depth_cameras
-  combineImuBiasAndPoseCalibration?: boolean; // since 2.4.0. REST API /imu/recalibrate 位姿矫正，也会矫正 bias
-  supportsGyroscopeScaleCalibration?: boolean; // since 2.5.0. Supports `POST /services/calibrate_gyro_scale`
-
-  // since 2.5.0. Supports `GET/POST /device/params/dev|prod|dynamic`.
-  // `GET /device/info` has "/device/param_tags" property.
-  supportsParamFiles?: boolean;
-
-  supportsImuBiasTemperatureCurve?: boolean; // since 2.5.0. Supports`GET /device/imu_bias_temperature_curve`
-
-  supportsAppStore?: boolean; // since 2.5.0. Supports '/app_store'
-  supportsForklift?: boolean;
-
-  // since 2.5.0. Supports `GET/PUT/DELETE /device/usb_devices/saved`,
-  // `GET /device/usb_devices`, `POST /services/reset_usb_devices`
-  supportsUsbDevices?: boolean;
-
-  // since 2.5.0. Clear alert caused by system shutdown unexpectedly.
-  // `POST /services/clear_system_shutdown_unexpectedly`
-  supportsClearSystemDownExpectedly?: boolean;
-
-  // since 2.5.0. `GET/DELETE /core_dumps`, `GET/DELETE /core_dumps/xxx.log`,
-  supportsCoreDumps?: boolean;
-
-  // since 2.6.2. Support topic such as '/map_v2'.
-  supportsCachedTopics?: boolean;
-
-  // since 2.7. Support jack device
-  supportsJack?: boolean;
-
-  supportsDynamicFootprints?: boolean;
-  supportsStepTime?: boolean;
-
-  // since 2.7. Support all-time recording bags
-  supportsBags?: boolean;
-  supportsEnableTopicList?: boolean;
-
-  // since 2.8. Support /semantic_points for point cloud
-  supportsSemanticPoints?: boolean;
-
-  supportsChunkedVideoDownload?: boolean;
-
-  // since 2.14.0
-  supportsTowing?: boolean;
-
-  // Supports POST /services/calibrate_duo_lidar_poses
-  supportsDuoLidar?: boolean;
-}
-
-export interface DeviceInfo {
-  axbot_version: string;
-  device: {
-    model: string;
-    sn: string;
-    name: string;
-    nickname?: string;
-    hardware?: any;
-    param_tags?: {
-      dev: string[];
-      prod: string[];
-    };
-  };
-  baseboard: {
-    firmware_version: string;
-  };
-  wheel_control: {
-    firmware_version: string;
-  };
-  bottom_sensor_pack?: {
-    firmware_version: string;
-  };
-  depth_camera?: {
-    firmware_version: string;
-  };
-  robot: {
-    footprint: number[][];
-    inscribed_radius: number;
-    height: number;
-    thickness: number;
-    wheel_distance: number;
-    width: number;
-    charge_contact?: { pose_2d: [number, number, number]; size?: [number, number] };
-    visualization_topics?: string[] // like ["/lf_laser_3d/scan", ...]
-  };
-  caps: RobotCaps;
-  remote_params?: {
-    tags: string[];
-  };
-
-  // Each Gitinfo item contains "module [SHA] log".
-  // like "platform-build [8a10e24] Merge branch 'action_publisher'"
-  gitinfo: string[];
-}
-
+export type { RobotCaps, DeviceInfo } from './robotApiType';
 export interface CoreDumpItem {
   filename: string;
   size: string;
@@ -726,71 +613,6 @@ export interface CollectedDataFile {
   landmarks: Landmark[];
 }
 
-export type MoveActionType =
-  | 'standard'
-  | 'charge' // Go to charger and dock with it
-  | 'return_to_elevator_waiting_point'
-  | 'enter_elevator'
-  | 'leave_elevator' // Deprecated. Don't use it anymore.
-  | 'along_given_route' // Follow a given path
-  | 'align_with_rack' // Crawl under a rack (to jack it up later)
-  | 'to_unload_point' // Move to a rack unload point (to jack it down later)
-  | 'follow_target'; // Follow a moving target
-
-interface MoveActionCreate {
-  // Initiator of the action. For diagnosis only.
-  creator: string;
-  type: MoveActionType;
-  target_x?: number;
-  target_y?: number;
-  target_ori?: number;
-  // In meters. Optional.
-  target_accuracy?: number;
-
-  // A path to follow.
-  // Only valid with type `along_given_route`.
-  // It's a list of coordinates, as comma separated string,
-  // in the format of "x1, y1, x2, y2"
-  route_coordinates?: string;
-
-  // Allowed detour distance when going around an obstacle,
-  // while following a given path.
-  // Only valid with type `along_given_route`.
-  // When 0 is given, it will always stop and wait before an obstacle,
-  // instead of trying to go around it.
-  detour_tolerance?: number;
-
-  // If true, action will succeed right away
-  // when within radius of `target_accuracy`
-  use_target_zone?: boolean;
-
-  // Retry times before `charge` action fails
-  charge_retry_count?: number;
-
-  // When executing point-to-area or area-to-area cargo move action, give the target rack area id
-  rack_area_id?: string;
-
-  // Optional: since 2.11.0
-  properties?: Record<string, any>;
-}
-
-export interface MoveAction extends MoveActionCreate {
-  id: number;
-
-  state: 'idle' | 'moving' | 'succeeded' | 'failed' | 'cancelled';
-  // Unix timestamp, like 1647509573
-  create_time: number;
-  // Unix timestamp, like 1647509573
-  last_modified_time: number;
-  // Fail code. Only valid when state="failed"
-  fail_reason: number;
-  // Internal fail message - for debugging. Only valid when state="failed"
-  fail_reason_str: string;
-  // Internal fail message in Chinese - for debugging. Only valid when state="failed"
-  fail_message: string;
-
-  route_coordinates?: string; // Interleaved x and y, like "3.786889,-25.298599,3.386900,-25.301519,3.365005,-25.301679,3.365005,-25.301679"
-}
 
 export function parseRouteString(routeStr: string): [number, number][] {
   if (!routeStr) return [];

@@ -1,7 +1,8 @@
 export type Subscriber<T> = (items: T) => void;
 
 import { robotApi } from './robotApi';
-import type { BagItem, MapItem, DeviceInfo, CoreDumpItem, MappingTaskItem, VideoFileItem, MoveAction } from './msgs';
+import type { BagItem, MapItem, DeviceInfo, CoreDumpItem, MappingTaskItem, VideoFileItem } from './msgs';
+import type { MoveAction } from './robotApi';
 
 export type { BagItem, MapItem, DeviceInfo, CoreDumpItem, MappingTaskItem, VideoFileItem, MoveAction };
 
@@ -9,7 +10,7 @@ export class ObjectStore<T> {
   protected stored_object: T | null = null;
   protected subscribers = new Set<Subscriber<T | null>>();
 
-  constructor(protected endpoint: string) {}
+  constructor(protected endpoint: string) { }
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
@@ -60,7 +61,7 @@ export class ArrayObjectStore<T> {
   protected stored_object: T[] = [];
   protected subscribers = new Set<Subscriber<T[]>>();
 
-  constructor(protected endpoint: string) {}
+  constructor(protected endpoint: string) { }
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
