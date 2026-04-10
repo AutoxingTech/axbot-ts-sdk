@@ -334,6 +334,40 @@ export class RobotApi {
     }
   }
 
+  /**
+   * Set the current map by providing map data directly.
+   * Available since version 2.7.0.
+   *
+   * @deprecated This method is extremely slow and memory-intensive for large maps.
+   * Prefer {@link setMapFromFile} (available since v2.11.0) instead.
+   */
+  async setMapWithData(params: {
+    map_name: string;
+    occupancy_grid: string; // Base64-encoded PNG image
+    carto_map: string; // Binary map data
+    grid_resolution: number;
+    grid_origin_x: number;
+    grid_origin_y: number;
+    overlays: string;
+  }): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('chassis/current-map', params), 'Set Current Map With Data', false);
+  }
+
+  /**
+   * Set the current map by loading local files on the robot.
+   * Available since version 2.11.0.
+   * Requires .pbstream, .png, and .yaml files sharing the same base path and name.
+   * @param pbstreamPath - absolute path to the .pbstream file, e.g. "/home/simba/tmp_map/map_73.pbstream"
+   * @param mapName - name to assign to the map
+   */
+  async setMapFromFile(pbstreamPath: string, mapName: string): Promise<boolean> {
+    return this.apiCall(
+      () => this.postImpl('chassis/current-map', { data_url: `file://${pbstreamPath}`, map_name: mapName }),
+      'Set Current Map From File',
+      false,
+    );
+  }
+
   async cancelCurrentMove(): Promise<boolean> {
     return this.apiCall(() => this.patchImpl('chassis/moves/current', { state: 'cancelled' }), 'Cancel Move', false);
   }
