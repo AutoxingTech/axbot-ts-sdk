@@ -130,7 +130,7 @@ export class WsClient {
   /**
    * Unregister a handler for a specific topic.
    */
-  public offTopic(topic: string, handler: TopicHandler) {
+  private offTopic(topic: string, handler: TopicHandler) {
     const set = this.topicHandlers.get(topic);
     if (!set) return;
     set.delete(handler);
