@@ -1,4 +1,4 @@
-import { wsClient } from './wsClient';
+import { wsClient } from './ws';
 import MapInfo from './mapInfo';
 import {
   AlertsMsg,

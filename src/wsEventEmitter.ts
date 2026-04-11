@@ -15,7 +15,7 @@
  *   }, []);
  */
 
-import { wsClient } from './wsClient';
+import { wsClient } from './ws';
 
 type EventHandler<T> = (data: T) => void;
 
