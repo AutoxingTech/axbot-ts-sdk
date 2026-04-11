@@ -1,5 +1,6 @@
 import { decodeBinaryFrame } from './binaryMessageDecoder';
 import { getEmitterSubscribedTopics } from './wsEventEmitter';
+import { getStoreSubscribedTopics } from './wsMessageStore';
 
 export type TopicHandler = (payload: any) => void;
 export type ConnectionState = 'disconnected' | 'connecting' | 'connected' | 'broken';
@@ -10,7 +11,6 @@ export class WsClient {
   public connectionState: ConnectionState = 'disconnected';
 
   private topicHandlers = new Map<string, Set<TopicHandler>>();
-  private appDesiredTopics = new Set<string>();
   private serverEnabledTopics = new Set<string>();
   private syncDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -153,17 +153,8 @@ export class WsClient {
   }
 
   /**
-   * Set the full list of desired topics. The client will automatically send
-   * enable_topic / disable_topic messages to synchronize with the server.
-   */
-  public setDesiredTopics(topics: string[]) {
-    this.appDesiredTopics = new Set(topics);
-    this.queueSync();
-  }
-
-  /**
    * Instructs the client to sync topic subscriptions with the server
-   * combining appDesiredTopics with getEmitterSubscribedTopics().
+   * combining appDesiredTopics with getEmitterSubscribedTopics() and getStoreSubscribedTopics().
    */
   public syncTopics() {
     this.queueSync();
@@ -186,7 +177,10 @@ export class WsClient {
 
     const toEnable: string[] = [];
     const toDisable: string[] = [];
-    const allDesired = new Set([...this.appDesiredTopics, ...getEmitterSubscribedTopics()]);
+    const allDesired = new Set([
+      ...getEmitterSubscribedTopics(),
+      ...getStoreSubscribedTopics()
+    ]);
 
     for (const topic of allDesired) {
       if (!this.serverEnabledTopics.has(topic)) {

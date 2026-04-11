@@ -28,13 +28,21 @@ import {
 
 export type Subscriber<T> = (data: T) => void;
 
+const storeSubscribedTopics = new Set<string>();
+
+export function getStoreSubscribedTopics(): string[] {
+  return Array.from(storeSubscribedTopics);
+}
+
 export class WsMessageStore<T> {
   protected data: T | null;
   protected subscribers = new Set<Subscriber<T | null>>();
 
   constructor(protected topic: string) {
     this.data = null;
-    this.setupSubscription();
+    // Defer setupSubscription to next tick to avoid circular dependency
+    // (wsClient may be in TDZ since wsClient.ts imports wsMessageStore.ts)
+    setTimeout(() => this.setupSubscription(), 0);
   }
 
   protected setupSubscription(): void {
@@ -67,7 +75,14 @@ export class WsMessageStore<T> {
   }
 
   subscribe(fn: Subscriber<T | null>): () => void {
+    const isFirst = this.subscribers.size === 0;
     this.subscribers.add(fn);
+
+    if (isFirst) {
+      storeSubscribedTopics.add(this.topic);
+      wsClient.syncTopics();
+    }
+
     try {
       fn(this.data);
     } catch (e) {
@@ -75,6 +90,10 @@ export class WsMessageStore<T> {
     }
     return () => {
       this.subscribers.delete(fn);
+      if (this.subscribers.size === 0) {
+        storeSubscribedTopics.delete(this.topic);
+        wsClient.syncTopics();
+      }
     };
   }
 
