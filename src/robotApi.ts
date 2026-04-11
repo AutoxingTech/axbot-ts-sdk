@@ -1,8 +1,37 @@
 import { CollectedDataFile } from './topicMessages';
-import { CollectedDataItem, MapItem, StartMappingRequest, StopMappingRequest, RobotCaps, DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice, BootProgressLog, BootProgress, MoveType, MoveState, MoveActionCreate, MoveOptions, MoveAction, MoveFailReason, NotificationSink, RobotApiConfig, ApiError, BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse, BagPlayerMessage } from './robotApiType';
+import {
+  CollectedDataItem, MapItem, StartMappingRequest, StopMappingRequest,
+  RobotCaps, DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice,
+  BootProgressLog, BootProgress, MoveType, MoveState, MoveActionCreate, MoveOptions,
+  MoveAction, MoveFailReason, NotificationSink, RobotApiConfig, ApiError,
+  BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse, BagPlayerMessage
+} from './robotApiType';
+
 export * from './robotApiType';
+
+/**
+ * Client wrapper for the Robot REST API.
+ * Provides typed methods for interacting with the robot's various endpoints
+ * (e.g., chassis, mappings, device info, settings) and handles error formatting.
+ * Must be initialized with `init(config)` before use.
+ */
 export class RobotApi {
   private config: RobotApiConfig | undefined;
+
+  /**
+   * Initialize the RobotApi with configuration.
+   * Must be called before making any API calls.
+   */
+  init(config: RobotApiConfig): void {
+    this.config = config;
+  }
+
+  private getConfig(): RobotApiConfig {
+    if (!this.config) {
+      throw new Error('RobotApi not initialized. Call init() first.');
+    }
+    return this.config;
+  }
 
   // Keep user-facing transport errors short enough for compact UI surfaces.
   private truncateErrorText(text: string): string {
@@ -85,21 +114,6 @@ export class RobotApi {
     } catch {
       return statusDetail;
     }
-  }
-
-  /**
-   * Initialize the RobotApi with configuration.
-   * Must be called before making any API calls.
-   */
-  init(config: RobotApiConfig): void {
-    this.config = config;
-  }
-
-  private getConfig(): RobotApiConfig {
-    if (!this.config) {
-      throw new Error('RobotApi not initialized. Call init() first.');
-    }
-    return this.config;
   }
 
   private async doRequest(
