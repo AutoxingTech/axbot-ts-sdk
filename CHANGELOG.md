@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-04-12 robotApi: Add onApiCalled hook and getMaps method
 - 2026-04-11 wsMessageStore: Move from site to SDK
 - 2026-04-11 wsClient: Initialize WebSocket connection and event emitter utilities
 - 2026-04-11 robotApi: Support latest Mapping API features

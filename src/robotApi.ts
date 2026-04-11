@@ -30,6 +30,8 @@ export interface RobotApiConfig {
   getApiBase(): string;
   /** Notification sink for error display. If not provided, errors are only logged to console. */
   notification?: NotificationSink;
+  /** Hook for latest API activity display */
+  onApiCalled?: (method: string, url: string) => void;
 }
 
 /**
@@ -146,6 +148,7 @@ export class RobotApi {
     signal?: AbortSignal,
   ): Promise<Response> {
     const base = this.getConfig().getApiBase();
+    this.getConfig().onApiCalled?.(method, `${base}/${url}`);
     if (method === 'GET' || method === 'DELETE') {
       return fetch(`${base}/${url}`, {
         method,
@@ -177,6 +180,7 @@ export class RobotApi {
   }
   protected async postFormDataImpl(url: string, formData: FormData, signal?: AbortSignal): Promise<Response> {
     const base = this.getConfig().getApiBase();
+    this.getConfig().onApiCalled?.('POST', `${base}/${url}`);
     return fetch(`${base}/${url}`, {
       method: 'POST',
       headers: { Accept: 'application/json' },
@@ -441,6 +445,10 @@ export class RobotApi {
 
   async deleteMap(mapId: number): Promise<boolean> {
     return this.apiCall(() => this.deleteImpl(`maps/${mapId}`), 'Delete Map', false);
+  }
+
+  async getMaps(): Promise<MapItem[]> {
+    return this.apiCall(() => this.getImpl('maps/'), 'Get Maps', []);
   }
 
   async getMap(id: number): Promise<MapItem | null> {
@@ -832,6 +840,7 @@ export class RobotApi {
    */
   async updateDeviceParams(type: 'prod' | 'dev', yamlContent: string): Promise<Response> {
     const base = this.getConfig().getApiBase();
+    this.getConfig().onApiCalled?.('PUT', `${base}/device/params/${type}`);
     const res = await fetch(`${base}/device/params/${type}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'text/yaml' },
