@@ -357,49 +357,6 @@ export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection { }
 
 export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection { }
 
-export interface MoveBasePathPoint {
-  x: number;
-  y: number;
-  speed: number;
-}
-
-export interface MoveBaseTrajectoryRawMsg extends TopicMsg {
-  robotPose: PoseType;
-  targetPointIndex: number;
-  targetPointVelocity: number;
-  pathPoints: number[][];
-}
-
-export class MoveBaseTrajectory implements TopicMsg {
-  topic: string = TopicNames.MOVE_BASE_TRAJECTORY_TOPIC;
-  targetPointIndex: number;
-  targetPointVelocity: number;
-  pathPoints: MoveBasePathPoint[];
-
-  constructor(msg: MoveBaseTrajectoryRawMsg) {
-    this.pathPoints = [];
-    this.targetPointIndex = msg.targetPointIndex;
-    this.targetPointVelocity = msg.targetPointVelocity;
-
-    const robotX = msg.robotPose.pos[0];
-    const robotY = msg.robotPose.pos[1];
-    const robotOri = msg.robotPose.ori - Math.PI / 2;
-
-    for (const pt of msg.pathPoints) {
-      const cos = Math.cos(robotOri);
-      const sin = Math.sin(robotOri);
-      const x = pt[0] * cos - pt[1] * sin + robotX;
-      const y = pt[0] * sin + pt[1] * cos + robotY;
-
-      this.pathPoints.push({
-        x,
-        y,
-        speed: pt[3],
-      });
-    }
-  }
-}
-
 export interface ConstraintListMsg extends TopicMsg {
   'Inter residuals, different trajectories': [number, number][];
   'Inter constraints, different trajectories': [number, number][];
