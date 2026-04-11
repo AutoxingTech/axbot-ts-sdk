@@ -324,29 +324,6 @@ export enum MoveFailReason {
 }
 
 /**
- * Virtual interface for publishing notifications.
- * The host application injects a concrete implementation.
- */
-export interface NotificationSink {
-  showNotification(notification: {
-    title?: string;
-    message: string;
-    type?: 'warning' | 'danger' | 'success';
-    dismissible?: boolean;
-  }): void;
-}
-
-/**
- * Configuration for RobotApi. Injected by the host application.
- */
-export interface RobotApiConfig {
-  /** Returns the base URL prefix for all API calls, e.g. "/robot_api/v1/{SN}" */
-  getApiBase(): string;
-  /** Notification sink for error display. If not provided, errors are only logged to console. */
-  notification?: NotificationSink;
-}
-
-/**
  * Custom error class that includes HTTP status code
  */
 export class ApiError extends Error {
