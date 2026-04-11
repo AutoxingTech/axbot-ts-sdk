@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-04-11 wsClient: Initialize WebSocket connection and event emitter utilities
 - 2026-04-11 robotApi: Support latest Mapping API features
 - 2026-04-11 robotApi: Extract types to robotApiType
 - 2026-04-07 robotApi: Improve HTTP error message formatting

@@ -51,6 +51,10 @@
     "./pbMessages": {
       "import": "./dist/pbMessages.js",
       "types": "./dist/pbMessages.d.ts"
+    },
+    "./ws": {
+      "import": "./dist/ws.js",
+      "types": "./dist/ws.d.ts"
     }
   },
   "typesVersions": {
@@ -84,6 +88,9 @@
       ],
       "pbMessages": [
         "./src/pbMessages.ts"
+      ],
+      "ws": [
+        "./src/ws.ts"
       ]
     }
   },
