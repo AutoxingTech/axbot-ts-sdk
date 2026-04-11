@@ -119,6 +119,7 @@ import {
   TrackedPoseMsg,
   PlanningStateMsg,
   TwistFeedbackMsg,
+  ActionMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -209,3 +210,5 @@ export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_la
 
 /** Twist feedback events */
 export const twistFeedbackEvents = new WsEventEmitter<TwistFeedbackMsg>('/twist_feedback');
+
+export const actionEvents = new WsEventEmitter<ActionMsg>('/action');
