@@ -1,5 +1,6 @@
 import { FeatureCollection } from './geojson';
 import { base64ToArrayBuffer } from './utils';
+import { MoveFailReason, MoveType } from './robotApiType';
 
 export type RobotControlMode = 'unknown' | 'auto' | 'manual' | 'remote';
 
@@ -160,6 +161,21 @@ export interface PlanningStateMsg extends TopicMsg {
   target_poses: PoseType[];
   charger_pose: PoseType;
   going_back_to_charger: boolean;
+  creator?: string;
+  action_id?: number;
+  action_type?: MoveType;
+  fail_reason?: MoveFailReason;
+  fail_reason_str?: string;
+  remaining_distance?: number;
+  move_intent?: string;
+  intent_target_pose?: PoseType;
+  stuck_state?: string;
+  map_uid?: string;
+  given_route_passed_point_count?: number;
+  in_elevator?: boolean;
+  viewport_blocked?: boolean;
+  is_waiting_for_dest?: boolean;
+  waiting_for_charge?: boolean;
 }
 
 export interface MapInfoMsg extends TopicMsg {
