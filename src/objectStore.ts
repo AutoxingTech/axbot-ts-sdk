@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 export type Subscriber<T> = (items: T) => void;
 
 import { robotApi } from './robotApi';

@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 export interface PointGeometry {
   type: 'Point';
   coordinates: [number, number];

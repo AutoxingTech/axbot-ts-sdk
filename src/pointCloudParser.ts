@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 import { SemanticPointsMsg, PointField, PointCloudMsg } from './topicMessages.js';
 import { ros_messages } from './proto/generated.js';
 import { PointCloudPbMsg } from './pbMessages.js';

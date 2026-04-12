@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 import { Feature, LineStringGeometry, PointGeometry, PolygonGeometry } from './geojson';
 import { MapInfoMsg } from './topicMessages';
 import { pointInPolygon } from './utils';

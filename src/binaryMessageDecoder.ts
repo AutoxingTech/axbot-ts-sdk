@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 /**
  * Binary WebSocket frame decoder for ros_message_forward.
  *

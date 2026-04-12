@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 import { FeatureCollection } from './geojson';
 import { base64ToArrayBuffer } from './utils';
 import { MoveFailReason, MoveType } from './robotApiType';

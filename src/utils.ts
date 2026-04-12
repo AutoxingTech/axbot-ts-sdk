@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 export function asyncSleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

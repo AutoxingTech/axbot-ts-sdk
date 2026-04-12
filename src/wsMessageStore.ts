@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 import { wsClient } from './ws';
 import MapInfo from './mapInfo';
 import {

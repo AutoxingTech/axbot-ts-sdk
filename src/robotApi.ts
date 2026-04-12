@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Autoxing Technology
+// SPDX-License-Identifier: MIT
+
 import { CollectedDataFile } from './topicMessages';
 import {
   CollectedDataItem, MapItem, StartMappingRequest, StopMappingRequest,
