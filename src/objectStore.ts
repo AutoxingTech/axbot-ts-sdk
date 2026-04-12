@@ -3,11 +3,13 @@ export type Subscriber<T> = (items: T) => void;
 import { robotApi } from './robotApi';
 import type { BagItem, MapItem, CoreDumpItem, MappingTaskItem, VideoFileItem, DeviceInfo } from './robotApiType';
 
+export type FetchFn<T> = () => Promise<T>;
+
 export class ObjectStore<T> {
   protected stored_object: T | null = null;
   protected subscribers = new Set<Subscriber<T | null>>();
 
-  constructor(protected endpoint: string) { }
+  constructor(protected fetchData: FetchFn<T>) { }
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
@@ -46,9 +48,7 @@ export class ObjectStore<T> {
   }
 
   async refresh(): Promise<T | null> {
-    const res = await robotApi.get(this.endpoint);
-    const data = await res.json();
-    this.stored_object = data;
+    this.stored_object = await this.fetchData();
     this.notify();
     return this.stored_object;
   }
@@ -58,7 +58,7 @@ export class ArrayObjectStore<T> {
   protected stored_object: T[] = [];
   protected subscribers = new Set<Subscriber<T[]>>();
 
-  constructor(protected endpoint: string) { }
+  constructor(protected fetchData: FetchFn<T[]>) { }
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
@@ -97,8 +97,7 @@ export class ArrayObjectStore<T> {
   }
 
   async refresh(): Promise<T[]> {
-    const res = await robotApi.get(this.endpoint);
-    const data = await res.json();
+    const data = await this.fetchData();
     this.stored_object = Array.isArray(data) ? data.slice() : [];
     this.notify();
     return this.stored_object;
@@ -106,8 +105,8 @@ export class ArrayObjectStore<T> {
 }
 
 class DeviceInfoStore extends ObjectStore<DeviceInfo> {
-  private process(info: DeviceInfo | null): DeviceInfo | null {
-    if (!info || !info.robot) return info;
+  private process(info: DeviceInfo | null | undefined): DeviceInfo | null {
+    if (!info || !info.robot) return info ?? null;
 
     // Assign default visualization topics based on device model if undefined
     // WARNING: These topics(containing "matched") are all obsolete. They has been replaced by binary format.
@@ -140,18 +139,17 @@ class DeviceInfoStore extends ObjectStore<DeviceInfo> {
   }
 
   async refresh(): Promise<DeviceInfo | null> {
-    const res = await robotApi.get(this.endpoint);
-    const data = await res.json();
+    const data = await this.fetchData();
     this.stored_object = this.process(data);
     this.notify();
     return this.stored_object;
   }
 }
 
-export const bagListStore = new ArrayObjectStore<BagItem>('bags/');
-export const mapListStore = new ArrayObjectStore<MapItem>('maps/');
-export const mappingTaskListStore = new ArrayObjectStore<MappingTaskItem>('mappings/');
-export const videoListStore = new ArrayObjectStore<VideoFileItem>('videos/');
-export const alertTriggeredBagStore = new ArrayObjectStore<BagItem>('recording/');
-export const deviceInfoStore = new DeviceInfoStore('device/info');
-export const coreDumpStore = new ArrayObjectStore<CoreDumpItem>('core_dumps/');
+export const bagListStore = new ArrayObjectStore<BagItem>(() => robotApi.getBags());
+export const mapListStore = new ArrayObjectStore<MapItem>(() => robotApi.getMaps());
+export const mappingTaskListStore = new ArrayObjectStore<MappingTaskItem>(() => robotApi.getMappingTasks());
+export const videoListStore = new ArrayObjectStore<VideoFileItem>(() => robotApi.getVideos());
+export const alertTriggeredBagStore = new ArrayObjectStore<BagItem>(() => robotApi.getRecordings());
+export const deviceInfoStore = new DeviceInfoStore(() => robotApi.getDeviceInfo());
+export const coreDumpStore = new ArrayObjectStore<CoreDumpItem>(() => robotApi.getCoreDumps());

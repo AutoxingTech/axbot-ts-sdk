@@ -5,7 +5,8 @@ import {
   MappingTaskItem,
   BootProgress, MoveActionCreate,
   MoveAction, ApiError,
-  BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse
+  BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse,
+  BagItem, CoreDumpItem, VideoFileItem
 } from './robotApiType';
 
 export * from './robotApiType';
@@ -706,6 +707,42 @@ export class RobotApi {
       'Forklift Lidar Calibration',
       false,
     );
+  }
+
+  /**
+   * List all bag files.
+   */
+  async getBags(): Promise<BagItem[]> {
+    const res = await this.getImpl('bags/');
+    const data = await res.json();
+    return data as BagItem[];
+  }
+
+  /**
+   * List all alert-triggered recordings.
+   */
+  async getRecordings(): Promise<BagItem[]> {
+    const res = await this.getImpl('recording/');
+    const data = await res.json();
+    return data as BagItem[];
+  }
+
+  /**
+   * List all core dump files.
+   */
+  async getCoreDumps(): Promise<CoreDumpItem[]> {
+    const res = await this.getImpl('core_dumps/');
+    const data = await res.json();
+    return data as CoreDumpItem[];
+  }
+
+  /**
+   * List all video files.
+   */
+  async getVideos(): Promise<VideoFileItem[]> {
+    const res = await this.getImpl('videos/');
+    const data = await res.json();
+    return data as VideoFileItem[];
   }
 
   /**
