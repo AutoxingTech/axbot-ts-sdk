@@ -123,6 +123,13 @@ import {
   PlanningStateMsg,
   TwistFeedbackMsg,
   ActionMsg,
+  LocalPathMsg,
+  NearbyRobotsMsg,
+  ConstraintListMsg,
+  OccupancyGridMsg,
+  MotionMetricsMsg,
+  RgbCameraData,
+  RgbCameraRawMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -215,3 +222,73 @@ export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_la
 export const twistFeedbackEvents = new WsEventEmitter<TwistFeedbackMsg>('/twist_feedback');
 
 export const actionEvents = new WsEventEmitter<ActionMsg>('/action');
+
+/**
+ * Specialized event emitter for RGB camera topics.
+ * Converts raw base64 messages to RgbCameraData with Uint8Array before dispatching.
+ */
+class RgbCameraEventEmitter {
+  private handlers = new Set<EventHandler<RgbCameraData>>();
+  private wsUnsubscribe: (() => void) | null = null;
+
+  constructor(private topic: string) { }
+
+  subscribe(handler: EventHandler<RgbCameraData>): () => void {
+    const isFirst = this.handlers.size === 0;
+    this.handlers.add(handler);
+
+    if (isFirst) {
+      this.wsUnsubscribe = wsClient.onTopic(this.topic, (payload: any) => {
+        try {
+          let obj: any = payload;
+          if (typeof payload === 'string') {
+            try { obj = JSON.parse(payload); } catch { return; }
+          }
+          const data = new RgbCameraData(obj as RgbCameraRawMsg);
+          for (const h of this.handlers) {
+            try { h(data); } catch (e) {
+              console.error(`RgbCameraEventEmitter handler error for ${this.topic}:`, e);
+            }
+          }
+        } catch (e) {
+          console.error('Error processing camera message:', e);
+        }
+      });
+      subscribedTopics.add(this.topic);
+      wsClient.syncTopics();
+    }
+
+    return () => {
+      this.handlers.delete(handler);
+      if (this.handlers.size === 0 && this.wsUnsubscribe) {
+        this.wsUnsubscribe();
+        this.wsUnsubscribe = null;
+        subscribedTopics.delete(this.topic);
+        wsClient.syncTopics();
+      }
+    };
+  }
+}
+
+/** Low-resolution costmap events */
+export const lowResCostmapEvents = new WsEventEmitter<OccupancyGridMsg>('/maps/5cm/1hz');
+
+/** High-resolution costmap events */
+export const highResCostmapEvents = new WsEventEmitter<OccupancyGridMsg>('/maps/1cm/1hz');
+
+/** Motion metrics events */
+export const motionMetricsEvents = new WsEventEmitter<MotionMetricsMsg>('/motion_metrics');
+
+/** Local path events */
+export const localPathEvents = new WsEventEmitter<LocalPathMsg>('/local_path');
+
+/** Nearby robots events */
+export const nearbyRobotsEvents = new WsEventEmitter<NearbyRobotsMsg>('/nearby_robots');
+
+/** SLAM constraint list events */
+export const constraintListEvents = new WsEventEmitter<ConstraintListMsg>('/constraint_list');
+
+/** RGB camera events */
+export const rgbCameraFrontEvents = new RgbCameraEventEmitter('/rgb_cameras/front/video');
+export const rgbCameraBackEvents = new RgbCameraEventEmitter('/rgb_cameras/back/video');
+export const rgbCameraFrontAugmentedEvents = new RgbCameraEventEmitter('/rgb_cameras/front_augmented/video');

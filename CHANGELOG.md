@@ -1,6 +1,8 @@
 CHANGELOG
 ==========
 
+- 2026-04-12 wsEventEmitter: Add emitters for costmaps, motion metrics, RGB cameras, local path, nearby robots, constraint list
+- 2026-04-12 wsMessageStore: Remove stores that don't need caching (point cloud, IMU, costmaps, motion metrics, RGB cameras, local path, nearby robots, constraint list)
 - 2026-04-12 robotApi: Add onApiCalled hook and getMaps method
 - 2026-04-11 wsMessageStore: Move from site to SDK
 - 2026-04-11 wsClient: Initialize WebSocket connection and event emitter utilities
