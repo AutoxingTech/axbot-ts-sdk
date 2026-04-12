@@ -2,6 +2,7 @@ import { CollectedDataFile } from './topicMessages';
 import {
   CollectedDataItem, MapItem, StartMappingRequest, StopMappingRequest,
   DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice,
+  MappingTaskItem,
   BootProgress, MoveActionCreate,
   MoveAction, ApiError,
   BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse
@@ -31,7 +32,7 @@ export interface RobotApiConfig {
   /** Notification sink for error display. If not provided, errors are only logged to console. */
   notification?: NotificationSink;
   /** Hook for latest API activity display */
-  onApiCalled?: (method: string, url: string) => void;
+  onApiCalled?: (info: { method: string; url: string; payload?: any; status?: number }) => void;
 }
 
 /**
@@ -148,16 +149,19 @@ export class RobotApi {
     signal?: AbortSignal,
   ): Promise<Response> {
     const base = this.getConfig().getApiBase();
-    this.getConfig().onApiCalled?.(method, `${base}/${url}`);
+    const fullUrl = `${base}/${url}`;
+    const cb = this.getConfig().onApiCalled;
+    if (cb) cb({ method, url: fullUrl, payload: data });
+    let res: Response;
     if (method === 'GET' || method === 'DELETE') {
-      return fetch(`${base}/${url}`, {
+      res = await fetch(fullUrl, {
         method,
         headers: { Accept: 'application/json' },
         credentials: 'include', // Include cookies in requests
         signal,
       });
     } else {
-      return fetch(`${base}/${url}`, {
+      res = await fetch(fullUrl, {
         method,
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         credentials: 'include', // Include cookies in requests
@@ -165,6 +169,8 @@ export class RobotApi {
         signal,
       });
     }
+    if (cb) cb({ method, url: fullUrl, payload: data, status: res.status });
+    return res;
   }
 
   protected async patchImpl(url: string, data: any, signal?: AbortSignal): Promise<Response> {
@@ -180,14 +186,18 @@ export class RobotApi {
   }
   protected async postFormDataImpl(url: string, formData: FormData, signal?: AbortSignal): Promise<Response> {
     const base = this.getConfig().getApiBase();
-    this.getConfig().onApiCalled?.('POST', `${base}/${url}`);
-    return fetch(`${base}/${url}`, {
+    const fullUrl = `${base}/${url}`;
+    const cb = this.getConfig().onApiCalled;
+    if (cb) cb({ method: 'POST', url: fullUrl, payload: formData });
+    const res = await fetch(fullUrl, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       credentials: 'include',
       body: formData,
       signal,
     });
+    if (cb) cb({ method: 'POST', url: fullUrl, payload: formData, status: res.status });
+    return res;
   }
   protected async deleteImpl(url: string, signal?: AbortSignal): Promise<Response> {
     return this.doRequest('DELETE', url, null, signal);
@@ -433,6 +443,14 @@ export class RobotApi {
       'Save Mapping As Map',
       false,
     );
+  }
+
+  async getMappingTasks(): Promise<MappingTaskItem[]> {
+    return this.apiCall(() => this.getImpl('mappings/'), 'Get Mapping Tasks', []);
+  }
+
+  async getMappingTask(mappingId: number): Promise<MappingTaskItem | null> {
+    return this.apiCall(() => this.getImpl(`mappings/${mappingId}`), 'Get Mapping Task', null);
   }
 
   async deleteMappingTask(mappingId: number): Promise<boolean> {
@@ -840,13 +858,16 @@ export class RobotApi {
    */
   async updateDeviceParams(type: 'prod' | 'dev', yamlContent: string): Promise<Response> {
     const base = this.getConfig().getApiBase();
-    this.getConfig().onApiCalled?.('PUT', `${base}/device/params/${type}`);
-    const res = await fetch(`${base}/device/params/${type}`, {
+    const fullUrl = `${base}/device/params/${type}`;
+    const cb = this.getConfig().onApiCalled;
+    if (cb) cb({ method: 'PUT', url: fullUrl, payload: yamlContent });
+    const res = await fetch(fullUrl, {
       method: 'PUT',
       headers: { 'Content-Type': 'text/yaml' },
       credentials: 'include',
       body: yamlContent,
     });
+    if (cb) cb({ method: 'PUT', url: fullUrl, payload: yamlContent, status: res.status });
     if (!res.ok) {
       const detail = await this.extractErrorMessage(res);
       throw new Error(detail);
