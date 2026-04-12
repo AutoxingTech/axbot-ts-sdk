@@ -37,6 +37,9 @@ export interface RobotApiConfig {
   notification?: NotificationSink;
   /** Hook for latest API activity display */
   onApiCalled?: (info: { method: string; url: string; payload?: any; status?: number }) => void;
+  /** If true, API errors will throw exceptions 
+   * instead of handling them via the notification sink to fail silently */
+  throwOnError?: boolean;
 }
 
 /**
@@ -327,6 +330,9 @@ export class RobotApi {
    */
   async setMap(mapId?: number): Promise<boolean> {
     if (mapId === undefined || mapId === null) {
+      if (this.config?.throwOnError) {
+        throw new Error('Map ID is required');
+      }
       await this.showError('Set Map Failed', 'Map ID is required: ', '');
       return false;
     }
@@ -336,18 +342,29 @@ export class RobotApi {
     try {
       const res1 = await this.postImpl('chassis/current-map', { map_id: mapId });
       if (!res1.ok) {
+        if (this.config?.throwOnError) {
+          const detail = await this.extractErrorMessage(res1);
+          throw new ApiError(detail, res1.status);
+        }
         await this.showError(failTitle, '', res1);
         return false;
       }
 
       const res2 = await this.postImpl('chassis/pose', { position: [0, 0], ori: 1.57 });
       if (!res2.ok) {
+        if (this.config?.throwOnError) {
+          const detail = await this.extractErrorMessage(res2);
+          throw new ApiError(detail, res2.status);
+        }
         await this.showError('Failed to set default pose', '', res2);
         return false;
       }
 
       return true;
     } catch (e: any) {
+      if (this.config?.throwOnError) {
+        throw e;
+      }
       await this.showError(failTitle, '', e);
       return false;
     }
@@ -400,12 +417,19 @@ export class RobotApi {
     try {
       const res = await operation();
       if (!res.ok) {
+        if (this.config?.throwOnError) {
+          const detail = await this.extractErrorMessage(res);
+          throw new ApiError(detail, res.status);
+        }
         await this.showError(`${errorTitle} Failed`, '', res);
         return defaultValue;
       }
       // If defaultValue is boolean true, return it directly; otherwise parse JSON
       return typeof defaultValue === 'boolean' && defaultValue === false ? (true as T) : await res.json();
     } catch (e: any) {
+      if (this.config?.throwOnError) {
+        throw e;
+      }
       await this.showError(`${errorTitle} Error`, '', e);
       return defaultValue;
     }
@@ -494,17 +518,11 @@ export class RobotApi {
   }
 
   async setEmergencyStop(enable: boolean): Promise<boolean> {
-    try {
-      const res = await this.postImpl('services/wheel_control/set_emergency_stop', { enable });
-      if (!res.ok) {
-        await this.showError(enable ? 'Emergency Stop Failed' : 'Resume Failed', '', res);
-        return false;
-      }
-      return true;
-    } catch (e: any) {
-      await this.showError(enable ? 'Emergency Stop Error' : 'Resume Error', '', e);
-      return false;
-    }
+    return this.apiCall(
+      () => this.postImpl('services/wheel_control/set_emergency_stop', { enable }),
+      enable ? 'Emergency Stop' : 'Resume',
+      false,
+    );
   }
 
   async wakeDevice(): Promise<boolean> {
@@ -544,33 +562,23 @@ export class RobotApi {
   }
 
   async getDeviceInfo(): Promise<DeviceInfo> {
-    const res = await this.getImpl('device/info');
-    const data = await res.json();
-    return data as DeviceInfo;
+    return this.apiCall(() => this.getImpl('device/info'), 'Get Device Info', {} as DeviceInfo);
   }
 
   async getBriefDeviceInfo(): Promise<BriefDeviceInfo> {
-    const res = await this.getImpl('device/info/brief');
-    const data = await res.json();
-    return data as BriefDeviceInfo;
+    return this.apiCall(() => this.getImpl('device/info/brief'), 'Get Brief Device Info', {} as BriefDeviceInfo);
   }
 
   async getAvailableWifis(): Promise<WifiNetwork[]> {
-    const res = await this.getImpl('device/available_wifis');
-    const data = await res.json();
-    return data as WifiNetwork[];
+    return this.apiCall(() => this.getImpl('device/available_wifis'), 'Get Available Wifis', []);
   }
 
   async getUsbDevices(): Promise<UsbDevice[]> {
-    const res = await this.getImpl('device/usb_devices');
-    const data = await res.json();
-    return data as UsbDevice[];
+    return this.apiCall(() => this.getImpl('device/usb_devices'), 'Get USB Devices', []);
   }
 
   async getSavedUsbDevices(): Promise<UsbDevice[]> {
-    const res = await this.getImpl('device/usb_devices/saved');
-    const data = await res.json();
-    return data as UsbDevice[];
+    return this.apiCall(() => this.getImpl('device/usb_devices/saved'), 'Get Saved USB Devices', []);
   }
 
   async saveUsbDevices(devices: UsbDevice[]): Promise<boolean> {
@@ -587,9 +595,7 @@ export class RobotApi {
   }
 
   async getChronySources(): Promise<string[]> {
-    const res = await this.getImpl('device/chrony/sources');
-    const data = await res.json();
-    return data as string[];
+    return this.apiCall(() => this.getImpl('device/chrony/sources'), 'Get Chrony Sources', []);
   }
 
   async setChronySources(sources: string[]): Promise<boolean> {
@@ -601,9 +607,7 @@ export class RobotApi {
   }
 
   async getChronyAllows(): Promise<string[]> {
-    const res = await this.getImpl('device/chrony/allows');
-    const data = await res.json();
-    return data as string[];
+    return this.apiCall(() => this.getImpl('device/chrony/allows'), 'Get Chrony Allows', []);
   }
 
   async setChronyAllows(allows: string[]): Promise<boolean> {
@@ -615,44 +619,40 @@ export class RobotApi {
   }
 
   async getSensors(): Promise<SensorsList> {
-    const res = await this.getImpl('device/sensors');
-    const data = await res.json();
-    return data as SensorsList;
+    return this.apiCall(() => this.getImpl('device/sensors'), 'Get Sensors', {} as SensorsList);
   }
 
   async getBootProgress(): Promise<BootProgress | null> {
     try {
       const res = await this.getResponse('device/boot_progress');
-      if (!res.ok) return null;
+      if (!res.ok) {
+        if (this.config?.throwOnError) {
+          const detail = await this.extractErrorMessage(res);
+          throw new ApiError(detail, res.status);
+        }
+        return null;
+      }
       const contentType = res.headers.get('Content-Type') || '';
       if (!contentType.includes('application/json')) return null;
       return (await res.json()) as BootProgress;
-    } catch {
+    } catch (e: any) {
+      if (this.config?.throwOnError) {
+        throw e;
+      }
       return null;
     }
   }
 
   async getWifiInfo(): Promise<any> {
-    const res = await this.getImpl('device/wifi_info');
-    const data = await res.json();
-    return data;
+    return this.apiCall(() => this.getImpl('device/wifi_info'), 'Get Wifi Info', null);
   }
 
   async getCollectedData(): Promise<CollectedDataItem[]> {
-    const res = await this.getImpl('collected_data/');
-    const data = await res.json();
-    return data as CollectedDataItem[];
+    return this.apiCall(() => this.getImpl('collected_data/'), 'Get Collected Data', []);
   }
 
   async getCollectedDataFile(filename: string): Promise<CollectedDataFile | null> {
-    try {
-      const res = await this.getImpl(`collected_data/${filename}`);
-      const data = await res.json();
-      return data as CollectedDataFile;
-    } catch (e: any) {
-      console.error(`Failed to get collected data file ${filename}:`, e);
-      return null;
-    }
+    return this.apiCall(() => this.getImpl(`collected_data/${filename}`), 'Get Collected Data File', null);
   }
 
   async removeCollectedData(filename?: string): Promise<boolean> {
@@ -716,36 +716,28 @@ export class RobotApi {
    * List all bag files.
    */
   async getBags(): Promise<BagItem[]> {
-    const res = await this.getImpl('bags/');
-    const data = await res.json();
-    return data as BagItem[];
+    return this.apiCall(() => this.getImpl('bags/'), 'Get Bags', []);
   }
 
   /**
    * List all alert-triggered recordings.
    */
   async getRecordings(): Promise<BagItem[]> {
-    const res = await this.getImpl('recording/');
-    const data = await res.json();
-    return data as BagItem[];
+    return this.apiCall(() => this.getImpl('recording/'), 'Get Recordings', []);
   }
 
   /**
    * List all core dump files.
    */
   async getCoreDumps(): Promise<CoreDumpItem[]> {
-    const res = await this.getImpl('core_dumps/');
-    const data = await res.json();
-    return data as CoreDumpItem[];
+    return this.apiCall(() => this.getImpl('core_dumps/'), 'Get Core Dumps', []);
   }
 
   /**
    * List all video files.
    */
   async getVideos(): Promise<VideoFileItem[]> {
-    const res = await this.getImpl('videos/');
-    const data = await res.json();
-    return data as VideoFileItem[];
+    return this.apiCall(() => this.getImpl('videos/'), 'Get Videos', []);
   }
 
   /**
@@ -929,8 +921,7 @@ export class RobotApi {
     prefix: BagPlayerPrefix = 'bags',
     signal?: AbortSignal,
   ): Promise<BagPlayerMetadata> {
-    const res = await this.get(`${prefix}/${encodeURIComponent(filename)}/player`, signal);
-    return res.json();
+    return this.apiCall(() => this.getImpl(`${prefix}/${encodeURIComponent(filename)}/player`, signal), 'Get Bag Player Metadata', {} as BagPlayerMetadata);
   }
 
   /**
@@ -953,8 +944,7 @@ export class RobotApi {
       start_time: startTime.toString(),
       end_time: endTime.toString(),
     });
-    const res = await this.get(`${prefix}/${encodeURIComponent(filename)}/player?${params}`, signal);
-    return res.json();
+    return this.apiCall(() => this.getImpl(`${prefix}/${encodeURIComponent(filename)}/player?${params}`, signal), 'Get Bag Player Chunk', {} as BagPlayerChunkResponse);
   }
 
   /**

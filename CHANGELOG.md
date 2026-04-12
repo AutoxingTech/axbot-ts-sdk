@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-04-12 robotApi: Support global throwOnError configuration for exception-based error handling
 - 2026-04-12 wsEventEmitter: Add emitters for costmaps, motion metrics, RGB cameras, local path, nearby robots, constraint list
 - 2026-04-12 wsMessageStore: Remove stores that don't need caching (point cloud, IMU, costmaps, motion metrics, RGB cameras, local path, nearby robots, constraint list)
 - 2026-04-12 robotApi: Add onApiCalled hook and getMaps method
