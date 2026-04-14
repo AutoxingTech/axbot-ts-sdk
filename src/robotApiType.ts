@@ -382,7 +382,6 @@ export type MapItem = {
   last_modified_time?: number;
   map_version: number;
   overlays_version: number;
-  url?: string;
   // Grid info (returned from detail endpoint)
   grid_origin_x?: number;
   grid_origin_y?: number;
@@ -406,12 +405,6 @@ export type MappingTaskItem = {
   grid_origin_x?: number;
   grid_origin_y?: number;
   grid_resolution?: number;
-
-  // urls
-  url?: string;
-  landmark_url?: string;
-  trajectories_url?: string;
-  properties_url?: string;
 };
 
 export type BagItem = {
@@ -426,7 +419,6 @@ export type VideoFileItem = {
   size: string;
   size_bytes: number;
   end: string;
-  url: string;
 };
 
 export interface CoreDumpItem {
@@ -441,6 +433,5 @@ export interface CollectedDataItem {
   size: string;
   size_bytes: number;
   modified_time: string;
-  download_url: string;
 }
 
