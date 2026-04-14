@@ -382,7 +382,6 @@ export type MapItem = {
   last_modified_time?: number;
   map_version: number;
   overlays_version: number;
-  image_url?: string;
   pbstream_url?: string;
   url?: string;
   // Grid info (returned from detail endpoint)
@@ -403,7 +402,6 @@ export type MappingTaskItem = {
 
   // mapping specific
   continue_mapping?: boolean;
-  image_url?: string; // the full resolution image
 
   // grid info
   grid_origin_x?: number;
