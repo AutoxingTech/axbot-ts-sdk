@@ -382,7 +382,6 @@ export type MapItem = {
   last_modified_time?: number;
   map_version: number;
   overlays_version: number;
-  pbstream_url?: string;
   url?: string;
   // Grid info (returned from detail endpoint)
   grid_origin_x?: number;
@@ -410,9 +409,6 @@ export type MappingTaskItem = {
 
   // urls
   url?: string;
-  bag_url?: string;
-  download_url?: string;
-  pbstream_url?: string;
   landmark_url?: string;
   trajectories_url?: string;
   properties_url?: string;
@@ -423,7 +419,6 @@ export type BagItem = {
   size: string; // "607.4KB"
   size_bytes: number; // 621988
   end: string; // "17-Nov-2025 08:00:00"
-  download_url: string; // "bags/8981307a02163yT_2025-11-17_07-50-00.bag/download"
 };
 
 export type VideoFileItem = {
@@ -432,7 +427,6 @@ export type VideoFileItem = {
   size_bytes: number;
   end: string;
   url: string;
-  download_url: string;
 };
 
 export interface CoreDumpItem {
@@ -440,7 +434,6 @@ export interface CoreDumpItem {
   size: string;
   size_bytes: number;
   modify_time: string;
-  url: string;
 }
 
 export interface CollectedDataItem {
