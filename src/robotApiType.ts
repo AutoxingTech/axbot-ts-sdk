@@ -60,6 +60,8 @@ export interface RobotCaps {
 
   // since 2.7. Support jack device
   supportsJack?: boolean;
+  // 潜伏式
+  supportsCrawling?: boolean;
 
   supportsDynamicFootprints?: boolean;
   supportsStepTime?: boolean;
@@ -72,6 +74,26 @@ export interface RobotCaps {
   supportsSemanticPoints?: boolean;
 
   supportsChunkedVideoDownload?: boolean;
+  // since 2.9. Support API of /system/settings
+  supportsSystemSettings?: boolean;
+
+  // since 2.11. Support service /calibrate_depth_camera_masks
+  supportsDepthCameraMasks?: boolean;
+
+  // since 2.11. Support service start/stop_collecting_landmarks
+  supportsCollectingLandmarks?: boolean;
+
+  // since 2.11. Support bag playback
+  supportsBagPlayer?: boolean;
+
+  // since 2.12. Support /device/sensors
+  supportsSensorList?: boolean;
+  noManualMode?: boolean; // since 2.12. No manual mode.
+
+  // since 2.13. Support service calibrate_lidar_yaws.
+  supportsLidarYawCalibration?: boolean;
+
+  supportsStacking?: boolean; // since 2.13. Support stacking forklift.
 
   // since 2.14.0
   supportsTowing?: boolean;
