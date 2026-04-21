@@ -41,7 +41,7 @@ export class WsEventEmitter<T> {
   private wsHandler: ((payload: T) => void) | null = null;
   private wsUnsubscribe: (() => void) | null = null;
 
-  constructor(private topic: string) { }
+  constructor(private topic: string) {}
 
   /**
    * Subscribe to events. Automatically enables topic when first subscriber attaches.
@@ -217,6 +217,7 @@ export const rightLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/right_
 export const lfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_3d/scan');
 export const rbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_3d/scan');
 export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_laser_3d/scan');
+export const backLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/back_laser_3d/scan');
 
 /** Twist feedback events */
 export const twistFeedbackEvents = new WsEventEmitter<TwistFeedbackMsg>('/twist_feedback');
@@ -231,7 +232,7 @@ class RgbCameraEventEmitter {
   private handlers = new Set<EventHandler<RgbCameraData>>();
   private wsUnsubscribe: (() => void) | null = null;
 
-  constructor(private topic: string) { }
+  constructor(private topic: string) {}
 
   subscribe(handler: EventHandler<RgbCameraData>): () => void {
     const isFirst = this.handlers.size === 0;
@@ -242,11 +243,17 @@ class RgbCameraEventEmitter {
         try {
           let obj: any = payload;
           if (typeof payload === 'string') {
-            try { obj = JSON.parse(payload); } catch { return; }
+            try {
+              obj = JSON.parse(payload);
+            } catch {
+              return;
+            }
           }
           const data = new RgbCameraData(obj as RgbCameraRawMsg);
           for (const h of this.handlers) {
-            try { h(data); } catch (e) {
+            try {
+              h(data);
+            } catch (e) {
               console.error(`RgbCameraEventEmitter handler error for ${this.topic}:`, e);
             }
           }
