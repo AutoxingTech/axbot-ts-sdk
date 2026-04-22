@@ -130,6 +130,7 @@ import {
   MotionMetricsMsg,
   RgbCameraData,
   RgbCameraRawMsg,
+  CollectedBarcodeMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -155,6 +156,9 @@ export const towingStateEvents = new WsEventEmitter<TowingStateMsg>('/towing_sta
 
 /** CHC NavState (GNSS/INS) events */
 export const devPvtEvents = new WsEventEmitter<DevPvtMsg>('/devpvt');
+
+/** Collected barcode events */
+export const collectedBarcodeEvents = new WsEventEmitter<CollectedBarcodeMsg>('/collected_barcode');
 
 /** Semantic points events (for SemanticPointCloudRenderer) */
 export const semanticPointsEvents = new WsEventEmitter<SemanticPointsMsg>('/semantic_points');

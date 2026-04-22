@@ -24,7 +24,7 @@ export interface OccupancyGridMsg extends TopicMsg {
   data_url?: string;
 }
 
-export interface PoseMsg extends TopicMsg, PoseType { }
+export interface PoseMsg extends TopicMsg, PoseType {}
 
 export interface TrackedPoseMsg extends TopicMsg, PoseType {
   cov: [[number, number], [number, number]];
@@ -285,9 +285,9 @@ export interface WsConnectionsMsg extends TopicMsg {
   connections: WsConnection[];
 }
 
-export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection { }
+export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection {}
 
-export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection { }
+export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection {}
 
 export interface ConstraintListMsg extends TopicMsg {
   'Inter residuals, different trajectories': [number, number][];
@@ -409,6 +409,20 @@ export interface DevPvtMsg extends TopicMsg {
   combined_state: string;
   gnss_state: string;
   warning: number;
+}
+
+export type CollectedBarcodeState = 'unknown' | 'ok' | 'no_result' | 'not_unique' | 'too_far' | 'unaligned_with_robot';
+
+export interface CollectedBarcode {
+  id: string;
+  pose: PoseType;
+  /** @since 2.9.1 — only accurate when the robot is not moving. */
+  relative_pose?: PoseType;
+}
+
+export interface CollectedBarcodeMsg extends TopicMsg {
+  state: CollectedBarcodeState;
+  barcode?: CollectedBarcode;
 }
 
 export type NearbyAutoDoorState = 'unknown' | 'open' | 'closed' | 'opening' | 'closing';
