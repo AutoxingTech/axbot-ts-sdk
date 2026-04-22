@@ -359,19 +359,6 @@ export interface DetectedPalletsMsg extends TopicMsg {
   pallets: Pallet[];
 }
 
-export interface DetectedRack {
-  frame?: 'base_link' | 'map';
-  rack_box: {
-    pose: PoseType;
-    width: number;
-    height: number;
-  };
-}
-
-export interface DetectedRacksMsg extends TopicMsg {
-  racks: DetectedRack[];
-}
-
 export type TaskState = 'unknown' | 'running' | 'succeeded' | 'failed';
 
 export interface GlobalPositioningStateMsg extends TopicMsg {
