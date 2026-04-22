@@ -437,6 +437,11 @@ export interface NearbyAutoDoorsMsg extends TopicMsg {
   doors: NearbyAutoDoor[];
 }
 
+export interface BumperStateMsg extends TopicMsg {
+  front_bumper_pressed: boolean;
+  rear_bumper_pressed: boolean;
+}
+
 export interface Landmark {
   id: string;
   pos: [number, number];

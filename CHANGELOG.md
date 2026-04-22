@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-04-22 topicMessages: Add BumperStateMsg and /bumper_state emitter
 - 2026-04-22 topicMessages: Add CollectedBarcodeMsg and /collected_barcode emitter
 - 2026-04-12 robotApi: Support global throwOnError configuration for exception-based error handling
 - 2026-04-12 wsEventEmitter: Add emitters for costmaps, motion metrics, RGB cameras, local path, nearby robots, constraint list
