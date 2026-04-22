@@ -19,6 +19,7 @@ import {
   NearbyRobotFootprintsMsg,
   DetectedPalletsMsg,
   DetectedFeaturesMsg,
+  DetectedRacksMsg,
 } from './msgs';
 
 export type Subscriber<T> = (data: T) => void;
@@ -150,6 +151,9 @@ export const nearbyRobotFootprintsStore = new WsMessageStore<NearbyRobotFootprin
 
 // Pallets store
 export const detectedPalletsStore = new WsMessageStore<DetectedPalletsMsg>('/detected_pallets');
+
+// Racks store
+export const detectedRacksStore = new WsMessageStore<DetectedRacksMsg>('/detected_racks');
 
 // Chargers store
 export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>('/detected_features/chargers');
