@@ -43,6 +43,9 @@ export interface RobotCaps {
 
   supportsAppStore?: boolean; // since 2.5.0. Supports '/app_store'
   supportsForklift?: boolean;
+  forkliftPalletJack?: boolean; // 叉车细分：地牛叉车
+  forkliftStacking?: boolean; // 叉车细分：堆垛叉车
+  forkliftCrawler?: boolean; // 叉车细分：潜伏式叉车
 
   // since 2.5.0. Supports `GET/PUT/DELETE /device/usb_devices/saved`,
   // `GET /device/usb_devices`, `POST /services/reset_usb_devices`
@@ -92,8 +95,6 @@ export interface RobotCaps {
 
   // since 2.13. Support service calibrate_lidar_yaws.
   supportsLidarYawCalibration?: boolean;
-
-  supportsStacking?: boolean; // since 2.13. Support stacking forklift.
 
   // since 2.14.0
   supportsTowing?: boolean;
