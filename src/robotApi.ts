@@ -561,12 +561,12 @@ export class RobotApi {
     );
   }
 
-  async getDeviceInfo(): Promise<DeviceInfo> {
-    return this.apiCall(() => this.getImpl('device/info'), 'Get Device Info', {} as DeviceInfo);
+  async getDeviceInfo(): Promise<DeviceInfo | null> {
+    return this.apiCall(() => this.getImpl('device/info'), 'Get Device Info', null);
   }
 
-  async getBriefDeviceInfo(): Promise<BriefDeviceInfo> {
-    return this.apiCall(() => this.getImpl('device/info/brief'), 'Get Brief Device Info', {} as BriefDeviceInfo);
+  async getBriefDeviceInfo(): Promise<BriefDeviceInfo | null> {
+    return this.apiCall(() => this.getImpl('device/info/brief'), 'Get Brief Device Info', null);
   }
 
   async getAvailableWifis(): Promise<WifiNetwork[]> {

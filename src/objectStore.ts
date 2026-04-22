@@ -12,7 +12,7 @@ export class ObjectStore<T> {
   protected stored_object: T | null = null;
   protected subscribers = new Set<Subscriber<T | null>>();
 
-  constructor(protected fetchData: FetchFn<T>) { }
+  constructor(protected fetchData: FetchFn<T | null>) {}
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
@@ -61,7 +61,7 @@ export class ArrayObjectStore<T> {
   protected stored_object: T[] = [];
   protected subscribers = new Set<Subscriber<T[]>>();
 
-  constructor(protected fetchData: FetchFn<T[]>) { }
+  constructor(protected fetchData: FetchFn<T[]>) {}
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
