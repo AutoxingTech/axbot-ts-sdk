@@ -37,7 +37,7 @@ export interface RobotApiConfig {
   notification?: NotificationSink;
   /** Hook for latest API activity display */
   onApiCalled?: (info: { method: string; url: string; payload?: any; status?: number }) => void;
-  /** If true, API errors will throw exceptions 
+  /** If true, API errors will throw exceptions
    * instead of handling them via the notification sink to fail silently */
   throwOnError?: boolean;
 }
@@ -833,6 +833,17 @@ export class RobotApi {
    */
   async clearSlippingError(): Promise<boolean> {
     return this.apiCall(() => this.postImpl('services/clear_slipping_error', {}), 'Clear Slipping Error', false);
+  }
+
+  /**
+   * Clear steering angle error.
+   */
+  async clearSteeringAngleError(): Promise<boolean> {
+    return this.apiCall(
+      () => this.postImpl('services/clear_steering_angle_error', {}),
+      'Clear Steering Angle Error',
+      false,
+    );
   }
 
   /**
