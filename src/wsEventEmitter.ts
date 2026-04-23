@@ -132,6 +132,7 @@ import {
   RgbCameraRawMsg,
   CollectedBarcodeMsg,
   BumperStateMsg,
+  MastStateMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -163,6 +164,9 @@ export const collectedBarcodeEvents = new WsEventEmitter<CollectedBarcodeMsg>('/
 
 /** Bumper state events */
 export const bumperStateEvents = new WsEventEmitter<BumperStateMsg>('/bumper_state');
+
+/** Mast state events */
+export const mastStateEvents = new WsEventEmitter<MastStateMsg>('/mast_state');
 
 /** Semantic points events (for SemanticPointCloudRenderer) */
 export const semanticPointsEvents = new WsEventEmitter<SemanticPointsMsg>('/semantic_points');

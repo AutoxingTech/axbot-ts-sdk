@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-04-23 topicMessages: Add MastStateMsg and /mast_state emitter; decode MAST_STATE binary proto frames
 - 2026-04-22 topicMessages: Add BumperStateMsg and /bumper_state emitter
 - 2026-04-22 topicMessages: Add CollectedBarcodeMsg and /collected_barcode emitter
 - 2026-04-12 robotApi: Support global throwOnError configuration for exception-based error handling

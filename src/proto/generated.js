@@ -854,6 +854,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number|null} [sequenceId] RosMessageWrapper sequenceId
          * @property {ros_messages.IPointCloud|null} [pointCloud] RosMessageWrapper pointCloud
          * @property {Uint8Array|null} [rawData] RosMessageWrapper rawData
+         * @property {ros_messages.IMastState|null} [mastState] RosMessageWrapper mastState
          */
 
         /**
@@ -911,17 +912,25 @@ export const ros_messages = $root.ros_messages = (() => {
          */
         RosMessageWrapper.prototype.rawData = null;
 
+        /**
+         * RosMessageWrapper mastState.
+         * @member {ros_messages.IMastState|null|undefined} mastState
+         * @memberof ros_messages.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.mastState = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"pointCloud"|"rawData"|undefined} payload
+         * @member {"pointCloud"|"rawData"|"mastState"|undefined} payload
          * @memberof ros_messages.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["pointCloud", "rawData"]),
+            get: $util.oneOfGetter($oneOfFields = ["pointCloud", "rawData", "mastState"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -959,6 +968,8 @@ export const ros_messages = $root.ros_messages = (() => {
                 $root.ros_messages.PointCloud.encode(message.pointCloud, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.rawData != null && Object.hasOwnProperty.call(message, "rawData"))
                 writer.uint32(/* id 11, wireType 2 =*/90).bytes(message.rawData);
+            if (message.mastState != null && Object.hasOwnProperty.call(message, "mastState"))
+                $root.ros_messages.MastState.encode(message.mastState, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             return writer;
         };
 
@@ -1015,6 +1026,10 @@ export const ros_messages = $root.ros_messages = (() => {
                         message.rawData = reader.bytes();
                         break;
                     }
+                case 12: {
+                        message.mastState = $root.ros_messages.MastState.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1057,6 +1072,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "type: enum value expected";
                 case 0:
                 case 1:
+                case 2:
                     break;
                 }
             if (message.timestampNs != null && message.hasOwnProperty("timestampNs"))
@@ -1079,6 +1095,16 @@ export const ros_messages = $root.ros_messages = (() => {
                 properties.payload = 1;
                 if (!(message.rawData && typeof message.rawData.length === "number" || $util.isString(message.rawData)))
                     return "rawData: buffer expected";
+            }
+            if (message.mastState != null && message.hasOwnProperty("mastState")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ros_messages.MastState.verify(message.mastState);
+                    if (error)
+                        return "mastState." + error;
+                }
             }
             return null;
         };
@@ -1110,6 +1136,10 @@ export const ros_messages = $root.ros_messages = (() => {
             case 1:
                 message.type = 1;
                 break;
+            case "MAST_STATE":
+            case 2:
+                message.type = 2;
+                break;
             }
             if (object.timestampNs != null)
                 if ($util.Long)
@@ -1132,6 +1162,11 @@ export const ros_messages = $root.ros_messages = (() => {
                     $util.base64.decode(object.rawData, message.rawData = $util.newBuffer($util.base64.length(object.rawData)), 0);
                 else if (object.rawData.length >= 0)
                     message.rawData = object.rawData;
+            if (object.mastState != null) {
+                if (typeof object.mastState !== "object")
+                    throw TypeError(".ros_messages.RosMessageWrapper.mastState: object expected");
+                message.mastState = $root.ros_messages.MastState.fromObject(object.mastState);
+            }
             return message;
         };
 
@@ -1176,6 +1211,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (options.oneofs)
                     object.payload = "rawData";
             }
+            if (message.mastState != null && message.hasOwnProperty("mastState")) {
+                object.mastState = $root.ros_messages.MastState.toObject(message.mastState, options);
+                if (options.oneofs)
+                    object.payload = "mastState";
+            }
             return object;
         };
 
@@ -1211,15 +1251,362 @@ export const ros_messages = $root.ros_messages = (() => {
          * @enum {number}
          * @property {number} UNKNOWN=0 UNKNOWN value
          * @property {number} POINT_CLOUD=1 POINT_CLOUD value
+         * @property {number} MAST_STATE=2 MAST_STATE value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
             values[valuesById[0] = "UNKNOWN"] = 0;
             values[valuesById[1] = "POINT_CLOUD"] = 1;
+            values[valuesById[2] = "MAST_STATE"] = 2;
             return values;
         })();
 
         return RosMessageWrapper;
+    })();
+
+    ros_messages.MastState = (function() {
+
+        /**
+         * Properties of a MastState.
+         * @memberof ros_messages
+         * @interface IMastState
+         * @property {number|null} [targetHeight] MastState targetHeight
+         * @property {number|null} [currentHeight] MastState currentHeight
+         * @property {ros_messages.MastState.MotionState|null} [motionState] MastState motionState
+         * @property {number|null} [error] MastState error
+         * @property {string|null} [errorMessage] MastState errorMessage
+         */
+
+        /**
+         * Constructs a new MastState.
+         * @memberof ros_messages
+         * @classdesc Represents a MastState.
+         * @implements IMastState
+         * @constructor
+         * @param {ros_messages.IMastState=} [properties] Properties to set
+         */
+        function MastState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * MastState targetHeight.
+         * @member {number} targetHeight
+         * @memberof ros_messages.MastState
+         * @instance
+         */
+        MastState.prototype.targetHeight = 0;
+
+        /**
+         * MastState currentHeight.
+         * @member {number} currentHeight
+         * @memberof ros_messages.MastState
+         * @instance
+         */
+        MastState.prototype.currentHeight = 0;
+
+        /**
+         * MastState motionState.
+         * @member {ros_messages.MastState.MotionState} motionState
+         * @memberof ros_messages.MastState
+         * @instance
+         */
+        MastState.prototype.motionState = 0;
+
+        /**
+         * MastState error.
+         * @member {number} error
+         * @memberof ros_messages.MastState
+         * @instance
+         */
+        MastState.prototype.error = 0;
+
+        /**
+         * MastState errorMessage.
+         * @member {string} errorMessage
+         * @memberof ros_messages.MastState
+         * @instance
+         */
+        MastState.prototype.errorMessage = "";
+
+        /**
+         * Creates a new MastState instance using the specified properties.
+         * @function create
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {ros_messages.IMastState=} [properties] Properties to set
+         * @returns {ros_messages.MastState} MastState instance
+         */
+        MastState.create = function create(properties) {
+            return new MastState(properties);
+        };
+
+        /**
+         * Encodes the specified MastState message. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * @function encode
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {ros_messages.IMastState} message MastState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MastState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.targetHeight != null && Object.hasOwnProperty.call(message, "targetHeight"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.targetHeight);
+            if (message.currentHeight != null && Object.hasOwnProperty.call(message, "currentHeight"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.currentHeight);
+            if (message.motionState != null && Object.hasOwnProperty.call(message, "motionState"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.motionState);
+            if (message.error != null && Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.error);
+            if (message.errorMessage != null && Object.hasOwnProperty.call(message, "errorMessage"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.errorMessage);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MastState message, length delimited. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {ros_messages.IMastState} message MastState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MastState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a MastState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ros_messages.MastState} MastState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MastState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MastState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.targetHeight = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.currentHeight = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.motionState = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.error = reader.int32();
+                        break;
+                    }
+                case 5: {
+                        message.errorMessage = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a MastState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ros_messages.MastState} MastState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MastState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MastState message.
+         * @function verify
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MastState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.targetHeight != null && message.hasOwnProperty("targetHeight"))
+                if (typeof message.targetHeight !== "number")
+                    return "targetHeight: number expected";
+            if (message.currentHeight != null && message.hasOwnProperty("currentHeight"))
+                if (typeof message.currentHeight !== "number")
+                    return "currentHeight: number expected";
+            if (message.motionState != null && message.hasOwnProperty("motionState"))
+                switch (message.motionState) {
+                default:
+                    return "motionState: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            if (message.error != null && message.hasOwnProperty("error"))
+                if (!$util.isInteger(message.error))
+                    return "error: integer expected";
+            if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
+                if (!$util.isString(message.errorMessage))
+                    return "errorMessage: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a MastState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ros_messages.MastState} MastState
+         */
+        MastState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ros_messages.MastState)
+                return object;
+            let message = new $root.ros_messages.MastState();
+            if (object.targetHeight != null)
+                message.targetHeight = Number(object.targetHeight);
+            if (object.currentHeight != null)
+                message.currentHeight = Number(object.currentHeight);
+            switch (object.motionState) {
+            default:
+                if (typeof object.motionState === "number") {
+                    message.motionState = object.motionState;
+                    break;
+                }
+                break;
+            case "UNKNOWN":
+            case 0:
+                message.motionState = 0;
+                break;
+            case "MOVING_HOLD":
+            case 1:
+                message.motionState = 1;
+                break;
+            case "MOVING_UP":
+            case 2:
+                message.motionState = 2;
+                break;
+            case "MOVING_DOWN":
+            case 3:
+                message.motionState = 3;
+                break;
+            }
+            if (object.error != null)
+                message.error = object.error | 0;
+            if (object.errorMessage != null)
+                message.errorMessage = String(object.errorMessage);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MastState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {ros_messages.MastState} message MastState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MastState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.targetHeight = 0;
+                object.currentHeight = 0;
+                object.motionState = options.enums === String ? "UNKNOWN" : 0;
+                object.error = 0;
+                object.errorMessage = "";
+            }
+            if (message.targetHeight != null && message.hasOwnProperty("targetHeight"))
+                object.targetHeight = options.json && !isFinite(message.targetHeight) ? String(message.targetHeight) : message.targetHeight;
+            if (message.currentHeight != null && message.hasOwnProperty("currentHeight"))
+                object.currentHeight = options.json && !isFinite(message.currentHeight) ? String(message.currentHeight) : message.currentHeight;
+            if (message.motionState != null && message.hasOwnProperty("motionState"))
+                object.motionState = options.enums === String ? $root.ros_messages.MastState.MotionState[message.motionState] === undefined ? message.motionState : $root.ros_messages.MastState.MotionState[message.motionState] : message.motionState;
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = message.error;
+            if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
+                object.errorMessage = message.errorMessage;
+            return object;
+        };
+
+        /**
+         * Converts this MastState to JSON.
+         * @function toJSON
+         * @memberof ros_messages.MastState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MastState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for MastState
+         * @function getTypeUrl
+         * @memberof ros_messages.MastState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        MastState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ros_messages.MastState";
+        };
+
+        /**
+         * MotionState enum.
+         * @name ros_messages.MastState.MotionState
+         * @enum {number}
+         * @property {number} UNKNOWN=0 UNKNOWN value
+         * @property {number} MOVING_HOLD=1 MOVING_HOLD value
+         * @property {number} MOVING_UP=2 MOVING_UP value
+         * @property {number} MOVING_DOWN=3 MOVING_DOWN value
+         */
+        MastState.MotionState = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "UNKNOWN"] = 0;
+            values[valuesById[1] = "MOVING_HOLD"] = 1;
+            values[valuesById[2] = "MOVING_UP"] = 2;
+            values[valuesById[3] = "MOVING_DOWN"] = 3;
+            return values;
+        })();
+
+        return MastState;
     })();
 
     return ros_messages;

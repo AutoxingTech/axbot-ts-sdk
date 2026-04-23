@@ -292,6 +292,9 @@ export namespace ros_messages {
 
         /** RosMessageWrapper rawData */
         rawData?: (Uint8Array|null);
+
+        /** RosMessageWrapper mastState */
+        mastState?: (ros_messages.IMastState|null);
     }
 
     /** Represents a RosMessageWrapper. */
@@ -318,8 +321,11 @@ export namespace ros_messages {
         /** RosMessageWrapper rawData. */
         public rawData?: (Uint8Array|null);
 
+        /** RosMessageWrapper mastState. */
+        public mastState?: (ros_messages.IMastState|null);
+
         /** RosMessageWrapper payload. */
-        public payload?: ("pointCloud"|"rawData");
+        public payload?: ("pointCloud"|"rawData"|"mastState");
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
@@ -404,7 +410,140 @@ export namespace ros_messages {
         /** MessageType enum. */
         enum MessageType {
             UNKNOWN = 0,
-            POINT_CLOUD = 1
+            POINT_CLOUD = 1,
+            MAST_STATE = 2
+        }
+    }
+
+    /** Properties of a MastState. */
+    interface IMastState {
+
+        /** MastState targetHeight */
+        targetHeight?: (number|null);
+
+        /** MastState currentHeight */
+        currentHeight?: (number|null);
+
+        /** MastState motionState */
+        motionState?: (ros_messages.MastState.MotionState|null);
+
+        /** MastState error */
+        error?: (number|null);
+
+        /** MastState errorMessage */
+        errorMessage?: (string|null);
+    }
+
+    /** Represents a MastState. */
+    class MastState implements IMastState {
+
+        /**
+         * Constructs a new MastState.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IMastState);
+
+        /** MastState targetHeight. */
+        public targetHeight: number;
+
+        /** MastState currentHeight. */
+        public currentHeight: number;
+
+        /** MastState motionState. */
+        public motionState: ros_messages.MastState.MotionState;
+
+        /** MastState error. */
+        public error: number;
+
+        /** MastState errorMessage. */
+        public errorMessage: string;
+
+        /**
+         * Creates a new MastState instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MastState instance
+         */
+        public static create(properties?: ros_messages.IMastState): ros_messages.MastState;
+
+        /**
+         * Encodes the specified MastState message. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * @param message MastState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IMastState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MastState message, length delimited. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * @param message MastState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IMastState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MastState message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns MastState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MastState;
+
+        /**
+         * Decodes a MastState message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns MastState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MastState;
+
+        /**
+         * Verifies a MastState message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MastState message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MastState
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.MastState;
+
+        /**
+         * Creates a plain object from a MastState message. Also converts values to other types if specified.
+         * @param message MastState
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.MastState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MastState to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for MastState
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace MastState {
+
+        /** MotionState enum. */
+        enum MotionState {
+            UNKNOWN = 0,
+            MOVING_HOLD = 1,
+            MOVING_UP = 2,
+            MOVING_DOWN = 3
         }
     }
 }

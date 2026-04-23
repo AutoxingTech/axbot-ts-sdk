@@ -442,6 +442,16 @@ export interface BumperStateMsg extends TopicMsg {
   rear_bumper_pressed: boolean;
 }
 
+export type MastMotionState = 'unknown' | 'moving_hold' | 'moving_up' | 'moving_down';
+
+export interface MastStateMsg extends TopicMsg {
+  target_height: number;
+  current_height: number;
+  motion_state: MastMotionState;
+  error: number;
+  error_message: string;
+}
+
 export interface Landmark {
   id: string;
   pos: [number, number];
