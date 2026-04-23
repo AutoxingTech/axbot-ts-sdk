@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package ros_messages;
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+message MastState {
+    enum MotionState {
+        UNKNOWN      = 0;
+        MOVING_HOLD  = 1;
+        MOVING_UP    = 2;
+        MOVING_DOWN  = 3;
+    }
+
+    float        target_height  = 1;  // metres
+    float        current_height = 2;  // metres
+    MotionState  motion_state   = 3;
+    int32        error          = 4;
+    string       error_message  = 5;
+}

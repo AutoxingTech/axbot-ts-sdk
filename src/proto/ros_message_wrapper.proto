@@ -3,6 +3,7 @@ syntax = "proto3";
 package ros_messages;
 
 import "point_cloud.proto";
+import "mast_state.proto";
 
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
@@ -12,7 +13,7 @@ message RosMessageWrapper {
     enum MessageType {
         UNKNOWN = 0;
         POINT_CLOUD = 1;
-        // Add new message types here as needed
+        MAST_STATE = 2;
     }
     
     MessageType type = 1;
@@ -22,6 +23,6 @@ message RosMessageWrapper {
     oneof payload {
         PointCloud point_cloud = 10;
         bytes raw_data = 11;  // For unknown message types
-        // Add new message payloads here as needed
+        MastState mast_state = 12;
     }
 }
