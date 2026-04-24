@@ -1,6 +1,8 @@
 CHANGELOG
 ==========
 
+- 2026-04-24 topicMessages: Add SubmapListMsg and /submap_list emitter; decode SUBMAP_LIST binary proto frames
+- 2026-04-24 proto: Generate with --keep-case so JS field names match snake_case .proto definitions
 - 2026-04-23 topicMessages: Add MastStateMsg and /mast_state emitter; decode MAST_STATE binary proto frames
 - 2026-04-22 topicMessages: Add BumperStateMsg and /bumper_state emitter
 - 2026-04-22 topicMessages: Add CollectedBarcodeMsg and /collected_barcode emitter

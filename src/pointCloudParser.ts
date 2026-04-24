@@ -73,10 +73,22 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
   let bytesPerPoint = 0;
   for (const field of fields) {
     switch (field.data_type) {
-      case 'f32': case 'i32': case 'u32': bytesPerPoint += 4; break;
-      case 'f64': bytesPerPoint += 8; break;
-      case 'i16': case 'u16': bytesPerPoint += 2; break;
-      case 'i8': case 'u8': bytesPerPoint += 1; break;
+      case 'f32':
+      case 'i32':
+      case 'u32':
+        bytesPerPoint += 4;
+        break;
+      case 'f64':
+        bytesPerPoint += 8;
+        break;
+      case 'i16':
+      case 'u16':
+        bytesPerPoint += 2;
+        break;
+      case 'i8':
+      case 'u8':
+        bytesPerPoint += 1;
+        break;
     }
   }
 
@@ -91,14 +103,38 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
     for (const field of fields) {
       let value = 0;
       switch (field.data_type) {
-        case 'f32': value = dataView.getFloat32(fieldOffset, true); fieldOffset += 4; break;
-        case 'f64': value = dataView.getFloat64(fieldOffset, true); fieldOffset += 8; break;
-        case 'i32': value = dataView.getInt32(fieldOffset, true); fieldOffset += 4; break;
-        case 'u32': value = dataView.getUint32(fieldOffset, true); fieldOffset += 4; break;
-        case 'i16': value = dataView.getInt16(fieldOffset, true); fieldOffset += 2; break;
-        case 'u16': value = dataView.getUint16(fieldOffset, true); fieldOffset += 2; break;
-        case 'i8': value = dataView.getInt8(fieldOffset); fieldOffset += 1; break;
-        case 'u8': value = dataView.getUint8(fieldOffset); fieldOffset += 1; break;
+        case 'f32':
+          value = dataView.getFloat32(fieldOffset, true);
+          fieldOffset += 4;
+          break;
+        case 'f64':
+          value = dataView.getFloat64(fieldOffset, true);
+          fieldOffset += 8;
+          break;
+        case 'i32':
+          value = dataView.getInt32(fieldOffset, true);
+          fieldOffset += 4;
+          break;
+        case 'u32':
+          value = dataView.getUint32(fieldOffset, true);
+          fieldOffset += 4;
+          break;
+        case 'i16':
+          value = dataView.getInt16(fieldOffset, true);
+          fieldOffset += 2;
+          break;
+        case 'u16':
+          value = dataView.getUint16(fieldOffset, true);
+          fieldOffset += 2;
+          break;
+        case 'i8':
+          value = dataView.getInt8(fieldOffset);
+          fieldOffset += 1;
+          break;
+        case 'u8':
+          value = dataView.getUint8(fieldOffset);
+          fieldOffset += 1;
+          break;
       }
       rawValues.push(value);
     }
@@ -126,15 +162,15 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
 }
 
 function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: string): PointCloudBuffer {
-  const cx = pc.centerX ?? 0;
-  const cy = pc.centerY ?? 0;
-  const cz = pc.centerZ ?? 0;
+  const cx = pc.center_x ?? 0;
+  const cy = pc.center_y ?? 0;
+  const cz = pc.center_z ?? 0;
   const res = pc.resolution ?? 1;
   const xs = pc.xs ?? [];
   const ys = pc.ys ?? [];
   const zs = pc.zs ?? [];
   const rawIntensities = pc.intensities ?? new Uint8Array();
-  const isDeltaEncoded = pc.isDeltaEncoded ?? false;
+  const isDeltaEncoded = pc.is_delta_encoded ?? false;
   const count = xs.length;
 
   const positions = new Float32Array(count * 3);
@@ -165,7 +201,6 @@ function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: st
 
   return { topic, positions, count, intensities };
 }
-
 
 export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg | PointCloudPbMsg): PointCloudBuffer {
   if ('pb' in msg && typeof msg.pb === 'object') {
@@ -200,4 +235,3 @@ export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg 
   }
   return { topic: msg.topic, positions: buf, count, intensities };
 }
-

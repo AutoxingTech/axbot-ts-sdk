@@ -131,6 +131,38 @@ export interface SlamStateMsg extends TopicMsg {
   lidar_matching_score?: number; // since 2.1.0
 }
 
+/**
+ * Single cartographer submap entry. Mirrors `cartographer_ros_msgs/SubmapEntry`.
+ * See RFC-4 / submap_http_and_threejs.md.
+ */
+export interface SubmapEntryMsg {
+  trajectory_id: number;
+  submap_index: number;
+  submap_version: number;
+  // geometry_msgs/Pose
+  pose_position_x: number;
+  pose_position_y: number;
+  pose_position_z: number;
+  pose_orientation_x: number;
+  pose_orientation_y: number;
+  pose_orientation_z: number;
+  pose_orientation_w: number;
+  is_frozen: boolean;
+  is_incremental_submap: boolean;
+  is_nearby_map: boolean;
+}
+
+/**
+ * Cartographer submap list. Forwarded from `/submap_list`.
+ * `uuid` identifies the slamming session and is needed to fetch submap PNGs
+ * via the HTTP gateway (see RFC-4).
+ */
+export interface SubmapListMsg extends TopicMsg {
+  slam_state: 'invalid' | 'slam' | 'positioning';
+  uuid: string;
+  submap: SubmapEntryMsg[];
+}
+
 export interface ActionMsg extends TopicMsg {
   timestamp: number;
   email: string;

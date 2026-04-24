@@ -133,6 +133,7 @@ import {
   CollectedBarcodeMsg,
   BumperStateMsg,
   MastStateMsg,
+  SubmapListMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -140,6 +141,10 @@ export const globalPositioningEvents = new WsEventEmitter<GlobalPositioningState
 
 /** SLAM state events */
 export const slamStateEvents = new WsEventEmitter<SlamStateMsg>('/slam/state');
+
+/** Submap list events (cartographer submap poses + versions). PNG textures
+ * are fetched separately via the HTTP gateway (see RFC-4). */
+export const submapListEvents = new WsEventEmitter<SubmapListMsg>('/submap_list');
 
 /** Detailed battery state events */
 export const detailedBatteryStateEvents = new WsEventEmitter<DetailedBatteryStateMsg>('/detailed_battery_state');

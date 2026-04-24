@@ -14,7 +14,7 @@
 import { gunzipSync } from 'fflate';
 import { ros_messages } from './proto/generated.js';
 import { PointCloudPbMsg } from './pbMessages.js';
-import { MastStateMsg, MastMotionState } from './topicMessages.js';
+import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg } from './topicMessages.js';
 
 /**
  * Decode a binary WebSocket frame into a topic name and typed payload.
@@ -60,20 +60,47 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
   }
 
   // 4. Convert payload based on message type
-  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.pointCloud) {
-    const pbMsg: PointCloudPbMsg = { topic, pb: wrapper.pointCloud };
+  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.point_cloud) {
+    const pbMsg: PointCloudPbMsg = { topic, pb: wrapper.point_cloud };
     return { topic, payload: pbMsg };
   }
 
-  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.MAST_STATE && wrapper.mastState) {
+  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.MAST_STATE && wrapper.mast_state) {
     const motionStateNames: MastMotionState[] = ['unknown', 'moving_hold', 'moving_up', 'moving_down'];
     const msg: MastStateMsg = {
       topic,
-      target_height: wrapper.mastState.targetHeight ?? 0,
-      current_height: wrapper.mastState.currentHeight ?? 0,
-      motion_state: motionStateNames[wrapper.mastState.motionState ?? 0] ?? 'unknown',
-      error: wrapper.mastState.error ?? 0,
-      error_message: wrapper.mastState.errorMessage ?? '',
+      target_height: wrapper.mast_state.target_height ?? 0,
+      current_height: wrapper.mast_state.current_height ?? 0,
+      motion_state: motionStateNames[wrapper.mast_state.motion_state ?? 0] ?? 'unknown',
+      error: wrapper.mast_state.error ?? 0,
+      error_message: wrapper.mast_state.error_message ?? '',
+    };
+    return { topic, payload: msg };
+  }
+
+  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.SUBMAP_LIST && wrapper.submap_list) {
+    const slamStateNames: SubmapListMsg['slam_state'][] = ['invalid', 'slam', 'positioning'];
+    const sl = wrapper.submap_list;
+    const submap: SubmapEntryMsg[] = (sl.submap ?? []).map((e) => ({
+      trajectory_id: e.trajectory_id ?? 0,
+      submap_index: e.submap_index ?? 0,
+      submap_version: e.submap_version ?? 0,
+      pose_position_x: e.pose_position_x ?? 0,
+      pose_position_y: e.pose_position_y ?? 0,
+      pose_position_z: e.pose_position_z ?? 0,
+      pose_orientation_x: e.pose_orientation_x ?? 0,
+      pose_orientation_y: e.pose_orientation_y ?? 0,
+      pose_orientation_z: e.pose_orientation_z ?? 0,
+      pose_orientation_w: e.pose_orientation_w ?? 1,
+      is_frozen: !!e.is_frozen,
+      is_incremental_submap: !!e.is_incremental_submap,
+      is_nearby_map: !!e.is_nearby_map,
+    }));
+    const msg: SubmapListMsg = {
+      topic,
+      slam_state: slamStateNames[sl.slam_state ?? 0] ?? 'invalid',
+      uuid: sl.uuid ?? '',
+      submap,
     };
     return { topic, payload: msg };
   }

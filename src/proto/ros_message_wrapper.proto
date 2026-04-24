@@ -4,6 +4,7 @@ package ros_messages;
 
 import "point_cloud.proto";
 import "mast_state.proto";
+import "submap_list.proto";
 
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
@@ -14,6 +15,7 @@ message RosMessageWrapper {
         UNKNOWN = 0;
         POINT_CLOUD = 1;
         MAST_STATE = 2;
+        SUBMAP_LIST = 3;
     }
     
     MessageType type = 1;
@@ -24,5 +26,6 @@ message RosMessageWrapper {
         PointCloud point_cloud = 10;
         bytes raw_data = 11;  // For unknown message types
         MastState mast_state = 12;
+        SubmapList submap_list = 13;
     }
 }

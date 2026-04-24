@@ -19,6 +19,8 @@ const protoSrc = join(root, 'src', 'proto');
 const protoFiles = [
   'header.proto',
   'point_cloud.proto',
+  'mast_state.proto',
+  'submap_list.proto',
   'ros_message_wrapper.proto',
 ].map((f) => `"${join(protoSrc, f)}"`).join(' ');
 
@@ -33,7 +35,7 @@ const pbts = join(root, 'node_modules', '.bin', `pbts${ext}`);
 console.log('Compiling proto files...');
 
 execSync(
-  `"${pbjs}" -t static-module -w es6 --es6 -o "${outJs}" ${protoFiles}`,
+  `"${pbjs}" -t static-module -w es6 --es6 --keep-case -o "${outJs}" ${protoFiles}`,
   { stdio: 'inherit' }
 );
 
