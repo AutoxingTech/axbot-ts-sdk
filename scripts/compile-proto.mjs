@@ -18,9 +18,11 @@ const protoSrc = join(root, 'src', 'proto');
 
 const protoFiles = [
   'header.proto',
+  'geometry.proto',
   'point_cloud.proto',
   'mast_state.proto',
   'submap_list.proto',
+  'submap_query.proto',
   'ros_message_wrapper.proto',
 ].map((f) => `"${join(protoSrc, f)}"`).join(' ');
 
