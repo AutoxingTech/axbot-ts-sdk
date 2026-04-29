@@ -334,6 +334,10 @@ export enum AlertCode {
   jackRackSizeIsWrong = 12006,
   /** 货架腿附近有噪点 */
   jackRackHasNoise = 12007,
+  /** 堆垛升降桅杆状态错误 */
+  jackMastStateError = 12008,
+  /** 牵引设备状态错误 */
+  jackTowingStateError = 12009,
 
   /** 跟随模块 UWB 设备数据错误 */
   externalFollowUwbDataError = 13001,
