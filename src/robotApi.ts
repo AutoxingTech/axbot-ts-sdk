@@ -550,6 +550,10 @@ export class RobotApi {
     return this.apiCall(() => this.postImpl('services/jack_down', {}), 'Jack Down', false);
   }
 
+  async clearJackErrors(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/clear_jack_errors', {}), 'Clear Jack Errors', false);
+  }
+
   async towingHookLock(): Promise<boolean> {
     return this.apiCall(() => this.postImpl('services/towing_hook_lock', {}), 'Towing Hook Lock', false);
   }
