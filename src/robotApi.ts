@@ -3,13 +3,26 @@
 
 import { CollectedDataFile } from './topicMessages';
 import {
-  CollectedDataItem, MapItem, StartMappingRequest, StopMappingRequest,
-  DeviceInfo, BriefDeviceInfo, WifiNetwork, SensorsList, UsbDevice,
+  CollectedDataItem,
+  MapItem,
+  StartMappingRequest,
+  StopMappingRequest,
+  DeviceInfo,
+  BriefDeviceInfo,
+  WifiNetwork,
+  SensorsList,
+  UsbDevice,
   MappingTaskItem,
-  BootProgress, MoveActionCreate,
-  MoveAction, ApiError,
-  BagPlayerPrefix, BagPlayerMetadata, BagPlayerChunkResponse,
-  BagItem, CoreDumpItem, VideoFileItem
+  BootProgress,
+  MoveActionCreate,
+  MoveAction,
+  ApiError,
+  BagPlayerPrefix,
+  BagPlayerMetadata,
+  BagPlayerChunkResponse,
+  BagItem,
+  CoreDumpItem,
+  VideoFileItem,
 } from './robotApiType';
 
 export * from './robotApiType';
@@ -545,6 +558,18 @@ export class RobotApi {
     return this.apiCall(() => this.postImpl('services/towing_hook_release', {}), 'Towing Hook Release', false);
   }
 
+  async clearTowingHookError(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/clear_towing_hook_error', {}), 'Clear Towing Hook Error', false);
+  }
+
+  async loadCargo(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/load_cargo', {}), 'Load Cargo', false);
+  }
+
+  async unloadCargo(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/unload_cargo', {}), 'Unload Cargo', false);
+  }
+
   async startCollectingLandmarks(): Promise<boolean> {
     return this.apiCall(
       () => this.postImpl('services/start_collecting_landmarks', {}),
@@ -932,7 +957,11 @@ export class RobotApi {
     prefix: BagPlayerPrefix = 'bags',
     signal?: AbortSignal,
   ): Promise<BagPlayerMetadata> {
-    return this.apiCall(() => this.getImpl(`${prefix}/${encodeURIComponent(filename)}/player`, signal), 'Get Bag Player Metadata', {} as BagPlayerMetadata);
+    return this.apiCall(
+      () => this.getImpl(`${prefix}/${encodeURIComponent(filename)}/player`, signal),
+      'Get Bag Player Metadata',
+      {} as BagPlayerMetadata,
+    );
   }
 
   /**
@@ -955,7 +984,11 @@ export class RobotApi {
       start_time: startTime.toString(),
       end_time: endTime.toString(),
     });
-    return this.apiCall(() => this.getImpl(`${prefix}/${encodeURIComponent(filename)}/player?${params}`, signal), 'Get Bag Player Chunk', {} as BagPlayerChunkResponse);
+    return this.apiCall(
+      () => this.getImpl(`${prefix}/${encodeURIComponent(filename)}/player?${params}`, signal),
+      'Get Bag Player Chunk',
+      {} as BagPlayerChunkResponse,
+    );
   }
 
   /**
