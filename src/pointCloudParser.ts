@@ -22,7 +22,7 @@ export interface PointCloudBuffer {
   intensities?: Uint8Array;
 }
 
-const POINT_CLOUD_PROBABILITY_THRESHOLD = 0.6;
+const POINT_CLOUD_PROBABILITY_THRESHOLD = Math.floor(0.6 * 255);
 
 export interface ParsedSemanticPoint {
   x: number;
@@ -143,10 +143,10 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
       x: rawValues[xIdx],
       y: rawValues[yIdx],
       z: rawValues[zIdx],
-      probability: probabilityIdx >= 0 ? rawValues[probabilityIdx] / 255 : 1.0,
-      ori: oriIdx >= 0 ? (rawValues[oriIdx] / 255) * Math.PI * 2 : 0,
-      speed: speedIdx >= 0 ? rawValues[speedIdx] / 100 : 0,
-      intensity: intensityIdx >= 0 ? rawValues[intensityIdx] / 255 : 0,
+      probability: probabilityIdx >= 0 ? rawValues[probabilityIdx]: 1.0, // u8
+      ori: oriIdx >= 0 ? (rawValues[oriIdx] / 255) * Math.PI * 2 + Math.PI / 2 : 0, // u8 mapping to [0, 2PI] with 0 facing up
+      speed: speedIdx >= 0 ? rawValues[speedIdx] / 100 : 0, // u8 stands for cm/s, scale to m/s
+      intensity: intensityIdx >= 0 ? rawValues[intensityIdx] : 0, // f32
     };
 
     allPoints.push(point);
