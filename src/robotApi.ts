@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { CollectedDataFile } from './topicMessages';
+import { ros_messages } from './proto/generated.js';
 import {
   CollectedDataItem,
   MapItem,
@@ -53,6 +54,11 @@ export interface RobotApiConfig {
   /** If true, API errors will throw exceptions
    * instead of handling them via the notification sink to fail silently */
   throwOnError?: boolean;
+}
+
+export interface SubmapQueryV2FetchResult {
+  message: ros_messages.SubmapQueryV2Response;
+  payloadLength: number;
 }
 
 /**
@@ -945,6 +951,50 @@ export class RobotApi {
       throw new Error(detail);
     }
     return res;
+  }
+
+  /**
+   * Fetch and decode a cartographer SubmapQueryV2 protobuf payload.
+   * Returns null when the submap gateway reports 404.
+   */
+  async getSubmapQueryV2(
+    uuid: string,
+    trajectoryId: number,
+    submapIndex: number,
+    version: number,
+    signal?: AbortSignal,
+  ): Promise<SubmapQueryV2FetchResult | null> {
+    const url = `ros/slam/submaps/${encodeURIComponent(uuid)}/${trajectoryId}/${submapIndex}?ver=${version}`;
+    const base = this.getConfig().getApiBase();
+    const fullUrl = `${base}/${url}`;
+    const cb = this.getConfig().onApiCalled;
+    if (cb) cb({ method: 'GET', url: fullUrl });
+    const res = await fetch(fullUrl, {
+      method: 'GET',
+      headers: { Accept: 'application/x-protobuf' },
+      credentials: 'include',
+      signal,
+    });
+    if (cb) cb({ method: 'GET', url: fullUrl, status: res.status });
+
+    if (res.status === 404) {
+      return null;
+    }
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+
+    const buf = new Uint8Array(await res.arrayBuffer());
+    const message = ros_messages.SubmapQueryV2Response.decode(buf);
+    if (message.status && message.status.code !== 0) {
+      throw new Error(`SubmapQueryV2 failed ${message.status.code}: ${message.status.message ?? ''}`);
+    }
+
+    return {
+      message,
+      payloadLength: buf.byteLength,
+    };
   }
 
   // ========== Bag Player API ==========
