@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package ros_messages;
 
+import "geometry.proto";
+
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
 
@@ -9,14 +11,7 @@ message SubmapEntry {
     int32  trajectory_id        = 1;
     int32  submap_index         = 2;
     int32  submap_version       = 3;
-    // geometry_msgs/Pose: position (x,y,z) + orientation (x,y,z,w)
-    double pose_position_x      = 4;
-    double pose_position_y      = 5;
-    double pose_position_z      = 6;
-    double pose_orientation_x   = 7;
-    double pose_orientation_y   = 8;
-    double pose_orientation_z   = 9;
-    double pose_orientation_w   = 10;
+    Pose   pose                 = 4;
     bool   is_frozen            = 11;
     bool   is_incremental_submap = 12;
     bool   is_nearby_map        = 13;

@@ -140,13 +140,7 @@ export interface SubmapEntryMsg {
   submap_index: number;
   submap_version: number;
   // geometry_msgs/Pose
-  pose_position_x: number;
-  pose_position_y: number;
-  pose_position_z: number;
-  pose_orientation_x: number;
-  pose_orientation_y: number;
-  pose_orientation_z: number;
-  pose_orientation_w: number;
+  pose: { x: number; y: number; z: number; qx: number; qy: number; qz: number; qw: number };
   is_frozen: boolean;
   is_incremental_submap: boolean;
   is_nearby_map: boolean;

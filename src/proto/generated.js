@@ -1541,13 +1541,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number|null} [trajectory_id] SubmapEntry trajectory_id
          * @property {number|null} [submap_index] SubmapEntry submap_index
          * @property {number|null} [submap_version] SubmapEntry submap_version
-         * @property {number|null} [pose_position_x] SubmapEntry pose_position_x
-         * @property {number|null} [pose_position_y] SubmapEntry pose_position_y
-         * @property {number|null} [pose_position_z] SubmapEntry pose_position_z
-         * @property {number|null} [pose_orientation_x] SubmapEntry pose_orientation_x
-         * @property {number|null} [pose_orientation_y] SubmapEntry pose_orientation_y
-         * @property {number|null} [pose_orientation_z] SubmapEntry pose_orientation_z
-         * @property {number|null} [pose_orientation_w] SubmapEntry pose_orientation_w
+         * @property {ros_messages.IPose|null} [pose] SubmapEntry pose
          * @property {boolean|null} [is_frozen] SubmapEntry is_frozen
          * @property {boolean|null} [is_incremental_submap] SubmapEntry is_incremental_submap
          * @property {boolean|null} [is_nearby_map] SubmapEntry is_nearby_map
@@ -1593,60 +1587,12 @@ export const ros_messages = $root.ros_messages = (() => {
         SubmapEntry.prototype.submap_version = 0;
 
         /**
-         * SubmapEntry pose_position_x.
-         * @member {number} pose_position_x
+         * SubmapEntry pose.
+         * @member {ros_messages.IPose|null|undefined} pose
          * @memberof ros_messages.SubmapEntry
          * @instance
          */
-        SubmapEntry.prototype.pose_position_x = 0;
-
-        /**
-         * SubmapEntry pose_position_y.
-         * @member {number} pose_position_y
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose_position_y = 0;
-
-        /**
-         * SubmapEntry pose_position_z.
-         * @member {number} pose_position_z
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose_position_z = 0;
-
-        /**
-         * SubmapEntry pose_orientation_x.
-         * @member {number} pose_orientation_x
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose_orientation_x = 0;
-
-        /**
-         * SubmapEntry pose_orientation_y.
-         * @member {number} pose_orientation_y
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose_orientation_y = 0;
-
-        /**
-         * SubmapEntry pose_orientation_z.
-         * @member {number} pose_orientation_z
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose_orientation_z = 0;
-
-        /**
-         * SubmapEntry pose_orientation_w.
-         * @member {number} pose_orientation_w
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose_orientation_w = 0;
+        SubmapEntry.prototype.pose = null;
 
         /**
          * SubmapEntry is_frozen.
@@ -1702,20 +1648,8 @@ export const ros_messages = $root.ros_messages = (() => {
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.submap_index);
             if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int32(message.submap_version);
-            if (message.pose_position_x != null && Object.hasOwnProperty.call(message, "pose_position_x"))
-                writer.uint32(/* id 4, wireType 1 =*/33).double(message.pose_position_x);
-            if (message.pose_position_y != null && Object.hasOwnProperty.call(message, "pose_position_y"))
-                writer.uint32(/* id 5, wireType 1 =*/41).double(message.pose_position_y);
-            if (message.pose_position_z != null && Object.hasOwnProperty.call(message, "pose_position_z"))
-                writer.uint32(/* id 6, wireType 1 =*/49).double(message.pose_position_z);
-            if (message.pose_orientation_x != null && Object.hasOwnProperty.call(message, "pose_orientation_x"))
-                writer.uint32(/* id 7, wireType 1 =*/57).double(message.pose_orientation_x);
-            if (message.pose_orientation_y != null && Object.hasOwnProperty.call(message, "pose_orientation_y"))
-                writer.uint32(/* id 8, wireType 1 =*/65).double(message.pose_orientation_y);
-            if (message.pose_orientation_z != null && Object.hasOwnProperty.call(message, "pose_orientation_z"))
-                writer.uint32(/* id 9, wireType 1 =*/73).double(message.pose_orientation_z);
-            if (message.pose_orientation_w != null && Object.hasOwnProperty.call(message, "pose_orientation_w"))
-                writer.uint32(/* id 10, wireType 1 =*/81).double(message.pose_orientation_w);
+            if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
+                $root.ros_messages.Pose.encode(message.pose, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             if (message.is_frozen != null && Object.hasOwnProperty.call(message, "is_frozen"))
                 writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_frozen);
             if (message.is_incremental_submap != null && Object.hasOwnProperty.call(message, "is_incremental_submap"))
@@ -1771,31 +1705,7 @@ export const ros_messages = $root.ros_messages = (() => {
                         break;
                     }
                 case 4: {
-                        message.pose_position_x = reader.double();
-                        break;
-                    }
-                case 5: {
-                        message.pose_position_y = reader.double();
-                        break;
-                    }
-                case 6: {
-                        message.pose_position_z = reader.double();
-                        break;
-                    }
-                case 7: {
-                        message.pose_orientation_x = reader.double();
-                        break;
-                    }
-                case 8: {
-                        message.pose_orientation_y = reader.double();
-                        break;
-                    }
-                case 9: {
-                        message.pose_orientation_z = reader.double();
-                        break;
-                    }
-                case 10: {
-                        message.pose_orientation_w = reader.double();
+                        message.pose = $root.ros_messages.Pose.decode(reader, reader.uint32());
                         break;
                     }
                 case 11: {
@@ -1854,27 +1764,11 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.submap_version != null && message.hasOwnProperty("submap_version"))
                 if (!$util.isInteger(message.submap_version))
                     return "submap_version: integer expected";
-            if (message.pose_position_x != null && message.hasOwnProperty("pose_position_x"))
-                if (typeof message.pose_position_x !== "number")
-                    return "pose_position_x: number expected";
-            if (message.pose_position_y != null && message.hasOwnProperty("pose_position_y"))
-                if (typeof message.pose_position_y !== "number")
-                    return "pose_position_y: number expected";
-            if (message.pose_position_z != null && message.hasOwnProperty("pose_position_z"))
-                if (typeof message.pose_position_z !== "number")
-                    return "pose_position_z: number expected";
-            if (message.pose_orientation_x != null && message.hasOwnProperty("pose_orientation_x"))
-                if (typeof message.pose_orientation_x !== "number")
-                    return "pose_orientation_x: number expected";
-            if (message.pose_orientation_y != null && message.hasOwnProperty("pose_orientation_y"))
-                if (typeof message.pose_orientation_y !== "number")
-                    return "pose_orientation_y: number expected";
-            if (message.pose_orientation_z != null && message.hasOwnProperty("pose_orientation_z"))
-                if (typeof message.pose_orientation_z !== "number")
-                    return "pose_orientation_z: number expected";
-            if (message.pose_orientation_w != null && message.hasOwnProperty("pose_orientation_w"))
-                if (typeof message.pose_orientation_w !== "number")
-                    return "pose_orientation_w: number expected";
+            if (message.pose != null && message.hasOwnProperty("pose")) {
+                let error = $root.ros_messages.Pose.verify(message.pose);
+                if (error)
+                    return "pose." + error;
+            }
             if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
                 if (typeof message.is_frozen !== "boolean")
                     return "is_frozen: boolean expected";
@@ -1905,20 +1799,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 message.submap_index = object.submap_index | 0;
             if (object.submap_version != null)
                 message.submap_version = object.submap_version | 0;
-            if (object.pose_position_x != null)
-                message.pose_position_x = Number(object.pose_position_x);
-            if (object.pose_position_y != null)
-                message.pose_position_y = Number(object.pose_position_y);
-            if (object.pose_position_z != null)
-                message.pose_position_z = Number(object.pose_position_z);
-            if (object.pose_orientation_x != null)
-                message.pose_orientation_x = Number(object.pose_orientation_x);
-            if (object.pose_orientation_y != null)
-                message.pose_orientation_y = Number(object.pose_orientation_y);
-            if (object.pose_orientation_z != null)
-                message.pose_orientation_z = Number(object.pose_orientation_z);
-            if (object.pose_orientation_w != null)
-                message.pose_orientation_w = Number(object.pose_orientation_w);
+            if (object.pose != null) {
+                if (typeof object.pose !== "object")
+                    throw TypeError(".ros_messages.SubmapEntry.pose: object expected");
+                message.pose = $root.ros_messages.Pose.fromObject(object.pose);
+            }
             if (object.is_frozen != null)
                 message.is_frozen = Boolean(object.is_frozen);
             if (object.is_incremental_submap != null)
@@ -1945,13 +1830,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.trajectory_id = 0;
                 object.submap_index = 0;
                 object.submap_version = 0;
-                object.pose_position_x = 0;
-                object.pose_position_y = 0;
-                object.pose_position_z = 0;
-                object.pose_orientation_x = 0;
-                object.pose_orientation_y = 0;
-                object.pose_orientation_z = 0;
-                object.pose_orientation_w = 0;
+                object.pose = null;
                 object.is_frozen = false;
                 object.is_incremental_submap = false;
                 object.is_nearby_map = false;
@@ -1962,20 +1841,8 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.submap_index = message.submap_index;
             if (message.submap_version != null && message.hasOwnProperty("submap_version"))
                 object.submap_version = message.submap_version;
-            if (message.pose_position_x != null && message.hasOwnProperty("pose_position_x"))
-                object.pose_position_x = options.json && !isFinite(message.pose_position_x) ? String(message.pose_position_x) : message.pose_position_x;
-            if (message.pose_position_y != null && message.hasOwnProperty("pose_position_y"))
-                object.pose_position_y = options.json && !isFinite(message.pose_position_y) ? String(message.pose_position_y) : message.pose_position_y;
-            if (message.pose_position_z != null && message.hasOwnProperty("pose_position_z"))
-                object.pose_position_z = options.json && !isFinite(message.pose_position_z) ? String(message.pose_position_z) : message.pose_position_z;
-            if (message.pose_orientation_x != null && message.hasOwnProperty("pose_orientation_x"))
-                object.pose_orientation_x = options.json && !isFinite(message.pose_orientation_x) ? String(message.pose_orientation_x) : message.pose_orientation_x;
-            if (message.pose_orientation_y != null && message.hasOwnProperty("pose_orientation_y"))
-                object.pose_orientation_y = options.json && !isFinite(message.pose_orientation_y) ? String(message.pose_orientation_y) : message.pose_orientation_y;
-            if (message.pose_orientation_z != null && message.hasOwnProperty("pose_orientation_z"))
-                object.pose_orientation_z = options.json && !isFinite(message.pose_orientation_z) ? String(message.pose_orientation_z) : message.pose_orientation_z;
-            if (message.pose_orientation_w != null && message.hasOwnProperty("pose_orientation_w"))
-                object.pose_orientation_w = options.json && !isFinite(message.pose_orientation_w) ? String(message.pose_orientation_w) : message.pose_orientation_w;
+            if (message.pose != null && message.hasOwnProperty("pose"))
+                object.pose = $root.ros_messages.Pose.toObject(message.pose, options);
             if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
                 object.is_frozen = message.is_frozen;
             if (message.is_incremental_submap != null && message.hasOwnProperty("is_incremental_submap"))

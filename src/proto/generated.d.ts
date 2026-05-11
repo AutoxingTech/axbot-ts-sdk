@@ -552,26 +552,8 @@ export namespace ros_messages {
         /** SubmapEntry submap_version */
         submap_version?: (number|null);
 
-        /** SubmapEntry pose_position_x */
-        pose_position_x?: (number|null);
-
-        /** SubmapEntry pose_position_y */
-        pose_position_y?: (number|null);
-
-        /** SubmapEntry pose_position_z */
-        pose_position_z?: (number|null);
-
-        /** SubmapEntry pose_orientation_x */
-        pose_orientation_x?: (number|null);
-
-        /** SubmapEntry pose_orientation_y */
-        pose_orientation_y?: (number|null);
-
-        /** SubmapEntry pose_orientation_z */
-        pose_orientation_z?: (number|null);
-
-        /** SubmapEntry pose_orientation_w */
-        pose_orientation_w?: (number|null);
+        /** SubmapEntry pose */
+        pose?: (ros_messages.IPose|null);
 
         /** SubmapEntry is_frozen */
         is_frozen?: (boolean|null);
@@ -601,26 +583,8 @@ export namespace ros_messages {
         /** SubmapEntry submap_version. */
         public submap_version: number;
 
-        /** SubmapEntry pose_position_x. */
-        public pose_position_x: number;
-
-        /** SubmapEntry pose_position_y. */
-        public pose_position_y: number;
-
-        /** SubmapEntry pose_position_z. */
-        public pose_position_z: number;
-
-        /** SubmapEntry pose_orientation_x. */
-        public pose_orientation_x: number;
-
-        /** SubmapEntry pose_orientation_y. */
-        public pose_orientation_y: number;
-
-        /** SubmapEntry pose_orientation_z. */
-        public pose_orientation_z: number;
-
-        /** SubmapEntry pose_orientation_w. */
-        public pose_orientation_w: number;
+        /** SubmapEntry pose. */
+        public pose?: (ros_messages.IPose|null);
 
         /** SubmapEntry is_frozen. */
         public is_frozen: boolean;
