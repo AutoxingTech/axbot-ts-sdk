@@ -37,6 +37,10 @@
       "import": "./dist/robotApi.js",
       "types": "./dist/robotApi.d.ts"
     },
+    "./submapCache": {
+      "import": "./dist/submapCache.js",
+      "types": "./dist/submapCache.d.ts"
+    },
     "./objectStore": {
       "import": "./dist/objectStore.js",
       "types": "./dist/objectStore.d.ts"
@@ -77,6 +81,9 @@
       ],
       "robotApi": [
         "./src/robotApi.ts"
+      ],
+      "submapCache": [
+        "./src/submapCache.ts"
       ],
       "objectStore": [
         "./src/objectStore.ts"

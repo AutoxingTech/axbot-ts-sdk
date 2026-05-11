@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-05-11 submapCache: Add generic submap cache
 - 2026-05-11 robotApi: Add SubmapQueryV2 fetch API
 - 2026-04-29 robotApi: Add clearTowingHookError, loadCargo, unloadCargo service APIs
 - 2026-04-24 topicMessages: Add SubmapListMsg and /submap_list emitter; decode SUBMAP_LIST binary proto frames
