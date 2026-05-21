@@ -1,7 +1,6 @@
 // Copyright (c) 2026 Autoxing Technology
 // SPDX-License-Identifier: MIT
 
-
 export interface StartMappingRequest {
   continue_mapping?: boolean;
   start_pose_type?: 'zero' | 'current_pose';
@@ -104,6 +103,12 @@ export interface RobotCaps {
 
   // Supports POST /services/calibrate_duo_lidar_poses
   supportsDuoLidar?: boolean;
+
+  // Supports POST /services/calibrate_head_lidar_pose
+  headLidar?: boolean;
+
+  // Supports POST /services/calibrate_rear_lidar_pose
+  rearLidar?: boolean;
 }
 
 export interface DeviceInfo {
@@ -142,7 +147,7 @@ export interface DeviceInfo {
     width: number;
     charge_contact_position?: string; // deprecated, use `charge_contact.pose_2d` instead
     charge_contact?: { pose_2d: [number, number, number]; size?: [number, number] };
-    visualization_topics?: string[] // like ["/lf_laser_3d/scan", ...]
+    visualization_topics?: string[]; // like ["/lf_laser_3d/scan", ...]
   };
   caps: RobotCaps;
   remote_params?: {
@@ -153,7 +158,6 @@ export interface DeviceInfo {
   // like "platform-build [8a10e24] Merge branch 'action_publisher'"
   gitinfo: string[];
 }
-
 
 export interface BriefDeviceInfo {
   // Add more specific fields if needed
@@ -457,4 +461,3 @@ export interface CollectedDataItem {
   size_bytes: number;
   modified_time: string;
 }
-

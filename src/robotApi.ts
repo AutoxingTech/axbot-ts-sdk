@@ -747,6 +747,14 @@ export class RobotApi {
     );
   }
 
+  async calibrateHeadLidar(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/calibrate_head_lidar_pose', {}), 'Head Lidar Calibration', false);
+  }
+
+  async calibrateRearLidar(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/calibrate_rear_lidar_pose', {}), 'Rear Lidar Calibration', false);
+  }
+
   /**
    * List all bag files.
    */

@@ -1,6 +1,7 @@
 CHANGELOG
 ==========
 
+- 2026-05-21 robotApi: Add calibrateHeadLidar and calibrateRearLidar service APIs
 - 2026-05-11 submapCache: Add generic submap cache
 - 2026-05-11 robotApi: Add SubmapQueryV2 fetch API
 - 2026-04-29 robotApi: Add clearTowingHookError, loadCargo, unloadCargo service APIs
