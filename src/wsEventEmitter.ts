@@ -235,6 +235,7 @@ export const lfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_
 export const rbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_3d/scan');
 export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_laser_3d/scan');
 export const backLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/back_laser_3d/scan');
+export const topLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_3d/scan');
 
 /** Twist feedback events */
 export const twistFeedbackEvents = new WsEventEmitter<TwistFeedbackMsg>('/twist_feedback');

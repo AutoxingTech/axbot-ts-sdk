@@ -109,6 +109,9 @@ export interface RobotCaps {
 
   // Supports POST /services/calibrate_rear_lidar_pose
   rearLidar?: boolean;
+
+  // Supports POST /services/calibrate_top_lidar_pose
+  topLidar?: boolean;
 }
 
 export interface DeviceInfo {

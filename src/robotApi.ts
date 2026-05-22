@@ -755,6 +755,10 @@ export class RobotApi {
     return this.apiCall(() => this.postImpl('services/calibrate_rear_lidar_pose', {}), 'Rear Lidar Calibration', false);
   }
 
+  async calibrateTopLidar(): Promise<boolean> {
+    return this.apiCall(() => this.postImpl('services/calibrate_top_lidar_pose', {}), 'Top Lidar Calibration', false);
+  }
+
   /**
    * List all bag files.
    */
