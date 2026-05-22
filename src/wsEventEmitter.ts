@@ -231,6 +231,7 @@ export const rbLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_
 
 export const leftLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/left_laser_2d/scan');
 export const rightLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/right_laser_2d/scan');
+export const topLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_2d/scan');
 export const lfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_3d/scan');
 export const rbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_3d/scan');
 export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_laser_3d/scan');
