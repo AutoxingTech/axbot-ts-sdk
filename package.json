@@ -1,6 +1,14 @@
 {
   "name": "@kingsimba/axbot-sdk",
   "version": "0.1.5",
+  "description": "TypeScript SDK for controlling Autoxing AMRs via REST and WebSocket APIs",
+  "keywords": [
+    "amr",
+    "autoxing",
+    "robot",
+    "sdk",
+    "websocket"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/AutoxingTech/axbot-ts-sdk#readme",
   "repository": {
