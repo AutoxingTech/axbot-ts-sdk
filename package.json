@@ -2,6 +2,14 @@
   "name": "@kingsimba/axbot-sdk",
   "version": "0.1.3",
   "license": "MIT",
+  "homepage": "https://github.com/AutoxingTech/axbot-ts-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AutoxingTech/axbot-ts-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AutoxingTech/axbot-ts-sdk/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
