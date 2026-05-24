@@ -2,6 +2,10 @@
 
 TypeScript SDK for controlling [Autoxing](https://github.com/AutoxingTech) AMRs via REST and WebSocket APIs.
 
+This SDK powers the robot monitoring platform [rb-admin.autoxing.com](https://rb-admin.autoxing.com). The SDK and the platform are developed in tandem — API additions, protocol changes, and new capabilities are implemented in the SDK first and consumed by the platform immediately.
+
+![](./rb-admin.png)
+
 ## Installation
 
 ```bash
@@ -12,19 +16,19 @@ npm install @kingsimba/axbot-sdk
 
 The SDK is split into sub-path exports — import only what you need:
 
-| Import path | Contents |
-|---|---|
-| `@kingsimba/axbot-sdk/robotApi` | REST API client (`RobotApi`) and all request/response types |
-| `@kingsimba/axbot-sdk/ws` | WebSocket client (`WsClient`), `WsEventEmitter`, `WsMessageStore` |
-| `@kingsimba/axbot-sdk/objectStore` | Reactive data stores (`ObjectStore`, `ArrayObjectStore`) |
-| `@kingsimba/axbot-sdk/msgs` | Topic message type definitions |
-| `@kingsimba/axbot-sdk/decoder` | Binary WebSocket frame decoder |
-| `@kingsimba/axbot-sdk/mapInfo` | Map info utilities |
-| `@kingsimba/axbot-sdk/pointCloudParser` | Point cloud data parser |
-| `@kingsimba/axbot-sdk/pbMessages` | Protobuf message helpers |
-| `@kingsimba/axbot-sdk/geojson` | GeoJSON type helpers |
-| `@kingsimba/axbot-sdk/utils` | General utilities |
-| `@kingsimba/axbot-sdk/proto` | Compiled protobuf definitions |
+| Import path                             | Contents                                                          |
+| --------------------------------------- | ----------------------------------------------------------------- |
+| `@kingsimba/axbot-sdk/robotApi`         | REST API client (`RobotApi`) and all request/response types       |
+| `@kingsimba/axbot-sdk/ws`               | WebSocket client (`WsClient`), `WsEventEmitter`, `WsMessageStore` |
+| `@kingsimba/axbot-sdk/objectStore`      | Reactive data stores (`ObjectStore`, `ArrayObjectStore`)          |
+| `@kingsimba/axbot-sdk/msgs`             | Topic message type definitions                                    |
+| `@kingsimba/axbot-sdk/decoder`          | Binary WebSocket frame decoder                                    |
+| `@kingsimba/axbot-sdk/mapInfo`          | Map info utilities                                                |
+| `@kingsimba/axbot-sdk/pointCloudParser` | Point cloud data parser                                           |
+| `@kingsimba/axbot-sdk/pbMessages`       | Protobuf message helpers                                          |
+| `@kingsimba/axbot-sdk/geojson`          | GeoJSON type helpers                                              |
+| `@kingsimba/axbot-sdk/utils`            | General utilities                                                 |
+| `@kingsimba/axbot-sdk/proto`            | Compiled protobuf definitions                                     |
 
 ## Usage
 
