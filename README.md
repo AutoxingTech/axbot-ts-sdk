@@ -1,8 +1,5 @@
 # axbot-ts-sdk
 
-[![npm version](https://img.shields.io/npm/v/@kingsimba/axbot-sdk)](https://www.npmjs.com/package/@kingsimba/axbot-sdk)
-[![License](https://img.shields.io/npm/l/@kingsimba/axbot-sdk)](LICENSE)
-
 TypeScript SDK for controlling [Autoxing](https://github.com/AutoxingTech) AMRs via REST and WebSocket APIs.
 
 This SDK powers the robot monitoring platform [rb-admin.autoxing.com](https://rb-admin.autoxing.com). The SDK and the platform are developed in tandem — API additions, protocol changes, and new capabilities are implemented in the SDK first and consumed by the platform immediately.
