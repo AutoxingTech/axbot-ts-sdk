@@ -30,8 +30,15 @@ export class WsClient {
 
   /**
    * Connect to the WebSocket at the given URL.
+   * @param url - WebSocket endpoint URL.
+   * @param params - Optional query parameters appended to the URL (e.g. `{ pb: '1' }`).
    */
-  public connect(url: string) {
+  public connect(url: string, params?: Record<string, string>) {
+    if (params) {
+      const separator = url.includes('?') ? '&' : '?';
+      url += separator + new URLSearchParams(params).toString();
+    }
+
     if (this.ws && (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING)) {
       if (this.url === url) return;
       this.disconnect();
@@ -183,10 +190,7 @@ export class WsClient {
 
     const toEnable: string[] = [];
     const toDisable: string[] = [];
-    const allDesired = new Set([
-      ...getEmitterSubscribedTopics(),
-      ...getStoreSubscribedTopics()
-    ]);
+    const allDesired = new Set([...getEmitterSubscribedTopics(), ...getStoreSubscribedTopics()]);
 
     for (const topic of allDesired) {
       if (!this.serverEnabledTopics.has(topic)) {
@@ -212,4 +216,3 @@ export class WsClient {
 
 export const wsClient = new WsClient();
 export default wsClient;
-

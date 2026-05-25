@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-05-25 wsClient: Support optional query parameters in connect() to signal client capabilities
 - 2026-05-25 wsEventEmitter: Add /raw_io_board_state event emitter
 - 2026-05-25 topicMessages: Add IoBoardStateMsg interface
 - 2026-05-22 wsEventEmitter: Add /top_laser_2d/scan event emitter
