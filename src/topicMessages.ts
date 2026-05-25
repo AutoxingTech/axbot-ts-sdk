@@ -504,3 +504,8 @@ export function parseRouteString(routeStr: string): [number, number][] {
   }
   return route;
 }
+
+export interface IoBoardStateMsg extends TopicMsg {
+  inputs_active: (number | boolean)[];
+  outputs_active: (number | boolean)[];
+}
