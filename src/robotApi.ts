@@ -723,9 +723,10 @@ export class RobotApi {
     return this.apiCall(() => this.postImpl('services/calibrate_lidar_yaws', {}), 'Lidar Yaw Calibration', false);
   }
 
-  async calibrateDuoLidarPoses(): Promise<boolean> {
+  async calibrateDuoLidarPoses(calibration_step?: 'single_shot' | 'right_wall' | 'front_wall'): Promise<boolean> {
+    const body = calibration_step ? { calibration_step } : {};
     return this.apiCall(
-      () => this.postImpl('services/calibrate_duo_lidar_poses', {}),
+      () => this.postImpl('services/calibrate_duo_lidar_poses', body),
       'Duo Lidar Poses Calibration',
       false,
     );

@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-06-03 robotApi: Add calibration_step parameter to calibrateDuoLidarPoses
 - 2026-05-25 wsClient: Support optional query parameters in connect() to signal client capabilities
 - 2026-05-25 wsEventEmitter: Add /raw_io_board_state event emitter
 - 2026-05-25 topicMessages: Add IoBoardStateMsg interface
