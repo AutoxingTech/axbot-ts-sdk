@@ -24,6 +24,8 @@ import {
   BagItem,
   CoreDumpItem,
   VideoFileItem,
+  CreateRecordingRequest,
+  CreateRecordingResponse,
 } from './robotApiType';
 
 export * from './robotApiType';
@@ -462,8 +464,8 @@ export class RobotApi {
     return this.apiCall(() => this.getImpl(`chassis/moves/${id}`), 'Get Move', null);
   }
 
-  async saveBag(): Promise<any> {
-    return this.apiCall(() => this.postImpl('recording/', {}), 'Save Bag', null);
+  async saveBag(req: CreateRecordingRequest = {}): Promise<CreateRecordingResponse | null> {
+    return this.apiCall(() => this.postImpl('recording/', req), 'Save Bag', null);
   }
 
   async startMapping(req: StartMappingRequest = {}): Promise<boolean> {

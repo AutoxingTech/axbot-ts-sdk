@@ -464,3 +464,26 @@ export interface CollectedDataItem {
   size_bytes: number;
   modified_time: string;
 }
+
+/**
+ * Request to create a recording (save a bag).
+ */
+export interface CreateRecordingRequest {
+  /** Suffix appended to the filename: {time}_{filename_suffix}.bag */
+  filename_suffix?: string;
+  /** Duration string e.g. "2m", "5m". Maximum 5m. */
+  duration?: string;
+  /** Category. Currently only "pos" is supported. */
+  category?: string;
+}
+
+/**
+ * Response from creating a recording.
+ */
+export interface CreateRecordingResponse {
+  filename: string;
+  size: string;
+  size_bytes: number;
+  end: string;
+  download_url: string;
+}
