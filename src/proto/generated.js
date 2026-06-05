@@ -3074,6 +3074,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {Uint8Array|null} [raw_data] RosMessageWrapper raw_data
          * @property {ros_messages.IMastState|null} [mast_state] RosMessageWrapper mast_state
          * @property {ros_messages.ISubmapList|null} [submap_list] RosMessageWrapper submap_list
+         * @property {ros_messages.IRackStates|null} [rack_states] RosMessageWrapper rack_states
          */
 
         /**
@@ -3147,17 +3148,25 @@ export const ros_messages = $root.ros_messages = (() => {
          */
         RosMessageWrapper.prototype.submap_list = null;
 
+        /**
+         * RosMessageWrapper rack_states.
+         * @member {ros_messages.IRackStates|null|undefined} rack_states
+         * @memberof ros_messages.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.rack_states = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|undefined} payload
+         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|undefined} payload
          * @memberof ros_messages.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -3199,6 +3208,8 @@ export const ros_messages = $root.ros_messages = (() => {
                 $root.ros_messages.MastState.encode(message.mast_state, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.submap_list != null && Object.hasOwnProperty.call(message, "submap_list"))
                 $root.ros_messages.SubmapList.encode(message.submap_list, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
+            if (message.rack_states != null && Object.hasOwnProperty.call(message, "rack_states"))
+                $root.ros_messages.RackStates.encode(message.rack_states, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
             return writer;
         };
 
@@ -3263,6 +3274,10 @@ export const ros_messages = $root.ros_messages = (() => {
                         message.submap_list = $root.ros_messages.SubmapList.decode(reader, reader.uint32());
                         break;
                     }
+                case 14: {
+                        message.rack_states = $root.ros_messages.RackStates.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -3307,6 +3322,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 1:
                 case 2:
                 case 3:
+                case 4:
                     break;
                 }
             if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
@@ -3350,6 +3366,16 @@ export const ros_messages = $root.ros_messages = (() => {
                         return "submap_list." + error;
                 }
             }
+            if (message.rack_states != null && message.hasOwnProperty("rack_states")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ros_messages.RackStates.verify(message.rack_states);
+                    if (error)
+                        return "rack_states." + error;
+                }
+            }
             return null;
         };
 
@@ -3388,6 +3414,10 @@ export const ros_messages = $root.ros_messages = (() => {
             case 3:
                 message.type = 3;
                 break;
+            case "RACK_STATES":
+            case 4:
+                message.type = 4;
+                break;
             }
             if (object.timestamp_ns != null)
                 if ($util.Long)
@@ -3419,6 +3449,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeof object.submap_list !== "object")
                     throw TypeError(".ros_messages.RosMessageWrapper.submap_list: object expected");
                 message.submap_list = $root.ros_messages.SubmapList.fromObject(object.submap_list);
+            }
+            if (object.rack_states != null) {
+                if (typeof object.rack_states !== "object")
+                    throw TypeError(".ros_messages.RosMessageWrapper.rack_states: object expected");
+                message.rack_states = $root.ros_messages.RackStates.fromObject(object.rack_states);
             }
             return message;
         };
@@ -3474,6 +3509,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (options.oneofs)
                     object.payload = "submap_list";
             }
+            if (message.rack_states != null && message.hasOwnProperty("rack_states")) {
+                object.rack_states = $root.ros_messages.RackStates.toObject(message.rack_states, options);
+                if (options.oneofs)
+                    object.payload = "rack_states";
+            }
             return object;
         };
 
@@ -3511,6 +3551,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number} POINT_CLOUD=1 POINT_CLOUD value
          * @property {number} MAST_STATE=2 MAST_STATE value
          * @property {number} SUBMAP_LIST=3 SUBMAP_LIST value
+         * @property {number} RACK_STATES=4 RACK_STATES value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -3518,10 +3559,817 @@ export const ros_messages = $root.ros_messages = (() => {
             values[valuesById[1] = "POINT_CLOUD"] = 1;
             values[valuesById[2] = "MAST_STATE"] = 2;
             values[valuesById[3] = "SUBMAP_LIST"] = 3;
+            values[valuesById[4] = "RACK_STATES"] = 4;
             return values;
         })();
 
         return RosMessageWrapper;
+    })();
+
+    ros_messages.RackStates = (function() {
+
+        /**
+         * Properties of a RackStates.
+         * @memberof ros_messages
+         * @interface IRackStates
+         * @property {string|null} [map_uid] RackStates map_uid
+         * @property {Array.<ros_messages.RackStates.IRackState>|null} [racks] RackStates racks
+         */
+
+        /**
+         * Constructs a new RackStates.
+         * @memberof ros_messages
+         * @classdesc Represents a RackStates.
+         * @implements IRackStates
+         * @constructor
+         * @param {ros_messages.IRackStates=} [properties] Properties to set
+         */
+        function RackStates(properties) {
+            this.racks = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RackStates map_uid.
+         * @member {string} map_uid
+         * @memberof ros_messages.RackStates
+         * @instance
+         */
+        RackStates.prototype.map_uid = "";
+
+        /**
+         * RackStates racks.
+         * @member {Array.<ros_messages.RackStates.IRackState>} racks
+         * @memberof ros_messages.RackStates
+         * @instance
+         */
+        RackStates.prototype.racks = $util.emptyArray;
+
+        /**
+         * Creates a new RackStates instance using the specified properties.
+         * @function create
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {ros_messages.IRackStates=} [properties] Properties to set
+         * @returns {ros_messages.RackStates} RackStates instance
+         */
+        RackStates.create = function create(properties) {
+            return new RackStates(properties);
+        };
+
+        /**
+         * Encodes the specified RackStates message. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
+         * @function encode
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {ros_messages.IRackStates} message RackStates message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RackStates.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.map_uid != null && Object.hasOwnProperty.call(message, "map_uid"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.map_uid);
+            if (message.racks != null && message.racks.length)
+                for (let i = 0; i < message.racks.length; ++i)
+                    $root.ros_messages.RackStates.RackState.encode(message.racks[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RackStates message, length delimited. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {ros_messages.IRackStates} message RackStates message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RackStates.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RackStates message from the specified reader or buffer.
+         * @function decode
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ros_messages.RackStates} RackStates
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RackStates.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RackStates();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.map_uid = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.racks && message.racks.length))
+                            message.racks = [];
+                        message.racks.push($root.ros_messages.RackStates.RackState.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RackStates message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ros_messages.RackStates} RackStates
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RackStates.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RackStates message.
+         * @function verify
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RackStates.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.map_uid != null && message.hasOwnProperty("map_uid"))
+                if (!$util.isString(message.map_uid))
+                    return "map_uid: string expected";
+            if (message.racks != null && message.hasOwnProperty("racks")) {
+                if (!Array.isArray(message.racks))
+                    return "racks: array expected";
+                for (let i = 0; i < message.racks.length; ++i) {
+                    let error = $root.ros_messages.RackStates.RackState.verify(message.racks[i]);
+                    if (error)
+                        return "racks." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RackStates message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ros_messages.RackStates} RackStates
+         */
+        RackStates.fromObject = function fromObject(object) {
+            if (object instanceof $root.ros_messages.RackStates)
+                return object;
+            let message = new $root.ros_messages.RackStates();
+            if (object.map_uid != null)
+                message.map_uid = String(object.map_uid);
+            if (object.racks) {
+                if (!Array.isArray(object.racks))
+                    throw TypeError(".ros_messages.RackStates.racks: array expected");
+                message.racks = [];
+                for (let i = 0; i < object.racks.length; ++i) {
+                    if (typeof object.racks[i] !== "object")
+                        throw TypeError(".ros_messages.RackStates.racks: object expected");
+                    message.racks[i] = $root.ros_messages.RackStates.RackState.fromObject(object.racks[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RackStates message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {ros_messages.RackStates} message RackStates
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RackStates.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.racks = [];
+            if (options.defaults)
+                object.map_uid = "";
+            if (message.map_uid != null && message.hasOwnProperty("map_uid"))
+                object.map_uid = message.map_uid;
+            if (message.racks && message.racks.length) {
+                object.racks = [];
+                for (let j = 0; j < message.racks.length; ++j)
+                    object.racks[j] = $root.ros_messages.RackStates.RackState.toObject(message.racks[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RackStates to JSON.
+         * @function toJSON
+         * @memberof ros_messages.RackStates
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RackStates.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RackStates
+         * @function getTypeUrl
+         * @memberof ros_messages.RackStates
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RackStates.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ros_messages.RackStates";
+        };
+
+        RackStates.RackLevelState = (function() {
+
+            /**
+             * Properties of a RackLevelState.
+             * @memberof ros_messages.RackStates
+             * @interface IRackLevelState
+             * @property {number|Long|null} [timestamp_ns] RackLevelState timestamp_ns
+             * @property {number|null} [level] RackLevelState level
+             * @property {ros_messages.RackStates.RackLevelState.SpaceState|null} [state] RackLevelState state
+             */
+
+            /**
+             * Constructs a new RackLevelState.
+             * @memberof ros_messages.RackStates
+             * @classdesc Represents a RackLevelState.
+             * @implements IRackLevelState
+             * @constructor
+             * @param {ros_messages.RackStates.IRackLevelState=} [properties] Properties to set
+             */
+            function RackLevelState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * RackLevelState timestamp_ns.
+             * @member {number|Long} timestamp_ns
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @instance
+             */
+            RackLevelState.prototype.timestamp_ns = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+            /**
+             * RackLevelState level.
+             * @member {number} level
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @instance
+             */
+            RackLevelState.prototype.level = 0;
+
+            /**
+             * RackLevelState state.
+             * @member {ros_messages.RackStates.RackLevelState.SpaceState} state
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @instance
+             */
+            RackLevelState.prototype.state = 0;
+
+            /**
+             * Creates a new RackLevelState instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {ros_messages.RackStates.IRackLevelState=} [properties] Properties to set
+             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState instance
+             */
+            RackLevelState.create = function create(properties) {
+                return new RackLevelState(properties);
+            };
+
+            /**
+             * Encodes the specified RackLevelState message. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {ros_messages.RackStates.IRackLevelState} message RackLevelState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RackLevelState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.timestamp_ns != null && Object.hasOwnProperty.call(message, "timestamp_ns"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.timestamp_ns);
+                if (message.level != null && Object.hasOwnProperty.call(message, "level"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.level);
+                if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.state);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified RackLevelState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {ros_messages.RackStates.IRackLevelState} message RackLevelState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RackLevelState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a RackLevelState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RackLevelState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RackStates.RackLevelState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.timestamp_ns = reader.uint64();
+                            break;
+                        }
+                    case 2: {
+                            message.level = reader.int32();
+                            break;
+                        }
+                    case 3: {
+                            message.state = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a RackLevelState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RackLevelState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a RackLevelState message.
+             * @function verify
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            RackLevelState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
+                    if (!$util.isInteger(message.timestamp_ns) && !(message.timestamp_ns && $util.isInteger(message.timestamp_ns.low) && $util.isInteger(message.timestamp_ns.high)))
+                        return "timestamp_ns: integer|Long expected";
+                if (message.level != null && message.hasOwnProperty("level"))
+                    if (!$util.isInteger(message.level))
+                        return "level: integer expected";
+                if (message.state != null && message.hasOwnProperty("state"))
+                    switch (message.state) {
+                    default:
+                        return "state: enum value expected";
+                    case 0:
+                    case 3:
+                    case 4:
+                        break;
+                    }
+                return null;
+            };
+
+            /**
+             * Creates a RackLevelState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState
+             */
+            RackLevelState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.RackStates.RackLevelState)
+                    return object;
+                let message = new $root.ros_messages.RackStates.RackLevelState();
+                if (object.timestamp_ns != null)
+                    if ($util.Long)
+                        (message.timestamp_ns = $util.Long.fromValue(object.timestamp_ns)).unsigned = true;
+                    else if (typeof object.timestamp_ns === "string")
+                        message.timestamp_ns = parseInt(object.timestamp_ns, 10);
+                    else if (typeof object.timestamp_ns === "number")
+                        message.timestamp_ns = object.timestamp_ns;
+                    else if (typeof object.timestamp_ns === "object")
+                        message.timestamp_ns = new $util.LongBits(object.timestamp_ns.low >>> 0, object.timestamp_ns.high >>> 0).toNumber(true);
+                if (object.level != null)
+                    message.level = object.level | 0;
+                switch (object.state) {
+                default:
+                    if (typeof object.state === "number") {
+                        message.state = object.state;
+                        break;
+                    }
+                    break;
+                case "UNKNOWN":
+                case 0:
+                    message.state = 0;
+                    break;
+                case "OCCUPIED":
+                case 3:
+                    message.state = 3;
+                    break;
+                case "FREE":
+                case 4:
+                    message.state = 4;
+                    break;
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a RackLevelState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {ros_messages.RackStates.RackLevelState} message RackLevelState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            RackLevelState.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    if ($util.Long) {
+                        let long = new $util.Long(0, 0, true);
+                        object.timestamp_ns = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.timestamp_ns = options.longs === String ? "0" : 0;
+                    object.level = 0;
+                    object.state = options.enums === String ? "UNKNOWN" : 0;
+                }
+                if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
+                    if (typeof message.timestamp_ns === "number")
+                        object.timestamp_ns = options.longs === String ? String(message.timestamp_ns) : message.timestamp_ns;
+                    else
+                        object.timestamp_ns = options.longs === String ? $util.Long.prototype.toString.call(message.timestamp_ns) : options.longs === Number ? new $util.LongBits(message.timestamp_ns.low >>> 0, message.timestamp_ns.high >>> 0).toNumber(true) : message.timestamp_ns;
+                if (message.level != null && message.hasOwnProperty("level"))
+                    object.level = message.level;
+                if (message.state != null && message.hasOwnProperty("state"))
+                    object.state = options.enums === String ? $root.ros_messages.RackStates.RackLevelState.SpaceState[message.state] === undefined ? message.state : $root.ros_messages.RackStates.RackLevelState.SpaceState[message.state] : message.state;
+                return object;
+            };
+
+            /**
+             * Converts this RackLevelState to JSON.
+             * @function toJSON
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            RackLevelState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for RackLevelState
+             * @function getTypeUrl
+             * @memberof ros_messages.RackStates.RackLevelState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            RackLevelState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.RackStates.RackLevelState";
+            };
+
+            /**
+             * SpaceState enum.
+             * @name ros_messages.RackStates.RackLevelState.SpaceState
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} OCCUPIED=3 OCCUPIED value
+             * @property {number} FREE=4 FREE value
+             */
+            RackLevelState.SpaceState = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[3] = "OCCUPIED"] = 3;
+                values[valuesById[4] = "FREE"] = 4;
+                return values;
+            })();
+
+            return RackLevelState;
+        })();
+
+        RackStates.RackState = (function() {
+
+            /**
+             * Properties of a RackState.
+             * @memberof ros_messages.RackStates
+             * @interface IRackState
+             * @property {string|null} [poi_id] RackState poi_id
+             * @property {Array.<ros_messages.RackStates.IRackLevelState>|null} [levels] RackState levels
+             */
+
+            /**
+             * Constructs a new RackState.
+             * @memberof ros_messages.RackStates
+             * @classdesc Represents a RackState.
+             * @implements IRackState
+             * @constructor
+             * @param {ros_messages.RackStates.IRackState=} [properties] Properties to set
+             */
+            function RackState(properties) {
+                this.levels = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * RackState poi_id.
+             * @member {string} poi_id
+             * @memberof ros_messages.RackStates.RackState
+             * @instance
+             */
+            RackState.prototype.poi_id = "";
+
+            /**
+             * RackState levels.
+             * @member {Array.<ros_messages.RackStates.IRackLevelState>} levels
+             * @memberof ros_messages.RackStates.RackState
+             * @instance
+             */
+            RackState.prototype.levels = $util.emptyArray;
+
+            /**
+             * Creates a new RackState instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {ros_messages.RackStates.IRackState=} [properties] Properties to set
+             * @returns {ros_messages.RackStates.RackState} RackState instance
+             */
+            RackState.create = function create(properties) {
+                return new RackState(properties);
+            };
+
+            /**
+             * Encodes the specified RackState message. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {ros_messages.RackStates.IRackState} message RackState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RackState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.poi_id != null && Object.hasOwnProperty.call(message, "poi_id"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.poi_id);
+                if (message.levels != null && message.levels.length)
+                    for (let i = 0; i < message.levels.length; ++i)
+                        $root.ros_messages.RackStates.RackLevelState.encode(message.levels[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified RackState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {ros_messages.RackStates.IRackState} message RackState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RackState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a RackState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.RackStates.RackState} RackState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RackState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RackStates.RackState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.poi_id = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            if (!(message.levels && message.levels.length))
+                                message.levels = [];
+                            message.levels.push($root.ros_messages.RackStates.RackLevelState.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a RackState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.RackStates.RackState} RackState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RackState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a RackState message.
+             * @function verify
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            RackState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.poi_id != null && message.hasOwnProperty("poi_id"))
+                    if (!$util.isString(message.poi_id))
+                        return "poi_id: string expected";
+                if (message.levels != null && message.hasOwnProperty("levels")) {
+                    if (!Array.isArray(message.levels))
+                        return "levels: array expected";
+                    for (let i = 0; i < message.levels.length; ++i) {
+                        let error = $root.ros_messages.RackStates.RackLevelState.verify(message.levels[i]);
+                        if (error)
+                            return "levels." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a RackState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.RackStates.RackState} RackState
+             */
+            RackState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.RackStates.RackState)
+                    return object;
+                let message = new $root.ros_messages.RackStates.RackState();
+                if (object.poi_id != null)
+                    message.poi_id = String(object.poi_id);
+                if (object.levels) {
+                    if (!Array.isArray(object.levels))
+                        throw TypeError(".ros_messages.RackStates.RackState.levels: array expected");
+                    message.levels = [];
+                    for (let i = 0; i < object.levels.length; ++i) {
+                        if (typeof object.levels[i] !== "object")
+                            throw TypeError(".ros_messages.RackStates.RackState.levels: object expected");
+                        message.levels[i] = $root.ros_messages.RackStates.RackLevelState.fromObject(object.levels[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a RackState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {ros_messages.RackStates.RackState} message RackState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            RackState.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.levels = [];
+                if (options.defaults)
+                    object.poi_id = "";
+                if (message.poi_id != null && message.hasOwnProperty("poi_id"))
+                    object.poi_id = message.poi_id;
+                if (message.levels && message.levels.length) {
+                    object.levels = [];
+                    for (let j = 0; j < message.levels.length; ++j)
+                        object.levels[j] = $root.ros_messages.RackStates.RackLevelState.toObject(message.levels[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this RackState to JSON.
+             * @function toJSON
+             * @memberof ros_messages.RackStates.RackState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            RackState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for RackState
+             * @function getTypeUrl
+             * @memberof ros_messages.RackStates.RackState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            RackState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.RackStates.RackState";
+            };
+
+            return RackState;
+        })();
+
+        return RackStates;
     })();
 
     return ros_messages;

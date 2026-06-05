@@ -62,6 +62,22 @@ export interface DetectedRackMsg extends TopicMsg {
   };
 }
 
+export interface MapRackLevelState {
+  timestamp_ns: string | number;
+  level: number;
+  state: 'unknown' | 'occupied' | 'free';
+}
+
+export interface MapRackState {
+  poi_id: string;
+  levels: MapRackLevelState[];
+}
+
+export interface MapRackStatesMsg extends TopicMsg {
+  map_uid: string;
+  racks: MapRackState[];
+}
+
 export interface PointCloudMsg extends TopicMsg {
   // x, y, z, probability
   points: [number, number, number, number?][];

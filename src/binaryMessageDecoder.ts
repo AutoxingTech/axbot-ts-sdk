@@ -14,7 +14,7 @@
 import { gunzipSync } from 'fflate';
 import { ros_messages } from './proto/generated.js';
 import { PointCloudPbMsg } from './pbMessages.js';
-import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg } from './topicMessages.js';
+import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg, MapRackStatesMsg } from './topicMessages.js';
 
 /**
  * Decode a binary WebSocket frame into a topic name and typed payload.
@@ -95,6 +95,35 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
       slam_state: slamStateNames[sl.slam_state ?? 0] ?? 'invalid',
       uuid: sl.uuid ?? '',
       submap,
+    };
+    return { topic, payload: msg };
+  }
+
+  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.RACK_STATES && wrapper.rack_states) {
+    const spaceStateNames: Record<number, 'unknown' | 'occupied' | 'free'> = {
+      0: 'unknown',
+      3: 'occupied',
+      4: 'free',
+    };
+    const rs = wrapper.rack_states;
+    const racks = (rs.racks ?? []).map((r) => ({
+      poi_id: r.poi_id ?? '',
+      levels: (r.levels ?? []).map((l) => {
+        let ts: string | number = 0;
+        if (l.timestamp_ns !== undefined && l.timestamp_ns !== null) {
+          ts = typeof l.timestamp_ns === 'object' ? l.timestamp_ns.toString() : l.timestamp_ns;
+        }
+        return {
+          timestamp_ns: ts,
+          level: l.level ?? 0,
+          state: spaceStateNames[l.state ?? 0] ?? 'unknown',
+        };
+      }),
+    }));
+    const msg: MapRackStatesMsg = {
+      topic,
+      map_uid: rs.map_uid ?? '',
+      racks,
     };
     return { topic, payload: msg };
   }

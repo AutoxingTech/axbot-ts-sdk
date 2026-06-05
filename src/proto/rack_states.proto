@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package ros_messages;
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+message RackStates {
+    message RackLevelState {
+        enum SpaceState {
+            UNKNOWN  = 0;
+            OCCUPIED = 3;
+            FREE     = 4;
+        }
+
+        uint64    timestamp_ns = 1;
+        int32     level        = 2;
+        SpaceState state       = 3;
+    }
+
+    message RackState {
+        string                 poi_id = 1;
+        repeated RackLevelState levels = 2;
+    }
+
+    string             map_uid    = 1;
+    repeated RackState racks      = 2;
+}

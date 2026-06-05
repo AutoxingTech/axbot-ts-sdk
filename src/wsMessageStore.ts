@@ -20,6 +20,7 @@ import {
   DetectedPalletsMsg,
   DetectedFeaturesMsg,
   DetectedRackMsg,
+  MapRackStatesMsg,
 } from './msgs';
 
 export type Subscriber<T> = (data: T) => void;
@@ -155,7 +156,8 @@ export const detectedPalletsStore = new WsMessageStore<DetectedPalletsMsg>('/det
 // Rack store
 export const detectedRackStore = new WsMessageStore<DetectedRackMsg>('/detected_rack');
 
+// Map rack state store
+export const mapRackStatesStore = new WsMessageStore<MapRackStatesMsg>('/map_rack_state');
+
 // Chargers store
 export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>('/detected_features/chargers');
-
-
