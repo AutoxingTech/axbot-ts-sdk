@@ -157,7 +157,7 @@ export const detectedPalletsStore = new WsMessageStore<DetectedPalletsMsg>('/det
 export const detectedRackStore = new WsMessageStore<DetectedRackMsg>('/detected_rack');
 
 // Map rack state store
-export const mapRackStatesStore = new WsMessageStore<MapRackStatesMsg>('/map_rack_state');
+export const mapRackStatesStore = new WsMessageStore<MapRackStatesMsg>('/map_rack_states');
 
 // Chargers store
 export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>('/detected_features/chargers');
