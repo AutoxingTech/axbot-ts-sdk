@@ -193,6 +193,11 @@ export interface DepthCameraStateMsg extends TopicMsg {
   enabled: boolean;
 }
 
+export interface DepthCameraImageMsg extends TopicMsg {
+  size: [number, number];
+  data: string; // base64-encoded PNG
+}
+
 export enum PowerState {
   unknown = 0,
   on = 1,

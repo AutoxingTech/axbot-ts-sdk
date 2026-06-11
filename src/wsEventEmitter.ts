@@ -135,6 +135,7 @@ import {
   MastStateMsg,
   SubmapListMsg,
   IoBoardStateMsg,
+  DepthCameraImageMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -211,6 +212,12 @@ export const depthCameraForwardPoints2Events = new WsEventEmitter<PointCloudMsg>
 export const depthCameraDownwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/downward/points2');
 export const depthCameraUpwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/upward/points2');
 export const depthCameraBackwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/backward/points2');
+
+/** Depth camera image events */
+export const depthCameraForwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/forward/image');
+export const depthCameraDownwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/downward/image');
+export const depthCameraUpwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/upward/image');
+export const depthCameraBackwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/backward/image');
 
 /** Planning state events */
 export const planningStateEvents = new WsEventEmitter<PlanningStateMsg>('/planning_state');
