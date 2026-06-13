@@ -348,7 +348,7 @@ export class MapInfo {
     const type = +(feature.properties.regionType ?? 0);
     let obj: MapPolygon;
     if ((type as MapPolygonType) === MapPolygonType.rackZone) {
-      obj = new RackZonePolygon(feature.properties.name || '', feature.id, geo.coordinates);
+      obj = new RackZonePolygon(feature.properties.name || feature.properties.desc || '', feature.id, geo.coordinates);
       this.rackZones.push(obj as RackZonePolygon);
     } else {
       obj = new MapPolygon(type as MapPolygonType, feature.properties.name || '', feature.id, geo.coordinates);
@@ -363,7 +363,7 @@ export class MapInfo {
     this.rackZones.forEach((rackZone) => {
       this.rackDetectionPoints.forEach((rackPoint) => {
         if (pointInPolygon([rackPoint.pose.pos.x, rackPoint.pose.pos.y], rackZone.coordinates[0])) {
-          rackPoint.rackZoneName = `${rackZone.name || 'Rack Zone'} ${zoneNumber}`;
+          rackPoint.rackZoneName = rackZone.name || `Rack Zone ${zoneNumber}`;
           rackPoint.rackZoneId = rackZone.id;
         }
       });
