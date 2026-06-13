@@ -25,6 +25,11 @@ export interface MapFeatureProperties {
   defaultPalletDepth?: number;
 }
 
+export interface RackLevel {
+  height: number;
+  id: number;
+}
+
 export class MapFeature {
   rawProperties?: Record<string, unknown>;
   constructor(
@@ -169,6 +174,7 @@ export class MapPoint extends MapFeature {
   landmarkId?: string; // landmark type only
   ref?: string; // rack type only
   enabledLevels?: number[]; // rack type only, multi-level rack point
+  rackLevels?: RackLevel[]; // rack type only, level definitions with height from associated rack zone
   rackZoneName?: string; // rack point associated rack zone name
   rackZoneId?: string; // rack point associated rack zone id
 
@@ -226,6 +232,8 @@ export class MapPolygon extends MapFeature {
 }
 
 export class RackZonePolygon extends MapPolygon {
+  rackLevels?: RackLevel[]; // rack zone level definitions
+
   constructor(
     public name: string,
     public id: string,
@@ -350,8 +358,13 @@ export class MapInfo {
     const type = +(feature.properties.regionType ?? 0);
     let obj: MapPolygon;
     if ((type as MapPolygonType) === MapPolygonType.rackZone) {
-      obj = new RackZonePolygon(feature.properties.name || feature.properties.desc || '', feature.id, geo.coordinates);
-      this.rackZones.push(obj as RackZonePolygon);
+      const rackZone = new RackZonePolygon(feature.properties.name || feature.properties.desc || '', feature.id, geo.coordinates);
+      const rackLevels = (feature.properties as any).rackLevels;
+      if (rackLevels) {
+        rackZone.rackLevels = rackLevels as RackLevel[];
+      }
+      obj = rackZone;
+      this.rackZones.push(rackZone);
     } else {
       obj = new MapPolygon(type as MapPolygonType, feature.properties.name || '', feature.id, geo.coordinates);
     }
@@ -367,6 +380,9 @@ export class MapInfo {
         if (pointInPolygon([rackPoint.pose.pos.x, rackPoint.pose.pos.y], rackZone.coordinates[0])) {
           rackPoint.rackZoneName = rackZone.name || `Rack Zone ${zoneNumber}`;
           rackPoint.rackZoneId = rackZone.id;
+          if (rackZone.rackLevels) {
+            rackPoint.rackLevels = rackZone.rackLevels;
+          }
         }
       });
       zoneNumber += 1;
