@@ -136,7 +136,6 @@ import {
   SubmapListMsg,
   IoBoardStateMsg,
   DepthCameraImageMsg,
-  MapRackStatesMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -178,9 +177,6 @@ export const mastStateEvents = new WsEventEmitter<MastStateMsg>('/mast_state');
 
 /** IO board state events */
 export const ioBoardStateEvents = new WsEventEmitter<IoBoardStateMsg>('/raw_io_board_state');
-
-/** Map rack states events */
-export const mapRackStatesEvents = new WsEventEmitter<MapRackStatesMsg>('/map_rack_states');
 
 /** Semantic points events (for SemanticPointCloudRenderer) */
 export const semanticPointsEvents = new WsEventEmitter<SemanticPointsMsg>('/semantic_points');

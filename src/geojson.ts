@@ -26,6 +26,15 @@ export interface Feature {
     lineType?: string;
     regionType?: string;
     yaw: number;
+    // Rack zone properties
+    rackLevels?: Array<{ id: number; height: number }>;
+    // Rack point properties
+    ref?: string;
+    enabledLevels?: number[];
+    // Barcode properties
+    barcodeId?: string;
+    // Landmark properties
+    landmarkId?: string;
   };
   geometry: PointGeometry | LineStringGeometry | PolygonGeometry;
 }

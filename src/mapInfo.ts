@@ -322,22 +322,22 @@ export class MapInfo {
         this.chargers.push(obj);
         break;
       case MapPointType.rackPoint:
-        obj.ref = (feature.properties as any).ref;
-        obj.enabledLevels = (feature.properties as any).enabledLevels;
+        obj.ref = feature.properties.ref;
+        obj.enabledLevels = feature.properties.enabledLevels;
         this.rackDetectionPoints.push(obj);
         break;
       case MapPointType.barcode:
-        obj.barcodeId = (feature.properties as any).barcodeId;
+        obj.barcodeId = feature.properties.barcodeId;
         this.barcodes.push(obj);
         break;
       case MapPointType.landmark:
-        obj.landmarkId = (feature.properties as any).landmarkId;
+        obj.landmarkId = feature.properties.landmarkId;
         this.landmarks.push(obj);
         break;
     }
 
-    if (type !== MapPointType.barcode && (feature.properties as any).barcodeId) {
-      obj.barcodeId = (feature.properties as any).barcodeId;
+    if (type !== MapPointType.barcode && feature.properties.barcodeId) {
+      obj.barcodeId = feature.properties.barcodeId;
       this.barcodeAssociatedPois.push(obj);
     }
   }
@@ -359,9 +359,9 @@ export class MapInfo {
     let obj: MapPolygon;
     if ((type as MapPolygonType) === MapPolygonType.rackZone) {
       const rackZone = new RackZonePolygon(feature.properties.name || feature.properties.desc || '', feature.id, geo.coordinates);
-      const rackLevels = (feature.properties as any).rackLevels;
+      const rackLevels = feature.properties.rackLevels;
       if (rackLevels) {
-        rackZone.rackLevels = rackLevels as RackLevel[];
+        rackZone.rackLevels = rackLevels;
       }
       obj = rackZone;
       this.rackZones.push(rackZone);
