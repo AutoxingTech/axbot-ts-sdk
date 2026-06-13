@@ -21,6 +21,7 @@ export interface Feature {
   type: 'Feature';
   properties: {
     name?: string;
+    desc?: string;
     type?: string;
     lineType?: string;
     regionType?: string;

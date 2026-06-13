@@ -168,6 +168,7 @@ export class MapPoint extends MapFeature {
   barcodeId?: string; // barcode type only
   landmarkId?: string; // landmark type only
   ref?: string; // rack type only
+  enabledLevels?: number[]; // rack type only, multi-level rack point
   rackZoneName?: string; // rack point associated rack zone name
   rackZoneId?: string; // rack point associated rack zone id
 
@@ -314,6 +315,7 @@ export class MapInfo {
         break;
       case MapPointType.rackPoint:
         obj.ref = (feature.properties as any).ref;
+        obj.enabledLevels = (feature.properties as any).enabledLevels;
         this.rackDetectionPoints.push(obj);
         break;
       case MapPointType.barcode:
