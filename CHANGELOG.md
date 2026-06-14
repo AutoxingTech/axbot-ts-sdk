@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-06-14 objectStore: Supplement default visualization topics in rosTopicNamesStore on API failure
 - 2026-06-09 robotApi: Add getTopicList and getPublishedTopicNames ROS master APIs
 - 2026-06-05 wsMessageStore: Add /map_rack_state store with binary protobuf decoding support
 - 2026-06-05 robotApi: Add CreateRecording types and parameterized saveBag method

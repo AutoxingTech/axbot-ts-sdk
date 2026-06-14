@@ -110,6 +110,63 @@ export class ArrayObjectStore<T> {
 class DeviceInfoStore extends ObjectStore<DeviceInfo> {
 }
 
+class RosTopicNamesStore extends ArrayObjectStore<string> {
+  private forkliftTopics = [
+    '/horizontal_laser_2d/matched',
+    '/left_laser_2d/matched',
+    '/right_laser_2d/matched',
+    '/rb_laser_2d/matched',
+    '/matched_depth_points/downward',
+    '/matched_depth_points/backward',
+  ];
+
+  private defaultTopics = [
+    '/horizontal_laser_2d/matched',
+    '/bottom_laser_2d/matched',
+    '/matched_depth_points/downward',
+    '/matched_depth_points/forward',
+  ];
+
+  private process(topics: string[]): string[] {
+    if (!Array.isArray(topics)) return [];
+
+    const deviceInfo = deviceInfoStore.getObject();
+    const model = deviceInfo?.device?.model;
+    const isForklift = model?.startsWith('forklift') ?? false;
+    const supplement = isForklift ? this.forkliftTopics : this.defaultTopics;
+
+    const result = topics.slice();
+    for (const t of supplement) {
+      if (!result.includes(t)) {
+        result.push(t);
+      }
+    }
+    return result;
+  }
+
+  setObjects(items: string[]): void {
+    super.setObjects(this.process(items));
+  }
+
+  async refresh(): Promise<string[]> {
+    let topics: string[];
+    try {
+      const data = await this.fetchData();
+      topics = Array.isArray(data) ? data.slice() : [];
+      // API succeeded — store raw topics without supplementing
+      this.stored_object = topics;
+      this.notify();
+      return this.stored_object;
+    } catch {
+      // API failed (e.g. 404) — supplement with model-specific defaults
+      topics = [];
+    }
+    this.stored_object = this.process(topics);
+    this.notify();
+    return this.stored_object;
+  }
+}
+
 export const bagListStore = new ArrayObjectStore<BagItem>(() => robotApi.getBags());
 export const mapListStore = new ArrayObjectStore<MapItem>(() => robotApi.getMaps());
 export const mappingTaskListStore = new ArrayObjectStore<MappingTaskItem>(() => robotApi.getMappingTasks());
@@ -117,4 +174,4 @@ export const videoListStore = new ArrayObjectStore<VideoFileItem>(() => robotApi
 export const alertTriggeredBagStore = new ArrayObjectStore<BagItem>(() => robotApi.getRecordings());
 export const deviceInfoStore = new DeviceInfoStore(() => robotApi.getDeviceInfo());
 export const coreDumpStore = new ArrayObjectStore<CoreDumpItem>(() => robotApi.getCoreDumps());
-export const rosTopicNamesStore = new ArrayObjectStore<string>(() => robotApi.getPublishedTopicNames());
+export const rosTopicNamesStore = new RosTopicNamesStore(() => robotApi.getPublishedTopicNames());
