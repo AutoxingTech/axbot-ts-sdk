@@ -175,23 +175,25 @@ export class RobotApi {
     url: string,
     data: any,
     signal?: AbortSignal,
+    opts?: { proto?: boolean },
   ): Promise<Response> {
     const base = this.getConfig().getApiBase();
     const fullUrl = `${base}/${url}`;
     const cb = this.getConfig().onApiCalled;
     if (cb) cb({ method, url: fullUrl, payload: data });
+    const accept = opts?.proto ? 'application/x-protobuf' : 'application/json';
     let res: Response;
     if (method === 'GET' || method === 'DELETE') {
       res = await fetch(fullUrl, {
         method,
-        headers: { Accept: 'application/json' },
+        headers: { Accept: accept },
         credentials: 'include', // Include cookies in requests
         signal,
       });
     } else {
       res = await fetch(fullUrl, {
         method,
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: accept },
         credentials: 'include', // Include cookies in requests
         body: JSON.stringify(data),
         signal,
@@ -231,8 +233,8 @@ export class RobotApi {
     return this.doRequest('DELETE', url, null, signal);
   }
 
-  protected async getImpl(url: string, signal?: AbortSignal): Promise<Response> {
-    return this.doRequest('GET', url, null, signal);
+  protected async getImpl(url: string, signal?: AbortSignal, opts?: { proto?: boolean }): Promise<Response> {
+    return this.doRequest('GET', url, null, signal, opts);
   }
 
   /**
@@ -1058,6 +1060,20 @@ export class RobotApi {
       'Get Bag Player Chunk',
       {} as BagPlayerChunkResponse,
     );
+  }
+
+  /**
+   * Fetch the list of all published ROS topics with type, publisher count, and subscriber count.
+   * GET /ros/rosmaster/topics
+   */
+  async getTopicList(signal?: AbortSignal): Promise<ros_messages.TopicListResponse> {
+    const res = await this.getImpl('ros/rosmaster/topics', signal, { proto: true });
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+    const buf = new Uint8Array(await res.arrayBuffer());
+    return ros_messages.TopicListResponse.decode(buf);
   }
 
   /**

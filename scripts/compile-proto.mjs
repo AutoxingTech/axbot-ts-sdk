@@ -11,20 +11,16 @@
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { readdirSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const protoSrc = join(root, 'src', 'proto');
 
-const protoFiles = [
-  'header.proto',
-  'geometry.proto',
-  'point_cloud.proto',
-  'mast_state.proto',
-  'submap_list.proto',
-  'submap_query.proto',
-  'ros_message_wrapper.proto',
-].map((f) => `"${join(protoSrc, f)}"`).join(' ');
+const protoFiles = readdirSync(protoSrc)
+  .filter((f) => f.endsWith('.proto'))
+  .map((f) => `"${join(protoSrc, f)}"`)
+  .join(' ');
 
 const outJs = join(protoSrc, 'generated.js');
 const outDts = join(protoSrc, 'generated.d.ts');

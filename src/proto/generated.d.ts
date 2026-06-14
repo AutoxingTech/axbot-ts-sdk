@@ -3,121 +3,6 @@ import Long = require("long");
 /** Namespace ros_messages. */
 export namespace ros_messages {
 
-    /** Properties of a Header. */
-    interface IHeader {
-
-        /** Header seq */
-        seq?: (number|null);
-
-        /** Header stamp_sec */
-        stamp_sec?: (number|Long|null);
-
-        /** Header stamp_nsec */
-        stamp_nsec?: (number|Long|null);
-
-        /** Header frame_id */
-        frame_id?: (string|null);
-    }
-
-    /** Represents a Header. */
-    class Header implements IHeader {
-
-        /**
-         * Constructs a new Header.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: ros_messages.IHeader);
-
-        /** Header seq. */
-        public seq: number;
-
-        /** Header stamp_sec. */
-        public stamp_sec: (number|Long);
-
-        /** Header stamp_nsec. */
-        public stamp_nsec: (number|Long);
-
-        /** Header frame_id. */
-        public frame_id: string;
-
-        /**
-         * Creates a new Header instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns Header instance
-         */
-        public static create(properties?: ros_messages.IHeader): ros_messages.Header;
-
-        /**
-         * Encodes the specified Header message. Does not implicitly {@link ros_messages.Header.verify|verify} messages.
-         * @param message Header message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: ros_messages.IHeader, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified Header message, length delimited. Does not implicitly {@link ros_messages.Header.verify|verify} messages.
-         * @param message Header message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: ros_messages.IHeader, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a Header message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns Header
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.Header;
-
-        /**
-         * Decodes a Header message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns Header
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.Header;
-
-        /**
-         * Verifies a Header message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a Header message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns Header
-         */
-        public static fromObject(object: { [k: string]: any }): ros_messages.Header;
-
-        /**
-         * Creates a plain object from a Header message. Also converts values to other types if specified.
-         * @param message Header
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: ros_messages.Header, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this Header to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the default type url for Header
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
-
     /** Properties of a Pose. */
     interface IPose {
 
@@ -249,6 +134,253 @@ export namespace ros_messages {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a Header. */
+    interface IHeader {
+
+        /** Header seq */
+        seq?: (number|null);
+
+        /** Header stamp_sec */
+        stamp_sec?: (number|Long|null);
+
+        /** Header stamp_nsec */
+        stamp_nsec?: (number|Long|null);
+
+        /** Header frame_id */
+        frame_id?: (string|null);
+    }
+
+    /** Represents a Header. */
+    class Header implements IHeader {
+
+        /**
+         * Constructs a new Header.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IHeader);
+
+        /** Header seq. */
+        public seq: number;
+
+        /** Header stamp_sec. */
+        public stamp_sec: (number|Long);
+
+        /** Header stamp_nsec. */
+        public stamp_nsec: (number|Long);
+
+        /** Header frame_id. */
+        public frame_id: string;
+
+        /**
+         * Creates a new Header instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Header instance
+         */
+        public static create(properties?: ros_messages.IHeader): ros_messages.Header;
+
+        /**
+         * Encodes the specified Header message. Does not implicitly {@link ros_messages.Header.verify|verify} messages.
+         * @param message Header message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IHeader, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Header message, length delimited. Does not implicitly {@link ros_messages.Header.verify|verify} messages.
+         * @param message Header message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IHeader, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Header message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Header
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.Header;
+
+        /**
+         * Decodes a Header message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Header
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.Header;
+
+        /**
+         * Verifies a Header message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Header message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Header
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.Header;
+
+        /**
+         * Creates a plain object from a Header message. Also converts values to other types if specified.
+         * @param message Header
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.Header, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Header to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for Header
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a MastState. */
+    interface IMastState {
+
+        /** MastState target_height */
+        target_height?: (number|null);
+
+        /** MastState current_height */
+        current_height?: (number|null);
+
+        /** MastState motion_state */
+        motion_state?: (ros_messages.MastState.MotionState|null);
+
+        /** MastState error */
+        error?: (number|null);
+
+        /** MastState error_message */
+        error_message?: (string|null);
+    }
+
+    /** Represents a MastState. */
+    class MastState implements IMastState {
+
+        /**
+         * Constructs a new MastState.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IMastState);
+
+        /** MastState target_height. */
+        public target_height: number;
+
+        /** MastState current_height. */
+        public current_height: number;
+
+        /** MastState motion_state. */
+        public motion_state: ros_messages.MastState.MotionState;
+
+        /** MastState error. */
+        public error: number;
+
+        /** MastState error_message. */
+        public error_message: string;
+
+        /**
+         * Creates a new MastState instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MastState instance
+         */
+        public static create(properties?: ros_messages.IMastState): ros_messages.MastState;
+
+        /**
+         * Encodes the specified MastState message. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * @param message MastState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IMastState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MastState message, length delimited. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * @param message MastState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IMastState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MastState message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns MastState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MastState;
+
+        /**
+         * Decodes a MastState message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns MastState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MastState;
+
+        /**
+         * Verifies a MastState message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MastState message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MastState
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.MastState;
+
+        /**
+         * Creates a plain object from a MastState message. Also converts values to other types if specified.
+         * @param message MastState
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.MastState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MastState to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for MastState
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace MastState {
+
+        /** MotionState enum. */
+        enum MotionState {
+            UNKNOWN = 0,
+            MOVING_HOLD = 1,
+            MOVING_UP = 2,
+            MOVING_DOWN = 3
+        }
     }
 
     /** Properties of a PointCloud. */
@@ -408,135 +540,485 @@ export namespace ros_messages {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    /** Properties of a MastState. */
-    interface IMastState {
+    /** Properties of a RackStates. */
+    interface IRackStates {
 
-        /** MastState target_height */
-        target_height?: (number|null);
+        /** RackStates map_uid */
+        map_uid?: (string|null);
 
-        /** MastState current_height */
-        current_height?: (number|null);
-
-        /** MastState motion_state */
-        motion_state?: (ros_messages.MastState.MotionState|null);
-
-        /** MastState error */
-        error?: (number|null);
-
-        /** MastState error_message */
-        error_message?: (string|null);
+        /** RackStates racks */
+        racks?: (ros_messages.RackStates.IRackState[]|null);
     }
 
-    /** Represents a MastState. */
-    class MastState implements IMastState {
+    /** Represents a RackStates. */
+    class RackStates implements IRackStates {
 
         /**
-         * Constructs a new MastState.
+         * Constructs a new RackStates.
          * @param [properties] Properties to set
          */
-        constructor(properties?: ros_messages.IMastState);
+        constructor(properties?: ros_messages.IRackStates);
 
-        /** MastState target_height. */
-        public target_height: number;
+        /** RackStates map_uid. */
+        public map_uid: string;
 
-        /** MastState current_height. */
-        public current_height: number;
-
-        /** MastState motion_state. */
-        public motion_state: ros_messages.MastState.MotionState;
-
-        /** MastState error. */
-        public error: number;
-
-        /** MastState error_message. */
-        public error_message: string;
+        /** RackStates racks. */
+        public racks: ros_messages.RackStates.IRackState[];
 
         /**
-         * Creates a new MastState instance using the specified properties.
+         * Creates a new RackStates instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns MastState instance
+         * @returns RackStates instance
          */
-        public static create(properties?: ros_messages.IMastState): ros_messages.MastState;
+        public static create(properties?: ros_messages.IRackStates): ros_messages.RackStates;
 
         /**
-         * Encodes the specified MastState message. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
-         * @param message MastState message or plain object to encode
+         * Encodes the specified RackStates message. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
+         * @param message RackStates message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: ros_messages.IMastState, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: ros_messages.IRackStates, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified MastState message, length delimited. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
-         * @param message MastState message or plain object to encode
+         * Encodes the specified RackStates message, length delimited. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
+         * @param message RackStates message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: ros_messages.IMastState, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: ros_messages.IRackStates, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a MastState message from the specified reader or buffer.
+         * Decodes a RackStates message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns MastState
+         * @returns RackStates
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MastState;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RackStates;
 
         /**
-         * Decodes a MastState message from the specified reader or buffer, length delimited.
+         * Decodes a RackStates message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns MastState
+         * @returns RackStates
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MastState;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RackStates;
 
         /**
-         * Verifies a MastState message.
+         * Verifies a RackStates message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a MastState message from a plain object. Also converts values to their respective internal types.
+         * Creates a RackStates message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns MastState
+         * @returns RackStates
          */
-        public static fromObject(object: { [k: string]: any }): ros_messages.MastState;
+        public static fromObject(object: { [k: string]: any }): ros_messages.RackStates;
 
         /**
-         * Creates a plain object from a MastState message. Also converts values to other types if specified.
-         * @param message MastState
+         * Creates a plain object from a RackStates message. Also converts values to other types if specified.
+         * @param message RackStates
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: ros_messages.MastState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: ros_messages.RackStates, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this MastState to JSON.
+         * Converts this RackStates to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for MastState
+         * Gets the default type url for RackStates
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    namespace MastState {
+    namespace RackStates {
 
-        /** MotionState enum. */
-        enum MotionState {
+        /** Properties of a RackLevelState. */
+        interface IRackLevelState {
+
+            /** RackLevelState timestamp_ns */
+            timestamp_ns?: (number|Long|null);
+
+            /** RackLevelState level */
+            level?: (number|null);
+
+            /** RackLevelState state */
+            state?: (ros_messages.RackStates.RackLevelState.SpaceState|null);
+        }
+
+        /** Represents a RackLevelState. */
+        class RackLevelState implements IRackLevelState {
+
+            /**
+             * Constructs a new RackLevelState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.RackStates.IRackLevelState);
+
+            /** RackLevelState timestamp_ns. */
+            public timestamp_ns: (number|Long);
+
+            /** RackLevelState level. */
+            public level: number;
+
+            /** RackLevelState state. */
+            public state: ros_messages.RackStates.RackLevelState.SpaceState;
+
+            /**
+             * Creates a new RackLevelState instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RackLevelState instance
+             */
+            public static create(properties?: ros_messages.RackStates.IRackLevelState): ros_messages.RackStates.RackLevelState;
+
+            /**
+             * Encodes the specified RackLevelState message. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
+             * @param message RackLevelState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.RackStates.IRackLevelState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RackLevelState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
+             * @param message RackLevelState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.RackStates.IRackLevelState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RackLevelState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RackLevelState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RackStates.RackLevelState;
+
+            /**
+             * Decodes a RackLevelState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RackLevelState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RackStates.RackLevelState;
+
+            /**
+             * Verifies a RackLevelState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RackLevelState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RackLevelState
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.RackStates.RackLevelState;
+
+            /**
+             * Creates a plain object from a RackLevelState message. Also converts values to other types if specified.
+             * @param message RackLevelState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.RackStates.RackLevelState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RackLevelState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for RackLevelState
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace RackLevelState {
+
+            /** SpaceState enum. */
+            enum SpaceState {
+                UNKNOWN = 0,
+                OCCUPIED = 3,
+                FREE = 4
+            }
+        }
+
+        /** Properties of a RackState. */
+        interface IRackState {
+
+            /** RackState poi_id */
+            poi_id?: (string|null);
+
+            /** RackState levels */
+            levels?: (ros_messages.RackStates.IRackLevelState[]|null);
+        }
+
+        /** Represents a RackState. */
+        class RackState implements IRackState {
+
+            /**
+             * Constructs a new RackState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.RackStates.IRackState);
+
+            /** RackState poi_id. */
+            public poi_id: string;
+
+            /** RackState levels. */
+            public levels: ros_messages.RackStates.IRackLevelState[];
+
+            /**
+             * Creates a new RackState instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RackState instance
+             */
+            public static create(properties?: ros_messages.RackStates.IRackState): ros_messages.RackStates.RackState;
+
+            /**
+             * Encodes the specified RackState message. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
+             * @param message RackState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.RackStates.IRackState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RackState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
+             * @param message RackState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.RackStates.IRackState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RackState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RackState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RackStates.RackState;
+
+            /**
+             * Decodes a RackState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RackState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RackStates.RackState;
+
+            /**
+             * Verifies a RackState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RackState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RackState
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.RackStates.RackState;
+
+            /**
+             * Creates a plain object from a RackState message. Also converts values to other types if specified.
+             * @param message RackState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.RackStates.RackState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RackState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for RackState
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+    }
+
+    /** Properties of a RosMessageWrapper. */
+    interface IRosMessageWrapper {
+
+        /** RosMessageWrapper type */
+        type?: (ros_messages.RosMessageWrapper.MessageType|null);
+
+        /** RosMessageWrapper timestamp_ns */
+        timestamp_ns?: (number|Long|null);
+
+        /** RosMessageWrapper sequence_id */
+        sequence_id?: (number|null);
+
+        /** RosMessageWrapper point_cloud */
+        point_cloud?: (ros_messages.IPointCloud|null);
+
+        /** RosMessageWrapper raw_data */
+        raw_data?: (Uint8Array|null);
+
+        /** RosMessageWrapper mast_state */
+        mast_state?: (ros_messages.IMastState|null);
+
+        /** RosMessageWrapper submap_list */
+        submap_list?: (ros_messages.ISubmapList|null);
+
+        /** RosMessageWrapper rack_states */
+        rack_states?: (ros_messages.IRackStates|null);
+    }
+
+    /** Represents a RosMessageWrapper. */
+    class RosMessageWrapper implements IRosMessageWrapper {
+
+        /**
+         * Constructs a new RosMessageWrapper.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IRosMessageWrapper);
+
+        /** RosMessageWrapper type. */
+        public type: ros_messages.RosMessageWrapper.MessageType;
+
+        /** RosMessageWrapper timestamp_ns. */
+        public timestamp_ns: (number|Long);
+
+        /** RosMessageWrapper sequence_id. */
+        public sequence_id: number;
+
+        /** RosMessageWrapper point_cloud. */
+        public point_cloud?: (ros_messages.IPointCloud|null);
+
+        /** RosMessageWrapper raw_data. */
+        public raw_data?: (Uint8Array|null);
+
+        /** RosMessageWrapper mast_state. */
+        public mast_state?: (ros_messages.IMastState|null);
+
+        /** RosMessageWrapper submap_list. */
+        public submap_list?: (ros_messages.ISubmapList|null);
+
+        /** RosMessageWrapper rack_states. */
+        public rack_states?: (ros_messages.IRackStates|null);
+
+        /** RosMessageWrapper payload. */
+        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states");
+
+        /**
+         * Creates a new RosMessageWrapper instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RosMessageWrapper instance
+         */
+        public static create(properties?: ros_messages.IRosMessageWrapper): ros_messages.RosMessageWrapper;
+
+        /**
+         * Encodes the specified RosMessageWrapper message. Does not implicitly {@link ros_messages.RosMessageWrapper.verify|verify} messages.
+         * @param message RosMessageWrapper message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IRosMessageWrapper, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RosMessageWrapper message, length delimited. Does not implicitly {@link ros_messages.RosMessageWrapper.verify|verify} messages.
+         * @param message RosMessageWrapper message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IRosMessageWrapper, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RosMessageWrapper message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns RosMessageWrapper
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RosMessageWrapper;
+
+        /**
+         * Decodes a RosMessageWrapper message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns RosMessageWrapper
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RosMessageWrapper;
+
+        /**
+         * Verifies a RosMessageWrapper message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RosMessageWrapper message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RosMessageWrapper
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.RosMessageWrapper;
+
+        /**
+         * Creates a plain object from a RosMessageWrapper message. Also converts values to other types if specified.
+         * @param message RosMessageWrapper
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.RosMessageWrapper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RosMessageWrapper to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for RosMessageWrapper
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace RosMessageWrapper {
+
+        /** MessageType enum. */
+        enum MessageType {
             UNKNOWN = 0,
-            MOVING_HOLD = 1,
-            MOVING_UP = 2,
-            MOVING_DOWN = 3
+            POINT_CLOUD = 1,
+            MAST_STATE = 2,
+            SUBMAP_LIST = 3,
+            RACK_STATES = 4
         }
     }
 
@@ -1137,485 +1619,312 @@ export namespace ros_messages {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    /** Properties of a RosMessageWrapper. */
-    interface IRosMessageWrapper {
+    /** Properties of a TopicInfo. */
+    interface ITopicInfo {
 
-        /** RosMessageWrapper type */
-        type?: (ros_messages.RosMessageWrapper.MessageType|null);
+        /** TopicInfo name */
+        name?: (string|null);
 
-        /** RosMessageWrapper timestamp_ns */
-        timestamp_ns?: (number|Long|null);
+        /** TopicInfo type */
+        type?: (string|null);
 
-        /** RosMessageWrapper sequence_id */
-        sequence_id?: (number|null);
+        /** TopicInfo publisher_count */
+        publisher_count?: (number|null);
 
-        /** RosMessageWrapper point_cloud */
-        point_cloud?: (ros_messages.IPointCloud|null);
-
-        /** RosMessageWrapper raw_data */
-        raw_data?: (Uint8Array|null);
-
-        /** RosMessageWrapper mast_state */
-        mast_state?: (ros_messages.IMastState|null);
-
-        /** RosMessageWrapper submap_list */
-        submap_list?: (ros_messages.ISubmapList|null);
-
-        /** RosMessageWrapper rack_states */
-        rack_states?: (ros_messages.IRackStates|null);
+        /** TopicInfo subscriber_count */
+        subscriber_count?: (number|null);
     }
 
-    /** Represents a RosMessageWrapper. */
-    class RosMessageWrapper implements IRosMessageWrapper {
+    /** Represents a TopicInfo. */
+    class TopicInfo implements ITopicInfo {
 
         /**
-         * Constructs a new RosMessageWrapper.
+         * Constructs a new TopicInfo.
          * @param [properties] Properties to set
          */
-        constructor(properties?: ros_messages.IRosMessageWrapper);
+        constructor(properties?: ros_messages.ITopicInfo);
 
-        /** RosMessageWrapper type. */
-        public type: ros_messages.RosMessageWrapper.MessageType;
+        /** TopicInfo name. */
+        public name: string;
 
-        /** RosMessageWrapper timestamp_ns. */
-        public timestamp_ns: (number|Long);
+        /** TopicInfo type. */
+        public type: string;
 
-        /** RosMessageWrapper sequence_id. */
-        public sequence_id: number;
+        /** TopicInfo publisher_count. */
+        public publisher_count: number;
 
-        /** RosMessageWrapper point_cloud. */
-        public point_cloud?: (ros_messages.IPointCloud|null);
-
-        /** RosMessageWrapper raw_data. */
-        public raw_data?: (Uint8Array|null);
-
-        /** RosMessageWrapper mast_state. */
-        public mast_state?: (ros_messages.IMastState|null);
-
-        /** RosMessageWrapper submap_list. */
-        public submap_list?: (ros_messages.ISubmapList|null);
-
-        /** RosMessageWrapper rack_states. */
-        public rack_states?: (ros_messages.IRackStates|null);
-
-        /** RosMessageWrapper payload. */
-        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states");
+        /** TopicInfo subscriber_count. */
+        public subscriber_count: number;
 
         /**
-         * Creates a new RosMessageWrapper instance using the specified properties.
+         * Creates a new TopicInfo instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns RosMessageWrapper instance
+         * @returns TopicInfo instance
          */
-        public static create(properties?: ros_messages.IRosMessageWrapper): ros_messages.RosMessageWrapper;
+        public static create(properties?: ros_messages.ITopicInfo): ros_messages.TopicInfo;
 
         /**
-         * Encodes the specified RosMessageWrapper message. Does not implicitly {@link ros_messages.RosMessageWrapper.verify|verify} messages.
-         * @param message RosMessageWrapper message or plain object to encode
+         * Encodes the specified TopicInfo message. Does not implicitly {@link ros_messages.TopicInfo.verify|verify} messages.
+         * @param message TopicInfo message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: ros_messages.IRosMessageWrapper, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: ros_messages.ITopicInfo, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified RosMessageWrapper message, length delimited. Does not implicitly {@link ros_messages.RosMessageWrapper.verify|verify} messages.
-         * @param message RosMessageWrapper message or plain object to encode
+         * Encodes the specified TopicInfo message, length delimited. Does not implicitly {@link ros_messages.TopicInfo.verify|verify} messages.
+         * @param message TopicInfo message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: ros_messages.IRosMessageWrapper, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: ros_messages.ITopicInfo, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a RosMessageWrapper message from the specified reader or buffer.
+         * Decodes a TopicInfo message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns RosMessageWrapper
+         * @returns TopicInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RosMessageWrapper;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.TopicInfo;
 
         /**
-         * Decodes a RosMessageWrapper message from the specified reader or buffer, length delimited.
+         * Decodes a TopicInfo message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns RosMessageWrapper
+         * @returns TopicInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RosMessageWrapper;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.TopicInfo;
 
         /**
-         * Verifies a RosMessageWrapper message.
+         * Verifies a TopicInfo message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a RosMessageWrapper message from a plain object. Also converts values to their respective internal types.
+         * Creates a TopicInfo message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns RosMessageWrapper
+         * @returns TopicInfo
          */
-        public static fromObject(object: { [k: string]: any }): ros_messages.RosMessageWrapper;
+        public static fromObject(object: { [k: string]: any }): ros_messages.TopicInfo;
 
         /**
-         * Creates a plain object from a RosMessageWrapper message. Also converts values to other types if specified.
-         * @param message RosMessageWrapper
+         * Creates a plain object from a TopicInfo message. Also converts values to other types if specified.
+         * @param message TopicInfo
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: ros_messages.RosMessageWrapper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: ros_messages.TopicInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this RosMessageWrapper to JSON.
+         * Converts this TopicInfo to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for RosMessageWrapper
+         * Gets the default type url for TopicInfo
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    namespace RosMessageWrapper {
+    /** Properties of a TopicListResponse. */
+    interface ITopicListResponse {
 
-        /** MessageType enum. */
-        enum MessageType {
-            UNKNOWN = 0,
-            POINT_CLOUD = 1,
-            MAST_STATE = 2,
-            SUBMAP_LIST = 3,
-            RACK_STATES = 4
-        }
+        /** TopicListResponse topics */
+        topics?: (ros_messages.ITopicInfo[]|null);
     }
 
-    /** Properties of a RackStates. */
-    interface IRackStates {
-
-        /** RackStates map_uid */
-        map_uid?: (string|null);
-
-        /** RackStates racks */
-        racks?: (ros_messages.RackStates.IRackState[]|null);
-    }
-
-    /** Represents a RackStates. */
-    class RackStates implements IRackStates {
+    /** Represents a TopicListResponse. */
+    class TopicListResponse implements ITopicListResponse {
 
         /**
-         * Constructs a new RackStates.
+         * Constructs a new TopicListResponse.
          * @param [properties] Properties to set
          */
-        constructor(properties?: ros_messages.IRackStates);
+        constructor(properties?: ros_messages.ITopicListResponse);
 
-        /** RackStates map_uid. */
-        public map_uid: string;
-
-        /** RackStates racks. */
-        public racks: ros_messages.RackStates.IRackState[];
+        /** TopicListResponse topics. */
+        public topics: ros_messages.ITopicInfo[];
 
         /**
-         * Creates a new RackStates instance using the specified properties.
+         * Creates a new TopicListResponse instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns RackStates instance
+         * @returns TopicListResponse instance
          */
-        public static create(properties?: ros_messages.IRackStates): ros_messages.RackStates;
+        public static create(properties?: ros_messages.ITopicListResponse): ros_messages.TopicListResponse;
 
         /**
-         * Encodes the specified RackStates message. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
-         * @param message RackStates message or plain object to encode
+         * Encodes the specified TopicListResponse message. Does not implicitly {@link ros_messages.TopicListResponse.verify|verify} messages.
+         * @param message TopicListResponse message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: ros_messages.IRackStates, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: ros_messages.ITopicListResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified RackStates message, length delimited. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
-         * @param message RackStates message or plain object to encode
+         * Encodes the specified TopicListResponse message, length delimited. Does not implicitly {@link ros_messages.TopicListResponse.verify|verify} messages.
+         * @param message TopicListResponse message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: ros_messages.IRackStates, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: ros_messages.ITopicListResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a RackStates message from the specified reader or buffer.
+         * Decodes a TopicListResponse message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns RackStates
+         * @returns TopicListResponse
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RackStates;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.TopicListResponse;
 
         /**
-         * Decodes a RackStates message from the specified reader or buffer, length delimited.
+         * Decodes a TopicListResponse message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns RackStates
+         * @returns TopicListResponse
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RackStates;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.TopicListResponse;
 
         /**
-         * Verifies a RackStates message.
+         * Verifies a TopicListResponse message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a RackStates message from a plain object. Also converts values to their respective internal types.
+         * Creates a TopicListResponse message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns RackStates
+         * @returns TopicListResponse
          */
-        public static fromObject(object: { [k: string]: any }): ros_messages.RackStates;
+        public static fromObject(object: { [k: string]: any }): ros_messages.TopicListResponse;
 
         /**
-         * Creates a plain object from a RackStates message. Also converts values to other types if specified.
-         * @param message RackStates
+         * Creates a plain object from a TopicListResponse message. Also converts values to other types if specified.
+         * @param message TopicListResponse
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: ros_messages.RackStates, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: ros_messages.TopicListResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this RackStates to JSON.
+         * Converts this TopicListResponse to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for RackStates
+         * Gets the default type url for TopicListResponse
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    namespace RackStates {
+    /** Properties of a PublishedTopicNamesResponse. */
+    interface IPublishedTopicNamesResponse {
 
-        /** Properties of a RackLevelState. */
-        interface IRackLevelState {
+        /** PublishedTopicNamesResponse names */
+        names?: (string[]|null);
+    }
 
-            /** RackLevelState timestamp_ns */
-            timestamp_ns?: (number|Long|null);
+    /** Represents a PublishedTopicNamesResponse. */
+    class PublishedTopicNamesResponse implements IPublishedTopicNamesResponse {
 
-            /** RackLevelState level */
-            level?: (number|null);
+        /**
+         * Constructs a new PublishedTopicNamesResponse.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IPublishedTopicNamesResponse);
 
-            /** RackLevelState state */
-            state?: (ros_messages.RackStates.RackLevelState.SpaceState|null);
-        }
+        /** PublishedTopicNamesResponse names. */
+        public names: string[];
 
-        /** Represents a RackLevelState. */
-        class RackLevelState implements IRackLevelState {
+        /**
+         * Creates a new PublishedTopicNamesResponse instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns PublishedTopicNamesResponse instance
+         */
+        public static create(properties?: ros_messages.IPublishedTopicNamesResponse): ros_messages.PublishedTopicNamesResponse;
 
-            /**
-             * Constructs a new RackLevelState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: ros_messages.RackStates.IRackLevelState);
+        /**
+         * Encodes the specified PublishedTopicNamesResponse message. Does not implicitly {@link ros_messages.PublishedTopicNamesResponse.verify|verify} messages.
+         * @param message PublishedTopicNamesResponse message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IPublishedTopicNamesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
-            /** RackLevelState timestamp_ns. */
-            public timestamp_ns: (number|Long);
+        /**
+         * Encodes the specified PublishedTopicNamesResponse message, length delimited. Does not implicitly {@link ros_messages.PublishedTopicNamesResponse.verify|verify} messages.
+         * @param message PublishedTopicNamesResponse message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IPublishedTopicNamesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
-            /** RackLevelState level. */
-            public level: number;
+        /**
+         * Decodes a PublishedTopicNamesResponse message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns PublishedTopicNamesResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.PublishedTopicNamesResponse;
 
-            /** RackLevelState state. */
-            public state: ros_messages.RackStates.RackLevelState.SpaceState;
+        /**
+         * Decodes a PublishedTopicNamesResponse message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns PublishedTopicNamesResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.PublishedTopicNamesResponse;
 
-            /**
-             * Creates a new RackLevelState instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns RackLevelState instance
-             */
-            public static create(properties?: ros_messages.RackStates.IRackLevelState): ros_messages.RackStates.RackLevelState;
+        /**
+         * Verifies a PublishedTopicNamesResponse message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
 
-            /**
-             * Encodes the specified RackLevelState message. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
-             * @param message RackLevelState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: ros_messages.RackStates.IRackLevelState, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Creates a PublishedTopicNamesResponse message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns PublishedTopicNamesResponse
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.PublishedTopicNamesResponse;
 
-            /**
-             * Encodes the specified RackLevelState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
-             * @param message RackLevelState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: ros_messages.RackStates.IRackLevelState, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Creates a plain object from a PublishedTopicNamesResponse message. Also converts values to other types if specified.
+         * @param message PublishedTopicNamesResponse
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.PublishedTopicNamesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-            /**
-             * Decodes a RackLevelState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns RackLevelState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RackStates.RackLevelState;
+        /**
+         * Converts this PublishedTopicNamesResponse to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
 
-            /**
-             * Decodes a RackLevelState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns RackLevelState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RackStates.RackLevelState;
-
-            /**
-             * Verifies a RackLevelState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a RackLevelState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns RackLevelState
-             */
-            public static fromObject(object: { [k: string]: any }): ros_messages.RackStates.RackLevelState;
-
-            /**
-             * Creates a plain object from a RackLevelState message. Also converts values to other types if specified.
-             * @param message RackLevelState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: ros_messages.RackStates.RackLevelState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this RackLevelState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for RackLevelState
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace RackLevelState {
-
-            /** SpaceState enum. */
-            enum SpaceState {
-                UNKNOWN = 0,
-                OCCUPIED = 3,
-                FREE = 4
-            }
-        }
-
-        /** Properties of a RackState. */
-        interface IRackState {
-
-            /** RackState poi_id */
-            poi_id?: (string|null);
-
-            /** RackState levels */
-            levels?: (ros_messages.RackStates.IRackLevelState[]|null);
-        }
-
-        /** Represents a RackState. */
-        class RackState implements IRackState {
-
-            /**
-             * Constructs a new RackState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: ros_messages.RackStates.IRackState);
-
-            /** RackState poi_id. */
-            public poi_id: string;
-
-            /** RackState levels. */
-            public levels: ros_messages.RackStates.IRackLevelState[];
-
-            /**
-             * Creates a new RackState instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns RackState instance
-             */
-            public static create(properties?: ros_messages.RackStates.IRackState): ros_messages.RackStates.RackState;
-
-            /**
-             * Encodes the specified RackState message. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
-             * @param message RackState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: ros_messages.RackStates.IRackState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified RackState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
-             * @param message RackState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: ros_messages.RackStates.IRackState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a RackState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns RackState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.RackStates.RackState;
-
-            /**
-             * Decodes a RackState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns RackState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.RackStates.RackState;
-
-            /**
-             * Verifies a RackState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a RackState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns RackState
-             */
-            public static fromObject(object: { [k: string]: any }): ros_messages.RackStates.RackState;
-
-            /**
-             * Creates a plain object from a RackState message. Also converts values to other types if specified.
-             * @param message RackState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: ros_messages.RackStates.RackState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this RackState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for RackState
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
+        /**
+         * Gets the default type url for PublishedTopicNamesResponse
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 }

@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-06-09 robotApi: Add getTopicList and getPublishedTopicNames ROS master APIs
 - 2026-06-05 wsMessageStore: Add /map_rack_state store with binary protobuf decoding support
 - 2026-06-05 robotApi: Add CreateRecording types and parameterized saveBag method
 - 2026-06-03 robotApi: Add calibration_step parameter to calibrateDuoLidarPoses
