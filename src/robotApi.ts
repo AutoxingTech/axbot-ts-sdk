@@ -1061,6 +1061,20 @@ export class RobotApi {
   }
 
   /**
+   * Get the list of currently published ROS topic names.
+   * Available since version 2.12.0. Throws with status 400 if not supported.
+   */
+  async getPublishedTopicNames(signal?: AbortSignal): Promise<string[]> {
+    const res = await this.getImpl('ros/rosmaster/topics/published_names', signal);
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+    const json = await res.json();
+    return Array.isArray(json?.names) ? json.names : [];
+  }
+
+  /**
    * Get a stream of bag messages within a time range.
    * Unlike getBagPlayerChunk, this returns the raw Response for streaming.
    */

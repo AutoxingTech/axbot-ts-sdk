@@ -150,7 +150,6 @@ export interface DeviceInfo {
     width: number;
     charge_contact_position?: string; // deprecated, use `charge_contact.pose_2d` instead
     charge_contact?: { pose_2d: [number, number, number]; size?: [number, number] };
-    visualization_topics?: string[]; // like ["/lf_laser_3d/scan", ...]
   };
   caps: RobotCaps;
   remote_params?: {
