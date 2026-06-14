@@ -81,7 +81,7 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.SUBMAP_LIST && wrapper.submap_list) {
     const slamStateNames: SubmapListMsg['slam_state'][] = ['invalid', 'slam', 'positioning'];
     const sl = wrapper.submap_list;
-    const submap: SubmapEntryMsg[] = (sl.submap ?? []).map((e) => ({
+    const submaps: SubmapEntryMsg[] = (sl.submaps ?? []).map((e) => ({
       trajectory_id: e.trajectory_id ?? 0,
       submap_index: e.submap_index ?? 0,
       submap_version: e.submap_version ?? 0,
@@ -94,7 +94,7 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
       topic,
       slam_state: slamStateNames[sl.slam_state ?? 0] ?? 'invalid',
       uuid: sl.uuid ?? '',
-      submap,
+      submaps,
     };
     return { topic, payload: msg };
   }

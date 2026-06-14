@@ -682,8 +682,8 @@ export namespace ros_messages {
         /** SubmapList uuid */
         uuid?: (string|null);
 
-        /** SubmapList submap */
-        submap?: (ros_messages.ISubmapEntry[]|null);
+        /** SubmapList submaps */
+        submaps?: (ros_messages.ISubmapEntry[]|null);
     }
 
     /** Represents a SubmapList. */
@@ -701,8 +701,8 @@ export namespace ros_messages {
         /** SubmapList uuid. */
         public uuid: string;
 
-        /** SubmapList submap. */
-        public submap: ros_messages.ISubmapEntry[];
+        /** SubmapList submaps. */
+        public submaps: ros_messages.ISubmapEntry[];
 
         /**
          * Creates a new SubmapList instance using the specified properties.

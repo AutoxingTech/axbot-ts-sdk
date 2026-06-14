@@ -170,7 +170,7 @@ export interface SubmapEntryMsg {
 export interface SubmapListMsg extends TopicMsg {
   slam_state: 'invalid' | 'slam' | 'positioning';
   uuid: string;
-  submap: SubmapEntryMsg[];
+  submaps: SubmapEntryMsg[];
 }
 
 export interface ActionMsg extends TopicMsg {

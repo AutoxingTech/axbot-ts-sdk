@@ -1889,7 +1889,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @interface ISubmapList
          * @property {ros_messages.SubmapList.SlamState|null} [slam_state] SubmapList slam_state
          * @property {string|null} [uuid] SubmapList uuid
-         * @property {Array.<ros_messages.ISubmapEntry>|null} [submap] SubmapList submap
+         * @property {Array.<ros_messages.ISubmapEntry>|null} [submaps] SubmapList submaps
          */
 
         /**
@@ -1901,7 +1901,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @param {ros_messages.ISubmapList=} [properties] Properties to set
          */
         function SubmapList(properties) {
-            this.submap = [];
+            this.submaps = [];
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -1925,12 +1925,12 @@ export const ros_messages = $root.ros_messages = (() => {
         SubmapList.prototype.uuid = "";
 
         /**
-         * SubmapList submap.
-         * @member {Array.<ros_messages.ISubmapEntry>} submap
+         * SubmapList submaps.
+         * @member {Array.<ros_messages.ISubmapEntry>} submaps
          * @memberof ros_messages.SubmapList
          * @instance
          */
-        SubmapList.prototype.submap = $util.emptyArray;
+        SubmapList.prototype.submaps = $util.emptyArray;
 
         /**
          * Creates a new SubmapList instance using the specified properties.
@@ -1960,9 +1960,9 @@ export const ros_messages = $root.ros_messages = (() => {
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.slam_state);
             if (message.uuid != null && Object.hasOwnProperty.call(message, "uuid"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.uuid);
-            if (message.submap != null && message.submap.length)
-                for (let i = 0; i < message.submap.length; ++i)
-                    $root.ros_messages.SubmapEntry.encode(message.submap[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.submaps != null && message.submaps.length)
+                for (let i = 0; i < message.submaps.length; ++i)
+                    $root.ros_messages.SubmapEntry.encode(message.submaps[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
 
@@ -2008,9 +2008,9 @@ export const ros_messages = $root.ros_messages = (() => {
                         break;
                     }
                 case 3: {
-                        if (!(message.submap && message.submap.length))
-                            message.submap = [];
-                        message.submap.push($root.ros_messages.SubmapEntry.decode(reader, reader.uint32()));
+                        if (!(message.submaps && message.submaps.length))
+                            message.submaps = [];
+                        message.submaps.push($root.ros_messages.SubmapEntry.decode(reader, reader.uint32()));
                         break;
                     }
                 default:
@@ -2060,13 +2060,13 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.uuid != null && message.hasOwnProperty("uuid"))
                 if (!$util.isString(message.uuid))
                     return "uuid: string expected";
-            if (message.submap != null && message.hasOwnProperty("submap")) {
-                if (!Array.isArray(message.submap))
-                    return "submap: array expected";
-                for (let i = 0; i < message.submap.length; ++i) {
-                    let error = $root.ros_messages.SubmapEntry.verify(message.submap[i]);
+            if (message.submaps != null && message.hasOwnProperty("submaps")) {
+                if (!Array.isArray(message.submaps))
+                    return "submaps: array expected";
+                for (let i = 0; i < message.submaps.length; ++i) {
+                    let error = $root.ros_messages.SubmapEntry.verify(message.submaps[i]);
                     if (error)
-                        return "submap." + error;
+                        return "submaps." + error;
                 }
             }
             return null;
@@ -2106,14 +2106,14 @@ export const ros_messages = $root.ros_messages = (() => {
             }
             if (object.uuid != null)
                 message.uuid = String(object.uuid);
-            if (object.submap) {
-                if (!Array.isArray(object.submap))
-                    throw TypeError(".ros_messages.SubmapList.submap: array expected");
-                message.submap = [];
-                for (let i = 0; i < object.submap.length; ++i) {
-                    if (typeof object.submap[i] !== "object")
-                        throw TypeError(".ros_messages.SubmapList.submap: object expected");
-                    message.submap[i] = $root.ros_messages.SubmapEntry.fromObject(object.submap[i]);
+            if (object.submaps) {
+                if (!Array.isArray(object.submaps))
+                    throw TypeError(".ros_messages.SubmapList.submaps: array expected");
+                message.submaps = [];
+                for (let i = 0; i < object.submaps.length; ++i) {
+                    if (typeof object.submaps[i] !== "object")
+                        throw TypeError(".ros_messages.SubmapList.submaps: object expected");
+                    message.submaps[i] = $root.ros_messages.SubmapEntry.fromObject(object.submaps[i]);
                 }
             }
             return message;
@@ -2133,7 +2133,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 options = {};
             let object = {};
             if (options.arrays || options.defaults)
-                object.submap = [];
+                object.submaps = [];
             if (options.defaults) {
                 object.slam_state = options.enums === String ? "SLAM_STATE_INVALID" : 0;
                 object.uuid = "";
@@ -2142,10 +2142,10 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.slam_state = options.enums === String ? $root.ros_messages.SubmapList.SlamState[message.slam_state] === undefined ? message.slam_state : $root.ros_messages.SubmapList.SlamState[message.slam_state] : message.slam_state;
             if (message.uuid != null && message.hasOwnProperty("uuid"))
                 object.uuid = message.uuid;
-            if (message.submap && message.submap.length) {
-                object.submap = [];
-                for (let j = 0; j < message.submap.length; ++j)
-                    object.submap[j] = $root.ros_messages.SubmapEntry.toObject(message.submap[j], options);
+            if (message.submaps && message.submaps.length) {
+                object.submaps = [];
+                for (let j = 0; j < message.submaps.length; ++j)
+                    object.submaps[j] = $root.ros_messages.SubmapEntry.toObject(message.submaps[j], options);
             }
             return object;
         };

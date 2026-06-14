@@ -70,7 +70,8 @@ export class WsClient {
             this.serverEnabledTopics = new Set(parsed.enabled_topics);
           }
 
-          if (parsed && typeof parsed.topic === 'string') {
+          // a patch, discard any non-binary /submap_list messages
+          if (parsed && typeof parsed.topic === 'string' && parsed.topic !== '/submap_list') {
             this.dispatchTopic(parsed.topic, parsed);
           }
         } else if (ev.data instanceof Blob) {

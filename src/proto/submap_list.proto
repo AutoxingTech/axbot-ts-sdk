@@ -26,5 +26,5 @@ message SubmapList {
 
     SlamState         slam_state = 1;
     string            uuid       = 2;
-    repeated SubmapEntry submap  = 3;
+    repeated SubmapEntry submaps  = 3;
 }
