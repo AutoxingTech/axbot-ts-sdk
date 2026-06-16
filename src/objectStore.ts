@@ -107,8 +107,7 @@ export class ArrayObjectStore<T> {
   }
 }
 
-class DeviceInfoStore extends ObjectStore<DeviceInfo> {
-}
+class DeviceInfoStore extends ObjectStore<DeviceInfo> {}
 
 class RosTopicNamesStore extends ArrayObjectStore<string> {
   private forkliftTopics = [
@@ -127,13 +126,27 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     '/matched_depth_points/forward',
   ];
 
+  private lonyuTopics = [
+    '/head_laser_3d/scan',
+    '/lf_laser_3d/scan',
+    '/rb_laser_3d/scan',
+    '/lf_laser_2d/scan',
+    '/rb_laser_2d/scan',
+  ];
+
   private process(topics: string[]): string[] {
     if (!Array.isArray(topics)) return [];
 
     const deviceInfo = deviceInfoStore.getObject();
     const model = deviceInfo?.device?.model;
-    const isForklift = model?.startsWith('forklift') ?? false;
-    const supplement = isForklift ? this.forkliftTopics : this.defaultTopics;
+    let supplement: string[];
+    if (model?.startsWith('forklift')) {
+      supplement = this.forkliftTopics;
+    } else if (model?.startsWith('lonyu')) {
+      supplement = this.lonyuTopics;
+    } else {
+      supplement = this.defaultTopics;
+    }
 
     const result = topics.slice();
     for (const t of supplement) {
