@@ -136,6 +136,7 @@ import {
   SubmapListMsg,
   IoBoardStateMsg,
   DepthCameraImageMsg,
+  FusedSensorStateMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -177,6 +178,9 @@ export const mastStateEvents = new WsEventEmitter<MastStateMsg>('/mast_state');
 
 /** IO board state events */
 export const ioBoardStateEvents = new WsEventEmitter<IoBoardStateMsg>('/raw_io_board_state');
+
+/** Fused sensor state events (slipping, collision, odometry source) */
+export const fusedSensorStateEvents = new WsEventEmitter<FusedSensorStateMsg>('/fused_sensor_state');
 
 /** Semantic points events (for SemanticPointCloudRenderer) */
 export const semanticPointsEvents = new WsEventEmitter<SemanticPointsMsg>('/semantic_points');

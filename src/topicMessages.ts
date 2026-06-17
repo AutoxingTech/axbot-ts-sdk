@@ -530,3 +530,16 @@ export interface IoBoardStateMsg extends TopicMsg {
   inputs_active: (number | boolean)[];
   outputs_active: (number | boolean)[];
 }
+
+export interface FusedSensorStateMsg extends TopicMsg {
+  slipping: boolean;
+  major_slipping: boolean;
+  odom_source: number;
+  collide_dir: number;
+  pushed: boolean;
+  accelerability: number;
+  suggested_speed: number;
+  is_still: boolean;
+  odom_still: boolean;
+  imu_still: boolean;
+}
