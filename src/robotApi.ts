@@ -64,6 +64,16 @@ export interface SubmapQueryV2FetchResult {
 }
 
 /**
+ * Desired response content type for REST API calls.
+ * - `'json'`: application/json (default)
+ * - `'protobuf'`: application/x-protobuf
+ * - `'text'`: text/plain
+ * - `'html'`: text/html
+ * - `'none'`: no Accept header (let the server decide)
+ */
+export type AcceptType = 'json' | 'protobuf' | 'text' | 'html' | 'none';
+
+/**
  * Client wrapper for the Robot REST API.
  * Provides typed methods for interacting with the robot's various endpoints
  * (e.g., chassis, mappings, device info, settings) and handles error formatting.
@@ -170,31 +180,46 @@ export class RobotApi {
     }
   }
 
+  private acceptHeader(accept: AcceptType): string | undefined {
+    switch (accept) {
+      case 'json':
+        return 'application/json';
+      case 'protobuf':
+        return 'application/x-protobuf';
+      case 'text':
+        return 'text/plain';
+      case 'html':
+        return 'text/html';
+      case 'none':
+        return undefined;
+    }
+  }
+
   private async doRequest(
     method: 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'GET',
     url: string,
     data: any,
     signal?: AbortSignal,
-    opts?: { proto?: boolean },
+    opts?: { accept?: AcceptType },
   ): Promise<Response> {
     const base = this.getConfig().getApiBase();
     const fullUrl = `${base}/${url}`;
     const cb = this.getConfig().onApiCalled;
     if (cb) cb({ method, url: fullUrl, payload: data });
-    const accept = opts?.proto ? 'application/x-protobuf' : 'application/json';
+    const accept = this.acceptHeader(opts?.accept ?? 'json');
     let res: Response;
     if (method === 'GET' || method === 'DELETE') {
       res = await fetch(fullUrl, {
         method,
-        headers: { Accept: accept },
-        credentials: 'include', // Include cookies in requests
+        headers: accept ? { Accept: accept } : {},
+        credentials: 'include',
         signal,
       });
     } else {
       res = await fetch(fullUrl, {
         method,
-        headers: { 'Content-Type': 'application/json', Accept: accept },
-        credentials: 'include', // Include cookies in requests
+        headers: { ...(accept ? { Accept: accept } : {}), 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify(data),
         signal,
       });
@@ -233,7 +258,7 @@ export class RobotApi {
     return this.doRequest('DELETE', url, null, signal);
   }
 
-  protected async getImpl(url: string, signal?: AbortSignal, opts?: { proto?: boolean }): Promise<Response> {
+  protected async getImpl(url: string, signal?: AbortSignal, opts?: { accept?: AcceptType }): Promise<Response> {
     return this.doRequest('GET', url, null, signal, opts);
   }
 
@@ -302,8 +327,8 @@ export class RobotApi {
   /**
    * Perform a GET request. Throws an Error if the response is not ok.
    */
-  async get(url: string, signal?: AbortSignal): Promise<Response> {
-    const res = await this.getImpl(url, signal);
+  async get(url: string, signal?: AbortSignal, opts?: { accept?: AcceptType }): Promise<Response> {
+    const res = await this.getImpl(url, signal, opts);
     if (!res.ok) {
       const detail = await this.extractErrorMessage(res);
       throw new ApiError(detail, res.status);
@@ -1067,7 +1092,7 @@ export class RobotApi {
    * GET /ros/rosmaster/topics
    */
   async getTopicList(signal?: AbortSignal): Promise<ros_messages.TopicListResponse> {
-    const res = await this.getImpl('ros/rosmaster/topics', signal, { proto: true });
+    const res = await this.getImpl('ros/rosmaster/topics', signal, { accept: 'protobuf' });
     if (!res.ok) {
       const detail = await this.extractErrorMessage(res);
       throw new ApiError(detail, res.status);
