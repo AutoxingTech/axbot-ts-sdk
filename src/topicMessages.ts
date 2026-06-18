@@ -265,9 +265,12 @@ export interface ImuStateMsg extends TopicMsg {
   calibrate_state: ImuCalibrateState;
   calibrate_fail_reason: ImuCalibrationFailReason;
   temperature: number;
-  angular_velocity_standard_deviation_10s: number;
-  angular_velocity_avg_10s: number;
-  linear_acc_standard_deviation_10s: number;
+  angular_velocity_standard_deviation_10s: number[];
+  angular_velocity_avg_10s: number[];
+  linear_acc_standard_deviation_10s: number[];
+  gyro_calibrating: boolean;
+  gyro_bias: number[];
+  gyro_bias_target: number[];
 }
 
 export interface PushHandleStateMsg extends TopicMsg {
