@@ -139,7 +139,9 @@ export const wsWheelStateStore = new WsMessageStore<WheelStateMsg>('/wheel_state
 export const mapStore = new WsMessageStore<OccupancyGridMsg>('/map_v2');
 export const trackedPoseStore = new WsMessageStore<TrackedPoseMsg>('/tracked_pose');
 export const robotModelStore = new WsMessageStore<RobotModelMsg>('/robot_model');
-export const sensorManagerStateStore = new WsMessageStore<SensorManagerStateMsg>('/sensor_manager_state');
+export const sensorManagerStateStore = new WsMessageStore<SensorManagerStateMsg>(
+  '/sensor_manager_state',
+);
 export const planningStateStore = new WsMessageStore<PlanningStateMsg>('/planning_state');
 export const pathStore = new WsMessageStore<PathMsg>('/path');
 export const trajectoryStore = new WsMessageStore<TrajectoryMsg>('/trajectory');
@@ -148,7 +150,9 @@ export const slamStateStore = new WsMessageStore<SlamStateMsg>('/slam/state');
 export const jackStateStore = new WsMessageStore<JackStateMsg>('/jack_state');
 
 // Nearby robots stores
-export const nearbyRobotFootprintsStore = new WsMessageStore<NearbyRobotFootprintsMsg>('/nearby_robot_footprints');
+export const nearbyRobotFootprintsStore = new WsMessageStore<NearbyRobotFootprintsMsg>(
+  '/nearby_robot_footprints',
+);
 
 // Pallets store
 export const detectedPalletsStore = new WsMessageStore<DetectedPalletsMsg>('/detected_pallets');
@@ -156,8 +160,12 @@ export const detectedPalletsStore = new WsMessageStore<DetectedPalletsMsg>('/det
 // Rack store
 export const detectedRackStore = new WsMessageStore<DetectedRackMsg>('/detected_rack');
 
-// Map rack state store
+// Map rack state store (latched)
+// Accumulated from /detected_rack_states. Racks not observed for ~30 minutes
+// become unknown and are removed. Latched — caches the latest full state.
 export const mapRackStatesStore = new WsMessageStore<MapRackStatesMsg>('/map_rack_states');
 
 // Chargers store
-export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>('/detected_features/chargers');
+export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>(
+  '/detected_features/chargers',
+);

@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-06-30 wsEventEmitter: Add /detected_rack_states event emitter and document latched /map_rack_states
 - 2026-06-17 topicMessages: Add FusedSensorStateMsg interface and /fused_sensor_state event emitter
 - 2026-06-16 objectStore: Supplement lonyu-model laser scan topics in rosTopicNamesStore
 - 2026-06-14 objectStore: Supplement default visualization topics in rosTopicNamesStore on API failure

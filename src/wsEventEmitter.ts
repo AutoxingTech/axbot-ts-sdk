@@ -137,10 +137,13 @@ import {
   IoBoardStateMsg,
   DepthCameraImageMsg,
   FusedSensorStateMsg,
+  MapRackStatesMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
-export const globalPositioningEvents = new WsEventEmitter<GlobalPositioningStateMsg>('/global_positioning_state');
+export const globalPositioningEvents = new WsEventEmitter<GlobalPositioningStateMsg>(
+  '/global_positioning_state',
+);
 
 /** SLAM state events */
 export const slamStateEvents = new WsEventEmitter<SlamStateMsg>('/slam/state');
@@ -150,7 +153,9 @@ export const slamStateEvents = new WsEventEmitter<SlamStateMsg>('/slam/state');
 export const submapListEvents = new WsEventEmitter<SubmapListMsg>('/submap_list');
 
 /** Detailed battery state events */
-export const detailedBatteryStateEvents = new WsEventEmitter<DetailedBatteryStateMsg>('/detailed_battery_state');
+export const detailedBatteryStateEvents = new WsEventEmitter<DetailedBatteryStateMsg>(
+  '/detailed_battery_state',
+);
 
 /** Jack state events */
 export const jackStateEvents = new WsEventEmitter<JackStateMsg>('/jack_state');
@@ -180,7 +185,18 @@ export const mastStateEvents = new WsEventEmitter<MastStateMsg>('/mast_state');
 export const ioBoardStateEvents = new WsEventEmitter<IoBoardStateMsg>('/raw_io_board_state');
 
 /** Fused sensor state events (slipping, collision, odometry source) */
-export const fusedSensorStateEvents = new WsEventEmitter<FusedSensorStateMsg>('/fused_sensor_state');
+export const fusedSensorStateEvents = new WsEventEmitter<FusedSensorStateMsg>(
+  '/fused_sensor_state',
+);
+
+/**
+ * Detected rack states — realtime observations of racks nearby, typically 1–2 Hz.
+ * NOT latched. Each message contains only racks currently observed by the robot's sensors.
+ * Accumulated into /map_rack_states by the backend.
+ */
+export const detectedRackStatesEvents = new WsEventEmitter<MapRackStatesMsg>(
+  '/detected_rack_states',
+);
 
 /** Semantic points events (for SemanticPointCloudRenderer) */
 export const semanticPointsEvents = new WsEventEmitter<SemanticPointsMsg>('/semantic_points');
@@ -189,7 +205,9 @@ export const semanticPointsEvents = new WsEventEmitter<SemanticPointsMsg>('/sema
 export const scanMatchedPointsEvents = new WsEventEmitter<PointCloudMsg>('/scan_matched_points2');
 
 /** Horizontal 2D laser matched points events */
-export const horizontalLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/horizontal_laser_2d/matched');
+export const horizontalLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>(
+  '/horizontal_laser_2d/matched',
+);
 
 /** Left 2D laser matched points events */
 export const leftLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/left_laser_2d/matched');
@@ -198,30 +216,56 @@ export const leftLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/left
 export const rbLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_2d/matched');
 
 /** Right 2D laser matched points events */
-export const rightLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/right_laser_2d/matched');
+export const rightLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>(
+  '/right_laser_2d/matched',
+);
 
 /** Depth camera matched points — forward */
-export const matchedDepthPointsForwardEvents = new WsEventEmitter<PointCloudMsg>('/matched_depth_points/forward');
+export const matchedDepthPointsForwardEvents = new WsEventEmitter<PointCloudMsg>(
+  '/matched_depth_points/forward',
+);
 
 /** Depth camera matched points — downward */
-export const matchedDepthPointsDownwardEvents = new WsEventEmitter<PointCloudMsg>('/matched_depth_points/downward');
+export const matchedDepthPointsDownwardEvents = new WsEventEmitter<PointCloudMsg>(
+  '/matched_depth_points/downward',
+);
 
 /** Depth camera matched points — upward */
-export const matchedDepthPointsUpwardEvents = new WsEventEmitter<PointCloudMsg>('/matched_depth_points/upward');
+export const matchedDepthPointsUpwardEvents = new WsEventEmitter<PointCloudMsg>(
+  '/matched_depth_points/upward',
+);
 
 /** Depth camera matched points — backward */
-export const matchedDepthPointsBackwardEvents = new WsEventEmitter<PointCloudMsg>('/matched_depth_points/backward');
+export const matchedDepthPointsBackwardEvents = new WsEventEmitter<PointCloudMsg>(
+  '/matched_depth_points/backward',
+);
 
-export const depthCameraForwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/forward/points2');
-export const depthCameraDownwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/downward/points2');
-export const depthCameraUpwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/upward/points2');
-export const depthCameraBackwardPoints2Events = new WsEventEmitter<PointCloudMsg>('/depth_camera/backward/points2');
+export const depthCameraForwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/forward/points2',
+);
+export const depthCameraDownwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/downward/points2',
+);
+export const depthCameraUpwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/upward/points2',
+);
+export const depthCameraBackwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/backward/points2',
+);
 
 /** Depth camera image events */
-export const depthCameraForwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/forward/image');
-export const depthCameraDownwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/downward/image');
-export const depthCameraUpwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/upward/image');
-export const depthCameraBackwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>('/depth_camera/backward/image');
+export const depthCameraForwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/forward/image',
+);
+export const depthCameraDownwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/downward/image',
+);
+export const depthCameraUpwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/upward/image',
+);
+export const depthCameraBackwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/backward/image',
+);
 
 /** Planning state events */
 export const planningStateEvents = new WsEventEmitter<PlanningStateMsg>('/planning_state');
@@ -236,7 +280,9 @@ export const landmarksEvents = new WsEventEmitter<LandmarksMsg>('/landmarks');
 export const trackedPoseEvents = new WsEventEmitter<TrackedPoseMsg>('/tracked_pose');
 
 /** Horizontal 2D laser scan events (binary protobuf) */
-export const horizontalLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/horizontal_laser_2d/scan');
+export const horizontalLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>(
+  '/horizontal_laser_2d/scan',
+);
 
 /** LF 2D laser scan events (binary protobuf) */
 export const lfLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_2d/scan');
@@ -332,4 +378,6 @@ export const constraintListEvents = new WsEventEmitter<ConstraintListMsg>('/cons
 /** RGB camera events */
 export const rgbCameraFrontEvents = new RgbCameraEventEmitter('/rgb_cameras/front/video');
 export const rgbCameraBackEvents = new RgbCameraEventEmitter('/rgb_cameras/back/video');
-export const rgbCameraFrontAugmentedEvents = new RgbCameraEventEmitter('/rgb_cameras/front_augmented/video');
+export const rgbCameraFrontAugmentedEvents = new RgbCameraEventEmitter(
+  '/rgb_cameras/front_augmented/video',
+);
