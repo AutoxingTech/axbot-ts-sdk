@@ -63,6 +63,11 @@ export interface SubmapQueryV2FetchResult {
   payloadLength: number;
 }
 
+export interface GetMapImageFetchResult {
+  message: ros_messages.slam.GetMapImageResponse;
+  payloadLength: number;
+}
+
 /**
  * Desired response content type for REST API calls.
  * - `'json'`: application/json (default)
@@ -1181,6 +1186,52 @@ export class RobotApi {
         `SubmapQueryV2 failed ${message.status.code}: ${message.status.message ?? ''}`,
       );
     }
+
+    return {
+      message,
+      payloadLength: buf.byteLength,
+    };
+  }
+
+  /**
+   * Fetch the current SLAM map image.
+   * Proxies to the `/slam/get_image` ROS service via the ros-service-forwarder.
+   */
+  async getMapImage(
+    opts?: {
+      trajectoryId?: number;
+      resolution?: number;
+      newTrajectoryOnly?: boolean;
+    },
+    signal?: AbortSignal,
+  ): Promise<GetMapImageFetchResult | null> {
+    const params = new URLSearchParams();
+    if (opts?.trajectoryId !== undefined) params.set('trajectory_id', String(opts.trajectoryId));
+    if (opts?.resolution !== undefined) params.set('resolution', String(opts.resolution));
+    if (opts?.newTrajectoryOnly !== undefined)
+      params.set('new_trajectory_only', String(opts.newTrajectoryOnly));
+
+    const qs = params.toString();
+    const url = `ros/slam/map_image${qs ? `?${qs}` : ''}`;
+    const base = this.getConfig().getApiBase();
+    const fullUrl = `${base}/${url}`;
+    const cb = this.getConfig().onApiCalled;
+    if (cb) cb({ method: 'GET', url: fullUrl });
+    const res = await fetch(fullUrl, {
+      method: 'GET',
+      headers: { Accept: 'application/x-protobuf' },
+      credentials: 'include',
+      signal,
+    });
+    if (cb) cb({ method: 'GET', url: fullUrl, status: res.status });
+
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+
+    const buf = new Uint8Array(await res.arrayBuffer());
+    const message = ros_messages.slam.GetMapImageResponse.decode(buf);
 
     return {
       message,
