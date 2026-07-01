@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package ros_messages.slam;
+
+import "slam/status.proto";
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// Mirrors cartographer_ros_msgs/GetMapImage response.
+message GetMapImageResponse {
+    double     origin_x       = 1;
+    double     origin_y       = 2;
+    double     resolution     = 3;
+    bytes      png_bytes      = 4;
+    StatusCode status_code    = 5;
+    string     status_message = 6;
+}

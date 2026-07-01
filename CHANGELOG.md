@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-07-01 **API-BREAK** proto: Move submap_list, submap_query, status into slam/ sub-namespace; replace StatusResponse uint32 code with StatusCode enum
 - 2026-06-30 wsEventEmitter: Add /detected_rack_states event emitter and document latched /map_rack_states
 - 2026-06-17 topicMessages: Add FusedSensorStateMsg interface and /fused_sensor_state event emitter
 - 2026-06-16 objectStore: Supplement lonyu-model laser scan topics in rosTopicNamesStore

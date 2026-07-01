@@ -2350,8 +2350,9 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {ros_messages.IPointCloud|null} [point_cloud] RosMessageWrapper point_cloud
          * @property {Uint8Array|null} [raw_data] RosMessageWrapper raw_data
          * @property {ros_messages.IMastState|null} [mast_state] RosMessageWrapper mast_state
-         * @property {ros_messages.ISubmapList|null} [submap_list] RosMessageWrapper submap_list
+         * @property {ros_messages.slam.ISubmapList|null} [submap_list] RosMessageWrapper submap_list
          * @property {ros_messages.IRackStates|null} [rack_states] RosMessageWrapper rack_states
+         * @property {ros_messages.ITowingState|null} [towing_state] RosMessageWrapper towing_state
          */
 
         /**
@@ -2419,7 +2420,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * RosMessageWrapper submap_list.
-         * @member {ros_messages.ISubmapList|null|undefined} submap_list
+         * @member {ros_messages.slam.ISubmapList|null|undefined} submap_list
          * @memberof ros_messages.RosMessageWrapper
          * @instance
          */
@@ -2433,17 +2434,25 @@ export const ros_messages = $root.ros_messages = (() => {
          */
         RosMessageWrapper.prototype.rack_states = null;
 
+        /**
+         * RosMessageWrapper towing_state.
+         * @member {ros_messages.ITowingState|null|undefined} towing_state
+         * @memberof ros_messages.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.towing_state = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|undefined} payload
+         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|undefined} payload
          * @memberof ros_messages.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states", "towing_state"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -2484,9 +2493,11 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.mast_state != null && Object.hasOwnProperty.call(message, "mast_state"))
                 $root.ros_messages.MastState.encode(message.mast_state, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.submap_list != null && Object.hasOwnProperty.call(message, "submap_list"))
-                $root.ros_messages.SubmapList.encode(message.submap_list, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
+                $root.ros_messages.slam.SubmapList.encode(message.submap_list, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
             if (message.rack_states != null && Object.hasOwnProperty.call(message, "rack_states"))
                 $root.ros_messages.RackStates.encode(message.rack_states, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
+            if (message.towing_state != null && Object.hasOwnProperty.call(message, "towing_state"))
+                $root.ros_messages.TowingState.encode(message.towing_state, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
             return writer;
         };
 
@@ -2548,11 +2559,15 @@ export const ros_messages = $root.ros_messages = (() => {
                         break;
                     }
                 case 13: {
-                        message.submap_list = $root.ros_messages.SubmapList.decode(reader, reader.uint32());
+                        message.submap_list = $root.ros_messages.slam.SubmapList.decode(reader, reader.uint32());
                         break;
                     }
                 case 14: {
                         message.rack_states = $root.ros_messages.RackStates.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 15: {
+                        message.towing_state = $root.ros_messages.TowingState.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -2600,6 +2615,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 2:
                 case 3:
                 case 4:
+                case 5:
                     break;
                 }
             if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
@@ -2638,7 +2654,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.SubmapList.verify(message.submap_list);
+                    let error = $root.ros_messages.slam.SubmapList.verify(message.submap_list);
                     if (error)
                         return "submap_list." + error;
                 }
@@ -2651,6 +2667,16 @@ export const ros_messages = $root.ros_messages = (() => {
                     let error = $root.ros_messages.RackStates.verify(message.rack_states);
                     if (error)
                         return "rack_states." + error;
+                }
+            }
+            if (message.towing_state != null && message.hasOwnProperty("towing_state")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ros_messages.TowingState.verify(message.towing_state);
+                    if (error)
+                        return "towing_state." + error;
                 }
             }
             return null;
@@ -2695,6 +2721,10 @@ export const ros_messages = $root.ros_messages = (() => {
             case 4:
                 message.type = 4;
                 break;
+            case "TOWING_STATE":
+            case 5:
+                message.type = 5;
+                break;
             }
             if (object.timestamp_ns != null)
                 if ($util.Long)
@@ -2725,12 +2755,17 @@ export const ros_messages = $root.ros_messages = (() => {
             if (object.submap_list != null) {
                 if (typeof object.submap_list !== "object")
                     throw TypeError(".ros_messages.RosMessageWrapper.submap_list: object expected");
-                message.submap_list = $root.ros_messages.SubmapList.fromObject(object.submap_list);
+                message.submap_list = $root.ros_messages.slam.SubmapList.fromObject(object.submap_list);
             }
             if (object.rack_states != null) {
                 if (typeof object.rack_states !== "object")
                     throw TypeError(".ros_messages.RosMessageWrapper.rack_states: object expected");
                 message.rack_states = $root.ros_messages.RackStates.fromObject(object.rack_states);
+            }
+            if (object.towing_state != null) {
+                if (typeof object.towing_state !== "object")
+                    throw TypeError(".ros_messages.RosMessageWrapper.towing_state: object expected");
+                message.towing_state = $root.ros_messages.TowingState.fromObject(object.towing_state);
             }
             return message;
         };
@@ -2782,7 +2817,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     object.payload = "mast_state";
             }
             if (message.submap_list != null && message.hasOwnProperty("submap_list")) {
-                object.submap_list = $root.ros_messages.SubmapList.toObject(message.submap_list, options);
+                object.submap_list = $root.ros_messages.slam.SubmapList.toObject(message.submap_list, options);
                 if (options.oneofs)
                     object.payload = "submap_list";
             }
@@ -2790,6 +2825,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.rack_states = $root.ros_messages.RackStates.toObject(message.rack_states, options);
                 if (options.oneofs)
                     object.payload = "rack_states";
+            }
+            if (message.towing_state != null && message.hasOwnProperty("towing_state")) {
+                object.towing_state = $root.ros_messages.TowingState.toObject(message.towing_state, options);
+                if (options.oneofs)
+                    object.payload = "towing_state";
             }
             return object;
         };
@@ -2829,6 +2869,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number} MAST_STATE=2 MAST_STATE value
          * @property {number} SUBMAP_LIST=3 SUBMAP_LIST value
          * @property {number} RACK_STATES=4 RACK_STATES value
+         * @property {number} TOWING_STATE=5 TOWING_STATE value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -2837,694 +2878,2138 @@ export const ros_messages = $root.ros_messages = (() => {
             values[valuesById[2] = "MAST_STATE"] = 2;
             values[valuesById[3] = "SUBMAP_LIST"] = 3;
             values[valuesById[4] = "RACK_STATES"] = 4;
+            values[valuesById[5] = "TOWING_STATE"] = 5;
             return values;
         })();
 
         return RosMessageWrapper;
     })();
 
-    ros_messages.SubmapEntry = (function() {
+    ros_messages.slam = (function() {
 
         /**
-         * Properties of a SubmapEntry.
+         * Namespace slam.
          * @memberof ros_messages
-         * @interface ISubmapEntry
-         * @property {number|null} [trajectory_id] SubmapEntry trajectory_id
-         * @property {number|null} [submap_index] SubmapEntry submap_index
-         * @property {number|null} [submap_version] SubmapEntry submap_version
-         * @property {ros_messages.IPose|null} [pose] SubmapEntry pose
-         * @property {boolean|null} [is_frozen] SubmapEntry is_frozen
-         * @property {boolean|null} [is_incremental_submap] SubmapEntry is_incremental_submap
-         * @property {boolean|null} [is_nearby_map] SubmapEntry is_nearby_map
+         * @namespace
          */
+        const slam = {};
 
-        /**
-         * Constructs a new SubmapEntry.
-         * @memberof ros_messages
-         * @classdesc Represents a SubmapEntry.
-         * @implements ISubmapEntry
-         * @constructor
-         * @param {ros_messages.ISubmapEntry=} [properties] Properties to set
-         */
-        function SubmapEntry(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
+        slam.SubmapEntry = (function() {
 
-        /**
-         * SubmapEntry trajectory_id.
-         * @member {number} trajectory_id
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.trajectory_id = 0;
+            /**
+             * Properties of a SubmapEntry.
+             * @memberof ros_messages.slam
+             * @interface ISubmapEntry
+             * @property {number|null} [trajectory_id] SubmapEntry trajectory_id
+             * @property {number|null} [submap_index] SubmapEntry submap_index
+             * @property {number|null} [submap_version] SubmapEntry submap_version
+             * @property {ros_messages.IPose|null} [pose] SubmapEntry pose
+             * @property {boolean|null} [is_frozen] SubmapEntry is_frozen
+             * @property {boolean|null} [is_incremental_submap] SubmapEntry is_incremental_submap
+             * @property {boolean|null} [is_nearby_map] SubmapEntry is_nearby_map
+             */
 
-        /**
-         * SubmapEntry submap_index.
-         * @member {number} submap_index
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.submap_index = 0;
+            /**
+             * Constructs a new SubmapEntry.
+             * @memberof ros_messages.slam
+             * @classdesc Represents a SubmapEntry.
+             * @implements ISubmapEntry
+             * @constructor
+             * @param {ros_messages.slam.ISubmapEntry=} [properties] Properties to set
+             */
+            function SubmapEntry(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
 
-        /**
-         * SubmapEntry submap_version.
-         * @member {number} submap_version
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.submap_version = 0;
+            /**
+             * SubmapEntry trajectory_id.
+             * @member {number} trajectory_id
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.trajectory_id = 0;
 
-        /**
-         * SubmapEntry pose.
-         * @member {ros_messages.IPose|null|undefined} pose
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.pose = null;
+            /**
+             * SubmapEntry submap_index.
+             * @member {number} submap_index
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.submap_index = 0;
 
-        /**
-         * SubmapEntry is_frozen.
-         * @member {boolean} is_frozen
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.is_frozen = false;
+            /**
+             * SubmapEntry submap_version.
+             * @member {number} submap_version
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.submap_version = 0;
 
-        /**
-         * SubmapEntry is_incremental_submap.
-         * @member {boolean} is_incremental_submap
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.is_incremental_submap = false;
+            /**
+             * SubmapEntry pose.
+             * @member {ros_messages.IPose|null|undefined} pose
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.pose = null;
 
-        /**
-         * SubmapEntry is_nearby_map.
-         * @member {boolean} is_nearby_map
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         */
-        SubmapEntry.prototype.is_nearby_map = false;
+            /**
+             * SubmapEntry is_frozen.
+             * @member {boolean} is_frozen
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.is_frozen = false;
 
-        /**
-         * Creates a new SubmapEntry instance using the specified properties.
-         * @function create
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {ros_messages.ISubmapEntry=} [properties] Properties to set
-         * @returns {ros_messages.SubmapEntry} SubmapEntry instance
-         */
-        SubmapEntry.create = function create(properties) {
-            return new SubmapEntry(properties);
-        };
+            /**
+             * SubmapEntry is_incremental_submap.
+             * @member {boolean} is_incremental_submap
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.is_incremental_submap = false;
 
-        /**
-         * Encodes the specified SubmapEntry message. Does not implicitly {@link ros_messages.SubmapEntry.verify|verify} messages.
-         * @function encode
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {ros_messages.ISubmapEntry} message SubmapEntry message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SubmapEntry.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.trajectory_id != null && Object.hasOwnProperty.call(message, "trajectory_id"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.trajectory_id);
-            if (message.submap_index != null && Object.hasOwnProperty.call(message, "submap_index"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.submap_index);
-            if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.submap_version);
-            if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
-                $root.ros_messages.Pose.encode(message.pose, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.is_frozen != null && Object.hasOwnProperty.call(message, "is_frozen"))
-                writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_frozen);
-            if (message.is_incremental_submap != null && Object.hasOwnProperty.call(message, "is_incremental_submap"))
-                writer.uint32(/* id 12, wireType 0 =*/96).bool(message.is_incremental_submap);
-            if (message.is_nearby_map != null && Object.hasOwnProperty.call(message, "is_nearby_map"))
-                writer.uint32(/* id 13, wireType 0 =*/104).bool(message.is_nearby_map);
-            return writer;
-        };
+            /**
+             * SubmapEntry is_nearby_map.
+             * @member {boolean} is_nearby_map
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             */
+            SubmapEntry.prototype.is_nearby_map = false;
 
-        /**
-         * Encodes the specified SubmapEntry message, length delimited. Does not implicitly {@link ros_messages.SubmapEntry.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {ros_messages.ISubmapEntry} message SubmapEntry message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SubmapEntry.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
+            /**
+             * Creates a new SubmapEntry instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {ros_messages.slam.ISubmapEntry=} [properties] Properties to set
+             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry instance
+             */
+            SubmapEntry.create = function create(properties) {
+                return new SubmapEntry(properties);
+            };
 
-        /**
-         * Decodes a SubmapEntry message from the specified reader or buffer.
-         * @function decode
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.SubmapEntry} SubmapEntry
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SubmapEntry.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.SubmapEntry();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.trajectory_id = reader.int32();
+            /**
+             * Encodes the specified SubmapEntry message. Does not implicitly {@link ros_messages.slam.SubmapEntry.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {ros_messages.slam.ISubmapEntry} message SubmapEntry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapEntry.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.trajectory_id != null && Object.hasOwnProperty.call(message, "trajectory_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.trajectory_id);
+                if (message.submap_index != null && Object.hasOwnProperty.call(message, "submap_index"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.submap_index);
+                if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.submap_version);
+                if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
+                    $root.ros_messages.Pose.encode(message.pose, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                if (message.is_frozen != null && Object.hasOwnProperty.call(message, "is_frozen"))
+                    writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_frozen);
+                if (message.is_incremental_submap != null && Object.hasOwnProperty.call(message, "is_incremental_submap"))
+                    writer.uint32(/* id 12, wireType 0 =*/96).bool(message.is_incremental_submap);
+                if (message.is_nearby_map != null && Object.hasOwnProperty.call(message, "is_nearby_map"))
+                    writer.uint32(/* id 13, wireType 0 =*/104).bool(message.is_nearby_map);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SubmapEntry message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapEntry.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {ros_messages.slam.ISubmapEntry} message SubmapEntry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapEntry.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SubmapEntry message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapEntry.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapEntry();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.trajectory_id = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.submap_index = reader.int32();
+                            break;
+                        }
+                    case 3: {
+                            message.submap_version = reader.int32();
+                            break;
+                        }
+                    case 4: {
+                            message.pose = $root.ros_messages.Pose.decode(reader, reader.uint32());
+                            break;
+                        }
+                    case 11: {
+                            message.is_frozen = reader.bool();
+                            break;
+                        }
+                    case 12: {
+                            message.is_incremental_submap = reader.bool();
+                            break;
+                        }
+                    case 13: {
+                            message.is_nearby_map = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
                         break;
                     }
-                case 2: {
-                        message.submap_index = reader.int32();
-                        break;
-                    }
-                case 3: {
-                        message.submap_version = reader.int32();
-                        break;
-                    }
-                case 4: {
-                        message.pose = $root.ros_messages.Pose.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 11: {
-                        message.is_frozen = reader.bool();
-                        break;
-                    }
-                case 12: {
-                        message.is_incremental_submap = reader.bool();
-                        break;
-                    }
-                case 13: {
-                        message.is_nearby_map = reader.bool();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
                 }
-            }
-            return message;
-        };
+                return message;
+            };
 
-        /**
-         * Decodes a SubmapEntry message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.SubmapEntry} SubmapEntry
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SubmapEntry.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
+            /**
+             * Decodes a SubmapEntry message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapEntry.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
 
-        /**
-         * Verifies a SubmapEntry message.
-         * @function verify
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        SubmapEntry.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.trajectory_id != null && message.hasOwnProperty("trajectory_id"))
-                if (!$util.isInteger(message.trajectory_id))
-                    return "trajectory_id: integer expected";
-            if (message.submap_index != null && message.hasOwnProperty("submap_index"))
-                if (!$util.isInteger(message.submap_index))
-                    return "submap_index: integer expected";
-            if (message.submap_version != null && message.hasOwnProperty("submap_version"))
-                if (!$util.isInteger(message.submap_version))
-                    return "submap_version: integer expected";
-            if (message.pose != null && message.hasOwnProperty("pose")) {
-                let error = $root.ros_messages.Pose.verify(message.pose);
-                if (error)
-                    return "pose." + error;
-            }
-            if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
-                if (typeof message.is_frozen !== "boolean")
-                    return "is_frozen: boolean expected";
-            if (message.is_incremental_submap != null && message.hasOwnProperty("is_incremental_submap"))
-                if (typeof message.is_incremental_submap !== "boolean")
-                    return "is_incremental_submap: boolean expected";
-            if (message.is_nearby_map != null && message.hasOwnProperty("is_nearby_map"))
-                if (typeof message.is_nearby_map !== "boolean")
-                    return "is_nearby_map: boolean expected";
-            return null;
-        };
-
-        /**
-         * Creates a SubmapEntry message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.SubmapEntry} SubmapEntry
-         */
-        SubmapEntry.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.SubmapEntry)
-                return object;
-            let message = new $root.ros_messages.SubmapEntry();
-            if (object.trajectory_id != null)
-                message.trajectory_id = object.trajectory_id | 0;
-            if (object.submap_index != null)
-                message.submap_index = object.submap_index | 0;
-            if (object.submap_version != null)
-                message.submap_version = object.submap_version | 0;
-            if (object.pose != null) {
-                if (typeof object.pose !== "object")
-                    throw TypeError(".ros_messages.SubmapEntry.pose: object expected");
-                message.pose = $root.ros_messages.Pose.fromObject(object.pose);
-            }
-            if (object.is_frozen != null)
-                message.is_frozen = Boolean(object.is_frozen);
-            if (object.is_incremental_submap != null)
-                message.is_incremental_submap = Boolean(object.is_incremental_submap);
-            if (object.is_nearby_map != null)
-                message.is_nearby_map = Boolean(object.is_nearby_map);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a SubmapEntry message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {ros_messages.SubmapEntry} message SubmapEntry
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        SubmapEntry.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.trajectory_id = 0;
-                object.submap_index = 0;
-                object.submap_version = 0;
-                object.pose = null;
-                object.is_frozen = false;
-                object.is_incremental_submap = false;
-                object.is_nearby_map = false;
-            }
-            if (message.trajectory_id != null && message.hasOwnProperty("trajectory_id"))
-                object.trajectory_id = message.trajectory_id;
-            if (message.submap_index != null && message.hasOwnProperty("submap_index"))
-                object.submap_index = message.submap_index;
-            if (message.submap_version != null && message.hasOwnProperty("submap_version"))
-                object.submap_version = message.submap_version;
-            if (message.pose != null && message.hasOwnProperty("pose"))
-                object.pose = $root.ros_messages.Pose.toObject(message.pose, options);
-            if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
-                object.is_frozen = message.is_frozen;
-            if (message.is_incremental_submap != null && message.hasOwnProperty("is_incremental_submap"))
-                object.is_incremental_submap = message.is_incremental_submap;
-            if (message.is_nearby_map != null && message.hasOwnProperty("is_nearby_map"))
-                object.is_nearby_map = message.is_nearby_map;
-            return object;
-        };
-
-        /**
-         * Converts this SubmapEntry to JSON.
-         * @function toJSON
-         * @memberof ros_messages.SubmapEntry
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        SubmapEntry.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for SubmapEntry
-         * @function getTypeUrl
-         * @memberof ros_messages.SubmapEntry
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        SubmapEntry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/ros_messages.SubmapEntry";
-        };
-
-        return SubmapEntry;
-    })();
-
-    ros_messages.SubmapList = (function() {
-
-        /**
-         * Properties of a SubmapList.
-         * @memberof ros_messages
-         * @interface ISubmapList
-         * @property {ros_messages.SubmapList.SlamState|null} [slam_state] SubmapList slam_state
-         * @property {string|null} [uuid] SubmapList uuid
-         * @property {Array.<ros_messages.ISubmapEntry>|null} [submaps] SubmapList submaps
-         */
-
-        /**
-         * Constructs a new SubmapList.
-         * @memberof ros_messages
-         * @classdesc Represents a SubmapList.
-         * @implements ISubmapList
-         * @constructor
-         * @param {ros_messages.ISubmapList=} [properties] Properties to set
-         */
-        function SubmapList(properties) {
-            this.submaps = [];
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * SubmapList slam_state.
-         * @member {ros_messages.SubmapList.SlamState} slam_state
-         * @memberof ros_messages.SubmapList
-         * @instance
-         */
-        SubmapList.prototype.slam_state = 0;
-
-        /**
-         * SubmapList uuid.
-         * @member {string} uuid
-         * @memberof ros_messages.SubmapList
-         * @instance
-         */
-        SubmapList.prototype.uuid = "";
-
-        /**
-         * SubmapList submaps.
-         * @member {Array.<ros_messages.ISubmapEntry>} submaps
-         * @memberof ros_messages.SubmapList
-         * @instance
-         */
-        SubmapList.prototype.submaps = $util.emptyArray;
-
-        /**
-         * Creates a new SubmapList instance using the specified properties.
-         * @function create
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {ros_messages.ISubmapList=} [properties] Properties to set
-         * @returns {ros_messages.SubmapList} SubmapList instance
-         */
-        SubmapList.create = function create(properties) {
-            return new SubmapList(properties);
-        };
-
-        /**
-         * Encodes the specified SubmapList message. Does not implicitly {@link ros_messages.SubmapList.verify|verify} messages.
-         * @function encode
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {ros_messages.ISubmapList} message SubmapList message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SubmapList.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.slam_state != null && Object.hasOwnProperty.call(message, "slam_state"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.slam_state);
-            if (message.uuid != null && Object.hasOwnProperty.call(message, "uuid"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.uuid);
-            if (message.submaps != null && message.submaps.length)
-                for (let i = 0; i < message.submaps.length; ++i)
-                    $root.ros_messages.SubmapEntry.encode(message.submaps[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified SubmapList message, length delimited. Does not implicitly {@link ros_messages.SubmapList.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {ros_messages.ISubmapList} message SubmapList message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SubmapList.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a SubmapList message from the specified reader or buffer.
-         * @function decode
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.SubmapList} SubmapList
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SubmapList.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.SubmapList();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.slam_state = reader.int32();
-                        break;
-                    }
-                case 2: {
-                        message.uuid = reader.string();
-                        break;
-                    }
-                case 3: {
-                        if (!(message.submaps && message.submaps.length))
-                            message.submaps = [];
-                        message.submaps.push($root.ros_messages.SubmapEntry.decode(reader, reader.uint32()));
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a SubmapList message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.SubmapList} SubmapList
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SubmapList.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a SubmapList message.
-         * @function verify
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        SubmapList.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.slam_state != null && message.hasOwnProperty("slam_state"))
-                switch (message.slam_state) {
-                default:
-                    return "slam_state: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                    break;
-                }
-            if (message.uuid != null && message.hasOwnProperty("uuid"))
-                if (!$util.isString(message.uuid))
-                    return "uuid: string expected";
-            if (message.submaps != null && message.hasOwnProperty("submaps")) {
-                if (!Array.isArray(message.submaps))
-                    return "submaps: array expected";
-                for (let i = 0; i < message.submaps.length; ++i) {
-                    let error = $root.ros_messages.SubmapEntry.verify(message.submaps[i]);
+            /**
+             * Verifies a SubmapEntry message.
+             * @function verify
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SubmapEntry.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.trajectory_id != null && message.hasOwnProperty("trajectory_id"))
+                    if (!$util.isInteger(message.trajectory_id))
+                        return "trajectory_id: integer expected";
+                if (message.submap_index != null && message.hasOwnProperty("submap_index"))
+                    if (!$util.isInteger(message.submap_index))
+                        return "submap_index: integer expected";
+                if (message.submap_version != null && message.hasOwnProperty("submap_version"))
+                    if (!$util.isInteger(message.submap_version))
+                        return "submap_version: integer expected";
+                if (message.pose != null && message.hasOwnProperty("pose")) {
+                    let error = $root.ros_messages.Pose.verify(message.pose);
                     if (error)
-                        return "submaps." + error;
+                        return "pose." + error;
                 }
-            }
-            return null;
-        };
+                if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
+                    if (typeof message.is_frozen !== "boolean")
+                        return "is_frozen: boolean expected";
+                if (message.is_incremental_submap != null && message.hasOwnProperty("is_incremental_submap"))
+                    if (typeof message.is_incremental_submap !== "boolean")
+                        return "is_incremental_submap: boolean expected";
+                if (message.is_nearby_map != null && message.hasOwnProperty("is_nearby_map"))
+                    if (typeof message.is_nearby_map !== "boolean")
+                        return "is_nearby_map: boolean expected";
+                return null;
+            };
 
-        /**
-         * Creates a SubmapList message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.SubmapList} SubmapList
-         */
-        SubmapList.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.SubmapList)
+            /**
+             * Creates a SubmapEntry message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry
+             */
+            SubmapEntry.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.slam.SubmapEntry)
+                    return object;
+                let message = new $root.ros_messages.slam.SubmapEntry();
+                if (object.trajectory_id != null)
+                    message.trajectory_id = object.trajectory_id | 0;
+                if (object.submap_index != null)
+                    message.submap_index = object.submap_index | 0;
+                if (object.submap_version != null)
+                    message.submap_version = object.submap_version | 0;
+                if (object.pose != null) {
+                    if (typeof object.pose !== "object")
+                        throw TypeError(".ros_messages.slam.SubmapEntry.pose: object expected");
+                    message.pose = $root.ros_messages.Pose.fromObject(object.pose);
+                }
+                if (object.is_frozen != null)
+                    message.is_frozen = Boolean(object.is_frozen);
+                if (object.is_incremental_submap != null)
+                    message.is_incremental_submap = Boolean(object.is_incremental_submap);
+                if (object.is_nearby_map != null)
+                    message.is_nearby_map = Boolean(object.is_nearby_map);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SubmapEntry message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {ros_messages.slam.SubmapEntry} message SubmapEntry
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SubmapEntry.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.trajectory_id = 0;
+                    object.submap_index = 0;
+                    object.submap_version = 0;
+                    object.pose = null;
+                    object.is_frozen = false;
+                    object.is_incremental_submap = false;
+                    object.is_nearby_map = false;
+                }
+                if (message.trajectory_id != null && message.hasOwnProperty("trajectory_id"))
+                    object.trajectory_id = message.trajectory_id;
+                if (message.submap_index != null && message.hasOwnProperty("submap_index"))
+                    object.submap_index = message.submap_index;
+                if (message.submap_version != null && message.hasOwnProperty("submap_version"))
+                    object.submap_version = message.submap_version;
+                if (message.pose != null && message.hasOwnProperty("pose"))
+                    object.pose = $root.ros_messages.Pose.toObject(message.pose, options);
+                if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
+                    object.is_frozen = message.is_frozen;
+                if (message.is_incremental_submap != null && message.hasOwnProperty("is_incremental_submap"))
+                    object.is_incremental_submap = message.is_incremental_submap;
+                if (message.is_nearby_map != null && message.hasOwnProperty("is_nearby_map"))
+                    object.is_nearby_map = message.is_nearby_map;
                 return object;
-            let message = new $root.ros_messages.SubmapList();
-            switch (object.slam_state) {
-            default:
-                if (typeof object.slam_state === "number") {
-                    message.slam_state = object.slam_state;
+            };
+
+            /**
+             * Converts this SubmapEntry to JSON.
+             * @function toJSON
+             * @memberof ros_messages.slam.SubmapEntry
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SubmapEntry.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SubmapEntry
+             * @function getTypeUrl
+             * @memberof ros_messages.slam.SubmapEntry
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SubmapEntry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.slam.SubmapEntry";
+            };
+
+            return SubmapEntry;
+        })();
+
+        slam.SubmapList = (function() {
+
+            /**
+             * Properties of a SubmapList.
+             * @memberof ros_messages.slam
+             * @interface ISubmapList
+             * @property {ros_messages.slam.SubmapList.SlamState|null} [slam_state] SubmapList slam_state
+             * @property {string|null} [uuid] SubmapList uuid
+             * @property {Array.<ros_messages.slam.ISubmapEntry>|null} [submaps] SubmapList submaps
+             */
+
+            /**
+             * Constructs a new SubmapList.
+             * @memberof ros_messages.slam
+             * @classdesc Represents a SubmapList.
+             * @implements ISubmapList
+             * @constructor
+             * @param {ros_messages.slam.ISubmapList=} [properties] Properties to set
+             */
+            function SubmapList(properties) {
+                this.submaps = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SubmapList slam_state.
+             * @member {ros_messages.slam.SubmapList.SlamState} slam_state
+             * @memberof ros_messages.slam.SubmapList
+             * @instance
+             */
+            SubmapList.prototype.slam_state = 0;
+
+            /**
+             * SubmapList uuid.
+             * @member {string} uuid
+             * @memberof ros_messages.slam.SubmapList
+             * @instance
+             */
+            SubmapList.prototype.uuid = "";
+
+            /**
+             * SubmapList submaps.
+             * @member {Array.<ros_messages.slam.ISubmapEntry>} submaps
+             * @memberof ros_messages.slam.SubmapList
+             * @instance
+             */
+            SubmapList.prototype.submaps = $util.emptyArray;
+
+            /**
+             * Creates a new SubmapList instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {ros_messages.slam.ISubmapList=} [properties] Properties to set
+             * @returns {ros_messages.slam.SubmapList} SubmapList instance
+             */
+            SubmapList.create = function create(properties) {
+                return new SubmapList(properties);
+            };
+
+            /**
+             * Encodes the specified SubmapList message. Does not implicitly {@link ros_messages.slam.SubmapList.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {ros_messages.slam.ISubmapList} message SubmapList message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapList.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.slam_state != null && Object.hasOwnProperty.call(message, "slam_state"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.slam_state);
+                if (message.uuid != null && Object.hasOwnProperty.call(message, "uuid"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.uuid);
+                if (message.submaps != null && message.submaps.length)
+                    for (let i = 0; i < message.submaps.length; ++i)
+                        $root.ros_messages.slam.SubmapEntry.encode(message.submaps[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SubmapList message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapList.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {ros_messages.slam.ISubmapList} message SubmapList message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapList.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SubmapList message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.slam.SubmapList} SubmapList
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapList.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapList();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.slam_state = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.uuid = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            if (!(message.submaps && message.submaps.length))
+                                message.submaps = [];
+                            message.submaps.push($root.ros_messages.slam.SubmapEntry.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SubmapList message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.slam.SubmapList} SubmapList
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapList.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SubmapList message.
+             * @function verify
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SubmapList.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.slam_state != null && message.hasOwnProperty("slam_state"))
+                    switch (message.slam_state) {
+                    default:
+                        return "slam_state: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                        break;
+                    }
+                if (message.uuid != null && message.hasOwnProperty("uuid"))
+                    if (!$util.isString(message.uuid))
+                        return "uuid: string expected";
+                if (message.submaps != null && message.hasOwnProperty("submaps")) {
+                    if (!Array.isArray(message.submaps))
+                        return "submaps: array expected";
+                    for (let i = 0; i < message.submaps.length; ++i) {
+                        let error = $root.ros_messages.slam.SubmapEntry.verify(message.submaps[i]);
+                        if (error)
+                            return "submaps." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SubmapList message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.slam.SubmapList} SubmapList
+             */
+            SubmapList.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.slam.SubmapList)
+                    return object;
+                let message = new $root.ros_messages.slam.SubmapList();
+                switch (object.slam_state) {
+                default:
+                    if (typeof object.slam_state === "number") {
+                        message.slam_state = object.slam_state;
+                        break;
+                    }
+                    break;
+                case "SLAM_STATE_INVALID":
+                case 0:
+                    message.slam_state = 0;
+                    break;
+                case "SLAM_STATE_SLAM":
+                case 1:
+                    message.slam_state = 1;
+                    break;
+                case "SLAM_STATE_POSITIONING":
+                case 2:
+                    message.slam_state = 2;
                     break;
                 }
-                break;
-            case "SLAM_STATE_INVALID":
-            case 0:
-                message.slam_state = 0;
-                break;
-            case "SLAM_STATE_SLAM":
-            case 1:
-                message.slam_state = 1;
-                break;
-            case "SLAM_STATE_POSITIONING":
-            case 2:
-                message.slam_state = 2;
-                break;
-            }
-            if (object.uuid != null)
-                message.uuid = String(object.uuid);
-            if (object.submaps) {
-                if (!Array.isArray(object.submaps))
-                    throw TypeError(".ros_messages.SubmapList.submaps: array expected");
-                message.submaps = [];
-                for (let i = 0; i < object.submaps.length; ++i) {
-                    if (typeof object.submaps[i] !== "object")
-                        throw TypeError(".ros_messages.SubmapList.submaps: object expected");
-                    message.submaps[i] = $root.ros_messages.SubmapEntry.fromObject(object.submaps[i]);
+                if (object.uuid != null)
+                    message.uuid = String(object.uuid);
+                if (object.submaps) {
+                    if (!Array.isArray(object.submaps))
+                        throw TypeError(".ros_messages.slam.SubmapList.submaps: array expected");
+                    message.submaps = [];
+                    for (let i = 0; i < object.submaps.length; ++i) {
+                        if (typeof object.submaps[i] !== "object")
+                            throw TypeError(".ros_messages.slam.SubmapList.submaps: object expected");
+                        message.submaps[i] = $root.ros_messages.slam.SubmapEntry.fromObject(object.submaps[i]);
+                    }
                 }
-            }
-            return message;
-        };
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SubmapList message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {ros_messages.slam.SubmapList} message SubmapList
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SubmapList.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.submaps = [];
+                if (options.defaults) {
+                    object.slam_state = options.enums === String ? "SLAM_STATE_INVALID" : 0;
+                    object.uuid = "";
+                }
+                if (message.slam_state != null && message.hasOwnProperty("slam_state"))
+                    object.slam_state = options.enums === String ? $root.ros_messages.slam.SubmapList.SlamState[message.slam_state] === undefined ? message.slam_state : $root.ros_messages.slam.SubmapList.SlamState[message.slam_state] : message.slam_state;
+                if (message.uuid != null && message.hasOwnProperty("uuid"))
+                    object.uuid = message.uuid;
+                if (message.submaps && message.submaps.length) {
+                    object.submaps = [];
+                    for (let j = 0; j < message.submaps.length; ++j)
+                        object.submaps[j] = $root.ros_messages.slam.SubmapEntry.toObject(message.submaps[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SubmapList to JSON.
+             * @function toJSON
+             * @memberof ros_messages.slam.SubmapList
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SubmapList.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SubmapList
+             * @function getTypeUrl
+             * @memberof ros_messages.slam.SubmapList
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SubmapList.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.slam.SubmapList";
+            };
+
+            /**
+             * SlamState enum.
+             * @name ros_messages.slam.SubmapList.SlamState
+             * @enum {number}
+             * @property {number} SLAM_STATE_INVALID=0 SLAM_STATE_INVALID value
+             * @property {number} SLAM_STATE_SLAM=1 SLAM_STATE_SLAM value
+             * @property {number} SLAM_STATE_POSITIONING=2 SLAM_STATE_POSITIONING value
+             */
+            SubmapList.SlamState = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "SLAM_STATE_INVALID"] = 0;
+                values[valuesById[1] = "SLAM_STATE_SLAM"] = 1;
+                values[valuesById[2] = "SLAM_STATE_POSITIONING"] = 2;
+                return values;
+            })();
+
+            return SubmapList;
+        })();
 
         /**
-         * Creates a plain object from a SubmapList message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {ros_messages.SubmapList} message SubmapList
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        SubmapList.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.arrays || options.defaults)
-                object.submaps = [];
-            if (options.defaults) {
-                object.slam_state = options.enums === String ? "SLAM_STATE_INVALID" : 0;
-                object.uuid = "";
-            }
-            if (message.slam_state != null && message.hasOwnProperty("slam_state"))
-                object.slam_state = options.enums === String ? $root.ros_messages.SubmapList.SlamState[message.slam_state] === undefined ? message.slam_state : $root.ros_messages.SubmapList.SlamState[message.slam_state] : message.slam_state;
-            if (message.uuid != null && message.hasOwnProperty("uuid"))
-                object.uuid = message.uuid;
-            if (message.submaps && message.submaps.length) {
-                object.submaps = [];
-                for (let j = 0; j < message.submaps.length; ++j)
-                    object.submaps[j] = $root.ros_messages.SubmapEntry.toObject(message.submaps[j], options);
-            }
-            return object;
-        };
-
-        /**
-         * Converts this SubmapList to JSON.
-         * @function toJSON
-         * @memberof ros_messages.SubmapList
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        SubmapList.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for SubmapList
-         * @function getTypeUrl
-         * @memberof ros_messages.SubmapList
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        SubmapList.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/ros_messages.SubmapList";
-        };
-
-        /**
-         * SlamState enum.
-         * @name ros_messages.SubmapList.SlamState
+         * StatusCode enum.
+         * @name ros_messages.slam.StatusCode
          * @enum {number}
-         * @property {number} SLAM_STATE_INVALID=0 SLAM_STATE_INVALID value
-         * @property {number} SLAM_STATE_SLAM=1 SLAM_STATE_SLAM value
-         * @property {number} SLAM_STATE_POSITIONING=2 SLAM_STATE_POSITIONING value
+         * @property {number} OK=0 OK value
+         * @property {number} CANCELLED=1 CANCELLED value
+         * @property {number} UNKNOWN=2 UNKNOWN value
+         * @property {number} INVALID_ARGUMENT=3 INVALID_ARGUMENT value
+         * @property {number} DEADLINE_EXCEEDED=4 DEADLINE_EXCEEDED value
+         * @property {number} NOT_FOUND=5 NOT_FOUND value
+         * @property {number} ALREADY_EXISTS=6 ALREADY_EXISTS value
+         * @property {number} PERMISSION_DENIED=7 PERMISSION_DENIED value
+         * @property {number} RESOURCE_EXHAUSTED=8 RESOURCE_EXHAUSTED value
+         * @property {number} FAILED_PRECONDITION=9 FAILED_PRECONDITION value
+         * @property {number} ABORTED=10 ABORTED value
+         * @property {number} OUT_OF_RANGE=11 OUT_OF_RANGE value
+         * @property {number} UNIMPLEMENTED=12 UNIMPLEMENTED value
+         * @property {number} INTERNAL=13 INTERNAL value
+         * @property {number} UNAVAILABLE=14 UNAVAILABLE value
+         * @property {number} DATA_LOSS=15 DATA_LOSS value
+         * @property {number} UUID_MISMATCH=16 UUID_MISMATCH value
          */
-        SubmapList.SlamState = (function() {
+        slam.StatusCode = (function() {
             const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "SLAM_STATE_INVALID"] = 0;
-            values[valuesById[1] = "SLAM_STATE_SLAM"] = 1;
-            values[valuesById[2] = "SLAM_STATE_POSITIONING"] = 2;
+            values[valuesById[0] = "OK"] = 0;
+            values[valuesById[1] = "CANCELLED"] = 1;
+            values[valuesById[2] = "UNKNOWN"] = 2;
+            values[valuesById[3] = "INVALID_ARGUMENT"] = 3;
+            values[valuesById[4] = "DEADLINE_EXCEEDED"] = 4;
+            values[valuesById[5] = "NOT_FOUND"] = 5;
+            values[valuesById[6] = "ALREADY_EXISTS"] = 6;
+            values[valuesById[7] = "PERMISSION_DENIED"] = 7;
+            values[valuesById[8] = "RESOURCE_EXHAUSTED"] = 8;
+            values[valuesById[9] = "FAILED_PRECONDITION"] = 9;
+            values[valuesById[10] = "ABORTED"] = 10;
+            values[valuesById[11] = "OUT_OF_RANGE"] = 11;
+            values[valuesById[12] = "UNIMPLEMENTED"] = 12;
+            values[valuesById[13] = "INTERNAL"] = 13;
+            values[valuesById[14] = "UNAVAILABLE"] = 14;
+            values[valuesById[15] = "DATA_LOSS"] = 15;
+            values[valuesById[16] = "UUID_MISMATCH"] = 16;
             return values;
         })();
 
-        return SubmapList;
+        slam.StatusResponse = (function() {
+
+            /**
+             * Properties of a StatusResponse.
+             * @memberof ros_messages.slam
+             * @interface IStatusResponse
+             * @property {ros_messages.slam.StatusCode|null} [code] StatusResponse code
+             * @property {string|null} [message] StatusResponse message
+             */
+
+            /**
+             * Constructs a new StatusResponse.
+             * @memberof ros_messages.slam
+             * @classdesc Represents a StatusResponse.
+             * @implements IStatusResponse
+             * @constructor
+             * @param {ros_messages.slam.IStatusResponse=} [properties] Properties to set
+             */
+            function StatusResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * StatusResponse code.
+             * @member {ros_messages.slam.StatusCode} code
+             * @memberof ros_messages.slam.StatusResponse
+             * @instance
+             */
+            StatusResponse.prototype.code = 0;
+
+            /**
+             * StatusResponse message.
+             * @member {string} message
+             * @memberof ros_messages.slam.StatusResponse
+             * @instance
+             */
+            StatusResponse.prototype.message = "";
+
+            /**
+             * Creates a new StatusResponse instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {ros_messages.slam.IStatusResponse=} [properties] Properties to set
+             * @returns {ros_messages.slam.StatusResponse} StatusResponse instance
+             */
+            StatusResponse.create = function create(properties) {
+                return new StatusResponse(properties);
+            };
+
+            /**
+             * Encodes the specified StatusResponse message. Does not implicitly {@link ros_messages.slam.StatusResponse.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {ros_messages.slam.IStatusResponse} message StatusResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.code);
+                if (message.message != null && Object.hasOwnProperty.call(message, "message"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified StatusResponse message, length delimited. Does not implicitly {@link ros_messages.slam.StatusResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {ros_messages.slam.IStatusResponse} message StatusResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a StatusResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.slam.StatusResponse} StatusResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusResponse.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.StatusResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.code = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.message = reader.string();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a StatusResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.slam.StatusResponse} StatusResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a StatusResponse message.
+             * @function verify
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            StatusResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.code != null && message.hasOwnProperty("code"))
+                    switch (message.code) {
+                    default:
+                        return "code: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                        break;
+                    }
+                if (message.message != null && message.hasOwnProperty("message"))
+                    if (!$util.isString(message.message))
+                        return "message: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a StatusResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.slam.StatusResponse} StatusResponse
+             */
+            StatusResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.slam.StatusResponse)
+                    return object;
+                let message = new $root.ros_messages.slam.StatusResponse();
+                switch (object.code) {
+                default:
+                    if (typeof object.code === "number") {
+                        message.code = object.code;
+                        break;
+                    }
+                    break;
+                case "OK":
+                case 0:
+                    message.code = 0;
+                    break;
+                case "CANCELLED":
+                case 1:
+                    message.code = 1;
+                    break;
+                case "UNKNOWN":
+                case 2:
+                    message.code = 2;
+                    break;
+                case "INVALID_ARGUMENT":
+                case 3:
+                    message.code = 3;
+                    break;
+                case "DEADLINE_EXCEEDED":
+                case 4:
+                    message.code = 4;
+                    break;
+                case "NOT_FOUND":
+                case 5:
+                    message.code = 5;
+                    break;
+                case "ALREADY_EXISTS":
+                case 6:
+                    message.code = 6;
+                    break;
+                case "PERMISSION_DENIED":
+                case 7:
+                    message.code = 7;
+                    break;
+                case "RESOURCE_EXHAUSTED":
+                case 8:
+                    message.code = 8;
+                    break;
+                case "FAILED_PRECONDITION":
+                case 9:
+                    message.code = 9;
+                    break;
+                case "ABORTED":
+                case 10:
+                    message.code = 10;
+                    break;
+                case "OUT_OF_RANGE":
+                case 11:
+                    message.code = 11;
+                    break;
+                case "UNIMPLEMENTED":
+                case 12:
+                    message.code = 12;
+                    break;
+                case "INTERNAL":
+                case 13:
+                    message.code = 13;
+                    break;
+                case "UNAVAILABLE":
+                case 14:
+                    message.code = 14;
+                    break;
+                case "DATA_LOSS":
+                case 15:
+                    message.code = 15;
+                    break;
+                case "UUID_MISMATCH":
+                case 16:
+                    message.code = 16;
+                    break;
+                }
+                if (object.message != null)
+                    message.message = String(object.message);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a StatusResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {ros_messages.slam.StatusResponse} message StatusResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            StatusResponse.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.code = options.enums === String ? "OK" : 0;
+                    object.message = "";
+                }
+                if (message.code != null && message.hasOwnProperty("code"))
+                    object.code = options.enums === String ? $root.ros_messages.slam.StatusCode[message.code] === undefined ? message.code : $root.ros_messages.slam.StatusCode[message.code] : message.code;
+                if (message.message != null && message.hasOwnProperty("message"))
+                    object.message = message.message;
+                return object;
+            };
+
+            /**
+             * Converts this StatusResponse to JSON.
+             * @function toJSON
+             * @memberof ros_messages.slam.StatusResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            StatusResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for StatusResponse
+             * @function getTypeUrl
+             * @memberof ros_messages.slam.StatusResponse
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            StatusResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.slam.StatusResponse";
+            };
+
+            return StatusResponse;
+        })();
+
+        slam.GetMapImageResponse = (function() {
+
+            /**
+             * Properties of a GetMapImageResponse.
+             * @memberof ros_messages.slam
+             * @interface IGetMapImageResponse
+             * @property {number|null} [origin_x] GetMapImageResponse origin_x
+             * @property {number|null} [origin_y] GetMapImageResponse origin_y
+             * @property {number|null} [resolution] GetMapImageResponse resolution
+             * @property {Uint8Array|null} [png_bytes] GetMapImageResponse png_bytes
+             * @property {ros_messages.slam.StatusCode|null} [status_code] GetMapImageResponse status_code
+             * @property {string|null} [status_message] GetMapImageResponse status_message
+             */
+
+            /**
+             * Constructs a new GetMapImageResponse.
+             * @memberof ros_messages.slam
+             * @classdesc Represents a GetMapImageResponse.
+             * @implements IGetMapImageResponse
+             * @constructor
+             * @param {ros_messages.slam.IGetMapImageResponse=} [properties] Properties to set
+             */
+            function GetMapImageResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * GetMapImageResponse origin_x.
+             * @member {number} origin_x
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             */
+            GetMapImageResponse.prototype.origin_x = 0;
+
+            /**
+             * GetMapImageResponse origin_y.
+             * @member {number} origin_y
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             */
+            GetMapImageResponse.prototype.origin_y = 0;
+
+            /**
+             * GetMapImageResponse resolution.
+             * @member {number} resolution
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             */
+            GetMapImageResponse.prototype.resolution = 0;
+
+            /**
+             * GetMapImageResponse png_bytes.
+             * @member {Uint8Array} png_bytes
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             */
+            GetMapImageResponse.prototype.png_bytes = $util.newBuffer([]);
+
+            /**
+             * GetMapImageResponse status_code.
+             * @member {ros_messages.slam.StatusCode} status_code
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             */
+            GetMapImageResponse.prototype.status_code = 0;
+
+            /**
+             * GetMapImageResponse status_message.
+             * @member {string} status_message
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             */
+            GetMapImageResponse.prototype.status_message = "";
+
+            /**
+             * Creates a new GetMapImageResponse instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {ros_messages.slam.IGetMapImageResponse=} [properties] Properties to set
+             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse instance
+             */
+            GetMapImageResponse.create = function create(properties) {
+                return new GetMapImageResponse(properties);
+            };
+
+            /**
+             * Encodes the specified GetMapImageResponse message. Does not implicitly {@link ros_messages.slam.GetMapImageResponse.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {ros_messages.slam.IGetMapImageResponse} message GetMapImageResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GetMapImageResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.origin_x != null && Object.hasOwnProperty.call(message, "origin_x"))
+                    writer.uint32(/* id 1, wireType 1 =*/9).double(message.origin_x);
+                if (message.origin_y != null && Object.hasOwnProperty.call(message, "origin_y"))
+                    writer.uint32(/* id 2, wireType 1 =*/17).double(message.origin_y);
+                if (message.resolution != null && Object.hasOwnProperty.call(message, "resolution"))
+                    writer.uint32(/* id 3, wireType 1 =*/25).double(message.resolution);
+                if (message.png_bytes != null && Object.hasOwnProperty.call(message, "png_bytes"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.png_bytes);
+                if (message.status_code != null && Object.hasOwnProperty.call(message, "status_code"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).int32(message.status_code);
+                if (message.status_message != null && Object.hasOwnProperty.call(message, "status_message"))
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.status_message);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified GetMapImageResponse message, length delimited. Does not implicitly {@link ros_messages.slam.GetMapImageResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {ros_messages.slam.IGetMapImageResponse} message GetMapImageResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GetMapImageResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a GetMapImageResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GetMapImageResponse.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.GetMapImageResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.origin_x = reader.double();
+                            break;
+                        }
+                    case 2: {
+                            message.origin_y = reader.double();
+                            break;
+                        }
+                    case 3: {
+                            message.resolution = reader.double();
+                            break;
+                        }
+                    case 4: {
+                            message.png_bytes = reader.bytes();
+                            break;
+                        }
+                    case 5: {
+                            message.status_code = reader.int32();
+                            break;
+                        }
+                    case 6: {
+                            message.status_message = reader.string();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a GetMapImageResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GetMapImageResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a GetMapImageResponse message.
+             * @function verify
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            GetMapImageResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.origin_x != null && message.hasOwnProperty("origin_x"))
+                    if (typeof message.origin_x !== "number")
+                        return "origin_x: number expected";
+                if (message.origin_y != null && message.hasOwnProperty("origin_y"))
+                    if (typeof message.origin_y !== "number")
+                        return "origin_y: number expected";
+                if (message.resolution != null && message.hasOwnProperty("resolution"))
+                    if (typeof message.resolution !== "number")
+                        return "resolution: number expected";
+                if (message.png_bytes != null && message.hasOwnProperty("png_bytes"))
+                    if (!(message.png_bytes && typeof message.png_bytes.length === "number" || $util.isString(message.png_bytes)))
+                        return "png_bytes: buffer expected";
+                if (message.status_code != null && message.hasOwnProperty("status_code"))
+                    switch (message.status_code) {
+                    default:
+                        return "status_code: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                        break;
+                    }
+                if (message.status_message != null && message.hasOwnProperty("status_message"))
+                    if (!$util.isString(message.status_message))
+                        return "status_message: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a GetMapImageResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse
+             */
+            GetMapImageResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.slam.GetMapImageResponse)
+                    return object;
+                let message = new $root.ros_messages.slam.GetMapImageResponse();
+                if (object.origin_x != null)
+                    message.origin_x = Number(object.origin_x);
+                if (object.origin_y != null)
+                    message.origin_y = Number(object.origin_y);
+                if (object.resolution != null)
+                    message.resolution = Number(object.resolution);
+                if (object.png_bytes != null)
+                    if (typeof object.png_bytes === "string")
+                        $util.base64.decode(object.png_bytes, message.png_bytes = $util.newBuffer($util.base64.length(object.png_bytes)), 0);
+                    else if (object.png_bytes.length >= 0)
+                        message.png_bytes = object.png_bytes;
+                switch (object.status_code) {
+                default:
+                    if (typeof object.status_code === "number") {
+                        message.status_code = object.status_code;
+                        break;
+                    }
+                    break;
+                case "OK":
+                case 0:
+                    message.status_code = 0;
+                    break;
+                case "CANCELLED":
+                case 1:
+                    message.status_code = 1;
+                    break;
+                case "UNKNOWN":
+                case 2:
+                    message.status_code = 2;
+                    break;
+                case "INVALID_ARGUMENT":
+                case 3:
+                    message.status_code = 3;
+                    break;
+                case "DEADLINE_EXCEEDED":
+                case 4:
+                    message.status_code = 4;
+                    break;
+                case "NOT_FOUND":
+                case 5:
+                    message.status_code = 5;
+                    break;
+                case "ALREADY_EXISTS":
+                case 6:
+                    message.status_code = 6;
+                    break;
+                case "PERMISSION_DENIED":
+                case 7:
+                    message.status_code = 7;
+                    break;
+                case "RESOURCE_EXHAUSTED":
+                case 8:
+                    message.status_code = 8;
+                    break;
+                case "FAILED_PRECONDITION":
+                case 9:
+                    message.status_code = 9;
+                    break;
+                case "ABORTED":
+                case 10:
+                    message.status_code = 10;
+                    break;
+                case "OUT_OF_RANGE":
+                case 11:
+                    message.status_code = 11;
+                    break;
+                case "UNIMPLEMENTED":
+                case 12:
+                    message.status_code = 12;
+                    break;
+                case "INTERNAL":
+                case 13:
+                    message.status_code = 13;
+                    break;
+                case "UNAVAILABLE":
+                case 14:
+                    message.status_code = 14;
+                    break;
+                case "DATA_LOSS":
+                case 15:
+                    message.status_code = 15;
+                    break;
+                case "UUID_MISMATCH":
+                case 16:
+                    message.status_code = 16;
+                    break;
+                }
+                if (object.status_message != null)
+                    message.status_message = String(object.status_message);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a GetMapImageResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {ros_messages.slam.GetMapImageResponse} message GetMapImageResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            GetMapImageResponse.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.origin_x = 0;
+                    object.origin_y = 0;
+                    object.resolution = 0;
+                    if (options.bytes === String)
+                        object.png_bytes = "";
+                    else {
+                        object.png_bytes = [];
+                        if (options.bytes !== Array)
+                            object.png_bytes = $util.newBuffer(object.png_bytes);
+                    }
+                    object.status_code = options.enums === String ? "OK" : 0;
+                    object.status_message = "";
+                }
+                if (message.origin_x != null && message.hasOwnProperty("origin_x"))
+                    object.origin_x = options.json && !isFinite(message.origin_x) ? String(message.origin_x) : message.origin_x;
+                if (message.origin_y != null && message.hasOwnProperty("origin_y"))
+                    object.origin_y = options.json && !isFinite(message.origin_y) ? String(message.origin_y) : message.origin_y;
+                if (message.resolution != null && message.hasOwnProperty("resolution"))
+                    object.resolution = options.json && !isFinite(message.resolution) ? String(message.resolution) : message.resolution;
+                if (message.png_bytes != null && message.hasOwnProperty("png_bytes"))
+                    object.png_bytes = options.bytes === String ? $util.base64.encode(message.png_bytes, 0, message.png_bytes.length) : options.bytes === Array ? Array.prototype.slice.call(message.png_bytes) : message.png_bytes;
+                if (message.status_code != null && message.hasOwnProperty("status_code"))
+                    object.status_code = options.enums === String ? $root.ros_messages.slam.StatusCode[message.status_code] === undefined ? message.status_code : $root.ros_messages.slam.StatusCode[message.status_code] : message.status_code;
+                if (message.status_message != null && message.hasOwnProperty("status_message"))
+                    object.status_message = message.status_message;
+                return object;
+            };
+
+            /**
+             * Converts this GetMapImageResponse to JSON.
+             * @function toJSON
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            GetMapImageResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for GetMapImageResponse
+             * @function getTypeUrl
+             * @memberof ros_messages.slam.GetMapImageResponse
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            GetMapImageResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.slam.GetMapImageResponse";
+            };
+
+            return GetMapImageResponse;
+        })();
+
+        slam.SubmapTexture = (function() {
+
+            /**
+             * Properties of a SubmapTexture.
+             * @memberof ros_messages.slam
+             * @interface ISubmapTexture
+             * @property {number|null} [cell_format] SubmapTexture cell_format
+             * @property {Uint8Array|null} [cells] SubmapTexture cells
+             * @property {number|null} [width] SubmapTexture width
+             * @property {number|null} [height] SubmapTexture height
+             * @property {number|null} [resolution] SubmapTexture resolution
+             * @property {number|null} [z_level] SubmapTexture z_level
+             * @property {ros_messages.IPose|null} [slice_pose] SubmapTexture slice_pose
+             */
+
+            /**
+             * Constructs a new SubmapTexture.
+             * @memberof ros_messages.slam
+             * @classdesc Represents a SubmapTexture.
+             * @implements ISubmapTexture
+             * @constructor
+             * @param {ros_messages.slam.ISubmapTexture=} [properties] Properties to set
+             */
+            function SubmapTexture(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SubmapTexture cell_format.
+             * @member {number} cell_format
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.cell_format = 0;
+
+            /**
+             * SubmapTexture cells.
+             * @member {Uint8Array} cells
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.cells = $util.newBuffer([]);
+
+            /**
+             * SubmapTexture width.
+             * @member {number} width
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.width = 0;
+
+            /**
+             * SubmapTexture height.
+             * @member {number} height
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.height = 0;
+
+            /**
+             * SubmapTexture resolution.
+             * @member {number} resolution
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.resolution = 0;
+
+            /**
+             * SubmapTexture z_level.
+             * @member {number} z_level
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.z_level = 0;
+
+            /**
+             * SubmapTexture slice_pose.
+             * @member {ros_messages.IPose|null|undefined} slice_pose
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             */
+            SubmapTexture.prototype.slice_pose = null;
+
+            /**
+             * Creates a new SubmapTexture instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {ros_messages.slam.ISubmapTexture=} [properties] Properties to set
+             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture instance
+             */
+            SubmapTexture.create = function create(properties) {
+                return new SubmapTexture(properties);
+            };
+
+            /**
+             * Encodes the specified SubmapTexture message. Does not implicitly {@link ros_messages.slam.SubmapTexture.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {ros_messages.slam.ISubmapTexture} message SubmapTexture message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapTexture.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.cell_format != null && Object.hasOwnProperty.call(message, "cell_format"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.cell_format);
+                if (message.cells != null && Object.hasOwnProperty.call(message, "cells"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.cells);
+                if (message.width != null && Object.hasOwnProperty.call(message, "width"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.width);
+                if (message.height != null && Object.hasOwnProperty.call(message, "height"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).int32(message.height);
+                if (message.resolution != null && Object.hasOwnProperty.call(message, "resolution"))
+                    writer.uint32(/* id 5, wireType 1 =*/41).double(message.resolution);
+                if (message.z_level != null && Object.hasOwnProperty.call(message, "z_level"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).int32(message.z_level);
+                if (message.slice_pose != null && Object.hasOwnProperty.call(message, "slice_pose"))
+                    $root.ros_messages.Pose.encode(message.slice_pose, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SubmapTexture message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapTexture.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {ros_messages.slam.ISubmapTexture} message SubmapTexture message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapTexture.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SubmapTexture message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapTexture.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapTexture();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.cell_format = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.cells = reader.bytes();
+                            break;
+                        }
+                    case 3: {
+                            message.width = reader.int32();
+                            break;
+                        }
+                    case 4: {
+                            message.height = reader.int32();
+                            break;
+                        }
+                    case 5: {
+                            message.resolution = reader.double();
+                            break;
+                        }
+                    case 6: {
+                            message.z_level = reader.int32();
+                            break;
+                        }
+                    case 7: {
+                            message.slice_pose = $root.ros_messages.Pose.decode(reader, reader.uint32());
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SubmapTexture message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapTexture.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SubmapTexture message.
+             * @function verify
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SubmapTexture.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.cell_format != null && message.hasOwnProperty("cell_format"))
+                    if (!$util.isInteger(message.cell_format))
+                        return "cell_format: integer expected";
+                if (message.cells != null && message.hasOwnProperty("cells"))
+                    if (!(message.cells && typeof message.cells.length === "number" || $util.isString(message.cells)))
+                        return "cells: buffer expected";
+                if (message.width != null && message.hasOwnProperty("width"))
+                    if (!$util.isInteger(message.width))
+                        return "width: integer expected";
+                if (message.height != null && message.hasOwnProperty("height"))
+                    if (!$util.isInteger(message.height))
+                        return "height: integer expected";
+                if (message.resolution != null && message.hasOwnProperty("resolution"))
+                    if (typeof message.resolution !== "number")
+                        return "resolution: number expected";
+                if (message.z_level != null && message.hasOwnProperty("z_level"))
+                    if (!$util.isInteger(message.z_level))
+                        return "z_level: integer expected";
+                if (message.slice_pose != null && message.hasOwnProperty("slice_pose")) {
+                    let error = $root.ros_messages.Pose.verify(message.slice_pose);
+                    if (error)
+                        return "slice_pose." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SubmapTexture message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture
+             */
+            SubmapTexture.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.slam.SubmapTexture)
+                    return object;
+                let message = new $root.ros_messages.slam.SubmapTexture();
+                if (object.cell_format != null)
+                    message.cell_format = object.cell_format | 0;
+                if (object.cells != null)
+                    if (typeof object.cells === "string")
+                        $util.base64.decode(object.cells, message.cells = $util.newBuffer($util.base64.length(object.cells)), 0);
+                    else if (object.cells.length >= 0)
+                        message.cells = object.cells;
+                if (object.width != null)
+                    message.width = object.width | 0;
+                if (object.height != null)
+                    message.height = object.height | 0;
+                if (object.resolution != null)
+                    message.resolution = Number(object.resolution);
+                if (object.z_level != null)
+                    message.z_level = object.z_level | 0;
+                if (object.slice_pose != null) {
+                    if (typeof object.slice_pose !== "object")
+                        throw TypeError(".ros_messages.slam.SubmapTexture.slice_pose: object expected");
+                    message.slice_pose = $root.ros_messages.Pose.fromObject(object.slice_pose);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SubmapTexture message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {ros_messages.slam.SubmapTexture} message SubmapTexture
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SubmapTexture.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.cell_format = 0;
+                    if (options.bytes === String)
+                        object.cells = "";
+                    else {
+                        object.cells = [];
+                        if (options.bytes !== Array)
+                            object.cells = $util.newBuffer(object.cells);
+                    }
+                    object.width = 0;
+                    object.height = 0;
+                    object.resolution = 0;
+                    object.z_level = 0;
+                    object.slice_pose = null;
+                }
+                if (message.cell_format != null && message.hasOwnProperty("cell_format"))
+                    object.cell_format = message.cell_format;
+                if (message.cells != null && message.hasOwnProperty("cells"))
+                    object.cells = options.bytes === String ? $util.base64.encode(message.cells, 0, message.cells.length) : options.bytes === Array ? Array.prototype.slice.call(message.cells) : message.cells;
+                if (message.width != null && message.hasOwnProperty("width"))
+                    object.width = message.width;
+                if (message.height != null && message.hasOwnProperty("height"))
+                    object.height = message.height;
+                if (message.resolution != null && message.hasOwnProperty("resolution"))
+                    object.resolution = options.json && !isFinite(message.resolution) ? String(message.resolution) : message.resolution;
+                if (message.z_level != null && message.hasOwnProperty("z_level"))
+                    object.z_level = message.z_level;
+                if (message.slice_pose != null && message.hasOwnProperty("slice_pose"))
+                    object.slice_pose = $root.ros_messages.Pose.toObject(message.slice_pose, options);
+                return object;
+            };
+
+            /**
+             * Converts this SubmapTexture to JSON.
+             * @function toJSON
+             * @memberof ros_messages.slam.SubmapTexture
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SubmapTexture.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SubmapTexture
+             * @function getTypeUrl
+             * @memberof ros_messages.slam.SubmapTexture
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SubmapTexture.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.slam.SubmapTexture";
+            };
+
+            return SubmapTexture;
+        })();
+
+        slam.SubmapQueryV2Response = (function() {
+
+            /**
+             * Properties of a SubmapQueryV2Response.
+             * @memberof ros_messages.slam
+             * @interface ISubmapQueryV2Response
+             * @property {ros_messages.slam.IStatusResponse|null} [status] SubmapQueryV2Response status
+             * @property {number|null} [submap_version] SubmapQueryV2Response submap_version
+             * @property {Array.<ros_messages.slam.ISubmapTexture>|null} [textures] SubmapQueryV2Response textures
+             */
+
+            /**
+             * Constructs a new SubmapQueryV2Response.
+             * @memberof ros_messages.slam
+             * @classdesc Represents a SubmapQueryV2Response.
+             * @implements ISubmapQueryV2Response
+             * @constructor
+             * @param {ros_messages.slam.ISubmapQueryV2Response=} [properties] Properties to set
+             */
+            function SubmapQueryV2Response(properties) {
+                this.textures = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SubmapQueryV2Response status.
+             * @member {ros_messages.slam.IStatusResponse|null|undefined} status
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @instance
+             */
+            SubmapQueryV2Response.prototype.status = null;
+
+            /**
+             * SubmapQueryV2Response submap_version.
+             * @member {number} submap_version
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @instance
+             */
+            SubmapQueryV2Response.prototype.submap_version = 0;
+
+            /**
+             * SubmapQueryV2Response textures.
+             * @member {Array.<ros_messages.slam.ISubmapTexture>} textures
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @instance
+             */
+            SubmapQueryV2Response.prototype.textures = $util.emptyArray;
+
+            /**
+             * Creates a new SubmapQueryV2Response instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {ros_messages.slam.ISubmapQueryV2Response=} [properties] Properties to set
+             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response instance
+             */
+            SubmapQueryV2Response.create = function create(properties) {
+                return new SubmapQueryV2Response(properties);
+            };
+
+            /**
+             * Encodes the specified SubmapQueryV2Response message. Does not implicitly {@link ros_messages.slam.SubmapQueryV2Response.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {ros_messages.slam.ISubmapQueryV2Response} message SubmapQueryV2Response message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapQueryV2Response.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                    $root.ros_messages.slam.StatusResponse.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.submap_version);
+                if (message.textures != null && message.textures.length)
+                    for (let i = 0; i < message.textures.length; ++i)
+                        $root.ros_messages.slam.SubmapTexture.encode(message.textures[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SubmapQueryV2Response message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapQueryV2Response.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {ros_messages.slam.ISubmapQueryV2Response} message SubmapQueryV2Response message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SubmapQueryV2Response.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SubmapQueryV2Response message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapQueryV2Response.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapQueryV2Response();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.status = $root.ros_messages.slam.StatusResponse.decode(reader, reader.uint32());
+                            break;
+                        }
+                    case 2: {
+                            message.submap_version = reader.int32();
+                            break;
+                        }
+                    case 3: {
+                            if (!(message.textures && message.textures.length))
+                                message.textures = [];
+                            message.textures.push($root.ros_messages.slam.SubmapTexture.decode(reader, reader.uint32()));
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SubmapQueryV2Response message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SubmapQueryV2Response.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SubmapQueryV2Response message.
+             * @function verify
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SubmapQueryV2Response.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.status != null && message.hasOwnProperty("status")) {
+                    let error = $root.ros_messages.slam.StatusResponse.verify(message.status);
+                    if (error)
+                        return "status." + error;
+                }
+                if (message.submap_version != null && message.hasOwnProperty("submap_version"))
+                    if (!$util.isInteger(message.submap_version))
+                        return "submap_version: integer expected";
+                if (message.textures != null && message.hasOwnProperty("textures")) {
+                    if (!Array.isArray(message.textures))
+                        return "textures: array expected";
+                    for (let i = 0; i < message.textures.length; ++i) {
+                        let error = $root.ros_messages.slam.SubmapTexture.verify(message.textures[i]);
+                        if (error)
+                            return "textures." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SubmapQueryV2Response message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response
+             */
+            SubmapQueryV2Response.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.slam.SubmapQueryV2Response)
+                    return object;
+                let message = new $root.ros_messages.slam.SubmapQueryV2Response();
+                if (object.status != null) {
+                    if (typeof object.status !== "object")
+                        throw TypeError(".ros_messages.slam.SubmapQueryV2Response.status: object expected");
+                    message.status = $root.ros_messages.slam.StatusResponse.fromObject(object.status);
+                }
+                if (object.submap_version != null)
+                    message.submap_version = object.submap_version | 0;
+                if (object.textures) {
+                    if (!Array.isArray(object.textures))
+                        throw TypeError(".ros_messages.slam.SubmapQueryV2Response.textures: array expected");
+                    message.textures = [];
+                    for (let i = 0; i < object.textures.length; ++i) {
+                        if (typeof object.textures[i] !== "object")
+                            throw TypeError(".ros_messages.slam.SubmapQueryV2Response.textures: object expected");
+                        message.textures[i] = $root.ros_messages.slam.SubmapTexture.fromObject(object.textures[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SubmapQueryV2Response message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {ros_messages.slam.SubmapQueryV2Response} message SubmapQueryV2Response
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SubmapQueryV2Response.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.textures = [];
+                if (options.defaults) {
+                    object.status = null;
+                    object.submap_version = 0;
+                }
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = $root.ros_messages.slam.StatusResponse.toObject(message.status, options);
+                if (message.submap_version != null && message.hasOwnProperty("submap_version"))
+                    object.submap_version = message.submap_version;
+                if (message.textures && message.textures.length) {
+                    object.textures = [];
+                    for (let j = 0; j < message.textures.length; ++j)
+                        object.textures[j] = $root.ros_messages.slam.SubmapTexture.toObject(message.textures[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SubmapQueryV2Response to JSON.
+             * @function toJSON
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SubmapQueryV2Response.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SubmapQueryV2Response
+             * @function getTypeUrl
+             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SubmapQueryV2Response.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.slam.SubmapQueryV2Response";
+            };
+
+            return SubmapQueryV2Response;
+        })();
+
+        return slam;
     })();
 
-    ros_messages.StatusResponse = (function() {
+    ros_messages.TowingState = (function() {
 
         /**
-         * Properties of a StatusResponse.
+         * Properties of a TowingState.
          * @memberof ros_messages
-         * @interface IStatusResponse
-         * @property {number|null} [code] StatusResponse code
-         * @property {string|null} [message] StatusResponse message
+         * @interface ITowingState
+         * @property {number|null} [action_progress] TowingState action_progress
+         * @property {ros_messages.TowingState.HookState|null} [hook_state] TowingState hook_state
+         * @property {boolean|null} [cargo_detected] TowingState cargo_detected
+         * @property {number|null} [error_code] TowingState error_code
+         * @property {string|null} [error_message] TowingState error_message
          */
 
         /**
-         * Constructs a new StatusResponse.
+         * Constructs a new TowingState.
          * @memberof ros_messages
-         * @classdesc Represents a StatusResponse.
-         * @implements IStatusResponse
+         * @classdesc Represents a TowingState.
+         * @implements ITowingState
          * @constructor
-         * @param {ros_messages.IStatusResponse=} [properties] Properties to set
+         * @param {ros_messages.ITowingState=} [properties] Properties to set
          */
-        function StatusResponse(properties) {
+        function TowingState(properties) {
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -3532,91 +5017,133 @@ export const ros_messages = $root.ros_messages = (() => {
         }
 
         /**
-         * StatusResponse code.
-         * @member {number} code
-         * @memberof ros_messages.StatusResponse
+         * TowingState action_progress.
+         * @member {number} action_progress
+         * @memberof ros_messages.TowingState
          * @instance
          */
-        StatusResponse.prototype.code = 0;
+        TowingState.prototype.action_progress = 0;
 
         /**
-         * StatusResponse message.
-         * @member {string} message
-         * @memberof ros_messages.StatusResponse
+         * TowingState hook_state.
+         * @member {ros_messages.TowingState.HookState} hook_state
+         * @memberof ros_messages.TowingState
          * @instance
          */
-        StatusResponse.prototype.message = "";
+        TowingState.prototype.hook_state = 0;
 
         /**
-         * Creates a new StatusResponse instance using the specified properties.
+         * TowingState cargo_detected.
+         * @member {boolean} cargo_detected
+         * @memberof ros_messages.TowingState
+         * @instance
+         */
+        TowingState.prototype.cargo_detected = false;
+
+        /**
+         * TowingState error_code.
+         * @member {number} error_code
+         * @memberof ros_messages.TowingState
+         * @instance
+         */
+        TowingState.prototype.error_code = 0;
+
+        /**
+         * TowingState error_message.
+         * @member {string} error_message
+         * @memberof ros_messages.TowingState
+         * @instance
+         */
+        TowingState.prototype.error_message = "";
+
+        /**
+         * Creates a new TowingState instance using the specified properties.
          * @function create
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
-         * @param {ros_messages.IStatusResponse=} [properties] Properties to set
-         * @returns {ros_messages.StatusResponse} StatusResponse instance
+         * @param {ros_messages.ITowingState=} [properties] Properties to set
+         * @returns {ros_messages.TowingState} TowingState instance
          */
-        StatusResponse.create = function create(properties) {
-            return new StatusResponse(properties);
+        TowingState.create = function create(properties) {
+            return new TowingState(properties);
         };
 
         /**
-         * Encodes the specified StatusResponse message. Does not implicitly {@link ros_messages.StatusResponse.verify|verify} messages.
+         * Encodes the specified TowingState message. Does not implicitly {@link ros_messages.TowingState.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
-         * @param {ros_messages.IStatusResponse} message StatusResponse message or plain object to encode
+         * @param {ros_messages.ITowingState} message TowingState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        StatusResponse.encode = function encode(message, writer) {
+        TowingState.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.code != null && Object.hasOwnProperty.call(message, "code"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.code);
-            if (message.message != null && Object.hasOwnProperty.call(message, "message"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
+            if (message.action_progress != null && Object.hasOwnProperty.call(message, "action_progress"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.action_progress);
+            if (message.hook_state != null && Object.hasOwnProperty.call(message, "hook_state"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.hook_state);
+            if (message.cargo_detected != null && Object.hasOwnProperty.call(message, "cargo_detected"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.cargo_detected);
+            if (message.error_code != null && Object.hasOwnProperty.call(message, "error_code"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.error_code);
+            if (message.error_message != null && Object.hasOwnProperty.call(message, "error_message"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.error_message);
             return writer;
         };
 
         /**
-         * Encodes the specified StatusResponse message, length delimited. Does not implicitly {@link ros_messages.StatusResponse.verify|verify} messages.
+         * Encodes the specified TowingState message, length delimited. Does not implicitly {@link ros_messages.TowingState.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
-         * @param {ros_messages.IStatusResponse} message StatusResponse message or plain object to encode
+         * @param {ros_messages.ITowingState} message TowingState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        StatusResponse.encodeDelimited = function encodeDelimited(message, writer) {
+        TowingState.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a StatusResponse message from the specified reader or buffer.
+         * Decodes a TowingState message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.StatusResponse} StatusResponse
+         * @returns {ros_messages.TowingState} TowingState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        StatusResponse.decode = function decode(reader, length, error) {
+        TowingState.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.StatusResponse();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.TowingState();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.code = reader.uint32();
+                        message.action_progress = reader.float();
                         break;
                     }
                 case 2: {
-                        message.message = reader.string();
+                        message.hook_state = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.cargo_detected = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.error_code = reader.uint32();
+                        break;
+                    }
+                case 5: {
+                        message.error_message = reader.string();
                         break;
                     }
                 default:
@@ -3628,111 +5155,203 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Decodes a StatusResponse message from the specified reader or buffer, length delimited.
+         * Decodes a TowingState message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.StatusResponse} StatusResponse
+         * @returns {ros_messages.TowingState} TowingState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        StatusResponse.decodeDelimited = function decodeDelimited(reader) {
+        TowingState.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a StatusResponse message.
+         * Verifies a TowingState message.
          * @function verify
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        StatusResponse.verify = function verify(message) {
+        TowingState.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.code != null && message.hasOwnProperty("code"))
-                if (!$util.isInteger(message.code))
-                    return "code: integer expected";
-            if (message.message != null && message.hasOwnProperty("message"))
-                if (!$util.isString(message.message))
-                    return "message: string expected";
+            if (message.action_progress != null && message.hasOwnProperty("action_progress"))
+                if (typeof message.action_progress !== "number")
+                    return "action_progress: number expected";
+            if (message.hook_state != null && message.hasOwnProperty("hook_state"))
+                switch (message.hook_state) {
+                default:
+                    return "hook_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    break;
+                }
+            if (message.cargo_detected != null && message.hasOwnProperty("cargo_detected"))
+                if (typeof message.cargo_detected !== "boolean")
+                    return "cargo_detected: boolean expected";
+            if (message.error_code != null && message.hasOwnProperty("error_code"))
+                if (!$util.isInteger(message.error_code))
+                    return "error_code: integer expected";
+            if (message.error_message != null && message.hasOwnProperty("error_message"))
+                if (!$util.isString(message.error_message))
+                    return "error_message: string expected";
             return null;
         };
 
         /**
-         * Creates a StatusResponse message from a plain object. Also converts values to their respective internal types.
+         * Creates a TowingState message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.StatusResponse} StatusResponse
+         * @returns {ros_messages.TowingState} TowingState
          */
-        StatusResponse.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.StatusResponse)
+        TowingState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ros_messages.TowingState)
                 return object;
-            let message = new $root.ros_messages.StatusResponse();
-            if (object.code != null)
-                message.code = object.code >>> 0;
-            if (object.message != null)
-                message.message = String(object.message);
+            let message = new $root.ros_messages.TowingState();
+            if (object.action_progress != null)
+                message.action_progress = Number(object.action_progress);
+            switch (object.hook_state) {
+            default:
+                if (typeof object.hook_state === "number") {
+                    message.hook_state = object.hook_state;
+                    break;
+                }
+                break;
+            case "UNKNOWN":
+            case 0:
+                message.hook_state = 0;
+                break;
+            case "LOCKED":
+            case 1:
+                message.hook_state = 1;
+                break;
+            case "RELEASED":
+            case 2:
+                message.hook_state = 2;
+                break;
+            case "LOCKING":
+            case 3:
+                message.hook_state = 3;
+                break;
+            case "RELEASING":
+            case 4:
+                message.hook_state = 4;
+                break;
+            case "SELF_CHECKING":
+            case 5:
+                message.hook_state = 5;
+                break;
+            case "ERROR":
+            case 6:
+                message.hook_state = 6;
+                break;
+            }
+            if (object.cargo_detected != null)
+                message.cargo_detected = Boolean(object.cargo_detected);
+            if (object.error_code != null)
+                message.error_code = object.error_code >>> 0;
+            if (object.error_message != null)
+                message.error_message = String(object.error_message);
             return message;
         };
 
         /**
-         * Creates a plain object from a StatusResponse message. Also converts values to other types if specified.
+         * Creates a plain object from a TowingState message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
-         * @param {ros_messages.StatusResponse} message StatusResponse
+         * @param {ros_messages.TowingState} message TowingState
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
-        StatusResponse.toObject = function toObject(message, options) {
+        TowingState.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
             let object = {};
             if (options.defaults) {
-                object.code = 0;
-                object.message = "";
+                object.action_progress = 0;
+                object.hook_state = options.enums === String ? "UNKNOWN" : 0;
+                object.cargo_detected = false;
+                object.error_code = 0;
+                object.error_message = "";
             }
-            if (message.code != null && message.hasOwnProperty("code"))
-                object.code = message.code;
-            if (message.message != null && message.hasOwnProperty("message"))
-                object.message = message.message;
+            if (message.action_progress != null && message.hasOwnProperty("action_progress"))
+                object.action_progress = options.json && !isFinite(message.action_progress) ? String(message.action_progress) : message.action_progress;
+            if (message.hook_state != null && message.hasOwnProperty("hook_state"))
+                object.hook_state = options.enums === String ? $root.ros_messages.TowingState.HookState[message.hook_state] === undefined ? message.hook_state : $root.ros_messages.TowingState.HookState[message.hook_state] : message.hook_state;
+            if (message.cargo_detected != null && message.hasOwnProperty("cargo_detected"))
+                object.cargo_detected = message.cargo_detected;
+            if (message.error_code != null && message.hasOwnProperty("error_code"))
+                object.error_code = message.error_code;
+            if (message.error_message != null && message.hasOwnProperty("error_message"))
+                object.error_message = message.error_message;
             return object;
         };
 
         /**
-         * Converts this StatusResponse to JSON.
+         * Converts this TowingState to JSON.
          * @function toJSON
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
-        StatusResponse.prototype.toJSON = function toJSON() {
+        TowingState.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
 
         /**
-         * Gets the default type url for StatusResponse
+         * Gets the default type url for TowingState
          * @function getTypeUrl
-         * @memberof ros_messages.StatusResponse
+         * @memberof ros_messages.TowingState
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
          */
-        StatusResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        TowingState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.StatusResponse";
+            return typeUrlPrefix + "/ros_messages.TowingState";
         };
 
-        return StatusResponse;
+        /**
+         * HookState enum.
+         * @name ros_messages.TowingState.HookState
+         * @enum {number}
+         * @property {number} UNKNOWN=0 UNKNOWN value
+         * @property {number} LOCKED=1 LOCKED value
+         * @property {number} RELEASED=2 RELEASED value
+         * @property {number} LOCKING=3 LOCKING value
+         * @property {number} RELEASING=4 RELEASING value
+         * @property {number} SELF_CHECKING=5 SELF_CHECKING value
+         * @property {number} ERROR=6 ERROR value
+         */
+        TowingState.HookState = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "UNKNOWN"] = 0;
+            values[valuesById[1] = "LOCKED"] = 1;
+            values[valuesById[2] = "RELEASED"] = 2;
+            values[valuesById[3] = "LOCKING"] = 3;
+            values[valuesById[4] = "RELEASING"] = 4;
+            values[valuesById[5] = "SELF_CHECKING"] = 5;
+            values[valuesById[6] = "ERROR"] = 6;
+            return values;
+        })();
+
+        return TowingState;
     })();
 
     ros_messages.SubmapTexture = (function() {
@@ -4099,7 +5718,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * Properties of a SubmapQueryV2Response.
          * @memberof ros_messages
          * @interface ISubmapQueryV2Response
-         * @property {ros_messages.IStatusResponse|null} [status] SubmapQueryV2Response status
+         * @property {ros_messages.slam.IStatusResponse|null} [status] SubmapQueryV2Response status
          * @property {number|null} [submap_version] SubmapQueryV2Response submap_version
          * @property {Array.<ros_messages.ISubmapTexture>|null} [textures] SubmapQueryV2Response textures
          */
@@ -4122,7 +5741,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * SubmapQueryV2Response status.
-         * @member {ros_messages.IStatusResponse|null|undefined} status
+         * @member {ros_messages.slam.IStatusResponse|null|undefined} status
          * @memberof ros_messages.SubmapQueryV2Response
          * @instance
          */
@@ -4169,7 +5788,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (!writer)
                 writer = $Writer.create();
             if (message.status != null && Object.hasOwnProperty.call(message, "status"))
-                $root.ros_messages.StatusResponse.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                $root.ros_messages.slam.StatusResponse.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.submap_version);
             if (message.textures != null && message.textures.length)
@@ -4212,7 +5831,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.status = $root.ros_messages.StatusResponse.decode(reader, reader.uint32());
+                        message.status = $root.ros_messages.slam.StatusResponse.decode(reader, reader.uint32());
                         break;
                     }
                 case 2: {
@@ -4261,7 +5880,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeof message !== "object" || message === null)
                 return "object expected";
             if (message.status != null && message.hasOwnProperty("status")) {
-                let error = $root.ros_messages.StatusResponse.verify(message.status);
+                let error = $root.ros_messages.slam.StatusResponse.verify(message.status);
                 if (error)
                     return "status." + error;
             }
@@ -4295,7 +5914,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (object.status != null) {
                 if (typeof object.status !== "object")
                     throw TypeError(".ros_messages.SubmapQueryV2Response.status: object expected");
-                message.status = $root.ros_messages.StatusResponse.fromObject(object.status);
+                message.status = $root.ros_messages.slam.StatusResponse.fromObject(object.status);
             }
             if (object.submap_version != null)
                 message.submap_version = object.submap_version | 0;
@@ -4332,7 +5951,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.submap_version = 0;
             }
             if (message.status != null && message.hasOwnProperty("status"))
-                object.status = $root.ros_messages.StatusResponse.toObject(message.status, options);
+                object.status = $root.ros_messages.slam.StatusResponse.toObject(message.status, options);
             if (message.submap_version != null && message.hasOwnProperty("submap_version"))
                 object.submap_version = message.submap_version;
             if (message.textures && message.textures.length) {

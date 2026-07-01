@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ros_messages;
+package ros_messages.slam;
 
 import "geometry.proto";
 import "slam/status.proto";
@@ -20,13 +20,13 @@ message SubmapTexture {
     int32  height      = 4;
     double resolution  = 5;
     int32  z_level     = 6;
-    Pose   slice_pose  = 7;
+    ros_messages.Pose   slice_pose  = 7;
 }
 
 // Response payload of cartographer_ros_msgs/SubmapQueryV2.
 // Returned over HTTP as application/x-protobuf.
 message SubmapQueryV2Response {
-    ros_messages.slam.StatusResponse status         = 1;
+    StatusResponse         status         = 1;
     int32                  submap_version = 2;
     repeated SubmapTexture textures       = 3;
 }

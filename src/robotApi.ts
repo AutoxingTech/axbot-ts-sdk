@@ -59,7 +59,7 @@ export interface RobotApiConfig {
 }
 
 export interface SubmapQueryV2FetchResult {
-  message: ros_messages.SubmapQueryV2Response;
+  message: ros_messages.slam.SubmapQueryV2Response;
   payloadLength: number;
 }
 
@@ -113,7 +113,9 @@ export class RobotApi {
   }
 
   private looksLikeHtml(text: string): boolean {
-    return /<\s*html[\s>]|<\s*body[\s>]|<\s*head[\s>]|<\s*title[\s>]|<\s*h1[\s>]|<!doctype\s+html/i.test(text);
+    return /<\s*html[\s>]|<\s*body[\s>]|<\s*head[\s>]|<\s*title[\s>]|<\s*h1[\s>]|<!doctype\s+html/i.test(
+      text,
+    );
   }
 
   // Strip simple HTML error pages down to readable text before surfacing them in the UI.
@@ -147,7 +149,9 @@ export class RobotApi {
       try {
         const json = JSON.parse(text);
         if (json.detail) {
-          return this.truncateErrorText(typeof json.detail === 'string' ? json.detail : JSON.stringify(json.detail));
+          return this.truncateErrorText(
+            typeof json.detail === 'string' ? json.detail : JSON.stringify(json.detail),
+          );
         }
         if (json.message) {
           return this.truncateErrorText(json.message);
@@ -239,7 +243,11 @@ export class RobotApi {
   protected async postImpl(url: string, data: any, signal?: AbortSignal): Promise<Response> {
     return this.doRequest('POST', url, data, signal);
   }
-  protected async postFormDataImpl(url: string, formData: FormData, signal?: AbortSignal): Promise<Response> {
+  protected async postFormDataImpl(
+    url: string,
+    formData: FormData,
+    signal?: AbortSignal,
+  ): Promise<Response> {
     const base = this.getConfig().getApiBase();
     const fullUrl = `${base}/${url}`;
     const cb = this.getConfig().onApiCalled;
@@ -258,7 +266,11 @@ export class RobotApi {
     return this.doRequest('DELETE', url, null, signal);
   }
 
-  protected async getImpl(url: string, signal?: AbortSignal, opts?: { accept?: AcceptType }): Promise<Response> {
+  protected async getImpl(
+    url: string,
+    signal?: AbortSignal,
+    opts?: { accept?: AcceptType },
+  ): Promise<Response> {
     return this.doRequest('GET', url, null, signal, opts);
   }
 
@@ -367,7 +379,12 @@ export class RobotApi {
    * @param opts.adjust_position - If true, attempt to correct initial position errors within a small area.
    *   If false, no correction will be attempted. If not provided, behavior is version-dependent.
    */
-  async setPose(x: number, y: number, theta: number, opts?: { adjust_position?: boolean }): Promise<boolean> {
+  async setPose(
+    x: number,
+    y: number,
+    theta: number,
+    opts?: { adjust_position?: boolean },
+  ): Promise<boolean> {
     const requestData = { position: [x, y], ori: theta, ...opts };
     return this.apiCall(() => this.postImpl('chassis/pose', requestData), 'Set Pose', false);
   }
@@ -434,7 +451,11 @@ export class RobotApi {
     grid_origin_y: number;
     overlays: string;
   }): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('chassis/current-map', params), 'Set Current Map With Data', false);
+    return this.apiCall(
+      () => this.postImpl('chassis/current-map', params),
+      'Set Current Map With Data',
+      false,
+    );
   }
 
   /**
@@ -446,14 +467,22 @@ export class RobotApi {
    */
   async setMapFromFile(pbstreamPath: string, mapName: string): Promise<boolean> {
     return this.apiCall(
-      () => this.postImpl('chassis/current-map', { data_url: `file://${pbstreamPath}`, map_name: mapName }),
+      () =>
+        this.postImpl('chassis/current-map', {
+          data_url: `file://${pbstreamPath}`,
+          map_name: mapName,
+        }),
       'Set Current Map From File',
       false,
     );
   }
 
   async cancelCurrentMove(): Promise<boolean> {
-    return this.apiCall(() => this.patchImpl('chassis/moves/current', { state: 'cancelled' }), 'Cancel Move', false);
+    return this.apiCall(
+      () => this.patchImpl('chassis/moves/current', { state: 'cancelled' }),
+      'Cancel Move',
+      false,
+    );
   }
 
   async createMove(opts: MoveActionCreate): Promise<boolean> {
@@ -461,7 +490,11 @@ export class RobotApi {
     return this.apiCall(() => this.postImpl('chassis/moves', body), 'Create Move', false);
   }
 
-  protected async apiCall<T>(operation: () => Promise<Response>, errorTitle: string, defaultValue: T): Promise<T> {
+  protected async apiCall<T>(
+    operation: () => Promise<Response>,
+    errorTitle: string,
+    defaultValue: T,
+  ): Promise<T> {
     try {
       const res = await operation();
       if (!res.ok) {
@@ -473,7 +506,9 @@ export class RobotApi {
         return defaultValue;
       }
       // If defaultValue is boolean true, return it directly; otherwise parse JSON
-      return typeof defaultValue === 'boolean' && defaultValue === false ? (true as T) : await res.json();
+      return typeof defaultValue === 'boolean' && defaultValue === false
+        ? (true as T)
+        : await res.json();
     } catch (e: any) {
       if (this.config?.throwOnError) {
         throw e;
@@ -504,7 +539,10 @@ export class RobotApi {
   }
 
   async stopMapping(req: Omit<StopMappingRequest, 'state'> = {}): Promise<boolean> {
-    const payload: StopMappingRequest = { state: 'finished', new_map_only: req.new_map_only ?? false };
+    const payload: StopMappingRequest = {
+      state: 'finished',
+      new_map_only: req.new_map_only ?? false,
+    };
     return this.apiCall(() => this.patchImpl('mappings/current', payload), 'Stop Mapping', false);
   }
 
@@ -530,7 +568,11 @@ export class RobotApi {
   }
 
   async deleteMappingTask(mappingId: number): Promise<boolean> {
-    return this.apiCall(() => this.deleteImpl(`mappings/${mappingId}`), 'Delete Mapping Task', false);
+    return this.apiCall(
+      () => this.deleteImpl(`mappings/${mappingId}`),
+      'Delete Mapping Task',
+      false,
+    );
   }
 
   async deleteAllMappingTasks(): Promise<boolean> {
@@ -586,19 +628,35 @@ export class RobotApi {
   }
 
   async clearJackErrors(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/clear_jack_errors', {}), 'Clear Jack Errors', false);
+    return this.apiCall(
+      () => this.postImpl('services/clear_jack_errors', {}),
+      'Clear Jack Errors',
+      false,
+    );
   }
 
   async towingHookLock(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/towing_hook_lock', {}), 'Towing Hook Lock', false);
+    return this.apiCall(
+      () => this.postImpl('services/towing_hook_lock', {}),
+      'Towing Hook Lock',
+      false,
+    );
   }
 
   async towingHookRelease(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/towing_hook_release', {}), 'Towing Hook Release', false);
+    return this.apiCall(
+      () => this.postImpl('services/towing_hook_release', {}),
+      'Towing Hook Release',
+      false,
+    );
   }
 
   async clearTowingHookError(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/clear_towing_hook_error', {}), 'Clear Towing Hook Error', false);
+    return this.apiCall(
+      () => this.postImpl('services/clear_towing_hook_error', {}),
+      'Clear Towing Hook Error',
+      false,
+    );
   }
 
   async loadCargo(): Promise<boolean> {
@@ -642,15 +700,27 @@ export class RobotApi {
   }
 
   async getSavedUsbDevices(): Promise<UsbDevice[]> {
-    return this.apiCall(() => this.getImpl('device/usb_devices/saved'), 'Get Saved USB Devices', []);
+    return this.apiCall(
+      () => this.getImpl('device/usb_devices/saved'),
+      'Get Saved USB Devices',
+      [],
+    );
   }
 
   async saveUsbDevices(devices: UsbDevice[]): Promise<boolean> {
-    return this.apiCall(() => this.putImpl('device/usb_devices/saved', devices), 'Save USB Devices', false);
+    return this.apiCall(
+      () => this.putImpl('device/usb_devices/saved', devices),
+      'Save USB Devices',
+      false,
+    );
   }
 
   async clearSavedUsbDevices(): Promise<boolean> {
-    return this.apiCall(() => this.deleteImpl('device/usb_devices/saved'), 'Clear Saved USB Devices', false);
+    return this.apiCall(
+      () => this.deleteImpl('device/usb_devices/saved'),
+      'Clear Saved USB Devices',
+      false,
+    );
   }
 
   async getChronyConfig(): Promise<string> {
@@ -663,11 +733,19 @@ export class RobotApi {
   }
 
   async setChronySources(sources: string[]): Promise<boolean> {
-    return this.apiCall(() => this.putImpl('device/chrony/sources', sources), 'Set Chrony Sources', false);
+    return this.apiCall(
+      () => this.putImpl('device/chrony/sources', sources),
+      'Set Chrony Sources',
+      false,
+    );
   }
 
   async restoreChronySources(): Promise<boolean> {
-    return this.apiCall(() => this.deleteImpl('device/chrony/sources'), 'Restore Chrony Sources', false);
+    return this.apiCall(
+      () => this.deleteImpl('device/chrony/sources'),
+      'Restore Chrony Sources',
+      false,
+    );
   }
 
   async getChronyAllows(): Promise<string[]> {
@@ -675,7 +753,11 @@ export class RobotApi {
   }
 
   async setChronyAllows(allows: string[]): Promise<boolean> {
-    return this.apiCall(() => this.putImpl('device/chrony/allows', allows), 'Set Chrony Allows', false);
+    return this.apiCall(
+      () => this.putImpl('device/chrony/allows', allows),
+      'Set Chrony Allows',
+      false,
+    );
   }
 
   async disableNtpServer(): Promise<boolean> {
@@ -716,7 +798,11 @@ export class RobotApi {
   }
 
   async getCollectedDataFile(filename: string): Promise<CollectedDataFile | null> {
-    return this.apiCall(() => this.getImpl(`collected_data/${filename}`), 'Get Collected Data File', null);
+    return this.apiCall(
+      () => this.getImpl(`collected_data/${filename}`),
+      'Get Collected Data File',
+      null,
+    );
   }
 
   async removeCollectedData(filename?: string): Promise<boolean> {
@@ -725,19 +811,35 @@ export class RobotApi {
   }
 
   async calibrateImuBias(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/imu/recalibrate', {}), 'IMU Bias Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/imu/recalibrate', {}),
+      'IMU Bias Calibration',
+      false,
+    );
   }
 
   async probeV2xBeacons(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/probe_v2x_beacons', {}), 'Probe V2X Beacons', false);
+    return this.apiCall(
+      () => this.postImpl('services/probe_v2x_beacons', {}),
+      'Probe V2X Beacons',
+      false,
+    );
   }
 
   async calibrateGyroScale(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/imu/calibrate_gyro_scale', {}), 'Gyroscope Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/imu/calibrate_gyro_scale', {}),
+      'Gyroscope Calibration',
+      false,
+    );
   }
 
   async calibrateDepthCameras(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_depth_cameras', {}), 'Depth Camera Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_depth_cameras', {}),
+      'Depth Camera Calibration',
+      false,
+    );
   }
 
   async calibrateDepthCameraMasks(): Promise<boolean> {
@@ -749,10 +851,16 @@ export class RobotApi {
   }
 
   async calibrateLidarYaws(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_lidar_yaws', {}), 'Lidar Yaw Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_lidar_yaws', {}),
+      'Lidar Yaw Calibration',
+      false,
+    );
   }
 
-  async calibrateDuoLidarPoses(calibration_step?: 'single_shot' | 'right_wall' | 'front_wall'): Promise<boolean> {
+  async calibrateDuoLidarPoses(
+    calibration_step?: 'single_shot' | 'right_wall' | 'front_wall',
+  ): Promise<boolean> {
     const body = calibration_step ? { calibration_step } : {};
     return this.apiCall(
       () => this.postImpl('services/calibrate_duo_lidar_poses', body),
@@ -778,15 +886,27 @@ export class RobotApi {
   }
 
   async calibrateHeadLidar(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_head_lidar_pose', {}), 'Head Lidar Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_head_lidar_pose', {}),
+      'Head Lidar Calibration',
+      false,
+    );
   }
 
   async calibrateRearLidar(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_rear_lidar_pose', {}), 'Rear Lidar Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_rear_lidar_pose', {}),
+      'Rear Lidar Calibration',
+      false,
+    );
   }
 
   async calibrateTopLidar(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/calibrate_top_lidar_pose', {}), 'Top Lidar Calibration', false);
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_top_lidar_pose', {}),
+      'Top Lidar Calibration',
+      false,
+    );
   }
 
   /**
@@ -858,7 +978,10 @@ export class RobotApi {
    * @param target - 'main_computing_unit' for main board only, 'main_power_supply' for whole device
    * @param reboot - true to reboot, false to shutdown
    */
-  async shutdownDevice(target: 'main_computing_unit' | 'main_power_supply', reboot: boolean): Promise<boolean> {
+  async shutdownDevice(
+    target: 'main_computing_unit' | 'main_power_supply',
+    reboot: boolean,
+  ): Promise<boolean> {
     return this.apiCall(
       () => this.postImpl('services/baseboard/shutdown', { target, reboot }),
       'Shutdown/Reboot',
@@ -870,28 +993,44 @@ export class RobotApi {
    * Restart the main robot service.
    */
   async restartAxbot(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/restart_service', {}), 'Restart axbot', false);
+    return this.apiCall(
+      () => this.postImpl('services/restart_service', {}),
+      'Restart axbot',
+      false,
+    );
   }
 
   /**
    * Restart the py_axbot service.
    */
   async restartPyAxbot(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/restart_py_axbot', {}), 'Restart py_axbot', false);
+    return this.apiCall(
+      () => this.postImpl('services/restart_py_axbot', {}),
+      'Restart py_axbot',
+      false,
+    );
   }
 
   /**
    * Start global positioning to find the pose of the robot globally with current sensor data.
    */
   async startGlobalPositioning(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/start_global_positioning', {}), 'Global Positioning', false);
+    return this.apiCall(
+      () => this.postImpl('services/start_global_positioning', {}),
+      'Global Positioning',
+      false,
+    );
   }
 
   /**
    * Clear wheel errors.
    */
   async clearWheelErrors(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/wheel_control/clear_errors', {}), 'Clear Wheel Errors', false);
+    return this.apiCall(
+      () => this.postImpl('services/wheel_control/clear_errors', {}),
+      'Clear Wheel Errors',
+      false,
+    );
   }
 
   /**
@@ -909,7 +1048,11 @@ export class RobotApi {
    * Clear slipping error.
    */
   async clearSlippingError(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/clear_slipping_error', {}), 'Clear Slipping Error', false);
+    return this.apiCall(
+      () => this.postImpl('services/clear_slipping_error', {}),
+      'Clear Slipping Error',
+      false,
+    );
   }
 
   /**
@@ -927,7 +1070,11 @@ export class RobotApi {
    * Soft reset wheels.
    */
   async resetWheels(): Promise<boolean> {
-    return this.apiCall(() => this.postImpl('services/wheel_control/reset_wheels', {}), 'Reset Wheels', false);
+    return this.apiCall(
+      () => this.postImpl('services/wheel_control/reset_wheels', {}),
+      'Reset Wheels',
+      false,
+    );
   }
 
   /**
@@ -1028,9 +1175,11 @@ export class RobotApi {
     }
 
     const buf = new Uint8Array(await res.arrayBuffer());
-    const message = ros_messages.SubmapQueryV2Response.decode(buf);
+    const message = ros_messages.slam.SubmapQueryV2Response.decode(buf);
     if (message.status && message.status.code !== 0) {
-      throw new Error(`SubmapQueryV2 failed ${message.status.code}: ${message.status.message ?? ''}`);
+      throw new Error(
+        `SubmapQueryV2 failed ${message.status.code}: ${message.status.message ?? ''}`,
+      );
     }
 
     return {

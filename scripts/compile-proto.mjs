@@ -17,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const protoSrc = join(root, 'src', 'proto');
 
-const protoFiles = readdirSync(protoSrc)
+const protoFiles = readdirSync(protoSrc, { recursive: true })
   .filter((f) => f.endsWith('.proto'))
   .map((f) => `"${join(protoSrc, f)}"`)
   .join(' ');
@@ -33,7 +33,7 @@ const pbts = join(root, 'node_modules', '.bin', `pbts${ext}`);
 console.log('Compiling proto files...');
 
 execSync(
-  `"${pbjs}" -t static-module -w es6 --es6 --keep-case -o "${outJs}" ${protoFiles}`,
+  `"${pbjs}" -p "${protoSrc}" -t static-module -w es6 --es6 --keep-case -o "${outJs}" ${protoFiles}`,
   { stdio: 'inherit' }
 );
 

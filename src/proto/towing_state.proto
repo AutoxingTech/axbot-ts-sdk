@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package ros_messages;
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+message TowingState {
+    enum HookState {
+        UNKNOWN        = 0;
+        LOCKED         = 1;
+        RELEASED       = 2;
+        LOCKING        = 3;
+        RELEASING      = 4;
+        SELF_CHECKING  = 5;
+        ERROR          = 6;
+    }
+
+    float     action_progress  = 1;
+    HookState hook_state       = 2;
+    bool      cargo_detected   = 3;
+    uint32    error_code       = 4;
+    string    error_message    = 5;
+}

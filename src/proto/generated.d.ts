@@ -890,10 +890,13 @@ export namespace ros_messages {
         mast_state?: (ros_messages.IMastState|null);
 
         /** RosMessageWrapper submap_list */
-        submap_list?: (ros_messages.ISubmapList|null);
+        submap_list?: (ros_messages.slam.ISubmapList|null);
 
         /** RosMessageWrapper rack_states */
         rack_states?: (ros_messages.IRackStates|null);
+
+        /** RosMessageWrapper towing_state */
+        towing_state?: (ros_messages.ITowingState|null);
     }
 
     /** Represents a RosMessageWrapper. */
@@ -924,13 +927,16 @@ export namespace ros_messages {
         public mast_state?: (ros_messages.IMastState|null);
 
         /** RosMessageWrapper submap_list. */
-        public submap_list?: (ros_messages.ISubmapList|null);
+        public submap_list?: (ros_messages.slam.ISubmapList|null);
 
         /** RosMessageWrapper rack_states. */
         public rack_states?: (ros_messages.IRackStates|null);
 
+        /** RosMessageWrapper towing_state. */
+        public towing_state?: (ros_messages.ITowingState|null);
+
         /** RosMessageWrapper payload. */
-        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states");
+        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state");
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
@@ -1018,363 +1024,893 @@ export namespace ros_messages {
             POINT_CLOUD = 1,
             MAST_STATE = 2,
             SUBMAP_LIST = 3,
-            RACK_STATES = 4
+            RACK_STATES = 4,
+            TOWING_STATE = 5
         }
     }
 
-    /** Properties of a SubmapEntry. */
-    interface ISubmapEntry {
+    /** Namespace slam. */
+    namespace slam {
 
-        /** SubmapEntry trajectory_id */
-        trajectory_id?: (number|null);
+        /** Properties of a SubmapEntry. */
+        interface ISubmapEntry {
 
-        /** SubmapEntry submap_index */
-        submap_index?: (number|null);
+            /** SubmapEntry trajectory_id */
+            trajectory_id?: (number|null);
 
-        /** SubmapEntry submap_version */
-        submap_version?: (number|null);
+            /** SubmapEntry submap_index */
+            submap_index?: (number|null);
 
-        /** SubmapEntry pose */
-        pose?: (ros_messages.IPose|null);
+            /** SubmapEntry submap_version */
+            submap_version?: (number|null);
 
-        /** SubmapEntry is_frozen */
-        is_frozen?: (boolean|null);
+            /** SubmapEntry pose */
+            pose?: (ros_messages.IPose|null);
 
-        /** SubmapEntry is_incremental_submap */
-        is_incremental_submap?: (boolean|null);
+            /** SubmapEntry is_frozen */
+            is_frozen?: (boolean|null);
 
-        /** SubmapEntry is_nearby_map */
-        is_nearby_map?: (boolean|null);
-    }
+            /** SubmapEntry is_incremental_submap */
+            is_incremental_submap?: (boolean|null);
 
-    /** Represents a SubmapEntry. */
-    class SubmapEntry implements ISubmapEntry {
+            /** SubmapEntry is_nearby_map */
+            is_nearby_map?: (boolean|null);
+        }
 
-        /**
-         * Constructs a new SubmapEntry.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: ros_messages.ISubmapEntry);
+        /** Represents a SubmapEntry. */
+        class SubmapEntry implements ISubmapEntry {
 
-        /** SubmapEntry trajectory_id. */
-        public trajectory_id: number;
+            /**
+             * Constructs a new SubmapEntry.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.slam.ISubmapEntry);
 
-        /** SubmapEntry submap_index. */
-        public submap_index: number;
+            /** SubmapEntry trajectory_id. */
+            public trajectory_id: number;
 
-        /** SubmapEntry submap_version. */
-        public submap_version: number;
+            /** SubmapEntry submap_index. */
+            public submap_index: number;
 
-        /** SubmapEntry pose. */
-        public pose?: (ros_messages.IPose|null);
+            /** SubmapEntry submap_version. */
+            public submap_version: number;
 
-        /** SubmapEntry is_frozen. */
-        public is_frozen: boolean;
+            /** SubmapEntry pose. */
+            public pose?: (ros_messages.IPose|null);
 
-        /** SubmapEntry is_incremental_submap. */
-        public is_incremental_submap: boolean;
+            /** SubmapEntry is_frozen. */
+            public is_frozen: boolean;
 
-        /** SubmapEntry is_nearby_map. */
-        public is_nearby_map: boolean;
+            /** SubmapEntry is_incremental_submap. */
+            public is_incremental_submap: boolean;
 
-        /**
-         * Creates a new SubmapEntry instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns SubmapEntry instance
-         */
-        public static create(properties?: ros_messages.ISubmapEntry): ros_messages.SubmapEntry;
+            /** SubmapEntry is_nearby_map. */
+            public is_nearby_map: boolean;
 
-        /**
-         * Encodes the specified SubmapEntry message. Does not implicitly {@link ros_messages.SubmapEntry.verify|verify} messages.
-         * @param message SubmapEntry message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: ros_messages.ISubmapEntry, writer?: $protobuf.Writer): $protobuf.Writer;
+            /**
+             * Creates a new SubmapEntry instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SubmapEntry instance
+             */
+            public static create(properties?: ros_messages.slam.ISubmapEntry): ros_messages.slam.SubmapEntry;
 
-        /**
-         * Encodes the specified SubmapEntry message, length delimited. Does not implicitly {@link ros_messages.SubmapEntry.verify|verify} messages.
-         * @param message SubmapEntry message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: ros_messages.ISubmapEntry, writer?: $protobuf.Writer): $protobuf.Writer;
+            /**
+             * Encodes the specified SubmapEntry message. Does not implicitly {@link ros_messages.slam.SubmapEntry.verify|verify} messages.
+             * @param message SubmapEntry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.slam.ISubmapEntry, writer?: $protobuf.Writer): $protobuf.Writer;
 
-        /**
-         * Decodes a SubmapEntry message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns SubmapEntry
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.SubmapEntry;
+            /**
+             * Encodes the specified SubmapEntry message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapEntry.verify|verify} messages.
+             * @param message SubmapEntry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.slam.ISubmapEntry, writer?: $protobuf.Writer): $protobuf.Writer;
 
-        /**
-         * Decodes a SubmapEntry message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns SubmapEntry
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.SubmapEntry;
+            /**
+             * Decodes a SubmapEntry message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SubmapEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.slam.SubmapEntry;
 
-        /**
-         * Verifies a SubmapEntry message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
+            /**
+             * Decodes a SubmapEntry message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SubmapEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.slam.SubmapEntry;
 
-        /**
-         * Creates a SubmapEntry message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns SubmapEntry
-         */
-        public static fromObject(object: { [k: string]: any }): ros_messages.SubmapEntry;
+            /**
+             * Verifies a SubmapEntry message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
 
-        /**
-         * Creates a plain object from a SubmapEntry message. Also converts values to other types if specified.
-         * @param message SubmapEntry
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: ros_messages.SubmapEntry, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            /**
+             * Creates a SubmapEntry message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SubmapEntry
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.slam.SubmapEntry;
 
-        /**
-         * Converts this SubmapEntry to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
+            /**
+             * Creates a plain object from a SubmapEntry message. Also converts values to other types if specified.
+             * @param message SubmapEntry
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.slam.SubmapEntry, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-        /**
-         * Gets the default type url for SubmapEntry
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
+            /**
+             * Converts this SubmapEntry to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
 
-    /** Properties of a SubmapList. */
-    interface ISubmapList {
+            /**
+             * Gets the default type url for SubmapEntry
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
 
-        /** SubmapList slam_state */
-        slam_state?: (ros_messages.SubmapList.SlamState|null);
+        /** Properties of a SubmapList. */
+        interface ISubmapList {
 
-        /** SubmapList uuid */
-        uuid?: (string|null);
+            /** SubmapList slam_state */
+            slam_state?: (ros_messages.slam.SubmapList.SlamState|null);
 
-        /** SubmapList submaps */
-        submaps?: (ros_messages.ISubmapEntry[]|null);
-    }
+            /** SubmapList uuid */
+            uuid?: (string|null);
 
-    /** Represents a SubmapList. */
-    class SubmapList implements ISubmapList {
+            /** SubmapList submaps */
+            submaps?: (ros_messages.slam.ISubmapEntry[]|null);
+        }
 
-        /**
-         * Constructs a new SubmapList.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: ros_messages.ISubmapList);
+        /** Represents a SubmapList. */
+        class SubmapList implements ISubmapList {
 
-        /** SubmapList slam_state. */
-        public slam_state: ros_messages.SubmapList.SlamState;
+            /**
+             * Constructs a new SubmapList.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.slam.ISubmapList);
 
-        /** SubmapList uuid. */
-        public uuid: string;
+            /** SubmapList slam_state. */
+            public slam_state: ros_messages.slam.SubmapList.SlamState;
 
-        /** SubmapList submaps. */
-        public submaps: ros_messages.ISubmapEntry[];
+            /** SubmapList uuid. */
+            public uuid: string;
 
-        /**
-         * Creates a new SubmapList instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns SubmapList instance
-         */
-        public static create(properties?: ros_messages.ISubmapList): ros_messages.SubmapList;
+            /** SubmapList submaps. */
+            public submaps: ros_messages.slam.ISubmapEntry[];
 
-        /**
-         * Encodes the specified SubmapList message. Does not implicitly {@link ros_messages.SubmapList.verify|verify} messages.
-         * @param message SubmapList message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: ros_messages.ISubmapList, writer?: $protobuf.Writer): $protobuf.Writer;
+            /**
+             * Creates a new SubmapList instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SubmapList instance
+             */
+            public static create(properties?: ros_messages.slam.ISubmapList): ros_messages.slam.SubmapList;
 
-        /**
-         * Encodes the specified SubmapList message, length delimited. Does not implicitly {@link ros_messages.SubmapList.verify|verify} messages.
-         * @param message SubmapList message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: ros_messages.ISubmapList, writer?: $protobuf.Writer): $protobuf.Writer;
+            /**
+             * Encodes the specified SubmapList message. Does not implicitly {@link ros_messages.slam.SubmapList.verify|verify} messages.
+             * @param message SubmapList message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.slam.ISubmapList, writer?: $protobuf.Writer): $protobuf.Writer;
 
-        /**
-         * Decodes a SubmapList message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns SubmapList
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.SubmapList;
+            /**
+             * Encodes the specified SubmapList message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapList.verify|verify} messages.
+             * @param message SubmapList message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.slam.ISubmapList, writer?: $protobuf.Writer): $protobuf.Writer;
 
-        /**
-         * Decodes a SubmapList message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns SubmapList
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.SubmapList;
+            /**
+             * Decodes a SubmapList message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SubmapList
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.slam.SubmapList;
 
-        /**
-         * Verifies a SubmapList message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
+            /**
+             * Decodes a SubmapList message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SubmapList
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.slam.SubmapList;
 
-        /**
-         * Creates a SubmapList message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns SubmapList
-         */
-        public static fromObject(object: { [k: string]: any }): ros_messages.SubmapList;
+            /**
+             * Verifies a SubmapList message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
 
-        /**
-         * Creates a plain object from a SubmapList message. Also converts values to other types if specified.
-         * @param message SubmapList
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: ros_messages.SubmapList, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            /**
+             * Creates a SubmapList message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SubmapList
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.slam.SubmapList;
 
-        /**
-         * Converts this SubmapList to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
+            /**
+             * Creates a plain object from a SubmapList message. Also converts values to other types if specified.
+             * @param message SubmapList
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.slam.SubmapList, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-        /**
-         * Gets the default type url for SubmapList
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
+            /**
+             * Converts this SubmapList to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
 
-    namespace SubmapList {
+            /**
+             * Gets the default type url for SubmapList
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
 
-        /** SlamState enum. */
-        enum SlamState {
-            SLAM_STATE_INVALID = 0,
-            SLAM_STATE_SLAM = 1,
-            SLAM_STATE_POSITIONING = 2
+        namespace SubmapList {
+
+            /** SlamState enum. */
+            enum SlamState {
+                SLAM_STATE_INVALID = 0,
+                SLAM_STATE_SLAM = 1,
+                SLAM_STATE_POSITIONING = 2
+            }
+        }
+
+        /** StatusCode enum. */
+        enum StatusCode {
+            OK = 0,
+            CANCELLED = 1,
+            UNKNOWN = 2,
+            INVALID_ARGUMENT = 3,
+            DEADLINE_EXCEEDED = 4,
+            NOT_FOUND = 5,
+            ALREADY_EXISTS = 6,
+            PERMISSION_DENIED = 7,
+            RESOURCE_EXHAUSTED = 8,
+            FAILED_PRECONDITION = 9,
+            ABORTED = 10,
+            OUT_OF_RANGE = 11,
+            UNIMPLEMENTED = 12,
+            INTERNAL = 13,
+            UNAVAILABLE = 14,
+            DATA_LOSS = 15,
+            UUID_MISMATCH = 16
+        }
+
+        /** Properties of a StatusResponse. */
+        interface IStatusResponse {
+
+            /** StatusResponse code */
+            code?: (ros_messages.slam.StatusCode|null);
+
+            /** StatusResponse message */
+            message?: (string|null);
+        }
+
+        /** Represents a StatusResponse. */
+        class StatusResponse implements IStatusResponse {
+
+            /**
+             * Constructs a new StatusResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.slam.IStatusResponse);
+
+            /** StatusResponse code. */
+            public code: ros_messages.slam.StatusCode;
+
+            /** StatusResponse message. */
+            public message: string;
+
+            /**
+             * Creates a new StatusResponse instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusResponse instance
+             */
+            public static create(properties?: ros_messages.slam.IStatusResponse): ros_messages.slam.StatusResponse;
+
+            /**
+             * Encodes the specified StatusResponse message. Does not implicitly {@link ros_messages.slam.StatusResponse.verify|verify} messages.
+             * @param message StatusResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.slam.IStatusResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusResponse message, length delimited. Does not implicitly {@link ros_messages.slam.StatusResponse.verify|verify} messages.
+             * @param message StatusResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.slam.IStatusResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns StatusResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.slam.StatusResponse;
+
+            /**
+             * Decodes a StatusResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns StatusResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.slam.StatusResponse;
+
+            /**
+             * Verifies a StatusResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusResponse
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.slam.StatusResponse;
+
+            /**
+             * Creates a plain object from a StatusResponse message. Also converts values to other types if specified.
+             * @param message StatusResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.slam.StatusResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for StatusResponse
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a GetMapImageResponse. */
+        interface IGetMapImageResponse {
+
+            /** GetMapImageResponse origin_x */
+            origin_x?: (number|null);
+
+            /** GetMapImageResponse origin_y */
+            origin_y?: (number|null);
+
+            /** GetMapImageResponse resolution */
+            resolution?: (number|null);
+
+            /** GetMapImageResponse png_bytes */
+            png_bytes?: (Uint8Array|null);
+
+            /** GetMapImageResponse status_code */
+            status_code?: (ros_messages.slam.StatusCode|null);
+
+            /** GetMapImageResponse status_message */
+            status_message?: (string|null);
+        }
+
+        /** Represents a GetMapImageResponse. */
+        class GetMapImageResponse implements IGetMapImageResponse {
+
+            /**
+             * Constructs a new GetMapImageResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.slam.IGetMapImageResponse);
+
+            /** GetMapImageResponse origin_x. */
+            public origin_x: number;
+
+            /** GetMapImageResponse origin_y. */
+            public origin_y: number;
+
+            /** GetMapImageResponse resolution. */
+            public resolution: number;
+
+            /** GetMapImageResponse png_bytes. */
+            public png_bytes: Uint8Array;
+
+            /** GetMapImageResponse status_code. */
+            public status_code: ros_messages.slam.StatusCode;
+
+            /** GetMapImageResponse status_message. */
+            public status_message: string;
+
+            /**
+             * Creates a new GetMapImageResponse instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns GetMapImageResponse instance
+             */
+            public static create(properties?: ros_messages.slam.IGetMapImageResponse): ros_messages.slam.GetMapImageResponse;
+
+            /**
+             * Encodes the specified GetMapImageResponse message. Does not implicitly {@link ros_messages.slam.GetMapImageResponse.verify|verify} messages.
+             * @param message GetMapImageResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.slam.IGetMapImageResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GetMapImageResponse message, length delimited. Does not implicitly {@link ros_messages.slam.GetMapImageResponse.verify|verify} messages.
+             * @param message GetMapImageResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.slam.IGetMapImageResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GetMapImageResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GetMapImageResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.slam.GetMapImageResponse;
+
+            /**
+             * Decodes a GetMapImageResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GetMapImageResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.slam.GetMapImageResponse;
+
+            /**
+             * Verifies a GetMapImageResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GetMapImageResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GetMapImageResponse
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.slam.GetMapImageResponse;
+
+            /**
+             * Creates a plain object from a GetMapImageResponse message. Also converts values to other types if specified.
+             * @param message GetMapImageResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.slam.GetMapImageResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GetMapImageResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for GetMapImageResponse
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a SubmapTexture. */
+        interface ISubmapTexture {
+
+            /** SubmapTexture cell_format */
+            cell_format?: (number|null);
+
+            /** SubmapTexture cells */
+            cells?: (Uint8Array|null);
+
+            /** SubmapTexture width */
+            width?: (number|null);
+
+            /** SubmapTexture height */
+            height?: (number|null);
+
+            /** SubmapTexture resolution */
+            resolution?: (number|null);
+
+            /** SubmapTexture z_level */
+            z_level?: (number|null);
+
+            /** SubmapTexture slice_pose */
+            slice_pose?: (ros_messages.IPose|null);
+        }
+
+        /** Represents a SubmapTexture. */
+        class SubmapTexture implements ISubmapTexture {
+
+            /**
+             * Constructs a new SubmapTexture.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.slam.ISubmapTexture);
+
+            /** SubmapTexture cell_format. */
+            public cell_format: number;
+
+            /** SubmapTexture cells. */
+            public cells: Uint8Array;
+
+            /** SubmapTexture width. */
+            public width: number;
+
+            /** SubmapTexture height. */
+            public height: number;
+
+            /** SubmapTexture resolution. */
+            public resolution: number;
+
+            /** SubmapTexture z_level. */
+            public z_level: number;
+
+            /** SubmapTexture slice_pose. */
+            public slice_pose?: (ros_messages.IPose|null);
+
+            /**
+             * Creates a new SubmapTexture instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SubmapTexture instance
+             */
+            public static create(properties?: ros_messages.slam.ISubmapTexture): ros_messages.slam.SubmapTexture;
+
+            /**
+             * Encodes the specified SubmapTexture message. Does not implicitly {@link ros_messages.slam.SubmapTexture.verify|verify} messages.
+             * @param message SubmapTexture message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.slam.ISubmapTexture, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SubmapTexture message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapTexture.verify|verify} messages.
+             * @param message SubmapTexture message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.slam.ISubmapTexture, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SubmapTexture message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SubmapTexture
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.slam.SubmapTexture;
+
+            /**
+             * Decodes a SubmapTexture message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SubmapTexture
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.slam.SubmapTexture;
+
+            /**
+             * Verifies a SubmapTexture message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SubmapTexture message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SubmapTexture
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.slam.SubmapTexture;
+
+            /**
+             * Creates a plain object from a SubmapTexture message. Also converts values to other types if specified.
+             * @param message SubmapTexture
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.slam.SubmapTexture, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SubmapTexture to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SubmapTexture
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a SubmapQueryV2Response. */
+        interface ISubmapQueryV2Response {
+
+            /** SubmapQueryV2Response status */
+            status?: (ros_messages.slam.IStatusResponse|null);
+
+            /** SubmapQueryV2Response submap_version */
+            submap_version?: (number|null);
+
+            /** SubmapQueryV2Response textures */
+            textures?: (ros_messages.slam.ISubmapTexture[]|null);
+        }
+
+        /** Represents a SubmapQueryV2Response. */
+        class SubmapQueryV2Response implements ISubmapQueryV2Response {
+
+            /**
+             * Constructs a new SubmapQueryV2Response.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.slam.ISubmapQueryV2Response);
+
+            /** SubmapQueryV2Response status. */
+            public status?: (ros_messages.slam.IStatusResponse|null);
+
+            /** SubmapQueryV2Response submap_version. */
+            public submap_version: number;
+
+            /** SubmapQueryV2Response textures. */
+            public textures: ros_messages.slam.ISubmapTexture[];
+
+            /**
+             * Creates a new SubmapQueryV2Response instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SubmapQueryV2Response instance
+             */
+            public static create(properties?: ros_messages.slam.ISubmapQueryV2Response): ros_messages.slam.SubmapQueryV2Response;
+
+            /**
+             * Encodes the specified SubmapQueryV2Response message. Does not implicitly {@link ros_messages.slam.SubmapQueryV2Response.verify|verify} messages.
+             * @param message SubmapQueryV2Response message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.slam.ISubmapQueryV2Response, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SubmapQueryV2Response message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapQueryV2Response.verify|verify} messages.
+             * @param message SubmapQueryV2Response message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.slam.ISubmapQueryV2Response, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SubmapQueryV2Response message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SubmapQueryV2Response
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.slam.SubmapQueryV2Response;
+
+            /**
+             * Decodes a SubmapQueryV2Response message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SubmapQueryV2Response
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.slam.SubmapQueryV2Response;
+
+            /**
+             * Verifies a SubmapQueryV2Response message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SubmapQueryV2Response message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SubmapQueryV2Response
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.slam.SubmapQueryV2Response;
+
+            /**
+             * Creates a plain object from a SubmapQueryV2Response message. Also converts values to other types if specified.
+             * @param message SubmapQueryV2Response
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.slam.SubmapQueryV2Response, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SubmapQueryV2Response to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SubmapQueryV2Response
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 
-    /** Properties of a StatusResponse. */
-    interface IStatusResponse {
+    /** Properties of a TowingState. */
+    interface ITowingState {
 
-        /** StatusResponse code */
-        code?: (number|null);
+        /** TowingState action_progress */
+        action_progress?: (number|null);
 
-        /** StatusResponse message */
-        message?: (string|null);
+        /** TowingState hook_state */
+        hook_state?: (ros_messages.TowingState.HookState|null);
+
+        /** TowingState cargo_detected */
+        cargo_detected?: (boolean|null);
+
+        /** TowingState error_code */
+        error_code?: (number|null);
+
+        /** TowingState error_message */
+        error_message?: (string|null);
     }
 
-    /** Represents a StatusResponse. */
-    class StatusResponse implements IStatusResponse {
+    /** Represents a TowingState. */
+    class TowingState implements ITowingState {
 
         /**
-         * Constructs a new StatusResponse.
+         * Constructs a new TowingState.
          * @param [properties] Properties to set
          */
-        constructor(properties?: ros_messages.IStatusResponse);
+        constructor(properties?: ros_messages.ITowingState);
 
-        /** StatusResponse code. */
-        public code: number;
+        /** TowingState action_progress. */
+        public action_progress: number;
 
-        /** StatusResponse message. */
-        public message: string;
+        /** TowingState hook_state. */
+        public hook_state: ros_messages.TowingState.HookState;
+
+        /** TowingState cargo_detected. */
+        public cargo_detected: boolean;
+
+        /** TowingState error_code. */
+        public error_code: number;
+
+        /** TowingState error_message. */
+        public error_message: string;
 
         /**
-         * Creates a new StatusResponse instance using the specified properties.
+         * Creates a new TowingState instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns StatusResponse instance
+         * @returns TowingState instance
          */
-        public static create(properties?: ros_messages.IStatusResponse): ros_messages.StatusResponse;
+        public static create(properties?: ros_messages.ITowingState): ros_messages.TowingState;
 
         /**
-         * Encodes the specified StatusResponse message. Does not implicitly {@link ros_messages.StatusResponse.verify|verify} messages.
-         * @param message StatusResponse message or plain object to encode
+         * Encodes the specified TowingState message. Does not implicitly {@link ros_messages.TowingState.verify|verify} messages.
+         * @param message TowingState message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: ros_messages.IStatusResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: ros_messages.ITowingState, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified StatusResponse message, length delimited. Does not implicitly {@link ros_messages.StatusResponse.verify|verify} messages.
-         * @param message StatusResponse message or plain object to encode
+         * Encodes the specified TowingState message, length delimited. Does not implicitly {@link ros_messages.TowingState.verify|verify} messages.
+         * @param message TowingState message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: ros_messages.IStatusResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: ros_messages.ITowingState, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a StatusResponse message from the specified reader or buffer.
+         * Decodes a TowingState message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns StatusResponse
+         * @returns TowingState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.StatusResponse;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.TowingState;
 
         /**
-         * Decodes a StatusResponse message from the specified reader or buffer, length delimited.
+         * Decodes a TowingState message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns StatusResponse
+         * @returns TowingState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.StatusResponse;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.TowingState;
 
         /**
-         * Verifies a StatusResponse message.
+         * Verifies a TowingState message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a StatusResponse message from a plain object. Also converts values to their respective internal types.
+         * Creates a TowingState message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns StatusResponse
+         * @returns TowingState
          */
-        public static fromObject(object: { [k: string]: any }): ros_messages.StatusResponse;
+        public static fromObject(object: { [k: string]: any }): ros_messages.TowingState;
 
         /**
-         * Creates a plain object from a StatusResponse message. Also converts values to other types if specified.
-         * @param message StatusResponse
+         * Creates a plain object from a TowingState message. Also converts values to other types if specified.
+         * @param message TowingState
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: ros_messages.StatusResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: ros_messages.TowingState, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this StatusResponse to JSON.
+         * Converts this TowingState to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for StatusResponse
+         * Gets the default type url for TowingState
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace TowingState {
+
+        /** HookState enum. */
+        enum HookState {
+            UNKNOWN = 0,
+            LOCKED = 1,
+            RELEASED = 2,
+            LOCKING = 3,
+            RELEASING = 4,
+            SELF_CHECKING = 5,
+            ERROR = 6
+        }
     }
 
     /** Properties of a SubmapTexture. */
@@ -1514,7 +2050,7 @@ export namespace ros_messages {
     interface ISubmapQueryV2Response {
 
         /** SubmapQueryV2Response status */
-        status?: (ros_messages.IStatusResponse|null);
+        status?: (ros_messages.slam.IStatusResponse|null);
 
         /** SubmapQueryV2Response submap_version */
         submap_version?: (number|null);
@@ -1533,7 +2069,7 @@ export namespace ros_messages {
         constructor(properties?: ros_messages.ISubmapQueryV2Response);
 
         /** SubmapQueryV2Response status. */
-        public status?: (ros_messages.IStatusResponse|null);
+        public status?: (ros_messages.slam.IStatusResponse|null);
 
         /** SubmapQueryV2Response submap_version. */
         public submap_version: number;

@@ -10,7 +10,7 @@ import { robotApi, type RobotApi } from './robotApi.js';
  * image data, or another rendering primitive) and how that resource is freed.
  */
 export interface SubmapCacheAdapter<TSlice> {
-  buildSlice(tex: ros_messages.SubmapTexture): TSlice | null;
+  buildSlice(tex: ros_messages.slam.SubmapTexture): TSlice | null;
   disposeSlice(slice: TSlice): void;
 }
 
@@ -141,7 +141,9 @@ export class SubmapCache<TSlice> {
       if (cooldownUntil !== undefined) {
         if (Date.now() < cooldownUntil) {
           return Promise.reject(
-            new Error(`SubmapCache: ${cooldownKey} in failure cooldown for ${cooldownUntil - Date.now()}ms`),
+            new Error(
+              `SubmapCache: ${cooldownKey} in failure cooldown for ${cooldownUntil - Date.now()}ms`,
+            ),
           );
         }
         this.failureCooldownUntil.delete(cooldownKey);
@@ -296,13 +298,19 @@ export class SubmapCache<TSlice> {
     signal: AbortSignal,
     reportBytes: (n: number) => void,
   ): Promise<SubmapResult<TSlice> | null> {
-    const result = await this.api.getSubmapQueryV2(uuid, trajectoryId, submapIndex, version, signal);
+    const result = await this.api.getSubmapQueryV2(
+      uuid,
+      trajectoryId,
+      submapIndex,
+      version,
+      signal,
+    );
     if (!result) {
       return null;
     }
     reportBytes(result.payloadLength);
 
-    const textures = result.message.textures as ros_messages.SubmapTexture[];
+    const textures = result.message.textures as ros_messages.slam.SubmapTexture[];
     return {
       slices: textures.map((tex) => this.adapter.buildSlice(tex)),
     };

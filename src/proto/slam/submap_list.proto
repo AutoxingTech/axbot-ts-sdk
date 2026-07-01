@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ros_messages;
+package ros_messages.slam;
 
 import "geometry.proto";
 
@@ -11,7 +11,7 @@ message SubmapEntry {
     int32  trajectory_id        = 1;
     int32  submap_index         = 2;
     int32  submap_version       = 3;
-    Pose   pose                 = 4;
+    ros_messages.Pose   pose                 = 4;
     bool   is_frozen            = 11;
     bool   is_incremental_submap = 12;
     bool   is_nearby_map        = 13;
@@ -26,5 +26,5 @@ message SubmapList {
 
     SlamState         slam_state = 1;
     string            uuid       = 2;
-    repeated SubmapEntry submaps  = 3;
+    repeated SubmapEntry submaps = 3;
 }
