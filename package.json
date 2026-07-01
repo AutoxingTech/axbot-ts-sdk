@@ -1,6 +1,6 @@
 {
   "name": "@kingsimba/axbot-sdk",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "TypeScript SDK for controlling Autoxing AMRs via REST and WebSocket APIs",
   "keywords": [
     "amr",
