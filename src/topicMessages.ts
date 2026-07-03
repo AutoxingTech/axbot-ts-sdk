@@ -24,7 +24,7 @@ export interface OccupancyGridMsg extends TopicMsg {
   data_url?: string;
 }
 
-export interface PoseMsg extends TopicMsg, PoseType {}
+export interface PoseMsg extends TopicMsg, PoseType { }
 
 export interface TrackedPoseMsg extends TopicMsg, PoseType {
   cov: [[number, number], [number, number]];
@@ -335,9 +335,9 @@ export interface WsConnectionsMsg extends TopicMsg {
   connections: WsConnection[];
 }
 
-export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection {}
+export interface WsConnectionEstablishedMsg extends TopicMsg, WsConnection { }
 
-export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection {}
+export interface WsConnectionDisconnectedMsg extends TopicMsg, WsConnection { }
 
 export interface ConstraintListMsg extends TopicMsg {
   'Inter residuals, different trajectories': [number, number][];
@@ -545,4 +545,86 @@ export interface FusedSensorStateMsg extends TopicMsg {
   is_still: boolean;
   odom_still: boolean;
   imu_still: boolean;
+}
+
+/**
+ * Generic wrapper for a decoded protobuf message that bypasses hand-written TS types.
+ *
+ * - `data` holds the **raw proto instance** (e.g. a `MobileNetworkState`).
+ * - When displaying in a table, use `protoToDisplay(msg.data)` to produce a plain
+ *   object with string enums and numeric longs.
+ *
+ * Use this for topics where defining a parallel typed interface is not worth the
+ * maintenance cost (e.g. large messages with many enum fields that may change).
+ */
+export class ProtoMessage<T = unknown> implements TopicMsg {
+  constructor(
+    public topic: string,
+    /** Raw proto instance (e.g. a MobileNetworkState or VideoData). */
+    public data: T,
+  ) { }
+}
+
+// Named aliases for documentation — no field-by-field mapping, all derived from proto
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
+export interface MobileNetworkStateMsg extends ProtoMessage<
+  import('./proto/generated.js').ros_messages.MobileNetworkState
+> { }
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
+export interface VideoDataMsg extends ProtoMessage<
+  import('./proto/generated.js').ros_messages.VideoData
+> { }
+
+/**
+ * Convert a snake_case identifier to PascalCase.
+ * e.g. "modem_state" → "ModemState"
+ */
+function snakeToPascal(snake: string): string {
+  return snake.split('_').map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join('');
+}
+
+/**
+ * Given a PascalCase enum type name like "ModemState", compute the
+ * UPPER_SNAKE_CASE prefix used by its proto enum values.
+ * e.g. "ModemState" → "MODEM_STATE_"
+ */
+function pascalToEnumPrefix(name: string): string {
+  return name.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase() + '_';
+}
+
+/**
+ * Convert any protobufjs Message instance to a plain display object with
+ * human-readable enum strings and numeric longs.
+ *
+ * Enum values are shortened by stripping the common type prefix:
+ *   MODEM_STATE_UNKNOWN → UNKNOWN
+ *
+ * Uses the message class's static `toObject()` method, so it works for
+ * any proto type without knowing the concrete class at call site.
+ */
+export function protoToDisplay(msg: unknown): Record<string, unknown> {
+  const ctor = (msg as any)?.constructor;
+  if (ctor?.toObject) {
+    const obj = ctor.toObject(msg, { enums: Number, longs: Number, defaults: true }) as Record<string, unknown>;
+
+    // Convert numeric enum values to short display names.
+    // The convention is: the field name "modem_state" maps to PascalCase
+    // "ModemState" on the constructor (e.g. ctor.ModemState).
+    for (const [key, value] of Object.entries(obj)) {
+      if (typeof value === 'number') {
+        const enumTypeName = snakeToPascal(key);
+        const enumDef = ctor[enumTypeName] as Record<string, string | number> | undefined;
+        if (enumDef) {
+          const fullName = enumDef[value];
+          if (typeof fullName === 'string') {
+            const prefix = pascalToEnumPrefix(enumTypeName);
+            obj[key] = fullName.startsWith(prefix) ? fullName.slice(prefix.length) : fullName;
+          }
+        }
+      }
+    }
+
+    return obj;
+  }
+  return msg as Record<string, unknown>;
 }

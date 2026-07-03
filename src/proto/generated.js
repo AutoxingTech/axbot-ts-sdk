@@ -1008,6 +1008,1172 @@ export const ros_messages = $root.ros_messages = (() => {
         return MastState;
     })();
 
+    ros_messages.MobileNetworkState = (function() {
+
+        /**
+         * Properties of a MobileNetworkState.
+         * @memberof ros_messages
+         * @interface IMobileNetworkState
+         * @property {ros_messages.MobileNetworkState.ModemState|null} [modem_state] MobileNetworkState modem_state
+         * @property {ros_messages.MobileNetworkState.RecoveryRequest|null} [recovery_request] MobileNetworkState recovery_request
+         * @property {string|null} [recovery_reason] MobileNetworkState recovery_reason
+         * @property {ros_messages.MobileNetworkState.SimState|null} [sim_state] MobileNetworkState sim_state
+         * @property {string|null} [iccid] MobileNetworkState iccid
+         * @property {string|null} [imei] MobileNetworkState imei
+         * @property {string|null} [imsi] MobileNetworkState imsi
+         * @property {string|null} [model] MobileNetworkState model
+         * @property {string|null} [firmware_ver] MobileNetworkState firmware_ver
+         * @property {ros_messages.MobileNetworkState.RegState|null} [reg_state] MobileNetworkState reg_state
+         * @property {ros_messages.MobileNetworkState.Rat|null} [rat] MobileNetworkState rat
+         * @property {string|null} [operator_name] MobileNetworkState operator_name
+         * @property {number|null} [lac] MobileNetworkState lac
+         * @property {number|null} [cell_id] MobileNetworkState cell_id
+         * @property {number|null} [rssi_dbm] MobileNetworkState rssi_dbm
+         * @property {number|null} [rsrp_dbm] MobileNetworkState rsrp_dbm
+         * @property {number|null} [rsrq_db] MobileNetworkState rsrq_db
+         * @property {number|null} [sinr_db] MobileNetworkState sinr_db
+         * @property {number|null} [signal_level] MobileNetworkState signal_level
+         * @property {ros_messages.MobileNetworkState.DataState|null} [data_state] MobileNetworkState data_state
+         * @property {string|null} [apn] MobileNetworkState apn
+         * @property {string|null} [ip_address] MobileNetworkState ip_address
+         * @property {number|null} [connected_duration_sec] MobileNetworkState connected_duration_sec
+         * @property {number|Long|null} [tx_bytes] MobileNetworkState tx_bytes
+         * @property {number|Long|null} [rx_bytes] MobileNetworkState rx_bytes
+         */
+
+        /**
+         * Constructs a new MobileNetworkState.
+         * @memberof ros_messages
+         * @classdesc Represents a MobileNetworkState.
+         * @implements IMobileNetworkState
+         * @constructor
+         * @param {ros_messages.IMobileNetworkState=} [properties] Properties to set
+         */
+        function MobileNetworkState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * MobileNetworkState modem_state.
+         * @member {ros_messages.MobileNetworkState.ModemState} modem_state
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.modem_state = 0;
+
+        /**
+         * MobileNetworkState recovery_request.
+         * @member {ros_messages.MobileNetworkState.RecoveryRequest} recovery_request
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.recovery_request = 0;
+
+        /**
+         * MobileNetworkState recovery_reason.
+         * @member {string} recovery_reason
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.recovery_reason = "";
+
+        /**
+         * MobileNetworkState sim_state.
+         * @member {ros_messages.MobileNetworkState.SimState} sim_state
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.sim_state = 0;
+
+        /**
+         * MobileNetworkState iccid.
+         * @member {string} iccid
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.iccid = "";
+
+        /**
+         * MobileNetworkState imei.
+         * @member {string} imei
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.imei = "";
+
+        /**
+         * MobileNetworkState imsi.
+         * @member {string} imsi
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.imsi = "";
+
+        /**
+         * MobileNetworkState model.
+         * @member {string} model
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.model = "";
+
+        /**
+         * MobileNetworkState firmware_ver.
+         * @member {string} firmware_ver
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.firmware_ver = "";
+
+        /**
+         * MobileNetworkState reg_state.
+         * @member {ros_messages.MobileNetworkState.RegState} reg_state
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.reg_state = 0;
+
+        /**
+         * MobileNetworkState rat.
+         * @member {ros_messages.MobileNetworkState.Rat} rat
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.rat = 0;
+
+        /**
+         * MobileNetworkState operator_name.
+         * @member {string} operator_name
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.operator_name = "";
+
+        /**
+         * MobileNetworkState lac.
+         * @member {number} lac
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.lac = 0;
+
+        /**
+         * MobileNetworkState cell_id.
+         * @member {number} cell_id
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.cell_id = 0;
+
+        /**
+         * MobileNetworkState rssi_dbm.
+         * @member {number} rssi_dbm
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.rssi_dbm = 0;
+
+        /**
+         * MobileNetworkState rsrp_dbm.
+         * @member {number} rsrp_dbm
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.rsrp_dbm = 0;
+
+        /**
+         * MobileNetworkState rsrq_db.
+         * @member {number} rsrq_db
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.rsrq_db = 0;
+
+        /**
+         * MobileNetworkState sinr_db.
+         * @member {number} sinr_db
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.sinr_db = 0;
+
+        /**
+         * MobileNetworkState signal_level.
+         * @member {number} signal_level
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.signal_level = 0;
+
+        /**
+         * MobileNetworkState data_state.
+         * @member {ros_messages.MobileNetworkState.DataState} data_state
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.data_state = 0;
+
+        /**
+         * MobileNetworkState apn.
+         * @member {string} apn
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.apn = "";
+
+        /**
+         * MobileNetworkState ip_address.
+         * @member {string} ip_address
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.ip_address = "";
+
+        /**
+         * MobileNetworkState connected_duration_sec.
+         * @member {number} connected_duration_sec
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.connected_duration_sec = 0;
+
+        /**
+         * MobileNetworkState tx_bytes.
+         * @member {number|Long} tx_bytes
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.tx_bytes = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * MobileNetworkState rx_bytes.
+         * @member {number|Long} rx_bytes
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         */
+        MobileNetworkState.prototype.rx_bytes = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new MobileNetworkState instance using the specified properties.
+         * @function create
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {ros_messages.IMobileNetworkState=} [properties] Properties to set
+         * @returns {ros_messages.MobileNetworkState} MobileNetworkState instance
+         */
+        MobileNetworkState.create = function create(properties) {
+            return new MobileNetworkState(properties);
+        };
+
+        /**
+         * Encodes the specified MobileNetworkState message. Does not implicitly {@link ros_messages.MobileNetworkState.verify|verify} messages.
+         * @function encode
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {ros_messages.IMobileNetworkState} message MobileNetworkState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MobileNetworkState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.modem_state != null && Object.hasOwnProperty.call(message, "modem_state"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.modem_state);
+            if (message.recovery_request != null && Object.hasOwnProperty.call(message, "recovery_request"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.recovery_request);
+            if (message.recovery_reason != null && Object.hasOwnProperty.call(message, "recovery_reason"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.recovery_reason);
+            if (message.sim_state != null && Object.hasOwnProperty.call(message, "sim_state"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.sim_state);
+            if (message.iccid != null && Object.hasOwnProperty.call(message, "iccid"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.iccid);
+            if (message.imei != null && Object.hasOwnProperty.call(message, "imei"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.imei);
+            if (message.imsi != null && Object.hasOwnProperty.call(message, "imsi"))
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.imsi);
+            if (message.model != null && Object.hasOwnProperty.call(message, "model"))
+                writer.uint32(/* id 8, wireType 2 =*/66).string(message.model);
+            if (message.firmware_ver != null && Object.hasOwnProperty.call(message, "firmware_ver"))
+                writer.uint32(/* id 9, wireType 2 =*/74).string(message.firmware_ver);
+            if (message.reg_state != null && Object.hasOwnProperty.call(message, "reg_state"))
+                writer.uint32(/* id 10, wireType 0 =*/80).int32(message.reg_state);
+            if (message.rat != null && Object.hasOwnProperty.call(message, "rat"))
+                writer.uint32(/* id 11, wireType 0 =*/88).int32(message.rat);
+            if (message.operator_name != null && Object.hasOwnProperty.call(message, "operator_name"))
+                writer.uint32(/* id 12, wireType 2 =*/98).string(message.operator_name);
+            if (message.lac != null && Object.hasOwnProperty.call(message, "lac"))
+                writer.uint32(/* id 13, wireType 0 =*/104).uint32(message.lac);
+            if (message.cell_id != null && Object.hasOwnProperty.call(message, "cell_id"))
+                writer.uint32(/* id 14, wireType 0 =*/112).uint32(message.cell_id);
+            if (message.rssi_dbm != null && Object.hasOwnProperty.call(message, "rssi_dbm"))
+                writer.uint32(/* id 15, wireType 0 =*/120).int32(message.rssi_dbm);
+            if (message.rsrp_dbm != null && Object.hasOwnProperty.call(message, "rsrp_dbm"))
+                writer.uint32(/* id 16, wireType 0 =*/128).int32(message.rsrp_dbm);
+            if (message.rsrq_db != null && Object.hasOwnProperty.call(message, "rsrq_db"))
+                writer.uint32(/* id 17, wireType 0 =*/136).int32(message.rsrq_db);
+            if (message.sinr_db != null && Object.hasOwnProperty.call(message, "sinr_db"))
+                writer.uint32(/* id 18, wireType 0 =*/144).int32(message.sinr_db);
+            if (message.signal_level != null && Object.hasOwnProperty.call(message, "signal_level"))
+                writer.uint32(/* id 19, wireType 0 =*/152).uint32(message.signal_level);
+            if (message.data_state != null && Object.hasOwnProperty.call(message, "data_state"))
+                writer.uint32(/* id 20, wireType 0 =*/160).int32(message.data_state);
+            if (message.apn != null && Object.hasOwnProperty.call(message, "apn"))
+                writer.uint32(/* id 21, wireType 2 =*/170).string(message.apn);
+            if (message.ip_address != null && Object.hasOwnProperty.call(message, "ip_address"))
+                writer.uint32(/* id 22, wireType 2 =*/178).string(message.ip_address);
+            if (message.connected_duration_sec != null && Object.hasOwnProperty.call(message, "connected_duration_sec"))
+                writer.uint32(/* id 23, wireType 0 =*/184).uint32(message.connected_duration_sec);
+            if (message.tx_bytes != null && Object.hasOwnProperty.call(message, "tx_bytes"))
+                writer.uint32(/* id 24, wireType 0 =*/192).uint64(message.tx_bytes);
+            if (message.rx_bytes != null && Object.hasOwnProperty.call(message, "rx_bytes"))
+                writer.uint32(/* id 25, wireType 0 =*/200).uint64(message.rx_bytes);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MobileNetworkState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {ros_messages.IMobileNetworkState} message MobileNetworkState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MobileNetworkState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a MobileNetworkState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ros_messages.MobileNetworkState} MobileNetworkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MobileNetworkState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.modem_state = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.recovery_request = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.recovery_reason = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.sim_state = reader.int32();
+                        break;
+                    }
+                case 5: {
+                        message.iccid = reader.string();
+                        break;
+                    }
+                case 6: {
+                        message.imei = reader.string();
+                        break;
+                    }
+                case 7: {
+                        message.imsi = reader.string();
+                        break;
+                    }
+                case 8: {
+                        message.model = reader.string();
+                        break;
+                    }
+                case 9: {
+                        message.firmware_ver = reader.string();
+                        break;
+                    }
+                case 10: {
+                        message.reg_state = reader.int32();
+                        break;
+                    }
+                case 11: {
+                        message.rat = reader.int32();
+                        break;
+                    }
+                case 12: {
+                        message.operator_name = reader.string();
+                        break;
+                    }
+                case 13: {
+                        message.lac = reader.uint32();
+                        break;
+                    }
+                case 14: {
+                        message.cell_id = reader.uint32();
+                        break;
+                    }
+                case 15: {
+                        message.rssi_dbm = reader.int32();
+                        break;
+                    }
+                case 16: {
+                        message.rsrp_dbm = reader.int32();
+                        break;
+                    }
+                case 17: {
+                        message.rsrq_db = reader.int32();
+                        break;
+                    }
+                case 18: {
+                        message.sinr_db = reader.int32();
+                        break;
+                    }
+                case 19: {
+                        message.signal_level = reader.uint32();
+                        break;
+                    }
+                case 20: {
+                        message.data_state = reader.int32();
+                        break;
+                    }
+                case 21: {
+                        message.apn = reader.string();
+                        break;
+                    }
+                case 22: {
+                        message.ip_address = reader.string();
+                        break;
+                    }
+                case 23: {
+                        message.connected_duration_sec = reader.uint32();
+                        break;
+                    }
+                case 24: {
+                        message.tx_bytes = reader.uint64();
+                        break;
+                    }
+                case 25: {
+                        message.rx_bytes = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a MobileNetworkState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ros_messages.MobileNetworkState} MobileNetworkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MobileNetworkState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MobileNetworkState message.
+         * @function verify
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MobileNetworkState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.modem_state != null && message.hasOwnProperty("modem_state"))
+                switch (message.modem_state) {
+                default:
+                    return "modem_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            if (message.recovery_request != null && message.hasOwnProperty("recovery_request"))
+                switch (message.recovery_request) {
+                default:
+                    return "recovery_request: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            if (message.recovery_reason != null && message.hasOwnProperty("recovery_reason"))
+                if (!$util.isString(message.recovery_reason))
+                    return "recovery_reason: string expected";
+            if (message.sim_state != null && message.hasOwnProperty("sim_state"))
+                switch (message.sim_state) {
+                default:
+                    return "sim_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 8:
+                case 255:
+                    break;
+                }
+            if (message.iccid != null && message.hasOwnProperty("iccid"))
+                if (!$util.isString(message.iccid))
+                    return "iccid: string expected";
+            if (message.imei != null && message.hasOwnProperty("imei"))
+                if (!$util.isString(message.imei))
+                    return "imei: string expected";
+            if (message.imsi != null && message.hasOwnProperty("imsi"))
+                if (!$util.isString(message.imsi))
+                    return "imsi: string expected";
+            if (message.model != null && message.hasOwnProperty("model"))
+                if (!$util.isString(message.model))
+                    return "model: string expected";
+            if (message.firmware_ver != null && message.hasOwnProperty("firmware_ver"))
+                if (!$util.isString(message.firmware_ver))
+                    return "firmware_ver: string expected";
+            if (message.reg_state != null && message.hasOwnProperty("reg_state"))
+                switch (message.reg_state) {
+                default:
+                    return "reg_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    break;
+                }
+            if (message.rat != null && message.hasOwnProperty("rat"))
+                switch (message.rat) {
+                default:
+                    return "rat: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 13:
+                case 19:
+                    break;
+                }
+            if (message.operator_name != null && message.hasOwnProperty("operator_name"))
+                if (!$util.isString(message.operator_name))
+                    return "operator_name: string expected";
+            if (message.lac != null && message.hasOwnProperty("lac"))
+                if (!$util.isInteger(message.lac))
+                    return "lac: integer expected";
+            if (message.cell_id != null && message.hasOwnProperty("cell_id"))
+                if (!$util.isInteger(message.cell_id))
+                    return "cell_id: integer expected";
+            if (message.rssi_dbm != null && message.hasOwnProperty("rssi_dbm"))
+                if (!$util.isInteger(message.rssi_dbm))
+                    return "rssi_dbm: integer expected";
+            if (message.rsrp_dbm != null && message.hasOwnProperty("rsrp_dbm"))
+                if (!$util.isInteger(message.rsrp_dbm))
+                    return "rsrp_dbm: integer expected";
+            if (message.rsrq_db != null && message.hasOwnProperty("rsrq_db"))
+                if (!$util.isInteger(message.rsrq_db))
+                    return "rsrq_db: integer expected";
+            if (message.sinr_db != null && message.hasOwnProperty("sinr_db"))
+                if (!$util.isInteger(message.sinr_db))
+                    return "sinr_db: integer expected";
+            if (message.signal_level != null && message.hasOwnProperty("signal_level"))
+                if (!$util.isInteger(message.signal_level))
+                    return "signal_level: integer expected";
+            if (message.data_state != null && message.hasOwnProperty("data_state"))
+                switch (message.data_state) {
+                default:
+                    return "data_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            if (message.apn != null && message.hasOwnProperty("apn"))
+                if (!$util.isString(message.apn))
+                    return "apn: string expected";
+            if (message.ip_address != null && message.hasOwnProperty("ip_address"))
+                if (!$util.isString(message.ip_address))
+                    return "ip_address: string expected";
+            if (message.connected_duration_sec != null && message.hasOwnProperty("connected_duration_sec"))
+                if (!$util.isInteger(message.connected_duration_sec))
+                    return "connected_duration_sec: integer expected";
+            if (message.tx_bytes != null && message.hasOwnProperty("tx_bytes"))
+                if (!$util.isInteger(message.tx_bytes) && !(message.tx_bytes && $util.isInteger(message.tx_bytes.low) && $util.isInteger(message.tx_bytes.high)))
+                    return "tx_bytes: integer|Long expected";
+            if (message.rx_bytes != null && message.hasOwnProperty("rx_bytes"))
+                if (!$util.isInteger(message.rx_bytes) && !(message.rx_bytes && $util.isInteger(message.rx_bytes.low) && $util.isInteger(message.rx_bytes.high)))
+                    return "rx_bytes: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a MobileNetworkState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ros_messages.MobileNetworkState} MobileNetworkState
+         */
+        MobileNetworkState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ros_messages.MobileNetworkState)
+                return object;
+            let message = new $root.ros_messages.MobileNetworkState();
+            switch (object.modem_state) {
+            default:
+                if (typeof object.modem_state === "number") {
+                    message.modem_state = object.modem_state;
+                    break;
+                }
+                break;
+            case "MODEM_STATE_UNKNOWN":
+            case 0:
+                message.modem_state = 0;
+                break;
+            case "MODEM_STATE_INITIALIZING":
+            case 1:
+                message.modem_state = 1;
+                break;
+            case "MODEM_STATE_READY":
+            case 2:
+                message.modem_state = 2;
+                break;
+            case "MODEM_STATE_FAULT":
+            case 3:
+                message.modem_state = 3;
+                break;
+            }
+            switch (object.recovery_request) {
+            default:
+                if (typeof object.recovery_request === "number") {
+                    message.recovery_request = object.recovery_request;
+                    break;
+                }
+                break;
+            case "RECOVERY_REQUEST_NONE":
+            case 0:
+                message.recovery_request = 0;
+                break;
+            case "RECOVERY_REQUEST_USB_RESET":
+            case 1:
+                message.recovery_request = 1;
+                break;
+            case "RECOVERY_REQUEST_HOST_REBOOT":
+            case 2:
+                message.recovery_request = 2;
+                break;
+            }
+            if (object.recovery_reason != null)
+                message.recovery_reason = String(object.recovery_reason);
+            switch (object.sim_state) {
+            default:
+                if (typeof object.sim_state === "number") {
+                    message.sim_state = object.sim_state;
+                    break;
+                }
+                break;
+            case "SIM_STATE_UNKNOWN":
+            case 0:
+                message.sim_state = 0;
+                break;
+            case "SIM_STATE_ABSENT":
+            case 1:
+                message.sim_state = 1;
+                break;
+            case "SIM_STATE_PIN_REQUIRED":
+            case 2:
+                message.sim_state = 2;
+                break;
+            case "SIM_STATE_PUK_REQUIRED":
+            case 3:
+                message.sim_state = 3;
+                break;
+            case "SIM_STATE_NETWORK_LOCKED":
+            case 4:
+                message.sim_state = 4;
+                break;
+            case "SIM_STATE_READY":
+            case 5:
+                message.sim_state = 5;
+                break;
+            case "SIM_STATE_NOT_READY":
+            case 6:
+                message.sim_state = 6;
+                break;
+            case "SIM_STATE_CARD_IO_ERROR":
+            case 8:
+                message.sim_state = 8;
+                break;
+            case "SIM_STATE_NO_RESPONSE":
+            case 255:
+                message.sim_state = 255;
+                break;
+            }
+            if (object.iccid != null)
+                message.iccid = String(object.iccid);
+            if (object.imei != null)
+                message.imei = String(object.imei);
+            if (object.imsi != null)
+                message.imsi = String(object.imsi);
+            if (object.model != null)
+                message.model = String(object.model);
+            if (object.firmware_ver != null)
+                message.firmware_ver = String(object.firmware_ver);
+            switch (object.reg_state) {
+            default:
+                if (typeof object.reg_state === "number") {
+                    message.reg_state = object.reg_state;
+                    break;
+                }
+                break;
+            case "REG_STATE_NOT_REGISTERED":
+            case 0:
+                message.reg_state = 0;
+                break;
+            case "REG_STATE_HOME":
+            case 1:
+                message.reg_state = 1;
+                break;
+            case "REG_STATE_SEARCHING":
+            case 2:
+                message.reg_state = 2;
+                break;
+            case "REG_STATE_DENIED":
+            case 3:
+                message.reg_state = 3;
+                break;
+            case "REG_STATE_UNKNOWN":
+            case 4:
+                message.reg_state = 4;
+                break;
+            case "REG_STATE_ROAMING":
+            case 5:
+                message.reg_state = 5;
+                break;
+            case "REG_STATE_HOME_SMS_ONLY":
+            case 6:
+                message.reg_state = 6;
+                break;
+            case "REG_STATE_ROAMING_SMS_ONLY":
+            case 7:
+                message.reg_state = 7;
+                break;
+            }
+            switch (object.rat) {
+            default:
+                if (typeof object.rat === "number") {
+                    message.rat = object.rat;
+                    break;
+                }
+                break;
+            case "RAT_UNKNOWN":
+            case 0:
+                message.rat = 0;
+                break;
+            case "RAT_GSM":
+            case 1:
+                message.rat = 1;
+                break;
+            case "RAT_GPRS":
+            case 2:
+                message.rat = 2;
+                break;
+            case "RAT_EDGE":
+            case 3:
+                message.rat = 3;
+                break;
+            case "RAT_UMTS":
+            case 4:
+                message.rat = 4;
+                break;
+            case "RAT_HSDPA":
+            case 5:
+                message.rat = 5;
+                break;
+            case "RAT_HSUPA":
+            case 6:
+                message.rat = 6;
+                break;
+            case "RAT_HSPA":
+            case 7:
+                message.rat = 7;
+                break;
+            case "RAT_LTE":
+            case 13:
+                message.rat = 13;
+                break;
+            case "RAT_LTE_CA":
+            case 19:
+                message.rat = 19;
+                break;
+            }
+            if (object.operator_name != null)
+                message.operator_name = String(object.operator_name);
+            if (object.lac != null)
+                message.lac = object.lac >>> 0;
+            if (object.cell_id != null)
+                message.cell_id = object.cell_id >>> 0;
+            if (object.rssi_dbm != null)
+                message.rssi_dbm = object.rssi_dbm | 0;
+            if (object.rsrp_dbm != null)
+                message.rsrp_dbm = object.rsrp_dbm | 0;
+            if (object.rsrq_db != null)
+                message.rsrq_db = object.rsrq_db | 0;
+            if (object.sinr_db != null)
+                message.sinr_db = object.sinr_db | 0;
+            if (object.signal_level != null)
+                message.signal_level = object.signal_level >>> 0;
+            switch (object.data_state) {
+            default:
+                if (typeof object.data_state === "number") {
+                    message.data_state = object.data_state;
+                    break;
+                }
+                break;
+            case "DATA_STATE_DISCONNECTED":
+            case 0:
+                message.data_state = 0;
+                break;
+            case "DATA_STATE_CONNECTING":
+            case 1:
+                message.data_state = 1;
+                break;
+            case "DATA_STATE_CONNECTED":
+            case 2:
+                message.data_state = 2;
+                break;
+            case "DATA_STATE_SUSPENDED":
+            case 3:
+                message.data_state = 3;
+                break;
+            }
+            if (object.apn != null)
+                message.apn = String(object.apn);
+            if (object.ip_address != null)
+                message.ip_address = String(object.ip_address);
+            if (object.connected_duration_sec != null)
+                message.connected_duration_sec = object.connected_duration_sec >>> 0;
+            if (object.tx_bytes != null)
+                if ($util.Long)
+                    (message.tx_bytes = $util.Long.fromValue(object.tx_bytes)).unsigned = true;
+                else if (typeof object.tx_bytes === "string")
+                    message.tx_bytes = parseInt(object.tx_bytes, 10);
+                else if (typeof object.tx_bytes === "number")
+                    message.tx_bytes = object.tx_bytes;
+                else if (typeof object.tx_bytes === "object")
+                    message.tx_bytes = new $util.LongBits(object.tx_bytes.low >>> 0, object.tx_bytes.high >>> 0).toNumber(true);
+            if (object.rx_bytes != null)
+                if ($util.Long)
+                    (message.rx_bytes = $util.Long.fromValue(object.rx_bytes)).unsigned = true;
+                else if (typeof object.rx_bytes === "string")
+                    message.rx_bytes = parseInt(object.rx_bytes, 10);
+                else if (typeof object.rx_bytes === "number")
+                    message.rx_bytes = object.rx_bytes;
+                else if (typeof object.rx_bytes === "object")
+                    message.rx_bytes = new $util.LongBits(object.rx_bytes.low >>> 0, object.rx_bytes.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MobileNetworkState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {ros_messages.MobileNetworkState} message MobileNetworkState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MobileNetworkState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.modem_state = options.enums === String ? "MODEM_STATE_UNKNOWN" : 0;
+                object.recovery_request = options.enums === String ? "RECOVERY_REQUEST_NONE" : 0;
+                object.recovery_reason = "";
+                object.sim_state = options.enums === String ? "SIM_STATE_UNKNOWN" : 0;
+                object.iccid = "";
+                object.imei = "";
+                object.imsi = "";
+                object.model = "";
+                object.firmware_ver = "";
+                object.reg_state = options.enums === String ? "REG_STATE_NOT_REGISTERED" : 0;
+                object.rat = options.enums === String ? "RAT_UNKNOWN" : 0;
+                object.operator_name = "";
+                object.lac = 0;
+                object.cell_id = 0;
+                object.rssi_dbm = 0;
+                object.rsrp_dbm = 0;
+                object.rsrq_db = 0;
+                object.sinr_db = 0;
+                object.signal_level = 0;
+                object.data_state = options.enums === String ? "DATA_STATE_DISCONNECTED" : 0;
+                object.apn = "";
+                object.ip_address = "";
+                object.connected_duration_sec = 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.tx_bytes = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.tx_bytes = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.rx_bytes = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.rx_bytes = options.longs === String ? "0" : 0;
+            }
+            if (message.modem_state != null && message.hasOwnProperty("modem_state"))
+                object.modem_state = options.enums === String ? $root.ros_messages.MobileNetworkState.ModemState[message.modem_state] === undefined ? message.modem_state : $root.ros_messages.MobileNetworkState.ModemState[message.modem_state] : message.modem_state;
+            if (message.recovery_request != null && message.hasOwnProperty("recovery_request"))
+                object.recovery_request = options.enums === String ? $root.ros_messages.MobileNetworkState.RecoveryRequest[message.recovery_request] === undefined ? message.recovery_request : $root.ros_messages.MobileNetworkState.RecoveryRequest[message.recovery_request] : message.recovery_request;
+            if (message.recovery_reason != null && message.hasOwnProperty("recovery_reason"))
+                object.recovery_reason = message.recovery_reason;
+            if (message.sim_state != null && message.hasOwnProperty("sim_state"))
+                object.sim_state = options.enums === String ? $root.ros_messages.MobileNetworkState.SimState[message.sim_state] === undefined ? message.sim_state : $root.ros_messages.MobileNetworkState.SimState[message.sim_state] : message.sim_state;
+            if (message.iccid != null && message.hasOwnProperty("iccid"))
+                object.iccid = message.iccid;
+            if (message.imei != null && message.hasOwnProperty("imei"))
+                object.imei = message.imei;
+            if (message.imsi != null && message.hasOwnProperty("imsi"))
+                object.imsi = message.imsi;
+            if (message.model != null && message.hasOwnProperty("model"))
+                object.model = message.model;
+            if (message.firmware_ver != null && message.hasOwnProperty("firmware_ver"))
+                object.firmware_ver = message.firmware_ver;
+            if (message.reg_state != null && message.hasOwnProperty("reg_state"))
+                object.reg_state = options.enums === String ? $root.ros_messages.MobileNetworkState.RegState[message.reg_state] === undefined ? message.reg_state : $root.ros_messages.MobileNetworkState.RegState[message.reg_state] : message.reg_state;
+            if (message.rat != null && message.hasOwnProperty("rat"))
+                object.rat = options.enums === String ? $root.ros_messages.MobileNetworkState.Rat[message.rat] === undefined ? message.rat : $root.ros_messages.MobileNetworkState.Rat[message.rat] : message.rat;
+            if (message.operator_name != null && message.hasOwnProperty("operator_name"))
+                object.operator_name = message.operator_name;
+            if (message.lac != null && message.hasOwnProperty("lac"))
+                object.lac = message.lac;
+            if (message.cell_id != null && message.hasOwnProperty("cell_id"))
+                object.cell_id = message.cell_id;
+            if (message.rssi_dbm != null && message.hasOwnProperty("rssi_dbm"))
+                object.rssi_dbm = message.rssi_dbm;
+            if (message.rsrp_dbm != null && message.hasOwnProperty("rsrp_dbm"))
+                object.rsrp_dbm = message.rsrp_dbm;
+            if (message.rsrq_db != null && message.hasOwnProperty("rsrq_db"))
+                object.rsrq_db = message.rsrq_db;
+            if (message.sinr_db != null && message.hasOwnProperty("sinr_db"))
+                object.sinr_db = message.sinr_db;
+            if (message.signal_level != null && message.hasOwnProperty("signal_level"))
+                object.signal_level = message.signal_level;
+            if (message.data_state != null && message.hasOwnProperty("data_state"))
+                object.data_state = options.enums === String ? $root.ros_messages.MobileNetworkState.DataState[message.data_state] === undefined ? message.data_state : $root.ros_messages.MobileNetworkState.DataState[message.data_state] : message.data_state;
+            if (message.apn != null && message.hasOwnProperty("apn"))
+                object.apn = message.apn;
+            if (message.ip_address != null && message.hasOwnProperty("ip_address"))
+                object.ip_address = message.ip_address;
+            if (message.connected_duration_sec != null && message.hasOwnProperty("connected_duration_sec"))
+                object.connected_duration_sec = message.connected_duration_sec;
+            if (message.tx_bytes != null && message.hasOwnProperty("tx_bytes"))
+                if (typeof message.tx_bytes === "number")
+                    object.tx_bytes = options.longs === String ? String(message.tx_bytes) : message.tx_bytes;
+                else
+                    object.tx_bytes = options.longs === String ? $util.Long.prototype.toString.call(message.tx_bytes) : options.longs === Number ? new $util.LongBits(message.tx_bytes.low >>> 0, message.tx_bytes.high >>> 0).toNumber(true) : message.tx_bytes;
+            if (message.rx_bytes != null && message.hasOwnProperty("rx_bytes"))
+                if (typeof message.rx_bytes === "number")
+                    object.rx_bytes = options.longs === String ? String(message.rx_bytes) : message.rx_bytes;
+                else
+                    object.rx_bytes = options.longs === String ? $util.Long.prototype.toString.call(message.rx_bytes) : options.longs === Number ? new $util.LongBits(message.rx_bytes.low >>> 0, message.rx_bytes.high >>> 0).toNumber(true) : message.rx_bytes;
+            return object;
+        };
+
+        /**
+         * Converts this MobileNetworkState to JSON.
+         * @function toJSON
+         * @memberof ros_messages.MobileNetworkState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MobileNetworkState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for MobileNetworkState
+         * @function getTypeUrl
+         * @memberof ros_messages.MobileNetworkState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        MobileNetworkState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ros_messages.MobileNetworkState";
+        };
+
+        /**
+         * ModemState enum.
+         * @name ros_messages.MobileNetworkState.ModemState
+         * @enum {number}
+         * @property {number} MODEM_STATE_UNKNOWN=0 MODEM_STATE_UNKNOWN value
+         * @property {number} MODEM_STATE_INITIALIZING=1 MODEM_STATE_INITIALIZING value
+         * @property {number} MODEM_STATE_READY=2 MODEM_STATE_READY value
+         * @property {number} MODEM_STATE_FAULT=3 MODEM_STATE_FAULT value
+         */
+        MobileNetworkState.ModemState = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "MODEM_STATE_UNKNOWN"] = 0;
+            values[valuesById[1] = "MODEM_STATE_INITIALIZING"] = 1;
+            values[valuesById[2] = "MODEM_STATE_READY"] = 2;
+            values[valuesById[3] = "MODEM_STATE_FAULT"] = 3;
+            return values;
+        })();
+
+        /**
+         * RecoveryRequest enum.
+         * @name ros_messages.MobileNetworkState.RecoveryRequest
+         * @enum {number}
+         * @property {number} RECOVERY_REQUEST_NONE=0 RECOVERY_REQUEST_NONE value
+         * @property {number} RECOVERY_REQUEST_USB_RESET=1 RECOVERY_REQUEST_USB_RESET value
+         * @property {number} RECOVERY_REQUEST_HOST_REBOOT=2 RECOVERY_REQUEST_HOST_REBOOT value
+         */
+        MobileNetworkState.RecoveryRequest = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "RECOVERY_REQUEST_NONE"] = 0;
+            values[valuesById[1] = "RECOVERY_REQUEST_USB_RESET"] = 1;
+            values[valuesById[2] = "RECOVERY_REQUEST_HOST_REBOOT"] = 2;
+            return values;
+        })();
+
+        /**
+         * SimState enum.
+         * @name ros_messages.MobileNetworkState.SimState
+         * @enum {number}
+         * @property {number} SIM_STATE_UNKNOWN=0 SIM_STATE_UNKNOWN value
+         * @property {number} SIM_STATE_ABSENT=1 SIM_STATE_ABSENT value
+         * @property {number} SIM_STATE_PIN_REQUIRED=2 SIM_STATE_PIN_REQUIRED value
+         * @property {number} SIM_STATE_PUK_REQUIRED=3 SIM_STATE_PUK_REQUIRED value
+         * @property {number} SIM_STATE_NETWORK_LOCKED=4 SIM_STATE_NETWORK_LOCKED value
+         * @property {number} SIM_STATE_READY=5 SIM_STATE_READY value
+         * @property {number} SIM_STATE_NOT_READY=6 SIM_STATE_NOT_READY value
+         * @property {number} SIM_STATE_CARD_IO_ERROR=8 SIM_STATE_CARD_IO_ERROR value
+         * @property {number} SIM_STATE_NO_RESPONSE=255 SIM_STATE_NO_RESPONSE value
+         */
+        MobileNetworkState.SimState = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "SIM_STATE_UNKNOWN"] = 0;
+            values[valuesById[1] = "SIM_STATE_ABSENT"] = 1;
+            values[valuesById[2] = "SIM_STATE_PIN_REQUIRED"] = 2;
+            values[valuesById[3] = "SIM_STATE_PUK_REQUIRED"] = 3;
+            values[valuesById[4] = "SIM_STATE_NETWORK_LOCKED"] = 4;
+            values[valuesById[5] = "SIM_STATE_READY"] = 5;
+            values[valuesById[6] = "SIM_STATE_NOT_READY"] = 6;
+            values[valuesById[8] = "SIM_STATE_CARD_IO_ERROR"] = 8;
+            values[valuesById[255] = "SIM_STATE_NO_RESPONSE"] = 255;
+            return values;
+        })();
+
+        /**
+         * RegState enum.
+         * @name ros_messages.MobileNetworkState.RegState
+         * @enum {number}
+         * @property {number} REG_STATE_NOT_REGISTERED=0 REG_STATE_NOT_REGISTERED value
+         * @property {number} REG_STATE_HOME=1 REG_STATE_HOME value
+         * @property {number} REG_STATE_SEARCHING=2 REG_STATE_SEARCHING value
+         * @property {number} REG_STATE_DENIED=3 REG_STATE_DENIED value
+         * @property {number} REG_STATE_UNKNOWN=4 REG_STATE_UNKNOWN value
+         * @property {number} REG_STATE_ROAMING=5 REG_STATE_ROAMING value
+         * @property {number} REG_STATE_HOME_SMS_ONLY=6 REG_STATE_HOME_SMS_ONLY value
+         * @property {number} REG_STATE_ROAMING_SMS_ONLY=7 REG_STATE_ROAMING_SMS_ONLY value
+         */
+        MobileNetworkState.RegState = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "REG_STATE_NOT_REGISTERED"] = 0;
+            values[valuesById[1] = "REG_STATE_HOME"] = 1;
+            values[valuesById[2] = "REG_STATE_SEARCHING"] = 2;
+            values[valuesById[3] = "REG_STATE_DENIED"] = 3;
+            values[valuesById[4] = "REG_STATE_UNKNOWN"] = 4;
+            values[valuesById[5] = "REG_STATE_ROAMING"] = 5;
+            values[valuesById[6] = "REG_STATE_HOME_SMS_ONLY"] = 6;
+            values[valuesById[7] = "REG_STATE_ROAMING_SMS_ONLY"] = 7;
+            return values;
+        })();
+
+        /**
+         * Rat enum.
+         * @name ros_messages.MobileNetworkState.Rat
+         * @enum {number}
+         * @property {number} RAT_UNKNOWN=0 RAT_UNKNOWN value
+         * @property {number} RAT_GSM=1 RAT_GSM value
+         * @property {number} RAT_GPRS=2 RAT_GPRS value
+         * @property {number} RAT_EDGE=3 RAT_EDGE value
+         * @property {number} RAT_UMTS=4 RAT_UMTS value
+         * @property {number} RAT_HSDPA=5 RAT_HSDPA value
+         * @property {number} RAT_HSUPA=6 RAT_HSUPA value
+         * @property {number} RAT_HSPA=7 RAT_HSPA value
+         * @property {number} RAT_LTE=13 RAT_LTE value
+         * @property {number} RAT_LTE_CA=19 RAT_LTE_CA value
+         */
+        MobileNetworkState.Rat = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "RAT_UNKNOWN"] = 0;
+            values[valuesById[1] = "RAT_GSM"] = 1;
+            values[valuesById[2] = "RAT_GPRS"] = 2;
+            values[valuesById[3] = "RAT_EDGE"] = 3;
+            values[valuesById[4] = "RAT_UMTS"] = 4;
+            values[valuesById[5] = "RAT_HSDPA"] = 5;
+            values[valuesById[6] = "RAT_HSUPA"] = 6;
+            values[valuesById[7] = "RAT_HSPA"] = 7;
+            values[valuesById[13] = "RAT_LTE"] = 13;
+            values[valuesById[19] = "RAT_LTE_CA"] = 19;
+            return values;
+        })();
+
+        /**
+         * DataState enum.
+         * @name ros_messages.MobileNetworkState.DataState
+         * @enum {number}
+         * @property {number} DATA_STATE_DISCONNECTED=0 DATA_STATE_DISCONNECTED value
+         * @property {number} DATA_STATE_CONNECTING=1 DATA_STATE_CONNECTING value
+         * @property {number} DATA_STATE_CONNECTED=2 DATA_STATE_CONNECTED value
+         * @property {number} DATA_STATE_SUSPENDED=3 DATA_STATE_SUSPENDED value
+         */
+        MobileNetworkState.DataState = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "DATA_STATE_DISCONNECTED"] = 0;
+            values[valuesById[1] = "DATA_STATE_CONNECTING"] = 1;
+            values[valuesById[2] = "DATA_STATE_CONNECTED"] = 2;
+            values[valuesById[3] = "DATA_STATE_SUSPENDED"] = 3;
+            return values;
+        })();
+
+        return MobileNetworkState;
+    })();
+
     ros_messages.PointCloud = (function() {
 
         /**
@@ -2353,6 +3519,8 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {ros_messages.slam.ISubmapList|null} [submap_list] RosMessageWrapper submap_list
          * @property {ros_messages.IRackStates|null} [rack_states] RosMessageWrapper rack_states
          * @property {ros_messages.ITowingState|null} [towing_state] RosMessageWrapper towing_state
+         * @property {ros_messages.IMobileNetworkState|null} [mobile_network_state] RosMessageWrapper mobile_network_state
+         * @property {ros_messages.IVideoData|null} [video_data] RosMessageWrapper video_data
          */
 
         /**
@@ -2442,17 +3610,33 @@ export const ros_messages = $root.ros_messages = (() => {
          */
         RosMessageWrapper.prototype.towing_state = null;
 
+        /**
+         * RosMessageWrapper mobile_network_state.
+         * @member {ros_messages.IMobileNetworkState|null|undefined} mobile_network_state
+         * @memberof ros_messages.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.mobile_network_state = null;
+
+        /**
+         * RosMessageWrapper video_data.
+         * @member {ros_messages.IVideoData|null|undefined} video_data
+         * @memberof ros_messages.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.video_data = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|undefined} payload
+         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|undefined} payload
          * @memberof ros_messages.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states", "towing_state"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -2498,6 +3682,10 @@ export const ros_messages = $root.ros_messages = (() => {
                 $root.ros_messages.RackStates.encode(message.rack_states, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
             if (message.towing_state != null && Object.hasOwnProperty.call(message, "towing_state"))
                 $root.ros_messages.TowingState.encode(message.towing_state, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
+            if (message.mobile_network_state != null && Object.hasOwnProperty.call(message, "mobile_network_state"))
+                $root.ros_messages.MobileNetworkState.encode(message.mobile_network_state, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
+            if (message.video_data != null && Object.hasOwnProperty.call(message, "video_data"))
+                $root.ros_messages.VideoData.encode(message.video_data, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
             return writer;
         };
 
@@ -2570,6 +3758,14 @@ export const ros_messages = $root.ros_messages = (() => {
                         message.towing_state = $root.ros_messages.TowingState.decode(reader, reader.uint32());
                         break;
                     }
+                case 16: {
+                        message.mobile_network_state = $root.ros_messages.MobileNetworkState.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 17: {
+                        message.video_data = $root.ros_messages.VideoData.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -2616,6 +3812,8 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 3:
                 case 4:
                 case 5:
+                case 6:
+                case 7:
                     break;
                 }
             if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
@@ -2679,6 +3877,26 @@ export const ros_messages = $root.ros_messages = (() => {
                         return "towing_state." + error;
                 }
             }
+            if (message.mobile_network_state != null && message.hasOwnProperty("mobile_network_state")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ros_messages.MobileNetworkState.verify(message.mobile_network_state);
+                    if (error)
+                        return "mobile_network_state." + error;
+                }
+            }
+            if (message.video_data != null && message.hasOwnProperty("video_data")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ros_messages.VideoData.verify(message.video_data);
+                    if (error)
+                        return "video_data." + error;
+                }
+            }
             return null;
         };
 
@@ -2725,6 +3943,14 @@ export const ros_messages = $root.ros_messages = (() => {
             case 5:
                 message.type = 5;
                 break;
+            case "MOBILE_NETWORK_STATE":
+            case 6:
+                message.type = 6;
+                break;
+            case "VIDEO_DATA":
+            case 7:
+                message.type = 7;
+                break;
             }
             if (object.timestamp_ns != null)
                 if ($util.Long)
@@ -2766,6 +3992,16 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeof object.towing_state !== "object")
                     throw TypeError(".ros_messages.RosMessageWrapper.towing_state: object expected");
                 message.towing_state = $root.ros_messages.TowingState.fromObject(object.towing_state);
+            }
+            if (object.mobile_network_state != null) {
+                if (typeof object.mobile_network_state !== "object")
+                    throw TypeError(".ros_messages.RosMessageWrapper.mobile_network_state: object expected");
+                message.mobile_network_state = $root.ros_messages.MobileNetworkState.fromObject(object.mobile_network_state);
+            }
+            if (object.video_data != null) {
+                if (typeof object.video_data !== "object")
+                    throw TypeError(".ros_messages.RosMessageWrapper.video_data: object expected");
+                message.video_data = $root.ros_messages.VideoData.fromObject(object.video_data);
             }
             return message;
         };
@@ -2831,6 +4067,16 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (options.oneofs)
                     object.payload = "towing_state";
             }
+            if (message.mobile_network_state != null && message.hasOwnProperty("mobile_network_state")) {
+                object.mobile_network_state = $root.ros_messages.MobileNetworkState.toObject(message.mobile_network_state, options);
+                if (options.oneofs)
+                    object.payload = "mobile_network_state";
+            }
+            if (message.video_data != null && message.hasOwnProperty("video_data")) {
+                object.video_data = $root.ros_messages.VideoData.toObject(message.video_data, options);
+                if (options.oneofs)
+                    object.payload = "video_data";
+            }
             return object;
         };
 
@@ -2870,6 +4116,8 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number} SUBMAP_LIST=3 SUBMAP_LIST value
          * @property {number} RACK_STATES=4 RACK_STATES value
          * @property {number} TOWING_STATE=5 TOWING_STATE value
+         * @property {number} MOBILE_NETWORK_STATE=6 MOBILE_NETWORK_STATE value
+         * @property {number} VIDEO_DATA=7 VIDEO_DATA value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -2879,6 +4127,8 @@ export const ros_messages = $root.ros_messages = (() => {
             values[valuesById[3] = "SUBMAP_LIST"] = 3;
             values[valuesById[4] = "RACK_STATES"] = 4;
             values[valuesById[5] = "TOWING_STATE"] = 5;
+            values[valuesById[6] = "MOBILE_NETWORK_STATE"] = 6;
+            values[valuesById[7] = "VIDEO_DATA"] = 7;
             return values;
         })();
 
@@ -5352,6 +6602,323 @@ export const ros_messages = $root.ros_messages = (() => {
         })();
 
         return TowingState;
+    })();
+
+    ros_messages.VideoData = (function() {
+
+        /**
+         * Properties of a VideoData.
+         * @memberof ros_messages
+         * @interface IVideoData
+         * @property {number|null} [width] VideoData width
+         * @property {number|null} [height] VideoData height
+         * @property {ros_messages.VideoData.VideoFormat|null} [video_format] VideoData video_format
+         * @property {Uint8Array|null} [data] VideoData data
+         */
+
+        /**
+         * Constructs a new VideoData.
+         * @memberof ros_messages
+         * @classdesc Represents a VideoData.
+         * @implements IVideoData
+         * @constructor
+         * @param {ros_messages.IVideoData=} [properties] Properties to set
+         */
+        function VideoData(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * VideoData width.
+         * @member {number} width
+         * @memberof ros_messages.VideoData
+         * @instance
+         */
+        VideoData.prototype.width = 0;
+
+        /**
+         * VideoData height.
+         * @member {number} height
+         * @memberof ros_messages.VideoData
+         * @instance
+         */
+        VideoData.prototype.height = 0;
+
+        /**
+         * VideoData video_format.
+         * @member {ros_messages.VideoData.VideoFormat} video_format
+         * @memberof ros_messages.VideoData
+         * @instance
+         */
+        VideoData.prototype.video_format = 0;
+
+        /**
+         * VideoData data.
+         * @member {Uint8Array} data
+         * @memberof ros_messages.VideoData
+         * @instance
+         */
+        VideoData.prototype.data = $util.newBuffer([]);
+
+        /**
+         * Creates a new VideoData instance using the specified properties.
+         * @function create
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {ros_messages.IVideoData=} [properties] Properties to set
+         * @returns {ros_messages.VideoData} VideoData instance
+         */
+        VideoData.create = function create(properties) {
+            return new VideoData(properties);
+        };
+
+        /**
+         * Encodes the specified VideoData message. Does not implicitly {@link ros_messages.VideoData.verify|verify} messages.
+         * @function encode
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {ros_messages.IVideoData} message VideoData message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VideoData.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.width != null && Object.hasOwnProperty.call(message, "width"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.width);
+            if (message.height != null && Object.hasOwnProperty.call(message, "height"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.height);
+            if (message.video_format != null && Object.hasOwnProperty.call(message, "video_format"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.video_format);
+            if (message.data != null && Object.hasOwnProperty.call(message, "data"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.data);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VideoData message, length delimited. Does not implicitly {@link ros_messages.VideoData.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {ros_messages.IVideoData} message VideoData message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VideoData.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a VideoData message from the specified reader or buffer.
+         * @function decode
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ros_messages.VideoData} VideoData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VideoData.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.VideoData();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.width = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.height = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.video_format = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.data = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a VideoData message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ros_messages.VideoData} VideoData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VideoData.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VideoData message.
+         * @function verify
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VideoData.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.width != null && message.hasOwnProperty("width"))
+                if (!$util.isInteger(message.width))
+                    return "width: integer expected";
+            if (message.height != null && message.hasOwnProperty("height"))
+                if (!$util.isInteger(message.height))
+                    return "height: integer expected";
+            if (message.video_format != null && message.hasOwnProperty("video_format"))
+                switch (message.video_format) {
+                default:
+                    return "video_format: enum value expected";
+                case 0:
+                case 1:
+                    break;
+                }
+            if (message.data != null && message.hasOwnProperty("data"))
+                if (!(message.data && typeof message.data.length === "number" || $util.isString(message.data)))
+                    return "data: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a VideoData message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ros_messages.VideoData} VideoData
+         */
+        VideoData.fromObject = function fromObject(object) {
+            if (object instanceof $root.ros_messages.VideoData)
+                return object;
+            let message = new $root.ros_messages.VideoData();
+            if (object.width != null)
+                message.width = object.width | 0;
+            if (object.height != null)
+                message.height = object.height | 0;
+            switch (object.video_format) {
+            default:
+                if (typeof object.video_format === "number") {
+                    message.video_format = object.video_format;
+                    break;
+                }
+                break;
+            case "VIDEO_FORMAT_UNKNOWN":
+            case 0:
+                message.video_format = 0;
+                break;
+            case "VIDEO_FORMAT_H264":
+            case 1:
+                message.video_format = 1;
+                break;
+            }
+            if (object.data != null)
+                if (typeof object.data === "string")
+                    $util.base64.decode(object.data, message.data = $util.newBuffer($util.base64.length(object.data)), 0);
+                else if (object.data.length >= 0)
+                    message.data = object.data;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VideoData message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {ros_messages.VideoData} message VideoData
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VideoData.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.width = 0;
+                object.height = 0;
+                object.video_format = options.enums === String ? "VIDEO_FORMAT_UNKNOWN" : 0;
+                if (options.bytes === String)
+                    object.data = "";
+                else {
+                    object.data = [];
+                    if (options.bytes !== Array)
+                        object.data = $util.newBuffer(object.data);
+                }
+            }
+            if (message.width != null && message.hasOwnProperty("width"))
+                object.width = message.width;
+            if (message.height != null && message.hasOwnProperty("height"))
+                object.height = message.height;
+            if (message.video_format != null && message.hasOwnProperty("video_format"))
+                object.video_format = options.enums === String ? $root.ros_messages.VideoData.VideoFormat[message.video_format] === undefined ? message.video_format : $root.ros_messages.VideoData.VideoFormat[message.video_format] : message.video_format;
+            if (message.data != null && message.hasOwnProperty("data"))
+                object.data = options.bytes === String ? $util.base64.encode(message.data, 0, message.data.length) : options.bytes === Array ? Array.prototype.slice.call(message.data) : message.data;
+            return object;
+        };
+
+        /**
+         * Converts this VideoData to JSON.
+         * @function toJSON
+         * @memberof ros_messages.VideoData
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VideoData.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for VideoData
+         * @function getTypeUrl
+         * @memberof ros_messages.VideoData
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        VideoData.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ros_messages.VideoData";
+        };
+
+        /**
+         * VideoFormat enum.
+         * @name ros_messages.VideoData.VideoFormat
+         * @enum {number}
+         * @property {number} VIDEO_FORMAT_UNKNOWN=0 VIDEO_FORMAT_UNKNOWN value
+         * @property {number} VIDEO_FORMAT_H264=1 VIDEO_FORMAT_H264 value
+         */
+        VideoData.VideoFormat = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "VIDEO_FORMAT_UNKNOWN"] = 0;
+            values[valuesById[1] = "VIDEO_FORMAT_H264"] = 1;
+            return values;
+        })();
+
+        return VideoData;
     })();
 
     ros_messages.TopicInfo = (function() {

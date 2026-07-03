@@ -14,7 +14,7 @@
 import { gunzipSync } from 'fflate';
 import { ros_messages } from './proto/generated.js';
 import { PointCloudPbMsg } from './pbMessages.js';
-import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg, MapRackStatesMsg } from './topicMessages.js';
+import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg, MapRackStatesMsg, ProtoMessage } from './topicMessages.js';
 
 /**
  * Decode a binary WebSocket frame into a topic name and typed payload.
@@ -126,6 +126,20 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
       racks,
     };
     return { topic, payload: msg };
+  }
+
+  if (
+    wrapper.type === ros_messages.RosMessageWrapper.MessageType.MOBILE_NETWORK_STATE &&
+    wrapper.mobile_network_state
+  ) {
+    return { topic, payload: new ProtoMessage(topic, wrapper.mobile_network_state) };
+  }
+
+  if (
+    wrapper.type === ros_messages.RosMessageWrapper.MessageType.VIDEO_DATA &&
+    wrapper.video_data
+  ) {
+    return { topic, payload: new ProtoMessage(topic, wrapper.video_data) };
   }
 
   console.warn('binaryMessageDecoder: unsupported message type', wrapper.type, 'for', topic);

@@ -383,6 +383,312 @@ export namespace ros_messages {
         }
     }
 
+    /** Properties of a MobileNetworkState. */
+    interface IMobileNetworkState {
+
+        /** MobileNetworkState modem_state */
+        modem_state?: (ros_messages.MobileNetworkState.ModemState|null);
+
+        /** MobileNetworkState recovery_request */
+        recovery_request?: (ros_messages.MobileNetworkState.RecoveryRequest|null);
+
+        /** MobileNetworkState recovery_reason */
+        recovery_reason?: (string|null);
+
+        /** MobileNetworkState sim_state */
+        sim_state?: (ros_messages.MobileNetworkState.SimState|null);
+
+        /** MobileNetworkState iccid */
+        iccid?: (string|null);
+
+        /** MobileNetworkState imei */
+        imei?: (string|null);
+
+        /** MobileNetworkState imsi */
+        imsi?: (string|null);
+
+        /** MobileNetworkState model */
+        model?: (string|null);
+
+        /** MobileNetworkState firmware_ver */
+        firmware_ver?: (string|null);
+
+        /** MobileNetworkState reg_state */
+        reg_state?: (ros_messages.MobileNetworkState.RegState|null);
+
+        /** MobileNetworkState rat */
+        rat?: (ros_messages.MobileNetworkState.Rat|null);
+
+        /** MobileNetworkState operator_name */
+        operator_name?: (string|null);
+
+        /** MobileNetworkState lac */
+        lac?: (number|null);
+
+        /** MobileNetworkState cell_id */
+        cell_id?: (number|null);
+
+        /** MobileNetworkState rssi_dbm */
+        rssi_dbm?: (number|null);
+
+        /** MobileNetworkState rsrp_dbm */
+        rsrp_dbm?: (number|null);
+
+        /** MobileNetworkState rsrq_db */
+        rsrq_db?: (number|null);
+
+        /** MobileNetworkState sinr_db */
+        sinr_db?: (number|null);
+
+        /** MobileNetworkState signal_level */
+        signal_level?: (number|null);
+
+        /** MobileNetworkState data_state */
+        data_state?: (ros_messages.MobileNetworkState.DataState|null);
+
+        /** MobileNetworkState apn */
+        apn?: (string|null);
+
+        /** MobileNetworkState ip_address */
+        ip_address?: (string|null);
+
+        /** MobileNetworkState connected_duration_sec */
+        connected_duration_sec?: (number|null);
+
+        /** MobileNetworkState tx_bytes */
+        tx_bytes?: (number|Long|null);
+
+        /** MobileNetworkState rx_bytes */
+        rx_bytes?: (number|Long|null);
+    }
+
+    /** Represents a MobileNetworkState. */
+    class MobileNetworkState implements IMobileNetworkState {
+
+        /**
+         * Constructs a new MobileNetworkState.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IMobileNetworkState);
+
+        /** MobileNetworkState modem_state. */
+        public modem_state: ros_messages.MobileNetworkState.ModemState;
+
+        /** MobileNetworkState recovery_request. */
+        public recovery_request: ros_messages.MobileNetworkState.RecoveryRequest;
+
+        /** MobileNetworkState recovery_reason. */
+        public recovery_reason: string;
+
+        /** MobileNetworkState sim_state. */
+        public sim_state: ros_messages.MobileNetworkState.SimState;
+
+        /** MobileNetworkState iccid. */
+        public iccid: string;
+
+        /** MobileNetworkState imei. */
+        public imei: string;
+
+        /** MobileNetworkState imsi. */
+        public imsi: string;
+
+        /** MobileNetworkState model. */
+        public model: string;
+
+        /** MobileNetworkState firmware_ver. */
+        public firmware_ver: string;
+
+        /** MobileNetworkState reg_state. */
+        public reg_state: ros_messages.MobileNetworkState.RegState;
+
+        /** MobileNetworkState rat. */
+        public rat: ros_messages.MobileNetworkState.Rat;
+
+        /** MobileNetworkState operator_name. */
+        public operator_name: string;
+
+        /** MobileNetworkState lac. */
+        public lac: number;
+
+        /** MobileNetworkState cell_id. */
+        public cell_id: number;
+
+        /** MobileNetworkState rssi_dbm. */
+        public rssi_dbm: number;
+
+        /** MobileNetworkState rsrp_dbm. */
+        public rsrp_dbm: number;
+
+        /** MobileNetworkState rsrq_db. */
+        public rsrq_db: number;
+
+        /** MobileNetworkState sinr_db. */
+        public sinr_db: number;
+
+        /** MobileNetworkState signal_level. */
+        public signal_level: number;
+
+        /** MobileNetworkState data_state. */
+        public data_state: ros_messages.MobileNetworkState.DataState;
+
+        /** MobileNetworkState apn. */
+        public apn: string;
+
+        /** MobileNetworkState ip_address. */
+        public ip_address: string;
+
+        /** MobileNetworkState connected_duration_sec. */
+        public connected_duration_sec: number;
+
+        /** MobileNetworkState tx_bytes. */
+        public tx_bytes: (number|Long);
+
+        /** MobileNetworkState rx_bytes. */
+        public rx_bytes: (number|Long);
+
+        /**
+         * Creates a new MobileNetworkState instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MobileNetworkState instance
+         */
+        public static create(properties?: ros_messages.IMobileNetworkState): ros_messages.MobileNetworkState;
+
+        /**
+         * Encodes the specified MobileNetworkState message. Does not implicitly {@link ros_messages.MobileNetworkState.verify|verify} messages.
+         * @param message MobileNetworkState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IMobileNetworkState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MobileNetworkState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.verify|verify} messages.
+         * @param message MobileNetworkState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IMobileNetworkState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MobileNetworkState message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns MobileNetworkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState;
+
+        /**
+         * Decodes a MobileNetworkState message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns MobileNetworkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState;
+
+        /**
+         * Verifies a MobileNetworkState message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MobileNetworkState message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MobileNetworkState
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState;
+
+        /**
+         * Creates a plain object from a MobileNetworkState message. Also converts values to other types if specified.
+         * @param message MobileNetworkState
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.MobileNetworkState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MobileNetworkState to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for MobileNetworkState
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace MobileNetworkState {
+
+        /** ModemState enum. */
+        enum ModemState {
+            MODEM_STATE_UNKNOWN = 0,
+            MODEM_STATE_INITIALIZING = 1,
+            MODEM_STATE_READY = 2,
+            MODEM_STATE_FAULT = 3
+        }
+
+        /** RecoveryRequest enum. */
+        enum RecoveryRequest {
+            RECOVERY_REQUEST_NONE = 0,
+            RECOVERY_REQUEST_USB_RESET = 1,
+            RECOVERY_REQUEST_HOST_REBOOT = 2
+        }
+
+        /** SimState enum. */
+        enum SimState {
+            SIM_STATE_UNKNOWN = 0,
+            SIM_STATE_ABSENT = 1,
+            SIM_STATE_PIN_REQUIRED = 2,
+            SIM_STATE_PUK_REQUIRED = 3,
+            SIM_STATE_NETWORK_LOCKED = 4,
+            SIM_STATE_READY = 5,
+            SIM_STATE_NOT_READY = 6,
+            SIM_STATE_CARD_IO_ERROR = 8,
+            SIM_STATE_NO_RESPONSE = 255
+        }
+
+        /** RegState enum. */
+        enum RegState {
+            REG_STATE_NOT_REGISTERED = 0,
+            REG_STATE_HOME = 1,
+            REG_STATE_SEARCHING = 2,
+            REG_STATE_DENIED = 3,
+            REG_STATE_UNKNOWN = 4,
+            REG_STATE_ROAMING = 5,
+            REG_STATE_HOME_SMS_ONLY = 6,
+            REG_STATE_ROAMING_SMS_ONLY = 7
+        }
+
+        /** Rat enum. */
+        enum Rat {
+            RAT_UNKNOWN = 0,
+            RAT_GSM = 1,
+            RAT_GPRS = 2,
+            RAT_EDGE = 3,
+            RAT_UMTS = 4,
+            RAT_HSDPA = 5,
+            RAT_HSUPA = 6,
+            RAT_HSPA = 7,
+            RAT_LTE = 13,
+            RAT_LTE_CA = 19
+        }
+
+        /** DataState enum. */
+        enum DataState {
+            DATA_STATE_DISCONNECTED = 0,
+            DATA_STATE_CONNECTING = 1,
+            DATA_STATE_CONNECTED = 2,
+            DATA_STATE_SUSPENDED = 3
+        }
+    }
+
     /** Properties of a PointCloud. */
     interface IPointCloud {
 
@@ -897,6 +1203,12 @@ export namespace ros_messages {
 
         /** RosMessageWrapper towing_state */
         towing_state?: (ros_messages.ITowingState|null);
+
+        /** RosMessageWrapper mobile_network_state */
+        mobile_network_state?: (ros_messages.IMobileNetworkState|null);
+
+        /** RosMessageWrapper video_data */
+        video_data?: (ros_messages.IVideoData|null);
     }
 
     /** Represents a RosMessageWrapper. */
@@ -935,8 +1247,14 @@ export namespace ros_messages {
         /** RosMessageWrapper towing_state. */
         public towing_state?: (ros_messages.ITowingState|null);
 
+        /** RosMessageWrapper mobile_network_state. */
+        public mobile_network_state?: (ros_messages.IMobileNetworkState|null);
+
+        /** RosMessageWrapper video_data. */
+        public video_data?: (ros_messages.IVideoData|null);
+
         /** RosMessageWrapper payload. */
-        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state");
+        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data");
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
@@ -1025,7 +1343,9 @@ export namespace ros_messages {
             MAST_STATE = 2,
             SUBMAP_LIST = 3,
             RACK_STATES = 4,
-            TOWING_STATE = 5
+            TOWING_STATE = 5,
+            MOBILE_NETWORK_STATE = 6,
+            VIDEO_DATA = 7
         }
     }
 
@@ -1910,6 +2230,130 @@ export namespace ros_messages {
             RELEASING = 4,
             SELF_CHECKING = 5,
             ERROR = 6
+        }
+    }
+
+    /** Properties of a VideoData. */
+    interface IVideoData {
+
+        /** VideoData width */
+        width?: (number|null);
+
+        /** VideoData height */
+        height?: (number|null);
+
+        /** VideoData video_format */
+        video_format?: (ros_messages.VideoData.VideoFormat|null);
+
+        /** VideoData data */
+        data?: (Uint8Array|null);
+    }
+
+    /** Represents a VideoData. */
+    class VideoData implements IVideoData {
+
+        /**
+         * Constructs a new VideoData.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IVideoData);
+
+        /** VideoData width. */
+        public width: number;
+
+        /** VideoData height. */
+        public height: number;
+
+        /** VideoData video_format. */
+        public video_format: ros_messages.VideoData.VideoFormat;
+
+        /** VideoData data. */
+        public data: Uint8Array;
+
+        /**
+         * Creates a new VideoData instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VideoData instance
+         */
+        public static create(properties?: ros_messages.IVideoData): ros_messages.VideoData;
+
+        /**
+         * Encodes the specified VideoData message. Does not implicitly {@link ros_messages.VideoData.verify|verify} messages.
+         * @param message VideoData message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IVideoData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VideoData message, length delimited. Does not implicitly {@link ros_messages.VideoData.verify|verify} messages.
+         * @param message VideoData message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IVideoData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VideoData message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns VideoData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.VideoData;
+
+        /**
+         * Decodes a VideoData message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns VideoData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.VideoData;
+
+        /**
+         * Verifies a VideoData message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VideoData message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VideoData
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.VideoData;
+
+        /**
+         * Creates a plain object from a VideoData message. Also converts values to other types if specified.
+         * @param message VideoData
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.VideoData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VideoData to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for VideoData
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace VideoData {
+
+        /** VideoFormat enum. */
+        enum VideoFormat {
+            VIDEO_FORMAT_UNKNOWN = 0,
+            VIDEO_FORMAT_H264 = 1
         }
     }
 

@@ -1,5 +1,7 @@
 # CHANGELOG
 
+- 2026-07-03 axbot-sdk: Add /mobile_network_state binary protobuf decoding and event emitter
+- 2026-07-03 axbot-sdk: Add /rgb_cameras/fork_right/video binary protobuf decoding and event emitter
 - 2026-07-01 robotApi: Add getMapImage API to fetch SLAM map image via protobuf
 - 2026-07-01 **API-BREAK** proto: Move submap_list, submap_query, status into slam/ sub-namespace; replace StatusResponse uint32 code with StatusCode enum
 - 2026-06-30 wsEventEmitter: Add /detected_rack_states event emitter and document latched /map_rack_states

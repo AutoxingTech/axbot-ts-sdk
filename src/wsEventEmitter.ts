@@ -138,6 +138,8 @@ import {
   DepthCameraImageMsg,
   FusedSensorStateMsg,
   MapRackStatesMsg,
+  MobileNetworkStateMsg,
+  VideoDataMsg,
 } from './msgs';
 
 /** Global positioning state events (auto-relocate) */
@@ -375,9 +377,19 @@ export const nearbyRobotsEvents = new WsEventEmitter<NearbyRobotsMsg>('/nearby_r
 /** SLAM constraint list events */
 export const constraintListEvents = new WsEventEmitter<ConstraintListMsg>('/constraint_list');
 
+/** Mobile network state events */
+export const mobileNetworkStateEvents = new WsEventEmitter<MobileNetworkStateMsg>(
+  '/mobile_network_state',
+);
+
 /** RGB camera events */
 export const rgbCameraFrontEvents = new RgbCameraEventEmitter('/rgb_cameras/front/video');
 export const rgbCameraBackEvents = new RgbCameraEventEmitter('/rgb_cameras/back/video');
 export const rgbCameraFrontAugmentedEvents = new RgbCameraEventEmitter(
   '/rgb_cameras/front_augmented/video',
+);
+
+/** Fork-right RGB camera events (non-latched, unthrottled video data via protobuf) */
+export const rgbCameraForkRightVideoEvents = new WsEventEmitter<VideoDataMsg>(
+  '/rgb_cameras/fork_right/video',
 );

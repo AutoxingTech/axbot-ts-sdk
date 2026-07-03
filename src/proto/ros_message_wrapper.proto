@@ -7,6 +7,8 @@ import "mast_state.proto";
 import "slam/submap_list.proto";
 import "rack_states.proto";
 import "towing_state.proto";
+import "mobile_network_state.proto";
+import "video_data.proto";
 
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
@@ -20,6 +22,8 @@ message RosMessageWrapper {
         SUBMAP_LIST = 3;
         RACK_STATES = 4;
         TOWING_STATE = 5;
+        MOBILE_NETWORK_STATE = 6;
+        VIDEO_DATA = 7;
     }
     
     MessageType type = 1;
@@ -33,5 +37,7 @@ message RosMessageWrapper {
         ros_messages.slam.SubmapList submap_list = 13;
         RackStates rack_states = 14;
         TowingState towing_state = 15;
+        MobileNetworkState mobile_network_state = 16;
+        VideoData video_data = 17;
     }
 }
