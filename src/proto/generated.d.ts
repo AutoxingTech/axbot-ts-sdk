@@ -387,16 +387,16 @@ export namespace ros_messages {
     interface IMobileNetworkState {
 
         /** MobileNetworkState modem_state */
-        modem_state?: (ros_messages.MobileNetworkState.ModemState|null);
+        modem_state?: (ros_messages.MobileNetworkState.ModemState.Type|null);
 
         /** MobileNetworkState recovery_request */
-        recovery_request?: (ros_messages.MobileNetworkState.RecoveryRequest|null);
+        recovery_request?: (ros_messages.MobileNetworkState.RecoveryRequest.Type|null);
 
         /** MobileNetworkState recovery_reason */
         recovery_reason?: (string|null);
 
         /** MobileNetworkState sim_state */
-        sim_state?: (ros_messages.MobileNetworkState.SimState|null);
+        sim_state?: (ros_messages.MobileNetworkState.SimState.Type|null);
 
         /** MobileNetworkState iccid */
         iccid?: (string|null);
@@ -414,10 +414,10 @@ export namespace ros_messages {
         firmware_ver?: (string|null);
 
         /** MobileNetworkState reg_state */
-        reg_state?: (ros_messages.MobileNetworkState.RegState|null);
+        reg_state?: (ros_messages.MobileNetworkState.RegState.Type|null);
 
         /** MobileNetworkState rat */
-        rat?: (ros_messages.MobileNetworkState.Rat|null);
+        rat?: (ros_messages.MobileNetworkState.Rat.Type|null);
 
         /** MobileNetworkState operator_name */
         operator_name?: (string|null);
@@ -444,7 +444,7 @@ export namespace ros_messages {
         signal_level?: (number|null);
 
         /** MobileNetworkState data_state */
-        data_state?: (ros_messages.MobileNetworkState.DataState|null);
+        data_state?: (ros_messages.MobileNetworkState.DataState.Type|null);
 
         /** MobileNetworkState apn */
         apn?: (string|null);
@@ -472,16 +472,16 @@ export namespace ros_messages {
         constructor(properties?: ros_messages.IMobileNetworkState);
 
         /** MobileNetworkState modem_state. */
-        public modem_state: ros_messages.MobileNetworkState.ModemState;
+        public modem_state: ros_messages.MobileNetworkState.ModemState.Type;
 
         /** MobileNetworkState recovery_request. */
-        public recovery_request: ros_messages.MobileNetworkState.RecoveryRequest;
+        public recovery_request: ros_messages.MobileNetworkState.RecoveryRequest.Type;
 
         /** MobileNetworkState recovery_reason. */
         public recovery_reason: string;
 
         /** MobileNetworkState sim_state. */
-        public sim_state: ros_messages.MobileNetworkState.SimState;
+        public sim_state: ros_messages.MobileNetworkState.SimState.Type;
 
         /** MobileNetworkState iccid. */
         public iccid: string;
@@ -499,10 +499,10 @@ export namespace ros_messages {
         public firmware_ver: string;
 
         /** MobileNetworkState reg_state. */
-        public reg_state: ros_messages.MobileNetworkState.RegState;
+        public reg_state: ros_messages.MobileNetworkState.RegState.Type;
 
         /** MobileNetworkState rat. */
-        public rat: ros_messages.MobileNetworkState.Rat;
+        public rat: ros_messages.MobileNetworkState.Rat.Type;
 
         /** MobileNetworkState operator_name. */
         public operator_name: string;
@@ -529,7 +529,7 @@ export namespace ros_messages {
         public signal_level: number;
 
         /** MobileNetworkState data_state. */
-        public data_state: ros_messages.MobileNetworkState.DataState;
+        public data_state: ros_messages.MobileNetworkState.DataState.Type;
 
         /** MobileNetworkState apn. */
         public apn: string;
@@ -626,66 +626,630 @@ export namespace ros_messages {
 
     namespace MobileNetworkState {
 
-        /** ModemState enum. */
-        enum ModemState {
-            MODEM_STATE_UNKNOWN = 0,
-            MODEM_STATE_INITIALIZING = 1,
-            MODEM_STATE_READY = 2,
-            MODEM_STATE_FAULT = 3
+        /** Properties of a ModemState. */
+        interface IModemState {
         }
 
-        /** RecoveryRequest enum. */
-        enum RecoveryRequest {
-            RECOVERY_REQUEST_NONE = 0,
-            RECOVERY_REQUEST_USB_RESET = 1,
-            RECOVERY_REQUEST_HOST_REBOOT = 2
+        /** Represents a ModemState. */
+        class ModemState implements IModemState {
+
+            /**
+             * Constructs a new ModemState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.MobileNetworkState.IModemState);
+
+            /**
+             * Creates a new ModemState instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ModemState instance
+             */
+            public static create(properties?: ros_messages.MobileNetworkState.IModemState): ros_messages.MobileNetworkState.ModemState;
+
+            /**
+             * Encodes the specified ModemState message. Does not implicitly {@link ros_messages.MobileNetworkState.ModemState.verify|verify} messages.
+             * @param message ModemState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.MobileNetworkState.IModemState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ModemState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.ModemState.verify|verify} messages.
+             * @param message ModemState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.MobileNetworkState.IModemState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ModemState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ModemState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState.ModemState;
+
+            /**
+             * Decodes a ModemState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ModemState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState.ModemState;
+
+            /**
+             * Verifies a ModemState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ModemState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ModemState
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState.ModemState;
+
+            /**
+             * Creates a plain object from a ModemState message. Also converts values to other types if specified.
+             * @param message ModemState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.MobileNetworkState.ModemState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ModemState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for ModemState
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
-        /** SimState enum. */
-        enum SimState {
-            SIM_STATE_UNKNOWN = 0,
-            SIM_STATE_ABSENT = 1,
-            SIM_STATE_PIN_REQUIRED = 2,
-            SIM_STATE_PUK_REQUIRED = 3,
-            SIM_STATE_NETWORK_LOCKED = 4,
-            SIM_STATE_READY = 5,
-            SIM_STATE_NOT_READY = 6,
-            SIM_STATE_CARD_IO_ERROR = 8,
-            SIM_STATE_NO_RESPONSE = 255
+        namespace ModemState {
+
+            /** Type enum. */
+            enum Type {
+                UNKNOWN = 0,
+                INITIALIZING = 1,
+                READY = 2,
+                FAULT = 3
+            }
         }
 
-        /** RegState enum. */
-        enum RegState {
-            REG_STATE_NOT_REGISTERED = 0,
-            REG_STATE_HOME = 1,
-            REG_STATE_SEARCHING = 2,
-            REG_STATE_DENIED = 3,
-            REG_STATE_UNKNOWN = 4,
-            REG_STATE_ROAMING = 5,
-            REG_STATE_HOME_SMS_ONLY = 6,
-            REG_STATE_ROAMING_SMS_ONLY = 7
+        /** Properties of a RecoveryRequest. */
+        interface IRecoveryRequest {
         }
 
-        /** Rat enum. */
-        enum Rat {
-            RAT_UNKNOWN = 0,
-            RAT_GSM = 1,
-            RAT_GPRS = 2,
-            RAT_EDGE = 3,
-            RAT_UMTS = 4,
-            RAT_HSDPA = 5,
-            RAT_HSUPA = 6,
-            RAT_HSPA = 7,
-            RAT_LTE = 13,
-            RAT_LTE_CA = 19
+        /** Represents a RecoveryRequest. */
+        class RecoveryRequest implements IRecoveryRequest {
+
+            /**
+             * Constructs a new RecoveryRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.MobileNetworkState.IRecoveryRequest);
+
+            /**
+             * Creates a new RecoveryRequest instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RecoveryRequest instance
+             */
+            public static create(properties?: ros_messages.MobileNetworkState.IRecoveryRequest): ros_messages.MobileNetworkState.RecoveryRequest;
+
+            /**
+             * Encodes the specified RecoveryRequest message. Does not implicitly {@link ros_messages.MobileNetworkState.RecoveryRequest.verify|verify} messages.
+             * @param message RecoveryRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.MobileNetworkState.IRecoveryRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RecoveryRequest message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.RecoveryRequest.verify|verify} messages.
+             * @param message RecoveryRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.MobileNetworkState.IRecoveryRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RecoveryRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RecoveryRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState.RecoveryRequest;
+
+            /**
+             * Decodes a RecoveryRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RecoveryRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState.RecoveryRequest;
+
+            /**
+             * Verifies a RecoveryRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RecoveryRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RecoveryRequest
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState.RecoveryRequest;
+
+            /**
+             * Creates a plain object from a RecoveryRequest message. Also converts values to other types if specified.
+             * @param message RecoveryRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.MobileNetworkState.RecoveryRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RecoveryRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for RecoveryRequest
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
-        /** DataState enum. */
-        enum DataState {
-            DATA_STATE_DISCONNECTED = 0,
-            DATA_STATE_CONNECTING = 1,
-            DATA_STATE_CONNECTED = 2,
-            DATA_STATE_SUSPENDED = 3
+        namespace RecoveryRequest {
+
+            /** Type enum. */
+            enum Type {
+                NONE = 0,
+                USB_RESET = 1,
+                HOST_REBOOT = 2
+            }
+        }
+
+        /** Properties of a SimState. */
+        interface ISimState {
+        }
+
+        /** Represents a SimState. */
+        class SimState implements ISimState {
+
+            /**
+             * Constructs a new SimState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.MobileNetworkState.ISimState);
+
+            /**
+             * Creates a new SimState instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SimState instance
+             */
+            public static create(properties?: ros_messages.MobileNetworkState.ISimState): ros_messages.MobileNetworkState.SimState;
+
+            /**
+             * Encodes the specified SimState message. Does not implicitly {@link ros_messages.MobileNetworkState.SimState.verify|verify} messages.
+             * @param message SimState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.MobileNetworkState.ISimState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SimState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.SimState.verify|verify} messages.
+             * @param message SimState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.MobileNetworkState.ISimState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SimState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SimState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState.SimState;
+
+            /**
+             * Decodes a SimState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SimState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState.SimState;
+
+            /**
+             * Verifies a SimState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SimState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SimState
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState.SimState;
+
+            /**
+             * Creates a plain object from a SimState message. Also converts values to other types if specified.
+             * @param message SimState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.MobileNetworkState.SimState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SimState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SimState
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace SimState {
+
+            /** Type enum. */
+            enum Type {
+                UNKNOWN = 0,
+                ABSENT = 1,
+                PIN_REQUIRED = 2,
+                PUK_REQUIRED = 3,
+                NETWORK_LOCKED = 4,
+                READY = 5,
+                NOT_READY = 6,
+                CARD_IO_ERROR = 8,
+                NO_RESPONSE = 255
+            }
+        }
+
+        /** Properties of a RegState. */
+        interface IRegState {
+        }
+
+        /** Represents a RegState. */
+        class RegState implements IRegState {
+
+            /**
+             * Constructs a new RegState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.MobileNetworkState.IRegState);
+
+            /**
+             * Creates a new RegState instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RegState instance
+             */
+            public static create(properties?: ros_messages.MobileNetworkState.IRegState): ros_messages.MobileNetworkState.RegState;
+
+            /**
+             * Encodes the specified RegState message. Does not implicitly {@link ros_messages.MobileNetworkState.RegState.verify|verify} messages.
+             * @param message RegState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.MobileNetworkState.IRegState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RegState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.RegState.verify|verify} messages.
+             * @param message RegState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.MobileNetworkState.IRegState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RegState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RegState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState.RegState;
+
+            /**
+             * Decodes a RegState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RegState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState.RegState;
+
+            /**
+             * Verifies a RegState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RegState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RegState
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState.RegState;
+
+            /**
+             * Creates a plain object from a RegState message. Also converts values to other types if specified.
+             * @param message RegState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.MobileNetworkState.RegState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RegState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for RegState
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace RegState {
+
+            /** Type enum. */
+            enum Type {
+                NOT_REGISTERED = 0,
+                HOME = 1,
+                SEARCHING = 2,
+                DENIED = 3,
+                UNKNOWN = 4,
+                ROAMING = 5,
+                HOME_SMS_ONLY = 6,
+                ROAMING_SMS_ONLY = 7
+            }
+        }
+
+        /** Properties of a Rat. */
+        interface IRat {
+        }
+
+        /** Represents a Rat. */
+        class Rat implements IRat {
+
+            /**
+             * Constructs a new Rat.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.MobileNetworkState.IRat);
+
+            /**
+             * Creates a new Rat instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Rat instance
+             */
+            public static create(properties?: ros_messages.MobileNetworkState.IRat): ros_messages.MobileNetworkState.Rat;
+
+            /**
+             * Encodes the specified Rat message. Does not implicitly {@link ros_messages.MobileNetworkState.Rat.verify|verify} messages.
+             * @param message Rat message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.MobileNetworkState.IRat, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Rat message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.Rat.verify|verify} messages.
+             * @param message Rat message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.MobileNetworkState.IRat, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Rat message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Rat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState.Rat;
+
+            /**
+             * Decodes a Rat message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Rat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState.Rat;
+
+            /**
+             * Verifies a Rat message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Rat message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Rat
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState.Rat;
+
+            /**
+             * Creates a plain object from a Rat message. Also converts values to other types if specified.
+             * @param message Rat
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.MobileNetworkState.Rat, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Rat to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Rat
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace Rat {
+
+            /** Type enum. */
+            enum Type {
+                UNKNOWN = 0,
+                GSM = 1,
+                GPRS = 2,
+                EDGE = 3,
+                UMTS = 4,
+                HSDPA = 5,
+                HSUPA = 6,
+                HSPA = 7,
+                LTE = 13,
+                LTE_CA = 19
+            }
+        }
+
+        /** Properties of a DataState. */
+        interface IDataState {
+        }
+
+        /** Represents a DataState. */
+        class DataState implements IDataState {
+
+            /**
+             * Constructs a new DataState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.MobileNetworkState.IDataState);
+
+            /**
+             * Creates a new DataState instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns DataState instance
+             */
+            public static create(properties?: ros_messages.MobileNetworkState.IDataState): ros_messages.MobileNetworkState.DataState;
+
+            /**
+             * Encodes the specified DataState message. Does not implicitly {@link ros_messages.MobileNetworkState.DataState.verify|verify} messages.
+             * @param message DataState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.MobileNetworkState.IDataState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified DataState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.DataState.verify|verify} messages.
+             * @param message DataState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.MobileNetworkState.IDataState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a DataState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns DataState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.MobileNetworkState.DataState;
+
+            /**
+             * Decodes a DataState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns DataState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.MobileNetworkState.DataState;
+
+            /**
+             * Verifies a DataState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a DataState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns DataState
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.MobileNetworkState.DataState;
+
+            /**
+             * Creates a plain object from a DataState message. Also converts values to other types if specified.
+             * @param message DataState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.MobileNetworkState.DataState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this DataState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for DataState
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace DataState {
+
+            /** Type enum. */
+            enum Type {
+                DISCONNECTED = 0,
+                CONNECTING = 1,
+                CONNECTED = 2,
+                SUSPENDED = 3
+            }
         }
     }
 
@@ -2243,7 +2807,7 @@ export namespace ros_messages {
         height?: (number|null);
 
         /** VideoData video_format */
-        video_format?: (ros_messages.VideoData.VideoFormat|null);
+        video_format?: (ros_messages.VideoData.VideoFormat.Type|null);
 
         /** VideoData data */
         data?: (Uint8Array|null);
@@ -2265,7 +2829,7 @@ export namespace ros_messages {
         public height: number;
 
         /** VideoData video_format. */
-        public video_format: ros_messages.VideoData.VideoFormat;
+        public video_format: ros_messages.VideoData.VideoFormat.Type;
 
         /** VideoData data. */
         public data: Uint8Array;
@@ -2350,10 +2914,104 @@ export namespace ros_messages {
 
     namespace VideoData {
 
-        /** VideoFormat enum. */
-        enum VideoFormat {
-            VIDEO_FORMAT_UNKNOWN = 0,
-            VIDEO_FORMAT_H264 = 1
+        /** Properties of a VideoFormat. */
+        interface IVideoFormat {
+        }
+
+        /** Represents a VideoFormat. */
+        class VideoFormat implements IVideoFormat {
+
+            /**
+             * Constructs a new VideoFormat.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.VideoData.IVideoFormat);
+
+            /**
+             * Creates a new VideoFormat instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns VideoFormat instance
+             */
+            public static create(properties?: ros_messages.VideoData.IVideoFormat): ros_messages.VideoData.VideoFormat;
+
+            /**
+             * Encodes the specified VideoFormat message. Does not implicitly {@link ros_messages.VideoData.VideoFormat.verify|verify} messages.
+             * @param message VideoFormat message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.VideoData.IVideoFormat, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified VideoFormat message, length delimited. Does not implicitly {@link ros_messages.VideoData.VideoFormat.verify|verify} messages.
+             * @param message VideoFormat message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.VideoData.IVideoFormat, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a VideoFormat message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns VideoFormat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.VideoData.VideoFormat;
+
+            /**
+             * Decodes a VideoFormat message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns VideoFormat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.VideoData.VideoFormat;
+
+            /**
+             * Verifies a VideoFormat message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a VideoFormat message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns VideoFormat
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.VideoData.VideoFormat;
+
+            /**
+             * Creates a plain object from a VideoFormat message. Also converts values to other types if specified.
+             * @param message VideoFormat
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.VideoData.VideoFormat, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this VideoFormat to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for VideoFormat
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace VideoFormat {
+
+            /** Type enum. */
+            enum Type {
+                UNKNOWN = 0,
+                H264 = 1
+            }
         }
     }
 

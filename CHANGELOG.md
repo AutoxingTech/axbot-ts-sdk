@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-07-06 axbot-sdk: Use nested message+enum pattern for MobileNetworkState and VideoData proto enums
 - 2026-07-03 axbot-sdk: Add /mobile_network_state binary protobuf decoding and event emitter
 - 2026-07-03 axbot-sdk: Add /rgb_cameras/fork_right/video binary protobuf decoding and event emitter
 - 2026-07-01 robotApi: Add getMapImage API to fetch SLAM map image via protobuf

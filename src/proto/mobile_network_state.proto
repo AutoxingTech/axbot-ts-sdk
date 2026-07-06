@@ -6,100 +6,112 @@ option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
 
 message MobileNetworkState {
-    enum ModemState {
-        MODEM_STATE_UNKNOWN      = 0;
-        MODEM_STATE_INITIALIZING = 1;
-        MODEM_STATE_READY        = 2;
-        MODEM_STATE_FAULT        = 3;
+    message ModemState {
+        enum Type {
+            UNKNOWN      = 0;
+            INITIALIZING = 1;
+            READY        = 2;
+            FAULT        = 3;
+        }
     }
 
-    enum RecoveryRequest {
-        RECOVERY_REQUEST_NONE        = 0;
-        RECOVERY_REQUEST_USB_RESET   = 1;
-        RECOVERY_REQUEST_HOST_REBOOT = 2;
+    message RecoveryRequest {
+        enum Type {
+            NONE        = 0;
+            USB_RESET   = 1;
+            HOST_REBOOT = 2;
+        }
     }
 
-    enum SimState {
-        SIM_STATE_UNKNOWN        = 0;
-        SIM_STATE_ABSENT         = 1;
-        SIM_STATE_PIN_REQUIRED   = 2;
-        SIM_STATE_PUK_REQUIRED   = 3;
-        SIM_STATE_NETWORK_LOCKED = 4;
-        SIM_STATE_READY          = 5;
-        SIM_STATE_NOT_READY      = 6;
-        SIM_STATE_CARD_IO_ERROR  = 8;
-        SIM_STATE_NO_RESPONSE    = 255;
+    message SimState {
+        enum Type {
+            UNKNOWN        = 0;
+            ABSENT         = 1;
+            PIN_REQUIRED   = 2;
+            PUK_REQUIRED   = 3;
+            NETWORK_LOCKED = 4;
+            READY          = 5;
+            NOT_READY      = 6;
+            CARD_IO_ERROR  = 8;
+            NO_RESPONSE    = 255;
+        }
     }
 
-    enum RegState {
-        REG_STATE_NOT_REGISTERED   = 0;
-        REG_STATE_HOME             = 1;
-        REG_STATE_SEARCHING        = 2;
-        REG_STATE_DENIED           = 3;
-        REG_STATE_UNKNOWN          = 4;
-        REG_STATE_ROAMING          = 5;
-        REG_STATE_HOME_SMS_ONLY    = 6;
-        REG_STATE_ROAMING_SMS_ONLY = 7;
+    message RegState {
+        enum Type {
+            NOT_REGISTERED   = 0;
+            HOME             = 1;
+            SEARCHING        = 2;
+            DENIED           = 3;
+            UNKNOWN          = 4;
+            ROAMING          = 5;
+            HOME_SMS_ONLY    = 6;
+            ROAMING_SMS_ONLY = 7;
+        }
     }
 
-    enum Rat {
-        RAT_UNKNOWN = 0;
-        RAT_GSM     = 1;
-        RAT_GPRS    = 2;
-        RAT_EDGE    = 3;
-        RAT_UMTS    = 4;
-        RAT_HSDPA   = 5;
-        RAT_HSUPA   = 6;
-        RAT_HSPA    = 7;
-        RAT_LTE     = 13;
-        RAT_LTE_CA  = 19;
+    message Rat {
+        enum Type {
+            UNKNOWN = 0;
+            GSM     = 1;
+            GPRS    = 2;
+            EDGE    = 3;
+            UMTS    = 4;
+            HSDPA   = 5;
+            HSUPA   = 6;
+            HSPA    = 7;
+            LTE     = 13;
+            LTE_CA  = 19;
+        }
     }
 
-    enum DataState {
-        DATA_STATE_DISCONNECTED = 0;
-        DATA_STATE_CONNECTING   = 1;
-        DATA_STATE_CONNECTED    = 2;
-        DATA_STATE_SUSPENDED    = 3;
+    message DataState {
+        enum Type {
+            DISCONNECTED = 0;
+            CONNECTING   = 1;
+            CONNECTED    = 2;
+            SUSPENDED    = 3;
+        }
     }
 
     // ── 1. Module hardware state ──
-    ModemState      modem_state       = 1;
+    ModemState.Type      modem_state       = 1;
 
     // ── 2. Recovery request ──
-    RecoveryRequest recovery_request  = 2;
-    string          recovery_reason   = 3;
+    RecoveryRequest.Type recovery_request  = 2;
+    string               recovery_reason   = 3;
 
     // ── 3. SIM state ──
-    SimState        sim_state         = 4;
+    SimState.Type        sim_state         = 4;
 
     // ── 4. Identity (read once after SIM ready) ──
-    string          iccid             = 5;
-    string          imei              = 6;
-    string          imsi              = 7;
-    string          model             = 8;
-    string          firmware_ver      = 9;
+    string               iccid             = 5;
+    string               imei              = 6;
+    string               imsi              = 7;
+    string               model             = 8;
+    string               firmware_ver      = 9;
 
     // ── 5. Network registration ──
-    RegState        reg_state         = 10;
+    RegState.Type        reg_state         = 10;
 
     // ── 6. Access network type ──
-    Rat             rat               = 11;
-    string          operator_name     = 12;
-    uint32          lac               = 13;
-    uint32          cell_id           = 14;
+    Rat.Type             rat               = 11;
+    string               operator_name     = 12;
+    uint32               lac               = 13;
+    uint32               cell_id           = 14;
 
     // ── 7. Signal quality ──
-    int32           rssi_dbm          = 15;
-    int32           rsrp_dbm          = 16;
-    int32           rsrq_db           = 17;
-    int32           sinr_db           = 18;
-    uint32          signal_level      = 19;
+    int32                rssi_dbm          = 15;
+    int32                rsrp_dbm          = 16;
+    int32                rsrq_db           = 17;
+    int32                sinr_db           = 18;
+    uint32               signal_level      = 19;
 
     // ── 8. Data link state ──
-    DataState       data_state        = 20;
-    string          apn               = 21;
-    string          ip_address        = 22;
-    uint32          connected_duration_sec = 23;
-    uint64          tx_bytes          = 24;
-    uint64          rx_bytes          = 25;
+    DataState.Type       data_state        = 20;
+    string               apn               = 21;
+    string               ip_address        = 22;
+    uint32               connected_duration_sec = 23;
+    uint64               tx_bytes          = 24;
+    uint64               rx_bytes          = 25;
 }

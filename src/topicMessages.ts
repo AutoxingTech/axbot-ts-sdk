@@ -565,50 +565,20 @@ export interface MobileNetworkStateMsg extends ProtoMessage<ros_messages.MobileN
 export interface VideoDataMsg extends ProtoMessage<ros_messages.VideoData> { }
 
 /**
- * Convert a snake_case identifier to PascalCase.
- * e.g. "modem_state" → "ModemState"
- */
-function snakeToPascal(snake: string): string {
-  return snake.split('_').map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join('');
-}
-
-/**
- * Given a PascalCase enum type name like "ModemState", compute the
- * UPPER_SNAKE_CASE prefix used by its proto enum values.
- * e.g. "ModemState" → "MODEM_STATE_"
- */
-function pascalToEnumPrefix(name: string): string {
-  return name.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase() + '_';
-}
-
-/**
  * Convert any protobufjs Message instance to a plain display object with
- * human-readable short enum strings and numeric longs.
- *
- * Enum values are shortened by stripping the common type prefix:
- *   SIM_STATE_ABSENT → ABSENT
+ * human-readable enum strings and numeric longs.
  *
  * Uses the message class's static `toObject()`, resolving enums as strings
- * first, then stripping the prefix — simpler than the old number→string lookup.
+ * first — works for both flat enums and nested message+enum patterns.
  */
 export function protoToDisplay(msg: unknown): Record<string, unknown> {
   const ctor = (msg as any)?.constructor;
   if (ctor?.toObject) {
     const obj = ctor.toObject(msg, { enums: String, longs: Number, defaults: true }) as Record<string, unknown>;
 
-    // Strip common enum prefixes (e.g. "SIM_STATE_ABSENT" → "ABSENT")
-    for (const [key, value] of Object.entries(obj)) {
-      if (typeof value === 'string') {
-        const enumTypeName = snakeToPascal(key);
-        const enumDef = ctor[enumTypeName] as Record<string, string | number> | undefined;
-        if (enumDef && typeof enumDef === 'object') {
-          const prefix = pascalToEnumPrefix(enumTypeName);
-          if (value.startsWith(prefix)) {
-            obj[key] = value.slice(prefix.length);
-          }
-        }
-      }
-    }
+    // The proto now uses short enum names (e.g. "UNKNOWN" instead of
+    // "SIM_STATE_UNKNOWN"), so values pass through as-is from toObject.
+    // No prefix stripping needed.
 
     return obj;
   }

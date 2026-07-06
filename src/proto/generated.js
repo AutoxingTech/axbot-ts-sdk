@@ -1014,17 +1014,17 @@ export const ros_messages = $root.ros_messages = (() => {
          * Properties of a MobileNetworkState.
          * @memberof ros_messages
          * @interface IMobileNetworkState
-         * @property {ros_messages.MobileNetworkState.ModemState|null} [modem_state] MobileNetworkState modem_state
-         * @property {ros_messages.MobileNetworkState.RecoveryRequest|null} [recovery_request] MobileNetworkState recovery_request
+         * @property {ros_messages.MobileNetworkState.ModemState.Type|null} [modem_state] MobileNetworkState modem_state
+         * @property {ros_messages.MobileNetworkState.RecoveryRequest.Type|null} [recovery_request] MobileNetworkState recovery_request
          * @property {string|null} [recovery_reason] MobileNetworkState recovery_reason
-         * @property {ros_messages.MobileNetworkState.SimState|null} [sim_state] MobileNetworkState sim_state
+         * @property {ros_messages.MobileNetworkState.SimState.Type|null} [sim_state] MobileNetworkState sim_state
          * @property {string|null} [iccid] MobileNetworkState iccid
          * @property {string|null} [imei] MobileNetworkState imei
          * @property {string|null} [imsi] MobileNetworkState imsi
          * @property {string|null} [model] MobileNetworkState model
          * @property {string|null} [firmware_ver] MobileNetworkState firmware_ver
-         * @property {ros_messages.MobileNetworkState.RegState|null} [reg_state] MobileNetworkState reg_state
-         * @property {ros_messages.MobileNetworkState.Rat|null} [rat] MobileNetworkState rat
+         * @property {ros_messages.MobileNetworkState.RegState.Type|null} [reg_state] MobileNetworkState reg_state
+         * @property {ros_messages.MobileNetworkState.Rat.Type|null} [rat] MobileNetworkState rat
          * @property {string|null} [operator_name] MobileNetworkState operator_name
          * @property {number|null} [lac] MobileNetworkState lac
          * @property {number|null} [cell_id] MobileNetworkState cell_id
@@ -1033,7 +1033,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number|null} [rsrq_db] MobileNetworkState rsrq_db
          * @property {number|null} [sinr_db] MobileNetworkState sinr_db
          * @property {number|null} [signal_level] MobileNetworkState signal_level
-         * @property {ros_messages.MobileNetworkState.DataState|null} [data_state] MobileNetworkState data_state
+         * @property {ros_messages.MobileNetworkState.DataState.Type|null} [data_state] MobileNetworkState data_state
          * @property {string|null} [apn] MobileNetworkState apn
          * @property {string|null} [ip_address] MobileNetworkState ip_address
          * @property {number|null} [connected_duration_sec] MobileNetworkState connected_duration_sec
@@ -1058,7 +1058,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState modem_state.
-         * @member {ros_messages.MobileNetworkState.ModemState} modem_state
+         * @member {ros_messages.MobileNetworkState.ModemState.Type} modem_state
          * @memberof ros_messages.MobileNetworkState
          * @instance
          */
@@ -1066,7 +1066,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState recovery_request.
-         * @member {ros_messages.MobileNetworkState.RecoveryRequest} recovery_request
+         * @member {ros_messages.MobileNetworkState.RecoveryRequest.Type} recovery_request
          * @memberof ros_messages.MobileNetworkState
          * @instance
          */
@@ -1082,7 +1082,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState sim_state.
-         * @member {ros_messages.MobileNetworkState.SimState} sim_state
+         * @member {ros_messages.MobileNetworkState.SimState.Type} sim_state
          * @memberof ros_messages.MobileNetworkState
          * @instance
          */
@@ -1130,7 +1130,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState reg_state.
-         * @member {ros_messages.MobileNetworkState.RegState} reg_state
+         * @member {ros_messages.MobileNetworkState.RegState.Type} reg_state
          * @memberof ros_messages.MobileNetworkState
          * @instance
          */
@@ -1138,7 +1138,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState rat.
-         * @member {ros_messages.MobileNetworkState.Rat} rat
+         * @member {ros_messages.MobileNetworkState.Rat.Type} rat
          * @memberof ros_messages.MobileNetworkState
          * @instance
          */
@@ -1210,7 +1210,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState data_state.
-         * @member {ros_messages.MobileNetworkState.DataState} data_state
+         * @member {ros_messages.MobileNetworkState.DataState.Type} data_state
          * @memberof ros_messages.MobileNetworkState
          * @instance
          */
@@ -1654,19 +1654,19 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "MODEM_STATE_UNKNOWN":
+            case "UNKNOWN":
             case 0:
                 message.modem_state = 0;
                 break;
-            case "MODEM_STATE_INITIALIZING":
+            case "INITIALIZING":
             case 1:
                 message.modem_state = 1;
                 break;
-            case "MODEM_STATE_READY":
+            case "READY":
             case 2:
                 message.modem_state = 2;
                 break;
-            case "MODEM_STATE_FAULT":
+            case "FAULT":
             case 3:
                 message.modem_state = 3;
                 break;
@@ -1678,15 +1678,15 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "RECOVERY_REQUEST_NONE":
+            case "NONE":
             case 0:
                 message.recovery_request = 0;
                 break;
-            case "RECOVERY_REQUEST_USB_RESET":
+            case "USB_RESET":
             case 1:
                 message.recovery_request = 1;
                 break;
-            case "RECOVERY_REQUEST_HOST_REBOOT":
+            case "HOST_REBOOT":
             case 2:
                 message.recovery_request = 2;
                 break;
@@ -1700,39 +1700,39 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "SIM_STATE_UNKNOWN":
+            case "UNKNOWN":
             case 0:
                 message.sim_state = 0;
                 break;
-            case "SIM_STATE_ABSENT":
+            case "ABSENT":
             case 1:
                 message.sim_state = 1;
                 break;
-            case "SIM_STATE_PIN_REQUIRED":
+            case "PIN_REQUIRED":
             case 2:
                 message.sim_state = 2;
                 break;
-            case "SIM_STATE_PUK_REQUIRED":
+            case "PUK_REQUIRED":
             case 3:
                 message.sim_state = 3;
                 break;
-            case "SIM_STATE_NETWORK_LOCKED":
+            case "NETWORK_LOCKED":
             case 4:
                 message.sim_state = 4;
                 break;
-            case "SIM_STATE_READY":
+            case "READY":
             case 5:
                 message.sim_state = 5;
                 break;
-            case "SIM_STATE_NOT_READY":
+            case "NOT_READY":
             case 6:
                 message.sim_state = 6;
                 break;
-            case "SIM_STATE_CARD_IO_ERROR":
+            case "CARD_IO_ERROR":
             case 8:
                 message.sim_state = 8;
                 break;
-            case "SIM_STATE_NO_RESPONSE":
+            case "NO_RESPONSE":
             case 255:
                 message.sim_state = 255;
                 break;
@@ -1754,35 +1754,35 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "REG_STATE_NOT_REGISTERED":
+            case "NOT_REGISTERED":
             case 0:
                 message.reg_state = 0;
                 break;
-            case "REG_STATE_HOME":
+            case "HOME":
             case 1:
                 message.reg_state = 1;
                 break;
-            case "REG_STATE_SEARCHING":
+            case "SEARCHING":
             case 2:
                 message.reg_state = 2;
                 break;
-            case "REG_STATE_DENIED":
+            case "DENIED":
             case 3:
                 message.reg_state = 3;
                 break;
-            case "REG_STATE_UNKNOWN":
+            case "UNKNOWN":
             case 4:
                 message.reg_state = 4;
                 break;
-            case "REG_STATE_ROAMING":
+            case "ROAMING":
             case 5:
                 message.reg_state = 5;
                 break;
-            case "REG_STATE_HOME_SMS_ONLY":
+            case "HOME_SMS_ONLY":
             case 6:
                 message.reg_state = 6;
                 break;
-            case "REG_STATE_ROAMING_SMS_ONLY":
+            case "ROAMING_SMS_ONLY":
             case 7:
                 message.reg_state = 7;
                 break;
@@ -1794,43 +1794,43 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "RAT_UNKNOWN":
+            case "UNKNOWN":
             case 0:
                 message.rat = 0;
                 break;
-            case "RAT_GSM":
+            case "GSM":
             case 1:
                 message.rat = 1;
                 break;
-            case "RAT_GPRS":
+            case "GPRS":
             case 2:
                 message.rat = 2;
                 break;
-            case "RAT_EDGE":
+            case "EDGE":
             case 3:
                 message.rat = 3;
                 break;
-            case "RAT_UMTS":
+            case "UMTS":
             case 4:
                 message.rat = 4;
                 break;
-            case "RAT_HSDPA":
+            case "HSDPA":
             case 5:
                 message.rat = 5;
                 break;
-            case "RAT_HSUPA":
+            case "HSUPA":
             case 6:
                 message.rat = 6;
                 break;
-            case "RAT_HSPA":
+            case "HSPA":
             case 7:
                 message.rat = 7;
                 break;
-            case "RAT_LTE":
+            case "LTE":
             case 13:
                 message.rat = 13;
                 break;
-            case "RAT_LTE_CA":
+            case "LTE_CA":
             case 19:
                 message.rat = 19;
                 break;
@@ -1858,19 +1858,19 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "DATA_STATE_DISCONNECTED":
+            case "DISCONNECTED":
             case 0:
                 message.data_state = 0;
                 break;
-            case "DATA_STATE_CONNECTING":
+            case "CONNECTING":
             case 1:
                 message.data_state = 1;
                 break;
-            case "DATA_STATE_CONNECTED":
+            case "CONNECTED":
             case 2:
                 message.data_state = 2;
                 break;
-            case "DATA_STATE_SUSPENDED":
+            case "SUSPENDED":
             case 3:
                 message.data_state = 3;
                 break;
@@ -1916,17 +1916,17 @@ export const ros_messages = $root.ros_messages = (() => {
                 options = {};
             let object = {};
             if (options.defaults) {
-                object.modem_state = options.enums === String ? "MODEM_STATE_UNKNOWN" : 0;
-                object.recovery_request = options.enums === String ? "RECOVERY_REQUEST_NONE" : 0;
+                object.modem_state = options.enums === String ? "UNKNOWN" : 0;
+                object.recovery_request = options.enums === String ? "NONE" : 0;
                 object.recovery_reason = "";
-                object.sim_state = options.enums === String ? "SIM_STATE_UNKNOWN" : 0;
+                object.sim_state = options.enums === String ? "UNKNOWN" : 0;
                 object.iccid = "";
                 object.imei = "";
                 object.imsi = "";
                 object.model = "";
                 object.firmware_ver = "";
-                object.reg_state = options.enums === String ? "REG_STATE_NOT_REGISTERED" : 0;
-                object.rat = options.enums === String ? "RAT_UNKNOWN" : 0;
+                object.reg_state = options.enums === String ? "NOT_REGISTERED" : 0;
+                object.rat = options.enums === String ? "UNKNOWN" : 0;
                 object.operator_name = "";
                 object.lac = 0;
                 object.cell_id = 0;
@@ -1935,7 +1935,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.rsrq_db = 0;
                 object.sinr_db = 0;
                 object.signal_level = 0;
-                object.data_state = options.enums === String ? "DATA_STATE_DISCONNECTED" : 0;
+                object.data_state = options.enums === String ? "DISCONNECTED" : 0;
                 object.apn = "";
                 object.ip_address = "";
                 object.connected_duration_sec = 0;
@@ -1951,13 +1951,13 @@ export const ros_messages = $root.ros_messages = (() => {
                     object.rx_bytes = options.longs === String ? "0" : 0;
             }
             if (message.modem_state != null && message.hasOwnProperty("modem_state"))
-                object.modem_state = options.enums === String ? $root.ros_messages.MobileNetworkState.ModemState[message.modem_state] === undefined ? message.modem_state : $root.ros_messages.MobileNetworkState.ModemState[message.modem_state] : message.modem_state;
+                object.modem_state = options.enums === String ? $root.ros_messages.MobileNetworkState.ModemState.Type[message.modem_state] === undefined ? message.modem_state : $root.ros_messages.MobileNetworkState.ModemState.Type[message.modem_state] : message.modem_state;
             if (message.recovery_request != null && message.hasOwnProperty("recovery_request"))
-                object.recovery_request = options.enums === String ? $root.ros_messages.MobileNetworkState.RecoveryRequest[message.recovery_request] === undefined ? message.recovery_request : $root.ros_messages.MobileNetworkState.RecoveryRequest[message.recovery_request] : message.recovery_request;
+                object.recovery_request = options.enums === String ? $root.ros_messages.MobileNetworkState.RecoveryRequest.Type[message.recovery_request] === undefined ? message.recovery_request : $root.ros_messages.MobileNetworkState.RecoveryRequest.Type[message.recovery_request] : message.recovery_request;
             if (message.recovery_reason != null && message.hasOwnProperty("recovery_reason"))
                 object.recovery_reason = message.recovery_reason;
             if (message.sim_state != null && message.hasOwnProperty("sim_state"))
-                object.sim_state = options.enums === String ? $root.ros_messages.MobileNetworkState.SimState[message.sim_state] === undefined ? message.sim_state : $root.ros_messages.MobileNetworkState.SimState[message.sim_state] : message.sim_state;
+                object.sim_state = options.enums === String ? $root.ros_messages.MobileNetworkState.SimState.Type[message.sim_state] === undefined ? message.sim_state : $root.ros_messages.MobileNetworkState.SimState.Type[message.sim_state] : message.sim_state;
             if (message.iccid != null && message.hasOwnProperty("iccid"))
                 object.iccid = message.iccid;
             if (message.imei != null && message.hasOwnProperty("imei"))
@@ -1969,9 +1969,9 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.firmware_ver != null && message.hasOwnProperty("firmware_ver"))
                 object.firmware_ver = message.firmware_ver;
             if (message.reg_state != null && message.hasOwnProperty("reg_state"))
-                object.reg_state = options.enums === String ? $root.ros_messages.MobileNetworkState.RegState[message.reg_state] === undefined ? message.reg_state : $root.ros_messages.MobileNetworkState.RegState[message.reg_state] : message.reg_state;
+                object.reg_state = options.enums === String ? $root.ros_messages.MobileNetworkState.RegState.Type[message.reg_state] === undefined ? message.reg_state : $root.ros_messages.MobileNetworkState.RegState.Type[message.reg_state] : message.reg_state;
             if (message.rat != null && message.hasOwnProperty("rat"))
-                object.rat = options.enums === String ? $root.ros_messages.MobileNetworkState.Rat[message.rat] === undefined ? message.rat : $root.ros_messages.MobileNetworkState.Rat[message.rat] : message.rat;
+                object.rat = options.enums === String ? $root.ros_messages.MobileNetworkState.Rat.Type[message.rat] === undefined ? message.rat : $root.ros_messages.MobileNetworkState.Rat.Type[message.rat] : message.rat;
             if (message.operator_name != null && message.hasOwnProperty("operator_name"))
                 object.operator_name = message.operator_name;
             if (message.lac != null && message.hasOwnProperty("lac"))
@@ -1989,7 +1989,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.signal_level != null && message.hasOwnProperty("signal_level"))
                 object.signal_level = message.signal_level;
             if (message.data_state != null && message.hasOwnProperty("data_state"))
-                object.data_state = options.enums === String ? $root.ros_messages.MobileNetworkState.DataState[message.data_state] === undefined ? message.data_state : $root.ros_messages.MobileNetworkState.DataState[message.data_state] : message.data_state;
+                object.data_state = options.enums === String ? $root.ros_messages.MobileNetworkState.DataState.Type[message.data_state] === undefined ? message.data_state : $root.ros_messages.MobileNetworkState.DataState.Type[message.data_state] : message.data_state;
             if (message.apn != null && message.hasOwnProperty("apn"))
                 object.apn = message.apn;
             if (message.ip_address != null && message.hasOwnProperty("ip_address"))
@@ -2035,140 +2035,1202 @@ export const ros_messages = $root.ros_messages = (() => {
             return typeUrlPrefix + "/ros_messages.MobileNetworkState";
         };
 
-        /**
-         * ModemState enum.
-         * @name ros_messages.MobileNetworkState.ModemState
-         * @enum {number}
-         * @property {number} MODEM_STATE_UNKNOWN=0 MODEM_STATE_UNKNOWN value
-         * @property {number} MODEM_STATE_INITIALIZING=1 MODEM_STATE_INITIALIZING value
-         * @property {number} MODEM_STATE_READY=2 MODEM_STATE_READY value
-         * @property {number} MODEM_STATE_FAULT=3 MODEM_STATE_FAULT value
-         */
         MobileNetworkState.ModemState = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "MODEM_STATE_UNKNOWN"] = 0;
-            values[valuesById[1] = "MODEM_STATE_INITIALIZING"] = 1;
-            values[valuesById[2] = "MODEM_STATE_READY"] = 2;
-            values[valuesById[3] = "MODEM_STATE_FAULT"] = 3;
-            return values;
+
+            /**
+             * Properties of a ModemState.
+             * @memberof ros_messages.MobileNetworkState
+             * @interface IModemState
+             */
+
+            /**
+             * Constructs a new ModemState.
+             * @memberof ros_messages.MobileNetworkState
+             * @classdesc Represents a ModemState.
+             * @implements IModemState
+             * @constructor
+             * @param {ros_messages.MobileNetworkState.IModemState=} [properties] Properties to set
+             */
+            function ModemState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new ModemState instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IModemState=} [properties] Properties to set
+             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState instance
+             */
+            ModemState.create = function create(properties) {
+                return new ModemState(properties);
+            };
+
+            /**
+             * Encodes the specified ModemState message. Does not implicitly {@link ros_messages.MobileNetworkState.ModemState.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IModemState} message ModemState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ModemState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ModemState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.ModemState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IModemState} message ModemState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ModemState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a ModemState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ModemState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.ModemState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a ModemState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ModemState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ModemState message.
+             * @function verify
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ModemState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a ModemState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState
+             */
+            ModemState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.MobileNetworkState.ModemState)
+                    return object;
+                return new $root.ros_messages.MobileNetworkState.ModemState();
+            };
+
+            /**
+             * Creates a plain object from a ModemState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {ros_messages.MobileNetworkState.ModemState} message ModemState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ModemState.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this ModemState to JSON.
+             * @function toJSON
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ModemState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for ModemState
+             * @function getTypeUrl
+             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ModemState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.MobileNetworkState.ModemState";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.MobileNetworkState.ModemState.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} INITIALIZING=1 INITIALIZING value
+             * @property {number} READY=2 READY value
+             * @property {number} FAULT=3 FAULT value
+             */
+            ModemState.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "INITIALIZING"] = 1;
+                values[valuesById[2] = "READY"] = 2;
+                values[valuesById[3] = "FAULT"] = 3;
+                return values;
+            })();
+
+            return ModemState;
         })();
 
-        /**
-         * RecoveryRequest enum.
-         * @name ros_messages.MobileNetworkState.RecoveryRequest
-         * @enum {number}
-         * @property {number} RECOVERY_REQUEST_NONE=0 RECOVERY_REQUEST_NONE value
-         * @property {number} RECOVERY_REQUEST_USB_RESET=1 RECOVERY_REQUEST_USB_RESET value
-         * @property {number} RECOVERY_REQUEST_HOST_REBOOT=2 RECOVERY_REQUEST_HOST_REBOOT value
-         */
         MobileNetworkState.RecoveryRequest = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "RECOVERY_REQUEST_NONE"] = 0;
-            values[valuesById[1] = "RECOVERY_REQUEST_USB_RESET"] = 1;
-            values[valuesById[2] = "RECOVERY_REQUEST_HOST_REBOOT"] = 2;
-            return values;
+
+            /**
+             * Properties of a RecoveryRequest.
+             * @memberof ros_messages.MobileNetworkState
+             * @interface IRecoveryRequest
+             */
+
+            /**
+             * Constructs a new RecoveryRequest.
+             * @memberof ros_messages.MobileNetworkState
+             * @classdesc Represents a RecoveryRequest.
+             * @implements IRecoveryRequest
+             * @constructor
+             * @param {ros_messages.MobileNetworkState.IRecoveryRequest=} [properties] Properties to set
+             */
+            function RecoveryRequest(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new RecoveryRequest instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRecoveryRequest=} [properties] Properties to set
+             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest instance
+             */
+            RecoveryRequest.create = function create(properties) {
+                return new RecoveryRequest(properties);
+            };
+
+            /**
+             * Encodes the specified RecoveryRequest message. Does not implicitly {@link ros_messages.MobileNetworkState.RecoveryRequest.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRecoveryRequest} message RecoveryRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RecoveryRequest.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified RecoveryRequest message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.RecoveryRequest.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRecoveryRequest} message RecoveryRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RecoveryRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a RecoveryRequest message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RecoveryRequest.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.RecoveryRequest();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a RecoveryRequest message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RecoveryRequest.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a RecoveryRequest message.
+             * @function verify
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            RecoveryRequest.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a RecoveryRequest message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest
+             */
+            RecoveryRequest.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.MobileNetworkState.RecoveryRequest)
+                    return object;
+                return new $root.ros_messages.MobileNetworkState.RecoveryRequest();
+            };
+
+            /**
+             * Creates a plain object from a RecoveryRequest message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {ros_messages.MobileNetworkState.RecoveryRequest} message RecoveryRequest
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            RecoveryRequest.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this RecoveryRequest to JSON.
+             * @function toJSON
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            RecoveryRequest.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for RecoveryRequest
+             * @function getTypeUrl
+             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            RecoveryRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.MobileNetworkState.RecoveryRequest";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.MobileNetworkState.RecoveryRequest.Type
+             * @enum {number}
+             * @property {number} NONE=0 NONE value
+             * @property {number} USB_RESET=1 USB_RESET value
+             * @property {number} HOST_REBOOT=2 HOST_REBOOT value
+             */
+            RecoveryRequest.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "NONE"] = 0;
+                values[valuesById[1] = "USB_RESET"] = 1;
+                values[valuesById[2] = "HOST_REBOOT"] = 2;
+                return values;
+            })();
+
+            return RecoveryRequest;
         })();
 
-        /**
-         * SimState enum.
-         * @name ros_messages.MobileNetworkState.SimState
-         * @enum {number}
-         * @property {number} SIM_STATE_UNKNOWN=0 SIM_STATE_UNKNOWN value
-         * @property {number} SIM_STATE_ABSENT=1 SIM_STATE_ABSENT value
-         * @property {number} SIM_STATE_PIN_REQUIRED=2 SIM_STATE_PIN_REQUIRED value
-         * @property {number} SIM_STATE_PUK_REQUIRED=3 SIM_STATE_PUK_REQUIRED value
-         * @property {number} SIM_STATE_NETWORK_LOCKED=4 SIM_STATE_NETWORK_LOCKED value
-         * @property {number} SIM_STATE_READY=5 SIM_STATE_READY value
-         * @property {number} SIM_STATE_NOT_READY=6 SIM_STATE_NOT_READY value
-         * @property {number} SIM_STATE_CARD_IO_ERROR=8 SIM_STATE_CARD_IO_ERROR value
-         * @property {number} SIM_STATE_NO_RESPONSE=255 SIM_STATE_NO_RESPONSE value
-         */
         MobileNetworkState.SimState = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "SIM_STATE_UNKNOWN"] = 0;
-            values[valuesById[1] = "SIM_STATE_ABSENT"] = 1;
-            values[valuesById[2] = "SIM_STATE_PIN_REQUIRED"] = 2;
-            values[valuesById[3] = "SIM_STATE_PUK_REQUIRED"] = 3;
-            values[valuesById[4] = "SIM_STATE_NETWORK_LOCKED"] = 4;
-            values[valuesById[5] = "SIM_STATE_READY"] = 5;
-            values[valuesById[6] = "SIM_STATE_NOT_READY"] = 6;
-            values[valuesById[8] = "SIM_STATE_CARD_IO_ERROR"] = 8;
-            values[valuesById[255] = "SIM_STATE_NO_RESPONSE"] = 255;
-            return values;
+
+            /**
+             * Properties of a SimState.
+             * @memberof ros_messages.MobileNetworkState
+             * @interface ISimState
+             */
+
+            /**
+             * Constructs a new SimState.
+             * @memberof ros_messages.MobileNetworkState
+             * @classdesc Represents a SimState.
+             * @implements ISimState
+             * @constructor
+             * @param {ros_messages.MobileNetworkState.ISimState=} [properties] Properties to set
+             */
+            function SimState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new SimState instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {ros_messages.MobileNetworkState.ISimState=} [properties] Properties to set
+             * @returns {ros_messages.MobileNetworkState.SimState} SimState instance
+             */
+            SimState.create = function create(properties) {
+                return new SimState(properties);
+            };
+
+            /**
+             * Encodes the specified SimState message. Does not implicitly {@link ros_messages.MobileNetworkState.SimState.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {ros_messages.MobileNetworkState.ISimState} message SimState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SimState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SimState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.SimState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {ros_messages.MobileNetworkState.ISimState} message SimState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SimState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SimState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.MobileNetworkState.SimState} SimState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SimState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.SimState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SimState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.MobileNetworkState.SimState} SimState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SimState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SimState message.
+             * @function verify
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SimState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a SimState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.MobileNetworkState.SimState} SimState
+             */
+            SimState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.MobileNetworkState.SimState)
+                    return object;
+                return new $root.ros_messages.MobileNetworkState.SimState();
+            };
+
+            /**
+             * Creates a plain object from a SimState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {ros_messages.MobileNetworkState.SimState} message SimState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SimState.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this SimState to JSON.
+             * @function toJSON
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SimState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SimState
+             * @function getTypeUrl
+             * @memberof ros_messages.MobileNetworkState.SimState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SimState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.MobileNetworkState.SimState";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.MobileNetworkState.SimState.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} ABSENT=1 ABSENT value
+             * @property {number} PIN_REQUIRED=2 PIN_REQUIRED value
+             * @property {number} PUK_REQUIRED=3 PUK_REQUIRED value
+             * @property {number} NETWORK_LOCKED=4 NETWORK_LOCKED value
+             * @property {number} READY=5 READY value
+             * @property {number} NOT_READY=6 NOT_READY value
+             * @property {number} CARD_IO_ERROR=8 CARD_IO_ERROR value
+             * @property {number} NO_RESPONSE=255 NO_RESPONSE value
+             */
+            SimState.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "ABSENT"] = 1;
+                values[valuesById[2] = "PIN_REQUIRED"] = 2;
+                values[valuesById[3] = "PUK_REQUIRED"] = 3;
+                values[valuesById[4] = "NETWORK_LOCKED"] = 4;
+                values[valuesById[5] = "READY"] = 5;
+                values[valuesById[6] = "NOT_READY"] = 6;
+                values[valuesById[8] = "CARD_IO_ERROR"] = 8;
+                values[valuesById[255] = "NO_RESPONSE"] = 255;
+                return values;
+            })();
+
+            return SimState;
         })();
 
-        /**
-         * RegState enum.
-         * @name ros_messages.MobileNetworkState.RegState
-         * @enum {number}
-         * @property {number} REG_STATE_NOT_REGISTERED=0 REG_STATE_NOT_REGISTERED value
-         * @property {number} REG_STATE_HOME=1 REG_STATE_HOME value
-         * @property {number} REG_STATE_SEARCHING=2 REG_STATE_SEARCHING value
-         * @property {number} REG_STATE_DENIED=3 REG_STATE_DENIED value
-         * @property {number} REG_STATE_UNKNOWN=4 REG_STATE_UNKNOWN value
-         * @property {number} REG_STATE_ROAMING=5 REG_STATE_ROAMING value
-         * @property {number} REG_STATE_HOME_SMS_ONLY=6 REG_STATE_HOME_SMS_ONLY value
-         * @property {number} REG_STATE_ROAMING_SMS_ONLY=7 REG_STATE_ROAMING_SMS_ONLY value
-         */
         MobileNetworkState.RegState = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "REG_STATE_NOT_REGISTERED"] = 0;
-            values[valuesById[1] = "REG_STATE_HOME"] = 1;
-            values[valuesById[2] = "REG_STATE_SEARCHING"] = 2;
-            values[valuesById[3] = "REG_STATE_DENIED"] = 3;
-            values[valuesById[4] = "REG_STATE_UNKNOWN"] = 4;
-            values[valuesById[5] = "REG_STATE_ROAMING"] = 5;
-            values[valuesById[6] = "REG_STATE_HOME_SMS_ONLY"] = 6;
-            values[valuesById[7] = "REG_STATE_ROAMING_SMS_ONLY"] = 7;
-            return values;
+
+            /**
+             * Properties of a RegState.
+             * @memberof ros_messages.MobileNetworkState
+             * @interface IRegState
+             */
+
+            /**
+             * Constructs a new RegState.
+             * @memberof ros_messages.MobileNetworkState
+             * @classdesc Represents a RegState.
+             * @implements IRegState
+             * @constructor
+             * @param {ros_messages.MobileNetworkState.IRegState=} [properties] Properties to set
+             */
+            function RegState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new RegState instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRegState=} [properties] Properties to set
+             * @returns {ros_messages.MobileNetworkState.RegState} RegState instance
+             */
+            RegState.create = function create(properties) {
+                return new RegState(properties);
+            };
+
+            /**
+             * Encodes the specified RegState message. Does not implicitly {@link ros_messages.MobileNetworkState.RegState.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRegState} message RegState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RegState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified RegState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.RegState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRegState} message RegState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RegState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a RegState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.MobileNetworkState.RegState} RegState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RegState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.RegState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a RegState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.MobileNetworkState.RegState} RegState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RegState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a RegState message.
+             * @function verify
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            RegState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a RegState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.MobileNetworkState.RegState} RegState
+             */
+            RegState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.MobileNetworkState.RegState)
+                    return object;
+                return new $root.ros_messages.MobileNetworkState.RegState();
+            };
+
+            /**
+             * Creates a plain object from a RegState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {ros_messages.MobileNetworkState.RegState} message RegState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            RegState.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this RegState to JSON.
+             * @function toJSON
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            RegState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for RegState
+             * @function getTypeUrl
+             * @memberof ros_messages.MobileNetworkState.RegState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            RegState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.MobileNetworkState.RegState";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.MobileNetworkState.RegState.Type
+             * @enum {number}
+             * @property {number} NOT_REGISTERED=0 NOT_REGISTERED value
+             * @property {number} HOME=1 HOME value
+             * @property {number} SEARCHING=2 SEARCHING value
+             * @property {number} DENIED=3 DENIED value
+             * @property {number} UNKNOWN=4 UNKNOWN value
+             * @property {number} ROAMING=5 ROAMING value
+             * @property {number} HOME_SMS_ONLY=6 HOME_SMS_ONLY value
+             * @property {number} ROAMING_SMS_ONLY=7 ROAMING_SMS_ONLY value
+             */
+            RegState.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "NOT_REGISTERED"] = 0;
+                values[valuesById[1] = "HOME"] = 1;
+                values[valuesById[2] = "SEARCHING"] = 2;
+                values[valuesById[3] = "DENIED"] = 3;
+                values[valuesById[4] = "UNKNOWN"] = 4;
+                values[valuesById[5] = "ROAMING"] = 5;
+                values[valuesById[6] = "HOME_SMS_ONLY"] = 6;
+                values[valuesById[7] = "ROAMING_SMS_ONLY"] = 7;
+                return values;
+            })();
+
+            return RegState;
         })();
 
-        /**
-         * Rat enum.
-         * @name ros_messages.MobileNetworkState.Rat
-         * @enum {number}
-         * @property {number} RAT_UNKNOWN=0 RAT_UNKNOWN value
-         * @property {number} RAT_GSM=1 RAT_GSM value
-         * @property {number} RAT_GPRS=2 RAT_GPRS value
-         * @property {number} RAT_EDGE=3 RAT_EDGE value
-         * @property {number} RAT_UMTS=4 RAT_UMTS value
-         * @property {number} RAT_HSDPA=5 RAT_HSDPA value
-         * @property {number} RAT_HSUPA=6 RAT_HSUPA value
-         * @property {number} RAT_HSPA=7 RAT_HSPA value
-         * @property {number} RAT_LTE=13 RAT_LTE value
-         * @property {number} RAT_LTE_CA=19 RAT_LTE_CA value
-         */
         MobileNetworkState.Rat = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "RAT_UNKNOWN"] = 0;
-            values[valuesById[1] = "RAT_GSM"] = 1;
-            values[valuesById[2] = "RAT_GPRS"] = 2;
-            values[valuesById[3] = "RAT_EDGE"] = 3;
-            values[valuesById[4] = "RAT_UMTS"] = 4;
-            values[valuesById[5] = "RAT_HSDPA"] = 5;
-            values[valuesById[6] = "RAT_HSUPA"] = 6;
-            values[valuesById[7] = "RAT_HSPA"] = 7;
-            values[valuesById[13] = "RAT_LTE"] = 13;
-            values[valuesById[19] = "RAT_LTE_CA"] = 19;
-            return values;
+
+            /**
+             * Properties of a Rat.
+             * @memberof ros_messages.MobileNetworkState
+             * @interface IRat
+             */
+
+            /**
+             * Constructs a new Rat.
+             * @memberof ros_messages.MobileNetworkState
+             * @classdesc Represents a Rat.
+             * @implements IRat
+             * @constructor
+             * @param {ros_messages.MobileNetworkState.IRat=} [properties] Properties to set
+             */
+            function Rat(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new Rat instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRat=} [properties] Properties to set
+             * @returns {ros_messages.MobileNetworkState.Rat} Rat instance
+             */
+            Rat.create = function create(properties) {
+                return new Rat(properties);
+            };
+
+            /**
+             * Encodes the specified Rat message. Does not implicitly {@link ros_messages.MobileNetworkState.Rat.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRat} message Rat message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Rat.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Rat message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.Rat.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {ros_messages.MobileNetworkState.IRat} message Rat message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Rat.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Rat message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.MobileNetworkState.Rat} Rat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Rat.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.Rat();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Rat message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.MobileNetworkState.Rat} Rat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Rat.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Rat message.
+             * @function verify
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Rat.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a Rat message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.MobileNetworkState.Rat} Rat
+             */
+            Rat.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.MobileNetworkState.Rat)
+                    return object;
+                return new $root.ros_messages.MobileNetworkState.Rat();
+            };
+
+            /**
+             * Creates a plain object from a Rat message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {ros_messages.MobileNetworkState.Rat} message Rat
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Rat.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this Rat to JSON.
+             * @function toJSON
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Rat.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Rat
+             * @function getTypeUrl
+             * @memberof ros_messages.MobileNetworkState.Rat
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Rat.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.MobileNetworkState.Rat";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.MobileNetworkState.Rat.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} GSM=1 GSM value
+             * @property {number} GPRS=2 GPRS value
+             * @property {number} EDGE=3 EDGE value
+             * @property {number} UMTS=4 UMTS value
+             * @property {number} HSDPA=5 HSDPA value
+             * @property {number} HSUPA=6 HSUPA value
+             * @property {number} HSPA=7 HSPA value
+             * @property {number} LTE=13 LTE value
+             * @property {number} LTE_CA=19 LTE_CA value
+             */
+            Rat.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "GSM"] = 1;
+                values[valuesById[2] = "GPRS"] = 2;
+                values[valuesById[3] = "EDGE"] = 3;
+                values[valuesById[4] = "UMTS"] = 4;
+                values[valuesById[5] = "HSDPA"] = 5;
+                values[valuesById[6] = "HSUPA"] = 6;
+                values[valuesById[7] = "HSPA"] = 7;
+                values[valuesById[13] = "LTE"] = 13;
+                values[valuesById[19] = "LTE_CA"] = 19;
+                return values;
+            })();
+
+            return Rat;
         })();
 
-        /**
-         * DataState enum.
-         * @name ros_messages.MobileNetworkState.DataState
-         * @enum {number}
-         * @property {number} DATA_STATE_DISCONNECTED=0 DATA_STATE_DISCONNECTED value
-         * @property {number} DATA_STATE_CONNECTING=1 DATA_STATE_CONNECTING value
-         * @property {number} DATA_STATE_CONNECTED=2 DATA_STATE_CONNECTED value
-         * @property {number} DATA_STATE_SUSPENDED=3 DATA_STATE_SUSPENDED value
-         */
         MobileNetworkState.DataState = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "DATA_STATE_DISCONNECTED"] = 0;
-            values[valuesById[1] = "DATA_STATE_CONNECTING"] = 1;
-            values[valuesById[2] = "DATA_STATE_CONNECTED"] = 2;
-            values[valuesById[3] = "DATA_STATE_SUSPENDED"] = 3;
-            return values;
+
+            /**
+             * Properties of a DataState.
+             * @memberof ros_messages.MobileNetworkState
+             * @interface IDataState
+             */
+
+            /**
+             * Constructs a new DataState.
+             * @memberof ros_messages.MobileNetworkState
+             * @classdesc Represents a DataState.
+             * @implements IDataState
+             * @constructor
+             * @param {ros_messages.MobileNetworkState.IDataState=} [properties] Properties to set
+             */
+            function DataState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new DataState instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IDataState=} [properties] Properties to set
+             * @returns {ros_messages.MobileNetworkState.DataState} DataState instance
+             */
+            DataState.create = function create(properties) {
+                return new DataState(properties);
+            };
+
+            /**
+             * Encodes the specified DataState message. Does not implicitly {@link ros_messages.MobileNetworkState.DataState.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IDataState} message DataState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DataState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified DataState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.DataState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {ros_messages.MobileNetworkState.IDataState} message DataState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            DataState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a DataState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.MobileNetworkState.DataState} DataState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DataState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.DataState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a DataState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.MobileNetworkState.DataState} DataState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            DataState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a DataState message.
+             * @function verify
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            DataState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a DataState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.MobileNetworkState.DataState} DataState
+             */
+            DataState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.MobileNetworkState.DataState)
+                    return object;
+                return new $root.ros_messages.MobileNetworkState.DataState();
+            };
+
+            /**
+             * Creates a plain object from a DataState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {ros_messages.MobileNetworkState.DataState} message DataState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            DataState.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this DataState to JSON.
+             * @function toJSON
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            DataState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for DataState
+             * @function getTypeUrl
+             * @memberof ros_messages.MobileNetworkState.DataState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            DataState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.MobileNetworkState.DataState";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.MobileNetworkState.DataState.Type
+             * @enum {number}
+             * @property {number} DISCONNECTED=0 DISCONNECTED value
+             * @property {number} CONNECTING=1 CONNECTING value
+             * @property {number} CONNECTED=2 CONNECTED value
+             * @property {number} SUSPENDED=3 SUSPENDED value
+             */
+            DataState.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "DISCONNECTED"] = 0;
+                values[valuesById[1] = "CONNECTING"] = 1;
+                values[valuesById[2] = "CONNECTED"] = 2;
+                values[valuesById[3] = "SUSPENDED"] = 3;
+                return values;
+            })();
+
+            return DataState;
         })();
 
         return MobileNetworkState;
@@ -6612,7 +7674,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @interface IVideoData
          * @property {number|null} [width] VideoData width
          * @property {number|null} [height] VideoData height
-         * @property {ros_messages.VideoData.VideoFormat|null} [video_format] VideoData video_format
+         * @property {ros_messages.VideoData.VideoFormat.Type|null} [video_format] VideoData video_format
          * @property {Uint8Array|null} [data] VideoData data
          */
 
@@ -6649,7 +7711,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * VideoData video_format.
-         * @member {ros_messages.VideoData.VideoFormat} video_format
+         * @member {ros_messages.VideoData.VideoFormat.Type} video_format
          * @memberof ros_messages.VideoData
          * @instance
          */
@@ -6825,11 +7887,11 @@ export const ros_messages = $root.ros_messages = (() => {
                     break;
                 }
                 break;
-            case "VIDEO_FORMAT_UNKNOWN":
+            case "UNKNOWN":
             case 0:
                 message.video_format = 0;
                 break;
-            case "VIDEO_FORMAT_H264":
+            case "H264":
             case 1:
                 message.video_format = 1;
                 break;
@@ -6858,7 +7920,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (options.defaults) {
                 object.width = 0;
                 object.height = 0;
-                object.video_format = options.enums === String ? "VIDEO_FORMAT_UNKNOWN" : 0;
+                object.video_format = options.enums === String ? "UNKNOWN" : 0;
                 if (options.bytes === String)
                     object.data = "";
                 else {
@@ -6872,7 +7934,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.height != null && message.hasOwnProperty("height"))
                 object.height = message.height;
             if (message.video_format != null && message.hasOwnProperty("video_format"))
-                object.video_format = options.enums === String ? $root.ros_messages.VideoData.VideoFormat[message.video_format] === undefined ? message.video_format : $root.ros_messages.VideoData.VideoFormat[message.video_format] : message.video_format;
+                object.video_format = options.enums === String ? $root.ros_messages.VideoData.VideoFormat.Type[message.video_format] === undefined ? message.video_format : $root.ros_messages.VideoData.VideoFormat.Type[message.video_format] : message.video_format;
             if (message.data != null && message.hasOwnProperty("data"))
                 object.data = options.bytes === String ? $util.base64.encode(message.data, 0, message.data.length) : options.bytes === Array ? Array.prototype.slice.call(message.data) : message.data;
             return object;
@@ -6904,18 +7966,195 @@ export const ros_messages = $root.ros_messages = (() => {
             return typeUrlPrefix + "/ros_messages.VideoData";
         };
 
-        /**
-         * VideoFormat enum.
-         * @name ros_messages.VideoData.VideoFormat
-         * @enum {number}
-         * @property {number} VIDEO_FORMAT_UNKNOWN=0 VIDEO_FORMAT_UNKNOWN value
-         * @property {number} VIDEO_FORMAT_H264=1 VIDEO_FORMAT_H264 value
-         */
         VideoData.VideoFormat = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "VIDEO_FORMAT_UNKNOWN"] = 0;
-            values[valuesById[1] = "VIDEO_FORMAT_H264"] = 1;
-            return values;
+
+            /**
+             * Properties of a VideoFormat.
+             * @memberof ros_messages.VideoData
+             * @interface IVideoFormat
+             */
+
+            /**
+             * Constructs a new VideoFormat.
+             * @memberof ros_messages.VideoData
+             * @classdesc Represents a VideoFormat.
+             * @implements IVideoFormat
+             * @constructor
+             * @param {ros_messages.VideoData.IVideoFormat=} [properties] Properties to set
+             */
+            function VideoFormat(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new VideoFormat instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {ros_messages.VideoData.IVideoFormat=} [properties] Properties to set
+             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat instance
+             */
+            VideoFormat.create = function create(properties) {
+                return new VideoFormat(properties);
+            };
+
+            /**
+             * Encodes the specified VideoFormat message. Does not implicitly {@link ros_messages.VideoData.VideoFormat.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {ros_messages.VideoData.IVideoFormat} message VideoFormat message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            VideoFormat.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified VideoFormat message, length delimited. Does not implicitly {@link ros_messages.VideoData.VideoFormat.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {ros_messages.VideoData.IVideoFormat} message VideoFormat message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            VideoFormat.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a VideoFormat message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            VideoFormat.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.VideoData.VideoFormat();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a VideoFormat message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            VideoFormat.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a VideoFormat message.
+             * @function verify
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            VideoFormat.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a VideoFormat message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat
+             */
+            VideoFormat.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.VideoData.VideoFormat)
+                    return object;
+                return new $root.ros_messages.VideoData.VideoFormat();
+            };
+
+            /**
+             * Creates a plain object from a VideoFormat message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {ros_messages.VideoData.VideoFormat} message VideoFormat
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            VideoFormat.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this VideoFormat to JSON.
+             * @function toJSON
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            VideoFormat.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for VideoFormat
+             * @function getTypeUrl
+             * @memberof ros_messages.VideoData.VideoFormat
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            VideoFormat.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.VideoData.VideoFormat";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.VideoData.VideoFormat.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} H264=1 H264 value
+             */
+            VideoFormat.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "H264"] = 1;
+                return values;
+            })();
+
+            return VideoFormat;
         })();
 
         return VideoData;
