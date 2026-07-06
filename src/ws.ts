@@ -5,6 +5,7 @@ export * from './wsEventEmitter';
 export * from './wsMessageStore';
 
 import { decodeBinaryFrame } from './binaryMessageDecoder';
+import { TopicMsg } from './topicMessages';
 import { getEmitterSubscribedTopics } from './wsEventEmitter';
 import { getStoreSubscribedTopics } from './wsMessageStore';
 
@@ -74,18 +75,12 @@ export class WsClient {
           if (parsed && typeof parsed.topic === 'string' && parsed.topic !== '/submap_list') {
             this.dispatchTopic(parsed.topic, parsed);
           }
-        } else if (ev.data instanceof Blob) {
-          const buf = await ev.data.arrayBuffer();
+        } else {
+          const buf = ev.data instanceof Blob ? await ev.data.arrayBuffer() : ev.data;
           const decoded = decodeBinaryFrame(buf);
           this.onRawMessage?.('received', ev.data, decoded);
           if (decoded) {
-            this.dispatchTopic(decoded.topic, decoded.payload);
-          }
-        } else if (ev.data instanceof ArrayBuffer) {
-          const decoded = decodeBinaryFrame(ev.data);
-          this.onRawMessage?.('received', ev.data, decoded);
-          if (decoded) {
-            this.dispatchTopic(decoded.topic, decoded.payload);
+            this.dispatchTopic((decoded as TopicMsg).topic, decoded);
           }
         }
       } catch (err) {

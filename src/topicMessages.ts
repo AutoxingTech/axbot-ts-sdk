@@ -594,31 +594,28 @@ function pascalToEnumPrefix(name: string): string {
 
 /**
  * Convert any protobufjs Message instance to a plain display object with
- * human-readable enum strings and numeric longs.
+ * human-readable short enum strings and numeric longs.
  *
  * Enum values are shortened by stripping the common type prefix:
- *   MODEM_STATE_UNKNOWN → UNKNOWN
+ *   SIM_STATE_ABSENT → ABSENT
  *
- * Uses the message class's static `toObject()` method, so it works for
- * any proto type without knowing the concrete class at call site.
+ * Uses the message class's static `toObject()`, resolving enums as strings
+ * first, then stripping the prefix — simpler than the old number→string lookup.
  */
 export function protoToDisplay(msg: unknown): Record<string, unknown> {
   const ctor = (msg as any)?.constructor;
   if (ctor?.toObject) {
-    const obj = ctor.toObject(msg, { enums: Number, longs: Number, defaults: true }) as Record<string, unknown>;
+    const obj = ctor.toObject(msg, { enums: String, longs: Number, defaults: true }) as Record<string, unknown>;
 
-    // Convert numeric enum values to short display names.
-    // The convention is: the field name "modem_state" maps to PascalCase
-    // "ModemState" on the constructor (e.g. ctor.ModemState).
+    // Strip common enum prefixes (e.g. "SIM_STATE_ABSENT" → "ABSENT")
     for (const [key, value] of Object.entries(obj)) {
-      if (typeof value === 'number') {
+      if (typeof value === 'string') {
         const enumTypeName = snakeToPascal(key);
         const enumDef = ctor[enumTypeName] as Record<string, string | number> | undefined;
-        if (enumDef) {
-          const fullName = enumDef[value];
-          if (typeof fullName === 'string') {
-            const prefix = pascalToEnumPrefix(enumTypeName);
-            obj[key] = fullName.startsWith(prefix) ? fullName.slice(prefix.length) : fullName;
+        if (enumDef && typeof enumDef === 'object') {
+          const prefix = pascalToEnumPrefix(enumTypeName);
+          if (value.startsWith(prefix)) {
+            obj[key] = value.slice(prefix.length);
           }
         }
       }

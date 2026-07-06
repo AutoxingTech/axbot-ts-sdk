@@ -20,7 +20,7 @@ import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg, MapRackSt
  * Decode a binary WebSocket frame into a topic name and typed payload.
  * Returns null if the frame is malformed or contains an unsupported message type.
  */
-export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload: unknown } | null {
+export function decodeBinaryFrame(buffer: ArrayBuffer): unknown | null {
   const bytes = new Uint8Array(buffer);
   if (bytes.length < 2) return null;
 
@@ -62,7 +62,7 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
   // 4. Convert payload based on message type
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.point_cloud) {
     const pbMsg: PointCloudPbMsg = { topic, pb: wrapper.point_cloud };
-    return { topic, payload: pbMsg };
+    return pbMsg;
   }
 
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.MAST_STATE && wrapper.mast_state) {
@@ -75,7 +75,7 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
       error: wrapper.mast_state.error ?? 0,
       error_message: wrapper.mast_state.error_message ?? '',
     };
-    return { topic, payload: msg };
+    return msg;
   }
 
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.SUBMAP_LIST && wrapper.submap_list) {
@@ -96,7 +96,7 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
       uuid: sl.uuid ?? '',
       submaps,
     };
-    return { topic, payload: msg };
+    return msg;
   }
 
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.RACK_STATES && wrapper.rack_states) {
@@ -125,21 +125,21 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): { topic: string; payload
       map_uid: rs.map_uid ?? '',
       racks,
     };
-    return { topic, payload: msg };
+    return msg;
   }
 
   if (
     wrapper.type === ros_messages.RosMessageWrapper.MessageType.MOBILE_NETWORK_STATE &&
     wrapper.mobile_network_state
   ) {
-    return { topic, payload: new ProtoMessage(topic, wrapper.mobile_network_state) };
+    return new ProtoMessage(topic, wrapper.mobile_network_state);
   }
 
   if (
     wrapper.type === ros_messages.RosMessageWrapper.MessageType.VIDEO_DATA &&
     wrapper.video_data
   ) {
-    return { topic, payload: new ProtoMessage(topic, wrapper.video_data) };
+    return new ProtoMessage(topic, wrapper.video_data);
   }
 
   console.warn('binaryMessageDecoder: unsupported message type', wrapper.type, 'for', topic);
