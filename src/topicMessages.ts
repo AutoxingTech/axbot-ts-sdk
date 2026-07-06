@@ -4,6 +4,7 @@
 import { FeatureCollection } from './geojson';
 import { base64ToArrayBuffer } from './utils';
 import { MoveFailReason, MoveType } from './robotApiType';
+import { ros_messages } from './proto/generated.js';
 
 export type RobotControlMode = 'unknown' | 'auto' | 'manual' | 'remote';
 
@@ -62,21 +63,13 @@ export interface DetectedRackMsg extends TopicMsg {
   };
 }
 
-export interface MapRackLevelState {
-  timestamp_ns: string | number;
-  level: number;
-  state: 'unknown' | 'occupied' | 'free';
-}
+/** Proto SpaceState enum re-exported for convenience: UNKNOWN=0, OCCUPIED=3, FREE=4 */
+export const RackSpaceState = ros_messages.RackStates.RackLevelState.SpaceState;
+export type RackSpaceState = ros_messages.RackStates.RackLevelState.SpaceState;
 
-export interface MapRackState {
-  poi_id: string;
-  levels: MapRackLevelState[];
-}
-
-export interface MapRackStatesMsg extends TopicMsg {
-  map_uid: string;
-  racks: MapRackState[];
-}
+// Named alias — all fields derived from proto via .data
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
+export interface RackStatesMsg extends ProtoMessage<ros_messages.RackStates> { }
 
 export interface PointCloudMsg extends TopicMsg {
   // x, y, z, probability
@@ -567,13 +560,9 @@ export class ProtoMessage<T = unknown> implements TopicMsg {
 
 // Named aliases for documentation — no field-by-field mapping, all derived from proto
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface MobileNetworkStateMsg extends ProtoMessage<
-  import('./proto/generated.js').ros_messages.MobileNetworkState
-> { }
+export interface MobileNetworkStateMsg extends ProtoMessage<ros_messages.MobileNetworkState> { }
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface VideoDataMsg extends ProtoMessage<
-  import('./proto/generated.js').ros_messages.VideoData
-> { }
+export interface VideoDataMsg extends ProtoMessage<ros_messages.VideoData> { }
 
 /**
  * Convert a snake_case identifier to PascalCase.

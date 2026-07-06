@@ -41,7 +41,7 @@ export class WsEventEmitter<T> {
   private wsHandler: ((payload: T) => void) | null = null;
   private wsUnsubscribe: (() => void) | null = null;
 
-  constructor(private topic: string) {}
+  constructor(private topic: string) { }
 
   /**
    * Subscribe to events. Automatically enables topic when first subscriber attaches.
@@ -137,7 +137,7 @@ import {
   IoBoardStateMsg,
   DepthCameraImageMsg,
   FusedSensorStateMsg,
-  MapRackStatesMsg,
+  RackStatesMsg,
   MobileNetworkStateMsg,
   VideoDataMsg,
 } from './msgs';
@@ -196,7 +196,7 @@ export const fusedSensorStateEvents = new WsEventEmitter<FusedSensorStateMsg>(
  * NOT latched. Each message contains only racks currently observed by the robot's sensors.
  * Accumulated into /map_rack_states by the backend.
  */
-export const detectedRackStatesEvents = new WsEventEmitter<MapRackStatesMsg>(
+export const detectedRackStatesEvents = new WsEventEmitter<RackStatesMsg>(
   '/detected_rack_states',
 );
 
@@ -314,7 +314,7 @@ class RgbCameraEventEmitter {
   private handlers = new Set<EventHandler<RgbCameraData>>();
   private wsUnsubscribe: (() => void) | null = null;
 
-  constructor(private topic: string) {}
+  constructor(private topic: string) { }
 
   subscribe(handler: EventHandler<RgbCameraData>): () => void {
     const isFirst = this.handlers.size === 0;

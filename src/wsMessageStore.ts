@@ -20,7 +20,7 @@ import {
   DetectedPalletsMsg,
   DetectedFeaturesMsg,
   DetectedRackMsg,
-  MapRackStatesMsg,
+  RackStatesMsg,
 } from './msgs';
 
 export type Subscriber<T> = (data: T) => void;
@@ -163,7 +163,7 @@ export const detectedRackStore = new WsMessageStore<DetectedRackMsg>('/detected_
 // Map rack state store (latched)
 // Accumulated from /detected_rack_states. Racks not observed for ~30 minutes
 // become unknown and are removed. Latched — caches the latest full state.
-export const mapRackStatesStore = new WsMessageStore<MapRackStatesMsg>('/map_rack_states');
+export const mapRackStatesStore = new WsMessageStore<RackStatesMsg>('/map_rack_states');
 
 // Chargers store
 export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>(
