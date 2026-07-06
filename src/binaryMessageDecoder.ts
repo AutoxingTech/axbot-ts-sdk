@@ -13,14 +13,13 @@
 
 import { gunzipSync } from 'fflate';
 import { ros_messages } from './proto/generated.js';
-import { PointCloudPbMsg } from './pbMessages.js';
-import { MastStateMsg, MastMotionState, SubmapListMsg, SubmapEntryMsg, ProtoMessage } from './topicMessages.js';
+import { ProtoMessage } from './topicMessages.js';
 
 /**
  * Decode a binary WebSocket frame into a topic name and typed payload.
  * Returns null if the frame is malformed or contains an unsupported message type.
  */
-export function decodeBinaryFrame(buffer: ArrayBuffer): unknown | null {
+export function decodeBinaryFrame(buffer: ArrayBuffer): ProtoMessage | null {
   const bytes = new Uint8Array(buffer);
   if (bytes.length < 2) return null;
 
@@ -61,42 +60,15 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): unknown | null {
 
   // 4. Convert payload based on message type
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.point_cloud) {
-    const pbMsg: PointCloudPbMsg = { topic, pb: wrapper.point_cloud };
-    return pbMsg;
+    return new ProtoMessage(topic, wrapper.point_cloud);
   }
 
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.MAST_STATE && wrapper.mast_state) {
-    const motionStateNames: MastMotionState[] = ['unknown', 'moving_hold', 'moving_up', 'moving_down'];
-    const msg: MastStateMsg = {
-      topic,
-      target_height: wrapper.mast_state.target_height ?? 0,
-      current_height: wrapper.mast_state.current_height ?? 0,
-      motion_state: motionStateNames[wrapper.mast_state.motion_state ?? 0] ?? 'unknown',
-      error: wrapper.mast_state.error ?? 0,
-      error_message: wrapper.mast_state.error_message ?? '',
-    };
-    return msg;
+    return new ProtoMessage(topic, wrapper.mast_state);
   }
 
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.SUBMAP_LIST && wrapper.submap_list) {
-    const slamStateNames: SubmapListMsg['slam_state'][] = ['invalid', 'slam', 'positioning'];
-    const sl = wrapper.submap_list;
-    const submaps: SubmapEntryMsg[] = (sl.submaps ?? []).map((e) => ({
-      trajectory_id: e.trajectory_id ?? 0,
-      submap_index: e.submap_index ?? 0,
-      submap_version: e.submap_version ?? 0,
-      pose: e.pose as ros_messages.Pose,
-      is_frozen: !!e.is_frozen,
-      is_incremental_submap: !!e.is_incremental_submap,
-      is_nearby_map: !!e.is_nearby_map,
-    }));
-    const msg: SubmapListMsg = {
-      topic,
-      slam_state: slamStateNames[sl.slam_state ?? 0] ?? 'invalid',
-      uuid: sl.uuid ?? '',
-      submaps,
-    };
-    return msg;
+    return new ProtoMessage(topic, wrapper.submap_list);
   }
 
   if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.RACK_STATES && wrapper.rack_states) {

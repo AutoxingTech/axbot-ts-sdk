@@ -80,7 +80,7 @@ export class WsClient {
           const decoded = decodeBinaryFrame(buf);
           this.onRawMessage?.('received', ev.data, decoded);
           if (decoded) {
-            this.dispatchTopic((decoded as TopicMsg).topic, decoded);
+            this.dispatchTopic(decoded.topic, decoded);
           }
         }
       } catch (err) {

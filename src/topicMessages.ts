@@ -159,12 +159,11 @@ export interface SubmapEntryMsg {
  * Cartographer submap list. Forwarded from `/submap_list`.
  * `uuid` identifies the slamming session and is needed to fetch submap PNGs
  * via the HTTP gateway (see RFC-4).
+ *
+ * All fields derived from proto via `.data`.
  */
-export interface SubmapListMsg extends TopicMsg {
-  slam_state: 'invalid' | 'slam' | 'positioning';
-  uuid: string;
-  submaps: SubmapEntryMsg[];
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
+export interface SubmapListMsg extends ProtoMessage<ros_messages.slam.SubmapList> { }
 
 export interface ActionMsg extends TopicMsg {
   timestamp: number;
@@ -485,15 +484,8 @@ export interface BumperStateMsg extends TopicMsg {
   rear_bumper_pressed: boolean;
 }
 
-export type MastMotionState = 'unknown' | 'moving_hold' | 'moving_up' | 'moving_down';
-
-export interface MastStateMsg extends TopicMsg {
-  target_height: number;
-  current_height: number;
-  motion_state: MastMotionState;
-  error: number;
-  error_message: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
+export interface MastStateMsg extends ProtoMessage<ros_messages.MastState> { }
 
 export interface Landmark {
   id: string;

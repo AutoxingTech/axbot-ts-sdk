@@ -1,9 +1,8 @@
 // Copyright (c) 2026 Autoxing Technology
 // SPDX-License-Identifier: MIT
 
-import { SemanticPointsMsg, PointField, PointCloudMsg } from './topicMessages.js';
+import { SemanticPointsMsg, PointField, PointCloudMsg, ProtoMessage } from './topicMessages.js';
 import { ros_messages } from './proto/generated.js';
-import { PointCloudPbMsg } from './pbMessages.js';
 
 /**
  * High-performance PointCloud transport layout directly consumable by WebGL/three.js.
@@ -143,7 +142,7 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
       x: rawValues[xIdx],
       y: rawValues[yIdx],
       z: rawValues[zIdx],
-      probability: probabilityIdx >= 0 ? rawValues[probabilityIdx]: 1.0, // u8
+      probability: probabilityIdx >= 0 ? rawValues[probabilityIdx] : 1.0, // u8
       ori: oriIdx >= 0 ? (rawValues[oriIdx] / 255) * Math.PI * 2 + Math.PI / 2 : 0, // u8 mapping to [0, 2PI] with 0 facing up
       speed: speedIdx >= 0 ? rawValues[speedIdx] / 100 : 0, // u8 stands for cm/s, scale to m/s
       intensity: intensityIdx >= 0 ? rawValues[intensityIdx] : 0, // f32
@@ -202,9 +201,9 @@ function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: st
   return { topic, positions, count, intensities };
 }
 
-export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg | PointCloudPbMsg): PointCloudBuffer {
-  if ('pb' in msg && typeof msg.pb === 'object') {
-    return _protobufPointCloudToBufferMsg((msg as PointCloudPbMsg).pb, msg.topic);
+export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg | ProtoMessage<ros_messages.IPointCloud>): PointCloudBuffer {
+  if ('data' in msg && msg.data && typeof (msg.data as ros_messages.IPointCloud).xs === 'object') {
+    return _protobufPointCloudToBufferMsg(msg.data as ros_messages.IPointCloud, msg.topic);
   }
 
   if (typeof (msg as SemanticPointsMsg).data === 'string' && Array.isArray((msg as SemanticPointsMsg).fields)) {
