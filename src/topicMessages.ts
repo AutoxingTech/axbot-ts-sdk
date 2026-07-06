@@ -63,9 +63,18 @@ export interface DetectedRackMsg extends TopicMsg {
   };
 }
 
-/** Proto SpaceState enum re-exported for convenience: UNKNOWN=0, OCCUPIED=3, FREE=4 */
+// Re-export commonly used proto types so consumers don't need to import from 'axbot-sdk/proto'.
+// Pattern: class → const+type; interface → type only.
 export const RackSpaceState = ros_messages.RackStates.RackLevelState.SpaceState;
 export type RackSpaceState = ros_messages.RackStates.RackLevelState.SpaceState;
+
+export const SubmapEntry = ros_messages.slam.SubmapEntry;
+export type SubmapEntry = ros_messages.slam.SubmapEntry;
+export type ISubmapEntry = ros_messages.slam.ISubmapEntry;
+
+export const Pose = ros_messages.Pose;
+export type Pose = ros_messages.Pose;
+export type IPose = ros_messages.IPose;
 
 // Named alias — all fields derived from proto via .data
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
@@ -138,21 +147,6 @@ export interface SlamStateMsg extends TopicMsg {
   position_quality?: number; // since 2.3.0
   lidar_matched?: boolean; // since 2.1.0
   lidar_matching_score?: number; // since 2.1.0
-}
-
-/**
- * Single cartographer submap entry. Mirrors `cartographer_ros_msgs/SubmapEntry`.
- * See RFC-4 / submap_http_and_threejs.md.
- */
-export interface SubmapEntryMsg {
-  trajectory_id: number;
-  submap_index: number;
-  submap_version: number;
-  // geometry_msgs/Pose
-  pose: { x: number; y: number; z: number; qx: number; qy: number; qz: number; qw: number };
-  is_frozen: boolean;
-  is_incremental_submap: boolean;
-  is_nearby_map: boolean;
 }
 
 /**
