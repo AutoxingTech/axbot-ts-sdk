@@ -301,6 +301,9 @@ export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_la
 export const backLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/back_laser_3d/scan');
 export const topLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_3d/scan');
 
+/** Terrain scan events */
+export const terrainScanEvents = new WsEventEmitter<PointCloudMsg>('/terrain_scan');
+
 /** Twist feedback events */
 export const twistFeedbackEvents = new WsEventEmitter<TwistFeedbackMsg>('/twist_feedback');
 
