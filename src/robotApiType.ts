@@ -486,3 +486,17 @@ export interface CreateRecordingResponse {
   end: string;
   download_url: string;
 }
+
+/**
+ * Response from querying a pose (charger, pallet, trailer, rack).
+ */
+export interface QueryPoseResponse {
+  pose: {
+    pos: [number, number];
+    ori: number;
+  };
+  /** Reference point for the returned pose. */
+  ref?: 'center_of_front_edge' | 'center_of_rear_edge';
+}
+
+export type PoseQueryType = 'charger_pose' | 'pallet_pose' | 'trailer_pose' | 'rack_pose';

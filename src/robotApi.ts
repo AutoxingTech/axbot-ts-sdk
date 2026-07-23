@@ -26,6 +26,8 @@ import {
   VideoFileItem,
   CreateRecordingRequest,
   CreateRecordingResponse,
+  QueryPoseResponse,
+  PoseQueryType,
 } from './robotApiType';
 
 export * from './robotApiType';
@@ -813,6 +815,18 @@ export class RobotApi {
   async removeCollectedData(filename?: string): Promise<boolean> {
     const endpoint = filename ? `collected_data/${filename}` : 'collected_data/';
     return this.apiCall(() => this.deleteImpl(endpoint), 'Delete Collected Data', false);
+  }
+
+  /**
+   * Query a pose of interest based on the robot's current position.
+   * @param type - Which pose to query: charger, pallet, trailer, or rack.
+   */
+  async queryPose(type: PoseQueryType): Promise<QueryPoseResponse | null> {
+    return this.apiCall(
+      () => this.getImpl(`services/query_pose/${type}`),
+      'Query Pose',
+      null,
+    );
   }
 
   async calibrateImuBias(): Promise<boolean> {

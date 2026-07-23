@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-07-23 robotApi: Add queryPose API to query charger, pallet, trailer, and rack poses
 - 2026-07-21 wsEventEmitter: Add /terrain_scan topic emitter
 - 2026-07-06 axbot-sdk: Use nested message+enum pattern for MobileNetworkState and VideoData proto enums
 - 2026-07-06 axbot-sdk: Migrate binary message decoders to ProtoMessage wrapper, remove PointCloudPbMsg
