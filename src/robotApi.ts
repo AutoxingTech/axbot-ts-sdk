@@ -820,13 +820,14 @@ export class RobotApi {
   /**
    * Query a pose of interest based on the robot's current position.
    * @param type - Which pose to query: charger, pallet, trailer, or rack.
+   * @param ref - For rack_pose: which edge to use as reference. Defaults to center_of_front_edge.
    */
-  async queryPose(type: PoseQueryType): Promise<QueryPoseResponse | null> {
-    return this.apiCall(
-      () => this.getImpl(`services/query_pose/${type}`),
-      'Query Pose',
-      null,
-    );
+  async queryPose(
+    type: PoseQueryType,
+    ref?: 'center_of_front_edge' | 'center_of_rear_edge',
+  ): Promise<QueryPoseResponse | null> {
+    const url = ref ? `services/query_pose/${type}?ref=${ref}` : `services/query_pose/${type}`;
+    return this.apiCall(() => this.getImpl(url), 'Query Pose', null);
   }
 
   async calibrateImuBias(): Promise<boolean> {
