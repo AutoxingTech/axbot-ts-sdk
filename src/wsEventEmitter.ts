@@ -242,6 +242,16 @@ export const matchedDepthPointsBackwardEvents = new WsEventEmitter<PointCloudMsg
   '/matched_depth_points/backward',
 );
 
+/** Depth camera matched points — leftward */
+export const matchedDepthPointsLeftwardEvents = new WsEventEmitter<PointCloudMsg>(
+  '/matched_depth_points/leftward',
+);
+
+/** Depth camera matched points — rightward */
+export const matchedDepthPointsRightwardEvents = new WsEventEmitter<PointCloudMsg>(
+  '/matched_depth_points/rightward',
+);
+
 export const depthCameraForwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
   '/depth_camera/forward/points2',
 );
@@ -253,6 +263,12 @@ export const depthCameraUpwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
 );
 export const depthCameraBackwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
   '/depth_camera/backward/points2',
+);
+export const depthCameraLeftwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/leftward/points2',
+);
+export const depthCameraRightwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/rightward/points2',
 );
 
 /** Depth camera image events */
@@ -267,6 +283,12 @@ export const depthCameraUpwardImageEvents = new WsEventEmitter<DepthCameraImageM
 );
 export const depthCameraBackwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
   '/depth_camera/backward/image',
+);
+export const depthCameraLeftwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/leftward/image',
+);
+export const depthCameraRightwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/rightward/image',
 );
 
 /** Planning state events */
