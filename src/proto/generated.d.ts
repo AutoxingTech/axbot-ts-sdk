@@ -3,6 +3,224 @@ import Long = require("long");
 /** Namespace ros_messages. */
 export namespace ros_messages {
 
+    /** Properties of a DepthImage. */
+    interface IDepthImage {
+
+        /** DepthImage width */
+        width?: (number|null);
+
+        /** DepthImage height */
+        height?: (number|null);
+
+        /** DepthImage encoding */
+        encoding?: (ros_messages.DepthImage.Encoding.Type|null);
+
+        /** DepthImage image_data */
+        image_data?: (Uint8Array|null);
+    }
+
+    /** Represents a DepthImage. */
+    class DepthImage implements IDepthImage {
+
+        /**
+         * Constructs a new DepthImage.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ros_messages.IDepthImage);
+
+        /** DepthImage width. */
+        public width: number;
+
+        /** DepthImage height. */
+        public height: number;
+
+        /** DepthImage encoding. */
+        public encoding: ros_messages.DepthImage.Encoding.Type;
+
+        /** DepthImage image_data. */
+        public image_data: Uint8Array;
+
+        /**
+         * Creates a new DepthImage instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DepthImage instance
+         */
+        public static create(properties?: ros_messages.IDepthImage): ros_messages.DepthImage;
+
+        /**
+         * Encodes the specified DepthImage message. Does not implicitly {@link ros_messages.DepthImage.verify|verify} messages.
+         * @param message DepthImage message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ros_messages.IDepthImage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DepthImage message, length delimited. Does not implicitly {@link ros_messages.DepthImage.verify|verify} messages.
+         * @param message DepthImage message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ros_messages.IDepthImage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DepthImage message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DepthImage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.DepthImage;
+
+        /**
+         * Decodes a DepthImage message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DepthImage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.DepthImage;
+
+        /**
+         * Verifies a DepthImage message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DepthImage message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DepthImage
+         */
+        public static fromObject(object: { [k: string]: any }): ros_messages.DepthImage;
+
+        /**
+         * Creates a plain object from a DepthImage message. Also converts values to other types if specified.
+         * @param message DepthImage
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ros_messages.DepthImage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DepthImage to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for DepthImage
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace DepthImage {
+
+        /** Properties of an Encoding. */
+        interface IEncoding {
+        }
+
+        /** Represents an Encoding. */
+        class Encoding implements IEncoding {
+
+            /**
+             * Constructs a new Encoding.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ros_messages.DepthImage.IEncoding);
+
+            /**
+             * Creates a new Encoding instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Encoding instance
+             */
+            public static create(properties?: ros_messages.DepthImage.IEncoding): ros_messages.DepthImage.Encoding;
+
+            /**
+             * Encodes the specified Encoding message. Does not implicitly {@link ros_messages.DepthImage.Encoding.verify|verify} messages.
+             * @param message Encoding message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ros_messages.DepthImage.IEncoding, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Encoding message, length delimited. Does not implicitly {@link ros_messages.DepthImage.Encoding.verify|verify} messages.
+             * @param message Encoding message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ros_messages.DepthImage.IEncoding, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Encoding message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Encoding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ros_messages.DepthImage.Encoding;
+
+            /**
+             * Decodes an Encoding message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Encoding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ros_messages.DepthImage.Encoding;
+
+            /**
+             * Verifies an Encoding message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Encoding message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Encoding
+             */
+            public static fromObject(object: { [k: string]: any }): ros_messages.DepthImage.Encoding;
+
+            /**
+             * Creates a plain object from an Encoding message. Also converts values to other types if specified.
+             * @param message Encoding
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ros_messages.DepthImage.Encoding, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Encoding to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Encoding
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace Encoding {
+
+            /** Type enum. */
+            enum Type {
+                UNKNOWN = 0,
+                PNG_INDEXED_8 = 1
+            }
+        }
+    }
+
     /** Properties of a Pose. */
     interface IPose {
 
@@ -1773,6 +1991,9 @@ export namespace ros_messages {
 
         /** RosMessageWrapper video_data */
         video_data?: (ros_messages.IVideoData|null);
+
+        /** RosMessageWrapper depth_image */
+        depth_image?: (ros_messages.IDepthImage|null);
     }
 
     /** Represents a RosMessageWrapper. */
@@ -1817,8 +2038,11 @@ export namespace ros_messages {
         /** RosMessageWrapper video_data. */
         public video_data?: (ros_messages.IVideoData|null);
 
+        /** RosMessageWrapper depth_image. */
+        public depth_image?: (ros_messages.IDepthImage|null);
+
         /** RosMessageWrapper payload. */
-        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data");
+        public payload?: ("point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image");
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
@@ -1909,7 +2133,8 @@ export namespace ros_messages {
             RACK_STATES = 4,
             TOWING_STATE = 5,
             MOBILE_NETWORK_STATE = 6,
-            VIDEO_DATA = 7
+            VIDEO_DATA = 7,
+            DEPTH_IMAGE = 8
         }
     }
 

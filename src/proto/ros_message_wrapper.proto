@@ -9,6 +9,7 @@ import "rack_states.proto";
 import "towing_state.proto";
 import "mobile_network_state.proto";
 import "video_data.proto";
+import "depth_image.proto";
 
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
@@ -24,6 +25,7 @@ message RosMessageWrapper {
         TOWING_STATE = 5;
         MOBILE_NETWORK_STATE = 6;
         VIDEO_DATA = 7;
+        DEPTH_IMAGE = 8;
     }
     
     MessageType type = 1;
@@ -39,5 +41,6 @@ message RosMessageWrapper {
         TowingState towing_state = 15;
         MobileNetworkState mobile_network_state = 16;
         VideoData video_data = 17;
+        DepthImage depth_image = 18;
     }
 }

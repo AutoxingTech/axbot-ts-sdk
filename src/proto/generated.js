@@ -16,6 +16,500 @@ export const ros_messages = $root.ros_messages = (() => {
      */
     const ros_messages = {};
 
+    ros_messages.DepthImage = (function() {
+
+        /**
+         * Properties of a DepthImage.
+         * @memberof ros_messages
+         * @interface IDepthImage
+         * @property {number|null} [width] DepthImage width
+         * @property {number|null} [height] DepthImage height
+         * @property {ros_messages.DepthImage.Encoding.Type|null} [encoding] DepthImage encoding
+         * @property {Uint8Array|null} [image_data] DepthImage image_data
+         */
+
+        /**
+         * Constructs a new DepthImage.
+         * @memberof ros_messages
+         * @classdesc Represents a DepthImage.
+         * @implements IDepthImage
+         * @constructor
+         * @param {ros_messages.IDepthImage=} [properties] Properties to set
+         */
+        function DepthImage(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DepthImage width.
+         * @member {number} width
+         * @memberof ros_messages.DepthImage
+         * @instance
+         */
+        DepthImage.prototype.width = 0;
+
+        /**
+         * DepthImage height.
+         * @member {number} height
+         * @memberof ros_messages.DepthImage
+         * @instance
+         */
+        DepthImage.prototype.height = 0;
+
+        /**
+         * DepthImage encoding.
+         * @member {ros_messages.DepthImage.Encoding.Type} encoding
+         * @memberof ros_messages.DepthImage
+         * @instance
+         */
+        DepthImage.prototype.encoding = 0;
+
+        /**
+         * DepthImage image_data.
+         * @member {Uint8Array} image_data
+         * @memberof ros_messages.DepthImage
+         * @instance
+         */
+        DepthImage.prototype.image_data = $util.newBuffer([]);
+
+        /**
+         * Creates a new DepthImage instance using the specified properties.
+         * @function create
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {ros_messages.IDepthImage=} [properties] Properties to set
+         * @returns {ros_messages.DepthImage} DepthImage instance
+         */
+        DepthImage.create = function create(properties) {
+            return new DepthImage(properties);
+        };
+
+        /**
+         * Encodes the specified DepthImage message. Does not implicitly {@link ros_messages.DepthImage.verify|verify} messages.
+         * @function encode
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {ros_messages.IDepthImage} message DepthImage message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DepthImage.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.width != null && Object.hasOwnProperty.call(message, "width"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.width);
+            if (message.height != null && Object.hasOwnProperty.call(message, "height"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.height);
+            if (message.encoding != null && Object.hasOwnProperty.call(message, "encoding"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.encoding);
+            if (message.image_data != null && Object.hasOwnProperty.call(message, "image_data"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.image_data);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DepthImage message, length delimited. Does not implicitly {@link ros_messages.DepthImage.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {ros_messages.IDepthImage} message DepthImage message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DepthImage.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DepthImage message from the specified reader or buffer.
+         * @function decode
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ros_messages.DepthImage} DepthImage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DepthImage.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.DepthImage();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.width = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.height = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.encoding = reader.int32();
+                        break;
+                    }
+                case 4: {
+                        message.image_data = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DepthImage message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ros_messages.DepthImage} DepthImage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DepthImage.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DepthImage message.
+         * @function verify
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DepthImage.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.width != null && message.hasOwnProperty("width"))
+                if (!$util.isInteger(message.width))
+                    return "width: integer expected";
+            if (message.height != null && message.hasOwnProperty("height"))
+                if (!$util.isInteger(message.height))
+                    return "height: integer expected";
+            if (message.encoding != null && message.hasOwnProperty("encoding"))
+                switch (message.encoding) {
+                default:
+                    return "encoding: enum value expected";
+                case 0:
+                case 1:
+                    break;
+                }
+            if (message.image_data != null && message.hasOwnProperty("image_data"))
+                if (!(message.image_data && typeof message.image_data.length === "number" || $util.isString(message.image_data)))
+                    return "image_data: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a DepthImage message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ros_messages.DepthImage} DepthImage
+         */
+        DepthImage.fromObject = function fromObject(object) {
+            if (object instanceof $root.ros_messages.DepthImage)
+                return object;
+            let message = new $root.ros_messages.DepthImage();
+            if (object.width != null)
+                message.width = object.width | 0;
+            if (object.height != null)
+                message.height = object.height | 0;
+            switch (object.encoding) {
+            default:
+                if (typeof object.encoding === "number") {
+                    message.encoding = object.encoding;
+                    break;
+                }
+                break;
+            case "UNKNOWN":
+            case 0:
+                message.encoding = 0;
+                break;
+            case "PNG_INDEXED_8":
+            case 1:
+                message.encoding = 1;
+                break;
+            }
+            if (object.image_data != null)
+                if (typeof object.image_data === "string")
+                    $util.base64.decode(object.image_data, message.image_data = $util.newBuffer($util.base64.length(object.image_data)), 0);
+                else if (object.image_data.length >= 0)
+                    message.image_data = object.image_data;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DepthImage message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {ros_messages.DepthImage} message DepthImage
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DepthImage.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.width = 0;
+                object.height = 0;
+                object.encoding = options.enums === String ? "UNKNOWN" : 0;
+                if (options.bytes === String)
+                    object.image_data = "";
+                else {
+                    object.image_data = [];
+                    if (options.bytes !== Array)
+                        object.image_data = $util.newBuffer(object.image_data);
+                }
+            }
+            if (message.width != null && message.hasOwnProperty("width"))
+                object.width = message.width;
+            if (message.height != null && message.hasOwnProperty("height"))
+                object.height = message.height;
+            if (message.encoding != null && message.hasOwnProperty("encoding"))
+                object.encoding = options.enums === String ? $root.ros_messages.DepthImage.Encoding.Type[message.encoding] === undefined ? message.encoding : $root.ros_messages.DepthImage.Encoding.Type[message.encoding] : message.encoding;
+            if (message.image_data != null && message.hasOwnProperty("image_data"))
+                object.image_data = options.bytes === String ? $util.base64.encode(message.image_data, 0, message.image_data.length) : options.bytes === Array ? Array.prototype.slice.call(message.image_data) : message.image_data;
+            return object;
+        };
+
+        /**
+         * Converts this DepthImage to JSON.
+         * @function toJSON
+         * @memberof ros_messages.DepthImage
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DepthImage.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DepthImage
+         * @function getTypeUrl
+         * @memberof ros_messages.DepthImage
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DepthImage.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ros_messages.DepthImage";
+        };
+
+        DepthImage.Encoding = (function() {
+
+            /**
+             * Properties of an Encoding.
+             * @memberof ros_messages.DepthImage
+             * @interface IEncoding
+             */
+
+            /**
+             * Constructs a new Encoding.
+             * @memberof ros_messages.DepthImage
+             * @classdesc Represents an Encoding.
+             * @implements IEncoding
+             * @constructor
+             * @param {ros_messages.DepthImage.IEncoding=} [properties] Properties to set
+             */
+            function Encoding(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new Encoding instance using the specified properties.
+             * @function create
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {ros_messages.DepthImage.IEncoding=} [properties] Properties to set
+             * @returns {ros_messages.DepthImage.Encoding} Encoding instance
+             */
+            Encoding.create = function create(properties) {
+                return new Encoding(properties);
+            };
+
+            /**
+             * Encodes the specified Encoding message. Does not implicitly {@link ros_messages.DepthImage.Encoding.verify|verify} messages.
+             * @function encode
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {ros_messages.DepthImage.IEncoding} message Encoding message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Encoding.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Encoding message, length delimited. Does not implicitly {@link ros_messages.DepthImage.Encoding.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {ros_messages.DepthImage.IEncoding} message Encoding message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Encoding.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an Encoding message from the specified reader or buffer.
+             * @function decode
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ros_messages.DepthImage.Encoding} Encoding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Encoding.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.DepthImage.Encoding();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an Encoding message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ros_messages.DepthImage.Encoding} Encoding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Encoding.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an Encoding message.
+             * @function verify
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Encoding.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates an Encoding message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ros_messages.DepthImage.Encoding} Encoding
+             */
+            Encoding.fromObject = function fromObject(object) {
+                if (object instanceof $root.ros_messages.DepthImage.Encoding)
+                    return object;
+                return new $root.ros_messages.DepthImage.Encoding();
+            };
+
+            /**
+             * Creates a plain object from an Encoding message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {ros_messages.DepthImage.Encoding} message Encoding
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Encoding.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this Encoding to JSON.
+             * @function toJSON
+             * @memberof ros_messages.DepthImage.Encoding
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Encoding.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Encoding
+             * @function getTypeUrl
+             * @memberof ros_messages.DepthImage.Encoding
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Encoding.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ros_messages.DepthImage.Encoding";
+            };
+
+            /**
+             * Type enum.
+             * @name ros_messages.DepthImage.Encoding.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} PNG_INDEXED_8=1 PNG_INDEXED_8 value
+             */
+            Encoding.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "PNG_INDEXED_8"] = 1;
+                return values;
+            })();
+
+            return Encoding;
+        })();
+
+        return DepthImage;
+    })();
+
     ros_messages.Pose = (function() {
 
         /**
@@ -4583,6 +5077,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {ros_messages.ITowingState|null} [towing_state] RosMessageWrapper towing_state
          * @property {ros_messages.IMobileNetworkState|null} [mobile_network_state] RosMessageWrapper mobile_network_state
          * @property {ros_messages.IVideoData|null} [video_data] RosMessageWrapper video_data
+         * @property {ros_messages.IDepthImage|null} [depth_image] RosMessageWrapper depth_image
          */
 
         /**
@@ -4688,17 +5183,25 @@ export const ros_messages = $root.ros_messages = (() => {
          */
         RosMessageWrapper.prototype.video_data = null;
 
+        /**
+         * RosMessageWrapper depth_image.
+         * @member {ros_messages.IDepthImage|null|undefined} depth_image
+         * @memberof ros_messages.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.depth_image = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|undefined} payload
+         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|undefined} payload
          * @memberof ros_messages.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -4748,6 +5251,8 @@ export const ros_messages = $root.ros_messages = (() => {
                 $root.ros_messages.MobileNetworkState.encode(message.mobile_network_state, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
             if (message.video_data != null && Object.hasOwnProperty.call(message, "video_data"))
                 $root.ros_messages.VideoData.encode(message.video_data, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
+            if (message.depth_image != null && Object.hasOwnProperty.call(message, "depth_image"))
+                $root.ros_messages.DepthImage.encode(message.depth_image, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
             return writer;
         };
 
@@ -4828,6 +5333,10 @@ export const ros_messages = $root.ros_messages = (() => {
                         message.video_data = $root.ros_messages.VideoData.decode(reader, reader.uint32());
                         break;
                     }
+                case 18: {
+                        message.depth_image = $root.ros_messages.DepthImage.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -4876,6 +5385,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 5:
                 case 6:
                 case 7:
+                case 8:
                     break;
                 }
             if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
@@ -4959,6 +5469,16 @@ export const ros_messages = $root.ros_messages = (() => {
                         return "video_data." + error;
                 }
             }
+            if (message.depth_image != null && message.hasOwnProperty("depth_image")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ros_messages.DepthImage.verify(message.depth_image);
+                    if (error)
+                        return "depth_image." + error;
+                }
+            }
             return null;
         };
 
@@ -5013,6 +5533,10 @@ export const ros_messages = $root.ros_messages = (() => {
             case 7:
                 message.type = 7;
                 break;
+            case "DEPTH_IMAGE":
+            case 8:
+                message.type = 8;
+                break;
             }
             if (object.timestamp_ns != null)
                 if ($util.Long)
@@ -5064,6 +5588,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeof object.video_data !== "object")
                     throw TypeError(".ros_messages.RosMessageWrapper.video_data: object expected");
                 message.video_data = $root.ros_messages.VideoData.fromObject(object.video_data);
+            }
+            if (object.depth_image != null) {
+                if (typeof object.depth_image !== "object")
+                    throw TypeError(".ros_messages.RosMessageWrapper.depth_image: object expected");
+                message.depth_image = $root.ros_messages.DepthImage.fromObject(object.depth_image);
             }
             return message;
         };
@@ -5139,6 +5668,11 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (options.oneofs)
                     object.payload = "video_data";
             }
+            if (message.depth_image != null && message.hasOwnProperty("depth_image")) {
+                object.depth_image = $root.ros_messages.DepthImage.toObject(message.depth_image, options);
+                if (options.oneofs)
+                    object.payload = "depth_image";
+            }
             return object;
         };
 
@@ -5180,6 +5714,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number} TOWING_STATE=5 TOWING_STATE value
          * @property {number} MOBILE_NETWORK_STATE=6 MOBILE_NETWORK_STATE value
          * @property {number} VIDEO_DATA=7 VIDEO_DATA value
+         * @property {number} DEPTH_IMAGE=8 DEPTH_IMAGE value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -5191,6 +5726,7 @@ export const ros_messages = $root.ros_messages = (() => {
             values[valuesById[5] = "TOWING_STATE"] = 5;
             values[valuesById[6] = "MOBILE_NETWORK_STATE"] = 6;
             values[valuesById[7] = "VIDEO_DATA"] = 7;
+            values[valuesById[8] = "DEPTH_IMAGE"] = 8;
             return values;
         })();
 

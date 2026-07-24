@@ -89,6 +89,13 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): ProtoMessage | null {
     return new ProtoMessage(topic, wrapper.video_data);
   }
 
+  if (
+    wrapper.type === ros_messages.RosMessageWrapper.MessageType.DEPTH_IMAGE &&
+    wrapper.depth_image
+  ) {
+    return new ProtoMessage(topic, wrapper.depth_image);
+  }
+
   console.warn('binaryMessageDecoder: unsupported message type', wrapper.type, 'for', topic);
   return null;
 }
