@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { CollectedDataFile } from './topicMessages';
+import { FeatureCollection } from './geojson';
 import { ros_messages } from './proto/generated.js';
 import {
   CollectedDataItem,
@@ -1252,6 +1253,35 @@ export class RobotApi {
       message,
       payloadLength: buf.byteLength,
     };
+  }
+
+  /**
+   * Get the current dynamic map overlays as a GeoJSON FeatureCollection.
+   * GET /ros/map/overlays — proxies to the /get_map_overlays ROS service.
+   */
+  async getMapOverlays(signal?: AbortSignal): Promise<FeatureCollection> {
+    const res = await this.getImpl('ros/map/overlays', signal);
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+    return res.json();
+  }
+
+  /**
+   * Replace the dynamic map overlays with a GeoJSON FeatureCollection.
+   * PUT /ros/map/overlays — proxies to the /set_map_overlays ROS service.
+   */
+  async setMapOverlays(
+    overlays: FeatureCollection,
+    signal?: AbortSignal,
+  ): Promise<{ success: boolean; message?: string }> {
+    const res = await this.putImpl('ros/map/overlays', overlays, signal);
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+    return res.json();
   }
 
   // ========== Bag Player API ==========
