@@ -290,6 +290,18 @@ export const depthCameraLeftwardImageEvents = new WsEventEmitter<DepthCameraImag
 export const depthCameraRightwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
   '/depth_camera/rightward/image',
 );
+export const depthCameraForktipLPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/forktip_l/points2',
+);
+export const depthCameraForktipRPoints2Events = new WsEventEmitter<PointCloudMsg>(
+  '/depth_camera/forktip_r/points2',
+);
+export const depthCameraForktipLImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/forktip_l/image',
+);
+export const depthCameraForktipRImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
+  '/depth_camera/forktip_r/image',
+);
 
 /** Planning state events */
 export const planningStateEvents = new WsEventEmitter<PlanningStateMsg>('/planning_state');
