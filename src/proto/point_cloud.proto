@@ -22,4 +22,7 @@ message PointCloud {
     repeated sint32 zs = 9 [packed=true];  // z offsets (optional, can be empty for 2D)
     bytes intensities = 10;         // intensity values 0-255, one byte per point
     bool is_delta_encoded = 11;     // if true, xs, ys, zs are delta encoded (each value is relative to the previous point)
+    bytes probabilities = 12;       // probability values 0-255, one byte per point
+    bytes oris = 13;                // orientation values 0-255, one byte per point
+    bytes speeds = 14;              // speed values 0-255, one byte per point
 }

@@ -160,6 +160,86 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
   return { allPoints, staticPoints, dynamicPoints };
 }
 
+/**
+ * Parse a protobuf PointCloud (newer robots publish /semantic_points as a
+ * protobuf) into semantic points. Positions are center + offset * resolution,
+ * optionally delta-encoded. probabilities/oris/speeds are optional per-point
+ * bytes, interpreted the same way as the JSON fields.
+ */
+export function parseProtobufSemanticPoints(pc: ros_messages.IPointCloud): ParsedSemanticPoints {
+  const cx = pc.center_x ?? 0;
+  const cy = pc.center_y ?? 0;
+  const cz = pc.center_z ?? 0;
+  const res = pc.resolution ?? 1;
+  const xs = pc.xs ?? [];
+  const ys = pc.ys ?? [];
+  const zs = pc.zs ?? [];
+  const probabilities = pc.probabilities ?? new Uint8Array();
+  const oris = pc.oris ?? new Uint8Array();
+  const speeds = pc.speeds ?? new Uint8Array();
+  const intensities = pc.intensities ?? new Uint8Array();
+  const isDeltaEncoded = pc.is_delta_encoded ?? false;
+  const count = xs.length;
+
+  const allPoints: ParsedSemanticPoint[] = [];
+  const staticPoints: ParsedSemanticPoint[] = [];
+  const dynamicPoints: ParsedSemanticPoint[] = [];
+
+  let prevX = 0;
+  let prevY = 0;
+  let prevZ = 0;
+  for (let i = 0; i < count; i++) {
+    let x: number;
+    let y: number;
+    let z: number;
+    if (isDeltaEncoded) {
+      prevX += xs[i];
+      prevY += ys[i];
+      if (zs.length > i) prevZ += zs[i];
+      x = cx + prevX * res;
+      y = cy + prevY * res;
+      z = zs.length > i ? cz + prevZ * res : 0;
+    } else {
+      x = cx + xs[i] * res;
+      y = cy + ys[i] * res;
+      z = zs.length > i ? cz + zs[i] * res : 0;
+    }
+
+    const point: ParsedSemanticPoint = {
+      x,
+      y,
+      z,
+      probability: probabilities.length > i ? probabilities[i] : 255, // u8; missing -> static
+      ori: oris.length > i ? (oris[i] / 255) * Math.PI * 2 + Math.PI / 2 : 0, // u8 mapping to [0, 2PI] with 0 facing up
+      speed: speeds.length > i ? speeds[i] / 100 : 0, // u8 cm/s, scale to m/s
+      intensity: intensities.length > i ? intensities[i] : 0,
+    };
+
+    allPoints.push(point);
+    if (point.probability <= POINT_CLOUD_PROBABILITY_THRESHOLD) {
+      dynamicPoints.push(point);
+    } else {
+      staticPoints.push(point);
+    }
+  }
+
+  return { allPoints, staticPoints, dynamicPoints };
+}
+
+/**
+ * Parse a /semantic_points message in either format:
+ * - older JSON: SemanticPointsMsg (fields + base64-encoded data)
+ * - newer proto: ProtoMessage<IPointCloud>
+ */
+export function parseSemanticPointsMsg(
+  msg: SemanticPointsMsg | ProtoMessage<ros_messages.IPointCloud>,
+): ParsedSemanticPoints {
+  if (msg instanceof ProtoMessage) {
+    return parseProtobufSemanticPoints(msg.data);
+  }
+  return parseSemanticPoints(msg as SemanticPointsMsg);
+}
+
 function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: string): PointCloudBuffer {
   const cx = pc.center_x ?? 0;
   const cy = pc.center_y ?? 0;

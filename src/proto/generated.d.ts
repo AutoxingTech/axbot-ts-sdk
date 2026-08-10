@@ -1506,6 +1506,15 @@ export namespace ros_messages {
 
         /** PointCloud is_delta_encoded */
         is_delta_encoded?: (boolean|null);
+
+        /** PointCloud probabilities */
+        probabilities?: (Uint8Array|null);
+
+        /** PointCloud oris */
+        oris?: (Uint8Array|null);
+
+        /** PointCloud speeds */
+        speeds?: (Uint8Array|null);
     }
 
     /** Represents a PointCloud. */
@@ -1549,6 +1558,15 @@ export namespace ros_messages {
 
         /** PointCloud is_delta_encoded. */
         public is_delta_encoded: boolean;
+
+        /** PointCloud probabilities. */
+        public probabilities: Uint8Array;
+
+        /** PointCloud oris. */
+        public oris: Uint8Array;
+
+        /** PointCloud speeds. */
+        public speeds: Uint8Array;
 
         /**
          * Creates a new PointCloud instance using the specified properties.

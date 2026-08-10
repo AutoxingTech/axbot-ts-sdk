@@ -3747,6 +3747,9 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {Array.<number>|null} [zs] PointCloud zs
          * @property {Uint8Array|null} [intensities] PointCloud intensities
          * @property {boolean|null} [is_delta_encoded] PointCloud is_delta_encoded
+         * @property {Uint8Array|null} [probabilities] PointCloud probabilities
+         * @property {Uint8Array|null} [oris] PointCloud oris
+         * @property {Uint8Array|null} [speeds] PointCloud speeds
          */
 
         /**
@@ -3856,6 +3859,30 @@ export const ros_messages = $root.ros_messages = (() => {
         PointCloud.prototype.is_delta_encoded = false;
 
         /**
+         * PointCloud probabilities.
+         * @member {Uint8Array} probabilities
+         * @memberof ros_messages.PointCloud
+         * @instance
+         */
+        PointCloud.prototype.probabilities = $util.newBuffer([]);
+
+        /**
+         * PointCloud oris.
+         * @member {Uint8Array} oris
+         * @memberof ros_messages.PointCloud
+         * @instance
+         */
+        PointCloud.prototype.oris = $util.newBuffer([]);
+
+        /**
+         * PointCloud speeds.
+         * @member {Uint8Array} speeds
+         * @memberof ros_messages.PointCloud
+         * @instance
+         */
+        PointCloud.prototype.speeds = $util.newBuffer([]);
+
+        /**
          * Creates a new PointCloud instance using the specified properties.
          * @function create
          * @memberof ros_messages.PointCloud
@@ -3913,6 +3940,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 writer.uint32(/* id 10, wireType 2 =*/82).bytes(message.intensities);
             if (message.is_delta_encoded != null && Object.hasOwnProperty.call(message, "is_delta_encoded"))
                 writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_delta_encoded);
+            if (message.probabilities != null && Object.hasOwnProperty.call(message, "probabilities"))
+                writer.uint32(/* id 12, wireType 2 =*/98).bytes(message.probabilities);
+            if (message.oris != null && Object.hasOwnProperty.call(message, "oris"))
+                writer.uint32(/* id 13, wireType 2 =*/106).bytes(message.oris);
+            if (message.speeds != null && Object.hasOwnProperty.call(message, "speeds"))
+                writer.uint32(/* id 14, wireType 2 =*/114).bytes(message.speeds);
             return writer;
         };
 
@@ -4014,6 +4047,18 @@ export const ros_messages = $root.ros_messages = (() => {
                         message.is_delta_encoded = reader.bool();
                         break;
                     }
+                case 12: {
+                        message.probabilities = reader.bytes();
+                        break;
+                    }
+                case 13: {
+                        message.oris = reader.bytes();
+                        break;
+                    }
+                case 14: {
+                        message.speeds = reader.bytes();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -4096,6 +4141,15 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.is_delta_encoded != null && message.hasOwnProperty("is_delta_encoded"))
                 if (typeof message.is_delta_encoded !== "boolean")
                     return "is_delta_encoded: boolean expected";
+            if (message.probabilities != null && message.hasOwnProperty("probabilities"))
+                if (!(message.probabilities && typeof message.probabilities.length === "number" || $util.isString(message.probabilities)))
+                    return "probabilities: buffer expected";
+            if (message.oris != null && message.hasOwnProperty("oris"))
+                if (!(message.oris && typeof message.oris.length === "number" || $util.isString(message.oris)))
+                    return "oris: buffer expected";
+            if (message.speeds != null && message.hasOwnProperty("speeds"))
+                if (!(message.speeds && typeof message.speeds.length === "number" || $util.isString(message.speeds)))
+                    return "speeds: buffer expected";
             return null;
         };
 
@@ -4154,6 +4208,21 @@ export const ros_messages = $root.ros_messages = (() => {
                     message.intensities = object.intensities;
             if (object.is_delta_encoded != null)
                 message.is_delta_encoded = Boolean(object.is_delta_encoded);
+            if (object.probabilities != null)
+                if (typeof object.probabilities === "string")
+                    $util.base64.decode(object.probabilities, message.probabilities = $util.newBuffer($util.base64.length(object.probabilities)), 0);
+                else if (object.probabilities.length >= 0)
+                    message.probabilities = object.probabilities;
+            if (object.oris != null)
+                if (typeof object.oris === "string")
+                    $util.base64.decode(object.oris, message.oris = $util.newBuffer($util.base64.length(object.oris)), 0);
+                else if (object.oris.length >= 0)
+                    message.oris = object.oris;
+            if (object.speeds != null)
+                if (typeof object.speeds === "string")
+                    $util.base64.decode(object.speeds, message.speeds = $util.newBuffer($util.base64.length(object.speeds)), 0);
+                else if (object.speeds.length >= 0)
+                    message.speeds = object.speeds;
             return message;
         };
 
@@ -4190,6 +4259,27 @@ export const ros_messages = $root.ros_messages = (() => {
                         object.intensities = $util.newBuffer(object.intensities);
                 }
                 object.is_delta_encoded = false;
+                if (options.bytes === String)
+                    object.probabilities = "";
+                else {
+                    object.probabilities = [];
+                    if (options.bytes !== Array)
+                        object.probabilities = $util.newBuffer(object.probabilities);
+                }
+                if (options.bytes === String)
+                    object.oris = "";
+                else {
+                    object.oris = [];
+                    if (options.bytes !== Array)
+                        object.oris = $util.newBuffer(object.oris);
+                }
+                if (options.bytes === String)
+                    object.speeds = "";
+                else {
+                    object.speeds = [];
+                    if (options.bytes !== Array)
+                        object.speeds = $util.newBuffer(object.speeds);
+                }
             }
             if (message.header != null && message.hasOwnProperty("header"))
                 object.header = $root.ros_messages.Header.toObject(message.header, options);
@@ -4222,6 +4312,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 object.intensities = options.bytes === String ? $util.base64.encode(message.intensities, 0, message.intensities.length) : options.bytes === Array ? Array.prototype.slice.call(message.intensities) : message.intensities;
             if (message.is_delta_encoded != null && message.hasOwnProperty("is_delta_encoded"))
                 object.is_delta_encoded = message.is_delta_encoded;
+            if (message.probabilities != null && message.hasOwnProperty("probabilities"))
+                object.probabilities = options.bytes === String ? $util.base64.encode(message.probabilities, 0, message.probabilities.length) : options.bytes === Array ? Array.prototype.slice.call(message.probabilities) : message.probabilities;
+            if (message.oris != null && message.hasOwnProperty("oris"))
+                object.oris = options.bytes === String ? $util.base64.encode(message.oris, 0, message.oris.length) : options.bytes === Array ? Array.prototype.slice.call(message.oris) : message.oris;
+            if (message.speeds != null && message.hasOwnProperty("speeds"))
+                object.speeds = options.bytes === String ? $util.base64.encode(message.speeds, 0, message.speeds.length) : options.bytes === Array ? Array.prototype.slice.call(message.speeds) : message.speeds;
             return object;
         };
 
