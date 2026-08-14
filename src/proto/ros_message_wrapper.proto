@@ -29,8 +29,8 @@ message RosMessageWrapper {
     }
     
     MessageType type = 1;
-    uint64 timestamp_ns = 2;  // Unix timestamp in nanoseconds
-    uint32 sequence_id = 3;   // For ordering/packet loss detection
+    // 2 and 3 were once timestamp_ns and sequence_id; never reuse them.
+    reserved 2, 3;
 
     oneof payload {
         PointCloud point_cloud = 10;

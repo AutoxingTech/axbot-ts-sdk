@@ -5163,8 +5163,6 @@ export const ros_messages = $root.ros_messages = (() => {
          * @memberof ros_messages
          * @interface IRosMessageWrapper
          * @property {ros_messages.RosMessageWrapper.MessageType|null} [type] RosMessageWrapper type
-         * @property {number|Long|null} [timestamp_ns] RosMessageWrapper timestamp_ns
-         * @property {number|null} [sequence_id] RosMessageWrapper sequence_id
          * @property {ros_messages.IPointCloud|null} [point_cloud] RosMessageWrapper point_cloud
          * @property {Uint8Array|null} [raw_data] RosMessageWrapper raw_data
          * @property {ros_messages.IMastState|null} [mast_state] RosMessageWrapper mast_state
@@ -5198,22 +5196,6 @@ export const ros_messages = $root.ros_messages = (() => {
          * @instance
          */
         RosMessageWrapper.prototype.type = 0;
-
-        /**
-         * RosMessageWrapper timestamp_ns.
-         * @member {number|Long} timestamp_ns
-         * @memberof ros_messages.RosMessageWrapper
-         * @instance
-         */
-        RosMessageWrapper.prototype.timestamp_ns = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-        /**
-         * RosMessageWrapper sequence_id.
-         * @member {number} sequence_id
-         * @memberof ros_messages.RosMessageWrapper
-         * @instance
-         */
-        RosMessageWrapper.prototype.sequence_id = 0;
 
         /**
          * RosMessageWrapper point_cloud.
@@ -5327,10 +5309,6 @@ export const ros_messages = $root.ros_messages = (() => {
                 writer = $Writer.create();
             if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
-            if (message.timestamp_ns != null && Object.hasOwnProperty.call(message, "timestamp_ns"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.timestamp_ns);
-            if (message.sequence_id != null && Object.hasOwnProperty.call(message, "sequence_id"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.sequence_id);
             if (message.point_cloud != null && Object.hasOwnProperty.call(message, "point_cloud"))
                 $root.ros_messages.PointCloud.encode(message.point_cloud, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.raw_data != null && Object.hasOwnProperty.call(message, "raw_data"))
@@ -5387,14 +5365,6 @@ export const ros_messages = $root.ros_messages = (() => {
                 switch (tag >>> 3) {
                 case 1: {
                         message.type = reader.int32();
-                        break;
-                    }
-                case 2: {
-                        message.timestamp_ns = reader.uint64();
-                        break;
-                    }
-                case 3: {
-                        message.sequence_id = reader.uint32();
                         break;
                     }
                 case 10: {
@@ -5484,12 +5454,6 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 8:
                     break;
                 }
-            if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
-                if (!$util.isInteger(message.timestamp_ns) && !(message.timestamp_ns && $util.isInteger(message.timestamp_ns.low) && $util.isInteger(message.timestamp_ns.high)))
-                    return "timestamp_ns: integer|Long expected";
-            if (message.sequence_id != null && message.hasOwnProperty("sequence_id"))
-                if (!$util.isInteger(message.sequence_id))
-                    return "sequence_id: integer expected";
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
                 properties.payload = 1;
                 {
@@ -5634,17 +5598,6 @@ export const ros_messages = $root.ros_messages = (() => {
                 message.type = 8;
                 break;
             }
-            if (object.timestamp_ns != null)
-                if ($util.Long)
-                    (message.timestamp_ns = $util.Long.fromValue(object.timestamp_ns)).unsigned = true;
-                else if (typeof object.timestamp_ns === "string")
-                    message.timestamp_ns = parseInt(object.timestamp_ns, 10);
-                else if (typeof object.timestamp_ns === "number")
-                    message.timestamp_ns = object.timestamp_ns;
-                else if (typeof object.timestamp_ns === "object")
-                    message.timestamp_ns = new $util.LongBits(object.timestamp_ns.low >>> 0, object.timestamp_ns.high >>> 0).toNumber(true);
-            if (object.sequence_id != null)
-                message.sequence_id = object.sequence_id >>> 0;
             if (object.point_cloud != null) {
                 if (typeof object.point_cloud !== "object")
                     throw TypeError(".ros_messages.RosMessageWrapper.point_cloud: object expected");
@@ -5706,24 +5659,10 @@ export const ros_messages = $root.ros_messages = (() => {
             if (!options)
                 options = {};
             let object = {};
-            if (options.defaults) {
+            if (options.defaults)
                 object.type = options.enums === String ? "UNKNOWN" : 0;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, true);
-                    object.timestamp_ns = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.timestamp_ns = options.longs === String ? "0" : 0;
-                object.sequence_id = 0;
-            }
             if (message.type != null && message.hasOwnProperty("type"))
                 object.type = options.enums === String ? $root.ros_messages.RosMessageWrapper.MessageType[message.type] === undefined ? message.type : $root.ros_messages.RosMessageWrapper.MessageType[message.type] : message.type;
-            if (message.timestamp_ns != null && message.hasOwnProperty("timestamp_ns"))
-                if (typeof message.timestamp_ns === "number")
-                    object.timestamp_ns = options.longs === String ? String(message.timestamp_ns) : message.timestamp_ns;
-                else
-                    object.timestamp_ns = options.longs === String ? $util.Long.prototype.toString.call(message.timestamp_ns) : options.longs === Number ? new $util.LongBits(message.timestamp_ns.low >>> 0, message.timestamp_ns.high >>> 0).toNumber(true) : message.timestamp_ns;
-            if (message.sequence_id != null && message.hasOwnProperty("sequence_id"))
-                object.sequence_id = message.sequence_id;
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
                 object.point_cloud = $root.ros_messages.PointCloud.toObject(message.point_cloud, options);
                 if (options.oneofs)

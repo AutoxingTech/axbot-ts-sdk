@@ -1980,12 +1980,6 @@ export namespace ros_messages {
         /** RosMessageWrapper type */
         type?: (ros_messages.RosMessageWrapper.MessageType|null);
 
-        /** RosMessageWrapper timestamp_ns */
-        timestamp_ns?: (number|Long|null);
-
-        /** RosMessageWrapper sequence_id */
-        sequence_id?: (number|null);
-
         /** RosMessageWrapper point_cloud */
         point_cloud?: (ros_messages.IPointCloud|null);
 
@@ -2025,12 +2019,6 @@ export namespace ros_messages {
 
         /** RosMessageWrapper type. */
         public type: ros_messages.RosMessageWrapper.MessageType;
-
-        /** RosMessageWrapper timestamp_ns. */
-        public timestamp_ns: (number|Long);
-
-        /** RosMessageWrapper sequence_id. */
-        public sequence_id: number;
 
         /** RosMessageWrapper point_cloud. */
         public point_cloud?: (ros_messages.IPointCloud|null);
