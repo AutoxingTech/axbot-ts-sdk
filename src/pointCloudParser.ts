@@ -19,6 +19,9 @@ export interface PointCloudBuffer {
 
   /** Optional intensities [0-255, 0-255 ... ], length = count */
   intensities?: Uint8Array;
+
+  /** Optional probabilities [0-255, 0-255 ... ], length = count */
+  probabilities?: Uint8Array;
 }
 
 const POINT_CLOUD_PROBABILITY_THRESHOLD = Math.floor(0.6 * 255);
@@ -249,11 +252,13 @@ function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: st
   const ys = pc.ys ?? [];
   const zs = pc.zs ?? [];
   const rawIntensities = pc.intensities ?? new Uint8Array();
+  const rawProbabilities = pc.probabilities ?? new Uint8Array();
   const isDeltaEncoded = pc.is_delta_encoded ?? false;
   const count = xs.length;
 
   const positions = new Float32Array(count * 3);
   const intensities = new Uint8Array(count);
+  const probabilities = new Uint8Array(count);
 
   if (isDeltaEncoded) {
     let prevX = 0;
@@ -268,6 +273,7 @@ function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: st
       positions[i * 3 + 1] = cy + prevY * res;
       positions[i * 3 + 2] = zs.length > i ? cz + prevZ * res : 0;
       intensities[i] = rawIntensities.length > i ? rawIntensities[i] : 0;
+      probabilities[i] = rawProbabilities.length > i ? rawProbabilities[i] : 0;
     }
   } else {
     for (let i = 0; i < count; i++) {
@@ -275,10 +281,11 @@ function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: st
       positions[i * 3 + 1] = cy + ys[i] * res;
       positions[i * 3 + 2] = zs.length > i ? cz + zs[i] * res : 0;
       intensities[i] = rawIntensities.length > i ? rawIntensities[i] : 0;
+      probabilities[i] = rawProbabilities.length > i ? rawProbabilities[i] : 0;
     }
   }
 
-  return { topic, positions, count, intensities };
+  return { topic, positions, count, intensities, probabilities };
 }
 
 export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg | ProtoMessage<ros_messages.IPointCloud>): PointCloudBuffer {
@@ -291,14 +298,16 @@ export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg 
     const count = parsed.allPoints.length;
     const buf = new Float32Array(count * 3);
     const intensities = new Uint8Array(count);
+    const probabilities = new Uint8Array(count);
     for (let i = 0; i < count; i++) {
       const p = parsed.allPoints[i];
       buf[i * 3] = p.x;
       buf[i * 3 + 1] = p.y;
       buf[i * 3 + 2] = p.z;
       intensities[i] = Math.round(p.intensity * 255);
+      probabilities[i] = p.probability;
     }
-    return { topic: msg.topic, positions: buf, count, intensities };
+    return { topic: msg.topic, positions: buf, count, intensities, probabilities };
   }
 
   const pcMsg = msg as PointCloudMsg;
