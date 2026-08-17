@@ -45,6 +45,7 @@ export interface RobotCaps {
   forkliftPalletJack?: boolean; // 叉车细分：地牛叉车
   forkliftStacking?: boolean; // 叉车细分：堆垛叉车
   forkliftCrawler?: boolean; // 叉车细分：潜伏式叉车
+  forkliftCounterbalance?: boolean; // 叉车细分：平衡重叉车
 
   // since 2.5.0. Supports `GET/PUT/DELETE /device/usb_devices/saved`,
   // `GET /device/usb_devices`, `POST /services/reset_usb_devices`
