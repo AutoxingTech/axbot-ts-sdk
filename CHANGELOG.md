@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-08-21 robotApi: Add pbstream/image/bag file sizes to map and mapping responses
 - 2026-08-10 axbot-sdk: Support protobuf-format /semantic_points with probabilities, orientations, and speeds
 - 2026-08-06 wsEventEmitter: Add /depth_camera/forktip_l and /depth_camera/forktip_r point cloud and image emitters
 - 2026-08-04 robotApi: Add getMapOverlays/setMapOverlays APIs

@@ -412,6 +412,9 @@ export type MapItem = {
   last_modified_time?: number;
   map_version: number;
   overlays_version: number;
+  // File sizes in bytes (returned by list/detail endpoints)
+  pbstream_size?: number;
+  image_size?: number;
   // Grid info (returned from detail endpoint)
   grid_origin_x?: number;
   grid_origin_y?: number;
@@ -430,6 +433,11 @@ export type MappingTaskItem = {
 
   // mapping specific
   continue_mapping?: boolean;
+
+  // File sizes in bytes (returned by list/detail endpoints)
+  pbstream_size?: number;
+  image_size?: number;
+  bag_size?: number;
 
   // grid info
   grid_origin_x?: number;
