@@ -1,4 +1,4 @@
-import { ros_messages } from './proto/generated.js';
+import { ax_proto_msgs } from './proto/generated.js';
 import { robotApi, type RobotApi } from './robotApi.js';
 
 /**
@@ -10,7 +10,7 @@ import { robotApi, type RobotApi } from './robotApi.js';
  * image data, or another rendering primitive) and how that resource is freed.
  */
 export interface SubmapCacheAdapter<TSlice> {
-  buildSlice(tex: ros_messages.slam.SubmapTexture): TSlice | null;
+  buildSlice(tex: ax_proto_msgs.slam.SubmapTexture): TSlice | null;
   disposeSlice(slice: TSlice): void;
 }
 
@@ -310,7 +310,7 @@ export class SubmapCache<TSlice> {
     }
     reportBytes(result.payloadLength);
 
-    const textures = result.message.textures as ros_messages.slam.SubmapTexture[];
+    const textures = result.message.textures as ax_proto_msgs.slam.SubmapTexture[];
     return {
       slices: textures.map((tex) => this.adapter.buildSlice(tex)),
     };

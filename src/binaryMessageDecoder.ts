@@ -12,7 +12,7 @@
  */
 
 import { gunzipSync } from 'fflate';
-import { ros_messages } from './proto/generated.js';
+import { ax_proto_msgs } from './proto/generated.js';
 import { ProtoMessage } from './topicMessages.js';
 
 /**
@@ -50,47 +50,47 @@ export function decodeBinaryFrame(buffer: ArrayBuffer): ProtoMessage | null {
   }
 
   // 3. Decode RosMessageWrapper
-  let wrapper: ros_messages.RosMessageWrapper;
+  let wrapper: ax_proto_msgs.RosMessageWrapper;
   try {
-    wrapper = ros_messages.RosMessageWrapper.decode(protobufBytes);
+    wrapper = ax_proto_msgs.RosMessageWrapper.decode(protobufBytes);
   } catch {
     console.error('binaryMessageDecoder: protobuf decode failed for', topic);
     return null;
   }
 
   // 4. Convert payload based on message type
-  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.point_cloud) {
+  if (wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.POINT_CLOUD && wrapper.point_cloud) {
     return new ProtoMessage(topic, wrapper.point_cloud);
   }
 
-  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.MAST_STATE && wrapper.mast_state) {
+  if (wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.MAST_STATE && wrapper.mast_state) {
     return new ProtoMessage(topic, wrapper.mast_state);
   }
 
-  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.SUBMAP_LIST && wrapper.submap_list) {
+  if (wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.SUBMAP_LIST && wrapper.submap_list) {
     return new ProtoMessage(topic, wrapper.submap_list);
   }
 
-  if (wrapper.type === ros_messages.RosMessageWrapper.MessageType.RACK_STATES && wrapper.rack_states) {
+  if (wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.RACK_STATES && wrapper.rack_states) {
     return new ProtoMessage(topic, wrapper.rack_states);
   }
 
   if (
-    wrapper.type === ros_messages.RosMessageWrapper.MessageType.MOBILE_NETWORK_STATE &&
+    wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.MOBILE_NETWORK_STATE &&
     wrapper.mobile_network_state
   ) {
     return new ProtoMessage(topic, wrapper.mobile_network_state);
   }
 
   if (
-    wrapper.type === ros_messages.RosMessageWrapper.MessageType.VIDEO_DATA &&
+    wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.VIDEO_DATA &&
     wrapper.video_data
   ) {
     return new ProtoMessage(topic, wrapper.video_data);
   }
 
   if (
-    wrapper.type === ros_messages.RosMessageWrapper.MessageType.DEPTH_IMAGE &&
+    wrapper.type === ax_proto_msgs.RosMessageWrapper.MessageType.DEPTH_IMAGE &&
     wrapper.depth_image
   ) {
     return new ProtoMessage(topic, wrapper.depth_image);

@@ -1,0 +1,143 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "header.proto";
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// A single DWA candidate path. Points are delta-encoded sint32 offsets from
+// the enclosing snapshot's shared origin, quantized by resolution.
+// Scalar attributes use proto3 implicit presence: unset fields cost zero bytes.
+// Colors are removed; the client derives rendering color from the semantic flags.
+message DwaCandidatePath {
+    uint32 id = 1;          // candidate index
+    bool is_selected = 2;   // best/selected trajectory
+
+    repeated sint32 xs = 3 [packed = true];
+    repeated sint32 ys = 4 [packed = true];
+
+    // Semantic flags (drive rendering color on the client).
+    bool is_invalid = 5;      // v2/legacy [INVALID] tag
+    bool has_collision = 6;   // base: collisionRange.isValid()
+    bool is_diagonal = 7;     // v2: diagonal candidate
+
+    // Motion. base: lin/ang/linA/angA; v2: front wheel / steering.
+    float linear_velocity = 8;         // lin
+    float angular_velocity = 9;        // ang
+    float linear_acceleration = 10;    // linA
+    float angular_acceleration = 11;   // angA
+    float front_wheel_velocity = 12;   // v2
+    float steering_angle = 13;         // v2
+
+    // Depart distance (base).
+    float max_depart_distance_left = 14;      // mddl
+    float max_depart_distance_right = 15;     // mddr
+    float ending_depart_distance = 16;        // dc
+    float ending_depart_distance_cost = 17;   // dpc
+
+    // Turn angle (base).
+    float trend_turn_angle = 18;        // nfhc
+    float trend_turn_angle_cost = 19;   // nfpc
+    float ending_turn_angle = 20;       // ehc
+    float ending_turn_angle_cost = 21;  // ehpc
+
+    // Progress (base).
+    float path_progress = 22;                  // pc
+    float progress_scale = 23;                 // psc
+    float progress_penalty_cost = 24;          // ppc
+    float progress_max_penalty_scale = 25;     // pmps
+    float progress_exploit_scale = 26;         // pesc
+    float progress_exploit_penalty_cost = 27;  // peps
+
+    // Topography (base).
+    float max_topography = 28;                        // tmc
+    float max_topography_penalty_cost = 29;           // tmpc
+    float trend_topography = 30;                      // tc
+    float trend_topography_penalty_in_travel_cost = 31;  // tpct
+    float trend_topography_penalty_in_evade_cost = 32;   // tpce
+
+    // Obstacle distance (base).
+    float min_distance_to_obstacle = 33;                    // mdo
+    float min_distance_to_obstacle_cost = 34;               // mdoc
+    float trend_distance_to_obstacle = 35;                  // tdo
+    float trend_distance_to_obstacle_in_travel_cost = 36;   // tdotc
+    float trend_distance_to_obstacle_in_evade_cost = 37;    // tdoec
+    float trend_distance_to_obstacle_with_window = 38;      // tdow
+
+    // Collision (base).
+    int32 collision_range_location = 39;   // cr location
+    int32 collision_range_length = 40;     // cr length
+    float obstacle_penalty_cost = 41;      // opc
+
+    // Angle / cost (base).
+    float curl_angle = 42;           // ca
+    float arc_angle = 43;            // aa
+    float linear_cost = 44;          // lic
+    float angular_cost = 45;         // ac
+    float path_left_distance = 46;   // lc
+
+    // Point / heading indices (base).
+    int32 point_count = 47;           // pn
+    int32 trend_path_index = 48;      // nfni
+    float trend_path_heading = 49;    // nfnsh
+    int32 trend_dwa_index = 50;       // nfndi
+    float trend_dwa_heading = 51;     // nfndh
+    int32 ending_path_index = 52;     // eni
+    float ending_path_heading = 53;   // ensh
+    float ending_dwa_heading = 54;    // endh
+
+    // Travel (base).
+    float travel_distance = 55;             // td
+    float travel_score = 56;                // tsc
+    float evade_score_for_direction = 57;   // escd
+    float evade_score_for_selector = 58;    // escsp
+
+    // Scoring (v2 / legacy v2).
+    float cost = 59;                       // cost
+    float end_point_deviation_cost = 60;   // epdc
+    float end_point_deviation = 61;        // epd
+    float mean_path_deviation_cost = 62;   // mpdc
+    float mean_path_deviation = 63;        // mpd
+    float progress_cost = 64;              // pc
+    float progress_made = 65;              // pm
+    float heading_cost = 66;               // hc
+    float end_point_heading_error = 67;    // eph
+    float steering_cost = 68;              // sc (v2 only)
+    float steering_change_cost = 69;       // scc (v2 only)
+    float velocity_change_cost = 70;       // vcc (v2 only)
+
+    // Per-path quantization resolution, index into a fixed table shared by
+    // encoder and decoder. 0 (unset) = use the snapshot's `resolution`.
+    //   1: 0.0001 m   2: 0.0002 m   3: 0.0005 m
+    //   4: 0.001 m    5: 0.002 m    6: 0.005 m
+    //   7: 0.01 m     8: 0.02 m     9: 0.05 m
+    uint32 resolution_index = 71;
+}
+
+// Which controller produced the candidate paths. Drives which attribute set the
+// client displays (base vs. v2/v2 legacy scoring).
+enum DwaCandidateKind {
+    DWA_KIND_UNSPECIFIED = 0;
+    DWA_KIND_BASE = 1;
+    DWA_KIND_V2 = 2;
+    DWA_KIND_V2_LEGACY = 3;
+}
+
+// Full snapshot of DWA candidate paths published on one topic. Coordinates are
+// quantized by the per-path resolution (resolution_index overrides the snapshot
+// default):
+//   first point = round((coord - origin) / resolution)
+//   later point = round((coord - prev_abs) / resolution)  (delta vs previous quantized point)
+message DwaCandidatePathSet {
+    Header header = 1;
+    double origin_x = 2;    // snapshot origin (robot pose / first point)
+    double origin_y = 3;
+    float resolution = 4;   // quantization, e.g. 0.005 (0.5 cm)
+    repeated DwaCandidatePath paths = 5;
+
+    // Source generator of the whole snapshot (base / v2 / v2 legacy).
+    // Unspecified = unknown/legacy data.
+    DwaCandidateKind kind = 6;
+}

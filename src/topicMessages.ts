@@ -4,7 +4,7 @@
 import { FeatureCollection } from './geojson';
 import { base64ToArrayBuffer } from './utils';
 import { MoveFailReason, MoveType } from './robotApiType';
-import { ros_messages } from './proto/generated.js';
+import { ax_proto_msgs } from './proto/generated.js';
 
 export type RobotControlMode = 'unknown' | 'auto' | 'manual' | 'remote';
 
@@ -65,20 +65,20 @@ export interface DetectedRackMsg extends TopicMsg {
 
 // Re-export commonly used proto types so consumers don't need to import from 'axbot-sdk/proto'.
 // Pattern: class → const+type; interface → type only.
-export const RackSpaceState = ros_messages.RackStates.RackLevelState.SpaceState;
-export type RackSpaceState = ros_messages.RackStates.RackLevelState.SpaceState;
+export const RackSpaceState = ax_proto_msgs.RackStates.RackLevelState.SpaceState;
+export type RackSpaceState = ax_proto_msgs.RackStates.RackLevelState.SpaceState;
 
-export const SubmapEntry = ros_messages.slam.SubmapEntry;
-export type SubmapEntry = ros_messages.slam.SubmapEntry;
-export type ISubmapEntry = ros_messages.slam.ISubmapEntry;
+export const SubmapEntry = ax_proto_msgs.slam.SubmapEntry;
+export type SubmapEntry = ax_proto_msgs.slam.SubmapEntry;
+export type ISubmapEntry = ax_proto_msgs.slam.ISubmapEntry;
 
-export const Pose = ros_messages.Pose;
-export type Pose = ros_messages.Pose;
-export type IPose = ros_messages.IPose;
+export const Pose = ax_proto_msgs.Pose;
+export type Pose = ax_proto_msgs.Pose;
+export type IPose = ax_proto_msgs.IPose;
 
 // Named alias — all fields derived from proto via .data
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface RackStatesMsg extends ProtoMessage<ros_messages.RackStates> { }
+export interface RackStatesMsg extends ProtoMessage<ax_proto_msgs.RackStates> { }
 
 export interface PointCloudMsg extends TopicMsg {
   // x, y, z, probability
@@ -157,7 +157,7 @@ export interface SlamStateMsg extends TopicMsg {
  * All fields derived from proto via `.data`.
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface SubmapListMsg extends ProtoMessage<ros_messages.slam.SubmapList> { }
+export interface SubmapListMsg extends ProtoMessage<ax_proto_msgs.slam.SubmapList> { }
 
 export interface ActionMsg extends TopicMsg {
   timestamp: number;
@@ -481,7 +481,7 @@ export interface BumperStateMsg extends TopicMsg {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface MastStateMsg extends ProtoMessage<ros_messages.MastState> { }
+export interface MastStateMsg extends ProtoMessage<ax_proto_msgs.MastState> { }
 
 export interface Landmark {
   id: string;
@@ -548,9 +548,9 @@ export class ProtoMessage<T = unknown> implements TopicMsg {
 
 // Named aliases for documentation — no field-by-field mapping, all derived from proto
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface MobileNetworkStateMsg extends ProtoMessage<ros_messages.MobileNetworkState> { }
+export interface MobileNetworkStateMsg extends ProtoMessage<ax_proto_msgs.MobileNetworkState> { }
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
-export interface VideoDataMsg extends ProtoMessage<ros_messages.VideoData> { }
+export interface VideoDataMsg extends ProtoMessage<ax_proto_msgs.VideoData> { }
 
 /**
  * Convert any protobufjs Message instance to a plain display object with

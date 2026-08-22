@@ -3,7 +3,7 @@
 
 import { CollectedDataFile } from './topicMessages';
 import { FeatureCollection } from './geojson';
-import { ros_messages } from './proto/generated.js';
+import { ax_proto_msgs } from './proto/generated.js';
 import {
   CollectedDataItem,
   MapItem,
@@ -62,12 +62,12 @@ export interface RobotApiConfig {
 }
 
 export interface SubmapQueryV2FetchResult {
-  message: ros_messages.slam.SubmapQueryV2Response;
+  message: ax_proto_msgs.slam.SubmapQueryV2Response;
   payloadLength: number;
 }
 
 export interface GetMapImageFetchResult {
-  message: ros_messages.slam.GetMapImageResponse;
+  message: ax_proto_msgs.slam.GetMapImageResponse;
   payloadLength: number;
 }
 
@@ -1196,7 +1196,7 @@ export class RobotApi {
     }
 
     const buf = new Uint8Array(await res.arrayBuffer());
-    const message = ros_messages.slam.SubmapQueryV2Response.decode(buf);
+    const message = ax_proto_msgs.slam.SubmapQueryV2Response.decode(buf);
     if (message.status && message.status.code !== 0) {
       throw new Error(
         `SubmapQueryV2 failed ${message.status.code}: ${message.status.message ?? ''}`,
@@ -1247,7 +1247,7 @@ export class RobotApi {
     }
 
     const buf = new Uint8Array(await res.arrayBuffer());
-    const message = ros_messages.slam.GetMapImageResponse.decode(buf);
+    const message = ax_proto_msgs.slam.GetMapImageResponse.decode(buf);
 
     return {
       message,
@@ -1336,14 +1336,14 @@ export class RobotApi {
    * Fetch the list of all published ROS topics with type, publisher count, and subscriber count.
    * GET /ros/rosmaster/topics
    */
-  async getTopicList(signal?: AbortSignal): Promise<ros_messages.TopicListResponse> {
+  async getTopicList(signal?: AbortSignal): Promise<ax_proto_msgs.TopicListResponse> {
     const res = await this.getImpl('ros/rosmaster/topics', signal, { accept: 'protobuf' });
     if (!res.ok) {
       const detail = await this.extractErrorMessage(res);
       throw new ApiError(detail, res.status);
     }
     const buf = new Uint8Array(await res.arrayBuffer());
-    return ros_messages.TopicListResponse.decode(buf);
+    return ax_proto_msgs.TopicListResponse.decode(buf);
   }
 
   /**

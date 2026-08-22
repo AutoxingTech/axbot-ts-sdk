@@ -7,34 +7,34 @@ const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.
 // Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
-export const ros_messages = $root.ros_messages = (() => {
+export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
 
     /**
-     * Namespace ros_messages.
-     * @exports ros_messages
+     * Namespace ax_proto_msgs.
+     * @exports ax_proto_msgs
      * @namespace
      */
-    const ros_messages = {};
+    const ax_proto_msgs = {};
 
-    ros_messages.DepthImage = (function() {
+    ax_proto_msgs.DepthImage = (function() {
 
         /**
          * Properties of a DepthImage.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IDepthImage
          * @property {number|null} [width] DepthImage width
          * @property {number|null} [height] DepthImage height
-         * @property {ros_messages.DepthImage.Encoding.Type|null} [encoding] DepthImage encoding
+         * @property {ax_proto_msgs.DepthImage.Encoding.Type|null} [encoding] DepthImage encoding
          * @property {Uint8Array|null} [image_data] DepthImage image_data
          */
 
         /**
          * Constructs a new DepthImage.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a DepthImage.
          * @implements IDepthImage
          * @constructor
-         * @param {ros_messages.IDepthImage=} [properties] Properties to set
+         * @param {ax_proto_msgs.IDepthImage=} [properties] Properties to set
          */
         function DepthImage(properties) {
             if (properties)
@@ -46,7 +46,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * DepthImage width.
          * @member {number} width
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @instance
          */
         DepthImage.prototype.width = 0;
@@ -54,15 +54,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * DepthImage height.
          * @member {number} height
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @instance
          */
         DepthImage.prototype.height = 0;
 
         /**
          * DepthImage encoding.
-         * @member {ros_messages.DepthImage.Encoding.Type} encoding
-         * @memberof ros_messages.DepthImage
+         * @member {ax_proto_msgs.DepthImage.Encoding.Type} encoding
+         * @memberof ax_proto_msgs.DepthImage
          * @instance
          */
         DepthImage.prototype.encoding = 0;
@@ -70,7 +70,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * DepthImage image_data.
          * @member {Uint8Array} image_data
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @instance
          */
         DepthImage.prototype.image_data = $util.newBuffer([]);
@@ -78,21 +78,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new DepthImage instance using the specified properties.
          * @function create
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
-         * @param {ros_messages.IDepthImage=} [properties] Properties to set
-         * @returns {ros_messages.DepthImage} DepthImage instance
+         * @param {ax_proto_msgs.IDepthImage=} [properties] Properties to set
+         * @returns {ax_proto_msgs.DepthImage} DepthImage instance
          */
         DepthImage.create = function create(properties) {
             return new DepthImage(properties);
         };
 
         /**
-         * Encodes the specified DepthImage message. Does not implicitly {@link ros_messages.DepthImage.verify|verify} messages.
+         * Encodes the specified DepthImage message. Does not implicitly {@link ax_proto_msgs.DepthImage.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
-         * @param {ros_messages.IDepthImage} message DepthImage message or plain object to encode
+         * @param {ax_proto_msgs.IDepthImage} message DepthImage message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -111,11 +111,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified DepthImage message, length delimited. Does not implicitly {@link ros_messages.DepthImage.verify|verify} messages.
+         * Encodes the specified DepthImage message, length delimited. Does not implicitly {@link ax_proto_msgs.DepthImage.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
-         * @param {ros_messages.IDepthImage} message DepthImage message or plain object to encode
+         * @param {ax_proto_msgs.IDepthImage} message DepthImage message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -126,18 +126,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a DepthImage message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.DepthImage} DepthImage
+         * @returns {ax_proto_msgs.DepthImage} DepthImage
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         DepthImage.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.DepthImage();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.DepthImage();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -170,10 +170,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a DepthImage message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.DepthImage} DepthImage
+         * @returns {ax_proto_msgs.DepthImage} DepthImage
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -186,7 +186,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a DepthImage message.
          * @function verify
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -206,6 +206,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "encoding: enum value expected";
                 case 0:
                 case 1:
+                case 2:
                     break;
                 }
             if (message.image_data != null && message.hasOwnProperty("image_data"))
@@ -217,15 +218,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a DepthImage message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.DepthImage} DepthImage
+         * @returns {ax_proto_msgs.DepthImage} DepthImage
          */
         DepthImage.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.DepthImage)
+            if (object instanceof $root.ax_proto_msgs.DepthImage)
                 return object;
-            let message = new $root.ros_messages.DepthImage();
+            let message = new $root.ax_proto_msgs.DepthImage();
             if (object.width != null)
                 message.width = object.width | 0;
             if (object.height != null)
@@ -245,6 +246,10 @@ export const ros_messages = $root.ros_messages = (() => {
             case 1:
                 message.encoding = 1;
                 break;
+            case "PNG_GRAY_8":
+            case 2:
+                message.encoding = 2;
+                break;
             }
             if (object.image_data != null)
                 if (typeof object.image_data === "string")
@@ -257,9 +262,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a DepthImage message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
-         * @param {ros_messages.DepthImage} message DepthImage
+         * @param {ax_proto_msgs.DepthImage} message DepthImage
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -284,7 +289,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.height != null && message.hasOwnProperty("height"))
                 object.height = message.height;
             if (message.encoding != null && message.hasOwnProperty("encoding"))
-                object.encoding = options.enums === String ? $root.ros_messages.DepthImage.Encoding.Type[message.encoding] === undefined ? message.encoding : $root.ros_messages.DepthImage.Encoding.Type[message.encoding] : message.encoding;
+                object.encoding = options.enums === String ? $root.ax_proto_msgs.DepthImage.Encoding.Type[message.encoding] === undefined ? message.encoding : $root.ax_proto_msgs.DepthImage.Encoding.Type[message.encoding] : message.encoding;
             if (message.image_data != null && message.hasOwnProperty("image_data"))
                 object.image_data = options.bytes === String ? $util.base64.encode(message.image_data, 0, message.image_data.length) : options.bytes === Array ? Array.prototype.slice.call(message.image_data) : message.image_data;
             return object;
@@ -293,7 +298,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this DepthImage to JSON.
          * @function toJSON
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -304,7 +309,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for DepthImage
          * @function getTypeUrl
-         * @memberof ros_messages.DepthImage
+         * @memberof ax_proto_msgs.DepthImage
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -313,24 +318,24 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.DepthImage";
+            return typeUrlPrefix + "/ax_proto_msgs.DepthImage";
         };
 
         DepthImage.Encoding = (function() {
 
             /**
              * Properties of an Encoding.
-             * @memberof ros_messages.DepthImage
+             * @memberof ax_proto_msgs.DepthImage
              * @interface IEncoding
              */
 
             /**
              * Constructs a new Encoding.
-             * @memberof ros_messages.DepthImage
+             * @memberof ax_proto_msgs.DepthImage
              * @classdesc Represents an Encoding.
              * @implements IEncoding
              * @constructor
-             * @param {ros_messages.DepthImage.IEncoding=} [properties] Properties to set
+             * @param {ax_proto_msgs.DepthImage.IEncoding=} [properties] Properties to set
              */
             function Encoding(properties) {
                 if (properties)
@@ -342,21 +347,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new Encoding instance using the specified properties.
              * @function create
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
-             * @param {ros_messages.DepthImage.IEncoding=} [properties] Properties to set
-             * @returns {ros_messages.DepthImage.Encoding} Encoding instance
+             * @param {ax_proto_msgs.DepthImage.IEncoding=} [properties] Properties to set
+             * @returns {ax_proto_msgs.DepthImage.Encoding} Encoding instance
              */
             Encoding.create = function create(properties) {
                 return new Encoding(properties);
             };
 
             /**
-             * Encodes the specified Encoding message. Does not implicitly {@link ros_messages.DepthImage.Encoding.verify|verify} messages.
+             * Encodes the specified Encoding message. Does not implicitly {@link ax_proto_msgs.DepthImage.Encoding.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
-             * @param {ros_messages.DepthImage.IEncoding} message Encoding message or plain object to encode
+             * @param {ax_proto_msgs.DepthImage.IEncoding} message Encoding message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -367,11 +372,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified Encoding message, length delimited. Does not implicitly {@link ros_messages.DepthImage.Encoding.verify|verify} messages.
+             * Encodes the specified Encoding message, length delimited. Does not implicitly {@link ax_proto_msgs.DepthImage.Encoding.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
-             * @param {ros_messages.DepthImage.IEncoding} message Encoding message or plain object to encode
+             * @param {ax_proto_msgs.DepthImage.IEncoding} message Encoding message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -382,18 +387,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes an Encoding message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.DepthImage.Encoding} Encoding
+             * @returns {ax_proto_msgs.DepthImage.Encoding} Encoding
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             Encoding.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.DepthImage.Encoding();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.DepthImage.Encoding();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -410,10 +415,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes an Encoding message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.DepthImage.Encoding} Encoding
+             * @returns {ax_proto_msgs.DepthImage.Encoding} Encoding
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -426,7 +431,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies an Encoding message.
              * @function verify
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -440,23 +445,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates an Encoding message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.DepthImage.Encoding} Encoding
+             * @returns {ax_proto_msgs.DepthImage.Encoding} Encoding
              */
             Encoding.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.DepthImage.Encoding)
+                if (object instanceof $root.ax_proto_msgs.DepthImage.Encoding)
                     return object;
-                return new $root.ros_messages.DepthImage.Encoding();
+                return new $root.ax_proto_msgs.DepthImage.Encoding();
             };
 
             /**
              * Creates a plain object from an Encoding message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
-             * @param {ros_messages.DepthImage.Encoding} message Encoding
+             * @param {ax_proto_msgs.DepthImage.Encoding} message Encoding
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -467,7 +472,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this Encoding to JSON.
              * @function toJSON
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -478,7 +483,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for Encoding
              * @function getTypeUrl
-             * @memberof ros_messages.DepthImage.Encoding
+             * @memberof ax_proto_msgs.DepthImage.Encoding
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -487,20 +492,22 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.DepthImage.Encoding";
+                return typeUrlPrefix + "/ax_proto_msgs.DepthImage.Encoding";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.DepthImage.Encoding.Type
+             * @name ax_proto_msgs.DepthImage.Encoding.Type
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} PNG_INDEXED_8=1 PNG_INDEXED_8 value
+             * @property {number} PNG_GRAY_8=2 PNG_GRAY_8 value
              */
             Encoding.Type = (function() {
                 const valuesById = {}, values = Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
                 values[valuesById[1] = "PNG_INDEXED_8"] = 1;
+                values[valuesById[2] = "PNG_GRAY_8"] = 2;
                 return values;
             })();
 
@@ -510,11 +517,2538 @@ export const ros_messages = $root.ros_messages = (() => {
         return DepthImage;
     })();
 
-    ros_messages.Pose = (function() {
+    ax_proto_msgs.DwaCandidatePath = (function() {
+
+        /**
+         * Properties of a DwaCandidatePath.
+         * @memberof ax_proto_msgs
+         * @interface IDwaCandidatePath
+         * @property {number|null} [id] DwaCandidatePath id
+         * @property {boolean|null} [is_selected] DwaCandidatePath is_selected
+         * @property {Array.<number>|null} [xs] DwaCandidatePath xs
+         * @property {Array.<number>|null} [ys] DwaCandidatePath ys
+         * @property {boolean|null} [is_invalid] DwaCandidatePath is_invalid
+         * @property {boolean|null} [has_collision] DwaCandidatePath has_collision
+         * @property {boolean|null} [is_diagonal] DwaCandidatePath is_diagonal
+         * @property {number|null} [linear_velocity] DwaCandidatePath linear_velocity
+         * @property {number|null} [angular_velocity] DwaCandidatePath angular_velocity
+         * @property {number|null} [linear_acceleration] DwaCandidatePath linear_acceleration
+         * @property {number|null} [angular_acceleration] DwaCandidatePath angular_acceleration
+         * @property {number|null} [front_wheel_velocity] DwaCandidatePath front_wheel_velocity
+         * @property {number|null} [steering_angle] DwaCandidatePath steering_angle
+         * @property {number|null} [max_depart_distance_left] DwaCandidatePath max_depart_distance_left
+         * @property {number|null} [max_depart_distance_right] DwaCandidatePath max_depart_distance_right
+         * @property {number|null} [ending_depart_distance] DwaCandidatePath ending_depart_distance
+         * @property {number|null} [ending_depart_distance_cost] DwaCandidatePath ending_depart_distance_cost
+         * @property {number|null} [trend_turn_angle] DwaCandidatePath trend_turn_angle
+         * @property {number|null} [trend_turn_angle_cost] DwaCandidatePath trend_turn_angle_cost
+         * @property {number|null} [ending_turn_angle] DwaCandidatePath ending_turn_angle
+         * @property {number|null} [ending_turn_angle_cost] DwaCandidatePath ending_turn_angle_cost
+         * @property {number|null} [path_progress] DwaCandidatePath path_progress
+         * @property {number|null} [progress_scale] DwaCandidatePath progress_scale
+         * @property {number|null} [progress_penalty_cost] DwaCandidatePath progress_penalty_cost
+         * @property {number|null} [progress_max_penalty_scale] DwaCandidatePath progress_max_penalty_scale
+         * @property {number|null} [progress_exploit_scale] DwaCandidatePath progress_exploit_scale
+         * @property {number|null} [progress_exploit_penalty_cost] DwaCandidatePath progress_exploit_penalty_cost
+         * @property {number|null} [max_topography] DwaCandidatePath max_topography
+         * @property {number|null} [max_topography_penalty_cost] DwaCandidatePath max_topography_penalty_cost
+         * @property {number|null} [trend_topography] DwaCandidatePath trend_topography
+         * @property {number|null} [trend_topography_penalty_in_travel_cost] DwaCandidatePath trend_topography_penalty_in_travel_cost
+         * @property {number|null} [trend_topography_penalty_in_evade_cost] DwaCandidatePath trend_topography_penalty_in_evade_cost
+         * @property {number|null} [min_distance_to_obstacle] DwaCandidatePath min_distance_to_obstacle
+         * @property {number|null} [min_distance_to_obstacle_cost] DwaCandidatePath min_distance_to_obstacle_cost
+         * @property {number|null} [trend_distance_to_obstacle] DwaCandidatePath trend_distance_to_obstacle
+         * @property {number|null} [trend_distance_to_obstacle_in_travel_cost] DwaCandidatePath trend_distance_to_obstacle_in_travel_cost
+         * @property {number|null} [trend_distance_to_obstacle_in_evade_cost] DwaCandidatePath trend_distance_to_obstacle_in_evade_cost
+         * @property {number|null} [trend_distance_to_obstacle_with_window] DwaCandidatePath trend_distance_to_obstacle_with_window
+         * @property {number|null} [collision_range_location] DwaCandidatePath collision_range_location
+         * @property {number|null} [collision_range_length] DwaCandidatePath collision_range_length
+         * @property {number|null} [obstacle_penalty_cost] DwaCandidatePath obstacle_penalty_cost
+         * @property {number|null} [curl_angle] DwaCandidatePath curl_angle
+         * @property {number|null} [arc_angle] DwaCandidatePath arc_angle
+         * @property {number|null} [linear_cost] DwaCandidatePath linear_cost
+         * @property {number|null} [angular_cost] DwaCandidatePath angular_cost
+         * @property {number|null} [path_left_distance] DwaCandidatePath path_left_distance
+         * @property {number|null} [point_count] DwaCandidatePath point_count
+         * @property {number|null} [trend_path_index] DwaCandidatePath trend_path_index
+         * @property {number|null} [trend_path_heading] DwaCandidatePath trend_path_heading
+         * @property {number|null} [trend_dwa_index] DwaCandidatePath trend_dwa_index
+         * @property {number|null} [trend_dwa_heading] DwaCandidatePath trend_dwa_heading
+         * @property {number|null} [ending_path_index] DwaCandidatePath ending_path_index
+         * @property {number|null} [ending_path_heading] DwaCandidatePath ending_path_heading
+         * @property {number|null} [ending_dwa_heading] DwaCandidatePath ending_dwa_heading
+         * @property {number|null} [travel_distance] DwaCandidatePath travel_distance
+         * @property {number|null} [travel_score] DwaCandidatePath travel_score
+         * @property {number|null} [evade_score_for_direction] DwaCandidatePath evade_score_for_direction
+         * @property {number|null} [evade_score_for_selector] DwaCandidatePath evade_score_for_selector
+         * @property {number|null} [cost] DwaCandidatePath cost
+         * @property {number|null} [end_point_deviation_cost] DwaCandidatePath end_point_deviation_cost
+         * @property {number|null} [end_point_deviation] DwaCandidatePath end_point_deviation
+         * @property {number|null} [mean_path_deviation_cost] DwaCandidatePath mean_path_deviation_cost
+         * @property {number|null} [mean_path_deviation] DwaCandidatePath mean_path_deviation
+         * @property {number|null} [progress_cost] DwaCandidatePath progress_cost
+         * @property {number|null} [progress_made] DwaCandidatePath progress_made
+         * @property {number|null} [heading_cost] DwaCandidatePath heading_cost
+         * @property {number|null} [end_point_heading_error] DwaCandidatePath end_point_heading_error
+         * @property {number|null} [steering_cost] DwaCandidatePath steering_cost
+         * @property {number|null} [steering_change_cost] DwaCandidatePath steering_change_cost
+         * @property {number|null} [velocity_change_cost] DwaCandidatePath velocity_change_cost
+         * @property {number|null} [resolution_index] DwaCandidatePath resolution_index
+         */
+
+        /**
+         * Constructs a new DwaCandidatePath.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a DwaCandidatePath.
+         * @implements IDwaCandidatePath
+         * @constructor
+         * @param {ax_proto_msgs.IDwaCandidatePath=} [properties] Properties to set
+         */
+        function DwaCandidatePath(properties) {
+            this.xs = [];
+            this.ys = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DwaCandidatePath id.
+         * @member {number} id
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.id = 0;
+
+        /**
+         * DwaCandidatePath is_selected.
+         * @member {boolean} is_selected
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.is_selected = false;
+
+        /**
+         * DwaCandidatePath xs.
+         * @member {Array.<number>} xs
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.xs = $util.emptyArray;
+
+        /**
+         * DwaCandidatePath ys.
+         * @member {Array.<number>} ys
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ys = $util.emptyArray;
+
+        /**
+         * DwaCandidatePath is_invalid.
+         * @member {boolean} is_invalid
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.is_invalid = false;
+
+        /**
+         * DwaCandidatePath has_collision.
+         * @member {boolean} has_collision
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.has_collision = false;
+
+        /**
+         * DwaCandidatePath is_diagonal.
+         * @member {boolean} is_diagonal
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.is_diagonal = false;
+
+        /**
+         * DwaCandidatePath linear_velocity.
+         * @member {number} linear_velocity
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.linear_velocity = 0;
+
+        /**
+         * DwaCandidatePath angular_velocity.
+         * @member {number} angular_velocity
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.angular_velocity = 0;
+
+        /**
+         * DwaCandidatePath linear_acceleration.
+         * @member {number} linear_acceleration
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.linear_acceleration = 0;
+
+        /**
+         * DwaCandidatePath angular_acceleration.
+         * @member {number} angular_acceleration
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.angular_acceleration = 0;
+
+        /**
+         * DwaCandidatePath front_wheel_velocity.
+         * @member {number} front_wheel_velocity
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.front_wheel_velocity = 0;
+
+        /**
+         * DwaCandidatePath steering_angle.
+         * @member {number} steering_angle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.steering_angle = 0;
+
+        /**
+         * DwaCandidatePath max_depart_distance_left.
+         * @member {number} max_depart_distance_left
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.max_depart_distance_left = 0;
+
+        /**
+         * DwaCandidatePath max_depart_distance_right.
+         * @member {number} max_depart_distance_right
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.max_depart_distance_right = 0;
+
+        /**
+         * DwaCandidatePath ending_depart_distance.
+         * @member {number} ending_depart_distance
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_depart_distance = 0;
+
+        /**
+         * DwaCandidatePath ending_depart_distance_cost.
+         * @member {number} ending_depart_distance_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_depart_distance_cost = 0;
+
+        /**
+         * DwaCandidatePath trend_turn_angle.
+         * @member {number} trend_turn_angle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_turn_angle = 0;
+
+        /**
+         * DwaCandidatePath trend_turn_angle_cost.
+         * @member {number} trend_turn_angle_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_turn_angle_cost = 0;
+
+        /**
+         * DwaCandidatePath ending_turn_angle.
+         * @member {number} ending_turn_angle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_turn_angle = 0;
+
+        /**
+         * DwaCandidatePath ending_turn_angle_cost.
+         * @member {number} ending_turn_angle_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_turn_angle_cost = 0;
+
+        /**
+         * DwaCandidatePath path_progress.
+         * @member {number} path_progress
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.path_progress = 0;
+
+        /**
+         * DwaCandidatePath progress_scale.
+         * @member {number} progress_scale
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_scale = 0;
+
+        /**
+         * DwaCandidatePath progress_penalty_cost.
+         * @member {number} progress_penalty_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_penalty_cost = 0;
+
+        /**
+         * DwaCandidatePath progress_max_penalty_scale.
+         * @member {number} progress_max_penalty_scale
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_max_penalty_scale = 0;
+
+        /**
+         * DwaCandidatePath progress_exploit_scale.
+         * @member {number} progress_exploit_scale
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_exploit_scale = 0;
+
+        /**
+         * DwaCandidatePath progress_exploit_penalty_cost.
+         * @member {number} progress_exploit_penalty_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_exploit_penalty_cost = 0;
+
+        /**
+         * DwaCandidatePath max_topography.
+         * @member {number} max_topography
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.max_topography = 0;
+
+        /**
+         * DwaCandidatePath max_topography_penalty_cost.
+         * @member {number} max_topography_penalty_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.max_topography_penalty_cost = 0;
+
+        /**
+         * DwaCandidatePath trend_topography.
+         * @member {number} trend_topography
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_topography = 0;
+
+        /**
+         * DwaCandidatePath trend_topography_penalty_in_travel_cost.
+         * @member {number} trend_topography_penalty_in_travel_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_topography_penalty_in_travel_cost = 0;
+
+        /**
+         * DwaCandidatePath trend_topography_penalty_in_evade_cost.
+         * @member {number} trend_topography_penalty_in_evade_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_topography_penalty_in_evade_cost = 0;
+
+        /**
+         * DwaCandidatePath min_distance_to_obstacle.
+         * @member {number} min_distance_to_obstacle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.min_distance_to_obstacle = 0;
+
+        /**
+         * DwaCandidatePath min_distance_to_obstacle_cost.
+         * @member {number} min_distance_to_obstacle_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.min_distance_to_obstacle_cost = 0;
+
+        /**
+         * DwaCandidatePath trend_distance_to_obstacle.
+         * @member {number} trend_distance_to_obstacle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_distance_to_obstacle = 0;
+
+        /**
+         * DwaCandidatePath trend_distance_to_obstacle_in_travel_cost.
+         * @member {number} trend_distance_to_obstacle_in_travel_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_distance_to_obstacle_in_travel_cost = 0;
+
+        /**
+         * DwaCandidatePath trend_distance_to_obstacle_in_evade_cost.
+         * @member {number} trend_distance_to_obstacle_in_evade_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_distance_to_obstacle_in_evade_cost = 0;
+
+        /**
+         * DwaCandidatePath trend_distance_to_obstacle_with_window.
+         * @member {number} trend_distance_to_obstacle_with_window
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_distance_to_obstacle_with_window = 0;
+
+        /**
+         * DwaCandidatePath collision_range_location.
+         * @member {number} collision_range_location
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.collision_range_location = 0;
+
+        /**
+         * DwaCandidatePath collision_range_length.
+         * @member {number} collision_range_length
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.collision_range_length = 0;
+
+        /**
+         * DwaCandidatePath obstacle_penalty_cost.
+         * @member {number} obstacle_penalty_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.obstacle_penalty_cost = 0;
+
+        /**
+         * DwaCandidatePath curl_angle.
+         * @member {number} curl_angle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.curl_angle = 0;
+
+        /**
+         * DwaCandidatePath arc_angle.
+         * @member {number} arc_angle
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.arc_angle = 0;
+
+        /**
+         * DwaCandidatePath linear_cost.
+         * @member {number} linear_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.linear_cost = 0;
+
+        /**
+         * DwaCandidatePath angular_cost.
+         * @member {number} angular_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.angular_cost = 0;
+
+        /**
+         * DwaCandidatePath path_left_distance.
+         * @member {number} path_left_distance
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.path_left_distance = 0;
+
+        /**
+         * DwaCandidatePath point_count.
+         * @member {number} point_count
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.point_count = 0;
+
+        /**
+         * DwaCandidatePath trend_path_index.
+         * @member {number} trend_path_index
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_path_index = 0;
+
+        /**
+         * DwaCandidatePath trend_path_heading.
+         * @member {number} trend_path_heading
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_path_heading = 0;
+
+        /**
+         * DwaCandidatePath trend_dwa_index.
+         * @member {number} trend_dwa_index
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_dwa_index = 0;
+
+        /**
+         * DwaCandidatePath trend_dwa_heading.
+         * @member {number} trend_dwa_heading
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.trend_dwa_heading = 0;
+
+        /**
+         * DwaCandidatePath ending_path_index.
+         * @member {number} ending_path_index
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_path_index = 0;
+
+        /**
+         * DwaCandidatePath ending_path_heading.
+         * @member {number} ending_path_heading
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_path_heading = 0;
+
+        /**
+         * DwaCandidatePath ending_dwa_heading.
+         * @member {number} ending_dwa_heading
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.ending_dwa_heading = 0;
+
+        /**
+         * DwaCandidatePath travel_distance.
+         * @member {number} travel_distance
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.travel_distance = 0;
+
+        /**
+         * DwaCandidatePath travel_score.
+         * @member {number} travel_score
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.travel_score = 0;
+
+        /**
+         * DwaCandidatePath evade_score_for_direction.
+         * @member {number} evade_score_for_direction
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.evade_score_for_direction = 0;
+
+        /**
+         * DwaCandidatePath evade_score_for_selector.
+         * @member {number} evade_score_for_selector
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.evade_score_for_selector = 0;
+
+        /**
+         * DwaCandidatePath cost.
+         * @member {number} cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.cost = 0;
+
+        /**
+         * DwaCandidatePath end_point_deviation_cost.
+         * @member {number} end_point_deviation_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.end_point_deviation_cost = 0;
+
+        /**
+         * DwaCandidatePath end_point_deviation.
+         * @member {number} end_point_deviation
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.end_point_deviation = 0;
+
+        /**
+         * DwaCandidatePath mean_path_deviation_cost.
+         * @member {number} mean_path_deviation_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.mean_path_deviation_cost = 0;
+
+        /**
+         * DwaCandidatePath mean_path_deviation.
+         * @member {number} mean_path_deviation
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.mean_path_deviation = 0;
+
+        /**
+         * DwaCandidatePath progress_cost.
+         * @member {number} progress_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_cost = 0;
+
+        /**
+         * DwaCandidatePath progress_made.
+         * @member {number} progress_made
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.progress_made = 0;
+
+        /**
+         * DwaCandidatePath heading_cost.
+         * @member {number} heading_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.heading_cost = 0;
+
+        /**
+         * DwaCandidatePath end_point_heading_error.
+         * @member {number} end_point_heading_error
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.end_point_heading_error = 0;
+
+        /**
+         * DwaCandidatePath steering_cost.
+         * @member {number} steering_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.steering_cost = 0;
+
+        /**
+         * DwaCandidatePath steering_change_cost.
+         * @member {number} steering_change_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.steering_change_cost = 0;
+
+        /**
+         * DwaCandidatePath velocity_change_cost.
+         * @member {number} velocity_change_cost
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.velocity_change_cost = 0;
+
+        /**
+         * DwaCandidatePath resolution_index.
+         * @member {number} resolution_index
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         */
+        DwaCandidatePath.prototype.resolution_index = 0;
+
+        /**
+         * Creates a new DwaCandidatePath instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {ax_proto_msgs.IDwaCandidatePath=} [properties] Properties to set
+         * @returns {ax_proto_msgs.DwaCandidatePath} DwaCandidatePath instance
+         */
+        DwaCandidatePath.create = function create(properties) {
+            return new DwaCandidatePath(properties);
+        };
+
+        /**
+         * Encodes the specified DwaCandidatePath message. Does not implicitly {@link ax_proto_msgs.DwaCandidatePath.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {ax_proto_msgs.IDwaCandidatePath} message DwaCandidatePath message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DwaCandidatePath.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
+            if (message.is_selected != null && Object.hasOwnProperty.call(message, "is_selected"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.is_selected);
+            if (message.xs != null && message.xs.length) {
+                writer.uint32(/* id 3, wireType 2 =*/26).fork();
+                for (let i = 0; i < message.xs.length; ++i)
+                    writer.sint32(message.xs[i]);
+                writer.ldelim();
+            }
+            if (message.ys != null && message.ys.length) {
+                writer.uint32(/* id 4, wireType 2 =*/34).fork();
+                for (let i = 0; i < message.ys.length; ++i)
+                    writer.sint32(message.ys[i]);
+                writer.ldelim();
+            }
+            if (message.is_invalid != null && Object.hasOwnProperty.call(message, "is_invalid"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.is_invalid);
+            if (message.has_collision != null && Object.hasOwnProperty.call(message, "has_collision"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.has_collision);
+            if (message.is_diagonal != null && Object.hasOwnProperty.call(message, "is_diagonal"))
+                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.is_diagonal);
+            if (message.linear_velocity != null && Object.hasOwnProperty.call(message, "linear_velocity"))
+                writer.uint32(/* id 8, wireType 5 =*/69).float(message.linear_velocity);
+            if (message.angular_velocity != null && Object.hasOwnProperty.call(message, "angular_velocity"))
+                writer.uint32(/* id 9, wireType 5 =*/77).float(message.angular_velocity);
+            if (message.linear_acceleration != null && Object.hasOwnProperty.call(message, "linear_acceleration"))
+                writer.uint32(/* id 10, wireType 5 =*/85).float(message.linear_acceleration);
+            if (message.angular_acceleration != null && Object.hasOwnProperty.call(message, "angular_acceleration"))
+                writer.uint32(/* id 11, wireType 5 =*/93).float(message.angular_acceleration);
+            if (message.front_wheel_velocity != null && Object.hasOwnProperty.call(message, "front_wheel_velocity"))
+                writer.uint32(/* id 12, wireType 5 =*/101).float(message.front_wheel_velocity);
+            if (message.steering_angle != null && Object.hasOwnProperty.call(message, "steering_angle"))
+                writer.uint32(/* id 13, wireType 5 =*/109).float(message.steering_angle);
+            if (message.max_depart_distance_left != null && Object.hasOwnProperty.call(message, "max_depart_distance_left"))
+                writer.uint32(/* id 14, wireType 5 =*/117).float(message.max_depart_distance_left);
+            if (message.max_depart_distance_right != null && Object.hasOwnProperty.call(message, "max_depart_distance_right"))
+                writer.uint32(/* id 15, wireType 5 =*/125).float(message.max_depart_distance_right);
+            if (message.ending_depart_distance != null && Object.hasOwnProperty.call(message, "ending_depart_distance"))
+                writer.uint32(/* id 16, wireType 5 =*/133).float(message.ending_depart_distance);
+            if (message.ending_depart_distance_cost != null && Object.hasOwnProperty.call(message, "ending_depart_distance_cost"))
+                writer.uint32(/* id 17, wireType 5 =*/141).float(message.ending_depart_distance_cost);
+            if (message.trend_turn_angle != null && Object.hasOwnProperty.call(message, "trend_turn_angle"))
+                writer.uint32(/* id 18, wireType 5 =*/149).float(message.trend_turn_angle);
+            if (message.trend_turn_angle_cost != null && Object.hasOwnProperty.call(message, "trend_turn_angle_cost"))
+                writer.uint32(/* id 19, wireType 5 =*/157).float(message.trend_turn_angle_cost);
+            if (message.ending_turn_angle != null && Object.hasOwnProperty.call(message, "ending_turn_angle"))
+                writer.uint32(/* id 20, wireType 5 =*/165).float(message.ending_turn_angle);
+            if (message.ending_turn_angle_cost != null && Object.hasOwnProperty.call(message, "ending_turn_angle_cost"))
+                writer.uint32(/* id 21, wireType 5 =*/173).float(message.ending_turn_angle_cost);
+            if (message.path_progress != null && Object.hasOwnProperty.call(message, "path_progress"))
+                writer.uint32(/* id 22, wireType 5 =*/181).float(message.path_progress);
+            if (message.progress_scale != null && Object.hasOwnProperty.call(message, "progress_scale"))
+                writer.uint32(/* id 23, wireType 5 =*/189).float(message.progress_scale);
+            if (message.progress_penalty_cost != null && Object.hasOwnProperty.call(message, "progress_penalty_cost"))
+                writer.uint32(/* id 24, wireType 5 =*/197).float(message.progress_penalty_cost);
+            if (message.progress_max_penalty_scale != null && Object.hasOwnProperty.call(message, "progress_max_penalty_scale"))
+                writer.uint32(/* id 25, wireType 5 =*/205).float(message.progress_max_penalty_scale);
+            if (message.progress_exploit_scale != null && Object.hasOwnProperty.call(message, "progress_exploit_scale"))
+                writer.uint32(/* id 26, wireType 5 =*/213).float(message.progress_exploit_scale);
+            if (message.progress_exploit_penalty_cost != null && Object.hasOwnProperty.call(message, "progress_exploit_penalty_cost"))
+                writer.uint32(/* id 27, wireType 5 =*/221).float(message.progress_exploit_penalty_cost);
+            if (message.max_topography != null && Object.hasOwnProperty.call(message, "max_topography"))
+                writer.uint32(/* id 28, wireType 5 =*/229).float(message.max_topography);
+            if (message.max_topography_penalty_cost != null && Object.hasOwnProperty.call(message, "max_topography_penalty_cost"))
+                writer.uint32(/* id 29, wireType 5 =*/237).float(message.max_topography_penalty_cost);
+            if (message.trend_topography != null && Object.hasOwnProperty.call(message, "trend_topography"))
+                writer.uint32(/* id 30, wireType 5 =*/245).float(message.trend_topography);
+            if (message.trend_topography_penalty_in_travel_cost != null && Object.hasOwnProperty.call(message, "trend_topography_penalty_in_travel_cost"))
+                writer.uint32(/* id 31, wireType 5 =*/253).float(message.trend_topography_penalty_in_travel_cost);
+            if (message.trend_topography_penalty_in_evade_cost != null && Object.hasOwnProperty.call(message, "trend_topography_penalty_in_evade_cost"))
+                writer.uint32(/* id 32, wireType 5 =*/261).float(message.trend_topography_penalty_in_evade_cost);
+            if (message.min_distance_to_obstacle != null && Object.hasOwnProperty.call(message, "min_distance_to_obstacle"))
+                writer.uint32(/* id 33, wireType 5 =*/269).float(message.min_distance_to_obstacle);
+            if (message.min_distance_to_obstacle_cost != null && Object.hasOwnProperty.call(message, "min_distance_to_obstacle_cost"))
+                writer.uint32(/* id 34, wireType 5 =*/277).float(message.min_distance_to_obstacle_cost);
+            if (message.trend_distance_to_obstacle != null && Object.hasOwnProperty.call(message, "trend_distance_to_obstacle"))
+                writer.uint32(/* id 35, wireType 5 =*/285).float(message.trend_distance_to_obstacle);
+            if (message.trend_distance_to_obstacle_in_travel_cost != null && Object.hasOwnProperty.call(message, "trend_distance_to_obstacle_in_travel_cost"))
+                writer.uint32(/* id 36, wireType 5 =*/293).float(message.trend_distance_to_obstacle_in_travel_cost);
+            if (message.trend_distance_to_obstacle_in_evade_cost != null && Object.hasOwnProperty.call(message, "trend_distance_to_obstacle_in_evade_cost"))
+                writer.uint32(/* id 37, wireType 5 =*/301).float(message.trend_distance_to_obstacle_in_evade_cost);
+            if (message.trend_distance_to_obstacle_with_window != null && Object.hasOwnProperty.call(message, "trend_distance_to_obstacle_with_window"))
+                writer.uint32(/* id 38, wireType 5 =*/309).float(message.trend_distance_to_obstacle_with_window);
+            if (message.collision_range_location != null && Object.hasOwnProperty.call(message, "collision_range_location"))
+                writer.uint32(/* id 39, wireType 0 =*/312).int32(message.collision_range_location);
+            if (message.collision_range_length != null && Object.hasOwnProperty.call(message, "collision_range_length"))
+                writer.uint32(/* id 40, wireType 0 =*/320).int32(message.collision_range_length);
+            if (message.obstacle_penalty_cost != null && Object.hasOwnProperty.call(message, "obstacle_penalty_cost"))
+                writer.uint32(/* id 41, wireType 5 =*/333).float(message.obstacle_penalty_cost);
+            if (message.curl_angle != null && Object.hasOwnProperty.call(message, "curl_angle"))
+                writer.uint32(/* id 42, wireType 5 =*/341).float(message.curl_angle);
+            if (message.arc_angle != null && Object.hasOwnProperty.call(message, "arc_angle"))
+                writer.uint32(/* id 43, wireType 5 =*/349).float(message.arc_angle);
+            if (message.linear_cost != null && Object.hasOwnProperty.call(message, "linear_cost"))
+                writer.uint32(/* id 44, wireType 5 =*/357).float(message.linear_cost);
+            if (message.angular_cost != null && Object.hasOwnProperty.call(message, "angular_cost"))
+                writer.uint32(/* id 45, wireType 5 =*/365).float(message.angular_cost);
+            if (message.path_left_distance != null && Object.hasOwnProperty.call(message, "path_left_distance"))
+                writer.uint32(/* id 46, wireType 5 =*/373).float(message.path_left_distance);
+            if (message.point_count != null && Object.hasOwnProperty.call(message, "point_count"))
+                writer.uint32(/* id 47, wireType 0 =*/376).int32(message.point_count);
+            if (message.trend_path_index != null && Object.hasOwnProperty.call(message, "trend_path_index"))
+                writer.uint32(/* id 48, wireType 0 =*/384).int32(message.trend_path_index);
+            if (message.trend_path_heading != null && Object.hasOwnProperty.call(message, "trend_path_heading"))
+                writer.uint32(/* id 49, wireType 5 =*/397).float(message.trend_path_heading);
+            if (message.trend_dwa_index != null && Object.hasOwnProperty.call(message, "trend_dwa_index"))
+                writer.uint32(/* id 50, wireType 0 =*/400).int32(message.trend_dwa_index);
+            if (message.trend_dwa_heading != null && Object.hasOwnProperty.call(message, "trend_dwa_heading"))
+                writer.uint32(/* id 51, wireType 5 =*/413).float(message.trend_dwa_heading);
+            if (message.ending_path_index != null && Object.hasOwnProperty.call(message, "ending_path_index"))
+                writer.uint32(/* id 52, wireType 0 =*/416).int32(message.ending_path_index);
+            if (message.ending_path_heading != null && Object.hasOwnProperty.call(message, "ending_path_heading"))
+                writer.uint32(/* id 53, wireType 5 =*/429).float(message.ending_path_heading);
+            if (message.ending_dwa_heading != null && Object.hasOwnProperty.call(message, "ending_dwa_heading"))
+                writer.uint32(/* id 54, wireType 5 =*/437).float(message.ending_dwa_heading);
+            if (message.travel_distance != null && Object.hasOwnProperty.call(message, "travel_distance"))
+                writer.uint32(/* id 55, wireType 5 =*/445).float(message.travel_distance);
+            if (message.travel_score != null && Object.hasOwnProperty.call(message, "travel_score"))
+                writer.uint32(/* id 56, wireType 5 =*/453).float(message.travel_score);
+            if (message.evade_score_for_direction != null && Object.hasOwnProperty.call(message, "evade_score_for_direction"))
+                writer.uint32(/* id 57, wireType 5 =*/461).float(message.evade_score_for_direction);
+            if (message.evade_score_for_selector != null && Object.hasOwnProperty.call(message, "evade_score_for_selector"))
+                writer.uint32(/* id 58, wireType 5 =*/469).float(message.evade_score_for_selector);
+            if (message.cost != null && Object.hasOwnProperty.call(message, "cost"))
+                writer.uint32(/* id 59, wireType 5 =*/477).float(message.cost);
+            if (message.end_point_deviation_cost != null && Object.hasOwnProperty.call(message, "end_point_deviation_cost"))
+                writer.uint32(/* id 60, wireType 5 =*/485).float(message.end_point_deviation_cost);
+            if (message.end_point_deviation != null && Object.hasOwnProperty.call(message, "end_point_deviation"))
+                writer.uint32(/* id 61, wireType 5 =*/493).float(message.end_point_deviation);
+            if (message.mean_path_deviation_cost != null && Object.hasOwnProperty.call(message, "mean_path_deviation_cost"))
+                writer.uint32(/* id 62, wireType 5 =*/501).float(message.mean_path_deviation_cost);
+            if (message.mean_path_deviation != null && Object.hasOwnProperty.call(message, "mean_path_deviation"))
+                writer.uint32(/* id 63, wireType 5 =*/509).float(message.mean_path_deviation);
+            if (message.progress_cost != null && Object.hasOwnProperty.call(message, "progress_cost"))
+                writer.uint32(/* id 64, wireType 5 =*/517).float(message.progress_cost);
+            if (message.progress_made != null && Object.hasOwnProperty.call(message, "progress_made"))
+                writer.uint32(/* id 65, wireType 5 =*/525).float(message.progress_made);
+            if (message.heading_cost != null && Object.hasOwnProperty.call(message, "heading_cost"))
+                writer.uint32(/* id 66, wireType 5 =*/533).float(message.heading_cost);
+            if (message.end_point_heading_error != null && Object.hasOwnProperty.call(message, "end_point_heading_error"))
+                writer.uint32(/* id 67, wireType 5 =*/541).float(message.end_point_heading_error);
+            if (message.steering_cost != null && Object.hasOwnProperty.call(message, "steering_cost"))
+                writer.uint32(/* id 68, wireType 5 =*/549).float(message.steering_cost);
+            if (message.steering_change_cost != null && Object.hasOwnProperty.call(message, "steering_change_cost"))
+                writer.uint32(/* id 69, wireType 5 =*/557).float(message.steering_change_cost);
+            if (message.velocity_change_cost != null && Object.hasOwnProperty.call(message, "velocity_change_cost"))
+                writer.uint32(/* id 70, wireType 5 =*/565).float(message.velocity_change_cost);
+            if (message.resolution_index != null && Object.hasOwnProperty.call(message, "resolution_index"))
+                writer.uint32(/* id 71, wireType 0 =*/568).uint32(message.resolution_index);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DwaCandidatePath message, length delimited. Does not implicitly {@link ax_proto_msgs.DwaCandidatePath.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {ax_proto_msgs.IDwaCandidatePath} message DwaCandidatePath message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DwaCandidatePath.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DwaCandidatePath message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.DwaCandidatePath} DwaCandidatePath
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DwaCandidatePath.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.DwaCandidatePath();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.id = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.is_selected = reader.bool();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.xs && message.xs.length))
+                            message.xs = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.xs.push(reader.sint32());
+                        } else
+                            message.xs.push(reader.sint32());
+                        break;
+                    }
+                case 4: {
+                        if (!(message.ys && message.ys.length))
+                            message.ys = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.ys.push(reader.sint32());
+                        } else
+                            message.ys.push(reader.sint32());
+                        break;
+                    }
+                case 5: {
+                        message.is_invalid = reader.bool();
+                        break;
+                    }
+                case 6: {
+                        message.has_collision = reader.bool();
+                        break;
+                    }
+                case 7: {
+                        message.is_diagonal = reader.bool();
+                        break;
+                    }
+                case 8: {
+                        message.linear_velocity = reader.float();
+                        break;
+                    }
+                case 9: {
+                        message.angular_velocity = reader.float();
+                        break;
+                    }
+                case 10: {
+                        message.linear_acceleration = reader.float();
+                        break;
+                    }
+                case 11: {
+                        message.angular_acceleration = reader.float();
+                        break;
+                    }
+                case 12: {
+                        message.front_wheel_velocity = reader.float();
+                        break;
+                    }
+                case 13: {
+                        message.steering_angle = reader.float();
+                        break;
+                    }
+                case 14: {
+                        message.max_depart_distance_left = reader.float();
+                        break;
+                    }
+                case 15: {
+                        message.max_depart_distance_right = reader.float();
+                        break;
+                    }
+                case 16: {
+                        message.ending_depart_distance = reader.float();
+                        break;
+                    }
+                case 17: {
+                        message.ending_depart_distance_cost = reader.float();
+                        break;
+                    }
+                case 18: {
+                        message.trend_turn_angle = reader.float();
+                        break;
+                    }
+                case 19: {
+                        message.trend_turn_angle_cost = reader.float();
+                        break;
+                    }
+                case 20: {
+                        message.ending_turn_angle = reader.float();
+                        break;
+                    }
+                case 21: {
+                        message.ending_turn_angle_cost = reader.float();
+                        break;
+                    }
+                case 22: {
+                        message.path_progress = reader.float();
+                        break;
+                    }
+                case 23: {
+                        message.progress_scale = reader.float();
+                        break;
+                    }
+                case 24: {
+                        message.progress_penalty_cost = reader.float();
+                        break;
+                    }
+                case 25: {
+                        message.progress_max_penalty_scale = reader.float();
+                        break;
+                    }
+                case 26: {
+                        message.progress_exploit_scale = reader.float();
+                        break;
+                    }
+                case 27: {
+                        message.progress_exploit_penalty_cost = reader.float();
+                        break;
+                    }
+                case 28: {
+                        message.max_topography = reader.float();
+                        break;
+                    }
+                case 29: {
+                        message.max_topography_penalty_cost = reader.float();
+                        break;
+                    }
+                case 30: {
+                        message.trend_topography = reader.float();
+                        break;
+                    }
+                case 31: {
+                        message.trend_topography_penalty_in_travel_cost = reader.float();
+                        break;
+                    }
+                case 32: {
+                        message.trend_topography_penalty_in_evade_cost = reader.float();
+                        break;
+                    }
+                case 33: {
+                        message.min_distance_to_obstacle = reader.float();
+                        break;
+                    }
+                case 34: {
+                        message.min_distance_to_obstacle_cost = reader.float();
+                        break;
+                    }
+                case 35: {
+                        message.trend_distance_to_obstacle = reader.float();
+                        break;
+                    }
+                case 36: {
+                        message.trend_distance_to_obstacle_in_travel_cost = reader.float();
+                        break;
+                    }
+                case 37: {
+                        message.trend_distance_to_obstacle_in_evade_cost = reader.float();
+                        break;
+                    }
+                case 38: {
+                        message.trend_distance_to_obstacle_with_window = reader.float();
+                        break;
+                    }
+                case 39: {
+                        message.collision_range_location = reader.int32();
+                        break;
+                    }
+                case 40: {
+                        message.collision_range_length = reader.int32();
+                        break;
+                    }
+                case 41: {
+                        message.obstacle_penalty_cost = reader.float();
+                        break;
+                    }
+                case 42: {
+                        message.curl_angle = reader.float();
+                        break;
+                    }
+                case 43: {
+                        message.arc_angle = reader.float();
+                        break;
+                    }
+                case 44: {
+                        message.linear_cost = reader.float();
+                        break;
+                    }
+                case 45: {
+                        message.angular_cost = reader.float();
+                        break;
+                    }
+                case 46: {
+                        message.path_left_distance = reader.float();
+                        break;
+                    }
+                case 47: {
+                        message.point_count = reader.int32();
+                        break;
+                    }
+                case 48: {
+                        message.trend_path_index = reader.int32();
+                        break;
+                    }
+                case 49: {
+                        message.trend_path_heading = reader.float();
+                        break;
+                    }
+                case 50: {
+                        message.trend_dwa_index = reader.int32();
+                        break;
+                    }
+                case 51: {
+                        message.trend_dwa_heading = reader.float();
+                        break;
+                    }
+                case 52: {
+                        message.ending_path_index = reader.int32();
+                        break;
+                    }
+                case 53: {
+                        message.ending_path_heading = reader.float();
+                        break;
+                    }
+                case 54: {
+                        message.ending_dwa_heading = reader.float();
+                        break;
+                    }
+                case 55: {
+                        message.travel_distance = reader.float();
+                        break;
+                    }
+                case 56: {
+                        message.travel_score = reader.float();
+                        break;
+                    }
+                case 57: {
+                        message.evade_score_for_direction = reader.float();
+                        break;
+                    }
+                case 58: {
+                        message.evade_score_for_selector = reader.float();
+                        break;
+                    }
+                case 59: {
+                        message.cost = reader.float();
+                        break;
+                    }
+                case 60: {
+                        message.end_point_deviation_cost = reader.float();
+                        break;
+                    }
+                case 61: {
+                        message.end_point_deviation = reader.float();
+                        break;
+                    }
+                case 62: {
+                        message.mean_path_deviation_cost = reader.float();
+                        break;
+                    }
+                case 63: {
+                        message.mean_path_deviation = reader.float();
+                        break;
+                    }
+                case 64: {
+                        message.progress_cost = reader.float();
+                        break;
+                    }
+                case 65: {
+                        message.progress_made = reader.float();
+                        break;
+                    }
+                case 66: {
+                        message.heading_cost = reader.float();
+                        break;
+                    }
+                case 67: {
+                        message.end_point_heading_error = reader.float();
+                        break;
+                    }
+                case 68: {
+                        message.steering_cost = reader.float();
+                        break;
+                    }
+                case 69: {
+                        message.steering_change_cost = reader.float();
+                        break;
+                    }
+                case 70: {
+                        message.velocity_change_cost = reader.float();
+                        break;
+                    }
+                case 71: {
+                        message.resolution_index = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DwaCandidatePath message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.DwaCandidatePath} DwaCandidatePath
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DwaCandidatePath.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DwaCandidatePath message.
+         * @function verify
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DwaCandidatePath.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isInteger(message.id))
+                    return "id: integer expected";
+            if (message.is_selected != null && message.hasOwnProperty("is_selected"))
+                if (typeof message.is_selected !== "boolean")
+                    return "is_selected: boolean expected";
+            if (message.xs != null && message.hasOwnProperty("xs")) {
+                if (!Array.isArray(message.xs))
+                    return "xs: array expected";
+                for (let i = 0; i < message.xs.length; ++i)
+                    if (!$util.isInteger(message.xs[i]))
+                        return "xs: integer[] expected";
+            }
+            if (message.ys != null && message.hasOwnProperty("ys")) {
+                if (!Array.isArray(message.ys))
+                    return "ys: array expected";
+                for (let i = 0; i < message.ys.length; ++i)
+                    if (!$util.isInteger(message.ys[i]))
+                        return "ys: integer[] expected";
+            }
+            if (message.is_invalid != null && message.hasOwnProperty("is_invalid"))
+                if (typeof message.is_invalid !== "boolean")
+                    return "is_invalid: boolean expected";
+            if (message.has_collision != null && message.hasOwnProperty("has_collision"))
+                if (typeof message.has_collision !== "boolean")
+                    return "has_collision: boolean expected";
+            if (message.is_diagonal != null && message.hasOwnProperty("is_diagonal"))
+                if (typeof message.is_diagonal !== "boolean")
+                    return "is_diagonal: boolean expected";
+            if (message.linear_velocity != null && message.hasOwnProperty("linear_velocity"))
+                if (typeof message.linear_velocity !== "number")
+                    return "linear_velocity: number expected";
+            if (message.angular_velocity != null && message.hasOwnProperty("angular_velocity"))
+                if (typeof message.angular_velocity !== "number")
+                    return "angular_velocity: number expected";
+            if (message.linear_acceleration != null && message.hasOwnProperty("linear_acceleration"))
+                if (typeof message.linear_acceleration !== "number")
+                    return "linear_acceleration: number expected";
+            if (message.angular_acceleration != null && message.hasOwnProperty("angular_acceleration"))
+                if (typeof message.angular_acceleration !== "number")
+                    return "angular_acceleration: number expected";
+            if (message.front_wheel_velocity != null && message.hasOwnProperty("front_wheel_velocity"))
+                if (typeof message.front_wheel_velocity !== "number")
+                    return "front_wheel_velocity: number expected";
+            if (message.steering_angle != null && message.hasOwnProperty("steering_angle"))
+                if (typeof message.steering_angle !== "number")
+                    return "steering_angle: number expected";
+            if (message.max_depart_distance_left != null && message.hasOwnProperty("max_depart_distance_left"))
+                if (typeof message.max_depart_distance_left !== "number")
+                    return "max_depart_distance_left: number expected";
+            if (message.max_depart_distance_right != null && message.hasOwnProperty("max_depart_distance_right"))
+                if (typeof message.max_depart_distance_right !== "number")
+                    return "max_depart_distance_right: number expected";
+            if (message.ending_depart_distance != null && message.hasOwnProperty("ending_depart_distance"))
+                if (typeof message.ending_depart_distance !== "number")
+                    return "ending_depart_distance: number expected";
+            if (message.ending_depart_distance_cost != null && message.hasOwnProperty("ending_depart_distance_cost"))
+                if (typeof message.ending_depart_distance_cost !== "number")
+                    return "ending_depart_distance_cost: number expected";
+            if (message.trend_turn_angle != null && message.hasOwnProperty("trend_turn_angle"))
+                if (typeof message.trend_turn_angle !== "number")
+                    return "trend_turn_angle: number expected";
+            if (message.trend_turn_angle_cost != null && message.hasOwnProperty("trend_turn_angle_cost"))
+                if (typeof message.trend_turn_angle_cost !== "number")
+                    return "trend_turn_angle_cost: number expected";
+            if (message.ending_turn_angle != null && message.hasOwnProperty("ending_turn_angle"))
+                if (typeof message.ending_turn_angle !== "number")
+                    return "ending_turn_angle: number expected";
+            if (message.ending_turn_angle_cost != null && message.hasOwnProperty("ending_turn_angle_cost"))
+                if (typeof message.ending_turn_angle_cost !== "number")
+                    return "ending_turn_angle_cost: number expected";
+            if (message.path_progress != null && message.hasOwnProperty("path_progress"))
+                if (typeof message.path_progress !== "number")
+                    return "path_progress: number expected";
+            if (message.progress_scale != null && message.hasOwnProperty("progress_scale"))
+                if (typeof message.progress_scale !== "number")
+                    return "progress_scale: number expected";
+            if (message.progress_penalty_cost != null && message.hasOwnProperty("progress_penalty_cost"))
+                if (typeof message.progress_penalty_cost !== "number")
+                    return "progress_penalty_cost: number expected";
+            if (message.progress_max_penalty_scale != null && message.hasOwnProperty("progress_max_penalty_scale"))
+                if (typeof message.progress_max_penalty_scale !== "number")
+                    return "progress_max_penalty_scale: number expected";
+            if (message.progress_exploit_scale != null && message.hasOwnProperty("progress_exploit_scale"))
+                if (typeof message.progress_exploit_scale !== "number")
+                    return "progress_exploit_scale: number expected";
+            if (message.progress_exploit_penalty_cost != null && message.hasOwnProperty("progress_exploit_penalty_cost"))
+                if (typeof message.progress_exploit_penalty_cost !== "number")
+                    return "progress_exploit_penalty_cost: number expected";
+            if (message.max_topography != null && message.hasOwnProperty("max_topography"))
+                if (typeof message.max_topography !== "number")
+                    return "max_topography: number expected";
+            if (message.max_topography_penalty_cost != null && message.hasOwnProperty("max_topography_penalty_cost"))
+                if (typeof message.max_topography_penalty_cost !== "number")
+                    return "max_topography_penalty_cost: number expected";
+            if (message.trend_topography != null && message.hasOwnProperty("trend_topography"))
+                if (typeof message.trend_topography !== "number")
+                    return "trend_topography: number expected";
+            if (message.trend_topography_penalty_in_travel_cost != null && message.hasOwnProperty("trend_topography_penalty_in_travel_cost"))
+                if (typeof message.trend_topography_penalty_in_travel_cost !== "number")
+                    return "trend_topography_penalty_in_travel_cost: number expected";
+            if (message.trend_topography_penalty_in_evade_cost != null && message.hasOwnProperty("trend_topography_penalty_in_evade_cost"))
+                if (typeof message.trend_topography_penalty_in_evade_cost !== "number")
+                    return "trend_topography_penalty_in_evade_cost: number expected";
+            if (message.min_distance_to_obstacle != null && message.hasOwnProperty("min_distance_to_obstacle"))
+                if (typeof message.min_distance_to_obstacle !== "number")
+                    return "min_distance_to_obstacle: number expected";
+            if (message.min_distance_to_obstacle_cost != null && message.hasOwnProperty("min_distance_to_obstacle_cost"))
+                if (typeof message.min_distance_to_obstacle_cost !== "number")
+                    return "min_distance_to_obstacle_cost: number expected";
+            if (message.trend_distance_to_obstacle != null && message.hasOwnProperty("trend_distance_to_obstacle"))
+                if (typeof message.trend_distance_to_obstacle !== "number")
+                    return "trend_distance_to_obstacle: number expected";
+            if (message.trend_distance_to_obstacle_in_travel_cost != null && message.hasOwnProperty("trend_distance_to_obstacle_in_travel_cost"))
+                if (typeof message.trend_distance_to_obstacle_in_travel_cost !== "number")
+                    return "trend_distance_to_obstacle_in_travel_cost: number expected";
+            if (message.trend_distance_to_obstacle_in_evade_cost != null && message.hasOwnProperty("trend_distance_to_obstacle_in_evade_cost"))
+                if (typeof message.trend_distance_to_obstacle_in_evade_cost !== "number")
+                    return "trend_distance_to_obstacle_in_evade_cost: number expected";
+            if (message.trend_distance_to_obstacle_with_window != null && message.hasOwnProperty("trend_distance_to_obstacle_with_window"))
+                if (typeof message.trend_distance_to_obstacle_with_window !== "number")
+                    return "trend_distance_to_obstacle_with_window: number expected";
+            if (message.collision_range_location != null && message.hasOwnProperty("collision_range_location"))
+                if (!$util.isInteger(message.collision_range_location))
+                    return "collision_range_location: integer expected";
+            if (message.collision_range_length != null && message.hasOwnProperty("collision_range_length"))
+                if (!$util.isInteger(message.collision_range_length))
+                    return "collision_range_length: integer expected";
+            if (message.obstacle_penalty_cost != null && message.hasOwnProperty("obstacle_penalty_cost"))
+                if (typeof message.obstacle_penalty_cost !== "number")
+                    return "obstacle_penalty_cost: number expected";
+            if (message.curl_angle != null && message.hasOwnProperty("curl_angle"))
+                if (typeof message.curl_angle !== "number")
+                    return "curl_angle: number expected";
+            if (message.arc_angle != null && message.hasOwnProperty("arc_angle"))
+                if (typeof message.arc_angle !== "number")
+                    return "arc_angle: number expected";
+            if (message.linear_cost != null && message.hasOwnProperty("linear_cost"))
+                if (typeof message.linear_cost !== "number")
+                    return "linear_cost: number expected";
+            if (message.angular_cost != null && message.hasOwnProperty("angular_cost"))
+                if (typeof message.angular_cost !== "number")
+                    return "angular_cost: number expected";
+            if (message.path_left_distance != null && message.hasOwnProperty("path_left_distance"))
+                if (typeof message.path_left_distance !== "number")
+                    return "path_left_distance: number expected";
+            if (message.point_count != null && message.hasOwnProperty("point_count"))
+                if (!$util.isInteger(message.point_count))
+                    return "point_count: integer expected";
+            if (message.trend_path_index != null && message.hasOwnProperty("trend_path_index"))
+                if (!$util.isInteger(message.trend_path_index))
+                    return "trend_path_index: integer expected";
+            if (message.trend_path_heading != null && message.hasOwnProperty("trend_path_heading"))
+                if (typeof message.trend_path_heading !== "number")
+                    return "trend_path_heading: number expected";
+            if (message.trend_dwa_index != null && message.hasOwnProperty("trend_dwa_index"))
+                if (!$util.isInteger(message.trend_dwa_index))
+                    return "trend_dwa_index: integer expected";
+            if (message.trend_dwa_heading != null && message.hasOwnProperty("trend_dwa_heading"))
+                if (typeof message.trend_dwa_heading !== "number")
+                    return "trend_dwa_heading: number expected";
+            if (message.ending_path_index != null && message.hasOwnProperty("ending_path_index"))
+                if (!$util.isInteger(message.ending_path_index))
+                    return "ending_path_index: integer expected";
+            if (message.ending_path_heading != null && message.hasOwnProperty("ending_path_heading"))
+                if (typeof message.ending_path_heading !== "number")
+                    return "ending_path_heading: number expected";
+            if (message.ending_dwa_heading != null && message.hasOwnProperty("ending_dwa_heading"))
+                if (typeof message.ending_dwa_heading !== "number")
+                    return "ending_dwa_heading: number expected";
+            if (message.travel_distance != null && message.hasOwnProperty("travel_distance"))
+                if (typeof message.travel_distance !== "number")
+                    return "travel_distance: number expected";
+            if (message.travel_score != null && message.hasOwnProperty("travel_score"))
+                if (typeof message.travel_score !== "number")
+                    return "travel_score: number expected";
+            if (message.evade_score_for_direction != null && message.hasOwnProperty("evade_score_for_direction"))
+                if (typeof message.evade_score_for_direction !== "number")
+                    return "evade_score_for_direction: number expected";
+            if (message.evade_score_for_selector != null && message.hasOwnProperty("evade_score_for_selector"))
+                if (typeof message.evade_score_for_selector !== "number")
+                    return "evade_score_for_selector: number expected";
+            if (message.cost != null && message.hasOwnProperty("cost"))
+                if (typeof message.cost !== "number")
+                    return "cost: number expected";
+            if (message.end_point_deviation_cost != null && message.hasOwnProperty("end_point_deviation_cost"))
+                if (typeof message.end_point_deviation_cost !== "number")
+                    return "end_point_deviation_cost: number expected";
+            if (message.end_point_deviation != null && message.hasOwnProperty("end_point_deviation"))
+                if (typeof message.end_point_deviation !== "number")
+                    return "end_point_deviation: number expected";
+            if (message.mean_path_deviation_cost != null && message.hasOwnProperty("mean_path_deviation_cost"))
+                if (typeof message.mean_path_deviation_cost !== "number")
+                    return "mean_path_deviation_cost: number expected";
+            if (message.mean_path_deviation != null && message.hasOwnProperty("mean_path_deviation"))
+                if (typeof message.mean_path_deviation !== "number")
+                    return "mean_path_deviation: number expected";
+            if (message.progress_cost != null && message.hasOwnProperty("progress_cost"))
+                if (typeof message.progress_cost !== "number")
+                    return "progress_cost: number expected";
+            if (message.progress_made != null && message.hasOwnProperty("progress_made"))
+                if (typeof message.progress_made !== "number")
+                    return "progress_made: number expected";
+            if (message.heading_cost != null && message.hasOwnProperty("heading_cost"))
+                if (typeof message.heading_cost !== "number")
+                    return "heading_cost: number expected";
+            if (message.end_point_heading_error != null && message.hasOwnProperty("end_point_heading_error"))
+                if (typeof message.end_point_heading_error !== "number")
+                    return "end_point_heading_error: number expected";
+            if (message.steering_cost != null && message.hasOwnProperty("steering_cost"))
+                if (typeof message.steering_cost !== "number")
+                    return "steering_cost: number expected";
+            if (message.steering_change_cost != null && message.hasOwnProperty("steering_change_cost"))
+                if (typeof message.steering_change_cost !== "number")
+                    return "steering_change_cost: number expected";
+            if (message.velocity_change_cost != null && message.hasOwnProperty("velocity_change_cost"))
+                if (typeof message.velocity_change_cost !== "number")
+                    return "velocity_change_cost: number expected";
+            if (message.resolution_index != null && message.hasOwnProperty("resolution_index"))
+                if (!$util.isInteger(message.resolution_index))
+                    return "resolution_index: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a DwaCandidatePath message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.DwaCandidatePath} DwaCandidatePath
+         */
+        DwaCandidatePath.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.DwaCandidatePath)
+                return object;
+            let message = new $root.ax_proto_msgs.DwaCandidatePath();
+            if (object.id != null)
+                message.id = object.id >>> 0;
+            if (object.is_selected != null)
+                message.is_selected = Boolean(object.is_selected);
+            if (object.xs) {
+                if (!Array.isArray(object.xs))
+                    throw TypeError(".ax_proto_msgs.DwaCandidatePath.xs: array expected");
+                message.xs = [];
+                for (let i = 0; i < object.xs.length; ++i)
+                    message.xs[i] = object.xs[i] | 0;
+            }
+            if (object.ys) {
+                if (!Array.isArray(object.ys))
+                    throw TypeError(".ax_proto_msgs.DwaCandidatePath.ys: array expected");
+                message.ys = [];
+                for (let i = 0; i < object.ys.length; ++i)
+                    message.ys[i] = object.ys[i] | 0;
+            }
+            if (object.is_invalid != null)
+                message.is_invalid = Boolean(object.is_invalid);
+            if (object.has_collision != null)
+                message.has_collision = Boolean(object.has_collision);
+            if (object.is_diagonal != null)
+                message.is_diagonal = Boolean(object.is_diagonal);
+            if (object.linear_velocity != null)
+                message.linear_velocity = Number(object.linear_velocity);
+            if (object.angular_velocity != null)
+                message.angular_velocity = Number(object.angular_velocity);
+            if (object.linear_acceleration != null)
+                message.linear_acceleration = Number(object.linear_acceleration);
+            if (object.angular_acceleration != null)
+                message.angular_acceleration = Number(object.angular_acceleration);
+            if (object.front_wheel_velocity != null)
+                message.front_wheel_velocity = Number(object.front_wheel_velocity);
+            if (object.steering_angle != null)
+                message.steering_angle = Number(object.steering_angle);
+            if (object.max_depart_distance_left != null)
+                message.max_depart_distance_left = Number(object.max_depart_distance_left);
+            if (object.max_depart_distance_right != null)
+                message.max_depart_distance_right = Number(object.max_depart_distance_right);
+            if (object.ending_depart_distance != null)
+                message.ending_depart_distance = Number(object.ending_depart_distance);
+            if (object.ending_depart_distance_cost != null)
+                message.ending_depart_distance_cost = Number(object.ending_depart_distance_cost);
+            if (object.trend_turn_angle != null)
+                message.trend_turn_angle = Number(object.trend_turn_angle);
+            if (object.trend_turn_angle_cost != null)
+                message.trend_turn_angle_cost = Number(object.trend_turn_angle_cost);
+            if (object.ending_turn_angle != null)
+                message.ending_turn_angle = Number(object.ending_turn_angle);
+            if (object.ending_turn_angle_cost != null)
+                message.ending_turn_angle_cost = Number(object.ending_turn_angle_cost);
+            if (object.path_progress != null)
+                message.path_progress = Number(object.path_progress);
+            if (object.progress_scale != null)
+                message.progress_scale = Number(object.progress_scale);
+            if (object.progress_penalty_cost != null)
+                message.progress_penalty_cost = Number(object.progress_penalty_cost);
+            if (object.progress_max_penalty_scale != null)
+                message.progress_max_penalty_scale = Number(object.progress_max_penalty_scale);
+            if (object.progress_exploit_scale != null)
+                message.progress_exploit_scale = Number(object.progress_exploit_scale);
+            if (object.progress_exploit_penalty_cost != null)
+                message.progress_exploit_penalty_cost = Number(object.progress_exploit_penalty_cost);
+            if (object.max_topography != null)
+                message.max_topography = Number(object.max_topography);
+            if (object.max_topography_penalty_cost != null)
+                message.max_topography_penalty_cost = Number(object.max_topography_penalty_cost);
+            if (object.trend_topography != null)
+                message.trend_topography = Number(object.trend_topography);
+            if (object.trend_topography_penalty_in_travel_cost != null)
+                message.trend_topography_penalty_in_travel_cost = Number(object.trend_topography_penalty_in_travel_cost);
+            if (object.trend_topography_penalty_in_evade_cost != null)
+                message.trend_topography_penalty_in_evade_cost = Number(object.trend_topography_penalty_in_evade_cost);
+            if (object.min_distance_to_obstacle != null)
+                message.min_distance_to_obstacle = Number(object.min_distance_to_obstacle);
+            if (object.min_distance_to_obstacle_cost != null)
+                message.min_distance_to_obstacle_cost = Number(object.min_distance_to_obstacle_cost);
+            if (object.trend_distance_to_obstacle != null)
+                message.trend_distance_to_obstacle = Number(object.trend_distance_to_obstacle);
+            if (object.trend_distance_to_obstacle_in_travel_cost != null)
+                message.trend_distance_to_obstacle_in_travel_cost = Number(object.trend_distance_to_obstacle_in_travel_cost);
+            if (object.trend_distance_to_obstacle_in_evade_cost != null)
+                message.trend_distance_to_obstacle_in_evade_cost = Number(object.trend_distance_to_obstacle_in_evade_cost);
+            if (object.trend_distance_to_obstacle_with_window != null)
+                message.trend_distance_to_obstacle_with_window = Number(object.trend_distance_to_obstacle_with_window);
+            if (object.collision_range_location != null)
+                message.collision_range_location = object.collision_range_location | 0;
+            if (object.collision_range_length != null)
+                message.collision_range_length = object.collision_range_length | 0;
+            if (object.obstacle_penalty_cost != null)
+                message.obstacle_penalty_cost = Number(object.obstacle_penalty_cost);
+            if (object.curl_angle != null)
+                message.curl_angle = Number(object.curl_angle);
+            if (object.arc_angle != null)
+                message.arc_angle = Number(object.arc_angle);
+            if (object.linear_cost != null)
+                message.linear_cost = Number(object.linear_cost);
+            if (object.angular_cost != null)
+                message.angular_cost = Number(object.angular_cost);
+            if (object.path_left_distance != null)
+                message.path_left_distance = Number(object.path_left_distance);
+            if (object.point_count != null)
+                message.point_count = object.point_count | 0;
+            if (object.trend_path_index != null)
+                message.trend_path_index = object.trend_path_index | 0;
+            if (object.trend_path_heading != null)
+                message.trend_path_heading = Number(object.trend_path_heading);
+            if (object.trend_dwa_index != null)
+                message.trend_dwa_index = object.trend_dwa_index | 0;
+            if (object.trend_dwa_heading != null)
+                message.trend_dwa_heading = Number(object.trend_dwa_heading);
+            if (object.ending_path_index != null)
+                message.ending_path_index = object.ending_path_index | 0;
+            if (object.ending_path_heading != null)
+                message.ending_path_heading = Number(object.ending_path_heading);
+            if (object.ending_dwa_heading != null)
+                message.ending_dwa_heading = Number(object.ending_dwa_heading);
+            if (object.travel_distance != null)
+                message.travel_distance = Number(object.travel_distance);
+            if (object.travel_score != null)
+                message.travel_score = Number(object.travel_score);
+            if (object.evade_score_for_direction != null)
+                message.evade_score_for_direction = Number(object.evade_score_for_direction);
+            if (object.evade_score_for_selector != null)
+                message.evade_score_for_selector = Number(object.evade_score_for_selector);
+            if (object.cost != null)
+                message.cost = Number(object.cost);
+            if (object.end_point_deviation_cost != null)
+                message.end_point_deviation_cost = Number(object.end_point_deviation_cost);
+            if (object.end_point_deviation != null)
+                message.end_point_deviation = Number(object.end_point_deviation);
+            if (object.mean_path_deviation_cost != null)
+                message.mean_path_deviation_cost = Number(object.mean_path_deviation_cost);
+            if (object.mean_path_deviation != null)
+                message.mean_path_deviation = Number(object.mean_path_deviation);
+            if (object.progress_cost != null)
+                message.progress_cost = Number(object.progress_cost);
+            if (object.progress_made != null)
+                message.progress_made = Number(object.progress_made);
+            if (object.heading_cost != null)
+                message.heading_cost = Number(object.heading_cost);
+            if (object.end_point_heading_error != null)
+                message.end_point_heading_error = Number(object.end_point_heading_error);
+            if (object.steering_cost != null)
+                message.steering_cost = Number(object.steering_cost);
+            if (object.steering_change_cost != null)
+                message.steering_change_cost = Number(object.steering_change_cost);
+            if (object.velocity_change_cost != null)
+                message.velocity_change_cost = Number(object.velocity_change_cost);
+            if (object.resolution_index != null)
+                message.resolution_index = object.resolution_index >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DwaCandidatePath message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {ax_proto_msgs.DwaCandidatePath} message DwaCandidatePath
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DwaCandidatePath.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults) {
+                object.xs = [];
+                object.ys = [];
+            }
+            if (options.defaults) {
+                object.id = 0;
+                object.is_selected = false;
+                object.is_invalid = false;
+                object.has_collision = false;
+                object.is_diagonal = false;
+                object.linear_velocity = 0;
+                object.angular_velocity = 0;
+                object.linear_acceleration = 0;
+                object.angular_acceleration = 0;
+                object.front_wheel_velocity = 0;
+                object.steering_angle = 0;
+                object.max_depart_distance_left = 0;
+                object.max_depart_distance_right = 0;
+                object.ending_depart_distance = 0;
+                object.ending_depart_distance_cost = 0;
+                object.trend_turn_angle = 0;
+                object.trend_turn_angle_cost = 0;
+                object.ending_turn_angle = 0;
+                object.ending_turn_angle_cost = 0;
+                object.path_progress = 0;
+                object.progress_scale = 0;
+                object.progress_penalty_cost = 0;
+                object.progress_max_penalty_scale = 0;
+                object.progress_exploit_scale = 0;
+                object.progress_exploit_penalty_cost = 0;
+                object.max_topography = 0;
+                object.max_topography_penalty_cost = 0;
+                object.trend_topography = 0;
+                object.trend_topography_penalty_in_travel_cost = 0;
+                object.trend_topography_penalty_in_evade_cost = 0;
+                object.min_distance_to_obstacle = 0;
+                object.min_distance_to_obstacle_cost = 0;
+                object.trend_distance_to_obstacle = 0;
+                object.trend_distance_to_obstacle_in_travel_cost = 0;
+                object.trend_distance_to_obstacle_in_evade_cost = 0;
+                object.trend_distance_to_obstacle_with_window = 0;
+                object.collision_range_location = 0;
+                object.collision_range_length = 0;
+                object.obstacle_penalty_cost = 0;
+                object.curl_angle = 0;
+                object.arc_angle = 0;
+                object.linear_cost = 0;
+                object.angular_cost = 0;
+                object.path_left_distance = 0;
+                object.point_count = 0;
+                object.trend_path_index = 0;
+                object.trend_path_heading = 0;
+                object.trend_dwa_index = 0;
+                object.trend_dwa_heading = 0;
+                object.ending_path_index = 0;
+                object.ending_path_heading = 0;
+                object.ending_dwa_heading = 0;
+                object.travel_distance = 0;
+                object.travel_score = 0;
+                object.evade_score_for_direction = 0;
+                object.evade_score_for_selector = 0;
+                object.cost = 0;
+                object.end_point_deviation_cost = 0;
+                object.end_point_deviation = 0;
+                object.mean_path_deviation_cost = 0;
+                object.mean_path_deviation = 0;
+                object.progress_cost = 0;
+                object.progress_made = 0;
+                object.heading_cost = 0;
+                object.end_point_heading_error = 0;
+                object.steering_cost = 0;
+                object.steering_change_cost = 0;
+                object.velocity_change_cost = 0;
+                object.resolution_index = 0;
+            }
+            if (message.id != null && message.hasOwnProperty("id"))
+                object.id = message.id;
+            if (message.is_selected != null && message.hasOwnProperty("is_selected"))
+                object.is_selected = message.is_selected;
+            if (message.xs && message.xs.length) {
+                object.xs = [];
+                for (let j = 0; j < message.xs.length; ++j)
+                    object.xs[j] = message.xs[j];
+            }
+            if (message.ys && message.ys.length) {
+                object.ys = [];
+                for (let j = 0; j < message.ys.length; ++j)
+                    object.ys[j] = message.ys[j];
+            }
+            if (message.is_invalid != null && message.hasOwnProperty("is_invalid"))
+                object.is_invalid = message.is_invalid;
+            if (message.has_collision != null && message.hasOwnProperty("has_collision"))
+                object.has_collision = message.has_collision;
+            if (message.is_diagonal != null && message.hasOwnProperty("is_diagonal"))
+                object.is_diagonal = message.is_diagonal;
+            if (message.linear_velocity != null && message.hasOwnProperty("linear_velocity"))
+                object.linear_velocity = options.json && !isFinite(message.linear_velocity) ? String(message.linear_velocity) : message.linear_velocity;
+            if (message.angular_velocity != null && message.hasOwnProperty("angular_velocity"))
+                object.angular_velocity = options.json && !isFinite(message.angular_velocity) ? String(message.angular_velocity) : message.angular_velocity;
+            if (message.linear_acceleration != null && message.hasOwnProperty("linear_acceleration"))
+                object.linear_acceleration = options.json && !isFinite(message.linear_acceleration) ? String(message.linear_acceleration) : message.linear_acceleration;
+            if (message.angular_acceleration != null && message.hasOwnProperty("angular_acceleration"))
+                object.angular_acceleration = options.json && !isFinite(message.angular_acceleration) ? String(message.angular_acceleration) : message.angular_acceleration;
+            if (message.front_wheel_velocity != null && message.hasOwnProperty("front_wheel_velocity"))
+                object.front_wheel_velocity = options.json && !isFinite(message.front_wheel_velocity) ? String(message.front_wheel_velocity) : message.front_wheel_velocity;
+            if (message.steering_angle != null && message.hasOwnProperty("steering_angle"))
+                object.steering_angle = options.json && !isFinite(message.steering_angle) ? String(message.steering_angle) : message.steering_angle;
+            if (message.max_depart_distance_left != null && message.hasOwnProperty("max_depart_distance_left"))
+                object.max_depart_distance_left = options.json && !isFinite(message.max_depart_distance_left) ? String(message.max_depart_distance_left) : message.max_depart_distance_left;
+            if (message.max_depart_distance_right != null && message.hasOwnProperty("max_depart_distance_right"))
+                object.max_depart_distance_right = options.json && !isFinite(message.max_depart_distance_right) ? String(message.max_depart_distance_right) : message.max_depart_distance_right;
+            if (message.ending_depart_distance != null && message.hasOwnProperty("ending_depart_distance"))
+                object.ending_depart_distance = options.json && !isFinite(message.ending_depart_distance) ? String(message.ending_depart_distance) : message.ending_depart_distance;
+            if (message.ending_depart_distance_cost != null && message.hasOwnProperty("ending_depart_distance_cost"))
+                object.ending_depart_distance_cost = options.json && !isFinite(message.ending_depart_distance_cost) ? String(message.ending_depart_distance_cost) : message.ending_depart_distance_cost;
+            if (message.trend_turn_angle != null && message.hasOwnProperty("trend_turn_angle"))
+                object.trend_turn_angle = options.json && !isFinite(message.trend_turn_angle) ? String(message.trend_turn_angle) : message.trend_turn_angle;
+            if (message.trend_turn_angle_cost != null && message.hasOwnProperty("trend_turn_angle_cost"))
+                object.trend_turn_angle_cost = options.json && !isFinite(message.trend_turn_angle_cost) ? String(message.trend_turn_angle_cost) : message.trend_turn_angle_cost;
+            if (message.ending_turn_angle != null && message.hasOwnProperty("ending_turn_angle"))
+                object.ending_turn_angle = options.json && !isFinite(message.ending_turn_angle) ? String(message.ending_turn_angle) : message.ending_turn_angle;
+            if (message.ending_turn_angle_cost != null && message.hasOwnProperty("ending_turn_angle_cost"))
+                object.ending_turn_angle_cost = options.json && !isFinite(message.ending_turn_angle_cost) ? String(message.ending_turn_angle_cost) : message.ending_turn_angle_cost;
+            if (message.path_progress != null && message.hasOwnProperty("path_progress"))
+                object.path_progress = options.json && !isFinite(message.path_progress) ? String(message.path_progress) : message.path_progress;
+            if (message.progress_scale != null && message.hasOwnProperty("progress_scale"))
+                object.progress_scale = options.json && !isFinite(message.progress_scale) ? String(message.progress_scale) : message.progress_scale;
+            if (message.progress_penalty_cost != null && message.hasOwnProperty("progress_penalty_cost"))
+                object.progress_penalty_cost = options.json && !isFinite(message.progress_penalty_cost) ? String(message.progress_penalty_cost) : message.progress_penalty_cost;
+            if (message.progress_max_penalty_scale != null && message.hasOwnProperty("progress_max_penalty_scale"))
+                object.progress_max_penalty_scale = options.json && !isFinite(message.progress_max_penalty_scale) ? String(message.progress_max_penalty_scale) : message.progress_max_penalty_scale;
+            if (message.progress_exploit_scale != null && message.hasOwnProperty("progress_exploit_scale"))
+                object.progress_exploit_scale = options.json && !isFinite(message.progress_exploit_scale) ? String(message.progress_exploit_scale) : message.progress_exploit_scale;
+            if (message.progress_exploit_penalty_cost != null && message.hasOwnProperty("progress_exploit_penalty_cost"))
+                object.progress_exploit_penalty_cost = options.json && !isFinite(message.progress_exploit_penalty_cost) ? String(message.progress_exploit_penalty_cost) : message.progress_exploit_penalty_cost;
+            if (message.max_topography != null && message.hasOwnProperty("max_topography"))
+                object.max_topography = options.json && !isFinite(message.max_topography) ? String(message.max_topography) : message.max_topography;
+            if (message.max_topography_penalty_cost != null && message.hasOwnProperty("max_topography_penalty_cost"))
+                object.max_topography_penalty_cost = options.json && !isFinite(message.max_topography_penalty_cost) ? String(message.max_topography_penalty_cost) : message.max_topography_penalty_cost;
+            if (message.trend_topography != null && message.hasOwnProperty("trend_topography"))
+                object.trend_topography = options.json && !isFinite(message.trend_topography) ? String(message.trend_topography) : message.trend_topography;
+            if (message.trend_topography_penalty_in_travel_cost != null && message.hasOwnProperty("trend_topography_penalty_in_travel_cost"))
+                object.trend_topography_penalty_in_travel_cost = options.json && !isFinite(message.trend_topography_penalty_in_travel_cost) ? String(message.trend_topography_penalty_in_travel_cost) : message.trend_topography_penalty_in_travel_cost;
+            if (message.trend_topography_penalty_in_evade_cost != null && message.hasOwnProperty("trend_topography_penalty_in_evade_cost"))
+                object.trend_topography_penalty_in_evade_cost = options.json && !isFinite(message.trend_topography_penalty_in_evade_cost) ? String(message.trend_topography_penalty_in_evade_cost) : message.trend_topography_penalty_in_evade_cost;
+            if (message.min_distance_to_obstacle != null && message.hasOwnProperty("min_distance_to_obstacle"))
+                object.min_distance_to_obstacle = options.json && !isFinite(message.min_distance_to_obstacle) ? String(message.min_distance_to_obstacle) : message.min_distance_to_obstacle;
+            if (message.min_distance_to_obstacle_cost != null && message.hasOwnProperty("min_distance_to_obstacle_cost"))
+                object.min_distance_to_obstacle_cost = options.json && !isFinite(message.min_distance_to_obstacle_cost) ? String(message.min_distance_to_obstacle_cost) : message.min_distance_to_obstacle_cost;
+            if (message.trend_distance_to_obstacle != null && message.hasOwnProperty("trend_distance_to_obstacle"))
+                object.trend_distance_to_obstacle = options.json && !isFinite(message.trend_distance_to_obstacle) ? String(message.trend_distance_to_obstacle) : message.trend_distance_to_obstacle;
+            if (message.trend_distance_to_obstacle_in_travel_cost != null && message.hasOwnProperty("trend_distance_to_obstacle_in_travel_cost"))
+                object.trend_distance_to_obstacle_in_travel_cost = options.json && !isFinite(message.trend_distance_to_obstacle_in_travel_cost) ? String(message.trend_distance_to_obstacle_in_travel_cost) : message.trend_distance_to_obstacle_in_travel_cost;
+            if (message.trend_distance_to_obstacle_in_evade_cost != null && message.hasOwnProperty("trend_distance_to_obstacle_in_evade_cost"))
+                object.trend_distance_to_obstacle_in_evade_cost = options.json && !isFinite(message.trend_distance_to_obstacle_in_evade_cost) ? String(message.trend_distance_to_obstacle_in_evade_cost) : message.trend_distance_to_obstacle_in_evade_cost;
+            if (message.trend_distance_to_obstacle_with_window != null && message.hasOwnProperty("trend_distance_to_obstacle_with_window"))
+                object.trend_distance_to_obstacle_with_window = options.json && !isFinite(message.trend_distance_to_obstacle_with_window) ? String(message.trend_distance_to_obstacle_with_window) : message.trend_distance_to_obstacle_with_window;
+            if (message.collision_range_location != null && message.hasOwnProperty("collision_range_location"))
+                object.collision_range_location = message.collision_range_location;
+            if (message.collision_range_length != null && message.hasOwnProperty("collision_range_length"))
+                object.collision_range_length = message.collision_range_length;
+            if (message.obstacle_penalty_cost != null && message.hasOwnProperty("obstacle_penalty_cost"))
+                object.obstacle_penalty_cost = options.json && !isFinite(message.obstacle_penalty_cost) ? String(message.obstacle_penalty_cost) : message.obstacle_penalty_cost;
+            if (message.curl_angle != null && message.hasOwnProperty("curl_angle"))
+                object.curl_angle = options.json && !isFinite(message.curl_angle) ? String(message.curl_angle) : message.curl_angle;
+            if (message.arc_angle != null && message.hasOwnProperty("arc_angle"))
+                object.arc_angle = options.json && !isFinite(message.arc_angle) ? String(message.arc_angle) : message.arc_angle;
+            if (message.linear_cost != null && message.hasOwnProperty("linear_cost"))
+                object.linear_cost = options.json && !isFinite(message.linear_cost) ? String(message.linear_cost) : message.linear_cost;
+            if (message.angular_cost != null && message.hasOwnProperty("angular_cost"))
+                object.angular_cost = options.json && !isFinite(message.angular_cost) ? String(message.angular_cost) : message.angular_cost;
+            if (message.path_left_distance != null && message.hasOwnProperty("path_left_distance"))
+                object.path_left_distance = options.json && !isFinite(message.path_left_distance) ? String(message.path_left_distance) : message.path_left_distance;
+            if (message.point_count != null && message.hasOwnProperty("point_count"))
+                object.point_count = message.point_count;
+            if (message.trend_path_index != null && message.hasOwnProperty("trend_path_index"))
+                object.trend_path_index = message.trend_path_index;
+            if (message.trend_path_heading != null && message.hasOwnProperty("trend_path_heading"))
+                object.trend_path_heading = options.json && !isFinite(message.trend_path_heading) ? String(message.trend_path_heading) : message.trend_path_heading;
+            if (message.trend_dwa_index != null && message.hasOwnProperty("trend_dwa_index"))
+                object.trend_dwa_index = message.trend_dwa_index;
+            if (message.trend_dwa_heading != null && message.hasOwnProperty("trend_dwa_heading"))
+                object.trend_dwa_heading = options.json && !isFinite(message.trend_dwa_heading) ? String(message.trend_dwa_heading) : message.trend_dwa_heading;
+            if (message.ending_path_index != null && message.hasOwnProperty("ending_path_index"))
+                object.ending_path_index = message.ending_path_index;
+            if (message.ending_path_heading != null && message.hasOwnProperty("ending_path_heading"))
+                object.ending_path_heading = options.json && !isFinite(message.ending_path_heading) ? String(message.ending_path_heading) : message.ending_path_heading;
+            if (message.ending_dwa_heading != null && message.hasOwnProperty("ending_dwa_heading"))
+                object.ending_dwa_heading = options.json && !isFinite(message.ending_dwa_heading) ? String(message.ending_dwa_heading) : message.ending_dwa_heading;
+            if (message.travel_distance != null && message.hasOwnProperty("travel_distance"))
+                object.travel_distance = options.json && !isFinite(message.travel_distance) ? String(message.travel_distance) : message.travel_distance;
+            if (message.travel_score != null && message.hasOwnProperty("travel_score"))
+                object.travel_score = options.json && !isFinite(message.travel_score) ? String(message.travel_score) : message.travel_score;
+            if (message.evade_score_for_direction != null && message.hasOwnProperty("evade_score_for_direction"))
+                object.evade_score_for_direction = options.json && !isFinite(message.evade_score_for_direction) ? String(message.evade_score_for_direction) : message.evade_score_for_direction;
+            if (message.evade_score_for_selector != null && message.hasOwnProperty("evade_score_for_selector"))
+                object.evade_score_for_selector = options.json && !isFinite(message.evade_score_for_selector) ? String(message.evade_score_for_selector) : message.evade_score_for_selector;
+            if (message.cost != null && message.hasOwnProperty("cost"))
+                object.cost = options.json && !isFinite(message.cost) ? String(message.cost) : message.cost;
+            if (message.end_point_deviation_cost != null && message.hasOwnProperty("end_point_deviation_cost"))
+                object.end_point_deviation_cost = options.json && !isFinite(message.end_point_deviation_cost) ? String(message.end_point_deviation_cost) : message.end_point_deviation_cost;
+            if (message.end_point_deviation != null && message.hasOwnProperty("end_point_deviation"))
+                object.end_point_deviation = options.json && !isFinite(message.end_point_deviation) ? String(message.end_point_deviation) : message.end_point_deviation;
+            if (message.mean_path_deviation_cost != null && message.hasOwnProperty("mean_path_deviation_cost"))
+                object.mean_path_deviation_cost = options.json && !isFinite(message.mean_path_deviation_cost) ? String(message.mean_path_deviation_cost) : message.mean_path_deviation_cost;
+            if (message.mean_path_deviation != null && message.hasOwnProperty("mean_path_deviation"))
+                object.mean_path_deviation = options.json && !isFinite(message.mean_path_deviation) ? String(message.mean_path_deviation) : message.mean_path_deviation;
+            if (message.progress_cost != null && message.hasOwnProperty("progress_cost"))
+                object.progress_cost = options.json && !isFinite(message.progress_cost) ? String(message.progress_cost) : message.progress_cost;
+            if (message.progress_made != null && message.hasOwnProperty("progress_made"))
+                object.progress_made = options.json && !isFinite(message.progress_made) ? String(message.progress_made) : message.progress_made;
+            if (message.heading_cost != null && message.hasOwnProperty("heading_cost"))
+                object.heading_cost = options.json && !isFinite(message.heading_cost) ? String(message.heading_cost) : message.heading_cost;
+            if (message.end_point_heading_error != null && message.hasOwnProperty("end_point_heading_error"))
+                object.end_point_heading_error = options.json && !isFinite(message.end_point_heading_error) ? String(message.end_point_heading_error) : message.end_point_heading_error;
+            if (message.steering_cost != null && message.hasOwnProperty("steering_cost"))
+                object.steering_cost = options.json && !isFinite(message.steering_cost) ? String(message.steering_cost) : message.steering_cost;
+            if (message.steering_change_cost != null && message.hasOwnProperty("steering_change_cost"))
+                object.steering_change_cost = options.json && !isFinite(message.steering_change_cost) ? String(message.steering_change_cost) : message.steering_change_cost;
+            if (message.velocity_change_cost != null && message.hasOwnProperty("velocity_change_cost"))
+                object.velocity_change_cost = options.json && !isFinite(message.velocity_change_cost) ? String(message.velocity_change_cost) : message.velocity_change_cost;
+            if (message.resolution_index != null && message.hasOwnProperty("resolution_index"))
+                object.resolution_index = message.resolution_index;
+            return object;
+        };
+
+        /**
+         * Converts this DwaCandidatePath to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DwaCandidatePath.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DwaCandidatePath
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.DwaCandidatePath
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DwaCandidatePath.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.DwaCandidatePath";
+        };
+
+        return DwaCandidatePath;
+    })();
+
+    /**
+     * DwaCandidateKind enum.
+     * @name ax_proto_msgs.DwaCandidateKind
+     * @enum {number}
+     * @property {number} DWA_KIND_UNSPECIFIED=0 DWA_KIND_UNSPECIFIED value
+     * @property {number} DWA_KIND_BASE=1 DWA_KIND_BASE value
+     * @property {number} DWA_KIND_V2=2 DWA_KIND_V2 value
+     * @property {number} DWA_KIND_V2_LEGACY=3 DWA_KIND_V2_LEGACY value
+     */
+    ax_proto_msgs.DwaCandidateKind = (function() {
+        const valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "DWA_KIND_UNSPECIFIED"] = 0;
+        values[valuesById[1] = "DWA_KIND_BASE"] = 1;
+        values[valuesById[2] = "DWA_KIND_V2"] = 2;
+        values[valuesById[3] = "DWA_KIND_V2_LEGACY"] = 3;
+        return values;
+    })();
+
+    ax_proto_msgs.DwaCandidatePathSet = (function() {
+
+        /**
+         * Properties of a DwaCandidatePathSet.
+         * @memberof ax_proto_msgs
+         * @interface IDwaCandidatePathSet
+         * @property {ax_proto_msgs.IHeader|null} [header] DwaCandidatePathSet header
+         * @property {number|null} [origin_x] DwaCandidatePathSet origin_x
+         * @property {number|null} [origin_y] DwaCandidatePathSet origin_y
+         * @property {number|null} [resolution] DwaCandidatePathSet resolution
+         * @property {Array.<ax_proto_msgs.IDwaCandidatePath>|null} [paths] DwaCandidatePathSet paths
+         * @property {ax_proto_msgs.DwaCandidateKind|null} [kind] DwaCandidatePathSet kind
+         */
+
+        /**
+         * Constructs a new DwaCandidatePathSet.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a DwaCandidatePathSet.
+         * @implements IDwaCandidatePathSet
+         * @constructor
+         * @param {ax_proto_msgs.IDwaCandidatePathSet=} [properties] Properties to set
+         */
+        function DwaCandidatePathSet(properties) {
+            this.paths = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DwaCandidatePathSet header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         */
+        DwaCandidatePathSet.prototype.header = null;
+
+        /**
+         * DwaCandidatePathSet origin_x.
+         * @member {number} origin_x
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         */
+        DwaCandidatePathSet.prototype.origin_x = 0;
+
+        /**
+         * DwaCandidatePathSet origin_y.
+         * @member {number} origin_y
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         */
+        DwaCandidatePathSet.prototype.origin_y = 0;
+
+        /**
+         * DwaCandidatePathSet resolution.
+         * @member {number} resolution
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         */
+        DwaCandidatePathSet.prototype.resolution = 0;
+
+        /**
+         * DwaCandidatePathSet paths.
+         * @member {Array.<ax_proto_msgs.IDwaCandidatePath>} paths
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         */
+        DwaCandidatePathSet.prototype.paths = $util.emptyArray;
+
+        /**
+         * DwaCandidatePathSet kind.
+         * @member {ax_proto_msgs.DwaCandidateKind} kind
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         */
+        DwaCandidatePathSet.prototype.kind = 0;
+
+        /**
+         * Creates a new DwaCandidatePathSet instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {ax_proto_msgs.IDwaCandidatePathSet=} [properties] Properties to set
+         * @returns {ax_proto_msgs.DwaCandidatePathSet} DwaCandidatePathSet instance
+         */
+        DwaCandidatePathSet.create = function create(properties) {
+            return new DwaCandidatePathSet(properties);
+        };
+
+        /**
+         * Encodes the specified DwaCandidatePathSet message. Does not implicitly {@link ax_proto_msgs.DwaCandidatePathSet.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {ax_proto_msgs.IDwaCandidatePathSet} message DwaCandidatePathSet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DwaCandidatePathSet.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.origin_x != null && Object.hasOwnProperty.call(message, "origin_x"))
+                writer.uint32(/* id 2, wireType 1 =*/17).double(message.origin_x);
+            if (message.origin_y != null && Object.hasOwnProperty.call(message, "origin_y"))
+                writer.uint32(/* id 3, wireType 1 =*/25).double(message.origin_y);
+            if (message.resolution != null && Object.hasOwnProperty.call(message, "resolution"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.resolution);
+            if (message.paths != null && message.paths.length)
+                for (let i = 0; i < message.paths.length; ++i)
+                    $root.ax_proto_msgs.DwaCandidatePath.encode(message.paths[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+            if (message.kind != null && Object.hasOwnProperty.call(message, "kind"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.kind);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DwaCandidatePathSet message, length delimited. Does not implicitly {@link ax_proto_msgs.DwaCandidatePathSet.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {ax_proto_msgs.IDwaCandidatePathSet} message DwaCandidatePathSet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DwaCandidatePathSet.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DwaCandidatePathSet message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.DwaCandidatePathSet} DwaCandidatePathSet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DwaCandidatePathSet.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.DwaCandidatePathSet();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.origin_x = reader.double();
+                        break;
+                    }
+                case 3: {
+                        message.origin_y = reader.double();
+                        break;
+                    }
+                case 4: {
+                        message.resolution = reader.float();
+                        break;
+                    }
+                case 5: {
+                        if (!(message.paths && message.paths.length))
+                            message.paths = [];
+                        message.paths.push($root.ax_proto_msgs.DwaCandidatePath.decode(reader, reader.uint32()));
+                        break;
+                    }
+                case 6: {
+                        message.kind = reader.int32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DwaCandidatePathSet message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.DwaCandidatePathSet} DwaCandidatePathSet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DwaCandidatePathSet.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DwaCandidatePathSet message.
+         * @function verify
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DwaCandidatePathSet.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.origin_x != null && message.hasOwnProperty("origin_x"))
+                if (typeof message.origin_x !== "number")
+                    return "origin_x: number expected";
+            if (message.origin_y != null && message.hasOwnProperty("origin_y"))
+                if (typeof message.origin_y !== "number")
+                    return "origin_y: number expected";
+            if (message.resolution != null && message.hasOwnProperty("resolution"))
+                if (typeof message.resolution !== "number")
+                    return "resolution: number expected";
+            if (message.paths != null && message.hasOwnProperty("paths")) {
+                if (!Array.isArray(message.paths))
+                    return "paths: array expected";
+                for (let i = 0; i < message.paths.length; ++i) {
+                    let error = $root.ax_proto_msgs.DwaCandidatePath.verify(message.paths[i]);
+                    if (error)
+                        return "paths." + error;
+                }
+            }
+            if (message.kind != null && message.hasOwnProperty("kind"))
+                switch (message.kind) {
+                default:
+                    return "kind: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            return null;
+        };
+
+        /**
+         * Creates a DwaCandidatePathSet message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.DwaCandidatePathSet} DwaCandidatePathSet
+         */
+        DwaCandidatePathSet.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.DwaCandidatePathSet)
+                return object;
+            let message = new $root.ax_proto_msgs.DwaCandidatePathSet();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.DwaCandidatePathSet.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.origin_x != null)
+                message.origin_x = Number(object.origin_x);
+            if (object.origin_y != null)
+                message.origin_y = Number(object.origin_y);
+            if (object.resolution != null)
+                message.resolution = Number(object.resolution);
+            if (object.paths) {
+                if (!Array.isArray(object.paths))
+                    throw TypeError(".ax_proto_msgs.DwaCandidatePathSet.paths: array expected");
+                message.paths = [];
+                for (let i = 0; i < object.paths.length; ++i) {
+                    if (typeof object.paths[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.DwaCandidatePathSet.paths: object expected");
+                    message.paths[i] = $root.ax_proto_msgs.DwaCandidatePath.fromObject(object.paths[i]);
+                }
+            }
+            switch (object.kind) {
+            default:
+                if (typeof object.kind === "number") {
+                    message.kind = object.kind;
+                    break;
+                }
+                break;
+            case "DWA_KIND_UNSPECIFIED":
+            case 0:
+                message.kind = 0;
+                break;
+            case "DWA_KIND_BASE":
+            case 1:
+                message.kind = 1;
+                break;
+            case "DWA_KIND_V2":
+            case 2:
+                message.kind = 2;
+                break;
+            case "DWA_KIND_V2_LEGACY":
+            case 3:
+                message.kind = 3;
+                break;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DwaCandidatePathSet message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {ax_proto_msgs.DwaCandidatePathSet} message DwaCandidatePathSet
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DwaCandidatePathSet.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.paths = [];
+            if (options.defaults) {
+                object.header = null;
+                object.origin_x = 0;
+                object.origin_y = 0;
+                object.resolution = 0;
+                object.kind = options.enums === String ? "DWA_KIND_UNSPECIFIED" : 0;
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.origin_x != null && message.hasOwnProperty("origin_x"))
+                object.origin_x = options.json && !isFinite(message.origin_x) ? String(message.origin_x) : message.origin_x;
+            if (message.origin_y != null && message.hasOwnProperty("origin_y"))
+                object.origin_y = options.json && !isFinite(message.origin_y) ? String(message.origin_y) : message.origin_y;
+            if (message.resolution != null && message.hasOwnProperty("resolution"))
+                object.resolution = options.json && !isFinite(message.resolution) ? String(message.resolution) : message.resolution;
+            if (message.paths && message.paths.length) {
+                object.paths = [];
+                for (let j = 0; j < message.paths.length; ++j)
+                    object.paths[j] = $root.ax_proto_msgs.DwaCandidatePath.toObject(message.paths[j], options);
+            }
+            if (message.kind != null && message.hasOwnProperty("kind"))
+                object.kind = options.enums === String ? $root.ax_proto_msgs.DwaCandidateKind[message.kind] === undefined ? message.kind : $root.ax_proto_msgs.DwaCandidateKind[message.kind] : message.kind;
+            return object;
+        };
+
+        /**
+         * Converts this DwaCandidatePathSet to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DwaCandidatePathSet.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DwaCandidatePathSet
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.DwaCandidatePathSet
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DwaCandidatePathSet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.DwaCandidatePathSet";
+        };
+
+        return DwaCandidatePathSet;
+    })();
+
+    ax_proto_msgs.Header = (function() {
+
+        /**
+         * Properties of a Header.
+         * @memberof ax_proto_msgs
+         * @interface IHeader
+         * @property {number|null} [seq] Header seq
+         * @property {number|Long|null} [stamp_nsec] Header stamp_nsec
+         * @property {string|null} [frame_id] Header frame_id
+         */
+
+        /**
+         * Constructs a new Header.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Header.
+         * @implements IHeader
+         * @constructor
+         * @param {ax_proto_msgs.IHeader=} [properties] Properties to set
+         */
+        function Header(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Header seq.
+         * @member {number} seq
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         */
+        Header.prototype.seq = 0;
+
+        /**
+         * Header stamp_nsec.
+         * @member {number|Long} stamp_nsec
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         */
+        Header.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Header frame_id.
+         * @member {string} frame_id
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         */
+        Header.prototype.frame_id = "";
+
+        /**
+         * Creates a new Header instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.IHeader=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Header} Header instance
+         */
+        Header.create = function create(properties) {
+            return new Header(properties);
+        };
+
+        /**
+         * Encodes the specified Header message. Does not implicitly {@link ax_proto_msgs.Header.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.IHeader} message Header message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Header.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.seq != null && Object.hasOwnProperty.call(message, "seq"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.seq);
+            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.stamp_nsec);
+            if (message.frame_id != null && Object.hasOwnProperty.call(message, "frame_id"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.frame_id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Header message, length delimited. Does not implicitly {@link ax_proto_msgs.Header.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.IHeader} message Header message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Header.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Header message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Header} Header
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Header.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Header();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.seq = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.stamp_nsec = reader.uint64();
+                        break;
+                    }
+                case 4: {
+                        message.frame_id = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Header message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Header} Header
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Header.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Header message.
+         * @function verify
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Header.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.seq != null && message.hasOwnProperty("seq"))
+                if (!$util.isInteger(message.seq))
+                    return "seq: integer expected";
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
+                    return "stamp_nsec: integer|Long expected";
+            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
+                if (!$util.isString(message.frame_id))
+                    return "frame_id: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a Header message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Header} Header
+         */
+        Header.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Header)
+                return object;
+            let message = new $root.ax_proto_msgs.Header();
+            if (object.seq != null)
+                message.seq = object.seq >>> 0;
+            if (object.stamp_nsec != null)
+                if ($util.Long)
+                    (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
+                else if (typeof object.stamp_nsec === "string")
+                    message.stamp_nsec = parseInt(object.stamp_nsec, 10);
+                else if (typeof object.stamp_nsec === "number")
+                    message.stamp_nsec = object.stamp_nsec;
+                else if (typeof object.stamp_nsec === "object")
+                    message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
+            if (object.frame_id != null)
+                message.frame_id = String(object.frame_id);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Header message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.Header} message Header
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Header.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.seq = 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.stamp_nsec = options.longs === String ? "0" : 0;
+                object.frame_id = "";
+            }
+            if (message.seq != null && message.hasOwnProperty("seq"))
+                object.seq = message.seq;
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (typeof message.stamp_nsec === "number")
+                    object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
+                else
+                    object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
+            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
+                object.frame_id = message.frame_id;
+            return object;
+        };
+
+        /**
+         * Converts this Header to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Header.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Header
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Header.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Header";
+        };
+
+        return Header;
+    })();
+
+    ax_proto_msgs.Pose = (function() {
 
         /**
          * Properties of a Pose.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IPose
          * @property {number|null} [x] Pose x
          * @property {number|null} [y] Pose y
@@ -527,11 +3061,11 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * Constructs a new Pose.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a Pose.
          * @implements IPose
          * @constructor
-         * @param {ros_messages.IPose=} [properties] Properties to set
+         * @param {ax_proto_msgs.IPose=} [properties] Properties to set
          */
         function Pose(properties) {
             if (properties)
@@ -543,7 +3077,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose x.
          * @member {number} x
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.x = 0;
@@ -551,7 +3085,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose y.
          * @member {number} y
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.y = 0;
@@ -559,7 +3093,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose z.
          * @member {number} z
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.z = 0;
@@ -567,7 +3101,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose qx.
          * @member {number} qx
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.qx = 0;
@@ -575,7 +3109,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose qy.
          * @member {number} qy
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.qy = 0;
@@ -583,7 +3117,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose qz.
          * @member {number} qz
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.qz = 0;
@@ -591,7 +3125,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Pose qw.
          * @member {number} qw
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          */
         Pose.prototype.qw = 0;
@@ -599,21 +3133,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new Pose instance using the specified properties.
          * @function create
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
-         * @param {ros_messages.IPose=} [properties] Properties to set
-         * @returns {ros_messages.Pose} Pose instance
+         * @param {ax_proto_msgs.IPose=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Pose} Pose instance
          */
         Pose.create = function create(properties) {
             return new Pose(properties);
         };
 
         /**
-         * Encodes the specified Pose message. Does not implicitly {@link ros_messages.Pose.verify|verify} messages.
+         * Encodes the specified Pose message. Does not implicitly {@link ax_proto_msgs.Pose.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
-         * @param {ros_messages.IPose} message Pose message or plain object to encode
+         * @param {ax_proto_msgs.IPose} message Pose message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -638,11 +3172,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified Pose message, length delimited. Does not implicitly {@link ros_messages.Pose.verify|verify} messages.
+         * Encodes the specified Pose message, length delimited. Does not implicitly {@link ax_proto_msgs.Pose.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
-         * @param {ros_messages.IPose} message Pose message or plain object to encode
+         * @param {ax_proto_msgs.IPose} message Pose message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -653,18 +3187,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a Pose message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.Pose} Pose
+         * @returns {ax_proto_msgs.Pose} Pose
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         Pose.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.Pose();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Pose();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -709,10 +3243,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a Pose message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.Pose} Pose
+         * @returns {ax_proto_msgs.Pose} Pose
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -725,7 +3259,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a Pose message.
          * @function verify
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -760,15 +3294,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a Pose message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.Pose} Pose
+         * @returns {ax_proto_msgs.Pose} Pose
          */
         Pose.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.Pose)
+            if (object instanceof $root.ax_proto_msgs.Pose)
                 return object;
-            let message = new $root.ros_messages.Pose();
+            let message = new $root.ax_proto_msgs.Pose();
             if (object.x != null)
                 message.x = Number(object.x);
             if (object.y != null)
@@ -789,9 +3323,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a Pose message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
-         * @param {ros_messages.Pose} message Pose
+         * @param {ax_proto_msgs.Pose} message Pose
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -828,7 +3362,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this Pose to JSON.
          * @function toJSON
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -839,7 +3373,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for Pose
          * @function getTypeUrl
-         * @memberof ros_messages.Pose
+         * @memberof ax_proto_msgs.Pose
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -848,335 +3382,32 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.Pose";
+            return typeUrlPrefix + "/ax_proto_msgs.Pose";
         };
 
         return Pose;
     })();
 
-    ros_messages.Header = (function() {
-
-        /**
-         * Properties of a Header.
-         * @memberof ros_messages
-         * @interface IHeader
-         * @property {number|null} [seq] Header seq
-         * @property {number|Long|null} [stamp_sec] Header stamp_sec
-         * @property {number|Long|null} [stamp_nsec] Header stamp_nsec
-         * @property {string|null} [frame_id] Header frame_id
-         */
-
-        /**
-         * Constructs a new Header.
-         * @memberof ros_messages
-         * @classdesc Represents a Header.
-         * @implements IHeader
-         * @constructor
-         * @param {ros_messages.IHeader=} [properties] Properties to set
-         */
-        function Header(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Header seq.
-         * @member {number} seq
-         * @memberof ros_messages.Header
-         * @instance
-         */
-        Header.prototype.seq = 0;
-
-        /**
-         * Header stamp_sec.
-         * @member {number|Long} stamp_sec
-         * @memberof ros_messages.Header
-         * @instance
-         */
-        Header.prototype.stamp_sec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-        /**
-         * Header stamp_nsec.
-         * @member {number|Long} stamp_nsec
-         * @memberof ros_messages.Header
-         * @instance
-         */
-        Header.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-        /**
-         * Header frame_id.
-         * @member {string} frame_id
-         * @memberof ros_messages.Header
-         * @instance
-         */
-        Header.prototype.frame_id = "";
-
-        /**
-         * Creates a new Header instance using the specified properties.
-         * @function create
-         * @memberof ros_messages.Header
-         * @static
-         * @param {ros_messages.IHeader=} [properties] Properties to set
-         * @returns {ros_messages.Header} Header instance
-         */
-        Header.create = function create(properties) {
-            return new Header(properties);
-        };
-
-        /**
-         * Encodes the specified Header message. Does not implicitly {@link ros_messages.Header.verify|verify} messages.
-         * @function encode
-         * @memberof ros_messages.Header
-         * @static
-         * @param {ros_messages.IHeader} message Header message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Header.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.seq != null && Object.hasOwnProperty.call(message, "seq"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.seq);
-            if (message.stamp_sec != null && Object.hasOwnProperty.call(message, "stamp_sec"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.stamp_sec);
-            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.stamp_nsec);
-            if (message.frame_id != null && Object.hasOwnProperty.call(message, "frame_id"))
-                writer.uint32(/* id 4, wireType 2 =*/34).string(message.frame_id);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Header message, length delimited. Does not implicitly {@link ros_messages.Header.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof ros_messages.Header
-         * @static
-         * @param {ros_messages.IHeader} message Header message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Header.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a Header message from the specified reader or buffer.
-         * @function decode
-         * @memberof ros_messages.Header
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.Header} Header
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Header.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.Header();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.seq = reader.uint32();
-                        break;
-                    }
-                case 2: {
-                        message.stamp_sec = reader.uint64();
-                        break;
-                    }
-                case 3: {
-                        message.stamp_nsec = reader.uint64();
-                        break;
-                    }
-                case 4: {
-                        message.frame_id = reader.string();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a Header message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof ros_messages.Header
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.Header} Header
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Header.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a Header message.
-         * @function verify
-         * @memberof ros_messages.Header
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Header.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.seq != null && message.hasOwnProperty("seq"))
-                if (!$util.isInteger(message.seq))
-                    return "seq: integer expected";
-            if (message.stamp_sec != null && message.hasOwnProperty("stamp_sec"))
-                if (!$util.isInteger(message.stamp_sec) && !(message.stamp_sec && $util.isInteger(message.stamp_sec.low) && $util.isInteger(message.stamp_sec.high)))
-                    return "stamp_sec: integer|Long expected";
-            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
-                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
-                    return "stamp_nsec: integer|Long expected";
-            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
-                if (!$util.isString(message.frame_id))
-                    return "frame_id: string expected";
-            return null;
-        };
-
-        /**
-         * Creates a Header message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof ros_messages.Header
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.Header} Header
-         */
-        Header.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.Header)
-                return object;
-            let message = new $root.ros_messages.Header();
-            if (object.seq != null)
-                message.seq = object.seq >>> 0;
-            if (object.stamp_sec != null)
-                if ($util.Long)
-                    (message.stamp_sec = $util.Long.fromValue(object.stamp_sec)).unsigned = true;
-                else if (typeof object.stamp_sec === "string")
-                    message.stamp_sec = parseInt(object.stamp_sec, 10);
-                else if (typeof object.stamp_sec === "number")
-                    message.stamp_sec = object.stamp_sec;
-                else if (typeof object.stamp_sec === "object")
-                    message.stamp_sec = new $util.LongBits(object.stamp_sec.low >>> 0, object.stamp_sec.high >>> 0).toNumber(true);
-            if (object.stamp_nsec != null)
-                if ($util.Long)
-                    (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
-                else if (typeof object.stamp_nsec === "string")
-                    message.stamp_nsec = parseInt(object.stamp_nsec, 10);
-                else if (typeof object.stamp_nsec === "number")
-                    message.stamp_nsec = object.stamp_nsec;
-                else if (typeof object.stamp_nsec === "object")
-                    message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
-            if (object.frame_id != null)
-                message.frame_id = String(object.frame_id);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a Header message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof ros_messages.Header
-         * @static
-         * @param {ros_messages.Header} message Header
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Header.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.seq = 0;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, true);
-                    object.stamp_sec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.stamp_sec = options.longs === String ? "0" : 0;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, true);
-                    object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.stamp_nsec = options.longs === String ? "0" : 0;
-                object.frame_id = "";
-            }
-            if (message.seq != null && message.hasOwnProperty("seq"))
-                object.seq = message.seq;
-            if (message.stamp_sec != null && message.hasOwnProperty("stamp_sec"))
-                if (typeof message.stamp_sec === "number")
-                    object.stamp_sec = options.longs === String ? String(message.stamp_sec) : message.stamp_sec;
-                else
-                    object.stamp_sec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_sec) : options.longs === Number ? new $util.LongBits(message.stamp_sec.low >>> 0, message.stamp_sec.high >>> 0).toNumber(true) : message.stamp_sec;
-            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
-                if (typeof message.stamp_nsec === "number")
-                    object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
-                else
-                    object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
-            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
-                object.frame_id = message.frame_id;
-            return object;
-        };
-
-        /**
-         * Converts this Header to JSON.
-         * @function toJSON
-         * @memberof ros_messages.Header
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Header.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Header
-         * @function getTypeUrl
-         * @memberof ros_messages.Header
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Header.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/ros_messages.Header";
-        };
-
-        return Header;
-    })();
-
-    ros_messages.MastState = (function() {
+    ax_proto_msgs.MastState = (function() {
 
         /**
          * Properties of a MastState.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IMastState
          * @property {number|null} [target_height] MastState target_height
          * @property {number|null} [current_height] MastState current_height
-         * @property {ros_messages.MastState.MotionState|null} [motion_state] MastState motion_state
+         * @property {ax_proto_msgs.MastState.MotionState.Type|null} [motion_state] MastState motion_state
          * @property {number|null} [error] MastState error
          * @property {string|null} [error_message] MastState error_message
          */
 
         /**
          * Constructs a new MastState.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a MastState.
          * @implements IMastState
          * @constructor
-         * @param {ros_messages.IMastState=} [properties] Properties to set
+         * @param {ax_proto_msgs.IMastState=} [properties] Properties to set
          */
         function MastState(properties) {
             if (properties)
@@ -1188,7 +3419,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MastState target_height.
          * @member {number} target_height
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @instance
          */
         MastState.prototype.target_height = 0;
@@ -1196,15 +3427,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MastState current_height.
          * @member {number} current_height
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @instance
          */
         MastState.prototype.current_height = 0;
 
         /**
          * MastState motion_state.
-         * @member {ros_messages.MastState.MotionState} motion_state
-         * @memberof ros_messages.MastState
+         * @member {ax_proto_msgs.MastState.MotionState.Type} motion_state
+         * @memberof ax_proto_msgs.MastState
          * @instance
          */
         MastState.prototype.motion_state = 0;
@@ -1212,7 +3443,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MastState error.
          * @member {number} error
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @instance
          */
         MastState.prototype.error = 0;
@@ -1220,7 +3451,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MastState error_message.
          * @member {string} error_message
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @instance
          */
         MastState.prototype.error_message = "";
@@ -1228,21 +3459,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new MastState instance using the specified properties.
          * @function create
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
-         * @param {ros_messages.IMastState=} [properties] Properties to set
-         * @returns {ros_messages.MastState} MastState instance
+         * @param {ax_proto_msgs.IMastState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.MastState} MastState instance
          */
         MastState.create = function create(properties) {
             return new MastState(properties);
         };
 
         /**
-         * Encodes the specified MastState message. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * Encodes the specified MastState message. Does not implicitly {@link ax_proto_msgs.MastState.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
-         * @param {ros_messages.IMastState} message MastState message or plain object to encode
+         * @param {ax_proto_msgs.IMastState} message MastState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -1263,11 +3494,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified MastState message, length delimited. Does not implicitly {@link ros_messages.MastState.verify|verify} messages.
+         * Encodes the specified MastState message, length delimited. Does not implicitly {@link ax_proto_msgs.MastState.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
-         * @param {ros_messages.IMastState} message MastState message or plain object to encode
+         * @param {ax_proto_msgs.IMastState} message MastState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -1278,18 +3509,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a MastState message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.MastState} MastState
+         * @returns {ax_proto_msgs.MastState} MastState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         MastState.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MastState();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MastState();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -1326,10 +3557,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a MastState message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.MastState} MastState
+         * @returns {ax_proto_msgs.MastState} MastState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -1342,7 +3573,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a MastState message.
          * @function verify
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -1378,15 +3609,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a MastState message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.MastState} MastState
+         * @returns {ax_proto_msgs.MastState} MastState
          */
         MastState.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.MastState)
+            if (object instanceof $root.ax_proto_msgs.MastState)
                 return object;
-            let message = new $root.ros_messages.MastState();
+            let message = new $root.ax_proto_msgs.MastState();
             if (object.target_height != null)
                 message.target_height = Number(object.target_height);
             if (object.current_height != null)
@@ -1425,9 +3656,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a MastState message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
-         * @param {ros_messages.MastState} message MastState
+         * @param {ax_proto_msgs.MastState} message MastState
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -1447,7 +3678,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.current_height != null && message.hasOwnProperty("current_height"))
                 object.current_height = options.json && !isFinite(message.current_height) ? String(message.current_height) : message.current_height;
             if (message.motion_state != null && message.hasOwnProperty("motion_state"))
-                object.motion_state = options.enums === String ? $root.ros_messages.MastState.MotionState[message.motion_state] === undefined ? message.motion_state : $root.ros_messages.MastState.MotionState[message.motion_state] : message.motion_state;
+                object.motion_state = options.enums === String ? $root.ax_proto_msgs.MastState.MotionState.Type[message.motion_state] === undefined ? message.motion_state : $root.ax_proto_msgs.MastState.MotionState.Type[message.motion_state] : message.motion_state;
             if (message.error != null && message.hasOwnProperty("error"))
                 object.error = message.error;
             if (message.error_message != null && message.hasOwnProperty("error_message"))
@@ -1458,7 +3689,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this MastState to JSON.
          * @function toJSON
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -1469,7 +3700,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for MastState
          * @function getTypeUrl
-         * @memberof ros_messages.MastState
+         * @memberof ax_proto_msgs.MastState
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -1478,47 +3709,224 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.MastState";
+            return typeUrlPrefix + "/ax_proto_msgs.MastState";
         };
 
-        /**
-         * MotionState enum.
-         * @name ros_messages.MastState.MotionState
-         * @enum {number}
-         * @property {number} UNKNOWN=0 UNKNOWN value
-         * @property {number} MOVING_HOLD=1 MOVING_HOLD value
-         * @property {number} MOVING_UP=2 MOVING_UP value
-         * @property {number} MOVING_DOWN=3 MOVING_DOWN value
-         */
         MastState.MotionState = (function() {
-            const valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "UNKNOWN"] = 0;
-            values[valuesById[1] = "MOVING_HOLD"] = 1;
-            values[valuesById[2] = "MOVING_UP"] = 2;
-            values[valuesById[3] = "MOVING_DOWN"] = 3;
-            return values;
+
+            /**
+             * Properties of a MotionState.
+             * @memberof ax_proto_msgs.MastState
+             * @interface IMotionState
+             */
+
+            /**
+             * Constructs a new MotionState.
+             * @memberof ax_proto_msgs.MastState
+             * @classdesc Represents a MotionState.
+             * @implements IMotionState
+             * @constructor
+             * @param {ax_proto_msgs.MastState.IMotionState=} [properties] Properties to set
+             */
+            function MotionState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new MotionState instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {ax_proto_msgs.MastState.IMotionState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MastState.MotionState} MotionState instance
+             */
+            MotionState.create = function create(properties) {
+                return new MotionState(properties);
+            };
+
+            /**
+             * Encodes the specified MotionState message. Does not implicitly {@link ax_proto_msgs.MastState.MotionState.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {ax_proto_msgs.MastState.IMotionState} message MotionState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MotionState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MotionState message, length delimited. Does not implicitly {@link ax_proto_msgs.MastState.MotionState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {ax_proto_msgs.MastState.IMotionState} message MotionState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MotionState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MotionState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.MastState.MotionState} MotionState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MotionState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MastState.MotionState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MotionState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.MastState.MotionState} MotionState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MotionState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MotionState message.
+             * @function verify
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MotionState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MotionState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.MastState.MotionState} MotionState
+             */
+            MotionState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.MastState.MotionState)
+                    return object;
+                return new $root.ax_proto_msgs.MastState.MotionState();
+            };
+
+            /**
+             * Creates a plain object from a MotionState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {ax_proto_msgs.MastState.MotionState} message MotionState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MotionState.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MotionState to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MotionState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for MotionState
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.MastState.MotionState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MotionState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.MastState.MotionState";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.MastState.MotionState.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} MOVING_HOLD=1 MOVING_HOLD value
+             * @property {number} MOVING_UP=2 MOVING_UP value
+             * @property {number} MOVING_DOWN=3 MOVING_DOWN value
+             */
+            MotionState.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "MOVING_HOLD"] = 1;
+                values[valuesById[2] = "MOVING_UP"] = 2;
+                values[valuesById[3] = "MOVING_DOWN"] = 3;
+                return values;
+            })();
+
+            return MotionState;
         })();
 
         return MastState;
     })();
 
-    ros_messages.MobileNetworkState = (function() {
+    ax_proto_msgs.MobileNetworkState = (function() {
 
         /**
          * Properties of a MobileNetworkState.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IMobileNetworkState
-         * @property {ros_messages.MobileNetworkState.ModemState.Type|null} [modem_state] MobileNetworkState modem_state
-         * @property {ros_messages.MobileNetworkState.RecoveryRequest.Type|null} [recovery_request] MobileNetworkState recovery_request
+         * @property {ax_proto_msgs.MobileNetworkState.ModemState.Type|null} [modem_state] MobileNetworkState modem_state
+         * @property {ax_proto_msgs.MobileNetworkState.RecoveryRequest.Type|null} [recovery_request] MobileNetworkState recovery_request
          * @property {string|null} [recovery_reason] MobileNetworkState recovery_reason
-         * @property {ros_messages.MobileNetworkState.SimState.Type|null} [sim_state] MobileNetworkState sim_state
+         * @property {ax_proto_msgs.MobileNetworkState.SimState.Type|null} [sim_state] MobileNetworkState sim_state
          * @property {string|null} [iccid] MobileNetworkState iccid
          * @property {string|null} [imei] MobileNetworkState imei
          * @property {string|null} [imsi] MobileNetworkState imsi
          * @property {string|null} [model] MobileNetworkState model
          * @property {string|null} [firmware_ver] MobileNetworkState firmware_ver
-         * @property {ros_messages.MobileNetworkState.RegState.Type|null} [reg_state] MobileNetworkState reg_state
-         * @property {ros_messages.MobileNetworkState.Rat.Type|null} [rat] MobileNetworkState rat
+         * @property {ax_proto_msgs.MobileNetworkState.RegState.Type|null} [reg_state] MobileNetworkState reg_state
+         * @property {ax_proto_msgs.MobileNetworkState.Rat.Type|null} [rat] MobileNetworkState rat
          * @property {string|null} [operator_name] MobileNetworkState operator_name
          * @property {number|null} [lac] MobileNetworkState lac
          * @property {number|null} [cell_id] MobileNetworkState cell_id
@@ -1527,7 +3935,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number|null} [rsrq_db] MobileNetworkState rsrq_db
          * @property {number|null} [sinr_db] MobileNetworkState sinr_db
          * @property {number|null} [signal_level] MobileNetworkState signal_level
-         * @property {ros_messages.MobileNetworkState.DataState.Type|null} [data_state] MobileNetworkState data_state
+         * @property {ax_proto_msgs.MobileNetworkState.DataState.Type|null} [data_state] MobileNetworkState data_state
          * @property {string|null} [apn] MobileNetworkState apn
          * @property {string|null} [ip_address] MobileNetworkState ip_address
          * @property {number|null} [connected_duration_sec] MobileNetworkState connected_duration_sec
@@ -1537,11 +3945,11 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * Constructs a new MobileNetworkState.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a MobileNetworkState.
          * @implements IMobileNetworkState
          * @constructor
-         * @param {ros_messages.IMobileNetworkState=} [properties] Properties to set
+         * @param {ax_proto_msgs.IMobileNetworkState=} [properties] Properties to set
          */
         function MobileNetworkState(properties) {
             if (properties)
@@ -1552,16 +3960,16 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * MobileNetworkState modem_state.
-         * @member {ros_messages.MobileNetworkState.ModemState.Type} modem_state
-         * @memberof ros_messages.MobileNetworkState
+         * @member {ax_proto_msgs.MobileNetworkState.ModemState.Type} modem_state
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.modem_state = 0;
 
         /**
          * MobileNetworkState recovery_request.
-         * @member {ros_messages.MobileNetworkState.RecoveryRequest.Type} recovery_request
-         * @memberof ros_messages.MobileNetworkState
+         * @member {ax_proto_msgs.MobileNetworkState.RecoveryRequest.Type} recovery_request
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.recovery_request = 0;
@@ -1569,15 +3977,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState recovery_reason.
          * @member {string} recovery_reason
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.recovery_reason = "";
 
         /**
          * MobileNetworkState sim_state.
-         * @member {ros_messages.MobileNetworkState.SimState.Type} sim_state
-         * @memberof ros_messages.MobileNetworkState
+         * @member {ax_proto_msgs.MobileNetworkState.SimState.Type} sim_state
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.sim_state = 0;
@@ -1585,7 +3993,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState iccid.
          * @member {string} iccid
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.iccid = "";
@@ -1593,7 +4001,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState imei.
          * @member {string} imei
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.imei = "";
@@ -1601,7 +4009,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState imsi.
          * @member {string} imsi
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.imsi = "";
@@ -1609,7 +4017,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState model.
          * @member {string} model
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.model = "";
@@ -1617,23 +4025,23 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState firmware_ver.
          * @member {string} firmware_ver
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.firmware_ver = "";
 
         /**
          * MobileNetworkState reg_state.
-         * @member {ros_messages.MobileNetworkState.RegState.Type} reg_state
-         * @memberof ros_messages.MobileNetworkState
+         * @member {ax_proto_msgs.MobileNetworkState.RegState.Type} reg_state
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.reg_state = 0;
 
         /**
          * MobileNetworkState rat.
-         * @member {ros_messages.MobileNetworkState.Rat.Type} rat
-         * @memberof ros_messages.MobileNetworkState
+         * @member {ax_proto_msgs.MobileNetworkState.Rat.Type} rat
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.rat = 0;
@@ -1641,7 +4049,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState operator_name.
          * @member {string} operator_name
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.operator_name = "";
@@ -1649,7 +4057,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState lac.
          * @member {number} lac
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.lac = 0;
@@ -1657,7 +4065,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState cell_id.
          * @member {number} cell_id
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.cell_id = 0;
@@ -1665,7 +4073,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState rssi_dbm.
          * @member {number} rssi_dbm
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.rssi_dbm = 0;
@@ -1673,7 +4081,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState rsrp_dbm.
          * @member {number} rsrp_dbm
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.rsrp_dbm = 0;
@@ -1681,7 +4089,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState rsrq_db.
          * @member {number} rsrq_db
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.rsrq_db = 0;
@@ -1689,7 +4097,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState sinr_db.
          * @member {number} sinr_db
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.sinr_db = 0;
@@ -1697,15 +4105,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState signal_level.
          * @member {number} signal_level
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.signal_level = 0;
 
         /**
          * MobileNetworkState data_state.
-         * @member {ros_messages.MobileNetworkState.DataState.Type} data_state
-         * @memberof ros_messages.MobileNetworkState
+         * @member {ax_proto_msgs.MobileNetworkState.DataState.Type} data_state
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.data_state = 0;
@@ -1713,7 +4121,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState apn.
          * @member {string} apn
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.apn = "";
@@ -1721,7 +4129,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState ip_address.
          * @member {string} ip_address
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.ip_address = "";
@@ -1729,7 +4137,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState connected_duration_sec.
          * @member {number} connected_duration_sec
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.connected_duration_sec = 0;
@@ -1737,7 +4145,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState tx_bytes.
          * @member {number|Long} tx_bytes
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.tx_bytes = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
@@ -1745,7 +4153,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * MobileNetworkState rx_bytes.
          * @member {number|Long} rx_bytes
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          */
         MobileNetworkState.prototype.rx_bytes = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
@@ -1753,21 +4161,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new MobileNetworkState instance using the specified properties.
          * @function create
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
-         * @param {ros_messages.IMobileNetworkState=} [properties] Properties to set
-         * @returns {ros_messages.MobileNetworkState} MobileNetworkState instance
+         * @param {ax_proto_msgs.IMobileNetworkState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.MobileNetworkState} MobileNetworkState instance
          */
         MobileNetworkState.create = function create(properties) {
             return new MobileNetworkState(properties);
         };
 
         /**
-         * Encodes the specified MobileNetworkState message. Does not implicitly {@link ros_messages.MobileNetworkState.verify|verify} messages.
+         * Encodes the specified MobileNetworkState message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
-         * @param {ros_messages.IMobileNetworkState} message MobileNetworkState message or plain object to encode
+         * @param {ax_proto_msgs.IMobileNetworkState} message MobileNetworkState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -1828,11 +4236,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified MobileNetworkState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.verify|verify} messages.
+         * Encodes the specified MobileNetworkState message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
-         * @param {ros_messages.IMobileNetworkState} message MobileNetworkState message or plain object to encode
+         * @param {ax_proto_msgs.IMobileNetworkState} message MobileNetworkState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -1843,18 +4251,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a MobileNetworkState message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.MobileNetworkState} MobileNetworkState
+         * @returns {ax_proto_msgs.MobileNetworkState} MobileNetworkState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         MobileNetworkState.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -1971,10 +4379,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a MobileNetworkState message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.MobileNetworkState} MobileNetworkState
+         * @returns {ax_proto_msgs.MobileNetworkState} MobileNetworkState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -1987,7 +4395,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a MobileNetworkState message.
          * @function verify
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -2132,15 +4540,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a MobileNetworkState message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.MobileNetworkState} MobileNetworkState
+         * @returns {ax_proto_msgs.MobileNetworkState} MobileNetworkState
          */
         MobileNetworkState.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.MobileNetworkState)
+            if (object instanceof $root.ax_proto_msgs.MobileNetworkState)
                 return object;
-            let message = new $root.ros_messages.MobileNetworkState();
+            let message = new $root.ax_proto_msgs.MobileNetworkState();
             switch (object.modem_state) {
             default:
                 if (typeof object.modem_state === "number") {
@@ -2399,9 +4807,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a MobileNetworkState message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
-         * @param {ros_messages.MobileNetworkState} message MobileNetworkState
+         * @param {ax_proto_msgs.MobileNetworkState} message MobileNetworkState
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -2445,13 +4853,13 @@ export const ros_messages = $root.ros_messages = (() => {
                     object.rx_bytes = options.longs === String ? "0" : 0;
             }
             if (message.modem_state != null && message.hasOwnProperty("modem_state"))
-                object.modem_state = options.enums === String ? $root.ros_messages.MobileNetworkState.ModemState.Type[message.modem_state] === undefined ? message.modem_state : $root.ros_messages.MobileNetworkState.ModemState.Type[message.modem_state] : message.modem_state;
+                object.modem_state = options.enums === String ? $root.ax_proto_msgs.MobileNetworkState.ModemState.Type[message.modem_state] === undefined ? message.modem_state : $root.ax_proto_msgs.MobileNetworkState.ModemState.Type[message.modem_state] : message.modem_state;
             if (message.recovery_request != null && message.hasOwnProperty("recovery_request"))
-                object.recovery_request = options.enums === String ? $root.ros_messages.MobileNetworkState.RecoveryRequest.Type[message.recovery_request] === undefined ? message.recovery_request : $root.ros_messages.MobileNetworkState.RecoveryRequest.Type[message.recovery_request] : message.recovery_request;
+                object.recovery_request = options.enums === String ? $root.ax_proto_msgs.MobileNetworkState.RecoveryRequest.Type[message.recovery_request] === undefined ? message.recovery_request : $root.ax_proto_msgs.MobileNetworkState.RecoveryRequest.Type[message.recovery_request] : message.recovery_request;
             if (message.recovery_reason != null && message.hasOwnProperty("recovery_reason"))
                 object.recovery_reason = message.recovery_reason;
             if (message.sim_state != null && message.hasOwnProperty("sim_state"))
-                object.sim_state = options.enums === String ? $root.ros_messages.MobileNetworkState.SimState.Type[message.sim_state] === undefined ? message.sim_state : $root.ros_messages.MobileNetworkState.SimState.Type[message.sim_state] : message.sim_state;
+                object.sim_state = options.enums === String ? $root.ax_proto_msgs.MobileNetworkState.SimState.Type[message.sim_state] === undefined ? message.sim_state : $root.ax_proto_msgs.MobileNetworkState.SimState.Type[message.sim_state] : message.sim_state;
             if (message.iccid != null && message.hasOwnProperty("iccid"))
                 object.iccid = message.iccid;
             if (message.imei != null && message.hasOwnProperty("imei"))
@@ -2463,9 +4871,9 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.firmware_ver != null && message.hasOwnProperty("firmware_ver"))
                 object.firmware_ver = message.firmware_ver;
             if (message.reg_state != null && message.hasOwnProperty("reg_state"))
-                object.reg_state = options.enums === String ? $root.ros_messages.MobileNetworkState.RegState.Type[message.reg_state] === undefined ? message.reg_state : $root.ros_messages.MobileNetworkState.RegState.Type[message.reg_state] : message.reg_state;
+                object.reg_state = options.enums === String ? $root.ax_proto_msgs.MobileNetworkState.RegState.Type[message.reg_state] === undefined ? message.reg_state : $root.ax_proto_msgs.MobileNetworkState.RegState.Type[message.reg_state] : message.reg_state;
             if (message.rat != null && message.hasOwnProperty("rat"))
-                object.rat = options.enums === String ? $root.ros_messages.MobileNetworkState.Rat.Type[message.rat] === undefined ? message.rat : $root.ros_messages.MobileNetworkState.Rat.Type[message.rat] : message.rat;
+                object.rat = options.enums === String ? $root.ax_proto_msgs.MobileNetworkState.Rat.Type[message.rat] === undefined ? message.rat : $root.ax_proto_msgs.MobileNetworkState.Rat.Type[message.rat] : message.rat;
             if (message.operator_name != null && message.hasOwnProperty("operator_name"))
                 object.operator_name = message.operator_name;
             if (message.lac != null && message.hasOwnProperty("lac"))
@@ -2483,7 +4891,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.signal_level != null && message.hasOwnProperty("signal_level"))
                 object.signal_level = message.signal_level;
             if (message.data_state != null && message.hasOwnProperty("data_state"))
-                object.data_state = options.enums === String ? $root.ros_messages.MobileNetworkState.DataState.Type[message.data_state] === undefined ? message.data_state : $root.ros_messages.MobileNetworkState.DataState.Type[message.data_state] : message.data_state;
+                object.data_state = options.enums === String ? $root.ax_proto_msgs.MobileNetworkState.DataState.Type[message.data_state] === undefined ? message.data_state : $root.ax_proto_msgs.MobileNetworkState.DataState.Type[message.data_state] : message.data_state;
             if (message.apn != null && message.hasOwnProperty("apn"))
                 object.apn = message.apn;
             if (message.ip_address != null && message.hasOwnProperty("ip_address"))
@@ -2506,7 +4914,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this MobileNetworkState to JSON.
          * @function toJSON
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -2517,7 +4925,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for MobileNetworkState
          * @function getTypeUrl
-         * @memberof ros_messages.MobileNetworkState
+         * @memberof ax_proto_msgs.MobileNetworkState
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -2526,24 +4934,24 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.MobileNetworkState";
+            return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState";
         };
 
         MobileNetworkState.ModemState = (function() {
 
             /**
              * Properties of a ModemState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @interface IModemState
              */
 
             /**
              * Constructs a new ModemState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @classdesc Represents a ModemState.
              * @implements IModemState
              * @constructor
-             * @param {ros_messages.MobileNetworkState.IModemState=} [properties] Properties to set
+             * @param {ax_proto_msgs.MobileNetworkState.IModemState=} [properties] Properties to set
              */
             function ModemState(properties) {
                 if (properties)
@@ -2555,21 +4963,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new ModemState instance using the specified properties.
              * @function create
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
-             * @param {ros_messages.MobileNetworkState.IModemState=} [properties] Properties to set
-             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState instance
+             * @param {ax_proto_msgs.MobileNetworkState.IModemState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MobileNetworkState.ModemState} ModemState instance
              */
             ModemState.create = function create(properties) {
                 return new ModemState(properties);
             };
 
             /**
-             * Encodes the specified ModemState message. Does not implicitly {@link ros_messages.MobileNetworkState.ModemState.verify|verify} messages.
+             * Encodes the specified ModemState message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.ModemState.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
-             * @param {ros_messages.MobileNetworkState.IModemState} message ModemState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IModemState} message ModemState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -2580,11 +4988,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified ModemState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.ModemState.verify|verify} messages.
+             * Encodes the specified ModemState message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.ModemState.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
-             * @param {ros_messages.MobileNetworkState.IModemState} message ModemState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IModemState} message ModemState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -2595,18 +5003,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a ModemState message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState
+             * @returns {ax_proto_msgs.MobileNetworkState.ModemState} ModemState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             ModemState.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.ModemState();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState.ModemState();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -2623,10 +5031,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a ModemState message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState
+             * @returns {ax_proto_msgs.MobileNetworkState.ModemState} ModemState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -2639,7 +5047,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a ModemState message.
              * @function verify
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -2653,23 +5061,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a ModemState message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.MobileNetworkState.ModemState} ModemState
+             * @returns {ax_proto_msgs.MobileNetworkState.ModemState} ModemState
              */
             ModemState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.MobileNetworkState.ModemState)
+                if (object instanceof $root.ax_proto_msgs.MobileNetworkState.ModemState)
                     return object;
-                return new $root.ros_messages.MobileNetworkState.ModemState();
+                return new $root.ax_proto_msgs.MobileNetworkState.ModemState();
             };
 
             /**
              * Creates a plain object from a ModemState message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
-             * @param {ros_messages.MobileNetworkState.ModemState} message ModemState
+             * @param {ax_proto_msgs.MobileNetworkState.ModemState} message ModemState
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -2680,7 +5088,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this ModemState to JSON.
              * @function toJSON
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -2691,7 +5099,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for ModemState
              * @function getTypeUrl
-             * @memberof ros_messages.MobileNetworkState.ModemState
+             * @memberof ax_proto_msgs.MobileNetworkState.ModemState
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -2700,12 +5108,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.MobileNetworkState.ModemState";
+                return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState.ModemState";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.MobileNetworkState.ModemState.Type
+             * @name ax_proto_msgs.MobileNetworkState.ModemState.Type
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} INITIALIZING=1 INITIALIZING value
@@ -2728,17 +5136,17 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a RecoveryRequest.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @interface IRecoveryRequest
              */
 
             /**
              * Constructs a new RecoveryRequest.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @classdesc Represents a RecoveryRequest.
              * @implements IRecoveryRequest
              * @constructor
-             * @param {ros_messages.MobileNetworkState.IRecoveryRequest=} [properties] Properties to set
+             * @param {ax_proto_msgs.MobileNetworkState.IRecoveryRequest=} [properties] Properties to set
              */
             function RecoveryRequest(properties) {
                 if (properties)
@@ -2750,21 +5158,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new RecoveryRequest instance using the specified properties.
              * @function create
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
-             * @param {ros_messages.MobileNetworkState.IRecoveryRequest=} [properties] Properties to set
-             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest instance
+             * @param {ax_proto_msgs.MobileNetworkState.IRecoveryRequest=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MobileNetworkState.RecoveryRequest} RecoveryRequest instance
              */
             RecoveryRequest.create = function create(properties) {
                 return new RecoveryRequest(properties);
             };
 
             /**
-             * Encodes the specified RecoveryRequest message. Does not implicitly {@link ros_messages.MobileNetworkState.RecoveryRequest.verify|verify} messages.
+             * Encodes the specified RecoveryRequest message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.RecoveryRequest.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
-             * @param {ros_messages.MobileNetworkState.IRecoveryRequest} message RecoveryRequest message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IRecoveryRequest} message RecoveryRequest message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -2775,11 +5183,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified RecoveryRequest message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.RecoveryRequest.verify|verify} messages.
+             * Encodes the specified RecoveryRequest message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.RecoveryRequest.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
-             * @param {ros_messages.MobileNetworkState.IRecoveryRequest} message RecoveryRequest message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IRecoveryRequest} message RecoveryRequest message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -2790,18 +5198,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RecoveryRequest message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest
+             * @returns {ax_proto_msgs.MobileNetworkState.RecoveryRequest} RecoveryRequest
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             RecoveryRequest.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.RecoveryRequest();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState.RecoveryRequest();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -2818,10 +5226,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RecoveryRequest message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest
+             * @returns {ax_proto_msgs.MobileNetworkState.RecoveryRequest} RecoveryRequest
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -2834,7 +5242,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a RecoveryRequest message.
              * @function verify
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -2848,23 +5256,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a RecoveryRequest message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.MobileNetworkState.RecoveryRequest} RecoveryRequest
+             * @returns {ax_proto_msgs.MobileNetworkState.RecoveryRequest} RecoveryRequest
              */
             RecoveryRequest.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.MobileNetworkState.RecoveryRequest)
+                if (object instanceof $root.ax_proto_msgs.MobileNetworkState.RecoveryRequest)
                     return object;
-                return new $root.ros_messages.MobileNetworkState.RecoveryRequest();
+                return new $root.ax_proto_msgs.MobileNetworkState.RecoveryRequest();
             };
 
             /**
              * Creates a plain object from a RecoveryRequest message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
-             * @param {ros_messages.MobileNetworkState.RecoveryRequest} message RecoveryRequest
+             * @param {ax_proto_msgs.MobileNetworkState.RecoveryRequest} message RecoveryRequest
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -2875,7 +5283,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this RecoveryRequest to JSON.
              * @function toJSON
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -2886,7 +5294,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for RecoveryRequest
              * @function getTypeUrl
-             * @memberof ros_messages.MobileNetworkState.RecoveryRequest
+             * @memberof ax_proto_msgs.MobileNetworkState.RecoveryRequest
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -2895,12 +5303,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.MobileNetworkState.RecoveryRequest";
+                return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState.RecoveryRequest";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.MobileNetworkState.RecoveryRequest.Type
+             * @name ax_proto_msgs.MobileNetworkState.RecoveryRequest.Type
              * @enum {number}
              * @property {number} NONE=0 NONE value
              * @property {number} USB_RESET=1 USB_RESET value
@@ -2921,17 +5329,17 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a SimState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @interface ISimState
              */
 
             /**
              * Constructs a new SimState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @classdesc Represents a SimState.
              * @implements ISimState
              * @constructor
-             * @param {ros_messages.MobileNetworkState.ISimState=} [properties] Properties to set
+             * @param {ax_proto_msgs.MobileNetworkState.ISimState=} [properties] Properties to set
              */
             function SimState(properties) {
                 if (properties)
@@ -2943,21 +5351,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new SimState instance using the specified properties.
              * @function create
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
-             * @param {ros_messages.MobileNetworkState.ISimState=} [properties] Properties to set
-             * @returns {ros_messages.MobileNetworkState.SimState} SimState instance
+             * @param {ax_proto_msgs.MobileNetworkState.ISimState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MobileNetworkState.SimState} SimState instance
              */
             SimState.create = function create(properties) {
                 return new SimState(properties);
             };
 
             /**
-             * Encodes the specified SimState message. Does not implicitly {@link ros_messages.MobileNetworkState.SimState.verify|verify} messages.
+             * Encodes the specified SimState message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.SimState.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
-             * @param {ros_messages.MobileNetworkState.ISimState} message SimState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.ISimState} message SimState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -2968,11 +5376,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified SimState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.SimState.verify|verify} messages.
+             * Encodes the specified SimState message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.SimState.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
-             * @param {ros_messages.MobileNetworkState.ISimState} message SimState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.ISimState} message SimState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -2983,18 +5391,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SimState message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.MobileNetworkState.SimState} SimState
+             * @returns {ax_proto_msgs.MobileNetworkState.SimState} SimState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             SimState.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.SimState();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState.SimState();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -3011,10 +5419,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SimState message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.MobileNetworkState.SimState} SimState
+             * @returns {ax_proto_msgs.MobileNetworkState.SimState} SimState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -3027,7 +5435,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a SimState message.
              * @function verify
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -3041,23 +5449,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a SimState message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.MobileNetworkState.SimState} SimState
+             * @returns {ax_proto_msgs.MobileNetworkState.SimState} SimState
              */
             SimState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.MobileNetworkState.SimState)
+                if (object instanceof $root.ax_proto_msgs.MobileNetworkState.SimState)
                     return object;
-                return new $root.ros_messages.MobileNetworkState.SimState();
+                return new $root.ax_proto_msgs.MobileNetworkState.SimState();
             };
 
             /**
              * Creates a plain object from a SimState message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
-             * @param {ros_messages.MobileNetworkState.SimState} message SimState
+             * @param {ax_proto_msgs.MobileNetworkState.SimState} message SimState
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -3068,7 +5476,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this SimState to JSON.
              * @function toJSON
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -3079,7 +5487,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for SimState
              * @function getTypeUrl
-             * @memberof ros_messages.MobileNetworkState.SimState
+             * @memberof ax_proto_msgs.MobileNetworkState.SimState
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -3088,12 +5496,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.MobileNetworkState.SimState";
+                return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState.SimState";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.MobileNetworkState.SimState.Type
+             * @name ax_proto_msgs.MobileNetworkState.SimState.Type
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} ABSENT=1 ABSENT value
@@ -3126,17 +5534,17 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a RegState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @interface IRegState
              */
 
             /**
              * Constructs a new RegState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @classdesc Represents a RegState.
              * @implements IRegState
              * @constructor
-             * @param {ros_messages.MobileNetworkState.IRegState=} [properties] Properties to set
+             * @param {ax_proto_msgs.MobileNetworkState.IRegState=} [properties] Properties to set
              */
             function RegState(properties) {
                 if (properties)
@@ -3148,21 +5556,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new RegState instance using the specified properties.
              * @function create
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
-             * @param {ros_messages.MobileNetworkState.IRegState=} [properties] Properties to set
-             * @returns {ros_messages.MobileNetworkState.RegState} RegState instance
+             * @param {ax_proto_msgs.MobileNetworkState.IRegState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MobileNetworkState.RegState} RegState instance
              */
             RegState.create = function create(properties) {
                 return new RegState(properties);
             };
 
             /**
-             * Encodes the specified RegState message. Does not implicitly {@link ros_messages.MobileNetworkState.RegState.verify|verify} messages.
+             * Encodes the specified RegState message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.RegState.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
-             * @param {ros_messages.MobileNetworkState.IRegState} message RegState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IRegState} message RegState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -3173,11 +5581,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified RegState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.RegState.verify|verify} messages.
+             * Encodes the specified RegState message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.RegState.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
-             * @param {ros_messages.MobileNetworkState.IRegState} message RegState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IRegState} message RegState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -3188,18 +5596,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RegState message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.MobileNetworkState.RegState} RegState
+             * @returns {ax_proto_msgs.MobileNetworkState.RegState} RegState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             RegState.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.RegState();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState.RegState();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -3216,10 +5624,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RegState message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.MobileNetworkState.RegState} RegState
+             * @returns {ax_proto_msgs.MobileNetworkState.RegState} RegState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -3232,7 +5640,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a RegState message.
              * @function verify
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -3246,23 +5654,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a RegState message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.MobileNetworkState.RegState} RegState
+             * @returns {ax_proto_msgs.MobileNetworkState.RegState} RegState
              */
             RegState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.MobileNetworkState.RegState)
+                if (object instanceof $root.ax_proto_msgs.MobileNetworkState.RegState)
                     return object;
-                return new $root.ros_messages.MobileNetworkState.RegState();
+                return new $root.ax_proto_msgs.MobileNetworkState.RegState();
             };
 
             /**
              * Creates a plain object from a RegState message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
-             * @param {ros_messages.MobileNetworkState.RegState} message RegState
+             * @param {ax_proto_msgs.MobileNetworkState.RegState} message RegState
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -3273,7 +5681,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this RegState to JSON.
              * @function toJSON
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -3284,7 +5692,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for RegState
              * @function getTypeUrl
-             * @memberof ros_messages.MobileNetworkState.RegState
+             * @memberof ax_proto_msgs.MobileNetworkState.RegState
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -3293,12 +5701,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.MobileNetworkState.RegState";
+                return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState.RegState";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.MobileNetworkState.RegState.Type
+             * @name ax_proto_msgs.MobileNetworkState.RegState.Type
              * @enum {number}
              * @property {number} NOT_REGISTERED=0 NOT_REGISTERED value
              * @property {number} HOME=1 HOME value
@@ -3329,17 +5737,17 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a Rat.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @interface IRat
              */
 
             /**
              * Constructs a new Rat.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @classdesc Represents a Rat.
              * @implements IRat
              * @constructor
-             * @param {ros_messages.MobileNetworkState.IRat=} [properties] Properties to set
+             * @param {ax_proto_msgs.MobileNetworkState.IRat=} [properties] Properties to set
              */
             function Rat(properties) {
                 if (properties)
@@ -3351,21 +5759,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new Rat instance using the specified properties.
              * @function create
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
-             * @param {ros_messages.MobileNetworkState.IRat=} [properties] Properties to set
-             * @returns {ros_messages.MobileNetworkState.Rat} Rat instance
+             * @param {ax_proto_msgs.MobileNetworkState.IRat=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MobileNetworkState.Rat} Rat instance
              */
             Rat.create = function create(properties) {
                 return new Rat(properties);
             };
 
             /**
-             * Encodes the specified Rat message. Does not implicitly {@link ros_messages.MobileNetworkState.Rat.verify|verify} messages.
+             * Encodes the specified Rat message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.Rat.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
-             * @param {ros_messages.MobileNetworkState.IRat} message Rat message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IRat} message Rat message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -3376,11 +5784,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified Rat message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.Rat.verify|verify} messages.
+             * Encodes the specified Rat message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.Rat.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
-             * @param {ros_messages.MobileNetworkState.IRat} message Rat message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IRat} message Rat message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -3391,18 +5799,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a Rat message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.MobileNetworkState.Rat} Rat
+             * @returns {ax_proto_msgs.MobileNetworkState.Rat} Rat
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             Rat.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.Rat();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState.Rat();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -3419,10 +5827,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a Rat message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.MobileNetworkState.Rat} Rat
+             * @returns {ax_proto_msgs.MobileNetworkState.Rat} Rat
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -3435,7 +5843,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a Rat message.
              * @function verify
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -3449,23 +5857,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a Rat message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.MobileNetworkState.Rat} Rat
+             * @returns {ax_proto_msgs.MobileNetworkState.Rat} Rat
              */
             Rat.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.MobileNetworkState.Rat)
+                if (object instanceof $root.ax_proto_msgs.MobileNetworkState.Rat)
                     return object;
-                return new $root.ros_messages.MobileNetworkState.Rat();
+                return new $root.ax_proto_msgs.MobileNetworkState.Rat();
             };
 
             /**
              * Creates a plain object from a Rat message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
-             * @param {ros_messages.MobileNetworkState.Rat} message Rat
+             * @param {ax_proto_msgs.MobileNetworkState.Rat} message Rat
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -3476,7 +5884,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this Rat to JSON.
              * @function toJSON
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -3487,7 +5895,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for Rat
              * @function getTypeUrl
-             * @memberof ros_messages.MobileNetworkState.Rat
+             * @memberof ax_proto_msgs.MobileNetworkState.Rat
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -3496,12 +5904,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.MobileNetworkState.Rat";
+                return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState.Rat";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.MobileNetworkState.Rat.Type
+             * @name ax_proto_msgs.MobileNetworkState.Rat.Type
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} GSM=1 GSM value
@@ -3536,17 +5944,17 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a DataState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @interface IDataState
              */
 
             /**
              * Constructs a new DataState.
-             * @memberof ros_messages.MobileNetworkState
+             * @memberof ax_proto_msgs.MobileNetworkState
              * @classdesc Represents a DataState.
              * @implements IDataState
              * @constructor
-             * @param {ros_messages.MobileNetworkState.IDataState=} [properties] Properties to set
+             * @param {ax_proto_msgs.MobileNetworkState.IDataState=} [properties] Properties to set
              */
             function DataState(properties) {
                 if (properties)
@@ -3558,21 +5966,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new DataState instance using the specified properties.
              * @function create
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
-             * @param {ros_messages.MobileNetworkState.IDataState=} [properties] Properties to set
-             * @returns {ros_messages.MobileNetworkState.DataState} DataState instance
+             * @param {ax_proto_msgs.MobileNetworkState.IDataState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.MobileNetworkState.DataState} DataState instance
              */
             DataState.create = function create(properties) {
                 return new DataState(properties);
             };
 
             /**
-             * Encodes the specified DataState message. Does not implicitly {@link ros_messages.MobileNetworkState.DataState.verify|verify} messages.
+             * Encodes the specified DataState message. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.DataState.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
-             * @param {ros_messages.MobileNetworkState.IDataState} message DataState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IDataState} message DataState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -3583,11 +5991,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified DataState message, length delimited. Does not implicitly {@link ros_messages.MobileNetworkState.DataState.verify|verify} messages.
+             * Encodes the specified DataState message, length delimited. Does not implicitly {@link ax_proto_msgs.MobileNetworkState.DataState.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
-             * @param {ros_messages.MobileNetworkState.IDataState} message DataState message or plain object to encode
+             * @param {ax_proto_msgs.MobileNetworkState.IDataState} message DataState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -3598,18 +6006,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a DataState message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.MobileNetworkState.DataState} DataState
+             * @returns {ax_proto_msgs.MobileNetworkState.DataState} DataState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             DataState.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.MobileNetworkState.DataState();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MobileNetworkState.DataState();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -3626,10 +6034,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a DataState message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.MobileNetworkState.DataState} DataState
+             * @returns {ax_proto_msgs.MobileNetworkState.DataState} DataState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -3642,7 +6050,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a DataState message.
              * @function verify
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -3656,23 +6064,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a DataState message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.MobileNetworkState.DataState} DataState
+             * @returns {ax_proto_msgs.MobileNetworkState.DataState} DataState
              */
             DataState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.MobileNetworkState.DataState)
+                if (object instanceof $root.ax_proto_msgs.MobileNetworkState.DataState)
                     return object;
-                return new $root.ros_messages.MobileNetworkState.DataState();
+                return new $root.ax_proto_msgs.MobileNetworkState.DataState();
             };
 
             /**
              * Creates a plain object from a DataState message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
-             * @param {ros_messages.MobileNetworkState.DataState} message DataState
+             * @param {ax_proto_msgs.MobileNetworkState.DataState} message DataState
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -3683,7 +6091,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this DataState to JSON.
              * @function toJSON
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -3694,7 +6102,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for DataState
              * @function getTypeUrl
-             * @memberof ros_messages.MobileNetworkState.DataState
+             * @memberof ax_proto_msgs.MobileNetworkState.DataState
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -3703,12 +6111,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.MobileNetworkState.DataState";
+                return typeUrlPrefix + "/ax_proto_msgs.MobileNetworkState.DataState";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.MobileNetworkState.DataState.Type
+             * @name ax_proto_msgs.MobileNetworkState.DataState.Type
              * @enum {number}
              * @property {number} DISCONNECTED=0 DISCONNECTED value
              * @property {number} CONNECTING=1 CONNECTING value
@@ -3730,13 +6138,13 @@ export const ros_messages = $root.ros_messages = (() => {
         return MobileNetworkState;
     })();
 
-    ros_messages.PointCloud = (function() {
+    ax_proto_msgs.PointCloud = (function() {
 
         /**
          * Properties of a PointCloud.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IPointCloud
-         * @property {ros_messages.IHeader|null} [header] PointCloud header
+         * @property {ax_proto_msgs.IHeader|null} [header] PointCloud header
          * @property {number|null} [point_number] PointCloud point_number
          * @property {number|null} [center_x] PointCloud center_x
          * @property {number|null} [center_y] PointCloud center_y
@@ -3754,11 +6162,11 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * Constructs a new PointCloud.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a PointCloud.
          * @implements IPointCloud
          * @constructor
-         * @param {ros_messages.IPointCloud=} [properties] Properties to set
+         * @param {ax_proto_msgs.IPointCloud=} [properties] Properties to set
          */
         function PointCloud(properties) {
             this.xs = [];
@@ -3772,8 +6180,8 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * PointCloud header.
-         * @member {ros_messages.IHeader|null|undefined} header
-         * @memberof ros_messages.PointCloud
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.header = null;
@@ -3781,7 +6189,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud point_number.
          * @member {number} point_number
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.point_number = 0;
@@ -3789,7 +6197,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud center_x.
          * @member {number} center_x
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.center_x = 0;
@@ -3797,7 +6205,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud center_y.
          * @member {number} center_y
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.center_y = 0;
@@ -3805,7 +6213,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud center_z.
          * @member {number} center_z
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.center_z = 0;
@@ -3813,7 +6221,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud resolution.
          * @member {number} resolution
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.resolution = 0;
@@ -3821,7 +6229,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud xs.
          * @member {Array.<number>} xs
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.xs = $util.emptyArray;
@@ -3829,7 +6237,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud ys.
          * @member {Array.<number>} ys
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.ys = $util.emptyArray;
@@ -3837,7 +6245,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud zs.
          * @member {Array.<number>} zs
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.zs = $util.emptyArray;
@@ -3845,7 +6253,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud intensities.
          * @member {Uint8Array} intensities
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.intensities = $util.newBuffer([]);
@@ -3853,7 +6261,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud is_delta_encoded.
          * @member {boolean} is_delta_encoded
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.is_delta_encoded = false;
@@ -3861,7 +6269,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud probabilities.
          * @member {Uint8Array} probabilities
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.probabilities = $util.newBuffer([]);
@@ -3869,7 +6277,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud oris.
          * @member {Uint8Array} oris
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.oris = $util.newBuffer([]);
@@ -3877,7 +6285,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PointCloud speeds.
          * @member {Uint8Array} speeds
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          */
         PointCloud.prototype.speeds = $util.newBuffer([]);
@@ -3885,21 +6293,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new PointCloud instance using the specified properties.
          * @function create
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
-         * @param {ros_messages.IPointCloud=} [properties] Properties to set
-         * @returns {ros_messages.PointCloud} PointCloud instance
+         * @param {ax_proto_msgs.IPointCloud=} [properties] Properties to set
+         * @returns {ax_proto_msgs.PointCloud} PointCloud instance
          */
         PointCloud.create = function create(properties) {
             return new PointCloud(properties);
         };
 
         /**
-         * Encodes the specified PointCloud message. Does not implicitly {@link ros_messages.PointCloud.verify|verify} messages.
+         * Encodes the specified PointCloud message. Does not implicitly {@link ax_proto_msgs.PointCloud.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
-         * @param {ros_messages.IPointCloud} message PointCloud message or plain object to encode
+         * @param {ax_proto_msgs.IPointCloud} message PointCloud message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -3907,7 +6315,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (!writer)
                 writer = $Writer.create();
             if (message.header != null && Object.hasOwnProperty.call(message, "header"))
-                $root.ros_messages.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             if (message.point_number != null && Object.hasOwnProperty.call(message, "point_number"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.point_number);
             if (message.center_x != null && Object.hasOwnProperty.call(message, "center_x"))
@@ -3950,11 +6358,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified PointCloud message, length delimited. Does not implicitly {@link ros_messages.PointCloud.verify|verify} messages.
+         * Encodes the specified PointCloud message, length delimited. Does not implicitly {@link ax_proto_msgs.PointCloud.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
-         * @param {ros_messages.IPointCloud} message PointCloud message or plain object to encode
+         * @param {ax_proto_msgs.IPointCloud} message PointCloud message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -3965,25 +6373,25 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a PointCloud message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.PointCloud} PointCloud
+         * @returns {ax_proto_msgs.PointCloud} PointCloud
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         PointCloud.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.PointCloud();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.PointCloud();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.header = $root.ros_messages.Header.decode(reader, reader.uint32());
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
                         break;
                     }
                 case 2: {
@@ -4070,10 +6478,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a PointCloud message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.PointCloud} PointCloud
+         * @returns {ax_proto_msgs.PointCloud} PointCloud
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -4086,7 +6494,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a PointCloud message.
          * @function verify
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -4095,7 +6503,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeof message !== "object" || message === null)
                 return "object expected";
             if (message.header != null && message.hasOwnProperty("header")) {
-                let error = $root.ros_messages.Header.verify(message.header);
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
                 if (error)
                     return "header." + error;
             }
@@ -4156,19 +6564,19 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a PointCloud message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.PointCloud} PointCloud
+         * @returns {ax_proto_msgs.PointCloud} PointCloud
          */
         PointCloud.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.PointCloud)
+            if (object instanceof $root.ax_proto_msgs.PointCloud)
                 return object;
-            let message = new $root.ros_messages.PointCloud();
+            let message = new $root.ax_proto_msgs.PointCloud();
             if (object.header != null) {
                 if (typeof object.header !== "object")
-                    throw TypeError(".ros_messages.PointCloud.header: object expected");
-                message.header = $root.ros_messages.Header.fromObject(object.header);
+                    throw TypeError(".ax_proto_msgs.PointCloud.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
             }
             if (object.point_number != null)
                 message.point_number = object.point_number >>> 0;
@@ -4182,21 +6590,21 @@ export const ros_messages = $root.ros_messages = (() => {
                 message.resolution = Number(object.resolution);
             if (object.xs) {
                 if (!Array.isArray(object.xs))
-                    throw TypeError(".ros_messages.PointCloud.xs: array expected");
+                    throw TypeError(".ax_proto_msgs.PointCloud.xs: array expected");
                 message.xs = [];
                 for (let i = 0; i < object.xs.length; ++i)
                     message.xs[i] = object.xs[i] | 0;
             }
             if (object.ys) {
                 if (!Array.isArray(object.ys))
-                    throw TypeError(".ros_messages.PointCloud.ys: array expected");
+                    throw TypeError(".ax_proto_msgs.PointCloud.ys: array expected");
                 message.ys = [];
                 for (let i = 0; i < object.ys.length; ++i)
                     message.ys[i] = object.ys[i] | 0;
             }
             if (object.zs) {
                 if (!Array.isArray(object.zs))
-                    throw TypeError(".ros_messages.PointCloud.zs: array expected");
+                    throw TypeError(".ax_proto_msgs.PointCloud.zs: array expected");
                 message.zs = [];
                 for (let i = 0; i < object.zs.length; ++i)
                     message.zs[i] = object.zs[i] | 0;
@@ -4229,9 +6637,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a PointCloud message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
-         * @param {ros_messages.PointCloud} message PointCloud
+         * @param {ax_proto_msgs.PointCloud} message PointCloud
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -4282,7 +6690,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 }
             }
             if (message.header != null && message.hasOwnProperty("header"))
-                object.header = $root.ros_messages.Header.toObject(message.header, options);
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
             if (message.point_number != null && message.hasOwnProperty("point_number"))
                 object.point_number = message.point_number;
             if (message.center_x != null && message.hasOwnProperty("center_x"))
@@ -4324,7 +6732,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this PointCloud to JSON.
          * @function toJSON
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -4335,7 +6743,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for PointCloud
          * @function getTypeUrl
-         * @memberof ros_messages.PointCloud
+         * @memberof ax_proto_msgs.PointCloud
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -4344,29 +6752,29 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.PointCloud";
+            return typeUrlPrefix + "/ax_proto_msgs.PointCloud";
         };
 
         return PointCloud;
     })();
 
-    ros_messages.RackStates = (function() {
+    ax_proto_msgs.RackStates = (function() {
 
         /**
          * Properties of a RackStates.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IRackStates
          * @property {string|null} [map_uid] RackStates map_uid
-         * @property {Array.<ros_messages.RackStates.IRackState>|null} [racks] RackStates racks
+         * @property {Array.<ax_proto_msgs.RackStates.IRackState>|null} [racks] RackStates racks
          */
 
         /**
          * Constructs a new RackStates.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a RackStates.
          * @implements IRackStates
          * @constructor
-         * @param {ros_messages.IRackStates=} [properties] Properties to set
+         * @param {ax_proto_msgs.IRackStates=} [properties] Properties to set
          */
         function RackStates(properties) {
             this.racks = [];
@@ -4379,15 +6787,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * RackStates map_uid.
          * @member {string} map_uid
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @instance
          */
         RackStates.prototype.map_uid = "";
 
         /**
          * RackStates racks.
-         * @member {Array.<ros_messages.RackStates.IRackState>} racks
-         * @memberof ros_messages.RackStates
+         * @member {Array.<ax_proto_msgs.RackStates.IRackState>} racks
+         * @memberof ax_proto_msgs.RackStates
          * @instance
          */
         RackStates.prototype.racks = $util.emptyArray;
@@ -4395,21 +6803,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new RackStates instance using the specified properties.
          * @function create
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
-         * @param {ros_messages.IRackStates=} [properties] Properties to set
-         * @returns {ros_messages.RackStates} RackStates instance
+         * @param {ax_proto_msgs.IRackStates=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RackStates} RackStates instance
          */
         RackStates.create = function create(properties) {
             return new RackStates(properties);
         };
 
         /**
-         * Encodes the specified RackStates message. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
+         * Encodes the specified RackStates message. Does not implicitly {@link ax_proto_msgs.RackStates.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
-         * @param {ros_messages.IRackStates} message RackStates message or plain object to encode
+         * @param {ax_proto_msgs.IRackStates} message RackStates message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -4420,16 +6828,16 @@ export const ros_messages = $root.ros_messages = (() => {
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.map_uid);
             if (message.racks != null && message.racks.length)
                 for (let i = 0; i < message.racks.length; ++i)
-                    $root.ros_messages.RackStates.RackState.encode(message.racks[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                    $root.ax_proto_msgs.RackStates.RackState.encode(message.racks[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
 
         /**
-         * Encodes the specified RackStates message, length delimited. Does not implicitly {@link ros_messages.RackStates.verify|verify} messages.
+         * Encodes the specified RackStates message, length delimited. Does not implicitly {@link ax_proto_msgs.RackStates.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
-         * @param {ros_messages.IRackStates} message RackStates message or plain object to encode
+         * @param {ax_proto_msgs.IRackStates} message RackStates message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -4440,18 +6848,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a RackStates message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.RackStates} RackStates
+         * @returns {ax_proto_msgs.RackStates} RackStates
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         RackStates.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RackStates();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RackStates();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -4464,7 +6872,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 2: {
                         if (!(message.racks && message.racks.length))
                             message.racks = [];
-                        message.racks.push($root.ros_messages.RackStates.RackState.decode(reader, reader.uint32()));
+                        message.racks.push($root.ax_proto_msgs.RackStates.RackState.decode(reader, reader.uint32()));
                         break;
                     }
                 default:
@@ -4478,10 +6886,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a RackStates message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.RackStates} RackStates
+         * @returns {ax_proto_msgs.RackStates} RackStates
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -4494,7 +6902,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a RackStates message.
          * @function verify
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -4509,7 +6917,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (!Array.isArray(message.racks))
                     return "racks: array expected";
                 for (let i = 0; i < message.racks.length; ++i) {
-                    let error = $root.ros_messages.RackStates.RackState.verify(message.racks[i]);
+                    let error = $root.ax_proto_msgs.RackStates.RackState.verify(message.racks[i]);
                     if (error)
                         return "racks." + error;
                 }
@@ -4520,25 +6928,25 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a RackStates message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.RackStates} RackStates
+         * @returns {ax_proto_msgs.RackStates} RackStates
          */
         RackStates.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.RackStates)
+            if (object instanceof $root.ax_proto_msgs.RackStates)
                 return object;
-            let message = new $root.ros_messages.RackStates();
+            let message = new $root.ax_proto_msgs.RackStates();
             if (object.map_uid != null)
                 message.map_uid = String(object.map_uid);
             if (object.racks) {
                 if (!Array.isArray(object.racks))
-                    throw TypeError(".ros_messages.RackStates.racks: array expected");
+                    throw TypeError(".ax_proto_msgs.RackStates.racks: array expected");
                 message.racks = [];
                 for (let i = 0; i < object.racks.length; ++i) {
                     if (typeof object.racks[i] !== "object")
-                        throw TypeError(".ros_messages.RackStates.racks: object expected");
-                    message.racks[i] = $root.ros_messages.RackStates.RackState.fromObject(object.racks[i]);
+                        throw TypeError(".ax_proto_msgs.RackStates.racks: object expected");
+                    message.racks[i] = $root.ax_proto_msgs.RackStates.RackState.fromObject(object.racks[i]);
                 }
             }
             return message;
@@ -4547,9 +6955,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a RackStates message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
-         * @param {ros_messages.RackStates} message RackStates
+         * @param {ax_proto_msgs.RackStates} message RackStates
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -4566,7 +6974,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.racks && message.racks.length) {
                 object.racks = [];
                 for (let j = 0; j < message.racks.length; ++j)
-                    object.racks[j] = $root.ros_messages.RackStates.RackState.toObject(message.racks[j], options);
+                    object.racks[j] = $root.ax_proto_msgs.RackStates.RackState.toObject(message.racks[j], options);
             }
             return object;
         };
@@ -4574,7 +6982,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this RackStates to JSON.
          * @function toJSON
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -4585,7 +6993,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for RackStates
          * @function getTypeUrl
-         * @memberof ros_messages.RackStates
+         * @memberof ax_proto_msgs.RackStates
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -4594,27 +7002,27 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.RackStates";
+            return typeUrlPrefix + "/ax_proto_msgs.RackStates";
         };
 
         RackStates.RackLevelState = (function() {
 
             /**
              * Properties of a RackLevelState.
-             * @memberof ros_messages.RackStates
+             * @memberof ax_proto_msgs.RackStates
              * @interface IRackLevelState
              * @property {number|Long|null} [timestamp_ns] RackLevelState timestamp_ns
              * @property {number|null} [level] RackLevelState level
-             * @property {ros_messages.RackStates.RackLevelState.SpaceState|null} [state] RackLevelState state
+             * @property {ax_proto_msgs.RackStates.RackLevelState.SpaceState|null} [state] RackLevelState state
              */
 
             /**
              * Constructs a new RackLevelState.
-             * @memberof ros_messages.RackStates
+             * @memberof ax_proto_msgs.RackStates
              * @classdesc Represents a RackLevelState.
              * @implements IRackLevelState
              * @constructor
-             * @param {ros_messages.RackStates.IRackLevelState=} [properties] Properties to set
+             * @param {ax_proto_msgs.RackStates.IRackLevelState=} [properties] Properties to set
              */
             function RackLevelState(properties) {
                 if (properties)
@@ -4626,7 +7034,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * RackLevelState timestamp_ns.
              * @member {number|Long} timestamp_ns
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @instance
              */
             RackLevelState.prototype.timestamp_ns = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
@@ -4634,15 +7042,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * RackLevelState level.
              * @member {number} level
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @instance
              */
             RackLevelState.prototype.level = 0;
 
             /**
              * RackLevelState state.
-             * @member {ros_messages.RackStates.RackLevelState.SpaceState} state
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @member {ax_proto_msgs.RackStates.RackLevelState.SpaceState} state
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @instance
              */
             RackLevelState.prototype.state = 0;
@@ -4650,21 +7058,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new RackLevelState instance using the specified properties.
              * @function create
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
-             * @param {ros_messages.RackStates.IRackLevelState=} [properties] Properties to set
-             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState instance
+             * @param {ax_proto_msgs.RackStates.IRackLevelState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.RackStates.RackLevelState} RackLevelState instance
              */
             RackLevelState.create = function create(properties) {
                 return new RackLevelState(properties);
             };
 
             /**
-             * Encodes the specified RackLevelState message. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
+             * Encodes the specified RackLevelState message. Does not implicitly {@link ax_proto_msgs.RackStates.RackLevelState.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
-             * @param {ros_messages.RackStates.IRackLevelState} message RackLevelState message or plain object to encode
+             * @param {ax_proto_msgs.RackStates.IRackLevelState} message RackLevelState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -4681,11 +7089,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified RackLevelState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackLevelState.verify|verify} messages.
+             * Encodes the specified RackLevelState message, length delimited. Does not implicitly {@link ax_proto_msgs.RackStates.RackLevelState.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
-             * @param {ros_messages.RackStates.IRackLevelState} message RackLevelState message or plain object to encode
+             * @param {ax_proto_msgs.RackStates.IRackLevelState} message RackLevelState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -4696,18 +7104,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RackLevelState message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState
+             * @returns {ax_proto_msgs.RackStates.RackLevelState} RackLevelState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             RackLevelState.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RackStates.RackLevelState();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RackStates.RackLevelState();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -4736,10 +7144,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RackLevelState message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState
+             * @returns {ax_proto_msgs.RackStates.RackLevelState} RackLevelState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -4752,7 +7160,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a RackLevelState message.
              * @function verify
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -4781,15 +7189,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a RackLevelState message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.RackStates.RackLevelState} RackLevelState
+             * @returns {ax_proto_msgs.RackStates.RackLevelState} RackLevelState
              */
             RackLevelState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.RackStates.RackLevelState)
+                if (object instanceof $root.ax_proto_msgs.RackStates.RackLevelState)
                     return object;
-                let message = new $root.ros_messages.RackStates.RackLevelState();
+                let message = new $root.ax_proto_msgs.RackStates.RackLevelState();
                 if (object.timestamp_ns != null)
                     if ($util.Long)
                         (message.timestamp_ns = $util.Long.fromValue(object.timestamp_ns)).unsigned = true;
@@ -4827,9 +7235,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a RackLevelState message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
-             * @param {ros_messages.RackStates.RackLevelState} message RackLevelState
+             * @param {ax_proto_msgs.RackStates.RackLevelState} message RackLevelState
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -4854,14 +7262,14 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.level != null && message.hasOwnProperty("level"))
                     object.level = message.level;
                 if (message.state != null && message.hasOwnProperty("state"))
-                    object.state = options.enums === String ? $root.ros_messages.RackStates.RackLevelState.SpaceState[message.state] === undefined ? message.state : $root.ros_messages.RackStates.RackLevelState.SpaceState[message.state] : message.state;
+                    object.state = options.enums === String ? $root.ax_proto_msgs.RackStates.RackLevelState.SpaceState[message.state] === undefined ? message.state : $root.ax_proto_msgs.RackStates.RackLevelState.SpaceState[message.state] : message.state;
                 return object;
             };
 
             /**
              * Converts this RackLevelState to JSON.
              * @function toJSON
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -4872,7 +7280,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for RackLevelState
              * @function getTypeUrl
-             * @memberof ros_messages.RackStates.RackLevelState
+             * @memberof ax_proto_msgs.RackStates.RackLevelState
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -4881,12 +7289,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.RackStates.RackLevelState";
+                return typeUrlPrefix + "/ax_proto_msgs.RackStates.RackLevelState";
             };
 
             /**
              * SpaceState enum.
-             * @name ros_messages.RackStates.RackLevelState.SpaceState
+             * @name ax_proto_msgs.RackStates.RackLevelState.SpaceState
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} OCCUPIED=3 OCCUPIED value
@@ -4907,19 +7315,19 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a RackState.
-             * @memberof ros_messages.RackStates
+             * @memberof ax_proto_msgs.RackStates
              * @interface IRackState
              * @property {string|null} [poi_id] RackState poi_id
-             * @property {Array.<ros_messages.RackStates.IRackLevelState>|null} [levels] RackState levels
+             * @property {Array.<ax_proto_msgs.RackStates.IRackLevelState>|null} [levels] RackState levels
              */
 
             /**
              * Constructs a new RackState.
-             * @memberof ros_messages.RackStates
+             * @memberof ax_proto_msgs.RackStates
              * @classdesc Represents a RackState.
              * @implements IRackState
              * @constructor
-             * @param {ros_messages.RackStates.IRackState=} [properties] Properties to set
+             * @param {ax_proto_msgs.RackStates.IRackState=} [properties] Properties to set
              */
             function RackState(properties) {
                 this.levels = [];
@@ -4932,15 +7340,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * RackState poi_id.
              * @member {string} poi_id
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @instance
              */
             RackState.prototype.poi_id = "";
 
             /**
              * RackState levels.
-             * @member {Array.<ros_messages.RackStates.IRackLevelState>} levels
-             * @memberof ros_messages.RackStates.RackState
+             * @member {Array.<ax_proto_msgs.RackStates.IRackLevelState>} levels
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @instance
              */
             RackState.prototype.levels = $util.emptyArray;
@@ -4948,21 +7356,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new RackState instance using the specified properties.
              * @function create
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
-             * @param {ros_messages.RackStates.IRackState=} [properties] Properties to set
-             * @returns {ros_messages.RackStates.RackState} RackState instance
+             * @param {ax_proto_msgs.RackStates.IRackState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.RackStates.RackState} RackState instance
              */
             RackState.create = function create(properties) {
                 return new RackState(properties);
             };
 
             /**
-             * Encodes the specified RackState message. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
+             * Encodes the specified RackState message. Does not implicitly {@link ax_proto_msgs.RackStates.RackState.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
-             * @param {ros_messages.RackStates.IRackState} message RackState message or plain object to encode
+             * @param {ax_proto_msgs.RackStates.IRackState} message RackState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -4973,16 +7381,16 @@ export const ros_messages = $root.ros_messages = (() => {
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.poi_id);
                 if (message.levels != null && message.levels.length)
                     for (let i = 0; i < message.levels.length; ++i)
-                        $root.ros_messages.RackStates.RackLevelState.encode(message.levels[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        $root.ax_proto_msgs.RackStates.RackLevelState.encode(message.levels[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
 
             /**
-             * Encodes the specified RackState message, length delimited. Does not implicitly {@link ros_messages.RackStates.RackState.verify|verify} messages.
+             * Encodes the specified RackState message, length delimited. Does not implicitly {@link ax_proto_msgs.RackStates.RackState.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
-             * @param {ros_messages.RackStates.IRackState} message RackState message or plain object to encode
+             * @param {ax_proto_msgs.RackStates.IRackState} message RackState message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -4993,18 +7401,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RackState message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.RackStates.RackState} RackState
+             * @returns {ax_proto_msgs.RackStates.RackState} RackState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             RackState.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RackStates.RackState();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RackStates.RackState();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -5017,7 +7425,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     case 2: {
                             if (!(message.levels && message.levels.length))
                                 message.levels = [];
-                            message.levels.push($root.ros_messages.RackStates.RackLevelState.decode(reader, reader.uint32()));
+                            message.levels.push($root.ax_proto_msgs.RackStates.RackLevelState.decode(reader, reader.uint32()));
                             break;
                         }
                     default:
@@ -5031,10 +7439,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a RackState message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.RackStates.RackState} RackState
+             * @returns {ax_proto_msgs.RackStates.RackState} RackState
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -5047,7 +7455,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a RackState message.
              * @function verify
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -5062,7 +7470,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     if (!Array.isArray(message.levels))
                         return "levels: array expected";
                     for (let i = 0; i < message.levels.length; ++i) {
-                        let error = $root.ros_messages.RackStates.RackLevelState.verify(message.levels[i]);
+                        let error = $root.ax_proto_msgs.RackStates.RackLevelState.verify(message.levels[i]);
                         if (error)
                             return "levels." + error;
                     }
@@ -5073,25 +7481,25 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a RackState message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.RackStates.RackState} RackState
+             * @returns {ax_proto_msgs.RackStates.RackState} RackState
              */
             RackState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.RackStates.RackState)
+                if (object instanceof $root.ax_proto_msgs.RackStates.RackState)
                     return object;
-                let message = new $root.ros_messages.RackStates.RackState();
+                let message = new $root.ax_proto_msgs.RackStates.RackState();
                 if (object.poi_id != null)
                     message.poi_id = String(object.poi_id);
                 if (object.levels) {
                     if (!Array.isArray(object.levels))
-                        throw TypeError(".ros_messages.RackStates.RackState.levels: array expected");
+                        throw TypeError(".ax_proto_msgs.RackStates.RackState.levels: array expected");
                     message.levels = [];
                     for (let i = 0; i < object.levels.length; ++i) {
                         if (typeof object.levels[i] !== "object")
-                            throw TypeError(".ros_messages.RackStates.RackState.levels: object expected");
-                        message.levels[i] = $root.ros_messages.RackStates.RackLevelState.fromObject(object.levels[i]);
+                            throw TypeError(".ax_proto_msgs.RackStates.RackState.levels: object expected");
+                        message.levels[i] = $root.ax_proto_msgs.RackStates.RackLevelState.fromObject(object.levels[i]);
                     }
                 }
                 return message;
@@ -5100,9 +7508,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a RackState message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
-             * @param {ros_messages.RackStates.RackState} message RackState
+             * @param {ax_proto_msgs.RackStates.RackState} message RackState
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -5119,7 +7527,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.levels && message.levels.length) {
                     object.levels = [];
                     for (let j = 0; j < message.levels.length; ++j)
-                        object.levels[j] = $root.ros_messages.RackStates.RackLevelState.toObject(message.levels[j], options);
+                        object.levels[j] = $root.ax_proto_msgs.RackStates.RackLevelState.toObject(message.levels[j], options);
                 }
                 return object;
             };
@@ -5127,7 +7535,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this RackState to JSON.
              * @function toJSON
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -5138,7 +7546,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for RackState
              * @function getTypeUrl
-             * @memberof ros_messages.RackStates.RackState
+             * @memberof ax_proto_msgs.RackStates.RackState
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -5147,7 +7555,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.RackStates.RackState";
+                return typeUrlPrefix + "/ax_proto_msgs.RackStates.RackState";
             };
 
             return RackState;
@@ -5156,31 +7564,31 @@ export const ros_messages = $root.ros_messages = (() => {
         return RackStates;
     })();
 
-    ros_messages.RosMessageWrapper = (function() {
+    ax_proto_msgs.RosMessageWrapper = (function() {
 
         /**
          * Properties of a RosMessageWrapper.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IRosMessageWrapper
-         * @property {ros_messages.RosMessageWrapper.MessageType|null} [type] RosMessageWrapper type
-         * @property {ros_messages.IPointCloud|null} [point_cloud] RosMessageWrapper point_cloud
-         * @property {Uint8Array|null} [raw_data] RosMessageWrapper raw_data
-         * @property {ros_messages.IMastState|null} [mast_state] RosMessageWrapper mast_state
-         * @property {ros_messages.slam.ISubmapList|null} [submap_list] RosMessageWrapper submap_list
-         * @property {ros_messages.IRackStates|null} [rack_states] RosMessageWrapper rack_states
-         * @property {ros_messages.ITowingState|null} [towing_state] RosMessageWrapper towing_state
-         * @property {ros_messages.IMobileNetworkState|null} [mobile_network_state] RosMessageWrapper mobile_network_state
-         * @property {ros_messages.IVideoData|null} [video_data] RosMessageWrapper video_data
-         * @property {ros_messages.IDepthImage|null} [depth_image] RosMessageWrapper depth_image
+         * @property {ax_proto_msgs.RosMessageWrapper.MessageType|null} [type] RosMessageWrapper type
+         * @property {ax_proto_msgs.IPointCloud|null} [point_cloud] RosMessageWrapper point_cloud
+         * @property {ax_proto_msgs.IMastState|null} [mast_state] RosMessageWrapper mast_state
+         * @property {ax_proto_msgs.slam.ISubmapList|null} [submap_list] RosMessageWrapper submap_list
+         * @property {ax_proto_msgs.IRackStates|null} [rack_states] RosMessageWrapper rack_states
+         * @property {ax_proto_msgs.ITowingState|null} [towing_state] RosMessageWrapper towing_state
+         * @property {ax_proto_msgs.IMobileNetworkState|null} [mobile_network_state] RosMessageWrapper mobile_network_state
+         * @property {ax_proto_msgs.IVideoData|null} [video_data] RosMessageWrapper video_data
+         * @property {ax_proto_msgs.IDepthImage|null} [depth_image] RosMessageWrapper depth_image
+         * @property {ax_proto_msgs.IDwaCandidatePathSet|null} [dwa_candidate_path_set] RosMessageWrapper dwa_candidate_path_set
          */
 
         /**
          * Constructs a new RosMessageWrapper.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a RosMessageWrapper.
          * @implements IRosMessageWrapper
          * @constructor
-         * @param {ros_messages.IRosMessageWrapper=} [properties] Properties to set
+         * @param {ax_proto_msgs.IRosMessageWrapper=} [properties] Properties to set
          */
         function RosMessageWrapper(properties) {
             if (properties)
@@ -5191,116 +7599,116 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * RosMessageWrapper type.
-         * @member {ros_messages.RosMessageWrapper.MessageType} type
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.RosMessageWrapper.MessageType} type
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.type = 0;
 
         /**
          * RosMessageWrapper point_cloud.
-         * @member {ros_messages.IPointCloud|null|undefined} point_cloud
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.IPointCloud|null|undefined} point_cloud
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.point_cloud = null;
 
         /**
-         * RosMessageWrapper raw_data.
-         * @member {Uint8Array|null|undefined} raw_data
-         * @memberof ros_messages.RosMessageWrapper
-         * @instance
-         */
-        RosMessageWrapper.prototype.raw_data = null;
-
-        /**
          * RosMessageWrapper mast_state.
-         * @member {ros_messages.IMastState|null|undefined} mast_state
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.IMastState|null|undefined} mast_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.mast_state = null;
 
         /**
          * RosMessageWrapper submap_list.
-         * @member {ros_messages.slam.ISubmapList|null|undefined} submap_list
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.slam.ISubmapList|null|undefined} submap_list
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.submap_list = null;
 
         /**
          * RosMessageWrapper rack_states.
-         * @member {ros_messages.IRackStates|null|undefined} rack_states
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.IRackStates|null|undefined} rack_states
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.rack_states = null;
 
         /**
          * RosMessageWrapper towing_state.
-         * @member {ros_messages.ITowingState|null|undefined} towing_state
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.ITowingState|null|undefined} towing_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.towing_state = null;
 
         /**
          * RosMessageWrapper mobile_network_state.
-         * @member {ros_messages.IMobileNetworkState|null|undefined} mobile_network_state
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.IMobileNetworkState|null|undefined} mobile_network_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.mobile_network_state = null;
 
         /**
          * RosMessageWrapper video_data.
-         * @member {ros_messages.IVideoData|null|undefined} video_data
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.IVideoData|null|undefined} video_data
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.video_data = null;
 
         /**
          * RosMessageWrapper depth_image.
-         * @member {ros_messages.IDepthImage|null|undefined} depth_image
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {ax_proto_msgs.IDepthImage|null|undefined} depth_image
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         RosMessageWrapper.prototype.depth_image = null;
+
+        /**
+         * RosMessageWrapper dwa_candidate_path_set.
+         * @member {ax_proto_msgs.IDwaCandidatePathSet|null|undefined} dwa_candidate_path_set
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.dwa_candidate_path_set = null;
 
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"raw_data"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|undefined} payload
-         * @memberof ros_messages.RosMessageWrapper
+         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|undefined} payload
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "raw_data", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
          * @function create
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
-         * @param {ros_messages.IRosMessageWrapper=} [properties] Properties to set
-         * @returns {ros_messages.RosMessageWrapper} RosMessageWrapper instance
+         * @param {ax_proto_msgs.IRosMessageWrapper=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RosMessageWrapper} RosMessageWrapper instance
          */
         RosMessageWrapper.create = function create(properties) {
             return new RosMessageWrapper(properties);
         };
 
         /**
-         * Encodes the specified RosMessageWrapper message. Does not implicitly {@link ros_messages.RosMessageWrapper.verify|verify} messages.
+         * Encodes the specified RosMessageWrapper message. Does not implicitly {@link ax_proto_msgs.RosMessageWrapper.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
-         * @param {ros_messages.IRosMessageWrapper} message RosMessageWrapper message or plain object to encode
+         * @param {ax_proto_msgs.IRosMessageWrapper} message RosMessageWrapper message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -5310,32 +7718,32 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
             if (message.point_cloud != null && Object.hasOwnProperty.call(message, "point_cloud"))
-                $root.ros_messages.PointCloud.encode(message.point_cloud, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
-            if (message.raw_data != null && Object.hasOwnProperty.call(message, "raw_data"))
-                writer.uint32(/* id 11, wireType 2 =*/90).bytes(message.raw_data);
+                $root.ax_proto_msgs.PointCloud.encode(message.point_cloud, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             if (message.mast_state != null && Object.hasOwnProperty.call(message, "mast_state"))
-                $root.ros_messages.MastState.encode(message.mast_state, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
+                $root.ax_proto_msgs.MastState.encode(message.mast_state, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
             if (message.submap_list != null && Object.hasOwnProperty.call(message, "submap_list"))
-                $root.ros_messages.slam.SubmapList.encode(message.submap_list, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
+                $root.ax_proto_msgs.slam.SubmapList.encode(message.submap_list, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
             if (message.rack_states != null && Object.hasOwnProperty.call(message, "rack_states"))
-                $root.ros_messages.RackStates.encode(message.rack_states, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
+                $root.ax_proto_msgs.RackStates.encode(message.rack_states, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
             if (message.towing_state != null && Object.hasOwnProperty.call(message, "towing_state"))
-                $root.ros_messages.TowingState.encode(message.towing_state, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
+                $root.ax_proto_msgs.TowingState.encode(message.towing_state, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
             if (message.mobile_network_state != null && Object.hasOwnProperty.call(message, "mobile_network_state"))
-                $root.ros_messages.MobileNetworkState.encode(message.mobile_network_state, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
+                $root.ax_proto_msgs.MobileNetworkState.encode(message.mobile_network_state, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
             if (message.video_data != null && Object.hasOwnProperty.call(message, "video_data"))
-                $root.ros_messages.VideoData.encode(message.video_data, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
+                $root.ax_proto_msgs.VideoData.encode(message.video_data, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
             if (message.depth_image != null && Object.hasOwnProperty.call(message, "depth_image"))
-                $root.ros_messages.DepthImage.encode(message.depth_image, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
+                $root.ax_proto_msgs.DepthImage.encode(message.depth_image, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
+            if (message.dwa_candidate_path_set != null && Object.hasOwnProperty.call(message, "dwa_candidate_path_set"))
+                $root.ax_proto_msgs.DwaCandidatePathSet.encode(message.dwa_candidate_path_set, writer.uint32(/* id 19, wireType 2 =*/154).fork()).ldelim();
             return writer;
         };
 
         /**
-         * Encodes the specified RosMessageWrapper message, length delimited. Does not implicitly {@link ros_messages.RosMessageWrapper.verify|verify} messages.
+         * Encodes the specified RosMessageWrapper message, length delimited. Does not implicitly {@link ax_proto_msgs.RosMessageWrapper.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
-         * @param {ros_messages.IRosMessageWrapper} message RosMessageWrapper message or plain object to encode
+         * @param {ax_proto_msgs.IRosMessageWrapper} message RosMessageWrapper message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -5346,18 +7754,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a RosMessageWrapper message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.RosMessageWrapper} RosMessageWrapper
+         * @returns {ax_proto_msgs.RosMessageWrapper} RosMessageWrapper
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         RosMessageWrapper.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.RosMessageWrapper();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RosMessageWrapper();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -5368,39 +7776,39 @@ export const ros_messages = $root.ros_messages = (() => {
                         break;
                     }
                 case 10: {
-                        message.point_cloud = $root.ros_messages.PointCloud.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 11: {
-                        message.raw_data = reader.bytes();
+                        message.point_cloud = $root.ax_proto_msgs.PointCloud.decode(reader, reader.uint32());
                         break;
                     }
                 case 12: {
-                        message.mast_state = $root.ros_messages.MastState.decode(reader, reader.uint32());
+                        message.mast_state = $root.ax_proto_msgs.MastState.decode(reader, reader.uint32());
                         break;
                     }
                 case 13: {
-                        message.submap_list = $root.ros_messages.slam.SubmapList.decode(reader, reader.uint32());
+                        message.submap_list = $root.ax_proto_msgs.slam.SubmapList.decode(reader, reader.uint32());
                         break;
                     }
                 case 14: {
-                        message.rack_states = $root.ros_messages.RackStates.decode(reader, reader.uint32());
+                        message.rack_states = $root.ax_proto_msgs.RackStates.decode(reader, reader.uint32());
                         break;
                     }
                 case 15: {
-                        message.towing_state = $root.ros_messages.TowingState.decode(reader, reader.uint32());
+                        message.towing_state = $root.ax_proto_msgs.TowingState.decode(reader, reader.uint32());
                         break;
                     }
                 case 16: {
-                        message.mobile_network_state = $root.ros_messages.MobileNetworkState.decode(reader, reader.uint32());
+                        message.mobile_network_state = $root.ax_proto_msgs.MobileNetworkState.decode(reader, reader.uint32());
                         break;
                     }
                 case 17: {
-                        message.video_data = $root.ros_messages.VideoData.decode(reader, reader.uint32());
+                        message.video_data = $root.ax_proto_msgs.VideoData.decode(reader, reader.uint32());
                         break;
                     }
                 case 18: {
-                        message.depth_image = $root.ros_messages.DepthImage.decode(reader, reader.uint32());
+                        message.depth_image = $root.ax_proto_msgs.DepthImage.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 19: {
+                        message.dwa_candidate_path_set = $root.ax_proto_msgs.DwaCandidatePathSet.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -5414,10 +7822,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a RosMessageWrapper message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.RosMessageWrapper} RosMessageWrapper
+         * @returns {ax_proto_msgs.RosMessageWrapper} RosMessageWrapper
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -5430,7 +7838,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a RosMessageWrapper message.
          * @function verify
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -5452,29 +7860,23 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 6:
                 case 7:
                 case 8:
+                case 9:
                     break;
                 }
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.PointCloud.verify(message.point_cloud);
+                    let error = $root.ax_proto_msgs.PointCloud.verify(message.point_cloud);
                     if (error)
                         return "point_cloud." + error;
                 }
-            }
-            if (message.raw_data != null && message.hasOwnProperty("raw_data")) {
-                if (properties.payload === 1)
-                    return "payload: multiple values";
-                properties.payload = 1;
-                if (!(message.raw_data && typeof message.raw_data.length === "number" || $util.isString(message.raw_data)))
-                    return "raw_data: buffer expected";
             }
             if (message.mast_state != null && message.hasOwnProperty("mast_state")) {
                 if (properties.payload === 1)
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.MastState.verify(message.mast_state);
+                    let error = $root.ax_proto_msgs.MastState.verify(message.mast_state);
                     if (error)
                         return "mast_state." + error;
                 }
@@ -5484,7 +7886,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.slam.SubmapList.verify(message.submap_list);
+                    let error = $root.ax_proto_msgs.slam.SubmapList.verify(message.submap_list);
                     if (error)
                         return "submap_list." + error;
                 }
@@ -5494,7 +7896,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.RackStates.verify(message.rack_states);
+                    let error = $root.ax_proto_msgs.RackStates.verify(message.rack_states);
                     if (error)
                         return "rack_states." + error;
                 }
@@ -5504,7 +7906,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.TowingState.verify(message.towing_state);
+                    let error = $root.ax_proto_msgs.TowingState.verify(message.towing_state);
                     if (error)
                         return "towing_state." + error;
                 }
@@ -5514,7 +7916,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.MobileNetworkState.verify(message.mobile_network_state);
+                    let error = $root.ax_proto_msgs.MobileNetworkState.verify(message.mobile_network_state);
                     if (error)
                         return "mobile_network_state." + error;
                 }
@@ -5524,7 +7926,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.VideoData.verify(message.video_data);
+                    let error = $root.ax_proto_msgs.VideoData.verify(message.video_data);
                     if (error)
                         return "video_data." + error;
                 }
@@ -5534,9 +7936,19 @@ export const ros_messages = $root.ros_messages = (() => {
                     return "payload: multiple values";
                 properties.payload = 1;
                 {
-                    let error = $root.ros_messages.DepthImage.verify(message.depth_image);
+                    let error = $root.ax_proto_msgs.DepthImage.verify(message.depth_image);
                     if (error)
                         return "depth_image." + error;
+                }
+            }
+            if (message.dwa_candidate_path_set != null && message.hasOwnProperty("dwa_candidate_path_set")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.DwaCandidatePathSet.verify(message.dwa_candidate_path_set);
+                    if (error)
+                        return "dwa_candidate_path_set." + error;
                 }
             }
             return null;
@@ -5545,15 +7957,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a RosMessageWrapper message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.RosMessageWrapper} RosMessageWrapper
+         * @returns {ax_proto_msgs.RosMessageWrapper} RosMessageWrapper
          */
         RosMessageWrapper.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.RosMessageWrapper)
+            if (object instanceof $root.ax_proto_msgs.RosMessageWrapper)
                 return object;
-            let message = new $root.ros_messages.RosMessageWrapper();
+            let message = new $root.ax_proto_msgs.RosMessageWrapper();
             switch (object.type) {
             default:
                 if (typeof object.type === "number") {
@@ -5597,51 +8009,55 @@ export const ros_messages = $root.ros_messages = (() => {
             case 8:
                 message.type = 8;
                 break;
+            case "DWA_CANDIDATE_PATH_SET":
+            case 9:
+                message.type = 9;
+                break;
             }
             if (object.point_cloud != null) {
                 if (typeof object.point_cloud !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.point_cloud: object expected");
-                message.point_cloud = $root.ros_messages.PointCloud.fromObject(object.point_cloud);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.point_cloud: object expected");
+                message.point_cloud = $root.ax_proto_msgs.PointCloud.fromObject(object.point_cloud);
             }
-            if (object.raw_data != null)
-                if (typeof object.raw_data === "string")
-                    $util.base64.decode(object.raw_data, message.raw_data = $util.newBuffer($util.base64.length(object.raw_data)), 0);
-                else if (object.raw_data.length >= 0)
-                    message.raw_data = object.raw_data;
             if (object.mast_state != null) {
                 if (typeof object.mast_state !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.mast_state: object expected");
-                message.mast_state = $root.ros_messages.MastState.fromObject(object.mast_state);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.mast_state: object expected");
+                message.mast_state = $root.ax_proto_msgs.MastState.fromObject(object.mast_state);
             }
             if (object.submap_list != null) {
                 if (typeof object.submap_list !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.submap_list: object expected");
-                message.submap_list = $root.ros_messages.slam.SubmapList.fromObject(object.submap_list);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.submap_list: object expected");
+                message.submap_list = $root.ax_proto_msgs.slam.SubmapList.fromObject(object.submap_list);
             }
             if (object.rack_states != null) {
                 if (typeof object.rack_states !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.rack_states: object expected");
-                message.rack_states = $root.ros_messages.RackStates.fromObject(object.rack_states);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.rack_states: object expected");
+                message.rack_states = $root.ax_proto_msgs.RackStates.fromObject(object.rack_states);
             }
             if (object.towing_state != null) {
                 if (typeof object.towing_state !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.towing_state: object expected");
-                message.towing_state = $root.ros_messages.TowingState.fromObject(object.towing_state);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.towing_state: object expected");
+                message.towing_state = $root.ax_proto_msgs.TowingState.fromObject(object.towing_state);
             }
             if (object.mobile_network_state != null) {
                 if (typeof object.mobile_network_state !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.mobile_network_state: object expected");
-                message.mobile_network_state = $root.ros_messages.MobileNetworkState.fromObject(object.mobile_network_state);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.mobile_network_state: object expected");
+                message.mobile_network_state = $root.ax_proto_msgs.MobileNetworkState.fromObject(object.mobile_network_state);
             }
             if (object.video_data != null) {
                 if (typeof object.video_data !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.video_data: object expected");
-                message.video_data = $root.ros_messages.VideoData.fromObject(object.video_data);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.video_data: object expected");
+                message.video_data = $root.ax_proto_msgs.VideoData.fromObject(object.video_data);
             }
             if (object.depth_image != null) {
                 if (typeof object.depth_image !== "object")
-                    throw TypeError(".ros_messages.RosMessageWrapper.depth_image: object expected");
-                message.depth_image = $root.ros_messages.DepthImage.fromObject(object.depth_image);
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.depth_image: object expected");
+                message.depth_image = $root.ax_proto_msgs.DepthImage.fromObject(object.depth_image);
+            }
+            if (object.dwa_candidate_path_set != null) {
+                if (typeof object.dwa_candidate_path_set !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.dwa_candidate_path_set: object expected");
+                message.dwa_candidate_path_set = $root.ax_proto_msgs.DwaCandidatePathSet.fromObject(object.dwa_candidate_path_set);
             }
             return message;
         };
@@ -5649,9 +8065,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a RosMessageWrapper message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
-         * @param {ros_messages.RosMessageWrapper} message RosMessageWrapper
+         * @param {ax_proto_msgs.RosMessageWrapper} message RosMessageWrapper
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -5662,51 +8078,51 @@ export const ros_messages = $root.ros_messages = (() => {
             if (options.defaults)
                 object.type = options.enums === String ? "UNKNOWN" : 0;
             if (message.type != null && message.hasOwnProperty("type"))
-                object.type = options.enums === String ? $root.ros_messages.RosMessageWrapper.MessageType[message.type] === undefined ? message.type : $root.ros_messages.RosMessageWrapper.MessageType[message.type] : message.type;
+                object.type = options.enums === String ? $root.ax_proto_msgs.RosMessageWrapper.MessageType[message.type] === undefined ? message.type : $root.ax_proto_msgs.RosMessageWrapper.MessageType[message.type] : message.type;
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
-                object.point_cloud = $root.ros_messages.PointCloud.toObject(message.point_cloud, options);
+                object.point_cloud = $root.ax_proto_msgs.PointCloud.toObject(message.point_cloud, options);
                 if (options.oneofs)
                     object.payload = "point_cloud";
             }
-            if (message.raw_data != null && message.hasOwnProperty("raw_data")) {
-                object.raw_data = options.bytes === String ? $util.base64.encode(message.raw_data, 0, message.raw_data.length) : options.bytes === Array ? Array.prototype.slice.call(message.raw_data) : message.raw_data;
-                if (options.oneofs)
-                    object.payload = "raw_data";
-            }
             if (message.mast_state != null && message.hasOwnProperty("mast_state")) {
-                object.mast_state = $root.ros_messages.MastState.toObject(message.mast_state, options);
+                object.mast_state = $root.ax_proto_msgs.MastState.toObject(message.mast_state, options);
                 if (options.oneofs)
                     object.payload = "mast_state";
             }
             if (message.submap_list != null && message.hasOwnProperty("submap_list")) {
-                object.submap_list = $root.ros_messages.slam.SubmapList.toObject(message.submap_list, options);
+                object.submap_list = $root.ax_proto_msgs.slam.SubmapList.toObject(message.submap_list, options);
                 if (options.oneofs)
                     object.payload = "submap_list";
             }
             if (message.rack_states != null && message.hasOwnProperty("rack_states")) {
-                object.rack_states = $root.ros_messages.RackStates.toObject(message.rack_states, options);
+                object.rack_states = $root.ax_proto_msgs.RackStates.toObject(message.rack_states, options);
                 if (options.oneofs)
                     object.payload = "rack_states";
             }
             if (message.towing_state != null && message.hasOwnProperty("towing_state")) {
-                object.towing_state = $root.ros_messages.TowingState.toObject(message.towing_state, options);
+                object.towing_state = $root.ax_proto_msgs.TowingState.toObject(message.towing_state, options);
                 if (options.oneofs)
                     object.payload = "towing_state";
             }
             if (message.mobile_network_state != null && message.hasOwnProperty("mobile_network_state")) {
-                object.mobile_network_state = $root.ros_messages.MobileNetworkState.toObject(message.mobile_network_state, options);
+                object.mobile_network_state = $root.ax_proto_msgs.MobileNetworkState.toObject(message.mobile_network_state, options);
                 if (options.oneofs)
                     object.payload = "mobile_network_state";
             }
             if (message.video_data != null && message.hasOwnProperty("video_data")) {
-                object.video_data = $root.ros_messages.VideoData.toObject(message.video_data, options);
+                object.video_data = $root.ax_proto_msgs.VideoData.toObject(message.video_data, options);
                 if (options.oneofs)
                     object.payload = "video_data";
             }
             if (message.depth_image != null && message.hasOwnProperty("depth_image")) {
-                object.depth_image = $root.ros_messages.DepthImage.toObject(message.depth_image, options);
+                object.depth_image = $root.ax_proto_msgs.DepthImage.toObject(message.depth_image, options);
                 if (options.oneofs)
                     object.payload = "depth_image";
+            }
+            if (message.dwa_candidate_path_set != null && message.hasOwnProperty("dwa_candidate_path_set")) {
+                object.dwa_candidate_path_set = $root.ax_proto_msgs.DwaCandidatePathSet.toObject(message.dwa_candidate_path_set, options);
+                if (options.oneofs)
+                    object.payload = "dwa_candidate_path_set";
             }
             return object;
         };
@@ -5714,7 +8130,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this RosMessageWrapper to JSON.
          * @function toJSON
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -5725,7 +8141,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for RosMessageWrapper
          * @function getTypeUrl
-         * @memberof ros_messages.RosMessageWrapper
+         * @memberof ax_proto_msgs.RosMessageWrapper
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -5734,12 +8150,12 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.RosMessageWrapper";
+            return typeUrlPrefix + "/ax_proto_msgs.RosMessageWrapper";
         };
 
         /**
          * MessageType enum.
-         * @name ros_messages.RosMessageWrapper.MessageType
+         * @name ax_proto_msgs.RosMessageWrapper.MessageType
          * @enum {number}
          * @property {number} UNKNOWN=0 UNKNOWN value
          * @property {number} POINT_CLOUD=1 POINT_CLOUD value
@@ -5750,6 +8166,7 @@ export const ros_messages = $root.ros_messages = (() => {
          * @property {number} MOBILE_NETWORK_STATE=6 MOBILE_NETWORK_STATE value
          * @property {number} VIDEO_DATA=7 VIDEO_DATA value
          * @property {number} DEPTH_IMAGE=8 DEPTH_IMAGE value
+         * @property {number} DWA_CANDIDATE_PATH_SET=9 DWA_CANDIDATE_PATH_SET value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -5762,17 +8179,18 @@ export const ros_messages = $root.ros_messages = (() => {
             values[valuesById[6] = "MOBILE_NETWORK_STATE"] = 6;
             values[valuesById[7] = "VIDEO_DATA"] = 7;
             values[valuesById[8] = "DEPTH_IMAGE"] = 8;
+            values[valuesById[9] = "DWA_CANDIDATE_PATH_SET"] = 9;
             return values;
         })();
 
         return RosMessageWrapper;
     })();
 
-    ros_messages.slam = (function() {
+    ax_proto_msgs.slam = (function() {
 
         /**
          * Namespace slam.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @namespace
          */
         const slam = {};
@@ -5781,12 +8199,12 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a SubmapEntry.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @interface ISubmapEntry
              * @property {number|null} [trajectory_id] SubmapEntry trajectory_id
              * @property {number|null} [submap_index] SubmapEntry submap_index
              * @property {number|null} [submap_version] SubmapEntry submap_version
-             * @property {ros_messages.IPose|null} [pose] SubmapEntry pose
+             * @property {ax_proto_msgs.IPose|null} [pose] SubmapEntry pose
              * @property {boolean|null} [is_frozen] SubmapEntry is_frozen
              * @property {boolean|null} [is_incremental_submap] SubmapEntry is_incremental_submap
              * @property {boolean|null} [is_nearby_map] SubmapEntry is_nearby_map
@@ -5794,11 +8212,11 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Constructs a new SubmapEntry.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @classdesc Represents a SubmapEntry.
              * @implements ISubmapEntry
              * @constructor
-             * @param {ros_messages.slam.ISubmapEntry=} [properties] Properties to set
+             * @param {ax_proto_msgs.slam.ISubmapEntry=} [properties] Properties to set
              */
             function SubmapEntry(properties) {
                 if (properties)
@@ -5810,7 +8228,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapEntry trajectory_id.
              * @member {number} trajectory_id
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.trajectory_id = 0;
@@ -5818,7 +8236,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapEntry submap_index.
              * @member {number} submap_index
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.submap_index = 0;
@@ -5826,15 +8244,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapEntry submap_version.
              * @member {number} submap_version
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.submap_version = 0;
 
             /**
              * SubmapEntry pose.
-             * @member {ros_messages.IPose|null|undefined} pose
-             * @memberof ros_messages.slam.SubmapEntry
+             * @member {ax_proto_msgs.IPose|null|undefined} pose
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.pose = null;
@@ -5842,7 +8260,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapEntry is_frozen.
              * @member {boolean} is_frozen
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.is_frozen = false;
@@ -5850,7 +8268,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapEntry is_incremental_submap.
              * @member {boolean} is_incremental_submap
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.is_incremental_submap = false;
@@ -5858,7 +8276,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapEntry is_nearby_map.
              * @member {boolean} is_nearby_map
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              */
             SubmapEntry.prototype.is_nearby_map = false;
@@ -5866,21 +8284,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new SubmapEntry instance using the specified properties.
              * @function create
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
-             * @param {ros_messages.slam.ISubmapEntry=} [properties] Properties to set
-             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry instance
+             * @param {ax_proto_msgs.slam.ISubmapEntry=} [properties] Properties to set
+             * @returns {ax_proto_msgs.slam.SubmapEntry} SubmapEntry instance
              */
             SubmapEntry.create = function create(properties) {
                 return new SubmapEntry(properties);
             };
 
             /**
-             * Encodes the specified SubmapEntry message. Does not implicitly {@link ros_messages.slam.SubmapEntry.verify|verify} messages.
+             * Encodes the specified SubmapEntry message. Does not implicitly {@link ax_proto_msgs.slam.SubmapEntry.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
-             * @param {ros_messages.slam.ISubmapEntry} message SubmapEntry message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapEntry} message SubmapEntry message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -5894,7 +8312,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
                     writer.uint32(/* id 3, wireType 0 =*/24).int32(message.submap_version);
                 if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
-                    $root.ros_messages.Pose.encode(message.pose, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                    $root.ax_proto_msgs.Pose.encode(message.pose, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                 if (message.is_frozen != null && Object.hasOwnProperty.call(message, "is_frozen"))
                     writer.uint32(/* id 11, wireType 0 =*/88).bool(message.is_frozen);
                 if (message.is_incremental_submap != null && Object.hasOwnProperty.call(message, "is_incremental_submap"))
@@ -5905,11 +8323,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified SubmapEntry message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapEntry.verify|verify} messages.
+             * Encodes the specified SubmapEntry message, length delimited. Does not implicitly {@link ax_proto_msgs.slam.SubmapEntry.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
-             * @param {ros_messages.slam.ISubmapEntry} message SubmapEntry message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapEntry} message SubmapEntry message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -5920,18 +8338,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapEntry message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry
+             * @returns {ax_proto_msgs.slam.SubmapEntry} SubmapEntry
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             SubmapEntry.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapEntry();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.slam.SubmapEntry();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -5950,7 +8368,7 @@ export const ros_messages = $root.ros_messages = (() => {
                             break;
                         }
                     case 4: {
-                            message.pose = $root.ros_messages.Pose.decode(reader, reader.uint32());
+                            message.pose = $root.ax_proto_msgs.Pose.decode(reader, reader.uint32());
                             break;
                         }
                     case 11: {
@@ -5976,10 +8394,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapEntry message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry
+             * @returns {ax_proto_msgs.slam.SubmapEntry} SubmapEntry
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -5992,7 +8410,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a SubmapEntry message.
              * @function verify
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -6010,7 +8428,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     if (!$util.isInteger(message.submap_version))
                         return "submap_version: integer expected";
                 if (message.pose != null && message.hasOwnProperty("pose")) {
-                    let error = $root.ros_messages.Pose.verify(message.pose);
+                    let error = $root.ax_proto_msgs.Pose.verify(message.pose);
                     if (error)
                         return "pose." + error;
                 }
@@ -6029,15 +8447,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a SubmapEntry message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.slam.SubmapEntry} SubmapEntry
+             * @returns {ax_proto_msgs.slam.SubmapEntry} SubmapEntry
              */
             SubmapEntry.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.slam.SubmapEntry)
+                if (object instanceof $root.ax_proto_msgs.slam.SubmapEntry)
                     return object;
-                let message = new $root.ros_messages.slam.SubmapEntry();
+                let message = new $root.ax_proto_msgs.slam.SubmapEntry();
                 if (object.trajectory_id != null)
                     message.trajectory_id = object.trajectory_id | 0;
                 if (object.submap_index != null)
@@ -6046,8 +8464,8 @@ export const ros_messages = $root.ros_messages = (() => {
                     message.submap_version = object.submap_version | 0;
                 if (object.pose != null) {
                     if (typeof object.pose !== "object")
-                        throw TypeError(".ros_messages.slam.SubmapEntry.pose: object expected");
-                    message.pose = $root.ros_messages.Pose.fromObject(object.pose);
+                        throw TypeError(".ax_proto_msgs.slam.SubmapEntry.pose: object expected");
+                    message.pose = $root.ax_proto_msgs.Pose.fromObject(object.pose);
                 }
                 if (object.is_frozen != null)
                     message.is_frozen = Boolean(object.is_frozen);
@@ -6061,9 +8479,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a SubmapEntry message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
-             * @param {ros_messages.slam.SubmapEntry} message SubmapEntry
+             * @param {ax_proto_msgs.slam.SubmapEntry} message SubmapEntry
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -6087,7 +8505,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.submap_version != null && message.hasOwnProperty("submap_version"))
                     object.submap_version = message.submap_version;
                 if (message.pose != null && message.hasOwnProperty("pose"))
-                    object.pose = $root.ros_messages.Pose.toObject(message.pose, options);
+                    object.pose = $root.ax_proto_msgs.Pose.toObject(message.pose, options);
                 if (message.is_frozen != null && message.hasOwnProperty("is_frozen"))
                     object.is_frozen = message.is_frozen;
                 if (message.is_incremental_submap != null && message.hasOwnProperty("is_incremental_submap"))
@@ -6100,7 +8518,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this SubmapEntry to JSON.
              * @function toJSON
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -6111,7 +8529,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for SubmapEntry
              * @function getTypeUrl
-             * @memberof ros_messages.slam.SubmapEntry
+             * @memberof ax_proto_msgs.slam.SubmapEntry
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -6120,7 +8538,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.slam.SubmapEntry";
+                return typeUrlPrefix + "/ax_proto_msgs.slam.SubmapEntry";
             };
 
             return SubmapEntry;
@@ -6130,20 +8548,20 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a SubmapList.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @interface ISubmapList
-             * @property {ros_messages.slam.SubmapList.SlamState|null} [slam_state] SubmapList slam_state
+             * @property {ax_proto_msgs.slam.SubmapList.SlamState|null} [slam_state] SubmapList slam_state
              * @property {string|null} [uuid] SubmapList uuid
-             * @property {Array.<ros_messages.slam.ISubmapEntry>|null} [submaps] SubmapList submaps
+             * @property {Array.<ax_proto_msgs.slam.ISubmapEntry>|null} [submaps] SubmapList submaps
              */
 
             /**
              * Constructs a new SubmapList.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @classdesc Represents a SubmapList.
              * @implements ISubmapList
              * @constructor
-             * @param {ros_messages.slam.ISubmapList=} [properties] Properties to set
+             * @param {ax_proto_msgs.slam.ISubmapList=} [properties] Properties to set
              */
             function SubmapList(properties) {
                 this.submaps = [];
@@ -6155,8 +8573,8 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * SubmapList slam_state.
-             * @member {ros_messages.slam.SubmapList.SlamState} slam_state
-             * @memberof ros_messages.slam.SubmapList
+             * @member {ax_proto_msgs.slam.SubmapList.SlamState} slam_state
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @instance
              */
             SubmapList.prototype.slam_state = 0;
@@ -6164,15 +8582,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapList uuid.
              * @member {string} uuid
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @instance
              */
             SubmapList.prototype.uuid = "";
 
             /**
              * SubmapList submaps.
-             * @member {Array.<ros_messages.slam.ISubmapEntry>} submaps
-             * @memberof ros_messages.slam.SubmapList
+             * @member {Array.<ax_proto_msgs.slam.ISubmapEntry>} submaps
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @instance
              */
             SubmapList.prototype.submaps = $util.emptyArray;
@@ -6180,21 +8598,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new SubmapList instance using the specified properties.
              * @function create
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
-             * @param {ros_messages.slam.ISubmapList=} [properties] Properties to set
-             * @returns {ros_messages.slam.SubmapList} SubmapList instance
+             * @param {ax_proto_msgs.slam.ISubmapList=} [properties] Properties to set
+             * @returns {ax_proto_msgs.slam.SubmapList} SubmapList instance
              */
             SubmapList.create = function create(properties) {
                 return new SubmapList(properties);
             };
 
             /**
-             * Encodes the specified SubmapList message. Does not implicitly {@link ros_messages.slam.SubmapList.verify|verify} messages.
+             * Encodes the specified SubmapList message. Does not implicitly {@link ax_proto_msgs.slam.SubmapList.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
-             * @param {ros_messages.slam.ISubmapList} message SubmapList message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapList} message SubmapList message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -6207,16 +8625,16 @@ export const ros_messages = $root.ros_messages = (() => {
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.uuid);
                 if (message.submaps != null && message.submaps.length)
                     for (let i = 0; i < message.submaps.length; ++i)
-                        $root.ros_messages.slam.SubmapEntry.encode(message.submaps[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        $root.ax_proto_msgs.slam.SubmapEntry.encode(message.submaps[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
 
             /**
-             * Encodes the specified SubmapList message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapList.verify|verify} messages.
+             * Encodes the specified SubmapList message, length delimited. Does not implicitly {@link ax_proto_msgs.slam.SubmapList.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
-             * @param {ros_messages.slam.ISubmapList} message SubmapList message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapList} message SubmapList message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -6227,18 +8645,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapList message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.slam.SubmapList} SubmapList
+             * @returns {ax_proto_msgs.slam.SubmapList} SubmapList
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             SubmapList.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapList();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.slam.SubmapList();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -6255,7 +8673,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     case 3: {
                             if (!(message.submaps && message.submaps.length))
                                 message.submaps = [];
-                            message.submaps.push($root.ros_messages.slam.SubmapEntry.decode(reader, reader.uint32()));
+                            message.submaps.push($root.ax_proto_msgs.slam.SubmapEntry.decode(reader, reader.uint32()));
                             break;
                         }
                     default:
@@ -6269,10 +8687,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapList message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.slam.SubmapList} SubmapList
+             * @returns {ax_proto_msgs.slam.SubmapList} SubmapList
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -6285,7 +8703,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a SubmapList message.
              * @function verify
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -6309,7 +8727,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     if (!Array.isArray(message.submaps))
                         return "submaps: array expected";
                     for (let i = 0; i < message.submaps.length; ++i) {
-                        let error = $root.ros_messages.slam.SubmapEntry.verify(message.submaps[i]);
+                        let error = $root.ax_proto_msgs.slam.SubmapEntry.verify(message.submaps[i]);
                         if (error)
                             return "submaps." + error;
                     }
@@ -6320,15 +8738,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a SubmapList message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.slam.SubmapList} SubmapList
+             * @returns {ax_proto_msgs.slam.SubmapList} SubmapList
              */
             SubmapList.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.slam.SubmapList)
+                if (object instanceof $root.ax_proto_msgs.slam.SubmapList)
                     return object;
-                let message = new $root.ros_messages.slam.SubmapList();
+                let message = new $root.ax_proto_msgs.slam.SubmapList();
                 switch (object.slam_state) {
                 default:
                     if (typeof object.slam_state === "number") {
@@ -6353,12 +8771,12 @@ export const ros_messages = $root.ros_messages = (() => {
                     message.uuid = String(object.uuid);
                 if (object.submaps) {
                     if (!Array.isArray(object.submaps))
-                        throw TypeError(".ros_messages.slam.SubmapList.submaps: array expected");
+                        throw TypeError(".ax_proto_msgs.slam.SubmapList.submaps: array expected");
                     message.submaps = [];
                     for (let i = 0; i < object.submaps.length; ++i) {
                         if (typeof object.submaps[i] !== "object")
-                            throw TypeError(".ros_messages.slam.SubmapList.submaps: object expected");
-                        message.submaps[i] = $root.ros_messages.slam.SubmapEntry.fromObject(object.submaps[i]);
+                            throw TypeError(".ax_proto_msgs.slam.SubmapList.submaps: object expected");
+                        message.submaps[i] = $root.ax_proto_msgs.slam.SubmapEntry.fromObject(object.submaps[i]);
                     }
                 }
                 return message;
@@ -6367,9 +8785,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a SubmapList message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
-             * @param {ros_messages.slam.SubmapList} message SubmapList
+             * @param {ax_proto_msgs.slam.SubmapList} message SubmapList
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -6384,13 +8802,13 @@ export const ros_messages = $root.ros_messages = (() => {
                     object.uuid = "";
                 }
                 if (message.slam_state != null && message.hasOwnProperty("slam_state"))
-                    object.slam_state = options.enums === String ? $root.ros_messages.slam.SubmapList.SlamState[message.slam_state] === undefined ? message.slam_state : $root.ros_messages.slam.SubmapList.SlamState[message.slam_state] : message.slam_state;
+                    object.slam_state = options.enums === String ? $root.ax_proto_msgs.slam.SubmapList.SlamState[message.slam_state] === undefined ? message.slam_state : $root.ax_proto_msgs.slam.SubmapList.SlamState[message.slam_state] : message.slam_state;
                 if (message.uuid != null && message.hasOwnProperty("uuid"))
                     object.uuid = message.uuid;
                 if (message.submaps && message.submaps.length) {
                     object.submaps = [];
                     for (let j = 0; j < message.submaps.length; ++j)
-                        object.submaps[j] = $root.ros_messages.slam.SubmapEntry.toObject(message.submaps[j], options);
+                        object.submaps[j] = $root.ax_proto_msgs.slam.SubmapEntry.toObject(message.submaps[j], options);
                 }
                 return object;
             };
@@ -6398,7 +8816,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this SubmapList to JSON.
              * @function toJSON
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -6409,7 +8827,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for SubmapList
              * @function getTypeUrl
-             * @memberof ros_messages.slam.SubmapList
+             * @memberof ax_proto_msgs.slam.SubmapList
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -6418,12 +8836,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.slam.SubmapList";
+                return typeUrlPrefix + "/ax_proto_msgs.slam.SubmapList";
             };
 
             /**
              * SlamState enum.
-             * @name ros_messages.slam.SubmapList.SlamState
+             * @name ax_proto_msgs.slam.SubmapList.SlamState
              * @enum {number}
              * @property {number} SLAM_STATE_INVALID=0 SLAM_STATE_INVALID value
              * @property {number} SLAM_STATE_SLAM=1 SLAM_STATE_SLAM value
@@ -6444,23 +8862,23 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a GetMapImageResponse.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @interface IGetMapImageResponse
              * @property {number|null} [origin_x] GetMapImageResponse origin_x
              * @property {number|null} [origin_y] GetMapImageResponse origin_y
              * @property {number|null} [resolution] GetMapImageResponse resolution
              * @property {Uint8Array|null} [png_bytes] GetMapImageResponse png_bytes
-             * @property {ros_messages.slam.StatusCode|null} [status_code] GetMapImageResponse status_code
+             * @property {ax_proto_msgs.slam.StatusCode|null} [status_code] GetMapImageResponse status_code
              * @property {string|null} [status_message] GetMapImageResponse status_message
              */
 
             /**
              * Constructs a new GetMapImageResponse.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @classdesc Represents a GetMapImageResponse.
              * @implements IGetMapImageResponse
              * @constructor
-             * @param {ros_messages.slam.IGetMapImageResponse=} [properties] Properties to set
+             * @param {ax_proto_msgs.slam.IGetMapImageResponse=} [properties] Properties to set
              */
             function GetMapImageResponse(properties) {
                 if (properties)
@@ -6472,7 +8890,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * GetMapImageResponse origin_x.
              * @member {number} origin_x
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              */
             GetMapImageResponse.prototype.origin_x = 0;
@@ -6480,7 +8898,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * GetMapImageResponse origin_y.
              * @member {number} origin_y
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              */
             GetMapImageResponse.prototype.origin_y = 0;
@@ -6488,7 +8906,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * GetMapImageResponse resolution.
              * @member {number} resolution
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              */
             GetMapImageResponse.prototype.resolution = 0;
@@ -6496,15 +8914,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * GetMapImageResponse png_bytes.
              * @member {Uint8Array} png_bytes
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              */
             GetMapImageResponse.prototype.png_bytes = $util.newBuffer([]);
 
             /**
              * GetMapImageResponse status_code.
-             * @member {ros_messages.slam.StatusCode} status_code
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @member {ax_proto_msgs.slam.StatusCode} status_code
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              */
             GetMapImageResponse.prototype.status_code = 0;
@@ -6512,7 +8930,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * GetMapImageResponse status_message.
              * @member {string} status_message
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              */
             GetMapImageResponse.prototype.status_message = "";
@@ -6520,21 +8938,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new GetMapImageResponse instance using the specified properties.
              * @function create
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
-             * @param {ros_messages.slam.IGetMapImageResponse=} [properties] Properties to set
-             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse instance
+             * @param {ax_proto_msgs.slam.IGetMapImageResponse=} [properties] Properties to set
+             * @returns {ax_proto_msgs.slam.GetMapImageResponse} GetMapImageResponse instance
              */
             GetMapImageResponse.create = function create(properties) {
                 return new GetMapImageResponse(properties);
             };
 
             /**
-             * Encodes the specified GetMapImageResponse message. Does not implicitly {@link ros_messages.slam.GetMapImageResponse.verify|verify} messages.
+             * Encodes the specified GetMapImageResponse message. Does not implicitly {@link ax_proto_msgs.slam.GetMapImageResponse.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
-             * @param {ros_messages.slam.IGetMapImageResponse} message GetMapImageResponse message or plain object to encode
+             * @param {ax_proto_msgs.slam.IGetMapImageResponse} message GetMapImageResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -6557,11 +8975,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified GetMapImageResponse message, length delimited. Does not implicitly {@link ros_messages.slam.GetMapImageResponse.verify|verify} messages.
+             * Encodes the specified GetMapImageResponse message, length delimited. Does not implicitly {@link ax_proto_msgs.slam.GetMapImageResponse.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
-             * @param {ros_messages.slam.IGetMapImageResponse} message GetMapImageResponse message or plain object to encode
+             * @param {ax_proto_msgs.slam.IGetMapImageResponse} message GetMapImageResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -6572,18 +8990,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a GetMapImageResponse message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse
+             * @returns {ax_proto_msgs.slam.GetMapImageResponse} GetMapImageResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             GetMapImageResponse.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.GetMapImageResponse();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.slam.GetMapImageResponse();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -6624,10 +9042,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a GetMapImageResponse message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse
+             * @returns {ax_proto_msgs.slam.GetMapImageResponse} GetMapImageResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -6640,7 +9058,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a GetMapImageResponse message.
              * @function verify
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -6692,15 +9110,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a GetMapImageResponse message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.slam.GetMapImageResponse} GetMapImageResponse
+             * @returns {ax_proto_msgs.slam.GetMapImageResponse} GetMapImageResponse
              */
             GetMapImageResponse.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.slam.GetMapImageResponse)
+                if (object instanceof $root.ax_proto_msgs.slam.GetMapImageResponse)
                     return object;
-                let message = new $root.ros_messages.slam.GetMapImageResponse();
+                let message = new $root.ax_proto_msgs.slam.GetMapImageResponse();
                 if (object.origin_x != null)
                     message.origin_x = Number(object.origin_x);
                 if (object.origin_y != null)
@@ -6796,9 +9214,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a GetMapImageResponse message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
-             * @param {ros_messages.slam.GetMapImageResponse} message GetMapImageResponse
+             * @param {ax_proto_msgs.slam.GetMapImageResponse} message GetMapImageResponse
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -6829,7 +9247,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.png_bytes != null && message.hasOwnProperty("png_bytes"))
                     object.png_bytes = options.bytes === String ? $util.base64.encode(message.png_bytes, 0, message.png_bytes.length) : options.bytes === Array ? Array.prototype.slice.call(message.png_bytes) : message.png_bytes;
                 if (message.status_code != null && message.hasOwnProperty("status_code"))
-                    object.status_code = options.enums === String ? $root.ros_messages.slam.StatusCode[message.status_code] === undefined ? message.status_code : $root.ros_messages.slam.StatusCode[message.status_code] : message.status_code;
+                    object.status_code = options.enums === String ? $root.ax_proto_msgs.slam.StatusCode[message.status_code] === undefined ? message.status_code : $root.ax_proto_msgs.slam.StatusCode[message.status_code] : message.status_code;
                 if (message.status_message != null && message.hasOwnProperty("status_message"))
                     object.status_message = message.status_message;
                 return object;
@@ -6838,7 +9256,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this GetMapImageResponse to JSON.
              * @function toJSON
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -6849,7 +9267,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for GetMapImageResponse
              * @function getTypeUrl
-             * @memberof ros_messages.slam.GetMapImageResponse
+             * @memberof ax_proto_msgs.slam.GetMapImageResponse
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -6858,7 +9276,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.slam.GetMapImageResponse";
+                return typeUrlPrefix + "/ax_proto_msgs.slam.GetMapImageResponse";
             };
 
             return GetMapImageResponse;
@@ -6866,7 +9284,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * StatusCode enum.
-         * @name ros_messages.slam.StatusCode
+         * @name ax_proto_msgs.slam.StatusCode
          * @enum {number}
          * @property {number} OK=0 OK value
          * @property {number} CANCELLED=1 CANCELLED value
@@ -6912,19 +9330,19 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a StatusResponse.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @interface IStatusResponse
-             * @property {ros_messages.slam.StatusCode|null} [code] StatusResponse code
+             * @property {ax_proto_msgs.slam.StatusCode|null} [code] StatusResponse code
              * @property {string|null} [message] StatusResponse message
              */
 
             /**
              * Constructs a new StatusResponse.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @classdesc Represents a StatusResponse.
              * @implements IStatusResponse
              * @constructor
-             * @param {ros_messages.slam.IStatusResponse=} [properties] Properties to set
+             * @param {ax_proto_msgs.slam.IStatusResponse=} [properties] Properties to set
              */
             function StatusResponse(properties) {
                 if (properties)
@@ -6935,8 +9353,8 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * StatusResponse code.
-             * @member {ros_messages.slam.StatusCode} code
-             * @memberof ros_messages.slam.StatusResponse
+             * @member {ax_proto_msgs.slam.StatusCode} code
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @instance
              */
             StatusResponse.prototype.code = 0;
@@ -6944,7 +9362,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * StatusResponse message.
              * @member {string} message
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @instance
              */
             StatusResponse.prototype.message = "";
@@ -6952,21 +9370,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new StatusResponse instance using the specified properties.
              * @function create
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
-             * @param {ros_messages.slam.IStatusResponse=} [properties] Properties to set
-             * @returns {ros_messages.slam.StatusResponse} StatusResponse instance
+             * @param {ax_proto_msgs.slam.IStatusResponse=} [properties] Properties to set
+             * @returns {ax_proto_msgs.slam.StatusResponse} StatusResponse instance
              */
             StatusResponse.create = function create(properties) {
                 return new StatusResponse(properties);
             };
 
             /**
-             * Encodes the specified StatusResponse message. Does not implicitly {@link ros_messages.slam.StatusResponse.verify|verify} messages.
+             * Encodes the specified StatusResponse message. Does not implicitly {@link ax_proto_msgs.slam.StatusResponse.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
-             * @param {ros_messages.slam.IStatusResponse} message StatusResponse message or plain object to encode
+             * @param {ax_proto_msgs.slam.IStatusResponse} message StatusResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -6981,11 +9399,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified StatusResponse message, length delimited. Does not implicitly {@link ros_messages.slam.StatusResponse.verify|verify} messages.
+             * Encodes the specified StatusResponse message, length delimited. Does not implicitly {@link ax_proto_msgs.slam.StatusResponse.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
-             * @param {ros_messages.slam.IStatusResponse} message StatusResponse message or plain object to encode
+             * @param {ax_proto_msgs.slam.IStatusResponse} message StatusResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -6996,18 +9414,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a StatusResponse message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.slam.StatusResponse} StatusResponse
+             * @returns {ax_proto_msgs.slam.StatusResponse} StatusResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             StatusResponse.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.StatusResponse();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.slam.StatusResponse();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -7032,10 +9450,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a StatusResponse message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.slam.StatusResponse} StatusResponse
+             * @returns {ax_proto_msgs.slam.StatusResponse} StatusResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -7048,7 +9466,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a StatusResponse message.
              * @function verify
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -7088,15 +9506,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a StatusResponse message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.slam.StatusResponse} StatusResponse
+             * @returns {ax_proto_msgs.slam.StatusResponse} StatusResponse
              */
             StatusResponse.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.slam.StatusResponse)
+                if (object instanceof $root.ax_proto_msgs.slam.StatusResponse)
                     return object;
-                let message = new $root.ros_messages.slam.StatusResponse();
+                let message = new $root.ax_proto_msgs.slam.StatusResponse();
                 switch (object.code) {
                 default:
                     if (typeof object.code === "number") {
@@ -7181,9 +9599,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a StatusResponse message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
-             * @param {ros_messages.slam.StatusResponse} message StatusResponse
+             * @param {ax_proto_msgs.slam.StatusResponse} message StatusResponse
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -7196,7 +9614,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     object.message = "";
                 }
                 if (message.code != null && message.hasOwnProperty("code"))
-                    object.code = options.enums === String ? $root.ros_messages.slam.StatusCode[message.code] === undefined ? message.code : $root.ros_messages.slam.StatusCode[message.code] : message.code;
+                    object.code = options.enums === String ? $root.ax_proto_msgs.slam.StatusCode[message.code] === undefined ? message.code : $root.ax_proto_msgs.slam.StatusCode[message.code] : message.code;
                 if (message.message != null && message.hasOwnProperty("message"))
                     object.message = message.message;
                 return object;
@@ -7205,7 +9623,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this StatusResponse to JSON.
              * @function toJSON
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -7216,7 +9634,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for StatusResponse
              * @function getTypeUrl
-             * @memberof ros_messages.slam.StatusResponse
+             * @memberof ax_proto_msgs.slam.StatusResponse
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -7225,7 +9643,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.slam.StatusResponse";
+                return typeUrlPrefix + "/ax_proto_msgs.slam.StatusResponse";
             };
 
             return StatusResponse;
@@ -7235,7 +9653,7 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a SubmapTexture.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @interface ISubmapTexture
              * @property {number|null} [cell_format] SubmapTexture cell_format
              * @property {Uint8Array|null} [cells] SubmapTexture cells
@@ -7243,16 +9661,16 @@ export const ros_messages = $root.ros_messages = (() => {
              * @property {number|null} [height] SubmapTexture height
              * @property {number|null} [resolution] SubmapTexture resolution
              * @property {number|null} [z_level] SubmapTexture z_level
-             * @property {ros_messages.IPose|null} [slice_pose] SubmapTexture slice_pose
+             * @property {ax_proto_msgs.IPose|null} [slice_pose] SubmapTexture slice_pose
              */
 
             /**
              * Constructs a new SubmapTexture.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @classdesc Represents a SubmapTexture.
              * @implements ISubmapTexture
              * @constructor
-             * @param {ros_messages.slam.ISubmapTexture=} [properties] Properties to set
+             * @param {ax_proto_msgs.slam.ISubmapTexture=} [properties] Properties to set
              */
             function SubmapTexture(properties) {
                 if (properties)
@@ -7264,7 +9682,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapTexture cell_format.
              * @member {number} cell_format
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.cell_format = 0;
@@ -7272,7 +9690,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapTexture cells.
              * @member {Uint8Array} cells
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.cells = $util.newBuffer([]);
@@ -7280,7 +9698,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapTexture width.
              * @member {number} width
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.width = 0;
@@ -7288,7 +9706,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapTexture height.
              * @member {number} height
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.height = 0;
@@ -7296,7 +9714,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapTexture resolution.
              * @member {number} resolution
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.resolution = 0;
@@ -7304,15 +9722,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapTexture z_level.
              * @member {number} z_level
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.z_level = 0;
 
             /**
              * SubmapTexture slice_pose.
-             * @member {ros_messages.IPose|null|undefined} slice_pose
-             * @memberof ros_messages.slam.SubmapTexture
+             * @member {ax_proto_msgs.IPose|null|undefined} slice_pose
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              */
             SubmapTexture.prototype.slice_pose = null;
@@ -7320,21 +9738,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new SubmapTexture instance using the specified properties.
              * @function create
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
-             * @param {ros_messages.slam.ISubmapTexture=} [properties] Properties to set
-             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture instance
+             * @param {ax_proto_msgs.slam.ISubmapTexture=} [properties] Properties to set
+             * @returns {ax_proto_msgs.slam.SubmapTexture} SubmapTexture instance
              */
             SubmapTexture.create = function create(properties) {
                 return new SubmapTexture(properties);
             };
 
             /**
-             * Encodes the specified SubmapTexture message. Does not implicitly {@link ros_messages.slam.SubmapTexture.verify|verify} messages.
+             * Encodes the specified SubmapTexture message. Does not implicitly {@link ax_proto_msgs.slam.SubmapTexture.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
-             * @param {ros_messages.slam.ISubmapTexture} message SubmapTexture message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapTexture} message SubmapTexture message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -7354,16 +9772,16 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.z_level != null && Object.hasOwnProperty.call(message, "z_level"))
                     writer.uint32(/* id 6, wireType 0 =*/48).int32(message.z_level);
                 if (message.slice_pose != null && Object.hasOwnProperty.call(message, "slice_pose"))
-                    $root.ros_messages.Pose.encode(message.slice_pose, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
+                    $root.ax_proto_msgs.Pose.encode(message.slice_pose, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
                 return writer;
             };
 
             /**
-             * Encodes the specified SubmapTexture message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapTexture.verify|verify} messages.
+             * Encodes the specified SubmapTexture message, length delimited. Does not implicitly {@link ax_proto_msgs.slam.SubmapTexture.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
-             * @param {ros_messages.slam.ISubmapTexture} message SubmapTexture message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapTexture} message SubmapTexture message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -7374,18 +9792,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapTexture message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture
+             * @returns {ax_proto_msgs.slam.SubmapTexture} SubmapTexture
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             SubmapTexture.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapTexture();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.slam.SubmapTexture();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -7416,7 +9834,7 @@ export const ros_messages = $root.ros_messages = (() => {
                             break;
                         }
                     case 7: {
-                            message.slice_pose = $root.ros_messages.Pose.decode(reader, reader.uint32());
+                            message.slice_pose = $root.ax_proto_msgs.Pose.decode(reader, reader.uint32());
                             break;
                         }
                     default:
@@ -7430,10 +9848,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapTexture message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture
+             * @returns {ax_proto_msgs.slam.SubmapTexture} SubmapTexture
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -7446,7 +9864,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a SubmapTexture message.
              * @function verify
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -7473,7 +9891,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     if (!$util.isInteger(message.z_level))
                         return "z_level: integer expected";
                 if (message.slice_pose != null && message.hasOwnProperty("slice_pose")) {
-                    let error = $root.ros_messages.Pose.verify(message.slice_pose);
+                    let error = $root.ax_proto_msgs.Pose.verify(message.slice_pose);
                     if (error)
                         return "slice_pose." + error;
                 }
@@ -7483,15 +9901,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a SubmapTexture message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.slam.SubmapTexture} SubmapTexture
+             * @returns {ax_proto_msgs.slam.SubmapTexture} SubmapTexture
              */
             SubmapTexture.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.slam.SubmapTexture)
+                if (object instanceof $root.ax_proto_msgs.slam.SubmapTexture)
                     return object;
-                let message = new $root.ros_messages.slam.SubmapTexture();
+                let message = new $root.ax_proto_msgs.slam.SubmapTexture();
                 if (object.cell_format != null)
                     message.cell_format = object.cell_format | 0;
                 if (object.cells != null)
@@ -7509,8 +9927,8 @@ export const ros_messages = $root.ros_messages = (() => {
                     message.z_level = object.z_level | 0;
                 if (object.slice_pose != null) {
                     if (typeof object.slice_pose !== "object")
-                        throw TypeError(".ros_messages.slam.SubmapTexture.slice_pose: object expected");
-                    message.slice_pose = $root.ros_messages.Pose.fromObject(object.slice_pose);
+                        throw TypeError(".ax_proto_msgs.slam.SubmapTexture.slice_pose: object expected");
+                    message.slice_pose = $root.ax_proto_msgs.Pose.fromObject(object.slice_pose);
                 }
                 return message;
             };
@@ -7518,9 +9936,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a SubmapTexture message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
-             * @param {ros_messages.slam.SubmapTexture} message SubmapTexture
+             * @param {ax_proto_msgs.slam.SubmapTexture} message SubmapTexture
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -7556,14 +9974,14 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (message.z_level != null && message.hasOwnProperty("z_level"))
                     object.z_level = message.z_level;
                 if (message.slice_pose != null && message.hasOwnProperty("slice_pose"))
-                    object.slice_pose = $root.ros_messages.Pose.toObject(message.slice_pose, options);
+                    object.slice_pose = $root.ax_proto_msgs.Pose.toObject(message.slice_pose, options);
                 return object;
             };
 
             /**
              * Converts this SubmapTexture to JSON.
              * @function toJSON
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -7574,7 +9992,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for SubmapTexture
              * @function getTypeUrl
-             * @memberof ros_messages.slam.SubmapTexture
+             * @memberof ax_proto_msgs.slam.SubmapTexture
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -7583,7 +10001,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.slam.SubmapTexture";
+                return typeUrlPrefix + "/ax_proto_msgs.slam.SubmapTexture";
             };
 
             return SubmapTexture;
@@ -7593,20 +10011,20 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * Properties of a SubmapQueryV2Response.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @interface ISubmapQueryV2Response
-             * @property {ros_messages.slam.IStatusResponse|null} [status] SubmapQueryV2Response status
+             * @property {ax_proto_msgs.slam.IStatusResponse|null} [status] SubmapQueryV2Response status
              * @property {number|null} [submap_version] SubmapQueryV2Response submap_version
-             * @property {Array.<ros_messages.slam.ISubmapTexture>|null} [textures] SubmapQueryV2Response textures
+             * @property {Array.<ax_proto_msgs.slam.ISubmapTexture>|null} [textures] SubmapQueryV2Response textures
              */
 
             /**
              * Constructs a new SubmapQueryV2Response.
-             * @memberof ros_messages.slam
+             * @memberof ax_proto_msgs.slam
              * @classdesc Represents a SubmapQueryV2Response.
              * @implements ISubmapQueryV2Response
              * @constructor
-             * @param {ros_messages.slam.ISubmapQueryV2Response=} [properties] Properties to set
+             * @param {ax_proto_msgs.slam.ISubmapQueryV2Response=} [properties] Properties to set
              */
             function SubmapQueryV2Response(properties) {
                 this.textures = [];
@@ -7618,8 +10036,8 @@ export const ros_messages = $root.ros_messages = (() => {
 
             /**
              * SubmapQueryV2Response status.
-             * @member {ros_messages.slam.IStatusResponse|null|undefined} status
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @member {ax_proto_msgs.slam.IStatusResponse|null|undefined} status
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @instance
              */
             SubmapQueryV2Response.prototype.status = null;
@@ -7627,15 +10045,15 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * SubmapQueryV2Response submap_version.
              * @member {number} submap_version
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @instance
              */
             SubmapQueryV2Response.prototype.submap_version = 0;
 
             /**
              * SubmapQueryV2Response textures.
-             * @member {Array.<ros_messages.slam.ISubmapTexture>} textures
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @member {Array.<ax_proto_msgs.slam.ISubmapTexture>} textures
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @instance
              */
             SubmapQueryV2Response.prototype.textures = $util.emptyArray;
@@ -7643,21 +10061,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new SubmapQueryV2Response instance using the specified properties.
              * @function create
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
-             * @param {ros_messages.slam.ISubmapQueryV2Response=} [properties] Properties to set
-             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response instance
+             * @param {ax_proto_msgs.slam.ISubmapQueryV2Response=} [properties] Properties to set
+             * @returns {ax_proto_msgs.slam.SubmapQueryV2Response} SubmapQueryV2Response instance
              */
             SubmapQueryV2Response.create = function create(properties) {
                 return new SubmapQueryV2Response(properties);
             };
 
             /**
-             * Encodes the specified SubmapQueryV2Response message. Does not implicitly {@link ros_messages.slam.SubmapQueryV2Response.verify|verify} messages.
+             * Encodes the specified SubmapQueryV2Response message. Does not implicitly {@link ax_proto_msgs.slam.SubmapQueryV2Response.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
-             * @param {ros_messages.slam.ISubmapQueryV2Response} message SubmapQueryV2Response message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapQueryV2Response} message SubmapQueryV2Response message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -7665,21 +10083,21 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.status != null && Object.hasOwnProperty.call(message, "status"))
-                    $root.ros_messages.slam.StatusResponse.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.ax_proto_msgs.slam.StatusResponse.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 if (message.submap_version != null && Object.hasOwnProperty.call(message, "submap_version"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.submap_version);
                 if (message.textures != null && message.textures.length)
                     for (let i = 0; i < message.textures.length; ++i)
-                        $root.ros_messages.slam.SubmapTexture.encode(message.textures[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        $root.ax_proto_msgs.slam.SubmapTexture.encode(message.textures[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
 
             /**
-             * Encodes the specified SubmapQueryV2Response message, length delimited. Does not implicitly {@link ros_messages.slam.SubmapQueryV2Response.verify|verify} messages.
+             * Encodes the specified SubmapQueryV2Response message, length delimited. Does not implicitly {@link ax_proto_msgs.slam.SubmapQueryV2Response.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
-             * @param {ros_messages.slam.ISubmapQueryV2Response} message SubmapQueryV2Response message or plain object to encode
+             * @param {ax_proto_msgs.slam.ISubmapQueryV2Response} message SubmapQueryV2Response message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -7690,25 +10108,25 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapQueryV2Response message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response
+             * @returns {ax_proto_msgs.slam.SubmapQueryV2Response} SubmapQueryV2Response
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             SubmapQueryV2Response.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.slam.SubmapQueryV2Response();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.slam.SubmapQueryV2Response();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
                         break;
                     switch (tag >>> 3) {
                     case 1: {
-                            message.status = $root.ros_messages.slam.StatusResponse.decode(reader, reader.uint32());
+                            message.status = $root.ax_proto_msgs.slam.StatusResponse.decode(reader, reader.uint32());
                             break;
                         }
                     case 2: {
@@ -7718,7 +10136,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     case 3: {
                             if (!(message.textures && message.textures.length))
                                 message.textures = [];
-                            message.textures.push($root.ros_messages.slam.SubmapTexture.decode(reader, reader.uint32()));
+                            message.textures.push($root.ax_proto_msgs.slam.SubmapTexture.decode(reader, reader.uint32()));
                             break;
                         }
                     default:
@@ -7732,10 +10150,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a SubmapQueryV2Response message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response
+             * @returns {ax_proto_msgs.slam.SubmapQueryV2Response} SubmapQueryV2Response
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -7748,7 +10166,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a SubmapQueryV2Response message.
              * @function verify
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -7757,7 +10175,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
                 if (message.status != null && message.hasOwnProperty("status")) {
-                    let error = $root.ros_messages.slam.StatusResponse.verify(message.status);
+                    let error = $root.ax_proto_msgs.slam.StatusResponse.verify(message.status);
                     if (error)
                         return "status." + error;
                 }
@@ -7768,7 +10186,7 @@ export const ros_messages = $root.ros_messages = (() => {
                     if (!Array.isArray(message.textures))
                         return "textures: array expected";
                     for (let i = 0; i < message.textures.length; ++i) {
-                        let error = $root.ros_messages.slam.SubmapTexture.verify(message.textures[i]);
+                        let error = $root.ax_proto_msgs.slam.SubmapTexture.verify(message.textures[i]);
                         if (error)
                             return "textures." + error;
                     }
@@ -7779,30 +10197,30 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a SubmapQueryV2Response message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.slam.SubmapQueryV2Response} SubmapQueryV2Response
+             * @returns {ax_proto_msgs.slam.SubmapQueryV2Response} SubmapQueryV2Response
              */
             SubmapQueryV2Response.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.slam.SubmapQueryV2Response)
+                if (object instanceof $root.ax_proto_msgs.slam.SubmapQueryV2Response)
                     return object;
-                let message = new $root.ros_messages.slam.SubmapQueryV2Response();
+                let message = new $root.ax_proto_msgs.slam.SubmapQueryV2Response();
                 if (object.status != null) {
                     if (typeof object.status !== "object")
-                        throw TypeError(".ros_messages.slam.SubmapQueryV2Response.status: object expected");
-                    message.status = $root.ros_messages.slam.StatusResponse.fromObject(object.status);
+                        throw TypeError(".ax_proto_msgs.slam.SubmapQueryV2Response.status: object expected");
+                    message.status = $root.ax_proto_msgs.slam.StatusResponse.fromObject(object.status);
                 }
                 if (object.submap_version != null)
                     message.submap_version = object.submap_version | 0;
                 if (object.textures) {
                     if (!Array.isArray(object.textures))
-                        throw TypeError(".ros_messages.slam.SubmapQueryV2Response.textures: array expected");
+                        throw TypeError(".ax_proto_msgs.slam.SubmapQueryV2Response.textures: array expected");
                     message.textures = [];
                     for (let i = 0; i < object.textures.length; ++i) {
                         if (typeof object.textures[i] !== "object")
-                            throw TypeError(".ros_messages.slam.SubmapQueryV2Response.textures: object expected");
-                        message.textures[i] = $root.ros_messages.slam.SubmapTexture.fromObject(object.textures[i]);
+                            throw TypeError(".ax_proto_msgs.slam.SubmapQueryV2Response.textures: object expected");
+                        message.textures[i] = $root.ax_proto_msgs.slam.SubmapTexture.fromObject(object.textures[i]);
                     }
                 }
                 return message;
@@ -7811,9 +10229,9 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a plain object from a SubmapQueryV2Response message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
-             * @param {ros_messages.slam.SubmapQueryV2Response} message SubmapQueryV2Response
+             * @param {ax_proto_msgs.slam.SubmapQueryV2Response} message SubmapQueryV2Response
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -7828,13 +10246,13 @@ export const ros_messages = $root.ros_messages = (() => {
                     object.submap_version = 0;
                 }
                 if (message.status != null && message.hasOwnProperty("status"))
-                    object.status = $root.ros_messages.slam.StatusResponse.toObject(message.status, options);
+                    object.status = $root.ax_proto_msgs.slam.StatusResponse.toObject(message.status, options);
                 if (message.submap_version != null && message.hasOwnProperty("submap_version"))
                     object.submap_version = message.submap_version;
                 if (message.textures && message.textures.length) {
                     object.textures = [];
                     for (let j = 0; j < message.textures.length; ++j)
-                        object.textures[j] = $root.ros_messages.slam.SubmapTexture.toObject(message.textures[j], options);
+                        object.textures[j] = $root.ax_proto_msgs.slam.SubmapTexture.toObject(message.textures[j], options);
                 }
                 return object;
             };
@@ -7842,7 +10260,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this SubmapQueryV2Response to JSON.
              * @function toJSON
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -7853,7 +10271,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for SubmapQueryV2Response
              * @function getTypeUrl
-             * @memberof ros_messages.slam.SubmapQueryV2Response
+             * @memberof ax_proto_msgs.slam.SubmapQueryV2Response
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -7862,7 +10280,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.slam.SubmapQueryV2Response";
+                return typeUrlPrefix + "/ax_proto_msgs.slam.SubmapQueryV2Response";
             };
 
             return SubmapQueryV2Response;
@@ -7871,14 +10289,14 @@ export const ros_messages = $root.ros_messages = (() => {
         return slam;
     })();
 
-    ros_messages.TowingState = (function() {
+    ax_proto_msgs.TowingState = (function() {
 
         /**
          * Properties of a TowingState.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface ITowingState
          * @property {number|null} [action_progress] TowingState action_progress
-         * @property {ros_messages.TowingState.HookState|null} [hook_state] TowingState hook_state
+         * @property {ax_proto_msgs.TowingState.HookState|null} [hook_state] TowingState hook_state
          * @property {boolean|null} [cargo_detected] TowingState cargo_detected
          * @property {number|null} [error_code] TowingState error_code
          * @property {string|null} [error_message] TowingState error_message
@@ -7886,11 +10304,11 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * Constructs a new TowingState.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a TowingState.
          * @implements ITowingState
          * @constructor
-         * @param {ros_messages.ITowingState=} [properties] Properties to set
+         * @param {ax_proto_msgs.ITowingState=} [properties] Properties to set
          */
         function TowingState(properties) {
             if (properties)
@@ -7902,15 +10320,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TowingState action_progress.
          * @member {number} action_progress
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @instance
          */
         TowingState.prototype.action_progress = 0;
 
         /**
          * TowingState hook_state.
-         * @member {ros_messages.TowingState.HookState} hook_state
-         * @memberof ros_messages.TowingState
+         * @member {ax_proto_msgs.TowingState.HookState} hook_state
+         * @memberof ax_proto_msgs.TowingState
          * @instance
          */
         TowingState.prototype.hook_state = 0;
@@ -7918,7 +10336,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TowingState cargo_detected.
          * @member {boolean} cargo_detected
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @instance
          */
         TowingState.prototype.cargo_detected = false;
@@ -7926,7 +10344,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TowingState error_code.
          * @member {number} error_code
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @instance
          */
         TowingState.prototype.error_code = 0;
@@ -7934,7 +10352,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TowingState error_message.
          * @member {string} error_message
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @instance
          */
         TowingState.prototype.error_message = "";
@@ -7942,21 +10360,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new TowingState instance using the specified properties.
          * @function create
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
-         * @param {ros_messages.ITowingState=} [properties] Properties to set
-         * @returns {ros_messages.TowingState} TowingState instance
+         * @param {ax_proto_msgs.ITowingState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TowingState} TowingState instance
          */
         TowingState.create = function create(properties) {
             return new TowingState(properties);
         };
 
         /**
-         * Encodes the specified TowingState message. Does not implicitly {@link ros_messages.TowingState.verify|verify} messages.
+         * Encodes the specified TowingState message. Does not implicitly {@link ax_proto_msgs.TowingState.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
-         * @param {ros_messages.ITowingState} message TowingState message or plain object to encode
+         * @param {ax_proto_msgs.ITowingState} message TowingState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -7977,11 +10395,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified TowingState message, length delimited. Does not implicitly {@link ros_messages.TowingState.verify|verify} messages.
+         * Encodes the specified TowingState message, length delimited. Does not implicitly {@link ax_proto_msgs.TowingState.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
-         * @param {ros_messages.ITowingState} message TowingState message or plain object to encode
+         * @param {ax_proto_msgs.ITowingState} message TowingState message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -7992,18 +10410,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a TowingState message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.TowingState} TowingState
+         * @returns {ax_proto_msgs.TowingState} TowingState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         TowingState.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.TowingState();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TowingState();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -8040,10 +10458,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a TowingState message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.TowingState} TowingState
+         * @returns {ax_proto_msgs.TowingState} TowingState
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -8056,7 +10474,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a TowingState message.
          * @function verify
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -8095,15 +10513,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a TowingState message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.TowingState} TowingState
+         * @returns {ax_proto_msgs.TowingState} TowingState
          */
         TowingState.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.TowingState)
+            if (object instanceof $root.ax_proto_msgs.TowingState)
                 return object;
-            let message = new $root.ros_messages.TowingState();
+            let message = new $root.ax_proto_msgs.TowingState();
             if (object.action_progress != null)
                 message.action_progress = Number(object.action_progress);
             switch (object.hook_state) {
@@ -8154,9 +10572,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a TowingState message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
-         * @param {ros_messages.TowingState} message TowingState
+         * @param {ax_proto_msgs.TowingState} message TowingState
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -8174,7 +10592,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.action_progress != null && message.hasOwnProperty("action_progress"))
                 object.action_progress = options.json && !isFinite(message.action_progress) ? String(message.action_progress) : message.action_progress;
             if (message.hook_state != null && message.hasOwnProperty("hook_state"))
-                object.hook_state = options.enums === String ? $root.ros_messages.TowingState.HookState[message.hook_state] === undefined ? message.hook_state : $root.ros_messages.TowingState.HookState[message.hook_state] : message.hook_state;
+                object.hook_state = options.enums === String ? $root.ax_proto_msgs.TowingState.HookState[message.hook_state] === undefined ? message.hook_state : $root.ax_proto_msgs.TowingState.HookState[message.hook_state] : message.hook_state;
             if (message.cargo_detected != null && message.hasOwnProperty("cargo_detected"))
                 object.cargo_detected = message.cargo_detected;
             if (message.error_code != null && message.hasOwnProperty("error_code"))
@@ -8187,7 +10605,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this TowingState to JSON.
          * @function toJSON
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -8198,7 +10616,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for TowingState
          * @function getTypeUrl
-         * @memberof ros_messages.TowingState
+         * @memberof ax_proto_msgs.TowingState
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -8207,12 +10625,12 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.TowingState";
+            return typeUrlPrefix + "/ax_proto_msgs.TowingState";
         };
 
         /**
          * HookState enum.
-         * @name ros_messages.TowingState.HookState
+         * @name ax_proto_msgs.TowingState.HookState
          * @enum {number}
          * @property {number} UNKNOWN=0 UNKNOWN value
          * @property {number} LOCKED=1 LOCKED value
@@ -8237,25 +10655,25 @@ export const ros_messages = $root.ros_messages = (() => {
         return TowingState;
     })();
 
-    ros_messages.VideoData = (function() {
+    ax_proto_msgs.VideoData = (function() {
 
         /**
          * Properties of a VideoData.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IVideoData
          * @property {number|null} [width] VideoData width
          * @property {number|null} [height] VideoData height
-         * @property {ros_messages.VideoData.VideoFormat.Type|null} [video_format] VideoData video_format
+         * @property {ax_proto_msgs.VideoData.VideoFormat.Type|null} [video_format] VideoData video_format
          * @property {Uint8Array|null} [data] VideoData data
          */
 
         /**
          * Constructs a new VideoData.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a VideoData.
          * @implements IVideoData
          * @constructor
-         * @param {ros_messages.IVideoData=} [properties] Properties to set
+         * @param {ax_proto_msgs.IVideoData=} [properties] Properties to set
          */
         function VideoData(properties) {
             if (properties)
@@ -8267,7 +10685,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * VideoData width.
          * @member {number} width
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @instance
          */
         VideoData.prototype.width = 0;
@@ -8275,15 +10693,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * VideoData height.
          * @member {number} height
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @instance
          */
         VideoData.prototype.height = 0;
 
         /**
          * VideoData video_format.
-         * @member {ros_messages.VideoData.VideoFormat.Type} video_format
-         * @memberof ros_messages.VideoData
+         * @member {ax_proto_msgs.VideoData.VideoFormat.Type} video_format
+         * @memberof ax_proto_msgs.VideoData
          * @instance
          */
         VideoData.prototype.video_format = 0;
@@ -8291,7 +10709,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * VideoData data.
          * @member {Uint8Array} data
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @instance
          */
         VideoData.prototype.data = $util.newBuffer([]);
@@ -8299,21 +10717,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new VideoData instance using the specified properties.
          * @function create
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
-         * @param {ros_messages.IVideoData=} [properties] Properties to set
-         * @returns {ros_messages.VideoData} VideoData instance
+         * @param {ax_proto_msgs.IVideoData=} [properties] Properties to set
+         * @returns {ax_proto_msgs.VideoData} VideoData instance
          */
         VideoData.create = function create(properties) {
             return new VideoData(properties);
         };
 
         /**
-         * Encodes the specified VideoData message. Does not implicitly {@link ros_messages.VideoData.verify|verify} messages.
+         * Encodes the specified VideoData message. Does not implicitly {@link ax_proto_msgs.VideoData.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
-         * @param {ros_messages.IVideoData} message VideoData message or plain object to encode
+         * @param {ax_proto_msgs.IVideoData} message VideoData message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -8332,11 +10750,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified VideoData message, length delimited. Does not implicitly {@link ros_messages.VideoData.verify|verify} messages.
+         * Encodes the specified VideoData message, length delimited. Does not implicitly {@link ax_proto_msgs.VideoData.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
-         * @param {ros_messages.IVideoData} message VideoData message or plain object to encode
+         * @param {ax_proto_msgs.IVideoData} message VideoData message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -8347,18 +10765,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a VideoData message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.VideoData} VideoData
+         * @returns {ax_proto_msgs.VideoData} VideoData
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         VideoData.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.VideoData();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.VideoData();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -8391,10 +10809,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a VideoData message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.VideoData} VideoData
+         * @returns {ax_proto_msgs.VideoData} VideoData
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -8407,7 +10825,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a VideoData message.
          * @function verify
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -8438,15 +10856,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a VideoData message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.VideoData} VideoData
+         * @returns {ax_proto_msgs.VideoData} VideoData
          */
         VideoData.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.VideoData)
+            if (object instanceof $root.ax_proto_msgs.VideoData)
                 return object;
-            let message = new $root.ros_messages.VideoData();
+            let message = new $root.ax_proto_msgs.VideoData();
             if (object.width != null)
                 message.width = object.width | 0;
             if (object.height != null)
@@ -8478,9 +10896,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a VideoData message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
-         * @param {ros_messages.VideoData} message VideoData
+         * @param {ax_proto_msgs.VideoData} message VideoData
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -8505,7 +10923,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.height != null && message.hasOwnProperty("height"))
                 object.height = message.height;
             if (message.video_format != null && message.hasOwnProperty("video_format"))
-                object.video_format = options.enums === String ? $root.ros_messages.VideoData.VideoFormat.Type[message.video_format] === undefined ? message.video_format : $root.ros_messages.VideoData.VideoFormat.Type[message.video_format] : message.video_format;
+                object.video_format = options.enums === String ? $root.ax_proto_msgs.VideoData.VideoFormat.Type[message.video_format] === undefined ? message.video_format : $root.ax_proto_msgs.VideoData.VideoFormat.Type[message.video_format] : message.video_format;
             if (message.data != null && message.hasOwnProperty("data"))
                 object.data = options.bytes === String ? $util.base64.encode(message.data, 0, message.data.length) : options.bytes === Array ? Array.prototype.slice.call(message.data) : message.data;
             return object;
@@ -8514,7 +10932,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this VideoData to JSON.
          * @function toJSON
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -8525,7 +10943,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for VideoData
          * @function getTypeUrl
-         * @memberof ros_messages.VideoData
+         * @memberof ax_proto_msgs.VideoData
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -8534,24 +10952,24 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.VideoData";
+            return typeUrlPrefix + "/ax_proto_msgs.VideoData";
         };
 
         VideoData.VideoFormat = (function() {
 
             /**
              * Properties of a VideoFormat.
-             * @memberof ros_messages.VideoData
+             * @memberof ax_proto_msgs.VideoData
              * @interface IVideoFormat
              */
 
             /**
              * Constructs a new VideoFormat.
-             * @memberof ros_messages.VideoData
+             * @memberof ax_proto_msgs.VideoData
              * @classdesc Represents a VideoFormat.
              * @implements IVideoFormat
              * @constructor
-             * @param {ros_messages.VideoData.IVideoFormat=} [properties] Properties to set
+             * @param {ax_proto_msgs.VideoData.IVideoFormat=} [properties] Properties to set
              */
             function VideoFormat(properties) {
                 if (properties)
@@ -8563,21 +10981,21 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a new VideoFormat instance using the specified properties.
              * @function create
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
-             * @param {ros_messages.VideoData.IVideoFormat=} [properties] Properties to set
-             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat instance
+             * @param {ax_proto_msgs.VideoData.IVideoFormat=} [properties] Properties to set
+             * @returns {ax_proto_msgs.VideoData.VideoFormat} VideoFormat instance
              */
             VideoFormat.create = function create(properties) {
                 return new VideoFormat(properties);
             };
 
             /**
-             * Encodes the specified VideoFormat message. Does not implicitly {@link ros_messages.VideoData.VideoFormat.verify|verify} messages.
+             * Encodes the specified VideoFormat message. Does not implicitly {@link ax_proto_msgs.VideoData.VideoFormat.verify|verify} messages.
              * @function encode
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
-             * @param {ros_messages.VideoData.IVideoFormat} message VideoFormat message or plain object to encode
+             * @param {ax_proto_msgs.VideoData.IVideoFormat} message VideoFormat message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -8588,11 +11006,11 @@ export const ros_messages = $root.ros_messages = (() => {
             };
 
             /**
-             * Encodes the specified VideoFormat message, length delimited. Does not implicitly {@link ros_messages.VideoData.VideoFormat.verify|verify} messages.
+             * Encodes the specified VideoFormat message, length delimited. Does not implicitly {@link ax_proto_msgs.VideoData.VideoFormat.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
-             * @param {ros_messages.VideoData.IVideoFormat} message VideoFormat message or plain object to encode
+             * @param {ax_proto_msgs.VideoData.IVideoFormat} message VideoFormat message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
@@ -8603,18 +11021,18 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a VideoFormat message from the specified reader or buffer.
              * @function decode
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat
+             * @returns {ax_proto_msgs.VideoData.VideoFormat} VideoFormat
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
             VideoFormat.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.VideoData.VideoFormat();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.VideoData.VideoFormat();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     if (tag === error)
@@ -8631,10 +11049,10 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Decodes a VideoFormat message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat
+             * @returns {ax_proto_msgs.VideoData.VideoFormat} VideoFormat
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
@@ -8647,7 +11065,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Verifies a VideoFormat message.
              * @function verify
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -8661,23 +11079,23 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Creates a VideoFormat message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {ros_messages.VideoData.VideoFormat} VideoFormat
+             * @returns {ax_proto_msgs.VideoData.VideoFormat} VideoFormat
              */
             VideoFormat.fromObject = function fromObject(object) {
-                if (object instanceof $root.ros_messages.VideoData.VideoFormat)
+                if (object instanceof $root.ax_proto_msgs.VideoData.VideoFormat)
                     return object;
-                return new $root.ros_messages.VideoData.VideoFormat();
+                return new $root.ax_proto_msgs.VideoData.VideoFormat();
             };
 
             /**
              * Creates a plain object from a VideoFormat message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
-             * @param {ros_messages.VideoData.VideoFormat} message VideoFormat
+             * @param {ax_proto_msgs.VideoData.VideoFormat} message VideoFormat
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
@@ -8688,7 +11106,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Converts this VideoFormat to JSON.
              * @function toJSON
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
@@ -8699,7 +11117,7 @@ export const ros_messages = $root.ros_messages = (() => {
             /**
              * Gets the default type url for VideoFormat
              * @function getTypeUrl
-             * @memberof ros_messages.VideoData.VideoFormat
+             * @memberof ax_proto_msgs.VideoData.VideoFormat
              * @static
              * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns {string} The default type url
@@ -8708,12 +11126,12 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (typeUrlPrefix === undefined) {
                     typeUrlPrefix = "type.googleapis.com";
                 }
-                return typeUrlPrefix + "/ros_messages.VideoData.VideoFormat";
+                return typeUrlPrefix + "/ax_proto_msgs.VideoData.VideoFormat";
             };
 
             /**
              * Type enum.
-             * @name ros_messages.VideoData.VideoFormat.Type
+             * @name ax_proto_msgs.VideoData.VideoFormat.Type
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} H264=1 H264 value
@@ -8731,11 +11149,11 @@ export const ros_messages = $root.ros_messages = (() => {
         return VideoData;
     })();
 
-    ros_messages.TopicInfo = (function() {
+    ax_proto_msgs.TopicInfo = (function() {
 
         /**
          * Properties of a TopicInfo.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface ITopicInfo
          * @property {string|null} [name] TopicInfo name
          * @property {string|null} [type] TopicInfo type
@@ -8745,11 +11163,11 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * Constructs a new TopicInfo.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a TopicInfo.
          * @implements ITopicInfo
          * @constructor
-         * @param {ros_messages.ITopicInfo=} [properties] Properties to set
+         * @param {ax_proto_msgs.ITopicInfo=} [properties] Properties to set
          */
         function TopicInfo(properties) {
             if (properties)
@@ -8761,7 +11179,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TopicInfo name.
          * @member {string} name
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @instance
          */
         TopicInfo.prototype.name = "";
@@ -8769,7 +11187,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TopicInfo type.
          * @member {string} type
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @instance
          */
         TopicInfo.prototype.type = "";
@@ -8777,7 +11195,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TopicInfo publisher_count.
          * @member {number} publisher_count
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @instance
          */
         TopicInfo.prototype.publisher_count = 0;
@@ -8785,7 +11203,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * TopicInfo subscriber_count.
          * @member {number} subscriber_count
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @instance
          */
         TopicInfo.prototype.subscriber_count = 0;
@@ -8793,21 +11211,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new TopicInfo instance using the specified properties.
          * @function create
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
-         * @param {ros_messages.ITopicInfo=} [properties] Properties to set
-         * @returns {ros_messages.TopicInfo} TopicInfo instance
+         * @param {ax_proto_msgs.ITopicInfo=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TopicInfo} TopicInfo instance
          */
         TopicInfo.create = function create(properties) {
             return new TopicInfo(properties);
         };
 
         /**
-         * Encodes the specified TopicInfo message. Does not implicitly {@link ros_messages.TopicInfo.verify|verify} messages.
+         * Encodes the specified TopicInfo message. Does not implicitly {@link ax_proto_msgs.TopicInfo.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
-         * @param {ros_messages.ITopicInfo} message TopicInfo message or plain object to encode
+         * @param {ax_proto_msgs.ITopicInfo} message TopicInfo message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -8826,11 +11244,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified TopicInfo message, length delimited. Does not implicitly {@link ros_messages.TopicInfo.verify|verify} messages.
+         * Encodes the specified TopicInfo message, length delimited. Does not implicitly {@link ax_proto_msgs.TopicInfo.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
-         * @param {ros_messages.ITopicInfo} message TopicInfo message or plain object to encode
+         * @param {ax_proto_msgs.ITopicInfo} message TopicInfo message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -8841,18 +11259,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a TopicInfo message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.TopicInfo} TopicInfo
+         * @returns {ax_proto_msgs.TopicInfo} TopicInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         TopicInfo.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.TopicInfo();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TopicInfo();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -8885,10 +11303,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a TopicInfo message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.TopicInfo} TopicInfo
+         * @returns {ax_proto_msgs.TopicInfo} TopicInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -8901,7 +11319,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a TopicInfo message.
          * @function verify
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -8927,15 +11345,15 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a TopicInfo message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.TopicInfo} TopicInfo
+         * @returns {ax_proto_msgs.TopicInfo} TopicInfo
          */
         TopicInfo.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.TopicInfo)
+            if (object instanceof $root.ax_proto_msgs.TopicInfo)
                 return object;
-            let message = new $root.ros_messages.TopicInfo();
+            let message = new $root.ax_proto_msgs.TopicInfo();
             if (object.name != null)
                 message.name = String(object.name);
             if (object.type != null)
@@ -8950,9 +11368,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a TopicInfo message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
-         * @param {ros_messages.TopicInfo} message TopicInfo
+         * @param {ax_proto_msgs.TopicInfo} message TopicInfo
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -8980,7 +11398,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this TopicInfo to JSON.
          * @function toJSON
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -8991,7 +11409,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for TopicInfo
          * @function getTypeUrl
-         * @memberof ros_messages.TopicInfo
+         * @memberof ax_proto_msgs.TopicInfo
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -9000,28 +11418,28 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.TopicInfo";
+            return typeUrlPrefix + "/ax_proto_msgs.TopicInfo";
         };
 
         return TopicInfo;
     })();
 
-    ros_messages.TopicListResponse = (function() {
+    ax_proto_msgs.TopicListResponse = (function() {
 
         /**
          * Properties of a TopicListResponse.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface ITopicListResponse
-         * @property {Array.<ros_messages.ITopicInfo>|null} [topics] TopicListResponse topics
+         * @property {Array.<ax_proto_msgs.ITopicInfo>|null} [topics] TopicListResponse topics
          */
 
         /**
          * Constructs a new TopicListResponse.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a TopicListResponse.
          * @implements ITopicListResponse
          * @constructor
-         * @param {ros_messages.ITopicListResponse=} [properties] Properties to set
+         * @param {ax_proto_msgs.ITopicListResponse=} [properties] Properties to set
          */
         function TopicListResponse(properties) {
             this.topics = [];
@@ -9033,8 +11451,8 @@ export const ros_messages = $root.ros_messages = (() => {
 
         /**
          * TopicListResponse topics.
-         * @member {Array.<ros_messages.ITopicInfo>} topics
-         * @memberof ros_messages.TopicListResponse
+         * @member {Array.<ax_proto_msgs.ITopicInfo>} topics
+         * @memberof ax_proto_msgs.TopicListResponse
          * @instance
          */
         TopicListResponse.prototype.topics = $util.emptyArray;
@@ -9042,21 +11460,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new TopicListResponse instance using the specified properties.
          * @function create
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
-         * @param {ros_messages.ITopicListResponse=} [properties] Properties to set
-         * @returns {ros_messages.TopicListResponse} TopicListResponse instance
+         * @param {ax_proto_msgs.ITopicListResponse=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TopicListResponse} TopicListResponse instance
          */
         TopicListResponse.create = function create(properties) {
             return new TopicListResponse(properties);
         };
 
         /**
-         * Encodes the specified TopicListResponse message. Does not implicitly {@link ros_messages.TopicListResponse.verify|verify} messages.
+         * Encodes the specified TopicListResponse message. Does not implicitly {@link ax_proto_msgs.TopicListResponse.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
-         * @param {ros_messages.ITopicListResponse} message TopicListResponse message or plain object to encode
+         * @param {ax_proto_msgs.ITopicListResponse} message TopicListResponse message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -9065,16 +11483,16 @@ export const ros_messages = $root.ros_messages = (() => {
                 writer = $Writer.create();
             if (message.topics != null && message.topics.length)
                 for (let i = 0; i < message.topics.length; ++i)
-                    $root.ros_messages.TopicInfo.encode(message.topics[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.ax_proto_msgs.TopicInfo.encode(message.topics[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
             return writer;
         };
 
         /**
-         * Encodes the specified TopicListResponse message, length delimited. Does not implicitly {@link ros_messages.TopicListResponse.verify|verify} messages.
+         * Encodes the specified TopicListResponse message, length delimited. Does not implicitly {@link ax_proto_msgs.TopicListResponse.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
-         * @param {ros_messages.ITopicListResponse} message TopicListResponse message or plain object to encode
+         * @param {ax_proto_msgs.ITopicListResponse} message TopicListResponse message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -9085,18 +11503,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a TopicListResponse message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.TopicListResponse} TopicListResponse
+         * @returns {ax_proto_msgs.TopicListResponse} TopicListResponse
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         TopicListResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.TopicListResponse();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TopicListResponse();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -9105,7 +11523,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 case 1: {
                         if (!(message.topics && message.topics.length))
                             message.topics = [];
-                        message.topics.push($root.ros_messages.TopicInfo.decode(reader, reader.uint32()));
+                        message.topics.push($root.ax_proto_msgs.TopicInfo.decode(reader, reader.uint32()));
                         break;
                     }
                 default:
@@ -9119,10 +11537,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a TopicListResponse message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.TopicListResponse} TopicListResponse
+         * @returns {ax_proto_msgs.TopicListResponse} TopicListResponse
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -9135,7 +11553,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a TopicListResponse message.
          * @function verify
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -9147,7 +11565,7 @@ export const ros_messages = $root.ros_messages = (() => {
                 if (!Array.isArray(message.topics))
                     return "topics: array expected";
                 for (let i = 0; i < message.topics.length; ++i) {
-                    let error = $root.ros_messages.TopicInfo.verify(message.topics[i]);
+                    let error = $root.ax_proto_msgs.TopicInfo.verify(message.topics[i]);
                     if (error)
                         return "topics." + error;
                 }
@@ -9158,23 +11576,23 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a TopicListResponse message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.TopicListResponse} TopicListResponse
+         * @returns {ax_proto_msgs.TopicListResponse} TopicListResponse
          */
         TopicListResponse.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.TopicListResponse)
+            if (object instanceof $root.ax_proto_msgs.TopicListResponse)
                 return object;
-            let message = new $root.ros_messages.TopicListResponse();
+            let message = new $root.ax_proto_msgs.TopicListResponse();
             if (object.topics) {
                 if (!Array.isArray(object.topics))
-                    throw TypeError(".ros_messages.TopicListResponse.topics: array expected");
+                    throw TypeError(".ax_proto_msgs.TopicListResponse.topics: array expected");
                 message.topics = [];
                 for (let i = 0; i < object.topics.length; ++i) {
                     if (typeof object.topics[i] !== "object")
-                        throw TypeError(".ros_messages.TopicListResponse.topics: object expected");
-                    message.topics[i] = $root.ros_messages.TopicInfo.fromObject(object.topics[i]);
+                        throw TypeError(".ax_proto_msgs.TopicListResponse.topics: object expected");
+                    message.topics[i] = $root.ax_proto_msgs.TopicInfo.fromObject(object.topics[i]);
                 }
             }
             return message;
@@ -9183,9 +11601,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a TopicListResponse message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
-         * @param {ros_messages.TopicListResponse} message TopicListResponse
+         * @param {ax_proto_msgs.TopicListResponse} message TopicListResponse
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -9198,7 +11616,7 @@ export const ros_messages = $root.ros_messages = (() => {
             if (message.topics && message.topics.length) {
                 object.topics = [];
                 for (let j = 0; j < message.topics.length; ++j)
-                    object.topics[j] = $root.ros_messages.TopicInfo.toObject(message.topics[j], options);
+                    object.topics[j] = $root.ax_proto_msgs.TopicInfo.toObject(message.topics[j], options);
             }
             return object;
         };
@@ -9206,7 +11624,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this TopicListResponse to JSON.
          * @function toJSON
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -9217,7 +11635,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for TopicListResponse
          * @function getTypeUrl
-         * @memberof ros_messages.TopicListResponse
+         * @memberof ax_proto_msgs.TopicListResponse
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -9226,28 +11644,28 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.TopicListResponse";
+            return typeUrlPrefix + "/ax_proto_msgs.TopicListResponse";
         };
 
         return TopicListResponse;
     })();
 
-    ros_messages.PublishedTopicNamesResponse = (function() {
+    ax_proto_msgs.PublishedTopicNamesResponse = (function() {
 
         /**
          * Properties of a PublishedTopicNamesResponse.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @interface IPublishedTopicNamesResponse
          * @property {Array.<string>|null} [names] PublishedTopicNamesResponse names
          */
 
         /**
          * Constructs a new PublishedTopicNamesResponse.
-         * @memberof ros_messages
+         * @memberof ax_proto_msgs
          * @classdesc Represents a PublishedTopicNamesResponse.
          * @implements IPublishedTopicNamesResponse
          * @constructor
-         * @param {ros_messages.IPublishedTopicNamesResponse=} [properties] Properties to set
+         * @param {ax_proto_msgs.IPublishedTopicNamesResponse=} [properties] Properties to set
          */
         function PublishedTopicNamesResponse(properties) {
             this.names = [];
@@ -9260,7 +11678,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * PublishedTopicNamesResponse names.
          * @member {Array.<string>} names
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @instance
          */
         PublishedTopicNamesResponse.prototype.names = $util.emptyArray;
@@ -9268,21 +11686,21 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a new PublishedTopicNamesResponse instance using the specified properties.
          * @function create
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
-         * @param {ros_messages.IPublishedTopicNamesResponse=} [properties] Properties to set
-         * @returns {ros_messages.PublishedTopicNamesResponse} PublishedTopicNamesResponse instance
+         * @param {ax_proto_msgs.IPublishedTopicNamesResponse=} [properties] Properties to set
+         * @returns {ax_proto_msgs.PublishedTopicNamesResponse} PublishedTopicNamesResponse instance
          */
         PublishedTopicNamesResponse.create = function create(properties) {
             return new PublishedTopicNamesResponse(properties);
         };
 
         /**
-         * Encodes the specified PublishedTopicNamesResponse message. Does not implicitly {@link ros_messages.PublishedTopicNamesResponse.verify|verify} messages.
+         * Encodes the specified PublishedTopicNamesResponse message. Does not implicitly {@link ax_proto_msgs.PublishedTopicNamesResponse.verify|verify} messages.
          * @function encode
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
-         * @param {ros_messages.IPublishedTopicNamesResponse} message PublishedTopicNamesResponse message or plain object to encode
+         * @param {ax_proto_msgs.IPublishedTopicNamesResponse} message PublishedTopicNamesResponse message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -9296,11 +11714,11 @@ export const ros_messages = $root.ros_messages = (() => {
         };
 
         /**
-         * Encodes the specified PublishedTopicNamesResponse message, length delimited. Does not implicitly {@link ros_messages.PublishedTopicNamesResponse.verify|verify} messages.
+         * Encodes the specified PublishedTopicNamesResponse message, length delimited. Does not implicitly {@link ax_proto_msgs.PublishedTopicNamesResponse.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
-         * @param {ros_messages.IPublishedTopicNamesResponse} message PublishedTopicNamesResponse message or plain object to encode
+         * @param {ax_proto_msgs.IPublishedTopicNamesResponse} message PublishedTopicNamesResponse message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -9311,18 +11729,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a PublishedTopicNamesResponse message from the specified reader or buffer.
          * @function decode
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ros_messages.PublishedTopicNamesResponse} PublishedTopicNamesResponse
+         * @returns {ax_proto_msgs.PublishedTopicNamesResponse} PublishedTopicNamesResponse
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         PublishedTopicNamesResponse.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ros_messages.PublishedTopicNamesResponse();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.PublishedTopicNamesResponse();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
@@ -9345,10 +11763,10 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Decodes a PublishedTopicNamesResponse message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ros_messages.PublishedTopicNamesResponse} PublishedTopicNamesResponse
+         * @returns {ax_proto_msgs.PublishedTopicNamesResponse} PublishedTopicNamesResponse
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -9361,7 +11779,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Verifies a PublishedTopicNamesResponse message.
          * @function verify
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -9382,18 +11800,18 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a PublishedTopicNamesResponse message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ros_messages.PublishedTopicNamesResponse} PublishedTopicNamesResponse
+         * @returns {ax_proto_msgs.PublishedTopicNamesResponse} PublishedTopicNamesResponse
          */
         PublishedTopicNamesResponse.fromObject = function fromObject(object) {
-            if (object instanceof $root.ros_messages.PublishedTopicNamesResponse)
+            if (object instanceof $root.ax_proto_msgs.PublishedTopicNamesResponse)
                 return object;
-            let message = new $root.ros_messages.PublishedTopicNamesResponse();
+            let message = new $root.ax_proto_msgs.PublishedTopicNamesResponse();
             if (object.names) {
                 if (!Array.isArray(object.names))
-                    throw TypeError(".ros_messages.PublishedTopicNamesResponse.names: array expected");
+                    throw TypeError(".ax_proto_msgs.PublishedTopicNamesResponse.names: array expected");
                 message.names = [];
                 for (let i = 0; i < object.names.length; ++i)
                     message.names[i] = String(object.names[i]);
@@ -9404,9 +11822,9 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Creates a plain object from a PublishedTopicNamesResponse message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
-         * @param {ros_messages.PublishedTopicNamesResponse} message PublishedTopicNamesResponse
+         * @param {ax_proto_msgs.PublishedTopicNamesResponse} message PublishedTopicNamesResponse
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
@@ -9427,7 +11845,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Converts this PublishedTopicNamesResponse to JSON.
          * @function toJSON
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
@@ -9438,7 +11856,7 @@ export const ros_messages = $root.ros_messages = (() => {
         /**
          * Gets the default type url for PublishedTopicNamesResponse
          * @function getTypeUrl
-         * @memberof ros_messages.PublishedTopicNamesResponse
+         * @memberof ax_proto_msgs.PublishedTopicNamesResponse
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
@@ -9447,13 +11865,13 @@ export const ros_messages = $root.ros_messages = (() => {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ros_messages.PublishedTopicNamesResponse";
+            return typeUrlPrefix + "/ax_proto_msgs.PublishedTopicNamesResponse";
         };
 
         return PublishedTopicNamesResponse;
     })();
 
-    return ros_messages;
+    return ax_proto_msgs;
 })();
 
 export { $root as default };

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 import { SemanticPointsMsg, PointField, PointCloudMsg, ProtoMessage } from './topicMessages.js';
-import { ros_messages } from './proto/generated.js';
+import { ax_proto_msgs } from './proto/generated.js';
 
 /**
  * High-performance PointCloud transport layout directly consumable by WebGL/three.js.
@@ -169,7 +169,7 @@ export function parseSemanticPoints(msg: SemanticPointsMsg): ParsedSemanticPoint
  * optionally delta-encoded. probabilities/oris/speeds are optional per-point
  * bytes, interpreted the same way as the JSON fields.
  */
-export function parseProtobufSemanticPoints(pc: ros_messages.IPointCloud): ParsedSemanticPoints {
+export function parseProtobufSemanticPoints(pc: ax_proto_msgs.IPointCloud): ParsedSemanticPoints {
   const cx = pc.center_x ?? 0;
   const cy = pc.center_y ?? 0;
   const cz = pc.center_z ?? 0;
@@ -235,7 +235,7 @@ export function parseProtobufSemanticPoints(pc: ros_messages.IPointCloud): Parse
  * - newer proto: ProtoMessage<IPointCloud>
  */
 export function parseSemanticPointsMsg(
-  msg: SemanticPointsMsg | ProtoMessage<ros_messages.IPointCloud>,
+  msg: SemanticPointsMsg | ProtoMessage<ax_proto_msgs.IPointCloud>,
 ): ParsedSemanticPoints {
   if (msg instanceof ProtoMessage) {
     return parseProtobufSemanticPoints(msg.data);
@@ -243,7 +243,7 @@ export function parseSemanticPointsMsg(
   return parseSemanticPoints(msg as SemanticPointsMsg);
 }
 
-function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: string): PointCloudBuffer {
+function _protobufPointCloudToBufferMsg(pc: ax_proto_msgs.IPointCloud, topic?: string): PointCloudBuffer {
   const cx = pc.center_x ?? 0;
   const cy = pc.center_y ?? 0;
   const cz = pc.center_z ?? 0;
@@ -288,9 +288,9 @@ function _protobufPointCloudToBufferMsg(pc: ros_messages.IPointCloud, topic?: st
   return { topic, positions, count, intensities, probabilities };
 }
 
-export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg | ProtoMessage<ros_messages.IPointCloud>): PointCloudBuffer {
-  if ('data' in msg && msg.data && typeof (msg.data as ros_messages.IPointCloud).xs === 'object') {
-    return _protobufPointCloudToBufferMsg(msg.data as ros_messages.IPointCloud, msg.topic);
+export function pointCloudMsgToBufferMsg(msg: SemanticPointsMsg | PointCloudMsg | ProtoMessage<ax_proto_msgs.IPointCloud>): PointCloudBuffer {
+  if ('data' in msg && msg.data && typeof (msg.data as ax_proto_msgs.IPointCloud).xs === 'object') {
+    return _protobufPointCloudToBufferMsg(msg.data as ax_proto_msgs.IPointCloud, msg.topic);
   }
 
   if (typeof (msg as SemanticPointsMsg).data === 'string' && Array.isArray((msg as SemanticPointsMsg).fields)) {

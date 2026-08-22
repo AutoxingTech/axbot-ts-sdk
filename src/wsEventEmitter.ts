@@ -142,7 +142,7 @@ import {
   MobileNetworkStateMsg,
   VideoDataMsg,
 } from './msgs';
-import { ros_messages } from './proto/generated.js';
+import { ax_proto_msgs } from './proto/generated.js';
 
 /** Global positioning state events (auto-relocate) */
 export const globalPositioningEvents = new WsEventEmitter<GlobalPositioningStateMsg>(
@@ -204,7 +204,7 @@ export const detectedRackStatesEvents = new WsEventEmitter<RackStatesMsg>(
 
 /** Semantic points events (for SemanticPointCloudRenderer) */
 export const semanticPointsEvents = new WsEventEmitter<
-  SemanticPointsMsg | ProtoMessage<ros_messages.IPointCloud>
+  SemanticPointsMsg | ProtoMessage<ax_proto_msgs.IPointCloud>
 >('/semantic_points');
 
 /** Scan matched points events */

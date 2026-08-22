@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ros_messages;
+package ax_proto_msgs;
 
 import "point_cloud.proto";
 import "mast_state.proto";
@@ -10,6 +10,7 @@ import "towing_state.proto";
 import "mobile_network_state.proto";
 import "video_data.proto";
 import "depth_image.proto";
+import "dwa_candidate_paths.proto";
 
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
@@ -26,21 +27,22 @@ message RosMessageWrapper {
         MOBILE_NETWORK_STATE = 6;
         VIDEO_DATA = 7;
         DEPTH_IMAGE = 8;
+        DWA_CANDIDATE_PATH_SET = 9;
     }
     
     MessageType type = 1;
-    // 2 and 3 were once timestamp_ns and sequence_id; never reuse them.
-    reserved 2, 3;
+    // 2, 3 were once timestamp_ns and sequence_id; never reuse them.
+    reserved 2, 3, 11;
 
     oneof payload {
         PointCloud point_cloud = 10;
-        bytes raw_data = 11;  // For unknown message types
         MastState mast_state = 12;
-        ros_messages.slam.SubmapList submap_list = 13;
+        ax_proto_msgs.slam.SubmapList submap_list = 13;
         RackStates rack_states = 14;
         TowingState towing_state = 15;
         MobileNetworkState mobile_network_state = 16;
         VideoData video_data = 17;
         DepthImage depth_image = 18;
+        DwaCandidatePathSet dwa_candidate_path_set = 19;
     }
 }
