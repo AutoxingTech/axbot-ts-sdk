@@ -439,6 +439,8 @@ export interface TowingStateMsg extends TopicMsg {
 }
 
 export interface DevPvtMsg extends TopicMsg {
+  lon: number;
+  lat: number;
   speed: number;
   heading: number;
   heading2: number;
