@@ -119,22 +119,6 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     '/matched_depth_points/backward',
   ];
 
-  private defaultTopics = [
-    '/horizontal_laser_2d/matched',
-    '/bottom_laser_2d/matched',
-    '/matched_depth_points/downward',
-    '/matched_depth_points/forward',
-  ];
-
-  private crawlerTopics = [
-    '/front_laser_2d/matched',
-    '/bottom_laser_2d/matched',
-  ];
-
-  private heavyTopics = [
-    '/rb_laser_2d/matched',
-  ];
-
   private lonyuTopics = [
     '/head_laser_3d/scan',
     '/lf_laser_3d/scan',
@@ -143,25 +127,45 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     '/rb_laser_2d/scan',
   ];
 
+  private caracalTopics = [
+    '/horizontal_laser_2d/matched',
+    '/matched_depth_points/downward',
+    '/matched_depth_points/upward',
+  ];
+
+  private crawlerTopics = [
+    '/horizontal_laser_2d/matched',
+    '/bottom_laser_2d/matched',
+  ];
+
+  private defaultTopics = [
+    '/horizontal_laser_2d/matched',
+    '/front_laser_2d/matched',
+    '/matched_depth_points/downward',
+    '/matched_depth_points/forward',
+  ];
+
+  private rbLaserTopic = '/rb_laser_2d/matched';
+
   private process(topics: string[]): string[] {
     if (!Array.isArray(topics)) return [];
 
     const deviceInfo = deviceInfoStore.getObject();
     const model = deviceInfo?.device?.model;
     let supplement: string[];
-    if (model?.startsWith('forklift')) {
+    if (model?.startsWith('forklift') || deviceInfo?.caps?.supportsForklift) {
       supplement = this.forkliftTopics;
     } else if (model?.startsWith('lonyu')) {
       supplement = this.lonyuTopics;
+    } else if (model?.startsWith('caracal')) {
+      supplement = this.caracalTopics;
+    } else if (model?.startsWith('crawler')) {
+      supplement = this.crawlerTopics;
     } else {
       supplement = this.defaultTopics;
     }
-
-    if (model?.startsWith('crawler')) {
-      supplement = [...new Set([...this.defaultTopics, ...this.crawlerTopics])];
-    }
-    if (model?.includes('heavy')) {
-      supplement = [...new Set([...this.defaultTopics, ...this.heavyTopics])];
+    if (model?.endsWith('heavy') || model?.endsWith('_d')) {
+      supplement = [...supplement, this.rbLaserTopic];
     }
 
     const result = topics.slice();
