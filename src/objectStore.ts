@@ -126,6 +126,15 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     '/matched_depth_points/forward',
   ];
 
+  private crawlerTopics = [
+    '/front_laser_2d/matched',
+    '/bottom_laser_2d/matched',
+  ];
+
+  private heavyTopics = [
+    '/rb_laser_2d/matched',
+  ];
+
   private lonyuTopics = [
     '/head_laser_3d/scan',
     '/lf_laser_3d/scan',
@@ -146,6 +155,13 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
       supplement = this.lonyuTopics;
     } else {
       supplement = this.defaultTopics;
+    }
+
+    if (model?.startsWith('crawler')) {
+      supplement = [...new Set([...this.defaultTopics, ...this.crawlerTopics])];
+    }
+    if (model?.includes('heavy')) {
+      supplement = [...new Set([...this.defaultTopics, ...this.heavyTopics])];
     }
 
     const result = topics.slice();

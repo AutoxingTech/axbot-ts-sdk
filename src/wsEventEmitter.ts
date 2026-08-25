@@ -221,6 +221,12 @@ export const leftLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/left
 /** RB 2D laser matched points events */
 export const rbLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_2d/matched');
 
+/** Front 2D laser matched points events */
+export const frontLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/front_laser_2d/matched');
+
+/** Bottom 2D laser matched points events */
+export const bottomLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>('/bottom_laser_2d/matched');
+
 /** Right 2D laser matched points events */
 export const rightLaser2dMatchedEvents = new WsEventEmitter<PointCloudMsg>(
   '/right_laser_2d/matched',
