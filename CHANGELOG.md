@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-09-01 wsEventEmitter: Add /rf_laser_2d/scan, /lb_laser_2d/scan, /rf_laser_3d/scan, /lb_laser_3d/scan event emitters
 - 2026-08-22 **API-BREAK** proto: Rename proto package ros_messages → ax_proto_msgs; MastState.MotionState is now a nested message (MastState.MotionState.Type)
 - 2026-08-21 robotApi: Add pbstream/image/bag file sizes to map and mapping responses
 - 2026-08-10 axbot-sdk: Support protobuf-format /semantic_points with probabilities, orientations, and speeds

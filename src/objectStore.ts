@@ -12,7 +12,7 @@ export class ObjectStore<T> {
   protected stored_object: T | null = null;
   protected subscribers = new Set<Subscriber<T | null>>();
 
-  constructor(protected fetchData: FetchFn<T | null>) {}
+  constructor(protected fetchData: FetchFn<T | null>) { }
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
@@ -61,7 +61,7 @@ export class ArrayObjectStore<T> {
   protected stored_object: T[] = [];
   protected subscribers = new Set<Subscriber<T[]>>();
 
-  constructor(protected fetchData: FetchFn<T[]>) {}
+  constructor(protected fetchData: FetchFn<T[]>) { }
 
   protected notify(): void {
     for (const s of Array.from(this.subscribers)) {
@@ -107,7 +107,7 @@ export class ArrayObjectStore<T> {
   }
 }
 
-class DeviceInfoStore extends ObjectStore<DeviceInfo> {}
+class DeviceInfoStore extends ObjectStore<DeviceInfo> { }
 
 class RosTopicNamesStore extends ArrayObjectStore<string> {
   private forkliftTopics = [
@@ -117,14 +117,6 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     '/rb_laser_2d/matched',
     '/matched_depth_points/downward',
     '/matched_depth_points/backward',
-  ];
-
-  private lonyuTopics = [
-    '/head_laser_3d/scan',
-    '/lf_laser_3d/scan',
-    '/rb_laser_3d/scan',
-    '/lf_laser_2d/scan',
-    '/rb_laser_2d/scan',
   ];
 
   private caracalTopics = [
@@ -155,8 +147,6 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     let supplement: string[];
     if (model?.startsWith('forklift') || deviceInfo?.caps?.supportsForklift) {
       supplement = this.forkliftTopics;
-    } else if (model?.startsWith('lonyu')) {
-      supplement = this.lonyuTopics;
     } else if (model?.startsWith('caracal')) {
       supplement = this.caracalTopics;
     } else if (model?.startsWith('crawler')) {

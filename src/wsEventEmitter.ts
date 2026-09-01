@@ -330,17 +330,26 @@ export const horizontalLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>(
   '/horizontal_laser_2d/scan',
 );
 
-/** LF 2D laser scan events (binary protobuf) */
+/** LF/RB 2D laser scan events (binary protobuf) */
 export const lfLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_2d/scan');
-
-/** RB 2D laser scan events (binary protobuf) */
 export const rbLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_2d/scan');
+
+/** RF/LB 2D laser scan events (binary protobuf) */
+export const rfLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/rf_laser_2d/scan');
+export const lbLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/lb_laser_2d/scan');
+
+/** LF/RB 3D laser scan events (binary protobuf) */
+export const lfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_3d/scan');
+export const rbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_3d/scan');
+
+/** RF/LB 3D laser scan events (binary protobuf) */
+export const rfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rf_laser_3d/scan');
+export const lbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lb_laser_3d/scan');
 
 export const leftLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/left_laser_2d/scan');
 export const rightLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/right_laser_2d/scan');
 export const topLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_2d/scan');
-export const lfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_3d/scan');
-export const rbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_3d/scan');
+
 export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_laser_3d/scan');
 export const backLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/back_laser_3d/scan');
 export const topLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_3d/scan');
