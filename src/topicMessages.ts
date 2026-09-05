@@ -23,6 +23,8 @@ export interface OccupancyGridMsg extends TopicMsg {
   resolution: number;
   data?: string;
   data_url?: string;
+  /** True when `data` needs to be flipped vertically in the renderer. */
+  flip_y?: boolean;
 }
 
 export interface PoseMsg extends TopicMsg, PoseType { }
