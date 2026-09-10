@@ -215,7 +215,7 @@ export type MoveType =
   | 'return_to_elevator_waiting_point'
   | 'enter_elevator'
   | 'leave_elevator' // Deprecated. Do not use.
-  | 'along_given_route' // Follow a specified path.
+  | 'along_given_route' // Deprecated. Use another type with `route_coordinates` instead.
   | 'align_with_rack' // Crawl under a rack (to jack it up later).
   | 'to_unload_point' // Move to a rack unload point (to jack it down later).
   | 'follow_target'; // Follow a moving target.
@@ -236,13 +236,13 @@ export interface MoveActionCreate {
   /** In meters. */
   target_accuracy?: number | null;
   /**
-   * A path to follow. Only valid when `type` is `along_given_route`.
+   * A path to follow. Supported by most move types, e.g. `standard`, `charge`, `align_with_rack`.
    * A list of coordinates as a comma-separated string, in the format "x1, y1, x2, y2".
    */
   route_coordinates?: string;
   /**
    * The allowed detour distance when navigating around an obstacle while following a specified path.
-   * Only valid when `type` is `along_given_route`.
+   * Supported by most move types, e.g. `standard`, `charge`, `align_with_rack`.
    * When 0, the robot will stop and wait before an obstacle instead of going around it.
    */
   detour_tolerance?: number;
