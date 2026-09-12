@@ -7,6 +7,1019 @@ const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.
 // Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
+export const bagstream = $root.bagstream = (() => {
+
+    /**
+     * Namespace bagstream.
+     * @exports bagstream
+     * @namespace
+     */
+    const bagstream = {};
+
+    bagstream.BagIndex = (function() {
+
+        /**
+         * Properties of a BagIndex.
+         * @memberof bagstream
+         * @interface IBagIndex
+         * @property {Array.<bagstream.ITrack>|null} [tracks] BagIndex tracks
+         */
+
+        /**
+         * Constructs a new BagIndex.
+         * @memberof bagstream
+         * @classdesc Represents a BagIndex.
+         * @implements IBagIndex
+         * @constructor
+         * @param {bagstream.IBagIndex=} [properties] Properties to set
+         */
+        function BagIndex(properties) {
+            this.tracks = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BagIndex tracks.
+         * @member {Array.<bagstream.ITrack>} tracks
+         * @memberof bagstream.BagIndex
+         * @instance
+         */
+        BagIndex.prototype.tracks = $util.emptyArray;
+
+        /**
+         * Creates a new BagIndex instance using the specified properties.
+         * @function create
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {bagstream.IBagIndex=} [properties] Properties to set
+         * @returns {bagstream.BagIndex} BagIndex instance
+         */
+        BagIndex.create = function create(properties) {
+            return new BagIndex(properties);
+        };
+
+        /**
+         * Encodes the specified BagIndex message. Does not implicitly {@link bagstream.BagIndex.verify|verify} messages.
+         * @function encode
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {bagstream.IBagIndex} message BagIndex message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BagIndex.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.tracks != null && message.tracks.length)
+                for (let i = 0; i < message.tracks.length; ++i)
+                    $root.bagstream.Track.encode(message.tracks[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BagIndex message, length delimited. Does not implicitly {@link bagstream.BagIndex.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {bagstream.IBagIndex} message BagIndex message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BagIndex.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BagIndex message from the specified reader or buffer.
+         * @function decode
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {bagstream.BagIndex} BagIndex
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BagIndex.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.bagstream.BagIndex();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.tracks && message.tracks.length))
+                            message.tracks = [];
+                        message.tracks.push($root.bagstream.Track.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BagIndex message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {bagstream.BagIndex} BagIndex
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BagIndex.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BagIndex message.
+         * @function verify
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BagIndex.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.tracks != null && message.hasOwnProperty("tracks")) {
+                if (!Array.isArray(message.tracks))
+                    return "tracks: array expected";
+                for (let i = 0; i < message.tracks.length; ++i) {
+                    let error = $root.bagstream.Track.verify(message.tracks[i]);
+                    if (error)
+                        return "tracks." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BagIndex message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {bagstream.BagIndex} BagIndex
+         */
+        BagIndex.fromObject = function fromObject(object) {
+            if (object instanceof $root.bagstream.BagIndex)
+                return object;
+            let message = new $root.bagstream.BagIndex();
+            if (object.tracks) {
+                if (!Array.isArray(object.tracks))
+                    throw TypeError(".bagstream.BagIndex.tracks: array expected");
+                message.tracks = [];
+                for (let i = 0; i < object.tracks.length; ++i) {
+                    if (typeof object.tracks[i] !== "object")
+                        throw TypeError(".bagstream.BagIndex.tracks: object expected");
+                    message.tracks[i] = $root.bagstream.Track.fromObject(object.tracks[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BagIndex message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {bagstream.BagIndex} message BagIndex
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BagIndex.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.tracks = [];
+            if (message.tracks && message.tracks.length) {
+                object.tracks = [];
+                for (let j = 0; j < message.tracks.length; ++j)
+                    object.tracks[j] = $root.bagstream.Track.toObject(message.tracks[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this BagIndex to JSON.
+         * @function toJSON
+         * @memberof bagstream.BagIndex
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BagIndex.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BagIndex
+         * @function getTypeUrl
+         * @memberof bagstream.BagIndex
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BagIndex.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/bagstream.BagIndex";
+        };
+
+        return BagIndex;
+    })();
+
+    bagstream.Track = (function() {
+
+        /**
+         * Properties of a Track.
+         * @memberof bagstream
+         * @interface ITrack
+         * @property {number|null} [conn] Track conn
+         * @property {Array.<number>|null} [index] Track index
+         * @property {Array.<number|Long>|null} [stamp_us] Track stamp_us
+         */
+
+        /**
+         * Constructs a new Track.
+         * @memberof bagstream
+         * @classdesc Represents a Track.
+         * @implements ITrack
+         * @constructor
+         * @param {bagstream.ITrack=} [properties] Properties to set
+         */
+        function Track(properties) {
+            this.index = [];
+            this.stamp_us = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Track conn.
+         * @member {number} conn
+         * @memberof bagstream.Track
+         * @instance
+         */
+        Track.prototype.conn = 0;
+
+        /**
+         * Track index.
+         * @member {Array.<number>} index
+         * @memberof bagstream.Track
+         * @instance
+         */
+        Track.prototype.index = $util.emptyArray;
+
+        /**
+         * Track stamp_us.
+         * @member {Array.<number|Long>} stamp_us
+         * @memberof bagstream.Track
+         * @instance
+         */
+        Track.prototype.stamp_us = $util.emptyArray;
+
+        /**
+         * Creates a new Track instance using the specified properties.
+         * @function create
+         * @memberof bagstream.Track
+         * @static
+         * @param {bagstream.ITrack=} [properties] Properties to set
+         * @returns {bagstream.Track} Track instance
+         */
+        Track.create = function create(properties) {
+            return new Track(properties);
+        };
+
+        /**
+         * Encodes the specified Track message. Does not implicitly {@link bagstream.Track.verify|verify} messages.
+         * @function encode
+         * @memberof bagstream.Track
+         * @static
+         * @param {bagstream.ITrack} message Track message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Track.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.conn != null && Object.hasOwnProperty.call(message, "conn"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.conn);
+            if (message.index != null && message.index.length) {
+                writer.uint32(/* id 2, wireType 2 =*/18).fork();
+                for (let i = 0; i < message.index.length; ++i)
+                    writer.uint32(message.index[i]);
+                writer.ldelim();
+            }
+            if (message.stamp_us != null && message.stamp_us.length) {
+                writer.uint32(/* id 3, wireType 2 =*/26).fork();
+                for (let i = 0; i < message.stamp_us.length; ++i)
+                    writer.uint64(message.stamp_us[i]);
+                writer.ldelim();
+            }
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Track message, length delimited. Does not implicitly {@link bagstream.Track.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof bagstream.Track
+         * @static
+         * @param {bagstream.ITrack} message Track message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Track.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Track message from the specified reader or buffer.
+         * @function decode
+         * @memberof bagstream.Track
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {bagstream.Track} Track
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Track.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.bagstream.Track();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.conn = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.index && message.index.length))
+                            message.index = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.index.push(reader.uint32());
+                        } else
+                            message.index.push(reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        if (!(message.stamp_us && message.stamp_us.length))
+                            message.stamp_us = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.stamp_us.push(reader.uint64());
+                        } else
+                            message.stamp_us.push(reader.uint64());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Track message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof bagstream.Track
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {bagstream.Track} Track
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Track.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Track message.
+         * @function verify
+         * @memberof bagstream.Track
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Track.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.conn != null && message.hasOwnProperty("conn"))
+                if (!$util.isInteger(message.conn))
+                    return "conn: integer expected";
+            if (message.index != null && message.hasOwnProperty("index")) {
+                if (!Array.isArray(message.index))
+                    return "index: array expected";
+                for (let i = 0; i < message.index.length; ++i)
+                    if (!$util.isInteger(message.index[i]))
+                        return "index: integer[] expected";
+            }
+            if (message.stamp_us != null && message.hasOwnProperty("stamp_us")) {
+                if (!Array.isArray(message.stamp_us))
+                    return "stamp_us: array expected";
+                for (let i = 0; i < message.stamp_us.length; ++i)
+                    if (!$util.isInteger(message.stamp_us[i]) && !(message.stamp_us[i] && $util.isInteger(message.stamp_us[i].low) && $util.isInteger(message.stamp_us[i].high)))
+                        return "stamp_us: integer|Long[] expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a Track message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof bagstream.Track
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {bagstream.Track} Track
+         */
+        Track.fromObject = function fromObject(object) {
+            if (object instanceof $root.bagstream.Track)
+                return object;
+            let message = new $root.bagstream.Track();
+            if (object.conn != null)
+                message.conn = object.conn >>> 0;
+            if (object.index) {
+                if (!Array.isArray(object.index))
+                    throw TypeError(".bagstream.Track.index: array expected");
+                message.index = [];
+                for (let i = 0; i < object.index.length; ++i)
+                    message.index[i] = object.index[i] >>> 0;
+            }
+            if (object.stamp_us) {
+                if (!Array.isArray(object.stamp_us))
+                    throw TypeError(".bagstream.Track.stamp_us: array expected");
+                message.stamp_us = [];
+                for (let i = 0; i < object.stamp_us.length; ++i)
+                    if ($util.Long)
+                        (message.stamp_us[i] = $util.Long.fromValue(object.stamp_us[i])).unsigned = true;
+                    else if (typeof object.stamp_us[i] === "string")
+                        message.stamp_us[i] = parseInt(object.stamp_us[i], 10);
+                    else if (typeof object.stamp_us[i] === "number")
+                        message.stamp_us[i] = object.stamp_us[i];
+                    else if (typeof object.stamp_us[i] === "object")
+                        message.stamp_us[i] = new $util.LongBits(object.stamp_us[i].low >>> 0, object.stamp_us[i].high >>> 0).toNumber(true);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Track message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof bagstream.Track
+         * @static
+         * @param {bagstream.Track} message Track
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Track.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults) {
+                object.index = [];
+                object.stamp_us = [];
+            }
+            if (options.defaults)
+                object.conn = 0;
+            if (message.conn != null && message.hasOwnProperty("conn"))
+                object.conn = message.conn;
+            if (message.index && message.index.length) {
+                object.index = [];
+                for (let j = 0; j < message.index.length; ++j)
+                    object.index[j] = message.index[j];
+            }
+            if (message.stamp_us && message.stamp_us.length) {
+                object.stamp_us = [];
+                for (let j = 0; j < message.stamp_us.length; ++j)
+                    if (typeof message.stamp_us[j] === "number")
+                        object.stamp_us[j] = options.longs === String ? String(message.stamp_us[j]) : message.stamp_us[j];
+                    else
+                        object.stamp_us[j] = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_us[j]) : options.longs === Number ? new $util.LongBits(message.stamp_us[j].low >>> 0, message.stamp_us[j].high >>> 0).toNumber(true) : message.stamp_us[j];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this Track to JSON.
+         * @function toJSON
+         * @memberof bagstream.Track
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Track.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Track
+         * @function getTypeUrl
+         * @memberof bagstream.Track
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Track.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/bagstream.Track";
+        };
+
+        return Track;
+    })();
+
+    bagstream.MessageBatch = (function() {
+
+        /**
+         * Properties of a MessageBatch.
+         * @memberof bagstream
+         * @interface IMessageBatch
+         * @property {Array.<bagstream.IBagEntry>|null} [entries] MessageBatch entries
+         */
+
+        /**
+         * Constructs a new MessageBatch.
+         * @memberof bagstream
+         * @classdesc Represents a MessageBatch.
+         * @implements IMessageBatch
+         * @constructor
+         * @param {bagstream.IMessageBatch=} [properties] Properties to set
+         */
+        function MessageBatch(properties) {
+            this.entries = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * MessageBatch entries.
+         * @member {Array.<bagstream.IBagEntry>} entries
+         * @memberof bagstream.MessageBatch
+         * @instance
+         */
+        MessageBatch.prototype.entries = $util.emptyArray;
+
+        /**
+         * Creates a new MessageBatch instance using the specified properties.
+         * @function create
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {bagstream.IMessageBatch=} [properties] Properties to set
+         * @returns {bagstream.MessageBatch} MessageBatch instance
+         */
+        MessageBatch.create = function create(properties) {
+            return new MessageBatch(properties);
+        };
+
+        /**
+         * Encodes the specified MessageBatch message. Does not implicitly {@link bagstream.MessageBatch.verify|verify} messages.
+         * @function encode
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {bagstream.IMessageBatch} message MessageBatch message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MessageBatch.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.entries != null && message.entries.length)
+                for (let i = 0; i < message.entries.length; ++i)
+                    $root.bagstream.BagEntry.encode(message.entries[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MessageBatch message, length delimited. Does not implicitly {@link bagstream.MessageBatch.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {bagstream.IMessageBatch} message MessageBatch message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MessageBatch.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a MessageBatch message from the specified reader or buffer.
+         * @function decode
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {bagstream.MessageBatch} MessageBatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MessageBatch.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.bagstream.MessageBatch();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.entries && message.entries.length))
+                            message.entries = [];
+                        message.entries.push($root.bagstream.BagEntry.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a MessageBatch message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {bagstream.MessageBatch} MessageBatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MessageBatch.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MessageBatch message.
+         * @function verify
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MessageBatch.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.entries != null && message.hasOwnProperty("entries")) {
+                if (!Array.isArray(message.entries))
+                    return "entries: array expected";
+                for (let i = 0; i < message.entries.length; ++i) {
+                    let error = $root.bagstream.BagEntry.verify(message.entries[i]);
+                    if (error)
+                        return "entries." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a MessageBatch message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {bagstream.MessageBatch} MessageBatch
+         */
+        MessageBatch.fromObject = function fromObject(object) {
+            if (object instanceof $root.bagstream.MessageBatch)
+                return object;
+            let message = new $root.bagstream.MessageBatch();
+            if (object.entries) {
+                if (!Array.isArray(object.entries))
+                    throw TypeError(".bagstream.MessageBatch.entries: array expected");
+                message.entries = [];
+                for (let i = 0; i < object.entries.length; ++i) {
+                    if (typeof object.entries[i] !== "object")
+                        throw TypeError(".bagstream.MessageBatch.entries: object expected");
+                    message.entries[i] = $root.bagstream.BagEntry.fromObject(object.entries[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MessageBatch message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {bagstream.MessageBatch} message MessageBatch
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MessageBatch.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.entries = [];
+            if (message.entries && message.entries.length) {
+                object.entries = [];
+                for (let j = 0; j < message.entries.length; ++j)
+                    object.entries[j] = $root.bagstream.BagEntry.toObject(message.entries[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this MessageBatch to JSON.
+         * @function toJSON
+         * @memberof bagstream.MessageBatch
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MessageBatch.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for MessageBatch
+         * @function getTypeUrl
+         * @memberof bagstream.MessageBatch
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        MessageBatch.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/bagstream.MessageBatch";
+        };
+
+        return MessageBatch;
+    })();
+
+    bagstream.BagEntry = (function() {
+
+        /**
+         * Properties of a BagEntry.
+         * @memberof bagstream
+         * @interface IBagEntry
+         * @property {number|null} [index] BagEntry index
+         * @property {Uint8Array|null} [data] BagEntry data
+         */
+
+        /**
+         * Constructs a new BagEntry.
+         * @memberof bagstream
+         * @classdesc Represents a BagEntry.
+         * @implements IBagEntry
+         * @constructor
+         * @param {bagstream.IBagEntry=} [properties] Properties to set
+         */
+        function BagEntry(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BagEntry index.
+         * @member {number} index
+         * @memberof bagstream.BagEntry
+         * @instance
+         */
+        BagEntry.prototype.index = 0;
+
+        /**
+         * BagEntry data.
+         * @member {Uint8Array} data
+         * @memberof bagstream.BagEntry
+         * @instance
+         */
+        BagEntry.prototype.data = $util.newBuffer([]);
+
+        /**
+         * Creates a new BagEntry instance using the specified properties.
+         * @function create
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {bagstream.IBagEntry=} [properties] Properties to set
+         * @returns {bagstream.BagEntry} BagEntry instance
+         */
+        BagEntry.create = function create(properties) {
+            return new BagEntry(properties);
+        };
+
+        /**
+         * Encodes the specified BagEntry message. Does not implicitly {@link bagstream.BagEntry.verify|verify} messages.
+         * @function encode
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {bagstream.IBagEntry} message BagEntry message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BagEntry.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.index != null && Object.hasOwnProperty.call(message, "index"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.index);
+            if (message.data != null && Object.hasOwnProperty.call(message, "data"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.data);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BagEntry message, length delimited. Does not implicitly {@link bagstream.BagEntry.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {bagstream.IBagEntry} message BagEntry message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BagEntry.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BagEntry message from the specified reader or buffer.
+         * @function decode
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {bagstream.BagEntry} BagEntry
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BagEntry.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.bagstream.BagEntry();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.index = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.data = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BagEntry message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {bagstream.BagEntry} BagEntry
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BagEntry.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BagEntry message.
+         * @function verify
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BagEntry.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.index != null && message.hasOwnProperty("index"))
+                if (!$util.isInteger(message.index))
+                    return "index: integer expected";
+            if (message.data != null && message.hasOwnProperty("data"))
+                if (!(message.data && typeof message.data.length === "number" || $util.isString(message.data)))
+                    return "data: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a BagEntry message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {bagstream.BagEntry} BagEntry
+         */
+        BagEntry.fromObject = function fromObject(object) {
+            if (object instanceof $root.bagstream.BagEntry)
+                return object;
+            let message = new $root.bagstream.BagEntry();
+            if (object.index != null)
+                message.index = object.index >>> 0;
+            if (object.data != null)
+                if (typeof object.data === "string")
+                    $util.base64.decode(object.data, message.data = $util.newBuffer($util.base64.length(object.data)), 0);
+                else if (object.data.length >= 0)
+                    message.data = object.data;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BagEntry message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {bagstream.BagEntry} message BagEntry
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BagEntry.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.index = 0;
+                if (options.bytes === String)
+                    object.data = "";
+                else {
+                    object.data = [];
+                    if (options.bytes !== Array)
+                        object.data = $util.newBuffer(object.data);
+                }
+            }
+            if (message.index != null && message.hasOwnProperty("index"))
+                object.index = message.index;
+            if (message.data != null && message.hasOwnProperty("data"))
+                object.data = options.bytes === String ? $util.base64.encode(message.data, 0, message.data.length) : options.bytes === Array ? Array.prototype.slice.call(message.data) : message.data;
+            return object;
+        };
+
+        /**
+         * Converts this BagEntry to JSON.
+         * @function toJSON
+         * @memberof bagstream.BagEntry
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BagEntry.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BagEntry
+         * @function getTypeUrl
+         * @memberof bagstream.BagEntry
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BagEntry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/bagstream.BagEntry";
+        };
+
+        return BagEntry;
+    })();
+
+    return bagstream;
+})();
+
 export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
 
     /**

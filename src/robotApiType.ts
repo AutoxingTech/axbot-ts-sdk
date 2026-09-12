@@ -113,6 +113,9 @@ export interface RobotCaps {
 
   // Supports POST /services/calibrate_top_lidar_pose
   topLidar?: boolean;
+
+  // Supports GET /ros/bag-player/{folder}/{file}/meta|index|messages
+  bagStreaming: boolean;
 }
 
 export interface DeviceInfo {

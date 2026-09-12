@@ -1,5 +1,415 @@
 import * as $protobuf from "protobufjs";
 import Long = require("long");
+/** Namespace bagstream. */
+export namespace bagstream {
+
+    /** Properties of a BagIndex. */
+    interface IBagIndex {
+
+        /** BagIndex tracks */
+        tracks?: (bagstream.ITrack[]|null);
+    }
+
+    /** Represents a BagIndex. */
+    class BagIndex implements IBagIndex {
+
+        /**
+         * Constructs a new BagIndex.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: bagstream.IBagIndex);
+
+        /** BagIndex tracks. */
+        public tracks: bagstream.ITrack[];
+
+        /**
+         * Creates a new BagIndex instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BagIndex instance
+         */
+        public static create(properties?: bagstream.IBagIndex): bagstream.BagIndex;
+
+        /**
+         * Encodes the specified BagIndex message. Does not implicitly {@link bagstream.BagIndex.verify|verify} messages.
+         * @param message BagIndex message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: bagstream.IBagIndex, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BagIndex message, length delimited. Does not implicitly {@link bagstream.BagIndex.verify|verify} messages.
+         * @param message BagIndex message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: bagstream.IBagIndex, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BagIndex message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BagIndex
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): bagstream.BagIndex;
+
+        /**
+         * Decodes a BagIndex message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BagIndex
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): bagstream.BagIndex;
+
+        /**
+         * Verifies a BagIndex message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BagIndex message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BagIndex
+         */
+        public static fromObject(object: { [k: string]: any }): bagstream.BagIndex;
+
+        /**
+         * Creates a plain object from a BagIndex message. Also converts values to other types if specified.
+         * @param message BagIndex
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: bagstream.BagIndex, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BagIndex to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BagIndex
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a Track. */
+    interface ITrack {
+
+        /** Track conn */
+        conn?: (number|null);
+
+        /** Track index */
+        index?: (number[]|null);
+
+        /** Track stamp_us */
+        stamp_us?: ((number|Long)[]|null);
+    }
+
+    /** Represents a Track. */
+    class Track implements ITrack {
+
+        /**
+         * Constructs a new Track.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: bagstream.ITrack);
+
+        /** Track conn. */
+        public conn: number;
+
+        /** Track index. */
+        public index: number[];
+
+        /** Track stamp_us. */
+        public stamp_us: (number|Long)[];
+
+        /**
+         * Creates a new Track instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Track instance
+         */
+        public static create(properties?: bagstream.ITrack): bagstream.Track;
+
+        /**
+         * Encodes the specified Track message. Does not implicitly {@link bagstream.Track.verify|verify} messages.
+         * @param message Track message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: bagstream.ITrack, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Track message, length delimited. Does not implicitly {@link bagstream.Track.verify|verify} messages.
+         * @param message Track message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: bagstream.ITrack, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Track message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Track
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): bagstream.Track;
+
+        /**
+         * Decodes a Track message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Track
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): bagstream.Track;
+
+        /**
+         * Verifies a Track message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Track message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Track
+         */
+        public static fromObject(object: { [k: string]: any }): bagstream.Track;
+
+        /**
+         * Creates a plain object from a Track message. Also converts values to other types if specified.
+         * @param message Track
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: bagstream.Track, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Track to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for Track
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a MessageBatch. */
+    interface IMessageBatch {
+
+        /** MessageBatch entries */
+        entries?: (bagstream.IBagEntry[]|null);
+    }
+
+    /** Represents a MessageBatch. */
+    class MessageBatch implements IMessageBatch {
+
+        /**
+         * Constructs a new MessageBatch.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: bagstream.IMessageBatch);
+
+        /** MessageBatch entries. */
+        public entries: bagstream.IBagEntry[];
+
+        /**
+         * Creates a new MessageBatch instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MessageBatch instance
+         */
+        public static create(properties?: bagstream.IMessageBatch): bagstream.MessageBatch;
+
+        /**
+         * Encodes the specified MessageBatch message. Does not implicitly {@link bagstream.MessageBatch.verify|verify} messages.
+         * @param message MessageBatch message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: bagstream.IMessageBatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MessageBatch message, length delimited. Does not implicitly {@link bagstream.MessageBatch.verify|verify} messages.
+         * @param message MessageBatch message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: bagstream.IMessageBatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MessageBatch message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns MessageBatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): bagstream.MessageBatch;
+
+        /**
+         * Decodes a MessageBatch message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns MessageBatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): bagstream.MessageBatch;
+
+        /**
+         * Verifies a MessageBatch message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MessageBatch message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MessageBatch
+         */
+        public static fromObject(object: { [k: string]: any }): bagstream.MessageBatch;
+
+        /**
+         * Creates a plain object from a MessageBatch message. Also converts values to other types if specified.
+         * @param message MessageBatch
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: bagstream.MessageBatch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MessageBatch to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for MessageBatch
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BagEntry. */
+    interface IBagEntry {
+
+        /** BagEntry index */
+        index?: (number|null);
+
+        /** BagEntry data */
+        data?: (Uint8Array|null);
+    }
+
+    /** Represents a BagEntry. */
+    class BagEntry implements IBagEntry {
+
+        /**
+         * Constructs a new BagEntry.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: bagstream.IBagEntry);
+
+        /** BagEntry index. */
+        public index: number;
+
+        /** BagEntry data. */
+        public data: Uint8Array;
+
+        /**
+         * Creates a new BagEntry instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BagEntry instance
+         */
+        public static create(properties?: bagstream.IBagEntry): bagstream.BagEntry;
+
+        /**
+         * Encodes the specified BagEntry message. Does not implicitly {@link bagstream.BagEntry.verify|verify} messages.
+         * @param message BagEntry message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: bagstream.IBagEntry, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BagEntry message, length delimited. Does not implicitly {@link bagstream.BagEntry.verify|verify} messages.
+         * @param message BagEntry message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: bagstream.IBagEntry, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BagEntry message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BagEntry
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): bagstream.BagEntry;
+
+        /**
+         * Decodes a BagEntry message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BagEntry
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): bagstream.BagEntry;
+
+        /**
+         * Verifies a BagEntry message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BagEntry message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BagEntry
+         */
+        public static fromObject(object: { [k: string]: any }): bagstream.BagEntry;
+
+        /**
+         * Creates a plain object from a BagEntry message. Also converts values to other types if specified.
+         * @param message BagEntry
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: bagstream.BagEntry, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BagEntry to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BagEntry
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+}
+
 /** Namespace ax_proto_msgs. */
 export namespace ax_proto_msgs {
 

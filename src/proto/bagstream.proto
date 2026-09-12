@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package bagstream;
+
+// GET /index — the full timeline, grouped by connection (topic).
+message BagIndex {
+  repeated Track tracks = 1;
+}
+
+// One track per connection. `meta.connections[conn].topic` is the topic name.
+message Track {
+  uint32 conn = 1;                              // connection id — written ONCE, not per message
+  repeated uint32 index = 2 [packed = true];    // delta-encoded global indexes (0..N-1)
+  repeated uint64 stamp_us = 3 [packed = true]; // delta-encoded µs since bag start
+}
+
+// GET /messages?start=&end= — the payloads for one segment.
+message MessageBatch {
+  repeated BagEntry entries = 1;
+}
+
+// One message's raw, still-serialized ROS bytes.
+message BagEntry {
+  uint32 index = 1; // global message index (matches the index track)
+  bytes data = 2;   // raw serialized ROS message
+}
