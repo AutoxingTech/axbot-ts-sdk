@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Autoxing Technology
 // SPDX-License-Identifier: MIT
 
-import { Feature, LineStringGeometry, PointGeometry, PolygonGeometry } from './geojson';
+import { Feature, FeatureCollection, LineStringGeometry, PointGeometry, PolygonGeometry } from './geojson';
 import { MapInfoMsg } from './topicMessages';
 import { pointInPolygon } from './utils';
 
@@ -254,10 +254,25 @@ export class MapPolyline extends MapFeature {
   }
 }
 
+/**
+ * `/map/info` carries its GeoJSON as a JSON string, either the bare
+ * FeatureCollection or the wrapper `ax_msgs/MapInfo` builds around it
+ * (`{name, uid, map_version, overlays_version, overlays}`). Already-parsed
+ * payloads pass straight through.
+ */
+function parseOverlays(value: MapInfoMsg['overlays']): FeatureCollection | undefined {
+  if (typeof value !== 'string') return value;
+  try {
+    const parsed = JSON.parse(value) as { overlays?: FeatureCollection } & FeatureCollection;
+    return parsed?.overlays ?? parsed;
+  } catch {
+    return undefined;
+  }
+}
+
 export class MapInfo {
   name!: string; // map name
   uid!: string;
-
   chargers: MapPoint[] = [];
   features: MapFeature[] = [];
   rackDetectionPoints: MapPoint[] = [];
@@ -281,8 +296,9 @@ export class MapInfo {
     if (msg != null) {
       this.name = msg.name;
       this.uid = msg.uid;
-      if (msg.overlays?.features) {
-        for (const feature of msg.overlays.features) {
+      const overlays = parseOverlays(msg.overlays);
+      if (overlays?.features) {
+        for (const feature of overlays.features) {
           if (feature.type === 'Feature') {
             if (feature.geometry.type === 'Point') {
               this.parsePoint(feature);
@@ -295,8 +311,8 @@ export class MapInfo {
         }
         this.associateRackPointAndRackZone();
       }
-      if (msg.overlays?.properties) {
-        this.properties = msg.overlays.properties;
+      if (overlays?.properties) {
+        this.properties = overlays.properties;
       }
     }
   }

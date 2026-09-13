@@ -133,7 +133,8 @@ export interface PlanningStateMsg extends TopicMsg {
 export interface MapInfoMsg extends TopicMsg {
   name: string;
   uid: string;
-  overlays: FeatureCollection;
+  /** The ROS field is a JSON string; already-parsed payloads are accepted too. */
+  overlays: FeatureCollection | string;
 }
 
 export interface SlamStateMsg extends TopicMsg {
