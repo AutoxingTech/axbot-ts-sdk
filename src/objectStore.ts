@@ -111,22 +111,17 @@ class DeviceInfoStore extends ObjectStore<DeviceInfo> { }
 
 class RosTopicNamesStore extends ArrayObjectStore<string> {
   private forkliftTopics = [
-    '/horizontal_laser_2d/matched',
     '/left_laser_2d/matched',
     '/right_laser_2d/matched',
     '/rb_laser_2d/matched',
-    '/matched_depth_points/downward',
     '/matched_depth_points/backward',
   ];
 
   private caracalTopics = [
-    '/horizontal_laser_2d/matched',
-    '/matched_depth_points/downward',
     '/matched_depth_points/upward',
   ];
 
   private crawlerTopics = [
-    '/horizontal_laser_2d/matched',
     '/bottom_laser_2d/matched',
   ];
 
@@ -146,11 +141,11 @@ class RosTopicNamesStore extends ArrayObjectStore<string> {
     const model = deviceInfo?.device?.model;
     let supplement: string[];
     if (model?.startsWith('forklift') || deviceInfo?.caps?.supportsForklift) {
-      supplement = this.forkliftTopics;
+      supplement = [...this.defaultTopics, ...this.forkliftTopics];
     } else if (model?.startsWith('caracal')) {
-      supplement = this.caracalTopics;
+      supplement = [...this.defaultTopics, ...this.caracalTopics];
     } else if (model?.startsWith('crawler')) {
-      supplement = this.crawlerTopics;
+      supplement = [...this.defaultTopics, ...this.crawlerTopics];
     } else {
       supplement = this.defaultTopics;
     }
