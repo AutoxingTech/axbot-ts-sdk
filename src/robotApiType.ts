@@ -426,6 +426,28 @@ export type MapItem = {
   overlays?: string;
 };
 
+/**
+ * Dynamic traffic info: the no-passing zones overlaid on the current map.
+ * Payload of the /get_traffic_info and /set_traffic_info ROS services.
+ */
+export interface TrafficInfo {
+  /** Format version; only 1 is supported. */
+  version: number;
+  /** UID of the map this traffic info belongs to; must match the loaded map. */
+  map_uid: string;
+  /** Full-replacement list of no-passing zones; an empty array clears them all. */
+  no_passing_zones: TrafficInfoZone[];
+}
+
+export interface TrafficInfoZone {
+  /** Unique within the list. */
+  id: string;
+  /** Polygon vertices as [x, y] pairs, at least 3; closed by repeating the first point. */
+  polygon: [number, number][];
+  /** Reserved for future time-based activation; stored but always active in v1. */
+  time_rules?: unknown[];
+}
+
 export type MappingTaskItem = {
   id: number;
 

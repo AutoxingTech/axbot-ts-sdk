@@ -29,6 +29,7 @@ import {
   CreateRecordingResponse,
   QueryPoseResponse,
   PoseQueryType,
+  TrafficInfo,
 } from './robotApiType';
 
 export * from './robotApiType';
@@ -1277,6 +1278,35 @@ export class RobotApi {
     signal?: AbortSignal,
   ): Promise<{ success: boolean; message?: string }> {
     const res = await this.putImpl('ros/map/overlays', overlays, signal);
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+    return res.json();
+  }
+
+  /**
+   * Get the dynamic traffic info (no-passing zones) of the current map.
+   * GET /ros/map/traffic_info — proxies to the /get_traffic_info ROS service.
+   */
+  async getTrafficInfo(signal?: AbortSignal): Promise<TrafficInfo> {
+    const res = await this.getImpl('ros/map/traffic_info', signal);
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+    return res.json();
+  }
+
+  /**
+   * Replace the dynamic traffic info (no-passing zones) of the current map.
+   * PUT /ros/map/traffic_info — proxies to the /set_traffic_info ROS service.
+   */
+  async setTrafficInfo(
+    trafficInfo: TrafficInfo,
+    signal?: AbortSignal,
+  ): Promise<{ success: boolean; message?: string }> {
+    const res = await this.putImpl('ros/map/traffic_info', trafficInfo, signal);
     if (!res.ok) {
       const detail = await this.extractErrorMessage(res);
       throw new ApiError(detail, res.status);

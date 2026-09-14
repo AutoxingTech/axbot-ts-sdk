@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-09-14 robotApi: Add getTrafficInfo/setTrafficInfo APIs for dynamic no-passing zones
 - 2026-09-13 mapInfo: Parse map overlays from the /map/info JSON string
 - 2026-09-12 proto: Add bagstream schema for the bag streaming HTTP API; robotApiType: Add bagStreaming capability
 - 2026-09-10 robotApiType: Clarify route_coordinates and detour_tolerance apply to most move types
