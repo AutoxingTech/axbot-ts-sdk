@@ -1314,6 +1314,18 @@ export class RobotApi {
     return res.json();
   }
 
+  /**
+   * Clear the IMU gyro scale calibration, marking the gyro as not calibrated.
+   * POST /ros/imu/clear_gyro_scale — proxies to the /imu/clear_gyro_scale ROS service.
+   */
+  async clearGyroScale(): Promise<boolean> {
+    return this.apiCall(
+      () => this.postImpl('ros/imu/clear_gyro_scale', {}),
+      'Clear Gyro Scale',
+      false,
+    );
+  }
+
   // ========== Bag Player API ==========
 
   /**
