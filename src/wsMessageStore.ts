@@ -27,6 +27,25 @@ export type Subscriber<T> = (data: T) => void;
 
 const storeSubscribedTopics = new Set<string>();
 
+// A topic can be held by several store instances at once, so the global set is
+// reference counted; only the last release may disable the topic on the wire.
+const storeTopicRefs = new Map<string, number>();
+
+function retainStoreTopic(topic: string): void {
+  storeTopicRefs.set(topic, (storeTopicRefs.get(topic) ?? 0) + 1);
+  storeSubscribedTopics.add(topic);
+}
+
+function releaseStoreTopic(topic: string): void {
+  const remaining = (storeTopicRefs.get(topic) ?? 1) - 1;
+  if (remaining > 0) {
+    storeTopicRefs.set(topic, remaining);
+    return;
+  }
+  storeTopicRefs.delete(topic);
+  storeSubscribedTopics.delete(topic);
+}
+
 export function getStoreSubscribedTopics(): string[] {
   return Array.from(storeSubscribedTopics);
 }
@@ -76,7 +95,7 @@ export class WsMessageStore<T> {
     this.subscribers.add(fn);
 
     if (isFirst) {
-      storeSubscribedTopics.add(this.topic);
+      retainStoreTopic(this.topic);
       wsClient.syncTopics();
     }
 
@@ -88,7 +107,7 @@ export class WsMessageStore<T> {
     return () => {
       this.subscribers.delete(fn);
       if (this.subscribers.size === 0) {
-        storeSubscribedTopics.delete(this.topic);
+        releaseStoreTopic(this.topic);
         wsClient.syncTopics();
       }
     };

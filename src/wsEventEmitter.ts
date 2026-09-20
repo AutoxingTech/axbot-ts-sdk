@@ -25,6 +25,25 @@ type EventHandler<T> = (data: T) => void;
 // Track which topics have active emitter subscriptions
 const subscribedTopics = new Set<string>();
 
+// A topic can be held by several emitter instances at once, so the global set is
+// reference counted; only the last release may disable the topic on the wire.
+const emitterTopicRefs = new Map<string, number>();
+
+function retainEmitterTopic(topic: string): void {
+  emitterTopicRefs.set(topic, (emitterTopicRefs.get(topic) ?? 0) + 1);
+  subscribedTopics.add(topic);
+}
+
+function releaseEmitterTopic(topic: string): void {
+  const remaining = (emitterTopicRefs.get(topic) ?? 1) - 1;
+  if (remaining > 0) {
+    emitterTopicRefs.set(topic, remaining);
+    return;
+  }
+  emitterTopicRefs.delete(topic);
+  subscribedTopics.delete(topic);
+}
+
 /**
  * Get list of topics that have active emitter subscriptions.
  */
@@ -56,7 +75,7 @@ export class WsEventEmitter<T> {
       // First subscriber - register WS handler and add topic to enabled list
       this.wsHandler = (payload: T) => this.dispatch(payload);
       this.wsUnsubscribe = wsClient.onTopic(this.topic, this.wsHandler);
-      subscribedTopics.add(this.topic);
+      retainEmitterTopic(this.topic);
       wsClient.syncTopics();
     }
 
@@ -72,7 +91,7 @@ export class WsEventEmitter<T> {
       this.wsUnsubscribe();
       this.wsUnsubscribe = null;
       this.wsHandler = null;
-      subscribedTopics.delete(this.topic);
+      releaseEmitterTopic(this.topic);
       wsClient.syncTopics();
     }
   }
@@ -399,7 +418,7 @@ class RgbCameraEventEmitter {
           console.error('Error processing camera message:', e);
         }
       });
-      subscribedTopics.add(this.topic);
+      retainEmitterTopic(this.topic);
       wsClient.syncTopics();
     }
 
@@ -408,7 +427,7 @@ class RgbCameraEventEmitter {
       if (this.handlers.size === 0 && this.wsUnsubscribe) {
         this.wsUnsubscribe();
         this.wsUnsubscribe = null;
-        subscribedTopics.delete(this.topic);
+        releaseEmitterTopic(this.topic);
         wsClient.syncTopics();
       }
     };
