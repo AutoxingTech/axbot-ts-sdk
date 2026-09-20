@@ -188,3 +188,33 @@ export const mapRackStatesStore = new WsMessageStore<RackStatesMsg>('/map_rack_s
 export const detectedChargersStore = new WsMessageStore<DetectedFeaturesMsg>(
   '/detected_features/chargers',
 );
+
+/**
+ * Stores by topic. A store keeps its topic's last message, so a consumer that
+ * needs the current value reads it from here rather than waiting for the next
+ * publish — the store replays what it holds as soon as it is subscribed.
+ */
+const topicStores: Record<string, WsMessageStore<any>> = {
+  '/alerts': wsAlertsStore,
+  '/wheel_state': wsWheelStateStore,
+  '/map_v2': mapStore,
+  '/tracked_pose': trackedPoseStore,
+  '/robot_model': robotModelStore,
+  '/sensor_manager_state': sensorManagerStateStore,
+  '/planning_state': planningStateStore,
+  '/path': pathStore,
+  '/trajectory': trajectoryStore,
+  '/map/info': mapInfoStore,
+  '/slam/state': slamStateStore,
+  '/jack_state': jackStateStore,
+  '/nearby_robot_footprints': nearbyRobotFootprintsStore,
+  '/detected_pallets': detectedPalletsStore,
+  '/detected_rack': detectedRackStore,
+  '/map_rack_states': mapRackStatesStore,
+  '/detected_features/chargers': detectedChargersStore,
+};
+
+/** The store holding `topic`'s last message, or undefined for a storeless topic. */
+export function getTopicStore(topic: string): WsMessageStore<any> | undefined {
+  return topicStores[topic];
+}
