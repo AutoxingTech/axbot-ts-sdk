@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "geometry.proto";
+import "move_fail_reason.proto";
+import "move_state.proto";
+
+option optimize_for = SPEED;
+
+// Mirrors ax_msgs/PlanningState (topics /planning_state and /internal/planning_state).
+// Numeric enum values are kept identical to the .msg constants so raw-int
+// consumers (monitor, web platform) behave the same.
+message PlanningState {
+    // Legacy duplicates of two MoveFailReason codes, kept for parity with the
+    // .msg. The `fail_reason` field itself carries MoveFailReason.Type values.
+    message FailReason {
+        enum Type {
+            NONE                        = 0;
+            CHARGE_RETRY_COUNT_EXCEEDED = 100;  // charging retry count exceeded
+            CHARGER_DECTECTION_ERROR    = 101;  // charger dock not recognized
+        }
+    }
+
+    message Intent {
+        enum Type {
+            NONE                  = 0;
+            GOING_BACK_TO_CHARGER = 1;  // returning to the charger
+            DOCK_WITH_CONVEYER    = 2;  // docking with a cargo conveyer
+        }
+    }
+
+    message StuckState {
+        enum Type {
+            NONE                = 0;
+            MOVE_STUCKED        = 1;  // the robot is stuck while moving
+            TARGET_SPIN_STUCKED = 2;  // the robot is stuck while rotating
+        }
+    }
+
+    // Progress-stuck reasons, reported as alert code 1008.
+    message StuckReason {
+        enum Type {
+            NONE              = 0;     // not stuck
+            VIRTUAL_WALL      = 1101;  // inside a virtual wall or a no-go zone
+            IMPASSABLE_AREA   = 1102;  // on an impassable area of the map, or off the map
+            EMERGENCY_BUTTON  = 1103;  // emergency stop button pressed
+            NOT_IN_AUTO_MODE  = 1104;  // not in auto mode (manual or remote control)
+            POSITION_RELIABLE = 1105;  // positioning is bad (7002, or AxCartoState.relocating)
+            FATAL_ALERT       = 1106;  // a fatal alert is active, e.g. a broken lidar
+            OTHER             = 1199;  // no known category
+        }
+    }
+
+    message CargoAction {
+        enum Type {
+            NONE   = 0;
+            LOAD   = 1;  // forks are under the cargo; the caller may run /load_cargo
+            UNLOAD = 2;  // forks are above the target rack; the caller may run /unload_cargo
+        }
+    }
+
+    int32 action_id = 1;    // task id
+    int32 action_type = 2;  // same values as `type` in srv/move_to/MoveBaseMoveTo.srv
+
+    MoveState.Type move_state = 3;
+    MoveFailReason.Type fail_reason = 4;
+    // Failure reasons from coarse to fine. fail_reasons[0] equals fail_reason;
+    // the rest are sub-codes.
+    repeated MoveFailReason.Type fail_reasons = 5;
+    float remaining_distance = 6;  // metres
+
+    // RCSS-4688: number of given-route shape points already passed. Always 0
+    // when not driving along a given route.
+    int32 given_route_passed_point_count = 7;
+
+    // Only one target for now; an array so that waypoints can be added later.
+    // Empty for intent-driven tasks.
+    repeated Pose target_poses = 20;
+
+    Intent.Type move_intent = 21;  // deprecated by `action_type`
+    // Pose of the intent point being approached. May differ from the static map,
+    // as perception adjusts it.
+    Pose intent_target_pose = 22;
+    // Pose of the charger being approached, same caveat as intent_target_pose.
+    // Kept for compatibility with older consumers.
+    Pose charger_pose = 23;
+
+    StuckState.Type stuck_state = 30;
+    // Main progress-stuck reason. Consumed by monitor, which turns it into the
+    // text shown on the monitoring platform.
+    StuckReason.Type progress_stuck_reason = 31;
+
+    string map_uid = 40;               // uid of the map in use
+    bool in_elevator = 41;
+    bool in_slope_area = 42;
+    bool in_lidar_deceitful_area = 43; // lidar is easily fooled here; rely on wheel odometry
+    bool in_gps_unreliable_zone = 44;
+    bool in_dynamic_area = 45;         // layout changes often here; positioning narrows its
+                                       // search radius or raises its match score
+
+    bool viewport_blocked = 46;        // the robot's field of view is blocked
+
+    bool going_back_to_charger = 50;
+    bool aligning_with_rack = 51;
+    bool unloading_rack = 52;
+    bool docking_with_poi = 53;          // high-precision POI docking in progress
+    bool is_waiting_for_dest = 54;       // parked aside waiting for the destination
+    bool undocking_charger_or_rack = 55; // leaving the charger, a rack or a pallet
+    bool waiting_for_charge = 56;        // parked at the dock pose, waiting for the charger
+                                         // to engage (used by the Longyu Yuqilin charger)
+
+    CargoAction.Type expected_cargo_action = 60;
+    bool obstacle_ignored = 61;  // obstacle avoidance is currently disabled, RCSS-5652
+}

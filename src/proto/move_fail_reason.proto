@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "annotations.proto";
+
+option optimize_for = SPEED;
+
+// Mirrors ax_msgs/MoveFailReason. Numeric enum values are kept identical to the
+// .msg constants so raw-int consumers behave the same.
+//
+// The .msg is still in use elsewhere, so both are kept in sync for now; the
+// .msg is meant to be deleted once every consumer has moved over. The
+// `display_text` option carries the text the .msg held as a `#` comment, so
+// consumers no longer have to read the .msg at runtime.
+//
+// planning has its own MoveFailReason enum with two codes the .msg never
+// carried (22 docking_heading_deviation_too_large, 703
+// barcode_docking_route_failed); those reach the wire as unknown enum values.
+message MoveFailReason {
+    enum Type {
+        NONE = 0;
+        UNKNOWN = 1 [(display_text) = "其它原因"];
+        GET_MAP_FAILED = 2 [(display_text) = "获取地图失败(这里的地图是指 WORLDMAP)"];
+        STARTING_POINT_OUT_OF_MAP = 3 [(display_text) = "起点在地图之外"];
+        ENDING_POINT_OUT_OF_MAP = 4 [(display_text) = "终点在地图之外"];
+        STARTING_POINT_NOT_IN_GROUND = 5 [(display_text) = "起点不在可通行区域"];
+        ENDING_POINT_NOT_IN_GROUND = 6 [(display_text) = "终点不在可通行区域"];
+        STARTING_EQUAL_ENDING = 7 [(display_text) = "起点和终点相同"];
+        CALCULATE_GLOBAL_PATH_EXTENDED_DATA_ERROR = 8 [(display_text) = "计算全局路线扩展信息失败"];
+        CALCULATION_FAILED = 9 [(display_text) = "算路失败，道路不连通"];
+        CALCULATION_TIMEOUT = 10 [(display_text) = "算路超时"];
+        NO_GLOBAL_PATH = 11 [(display_text) = "没有全局路线"];
+        NOT_GRAB_START_INDEX_ON_GLOBAL_PATH = 12 [(display_text) = "在全局路线上抓取起点失败"];
+        NOT_GRAB_END_INDEX_ON_GLOBAL_PATH = 13 [(display_text) = "在全局路线上抓取终点失败"];
+        PLANNING_TIMEOUT = 14 [(display_text) = "路径规划长时间不成功"];
+        MOVE_TIMEOUT = 15 [(display_text) = "路径规划成功，但是避让长时间过不去"];
+        CONTROL_COSTMAP_ERROR = 16 [(display_text) = "局部避障地图数据出现错误,当前避障传感器数据异常"];
+        POWER_CABLE_CONNECTED = 17 [(display_text) = "当前正在用线充电中"];
+        ROTATE_TIMEOUT = 18 [(display_text) = "旋转长时间无法完成"];
+        ENDING_POINT_NOT_SIGNIFICANTLY_CHANGED = 19 [(display_text) = "终点未发生大的改变（在精度阈值内）"];
+        ENDING_POINT_APPROACHING = 20 [(display_text) = "接近终点（剩余距离在阈值内），不再重算路线"];
+        ENDING_POINT_NOT_SPECIFIED = 21 [(display_text) = "未指定终点"];
+
+        // charging
+        CHARGE_RETRY_COUNT_EXCEEDED = 100 [(display_text) = "超过充电重试次数"];
+        CHARGE_DOCK_DETECTION_ERROR = 101 [(display_text) = "未识别到充电桩"];
+        // .msg 原文注释带 "(100 的 subcode)" 前缀，RosEnumMapper 会剥掉
+        CHARGE_DOCK_SIGNAL_ERROR = 102 [(display_text) = "没有接收到充电桩对桩成功的信号"];
+        INVALID_CHARGE_DOCK = 103 [(display_text) = "无效的充电桩位姿"];
+        ALREADY_IN_CHARGING = 104 [(display_text) = "当前已经在充电中"];
+        NO_CHARGE_CURRENT = 105 [(display_text) = "TOUCH后长时间没有收到电流"];
+
+        // cargo conveyer docking
+        INVALID_CABINET_POS = 200 [(display_text) = "无效的货柜点"];
+        CABINET_DETECTION_ERROR = 201 [(display_text) = "未识别到货柜"];
+        NO_DOCK_WITH_CONVEYER = 202 [(display_text) = "当前没有在货物传送带对接点"];
+        NO_APPROACH_CONVEYER = 203 [(display_text) = "当前没有对接货物传送带"];
+
+        // elevator
+        ELEVATOR_POINT_OCCUPIED = 300 [(display_text) = "乘梯点被占用"];
+        ELEVATOR_CLOSED = 301 [(display_text) = "电梯已关闭"];
+        ELEVATOR_POINT_OBSCURED_TIMEOUT = 302 [(display_text) = "乘梯点长时间被遮挡"];
+        ELEVATOR_POINT_OCCUPANCY_DETECTION_TIMEOUT = 303 [(display_text) = "乘梯点占用状态检测超时"];
+        ELEVATOR_ENTER_PROGRESS_UPDATE_TIMEOUT = 304 [(display_text) = "乘梯进度超时"];
+
+        // driving along a given route
+        INVALID_TRACK_POINTS = 400 [(display_text) = "无效的轨迹点(传入坐标数非偶数或者轨迹点数 < 2)"];
+        TOO_FAR_FROM_START_OF_TRACK = 401 [(display_text) = "离轨迹起点太远"];
+
+        // rack docking
+        INVALID_RACK_DETECTION_POS = 500 [(display_text) = "无效的货架检测点"];
+        RACK_DETECTION_ERROR = 501 [(display_text) = "未识别到货架"];
+        RACK_RETRY_COUNT_EXCEEDED = 502 [(display_text) = "超过对接重试次数"];
+        UNLOAD_POINT_OCCUPIED = 503 [(display_text) = "货架位置被占用"];
+        UNLOAD_POINT_UNREACHABLE = 504 [(display_text) = "无法到达卸货点"];
+        RACK_MOVED = 505 [(display_text) = "货架发生明显滑动"];
+        JACK_IN_UP_STATE = 506 [(display_text) = "顶升处于升起状态"];
+        INVALID_RACK_AREA_ID = 507 [(display_text) = "无效的货架区域 ID"];
+        INVALID_RACK_AREA = 508 [(display_text) = "无效的货架区域（没有货架位）"];
+        UNKNOWN_RACK_SPACE_STATE = 509 [(display_text) = "货架位状态未知"];
+        NO_RACK_IN_RACK_AREA = 510 [(display_text) = "货架区域里已无货架"];
+        ALIGN_FAILED_IN_RACK_AREA = 511 [(display_text) = "货架区域里有货架，但对接失败"];
+        NO_FREE_SPACE_IN_RACK_AREA = 512 [(display_text) = "货架区域里货架位都被占用"];
+        FAILED_TO_UNLOAD_IN_RACK_AREA = 513 [(display_text) = "货架区域里有空闲货架位，但放货失败"];
+        RACK_SUBTYPE_INCOMPATIBLE = 514 [(display_text) = "货架位类型与车型不兼容"];
+        TOWING_HOOK_IN_LOCKED_STATE = 515 [(display_text) = "拖钩处于锁定状态"];
+        CARGO_READY_LIMIT_SWITCH_FAULT = 516 [(display_text) = "货物到位开关持续误触发"];
+        CARGO_READY_NOT_TRIGGERED = 517 [(display_text) = "货物到位开关未触发"];
+
+        // following
+        FOLLOW_FAILED = 600 [(display_text) = "跟随目标已丢失"];
+        FOLLOW_PATH_TOO_CIRCUITOUS = 601 [(display_text) = "路径过于绕远，无法跟随"];
+
+        // high-precision POI docking
+        POI_DETECTION_ERROR = 700 [(display_text) = "未识别到 POI"];
+        POI_UNREACHABLE = 701 [(display_text) = "无法到达 POI"];
+        BARCODE_DETECTION_ERROR = 702 [(display_text) = "未识别到 barcode"];
+
+        PLATFORM_ALERT_ERROR = 1000 [(display_text) = "系统异常"];
+        SERVICE_CALL_ERROR = 1001 [(display_text) = "请求规控服务异常（restapi 使用）"];
+        INTERNAL_ERROR = 1002 [(display_text) = "内部 ASSERT 引起的错误"];
+        MAP_CHANGED = 1003 [(display_text) = "任务运行期间地图被改变或者被清除"];
+        MOVE_ACTION_TYPE_DEPRECATED = 1004 [(display_text) = "接口已经废弃"];
+        CONFIGURATION_ERROR = 1005 [(display_text) = "配置错误"];
+    }
+}

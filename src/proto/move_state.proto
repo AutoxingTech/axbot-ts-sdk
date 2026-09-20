@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+option optimize_for = SPEED;
+
+// Mirrors ax_msgs/MoveState. Numeric enum values are kept identical to the .msg
+// constants so raw-int consumers behave the same.
+//
+// The .msg is still in use elsewhere, so both are kept in sync for now; the
+// .msg is meant to be deleted once every consumer has moved over.
+message MoveState {
+    enum Type {
+        NONE        = 0;  // unknown failure
+        IDLE        = 1;  // initialised, idle
+        MOVING      = 2;  // moving
+        OSCILLATING = 3;  // oscillating
+        SUCCEEDED   = 4;  // task succeeded
+        FAILED      = 5;  // task failed
+        CANCELLED   = 6;  // task cancelled
+    }
+}

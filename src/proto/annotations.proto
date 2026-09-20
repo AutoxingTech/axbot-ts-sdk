@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "google/protobuf/descriptor.proto";
+
+option optimize_for = SPEED;
+
+// 给枚举值挂一段人类可读的说明，用于上报/展示（proto 注释不进 descriptor，
+// 运行时读不到，所以放在 option 里）。只在 descriptor 中生效，不上线。
+extend google.protobuf.EnumValueOptions {
+    string display_text = 50001;
+}

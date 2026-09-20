@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+option optimize_for = SPEED;
+
+// Mirrors ax_msgs/SlamState (topic /slam/state). Numeric enum values are kept
+// identical to the .msg constants so raw-int consumers behave the same.
+message SlamState {
+    message State {
+        enum Type {
+            INACTIVE    = 0;
+            SLAM        = 1;  // mapping & positioning
+            POSITIONING = 2;  // pure positioning
+        }
+    }
+
+    message NavSatState {
+        enum Type {
+            NO_FIX                              = 0;
+            SAT_BASE                            = 1;
+            RTK_FIXED                           = 2;
+            RTK_FIXED_IN_GPS_UNRELIABLE_ZONE    = 3;
+            TIMEOUT                             = 4;
+        }
+    }
+
+    message PositionQuality {
+        enum Type {
+            NONE      = 0;
+            LOST      = 1;
+            POOR      = 3;
+            GOOD      = 8;
+            EXCELLENT = 10;
+        }
+    }
+
+    State.Type state = 1;
+    NavSatState.Type nav_sat_state = 2;
+
+    // If current positioning is generally good.
+    bool reliable = 3;  // TO BE DELETED
+
+    // Another method for evaluating position quality (lidar constraint only).
+    PositionQuality.Type position_quality = 4;
+
+    // True means ax_carto has detected a position error and is attempting to
+    // relocate when the robot stops moving.
+    bool relocating = 5;
+
+    // Flags
+    bool wheel_slipping = 20;
+    bool wheel_major_slipping = 21;
+    bool move_cautiously = 22;
+
+    ///////////////////////////
+    // Debug info.
+    float uncertainty_radius = 50;
+    float search_window_radius = 51;
+    // Position loss progress based on uncertainty_radius, range [0, 1.0].
+    float position_loss_progress = 52;
+    float cov_major_axis_length = 53;
+    float dynamic_translation_weight = 54;
+    bool lidar_reliable = 55;
+    int32 inter_constraint_count = 56;
+    int32 good_constraint_count = 57;
+    int32 submap_count = 58;
+    int32 latest_trajectory_id = 59;
+    int32 latest_submap_index = 60;
+
+    // True means unknown or matched; false means not matched.
+    bool lidar_matched = 61;
+    // Lidar matching score evaluated by a model (e.g. beam model). Range [0,1].
+    float lidar_matching_score = 62;
+
+    // When any sensor (lidar/odom/imu) is lost the pose stops updating.
+    uint64 last_pose_update_time_nsec = 63;  // ROS stamp in nsec
+}
