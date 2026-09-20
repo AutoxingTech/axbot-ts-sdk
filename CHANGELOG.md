@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-09-20 proto: pnpm proto now mirrors the ax_msgs protos before recompiling, and gains a --check mode for drift gating
 - 2026-09-19 robotApi: Add clearGyroScale API for POST /ros/imu/clear_gyro_scale
 - 2026-09-14 robotApi: Add getTrafficInfo/setTrafficInfo APIs for dynamic no-passing zones
 - 2026-09-13 mapInfo: Parse map overlays from the /map/info JSON string

@@ -87,11 +87,28 @@ pnpm install
 pnpm build
 ```
 
-To recompile protobuf definitions:
+## Protobuf definitions
+
+The `.proto` files under `src/proto/` are mirrored from the robot's `ax_msgs` ROS package, which is the single source of truth, and `generated.js` +
+`generated.d.ts` are committed alongside them. `pnpm proto` mirrors the upstream
+tree and recompiles in one step, so the compile never runs against a stale copy:
 
 ```bash
-pnpm proto
+pnpm proto                    # mirror the sources, then recompile
+pnpm proto --from <dir>       # read the protos from another checkout
+pnpm proto --check            # report drift only; exits 1, writes nothing
 ```
+
+The protos are read from `$AXBOT_PROTO_SRC` when set, otherwise from the default
+local checkout; `--from <dir>` overrides both. Run it from this package or from
+the workspace root.
+
+`--check` compares both the mirrored sources and the committed `generated.*`
+against upstream and exits non-zero on any difference, so it can gate CI. If a
+proto was removed upstream, the local copy is reported as `unknown` and left in
+place rather than deleted — remove it by hand once you have confirmed it is gone.
+When the source directory is unavailable, `pnpm proto` warns and compiles the
+local copy as-is; `--check` and an explicit `--from` still fail.
 
 ## Demo
 

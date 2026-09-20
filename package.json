@@ -124,7 +124,7 @@
   "scripts": {
     "build": "tsc && node scripts/postbuild.mjs",
     "typecheck": "tsc --noEmit",
-    "proto": "node scripts/compile-proto.mjs",
+    "proto": "node scripts/proto.mjs",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
