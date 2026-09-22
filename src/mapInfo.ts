@@ -8,7 +8,7 @@ import { pointInPolygon } from './utils';
 // Minimal Pose type used by map features
 export interface Pose2 {
   pos: { x: number; y: number };
-  ori: number;
+  ori?: number;
 }
 
 export enum MapFeatureType {
@@ -58,7 +58,8 @@ export class MapFeature {
       return null;
     }
 
-    const point = new MapPoint(MapPointType.otherCatering, name, url, x, y, 0);
+    // No orientation: the user picked a bare coordinate, not a mapped POI.
+    const point = new MapPoint(MapPointType.otherCatering, name, url, x, y);
     point.rawProperties = {};
     return point;
   }
@@ -184,7 +185,7 @@ export class MapPoint extends MapFeature {
     public id: string,
     x: number,
     y: number,
-    ori: number,
+    ori?: number,
   ) {
     super(MapFeatureType.point, id);
     this.pose = { pos: { x, y }, ori };
