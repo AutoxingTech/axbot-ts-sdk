@@ -213,7 +213,7 @@ export class RobotApi {
     url: string,
     data: any,
     signal?: AbortSignal,
-    opts?: { accept?: AcceptType },
+    opts?: { accept?: AcceptType; headers?: Record<string, string> },
   ): Promise<Response> {
     const base = this.getConfig().getApiBase();
     const fullUrl = `${base}/${url}`;
@@ -224,14 +224,18 @@ export class RobotApi {
     if (method === 'GET' || method === 'DELETE') {
       res = await fetch(fullUrl, {
         method,
-        headers: accept ? { Accept: accept } : {},
+        headers: { ...(accept ? { Accept: accept } : {}), ...opts?.headers },
         credentials: 'include',
         signal,
       });
     } else {
       res = await fetch(fullUrl, {
         method,
-        headers: { ...(accept ? { Accept: accept } : {}), 'Content-Type': 'application/json' },
+        headers: {
+          ...(accept ? { Accept: accept } : {}),
+          'Content-Type': 'application/json',
+          ...opts?.headers,
+        },
         credentials: 'include',
         body: JSON.stringify(data),
         signal,
@@ -241,8 +245,13 @@ export class RobotApi {
     return res;
   }
 
-  protected async patchImpl(url: string, data: any, signal?: AbortSignal): Promise<Response> {
-    return this.doRequest('PATCH', url, data, signal);
+  protected async patchImpl(
+    url: string,
+    data: any,
+    signal?: AbortSignal,
+    opts?: { headers?: Record<string, string> },
+  ): Promise<Response> {
+    return this.doRequest('PATCH', url, data, signal, opts);
   }
 
   protected async putImpl(url: string, data: any, signal?: AbortSignal): Promise<Response> {
@@ -1135,8 +1144,13 @@ export class RobotApi {
   /**
    * Patch user settings on the robot.
    */
-  async patchUserSettings(changes: Record<string, any>): Promise<Response> {
-    return this.patchImpl('system/settings/user', changes);
+  async patchUserSettings(changes: Record<string, any>, etag?: string | null): Promise<Response> {
+    return this.patchImpl(
+      'system/settings/user',
+      changes,
+      undefined,
+      etag ? { headers: { 'If-Match': etag } } : undefined,
+    );
   }
 
   /**
