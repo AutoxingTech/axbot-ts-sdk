@@ -932,6 +932,18 @@ export class RobotApi {
   }
 
   /**
+   * Take the current mast height as the new 0 m tick base.
+   * POST /ros/jack_mast/calibrate_mast_tick_base — proxies to the /calibrate_mast_tick_base ROS service.
+   */
+  async calibrateMastTickBase(): Promise<boolean> {
+    return this.apiCall(
+      () => this.postImpl('ros/jack_mast/calibrate_mast_tick_base', {}),
+      'Mast Tick Base Calibration',
+      false,
+    );
+  }
+
+  /**
    * List all bag files.
    */
   async getBags(): Promise<BagItem[]> {
