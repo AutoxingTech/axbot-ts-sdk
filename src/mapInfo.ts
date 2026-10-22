@@ -291,6 +291,7 @@ export class MapInfo {
   rackDetectionPoints: MapPoint[] = [];
   rackZones: RackZonePolygon[] = [];
   barcodes: MapPoint[] = [];
+  truckPoints: MapPoint[] = [];
   barcodeAssociatedPois: MapPoint[] = [];
   landmarks: MapPoint[] = [];
 
@@ -358,6 +359,9 @@ export class MapInfo {
       case MapPointType.barcode:
         obj.barcodeId = feature.properties.barcodeId;
         this.barcodes.push(obj);
+        break;
+      case MapPointType.truckPoint:
+        this.truckPoints.push(obj);
         break;
       case MapPointType.landmark:
         obj.landmarkId = feature.properties.landmarkId;
