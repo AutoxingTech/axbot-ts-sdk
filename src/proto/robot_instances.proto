@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// 单个实例的注册条目
+message RobotInstance {
+    string instance_id = 1;
+    string type = 2;
+}
+
+// 单个 node 可一次注册其发布的所有实例
+message RobotInstances {
+    string source_id = 1;
+    repeated RobotInstance instances = 2;
+}

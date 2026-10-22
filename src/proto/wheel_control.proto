@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "header.proto";
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// Wheeled base control and feedback.
+
+// Constant-speed command. No execution duration: it stays in effect until the next
+// command or a timeout stop overrides it.
+message WheelControlCommand {
+    Header header = 1;  // seq/stamp order the commands; frame_id is the robot base frame
+
+    // true = request drive enable (wheels can be driven); false = request release
+    // (free wheels, stopping only by friction).
+    bool wheel_enabled = 2;
+
+    oneof model {
+        DifferentialDriveCommand differential = 3;
+        TricycleDriveCommand tricycle = 4;
+    }
+}
+
+// Wheeled base state feedback.
+message WheelControlState {
+    Header header = 1;
+
+    // Actual drive enable state. May differ from the requested
+    // WheelControlCommand.wheel_enabled (hardware degradation, manual mode, ...);
+    // this field is authoritative.
+    bool wheel_enabled = 2;
+
+    // true = emergency stop is pressed and the drive is cut.
+    bool emergency_stop = 3;
+
+    // Same model as the most recent WheelControlCommand; the oneof case follows it.
+    oneof model {
+        DifferentialDriveState differential = 4;
+        TricycleDriveState tricycle = 5;
+    }
+}
+
+// Differential drive: left and right wheels driven independently.
+message DifferentialDriveCommand {
+    float target_left_rpm  = 1;
+    float target_right_rpm = 2;
+}
+
+message DifferentialDriveState {
+    float left_rpm  = 1;
+    float right_rpm = 2;
+}
+
+// Tricycle drive: only the front wheel is controllable (speed + steer angle).
+// The rear wheels are fixed casters and are not reported separately.
+message TricycleDriveCommand {
+    float target_steer_angle_rad = 1;
+    float target_rpm             = 2;
+}
+
+message TricycleDriveState {
+    float steer_angle_rad = 1;
+    float rpm             = 2;
+}

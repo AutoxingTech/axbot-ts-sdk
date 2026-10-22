@@ -6,17 +6,13 @@ import "annotations.proto";
 
 option optimize_for = SPEED;
 
-// Mirrors ax_msgs/MoveFailReason. Numeric enum values are kept identical to the
+// Replace ax_msgs/MoveFailReason. Numeric enum values are kept identical to the
 // .msg constants so raw-int consumers behave the same.
 //
-// The .msg is still in use elsewhere, so both are kept in sync for now; the
-// .msg is meant to be deleted once every consumer has moved over. The
+// Anyone who is still using the .msg, should move to the proto immediately.
 // `display_text` option carries the text the .msg held as a `#` comment, so
 // consumers no longer have to read the .msg at runtime.
 //
-// planning has its own MoveFailReason enum with two codes the .msg never
-// carried (22 docking_heading_deviation_too_large, 703
-// barcode_docking_route_failed); those reach the wire as unknown enum values.
 message MoveFailReason {
     enum Type {
         NONE = 0;
@@ -96,6 +92,13 @@ message MoveFailReason {
         POI_DETECTION_ERROR = 700 [(display_text) = "未识别到 POI"];
         POI_UNREACHABLE = 701 [(display_text) = "无法到达 POI"];
         BARCODE_DETECTION_ERROR = 702 [(display_text) = "未识别到 barcode"];
+
+        // truck loading/unloading
+        NOT_AT_TRUCK_GROUND_POINT = 800 [(display_text) = "不在货车候车点"];
+        LIFTGATE_WAIT_TIMEOUT = 801 [(display_text) = "等待货车尾板超时"];
+        JACK_OPERATION_FAILED = 802 [(display_text) = "顶升升降失败或超时"];
+        LOAD_IN_JACK_DOWN_STATE = 803 [(display_text) = "执行卡车装货时顶升处于降下状态"];
+        UNLOAD_IN_JACK_UP_STATE = 804 [(display_text) = "执行卡车卸货时顶升处于升起状态"];
 
         PLATFORM_ALERT_ERROR = 1000 [(display_text) = "系统异常"];
         SERVICE_CALL_ERROR = 1001 [(display_text) = "请求规控服务异常（restapi 使用）"];

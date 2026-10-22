@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "header.proto";
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// IMU samples as the device reports them: gyro and accel in the IMU frame (not the
+// robot base frame). The two messages differ only in their timestamp.
+
+// Raw device output. Carries the device's own clock and no Header, since only the
+// MCU knows when the sample was taken.
+message RawImu {
+    // Nanosecond count from the IMU's own MCU clock, passed through unmodified.
+    // Device domain, NOT epoch: it starts at MCU boot and is unrelated to the host
+    // clock. The host maps it to a Header timestamp via a sync offset.
+    int64 mcu_stamp_nsec = 1;
+
+    float gx = 2;  // gyro X, rad/s
+    float gy = 3;  // gyro Y, rad/s
+    float gz = 4;  // gyro Z, rad/s
+
+    float ax = 5;  // accel X, m/s^2
+    float ay = 6;  // accel Y, m/s^2
+    float az = 7;  // accel Z, m/s^2
+}
+
+// Host-side sample, stamped on the host clock.
+message Imu {
+    Header header = 1;
+
+    float gx = 2;  // gyro X, rad/s
+    float gy = 3;  // gyro Y, rad/s
+    float gz = 4;  // gyro Z, rad/s
+
+    float ax = 5;  // accel X, m/s^2
+    float ay = 6;  // accel Y, m/s^2
+    float az = 7;  // accel Z, m/s^2
+}

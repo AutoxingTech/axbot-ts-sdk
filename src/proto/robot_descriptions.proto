@@ -1,0 +1,13 @@
+syntax = "proto3";
+package ax_proto_msgs;
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+message RobotDescription {
+    string type = 1;
+    string yaml = 2;
+}
+message RobotDescriptions {
+    string source_id = 1;
+    repeated RobotDescription models = 2;
+}

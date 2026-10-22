@@ -15,3 +15,42 @@ message Pose {
     double qz = 6;
     double qw = 7;
 }
+
+// Mirrors geometry_msgs/Vector3, once at double precision and once at float
+// precision. A payload that keeps ROS precision uses Vector3d; one that only
+// feeds rendering may use Vector3f to halve the bytes on the wire.
+message Vector3d {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+}
+
+message Vector3f {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+// Mirrors geometry_msgs/Quaternion, at the same two precisions. Quatd is the
+// normal form; Quatf halves the bytes where a rotation only feeds rendering.
+message Quatd {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double w = 4;
+}
+
+message Quatf {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float w = 4;
+}
+
+// Mirrors geometry_msgs/Transform. Translation keeps ROS precision; the
+// rotation is sent at float precision, which no frontend transform consumer can
+// tell apart and which halves the bytes of a topic published at 10 Hz.
+message Transform {
+    Vector3d translation = 1;
+    Quatf rotation = 2;
+}

@@ -1,0 +1,39 @@
+syntax = "proto3";
+package ax_proto_msgs;
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+message BindingTranslation {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+message BindingRotation {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float w = 4;
+}
+message BindingPose {
+    BindingTranslation translation = 1;
+    BindingRotation rotation = 2;
+}
+message RobotJointBinding {
+    enum Mode {
+        UNSPECIFIED = 0;
+        JOINT = 1;
+        TF = 2;
+    }
+    string instance_id = 1;
+    uint64 stamp_nsec = 2;
+    uint64 valid_for_nsec = 3;
+    Mode mode = 4;
+    string parent_instance_id = 5;
+    string parent_joint = 6;
+    string child_link = 7;
+    BindingPose pose = 8;
+}
+message RobotJointBindings {
+    string source_id = 1;
+    repeated RobotJointBinding bindings = 2;
+}

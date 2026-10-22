@@ -1,0 +1,19 @@
+syntax = "proto3";
+package ax_proto_msgs;
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+message JointValue {
+    string name = 1;
+    float position = 2;
+}
+message InstanceJointState {
+    string instance_id = 1;
+    uint64 stamp_nsec = 2;
+    uint64 valid_for_nsec = 3;
+    repeated JointValue joints = 4;
+}
+message JointStates {
+    string source_id = 1;
+    repeated InstanceJointState instances = 2;
+}

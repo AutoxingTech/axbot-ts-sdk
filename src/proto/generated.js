@@ -16,6 +16,258 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
      */
     const ax_proto_msgs = {};
 
+    ax_proto_msgs.BotControlState = (function() {
+
+        /**
+         * Properties of a BotControlState.
+         * @memberof ax_proto_msgs
+         * @interface IBotControlState
+         * @property {number|null} [action_id] BotControlState action_id
+         * @property {number|null} [level] BotControlState level
+         * @property {boolean|null} [task_paused] BotControlState task_paused
+         */
+
+        /**
+         * Constructs a new BotControlState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a BotControlState.
+         * @implements IBotControlState
+         * @constructor
+         * @param {ax_proto_msgs.IBotControlState=} [properties] Properties to set
+         */
+        function BotControlState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BotControlState action_id.
+         * @member {number} action_id
+         * @memberof ax_proto_msgs.BotControlState
+         * @instance
+         */
+        BotControlState.prototype.action_id = 0;
+
+        /**
+         * BotControlState level.
+         * @member {number} level
+         * @memberof ax_proto_msgs.BotControlState
+         * @instance
+         */
+        BotControlState.prototype.level = 0;
+
+        /**
+         * BotControlState task_paused.
+         * @member {boolean} task_paused
+         * @memberof ax_proto_msgs.BotControlState
+         * @instance
+         */
+        BotControlState.prototype.task_paused = false;
+
+        /**
+         * Creates a new BotControlState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {ax_proto_msgs.IBotControlState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.BotControlState} BotControlState instance
+         */
+        BotControlState.create = function create(properties) {
+            return new BotControlState(properties);
+        };
+
+        /**
+         * Encodes the specified BotControlState message. Does not implicitly {@link ax_proto_msgs.BotControlState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {ax_proto_msgs.IBotControlState} message BotControlState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotControlState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.action_id != null && Object.hasOwnProperty.call(message, "action_id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.action_id);
+            if (message.level != null && Object.hasOwnProperty.call(message, "level"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.level);
+            if (message.task_paused != null && Object.hasOwnProperty.call(message, "task_paused"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.task_paused);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BotControlState message, length delimited. Does not implicitly {@link ax_proto_msgs.BotControlState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {ax_proto_msgs.IBotControlState} message BotControlState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotControlState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BotControlState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.BotControlState} BotControlState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotControlState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.BotControlState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.action_id = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.level = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.task_paused = reader.bool();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BotControlState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.BotControlState} BotControlState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotControlState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BotControlState message.
+         * @function verify
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BotControlState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.action_id != null && message.hasOwnProperty("action_id"))
+                if (!$util.isInteger(message.action_id))
+                    return "action_id: integer expected";
+            if (message.level != null && message.hasOwnProperty("level"))
+                if (!$util.isInteger(message.level))
+                    return "level: integer expected";
+            if (message.task_paused != null && message.hasOwnProperty("task_paused"))
+                if (typeof message.task_paused !== "boolean")
+                    return "task_paused: boolean expected";
+            return null;
+        };
+
+        /**
+         * Creates a BotControlState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.BotControlState} BotControlState
+         */
+        BotControlState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.BotControlState)
+                return object;
+            let message = new $root.ax_proto_msgs.BotControlState();
+            if (object.action_id != null)
+                message.action_id = object.action_id | 0;
+            if (object.level != null)
+                message.level = object.level | 0;
+            if (object.task_paused != null)
+                message.task_paused = Boolean(object.task_paused);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BotControlState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {ax_proto_msgs.BotControlState} message BotControlState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BotControlState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.action_id = 0;
+                object.level = 0;
+                object.task_paused = false;
+            }
+            if (message.action_id != null && message.hasOwnProperty("action_id"))
+                object.action_id = message.action_id;
+            if (message.level != null && message.hasOwnProperty("level"))
+                object.level = message.level;
+            if (message.task_paused != null && message.hasOwnProperty("task_paused"))
+                object.task_paused = message.task_paused;
+            return object;
+        };
+
+        /**
+         * Converts this BotControlState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.BotControlState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BotControlState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BotControlState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.BotControlState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BotControlState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.BotControlState";
+        };
+
+        return BotControlState;
+    })();
+
     ax_proto_msgs.DepthImage = (function() {
 
         /**
@@ -515,6 +767,3257 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         })();
 
         return DepthImage;
+    })();
+
+    ax_proto_msgs.Detection2D = (function() {
+
+        /**
+         * Properties of a Detection2D.
+         * @memberof ax_proto_msgs
+         * @interface IDetection2D
+         * @property {number|Long|null} [id] Detection2D id
+         * @property {number|null} [class_id] Detection2D class_id
+         * @property {string|null} [class_name] Detection2D class_name
+         * @property {number|null} [score] Detection2D score
+         * @property {number|null} [center_x] Detection2D center_x
+         * @property {number|null} [center_y] Detection2D center_y
+         * @property {number|null} [width] Detection2D width
+         * @property {number|null} [height] Detection2D height
+         * @property {number|null} [rotation_rad] Detection2D rotation_rad
+         */
+
+        /**
+         * Constructs a new Detection2D.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Detection2D.
+         * @implements IDetection2D
+         * @constructor
+         * @param {ax_proto_msgs.IDetection2D=} [properties] Properties to set
+         */
+        function Detection2D(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Detection2D id.
+         * @member {number|Long} id
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Detection2D class_id.
+         * @member {number} class_id
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.class_id = 0;
+
+        /**
+         * Detection2D class_name.
+         * @member {string} class_name
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.class_name = "";
+
+        /**
+         * Detection2D score.
+         * @member {number} score
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.score = 0;
+
+        /**
+         * Detection2D center_x.
+         * @member {number} center_x
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.center_x = 0;
+
+        /**
+         * Detection2D center_y.
+         * @member {number} center_y
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.center_y = 0;
+
+        /**
+         * Detection2D width.
+         * @member {number} width
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.width = 0;
+
+        /**
+         * Detection2D height.
+         * @member {number} height
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.height = 0;
+
+        /**
+         * Detection2D rotation_rad.
+         * @member {number} rotation_rad
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.rotation_rad = 0;
+
+        /**
+         * Creates a new Detection2D instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {ax_proto_msgs.IDetection2D=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Detection2D} Detection2D instance
+         */
+        Detection2D.create = function create(properties) {
+            return new Detection2D(properties);
+        };
+
+        /**
+         * Encodes the specified Detection2D message. Does not implicitly {@link ax_proto_msgs.Detection2D.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {ax_proto_msgs.IDetection2D} message Detection2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection2D.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.id);
+            if (message.class_id != null && Object.hasOwnProperty.call(message, "class_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.class_id);
+            if (message.class_name != null && Object.hasOwnProperty.call(message, "class_name"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.class_name);
+            if (message.score != null && Object.hasOwnProperty.call(message, "score"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.score);
+            if (message.center_x != null && Object.hasOwnProperty.call(message, "center_x"))
+                writer.uint32(/* id 5, wireType 5 =*/45).float(message.center_x);
+            if (message.center_y != null && Object.hasOwnProperty.call(message, "center_y"))
+                writer.uint32(/* id 6, wireType 5 =*/53).float(message.center_y);
+            if (message.width != null && Object.hasOwnProperty.call(message, "width"))
+                writer.uint32(/* id 7, wireType 5 =*/61).float(message.width);
+            if (message.height != null && Object.hasOwnProperty.call(message, "height"))
+                writer.uint32(/* id 8, wireType 5 =*/69).float(message.height);
+            if (message.rotation_rad != null && Object.hasOwnProperty.call(message, "rotation_rad"))
+                writer.uint32(/* id 9, wireType 5 =*/77).float(message.rotation_rad);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Detection2D message, length delimited. Does not implicitly {@link ax_proto_msgs.Detection2D.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {ax_proto_msgs.IDetection2D} message Detection2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection2D.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Detection2D message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Detection2D} Detection2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection2D.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Detection2D();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.id = reader.uint64();
+                        break;
+                    }
+                case 2: {
+                        message.class_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.class_name = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.score = reader.float();
+                        break;
+                    }
+                case 5: {
+                        message.center_x = reader.float();
+                        break;
+                    }
+                case 6: {
+                        message.center_y = reader.float();
+                        break;
+                    }
+                case 7: {
+                        message.width = reader.float();
+                        break;
+                    }
+                case 8: {
+                        message.height = reader.float();
+                        break;
+                    }
+                case 9: {
+                        message.rotation_rad = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Detection2D message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Detection2D} Detection2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection2D.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Detection2D message.
+         * @function verify
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Detection2D.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                    return "id: integer|Long expected";
+            if (message.class_id != null && message.hasOwnProperty("class_id"))
+                if (!$util.isInteger(message.class_id))
+                    return "class_id: integer expected";
+            if (message.class_name != null && message.hasOwnProperty("class_name"))
+                if (!$util.isString(message.class_name))
+                    return "class_name: string expected";
+            if (message.score != null && message.hasOwnProperty("score"))
+                if (typeof message.score !== "number")
+                    return "score: number expected";
+            if (message.center_x != null && message.hasOwnProperty("center_x"))
+                if (typeof message.center_x !== "number")
+                    return "center_x: number expected";
+            if (message.center_y != null && message.hasOwnProperty("center_y"))
+                if (typeof message.center_y !== "number")
+                    return "center_y: number expected";
+            if (message.width != null && message.hasOwnProperty("width"))
+                if (typeof message.width !== "number")
+                    return "width: number expected";
+            if (message.height != null && message.hasOwnProperty("height"))
+                if (typeof message.height !== "number")
+                    return "height: number expected";
+            if (message.rotation_rad != null && message.hasOwnProperty("rotation_rad"))
+                if (typeof message.rotation_rad !== "number")
+                    return "rotation_rad: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Detection2D message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Detection2D} Detection2D
+         */
+        Detection2D.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Detection2D)
+                return object;
+            let message = new $root.ax_proto_msgs.Detection2D();
+            if (object.id != null)
+                if ($util.Long)
+                    (message.id = $util.Long.fromValue(object.id)).unsigned = true;
+                else if (typeof object.id === "string")
+                    message.id = parseInt(object.id, 10);
+                else if (typeof object.id === "number")
+                    message.id = object.id;
+                else if (typeof object.id === "object")
+                    message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber(true);
+            if (object.class_id != null)
+                message.class_id = object.class_id >>> 0;
+            if (object.class_name != null)
+                message.class_name = String(object.class_name);
+            if (object.score != null)
+                message.score = Number(object.score);
+            if (object.center_x != null)
+                message.center_x = Number(object.center_x);
+            if (object.center_y != null)
+                message.center_y = Number(object.center_y);
+            if (object.width != null)
+                message.width = Number(object.width);
+            if (object.height != null)
+                message.height = Number(object.height);
+            if (object.rotation_rad != null)
+                message.rotation_rad = Number(object.rotation_rad);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Detection2D message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {ax_proto_msgs.Detection2D} message Detection2D
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Detection2D.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.id = options.longs === String ? "0" : 0;
+                object.class_id = 0;
+                object.class_name = "";
+                object.score = 0;
+                object.center_x = 0;
+                object.center_y = 0;
+                object.width = 0;
+                object.height = 0;
+                object.rotation_rad = 0;
+            }
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (typeof message.id === "number")
+                    object.id = options.longs === String ? String(message.id) : message.id;
+                else
+                    object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber(true) : message.id;
+            if (message.class_id != null && message.hasOwnProperty("class_id"))
+                object.class_id = message.class_id;
+            if (message.class_name != null && message.hasOwnProperty("class_name"))
+                object.class_name = message.class_name;
+            if (message.score != null && message.hasOwnProperty("score"))
+                object.score = options.json && !isFinite(message.score) ? String(message.score) : message.score;
+            if (message.center_x != null && message.hasOwnProperty("center_x"))
+                object.center_x = options.json && !isFinite(message.center_x) ? String(message.center_x) : message.center_x;
+            if (message.center_y != null && message.hasOwnProperty("center_y"))
+                object.center_y = options.json && !isFinite(message.center_y) ? String(message.center_y) : message.center_y;
+            if (message.width != null && message.hasOwnProperty("width"))
+                object.width = options.json && !isFinite(message.width) ? String(message.width) : message.width;
+            if (message.height != null && message.hasOwnProperty("height"))
+                object.height = options.json && !isFinite(message.height) ? String(message.height) : message.height;
+            if (message.rotation_rad != null && message.hasOwnProperty("rotation_rad"))
+                object.rotation_rad = options.json && !isFinite(message.rotation_rad) ? String(message.rotation_rad) : message.rotation_rad;
+            return object;
+        };
+
+        /**
+         * Converts this Detection2D to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Detection2D.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Detection2D
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Detection2D
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Detection2D.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Detection2D";
+        };
+
+        return Detection2D;
+    })();
+
+    ax_proto_msgs.Detection2DArray = (function() {
+
+        /**
+         * Properties of a Detection2DArray.
+         * @memberof ax_proto_msgs
+         * @interface IDetection2DArray
+         * @property {ax_proto_msgs.IHeader|null} [header] Detection2DArray header
+         * @property {string|null} [class_schema] Detection2DArray class_schema
+         * @property {Array.<ax_proto_msgs.IDetection2D>|null} [detections] Detection2DArray detections
+         */
+
+        /**
+         * Constructs a new Detection2DArray.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Detection2DArray.
+         * @implements IDetection2DArray
+         * @constructor
+         * @param {ax_proto_msgs.IDetection2DArray=} [properties] Properties to set
+         */
+        function Detection2DArray(properties) {
+            this.detections = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Detection2DArray header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @instance
+         */
+        Detection2DArray.prototype.header = null;
+
+        /**
+         * Detection2DArray class_schema.
+         * @member {string} class_schema
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @instance
+         */
+        Detection2DArray.prototype.class_schema = "";
+
+        /**
+         * Detection2DArray detections.
+         * @member {Array.<ax_proto_msgs.IDetection2D>} detections
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @instance
+         */
+        Detection2DArray.prototype.detections = $util.emptyArray;
+
+        /**
+         * Creates a new Detection2DArray instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {ax_proto_msgs.IDetection2DArray=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Detection2DArray} Detection2DArray instance
+         */
+        Detection2DArray.create = function create(properties) {
+            return new Detection2DArray(properties);
+        };
+
+        /**
+         * Encodes the specified Detection2DArray message. Does not implicitly {@link ax_proto_msgs.Detection2DArray.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {ax_proto_msgs.IDetection2DArray} message Detection2DArray message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection2DArray.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.class_schema != null && Object.hasOwnProperty.call(message, "class_schema"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.class_schema);
+            if (message.detections != null && message.detections.length)
+                for (let i = 0; i < message.detections.length; ++i)
+                    $root.ax_proto_msgs.Detection2D.encode(message.detections[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Detection2DArray message, length delimited. Does not implicitly {@link ax_proto_msgs.Detection2DArray.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {ax_proto_msgs.IDetection2DArray} message Detection2DArray message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection2DArray.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Detection2DArray message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Detection2DArray} Detection2DArray
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection2DArray.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Detection2DArray();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.class_schema = reader.string();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.detections && message.detections.length))
+                            message.detections = [];
+                        message.detections.push($root.ax_proto_msgs.Detection2D.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Detection2DArray message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Detection2DArray} Detection2DArray
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection2DArray.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Detection2DArray message.
+         * @function verify
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Detection2DArray.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.class_schema != null && message.hasOwnProperty("class_schema"))
+                if (!$util.isString(message.class_schema))
+                    return "class_schema: string expected";
+            if (message.detections != null && message.hasOwnProperty("detections")) {
+                if (!Array.isArray(message.detections))
+                    return "detections: array expected";
+                for (let i = 0; i < message.detections.length; ++i) {
+                    let error = $root.ax_proto_msgs.Detection2D.verify(message.detections[i]);
+                    if (error)
+                        return "detections." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a Detection2DArray message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Detection2DArray} Detection2DArray
+         */
+        Detection2DArray.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Detection2DArray)
+                return object;
+            let message = new $root.ax_proto_msgs.Detection2DArray();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.Detection2DArray.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.class_schema != null)
+                message.class_schema = String(object.class_schema);
+            if (object.detections) {
+                if (!Array.isArray(object.detections))
+                    throw TypeError(".ax_proto_msgs.Detection2DArray.detections: array expected");
+                message.detections = [];
+                for (let i = 0; i < object.detections.length; ++i) {
+                    if (typeof object.detections[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.Detection2DArray.detections: object expected");
+                    message.detections[i] = $root.ax_proto_msgs.Detection2D.fromObject(object.detections[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Detection2DArray message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {ax_proto_msgs.Detection2DArray} message Detection2DArray
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Detection2DArray.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.detections = [];
+            if (options.defaults) {
+                object.header = null;
+                object.class_schema = "";
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.class_schema != null && message.hasOwnProperty("class_schema"))
+                object.class_schema = message.class_schema;
+            if (message.detections && message.detections.length) {
+                object.detections = [];
+                for (let j = 0; j < message.detections.length; ++j)
+                    object.detections[j] = $root.ax_proto_msgs.Detection2D.toObject(message.detections[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this Detection2DArray to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Detection2DArray.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Detection2DArray
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Detection2DArray
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Detection2DArray.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Detection2DArray";
+        };
+
+        return Detection2DArray;
+    })();
+
+    ax_proto_msgs.Header = (function() {
+
+        /**
+         * Properties of a Header.
+         * @memberof ax_proto_msgs
+         * @interface IHeader
+         * @property {number|null} [seq] Header seq
+         * @property {number|Long|null} [stamp_nsec] Header stamp_nsec
+         * @property {string|null} [frame_id] Header frame_id
+         */
+
+        /**
+         * Constructs a new Header.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Header.
+         * @implements IHeader
+         * @constructor
+         * @param {ax_proto_msgs.IHeader=} [properties] Properties to set
+         */
+        function Header(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Header seq.
+         * @member {number} seq
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         */
+        Header.prototype.seq = 0;
+
+        /**
+         * Header stamp_nsec.
+         * @member {number|Long} stamp_nsec
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         */
+        Header.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Header frame_id.
+         * @member {string} frame_id
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         */
+        Header.prototype.frame_id = "";
+
+        /**
+         * Creates a new Header instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.IHeader=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Header} Header instance
+         */
+        Header.create = function create(properties) {
+            return new Header(properties);
+        };
+
+        /**
+         * Encodes the specified Header message. Does not implicitly {@link ax_proto_msgs.Header.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.IHeader} message Header message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Header.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.seq != null && Object.hasOwnProperty.call(message, "seq"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.seq);
+            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.stamp_nsec);
+            if (message.frame_id != null && Object.hasOwnProperty.call(message, "frame_id"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.frame_id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Header message, length delimited. Does not implicitly {@link ax_proto_msgs.Header.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.IHeader} message Header message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Header.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Header message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Header} Header
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Header.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Header();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.seq = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.stamp_nsec = reader.uint64();
+                        break;
+                    }
+                case 4: {
+                        message.frame_id = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Header message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Header} Header
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Header.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Header message.
+         * @function verify
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Header.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.seq != null && message.hasOwnProperty("seq"))
+                if (!$util.isInteger(message.seq))
+                    return "seq: integer expected";
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
+                    return "stamp_nsec: integer|Long expected";
+            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
+                if (!$util.isString(message.frame_id))
+                    return "frame_id: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a Header message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Header} Header
+         */
+        Header.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Header)
+                return object;
+            let message = new $root.ax_proto_msgs.Header();
+            if (object.seq != null)
+                message.seq = object.seq >>> 0;
+            if (object.stamp_nsec != null)
+                if ($util.Long)
+                    (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
+                else if (typeof object.stamp_nsec === "string")
+                    message.stamp_nsec = parseInt(object.stamp_nsec, 10);
+                else if (typeof object.stamp_nsec === "number")
+                    message.stamp_nsec = object.stamp_nsec;
+                else if (typeof object.stamp_nsec === "object")
+                    message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
+            if (object.frame_id != null)
+                message.frame_id = String(object.frame_id);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Header message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {ax_proto_msgs.Header} message Header
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Header.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.seq = 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.stamp_nsec = options.longs === String ? "0" : 0;
+                object.frame_id = "";
+            }
+            if (message.seq != null && message.hasOwnProperty("seq"))
+                object.seq = message.seq;
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (typeof message.stamp_nsec === "number")
+                    object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
+                else
+                    object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
+            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
+                object.frame_id = message.frame_id;
+            return object;
+        };
+
+        /**
+         * Converts this Header to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Header
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Header.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Header
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Header
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Header.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Header";
+        };
+
+        return Header;
+    })();
+
+    ax_proto_msgs.Detection3D = (function() {
+
+        /**
+         * Properties of a Detection3D.
+         * @memberof ax_proto_msgs
+         * @interface IDetection3D
+         * @property {number|Long|null} [id] Detection3D id
+         * @property {number|null} [class_id] Detection3D class_id
+         * @property {string|null} [class_name] Detection3D class_name
+         * @property {number|null} [score] Detection3D score
+         * @property {ax_proto_msgs.IPose|null} [pose] Detection3D pose
+         * @property {number|null} [size_x] Detection3D size_x
+         * @property {number|null} [size_y] Detection3D size_y
+         * @property {number|null} [size_z] Detection3D size_z
+         */
+
+        /**
+         * Constructs a new Detection3D.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Detection3D.
+         * @implements IDetection3D
+         * @constructor
+         * @param {ax_proto_msgs.IDetection3D=} [properties] Properties to set
+         */
+        function Detection3D(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Detection3D id.
+         * @member {number|Long} id
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Detection3D class_id.
+         * @member {number} class_id
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.class_id = 0;
+
+        /**
+         * Detection3D class_name.
+         * @member {string} class_name
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.class_name = "";
+
+        /**
+         * Detection3D score.
+         * @member {number} score
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.score = 0;
+
+        /**
+         * Detection3D pose.
+         * @member {ax_proto_msgs.IPose|null|undefined} pose
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.pose = null;
+
+        /**
+         * Detection3D size_x.
+         * @member {number} size_x
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.size_x = 0;
+
+        /**
+         * Detection3D size_y.
+         * @member {number} size_y
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.size_y = 0;
+
+        /**
+         * Detection3D size_z.
+         * @member {number} size_z
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         */
+        Detection3D.prototype.size_z = 0;
+
+        /**
+         * Creates a new Detection3D instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {ax_proto_msgs.IDetection3D=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Detection3D} Detection3D instance
+         */
+        Detection3D.create = function create(properties) {
+            return new Detection3D(properties);
+        };
+
+        /**
+         * Encodes the specified Detection3D message. Does not implicitly {@link ax_proto_msgs.Detection3D.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {ax_proto_msgs.IDetection3D} message Detection3D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection3D.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.id);
+            if (message.class_id != null && Object.hasOwnProperty.call(message, "class_id"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.class_id);
+            if (message.class_name != null && Object.hasOwnProperty.call(message, "class_name"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.class_name);
+            if (message.score != null && Object.hasOwnProperty.call(message, "score"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.score);
+            if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
+                $root.ax_proto_msgs.Pose.encode(message.pose, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+            if (message.size_x != null && Object.hasOwnProperty.call(message, "size_x"))
+                writer.uint32(/* id 6, wireType 5 =*/53).float(message.size_x);
+            if (message.size_y != null && Object.hasOwnProperty.call(message, "size_y"))
+                writer.uint32(/* id 7, wireType 5 =*/61).float(message.size_y);
+            if (message.size_z != null && Object.hasOwnProperty.call(message, "size_z"))
+                writer.uint32(/* id 8, wireType 5 =*/69).float(message.size_z);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Detection3D message, length delimited. Does not implicitly {@link ax_proto_msgs.Detection3D.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {ax_proto_msgs.IDetection3D} message Detection3D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection3D.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Detection3D message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Detection3D} Detection3D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection3D.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Detection3D();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.id = reader.uint64();
+                        break;
+                    }
+                case 2: {
+                        message.class_id = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.class_name = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.score = reader.float();
+                        break;
+                    }
+                case 5: {
+                        message.pose = $root.ax_proto_msgs.Pose.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 6: {
+                        message.size_x = reader.float();
+                        break;
+                    }
+                case 7: {
+                        message.size_y = reader.float();
+                        break;
+                    }
+                case 8: {
+                        message.size_z = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Detection3D message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Detection3D} Detection3D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection3D.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Detection3D message.
+         * @function verify
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Detection3D.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                    return "id: integer|Long expected";
+            if (message.class_id != null && message.hasOwnProperty("class_id"))
+                if (!$util.isInteger(message.class_id))
+                    return "class_id: integer expected";
+            if (message.class_name != null && message.hasOwnProperty("class_name"))
+                if (!$util.isString(message.class_name))
+                    return "class_name: string expected";
+            if (message.score != null && message.hasOwnProperty("score"))
+                if (typeof message.score !== "number")
+                    return "score: number expected";
+            if (message.pose != null && message.hasOwnProperty("pose")) {
+                let error = $root.ax_proto_msgs.Pose.verify(message.pose);
+                if (error)
+                    return "pose." + error;
+            }
+            if (message.size_x != null && message.hasOwnProperty("size_x"))
+                if (typeof message.size_x !== "number")
+                    return "size_x: number expected";
+            if (message.size_y != null && message.hasOwnProperty("size_y"))
+                if (typeof message.size_y !== "number")
+                    return "size_y: number expected";
+            if (message.size_z != null && message.hasOwnProperty("size_z"))
+                if (typeof message.size_z !== "number")
+                    return "size_z: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Detection3D message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Detection3D} Detection3D
+         */
+        Detection3D.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Detection3D)
+                return object;
+            let message = new $root.ax_proto_msgs.Detection3D();
+            if (object.id != null)
+                if ($util.Long)
+                    (message.id = $util.Long.fromValue(object.id)).unsigned = true;
+                else if (typeof object.id === "string")
+                    message.id = parseInt(object.id, 10);
+                else if (typeof object.id === "number")
+                    message.id = object.id;
+                else if (typeof object.id === "object")
+                    message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber(true);
+            if (object.class_id != null)
+                message.class_id = object.class_id >>> 0;
+            if (object.class_name != null)
+                message.class_name = String(object.class_name);
+            if (object.score != null)
+                message.score = Number(object.score);
+            if (object.pose != null) {
+                if (typeof object.pose !== "object")
+                    throw TypeError(".ax_proto_msgs.Detection3D.pose: object expected");
+                message.pose = $root.ax_proto_msgs.Pose.fromObject(object.pose);
+            }
+            if (object.size_x != null)
+                message.size_x = Number(object.size_x);
+            if (object.size_y != null)
+                message.size_y = Number(object.size_y);
+            if (object.size_z != null)
+                message.size_z = Number(object.size_z);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Detection3D message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {ax_proto_msgs.Detection3D} message Detection3D
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Detection3D.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.id = options.longs === String ? "0" : 0;
+                object.class_id = 0;
+                object.class_name = "";
+                object.score = 0;
+                object.pose = null;
+                object.size_x = 0;
+                object.size_y = 0;
+                object.size_z = 0;
+            }
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (typeof message.id === "number")
+                    object.id = options.longs === String ? String(message.id) : message.id;
+                else
+                    object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber(true) : message.id;
+            if (message.class_id != null && message.hasOwnProperty("class_id"))
+                object.class_id = message.class_id;
+            if (message.class_name != null && message.hasOwnProperty("class_name"))
+                object.class_name = message.class_name;
+            if (message.score != null && message.hasOwnProperty("score"))
+                object.score = options.json && !isFinite(message.score) ? String(message.score) : message.score;
+            if (message.pose != null && message.hasOwnProperty("pose"))
+                object.pose = $root.ax_proto_msgs.Pose.toObject(message.pose, options);
+            if (message.size_x != null && message.hasOwnProperty("size_x"))
+                object.size_x = options.json && !isFinite(message.size_x) ? String(message.size_x) : message.size_x;
+            if (message.size_y != null && message.hasOwnProperty("size_y"))
+                object.size_y = options.json && !isFinite(message.size_y) ? String(message.size_y) : message.size_y;
+            if (message.size_z != null && message.hasOwnProperty("size_z"))
+                object.size_z = options.json && !isFinite(message.size_z) ? String(message.size_z) : message.size_z;
+            return object;
+        };
+
+        /**
+         * Converts this Detection3D to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Detection3D
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Detection3D.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Detection3D
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Detection3D
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Detection3D.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Detection3D";
+        };
+
+        return Detection3D;
+    })();
+
+    ax_proto_msgs.Detection3DArray = (function() {
+
+        /**
+         * Properties of a Detection3DArray.
+         * @memberof ax_proto_msgs
+         * @interface IDetection3DArray
+         * @property {ax_proto_msgs.IHeader|null} [header] Detection3DArray header
+         * @property {string|null} [class_schema] Detection3DArray class_schema
+         * @property {Array.<ax_proto_msgs.IDetection3D>|null} [detections] Detection3DArray detections
+         */
+
+        /**
+         * Constructs a new Detection3DArray.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Detection3DArray.
+         * @implements IDetection3DArray
+         * @constructor
+         * @param {ax_proto_msgs.IDetection3DArray=} [properties] Properties to set
+         */
+        function Detection3DArray(properties) {
+            this.detections = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Detection3DArray header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @instance
+         */
+        Detection3DArray.prototype.header = null;
+
+        /**
+         * Detection3DArray class_schema.
+         * @member {string} class_schema
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @instance
+         */
+        Detection3DArray.prototype.class_schema = "";
+
+        /**
+         * Detection3DArray detections.
+         * @member {Array.<ax_proto_msgs.IDetection3D>} detections
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @instance
+         */
+        Detection3DArray.prototype.detections = $util.emptyArray;
+
+        /**
+         * Creates a new Detection3DArray instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {ax_proto_msgs.IDetection3DArray=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Detection3DArray} Detection3DArray instance
+         */
+        Detection3DArray.create = function create(properties) {
+            return new Detection3DArray(properties);
+        };
+
+        /**
+         * Encodes the specified Detection3DArray message. Does not implicitly {@link ax_proto_msgs.Detection3DArray.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {ax_proto_msgs.IDetection3DArray} message Detection3DArray message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection3DArray.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.class_schema != null && Object.hasOwnProperty.call(message, "class_schema"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.class_schema);
+            if (message.detections != null && message.detections.length)
+                for (let i = 0; i < message.detections.length; ++i)
+                    $root.ax_proto_msgs.Detection3D.encode(message.detections[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Detection3DArray message, length delimited. Does not implicitly {@link ax_proto_msgs.Detection3DArray.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {ax_proto_msgs.IDetection3DArray} message Detection3DArray message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Detection3DArray.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Detection3DArray message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Detection3DArray} Detection3DArray
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection3DArray.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Detection3DArray();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.class_schema = reader.string();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.detections && message.detections.length))
+                            message.detections = [];
+                        message.detections.push($root.ax_proto_msgs.Detection3D.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Detection3DArray message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Detection3DArray} Detection3DArray
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Detection3DArray.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Detection3DArray message.
+         * @function verify
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Detection3DArray.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.class_schema != null && message.hasOwnProperty("class_schema"))
+                if (!$util.isString(message.class_schema))
+                    return "class_schema: string expected";
+            if (message.detections != null && message.hasOwnProperty("detections")) {
+                if (!Array.isArray(message.detections))
+                    return "detections: array expected";
+                for (let i = 0; i < message.detections.length; ++i) {
+                    let error = $root.ax_proto_msgs.Detection3D.verify(message.detections[i]);
+                    if (error)
+                        return "detections." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a Detection3DArray message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Detection3DArray} Detection3DArray
+         */
+        Detection3DArray.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Detection3DArray)
+                return object;
+            let message = new $root.ax_proto_msgs.Detection3DArray();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.Detection3DArray.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.class_schema != null)
+                message.class_schema = String(object.class_schema);
+            if (object.detections) {
+                if (!Array.isArray(object.detections))
+                    throw TypeError(".ax_proto_msgs.Detection3DArray.detections: array expected");
+                message.detections = [];
+                for (let i = 0; i < object.detections.length; ++i) {
+                    if (typeof object.detections[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.Detection3DArray.detections: object expected");
+                    message.detections[i] = $root.ax_proto_msgs.Detection3D.fromObject(object.detections[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Detection3DArray message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {ax_proto_msgs.Detection3DArray} message Detection3DArray
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Detection3DArray.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.detections = [];
+            if (options.defaults) {
+                object.header = null;
+                object.class_schema = "";
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.class_schema != null && message.hasOwnProperty("class_schema"))
+                object.class_schema = message.class_schema;
+            if (message.detections && message.detections.length) {
+                object.detections = [];
+                for (let j = 0; j < message.detections.length; ++j)
+                    object.detections[j] = $root.ax_proto_msgs.Detection3D.toObject(message.detections[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this Detection3DArray to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Detection3DArray.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Detection3DArray
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Detection3DArray
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Detection3DArray.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Detection3DArray";
+        };
+
+        return Detection3DArray;
+    })();
+
+    ax_proto_msgs.Pose = (function() {
+
+        /**
+         * Properties of a Pose.
+         * @memberof ax_proto_msgs
+         * @interface IPose
+         * @property {number|null} [x] Pose x
+         * @property {number|null} [y] Pose y
+         * @property {number|null} [z] Pose z
+         * @property {number|null} [qx] Pose qx
+         * @property {number|null} [qy] Pose qy
+         * @property {number|null} [qz] Pose qz
+         * @property {number|null} [qw] Pose qw
+         */
+
+        /**
+         * Constructs a new Pose.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Pose.
+         * @implements IPose
+         * @constructor
+         * @param {ax_proto_msgs.IPose=} [properties] Properties to set
+         */
+        function Pose(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Pose x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.x = 0;
+
+        /**
+         * Pose y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.y = 0;
+
+        /**
+         * Pose z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.z = 0;
+
+        /**
+         * Pose qx.
+         * @member {number} qx
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.qx = 0;
+
+        /**
+         * Pose qy.
+         * @member {number} qy
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.qy = 0;
+
+        /**
+         * Pose qz.
+         * @member {number} qz
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.qz = 0;
+
+        /**
+         * Pose qw.
+         * @member {number} qw
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         */
+        Pose.prototype.qw = 0;
+
+        /**
+         * Creates a new Pose instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {ax_proto_msgs.IPose=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Pose} Pose instance
+         */
+        Pose.create = function create(properties) {
+            return new Pose(properties);
+        };
+
+        /**
+         * Encodes the specified Pose message. Does not implicitly {@link ax_proto_msgs.Pose.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {ax_proto_msgs.IPose} message Pose message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Pose.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 1 =*/9).double(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 1 =*/17).double(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 1 =*/25).double(message.z);
+            if (message.qx != null && Object.hasOwnProperty.call(message, "qx"))
+                writer.uint32(/* id 4, wireType 1 =*/33).double(message.qx);
+            if (message.qy != null && Object.hasOwnProperty.call(message, "qy"))
+                writer.uint32(/* id 5, wireType 1 =*/41).double(message.qy);
+            if (message.qz != null && Object.hasOwnProperty.call(message, "qz"))
+                writer.uint32(/* id 6, wireType 1 =*/49).double(message.qz);
+            if (message.qw != null && Object.hasOwnProperty.call(message, "qw"))
+                writer.uint32(/* id 7, wireType 1 =*/57).double(message.qw);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Pose message, length delimited. Does not implicitly {@link ax_proto_msgs.Pose.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {ax_proto_msgs.IPose} message Pose message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Pose.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Pose message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Pose} Pose
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Pose.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Pose();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.double();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.double();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.double();
+                        break;
+                    }
+                case 4: {
+                        message.qx = reader.double();
+                        break;
+                    }
+                case 5: {
+                        message.qy = reader.double();
+                        break;
+                    }
+                case 6: {
+                        message.qz = reader.double();
+                        break;
+                    }
+                case 7: {
+                        message.qw = reader.double();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Pose message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Pose} Pose
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Pose.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Pose message.
+         * @function verify
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Pose.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            if (message.qx != null && message.hasOwnProperty("qx"))
+                if (typeof message.qx !== "number")
+                    return "qx: number expected";
+            if (message.qy != null && message.hasOwnProperty("qy"))
+                if (typeof message.qy !== "number")
+                    return "qy: number expected";
+            if (message.qz != null && message.hasOwnProperty("qz"))
+                if (typeof message.qz !== "number")
+                    return "qz: number expected";
+            if (message.qw != null && message.hasOwnProperty("qw"))
+                if (typeof message.qw !== "number")
+                    return "qw: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Pose message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Pose} Pose
+         */
+        Pose.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Pose)
+                return object;
+            let message = new $root.ax_proto_msgs.Pose();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            if (object.qx != null)
+                message.qx = Number(object.qx);
+            if (object.qy != null)
+                message.qy = Number(object.qy);
+            if (object.qz != null)
+                message.qz = Number(object.qz);
+            if (object.qw != null)
+                message.qw = Number(object.qw);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Pose message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {ax_proto_msgs.Pose} message Pose
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Pose.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+                object.qx = 0;
+                object.qy = 0;
+                object.qz = 0;
+                object.qw = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            if (message.qx != null && message.hasOwnProperty("qx"))
+                object.qx = options.json && !isFinite(message.qx) ? String(message.qx) : message.qx;
+            if (message.qy != null && message.hasOwnProperty("qy"))
+                object.qy = options.json && !isFinite(message.qy) ? String(message.qy) : message.qy;
+            if (message.qz != null && message.hasOwnProperty("qz"))
+                object.qz = options.json && !isFinite(message.qz) ? String(message.qz) : message.qz;
+            if (message.qw != null && message.hasOwnProperty("qw"))
+                object.qw = options.json && !isFinite(message.qw) ? String(message.qw) : message.qw;
+            return object;
+        };
+
+        /**
+         * Converts this Pose to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Pose
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Pose.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Pose
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Pose
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Pose.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Pose";
+        };
+
+        return Pose;
+    })();
+
+    ax_proto_msgs.Vector3d = (function() {
+
+        /**
+         * Properties of a Vector3d.
+         * @memberof ax_proto_msgs
+         * @interface IVector3d
+         * @property {number|null} [x] Vector3d x
+         * @property {number|null} [y] Vector3d y
+         * @property {number|null} [z] Vector3d z
+         */
+
+        /**
+         * Constructs a new Vector3d.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Vector3d.
+         * @implements IVector3d
+         * @constructor
+         * @param {ax_proto_msgs.IVector3d=} [properties] Properties to set
+         */
+        function Vector3d(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Vector3d x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Vector3d
+         * @instance
+         */
+        Vector3d.prototype.x = 0;
+
+        /**
+         * Vector3d y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Vector3d
+         * @instance
+         */
+        Vector3d.prototype.y = 0;
+
+        /**
+         * Vector3d z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.Vector3d
+         * @instance
+         */
+        Vector3d.prototype.z = 0;
+
+        /**
+         * Creates a new Vector3d instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {ax_proto_msgs.IVector3d=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Vector3d} Vector3d instance
+         */
+        Vector3d.create = function create(properties) {
+            return new Vector3d(properties);
+        };
+
+        /**
+         * Encodes the specified Vector3d message. Does not implicitly {@link ax_proto_msgs.Vector3d.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {ax_proto_msgs.IVector3d} message Vector3d message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Vector3d.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 1 =*/9).double(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 1 =*/17).double(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 1 =*/25).double(message.z);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Vector3d message, length delimited. Does not implicitly {@link ax_proto_msgs.Vector3d.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {ax_proto_msgs.IVector3d} message Vector3d message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Vector3d.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Vector3d message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Vector3d} Vector3d
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Vector3d.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Vector3d();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.double();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.double();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.double();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Vector3d message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Vector3d} Vector3d
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Vector3d.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Vector3d message.
+         * @function verify
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Vector3d.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Vector3d message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Vector3d} Vector3d
+         */
+        Vector3d.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Vector3d)
+                return object;
+            let message = new $root.ax_proto_msgs.Vector3d();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Vector3d message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {ax_proto_msgs.Vector3d} message Vector3d
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Vector3d.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            return object;
+        };
+
+        /**
+         * Converts this Vector3d to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Vector3d
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Vector3d.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Vector3d
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Vector3d
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Vector3d.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Vector3d";
+        };
+
+        return Vector3d;
+    })();
+
+    ax_proto_msgs.Vector3f = (function() {
+
+        /**
+         * Properties of a Vector3f.
+         * @memberof ax_proto_msgs
+         * @interface IVector3f
+         * @property {number|null} [x] Vector3f x
+         * @property {number|null} [y] Vector3f y
+         * @property {number|null} [z] Vector3f z
+         */
+
+        /**
+         * Constructs a new Vector3f.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Vector3f.
+         * @implements IVector3f
+         * @constructor
+         * @param {ax_proto_msgs.IVector3f=} [properties] Properties to set
+         */
+        function Vector3f(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Vector3f x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Vector3f
+         * @instance
+         */
+        Vector3f.prototype.x = 0;
+
+        /**
+         * Vector3f y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Vector3f
+         * @instance
+         */
+        Vector3f.prototype.y = 0;
+
+        /**
+         * Vector3f z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.Vector3f
+         * @instance
+         */
+        Vector3f.prototype.z = 0;
+
+        /**
+         * Creates a new Vector3f instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {ax_proto_msgs.IVector3f=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Vector3f} Vector3f instance
+         */
+        Vector3f.create = function create(properties) {
+            return new Vector3f(properties);
+        };
+
+        /**
+         * Encodes the specified Vector3f message. Does not implicitly {@link ax_proto_msgs.Vector3f.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {ax_proto_msgs.IVector3f} message Vector3f message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Vector3f.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.z);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Vector3f message, length delimited. Does not implicitly {@link ax_proto_msgs.Vector3f.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {ax_proto_msgs.IVector3f} message Vector3f message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Vector3f.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Vector3f message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Vector3f} Vector3f
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Vector3f.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Vector3f();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Vector3f message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Vector3f} Vector3f
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Vector3f.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Vector3f message.
+         * @function verify
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Vector3f.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Vector3f message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Vector3f} Vector3f
+         */
+        Vector3f.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Vector3f)
+                return object;
+            let message = new $root.ax_proto_msgs.Vector3f();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Vector3f message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {ax_proto_msgs.Vector3f} message Vector3f
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Vector3f.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            return object;
+        };
+
+        /**
+         * Converts this Vector3f to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Vector3f
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Vector3f.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Vector3f
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Vector3f
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Vector3f.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Vector3f";
+        };
+
+        return Vector3f;
+    })();
+
+    ax_proto_msgs.Quatd = (function() {
+
+        /**
+         * Properties of a Quatd.
+         * @memberof ax_proto_msgs
+         * @interface IQuatd
+         * @property {number|null} [x] Quatd x
+         * @property {number|null} [y] Quatd y
+         * @property {number|null} [z] Quatd z
+         * @property {number|null} [w] Quatd w
+         */
+
+        /**
+         * Constructs a new Quatd.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Quatd.
+         * @implements IQuatd
+         * @constructor
+         * @param {ax_proto_msgs.IQuatd=} [properties] Properties to set
+         */
+        function Quatd(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Quatd x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Quatd
+         * @instance
+         */
+        Quatd.prototype.x = 0;
+
+        /**
+         * Quatd y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Quatd
+         * @instance
+         */
+        Quatd.prototype.y = 0;
+
+        /**
+         * Quatd z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.Quatd
+         * @instance
+         */
+        Quatd.prototype.z = 0;
+
+        /**
+         * Quatd w.
+         * @member {number} w
+         * @memberof ax_proto_msgs.Quatd
+         * @instance
+         */
+        Quatd.prototype.w = 0;
+
+        /**
+         * Creates a new Quatd instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {ax_proto_msgs.IQuatd=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Quatd} Quatd instance
+         */
+        Quatd.create = function create(properties) {
+            return new Quatd(properties);
+        };
+
+        /**
+         * Encodes the specified Quatd message. Does not implicitly {@link ax_proto_msgs.Quatd.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {ax_proto_msgs.IQuatd} message Quatd message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Quatd.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 1 =*/9).double(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 1 =*/17).double(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 1 =*/25).double(message.z);
+            if (message.w != null && Object.hasOwnProperty.call(message, "w"))
+                writer.uint32(/* id 4, wireType 1 =*/33).double(message.w);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Quatd message, length delimited. Does not implicitly {@link ax_proto_msgs.Quatd.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {ax_proto_msgs.IQuatd} message Quatd message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Quatd.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Quatd message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Quatd} Quatd
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Quatd.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Quatd();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.double();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.double();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.double();
+                        break;
+                    }
+                case 4: {
+                        message.w = reader.double();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Quatd message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Quatd} Quatd
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Quatd.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Quatd message.
+         * @function verify
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Quatd.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            if (message.w != null && message.hasOwnProperty("w"))
+                if (typeof message.w !== "number")
+                    return "w: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Quatd message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Quatd} Quatd
+         */
+        Quatd.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Quatd)
+                return object;
+            let message = new $root.ax_proto_msgs.Quatd();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            if (object.w != null)
+                message.w = Number(object.w);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Quatd message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {ax_proto_msgs.Quatd} message Quatd
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Quatd.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+                object.w = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            if (message.w != null && message.hasOwnProperty("w"))
+                object.w = options.json && !isFinite(message.w) ? String(message.w) : message.w;
+            return object;
+        };
+
+        /**
+         * Converts this Quatd to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Quatd
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Quatd.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Quatd
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Quatd
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Quatd.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Quatd";
+        };
+
+        return Quatd;
+    })();
+
+    ax_proto_msgs.Quatf = (function() {
+
+        /**
+         * Properties of a Quatf.
+         * @memberof ax_proto_msgs
+         * @interface IQuatf
+         * @property {number|null} [x] Quatf x
+         * @property {number|null} [y] Quatf y
+         * @property {number|null} [z] Quatf z
+         * @property {number|null} [w] Quatf w
+         */
+
+        /**
+         * Constructs a new Quatf.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Quatf.
+         * @implements IQuatf
+         * @constructor
+         * @param {ax_proto_msgs.IQuatf=} [properties] Properties to set
+         */
+        function Quatf(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Quatf x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Quatf
+         * @instance
+         */
+        Quatf.prototype.x = 0;
+
+        /**
+         * Quatf y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Quatf
+         * @instance
+         */
+        Quatf.prototype.y = 0;
+
+        /**
+         * Quatf z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.Quatf
+         * @instance
+         */
+        Quatf.prototype.z = 0;
+
+        /**
+         * Quatf w.
+         * @member {number} w
+         * @memberof ax_proto_msgs.Quatf
+         * @instance
+         */
+        Quatf.prototype.w = 0;
+
+        /**
+         * Creates a new Quatf instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {ax_proto_msgs.IQuatf=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Quatf} Quatf instance
+         */
+        Quatf.create = function create(properties) {
+            return new Quatf(properties);
+        };
+
+        /**
+         * Encodes the specified Quatf message. Does not implicitly {@link ax_proto_msgs.Quatf.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {ax_proto_msgs.IQuatf} message Quatf message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Quatf.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.z);
+            if (message.w != null && Object.hasOwnProperty.call(message, "w"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.w);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Quatf message, length delimited. Does not implicitly {@link ax_proto_msgs.Quatf.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {ax_proto_msgs.IQuatf} message Quatf message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Quatf.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Quatf message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Quatf} Quatf
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Quatf.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Quatf();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.float();
+                        break;
+                    }
+                case 4: {
+                        message.w = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Quatf message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Quatf} Quatf
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Quatf.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Quatf message.
+         * @function verify
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Quatf.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            if (message.w != null && message.hasOwnProperty("w"))
+                if (typeof message.w !== "number")
+                    return "w: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Quatf message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Quatf} Quatf
+         */
+        Quatf.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Quatf)
+                return object;
+            let message = new $root.ax_proto_msgs.Quatf();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            if (object.w != null)
+                message.w = Number(object.w);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Quatf message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {ax_proto_msgs.Quatf} message Quatf
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Quatf.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+                object.w = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            if (message.w != null && message.hasOwnProperty("w"))
+                object.w = options.json && !isFinite(message.w) ? String(message.w) : message.w;
+            return object;
+        };
+
+        /**
+         * Converts this Quatf to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Quatf
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Quatf.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Quatf
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Quatf
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Quatf.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Quatf";
+        };
+
+        return Quatf;
+    })();
+
+    ax_proto_msgs.Transform = (function() {
+
+        /**
+         * Properties of a Transform.
+         * @memberof ax_proto_msgs
+         * @interface ITransform
+         * @property {ax_proto_msgs.IVector3d|null} [translation] Transform translation
+         * @property {ax_proto_msgs.IQuatf|null} [rotation] Transform rotation
+         */
+
+        /**
+         * Constructs a new Transform.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Transform.
+         * @implements ITransform
+         * @constructor
+         * @param {ax_proto_msgs.ITransform=} [properties] Properties to set
+         */
+        function Transform(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Transform translation.
+         * @member {ax_proto_msgs.IVector3d|null|undefined} translation
+         * @memberof ax_proto_msgs.Transform
+         * @instance
+         */
+        Transform.prototype.translation = null;
+
+        /**
+         * Transform rotation.
+         * @member {ax_proto_msgs.IQuatf|null|undefined} rotation
+         * @memberof ax_proto_msgs.Transform
+         * @instance
+         */
+        Transform.prototype.rotation = null;
+
+        /**
+         * Creates a new Transform instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {ax_proto_msgs.ITransform=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Transform} Transform instance
+         */
+        Transform.create = function create(properties) {
+            return new Transform(properties);
+        };
+
+        /**
+         * Encodes the specified Transform message. Does not implicitly {@link ax_proto_msgs.Transform.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {ax_proto_msgs.ITransform} message Transform message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Transform.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.translation != null && Object.hasOwnProperty.call(message, "translation"))
+                $root.ax_proto_msgs.Vector3d.encode(message.translation, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.rotation != null && Object.hasOwnProperty.call(message, "rotation"))
+                $root.ax_proto_msgs.Quatf.encode(message.rotation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Transform message, length delimited. Does not implicitly {@link ax_proto_msgs.Transform.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {ax_proto_msgs.ITransform} message Transform message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Transform.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Transform message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Transform} Transform
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Transform.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Transform();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.translation = $root.ax_proto_msgs.Vector3d.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.rotation = $root.ax_proto_msgs.Quatf.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Transform message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Transform} Transform
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Transform.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Transform message.
+         * @function verify
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Transform.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.translation != null && message.hasOwnProperty("translation")) {
+                let error = $root.ax_proto_msgs.Vector3d.verify(message.translation);
+                if (error)
+                    return "translation." + error;
+            }
+            if (message.rotation != null && message.hasOwnProperty("rotation")) {
+                let error = $root.ax_proto_msgs.Quatf.verify(message.rotation);
+                if (error)
+                    return "rotation." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a Transform message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Transform} Transform
+         */
+        Transform.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Transform)
+                return object;
+            let message = new $root.ax_proto_msgs.Transform();
+            if (object.translation != null) {
+                if (typeof object.translation !== "object")
+                    throw TypeError(".ax_proto_msgs.Transform.translation: object expected");
+                message.translation = $root.ax_proto_msgs.Vector3d.fromObject(object.translation);
+            }
+            if (object.rotation != null) {
+                if (typeof object.rotation !== "object")
+                    throw TypeError(".ax_proto_msgs.Transform.rotation: object expected");
+                message.rotation = $root.ax_proto_msgs.Quatf.fromObject(object.rotation);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Transform message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {ax_proto_msgs.Transform} message Transform
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Transform.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.translation = null;
+                object.rotation = null;
+            }
+            if (message.translation != null && message.hasOwnProperty("translation"))
+                object.translation = $root.ax_proto_msgs.Vector3d.toObject(message.translation, options);
+            if (message.rotation != null && message.hasOwnProperty("rotation"))
+                object.rotation = $root.ax_proto_msgs.Quatf.toObject(message.rotation, options);
+            return object;
+        };
+
+        /**
+         * Converts this Transform to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Transform
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Transform.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Transform
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Transform
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Transform.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Transform";
+        };
+
+        return Transform;
     })();
 
     ax_proto_msgs.DwaCandidatePath = (function() {
@@ -2778,26 +6281,30 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return DwaCandidatePathSet;
     })();
 
-    ax_proto_msgs.Header = (function() {
+    ax_proto_msgs.RawImu = (function() {
 
         /**
-         * Properties of a Header.
+         * Properties of a RawImu.
          * @memberof ax_proto_msgs
-         * @interface IHeader
-         * @property {number|null} [seq] Header seq
-         * @property {number|Long|null} [stamp_nsec] Header stamp_nsec
-         * @property {string|null} [frame_id] Header frame_id
+         * @interface IRawImu
+         * @property {number|Long|null} [mcu_stamp_nsec] RawImu mcu_stamp_nsec
+         * @property {number|null} [gx] RawImu gx
+         * @property {number|null} [gy] RawImu gy
+         * @property {number|null} [gz] RawImu gz
+         * @property {number|null} [ax] RawImu ax
+         * @property {number|null} [ay] RawImu ay
+         * @property {number|null} [az] RawImu az
          */
 
         /**
-         * Constructs a new Header.
+         * Constructs a new RawImu.
          * @memberof ax_proto_msgs
-         * @classdesc Represents a Header.
-         * @implements IHeader
+         * @classdesc Represents a RawImu.
+         * @implements IRawImu
          * @constructor
-         * @param {ax_proto_msgs.IHeader=} [properties] Properties to set
+         * @param {ax_proto_msgs.IRawImu=} [properties] Properties to set
          */
-        function Header(properties) {
+        function RawImu(properties) {
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -2805,105 +6312,161 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         }
 
         /**
-         * Header seq.
-         * @member {number} seq
-         * @memberof ax_proto_msgs.Header
+         * RawImu mcu_stamp_nsec.
+         * @member {number|Long} mcu_stamp_nsec
+         * @memberof ax_proto_msgs.RawImu
          * @instance
          */
-        Header.prototype.seq = 0;
+        RawImu.prototype.mcu_stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
         /**
-         * Header stamp_nsec.
-         * @member {number|Long} stamp_nsec
-         * @memberof ax_proto_msgs.Header
+         * RawImu gx.
+         * @member {number} gx
+         * @memberof ax_proto_msgs.RawImu
          * @instance
          */
-        Header.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+        RawImu.prototype.gx = 0;
 
         /**
-         * Header frame_id.
-         * @member {string} frame_id
-         * @memberof ax_proto_msgs.Header
+         * RawImu gy.
+         * @member {number} gy
+         * @memberof ax_proto_msgs.RawImu
          * @instance
          */
-        Header.prototype.frame_id = "";
+        RawImu.prototype.gy = 0;
 
         /**
-         * Creates a new Header instance using the specified properties.
+         * RawImu gz.
+         * @member {number} gz
+         * @memberof ax_proto_msgs.RawImu
+         * @instance
+         */
+        RawImu.prototype.gz = 0;
+
+        /**
+         * RawImu ax.
+         * @member {number} ax
+         * @memberof ax_proto_msgs.RawImu
+         * @instance
+         */
+        RawImu.prototype.ax = 0;
+
+        /**
+         * RawImu ay.
+         * @member {number} ay
+         * @memberof ax_proto_msgs.RawImu
+         * @instance
+         */
+        RawImu.prototype.ay = 0;
+
+        /**
+         * RawImu az.
+         * @member {number} az
+         * @memberof ax_proto_msgs.RawImu
+         * @instance
+         */
+        RawImu.prototype.az = 0;
+
+        /**
+         * Creates a new RawImu instance using the specified properties.
          * @function create
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
-         * @param {ax_proto_msgs.IHeader=} [properties] Properties to set
-         * @returns {ax_proto_msgs.Header} Header instance
+         * @param {ax_proto_msgs.IRawImu=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RawImu} RawImu instance
          */
-        Header.create = function create(properties) {
-            return new Header(properties);
+        RawImu.create = function create(properties) {
+            return new RawImu(properties);
         };
 
         /**
-         * Encodes the specified Header message. Does not implicitly {@link ax_proto_msgs.Header.verify|verify} messages.
+         * Encodes the specified RawImu message. Does not implicitly {@link ax_proto_msgs.RawImu.verify|verify} messages.
          * @function encode
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
-         * @param {ax_proto_msgs.IHeader} message Header message or plain object to encode
+         * @param {ax_proto_msgs.IRawImu} message RawImu message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        Header.encode = function encode(message, writer) {
+        RawImu.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.seq != null && Object.hasOwnProperty.call(message, "seq"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.seq);
-            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.stamp_nsec);
-            if (message.frame_id != null && Object.hasOwnProperty.call(message, "frame_id"))
-                writer.uint32(/* id 4, wireType 2 =*/34).string(message.frame_id);
+            if (message.mcu_stamp_nsec != null && Object.hasOwnProperty.call(message, "mcu_stamp_nsec"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int64(message.mcu_stamp_nsec);
+            if (message.gx != null && Object.hasOwnProperty.call(message, "gx"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.gx);
+            if (message.gy != null && Object.hasOwnProperty.call(message, "gy"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.gy);
+            if (message.gz != null && Object.hasOwnProperty.call(message, "gz"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.gz);
+            if (message.ax != null && Object.hasOwnProperty.call(message, "ax"))
+                writer.uint32(/* id 5, wireType 5 =*/45).float(message.ax);
+            if (message.ay != null && Object.hasOwnProperty.call(message, "ay"))
+                writer.uint32(/* id 6, wireType 5 =*/53).float(message.ay);
+            if (message.az != null && Object.hasOwnProperty.call(message, "az"))
+                writer.uint32(/* id 7, wireType 5 =*/61).float(message.az);
             return writer;
         };
 
         /**
-         * Encodes the specified Header message, length delimited. Does not implicitly {@link ax_proto_msgs.Header.verify|verify} messages.
+         * Encodes the specified RawImu message, length delimited. Does not implicitly {@link ax_proto_msgs.RawImu.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
-         * @param {ax_proto_msgs.IHeader} message Header message or plain object to encode
+         * @param {ax_proto_msgs.IRawImu} message RawImu message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        Header.encodeDelimited = function encodeDelimited(message, writer) {
+        RawImu.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a Header message from the specified reader or buffer.
+         * Decodes a RawImu message from the specified reader or buffer.
          * @function decode
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ax_proto_msgs.Header} Header
+         * @returns {ax_proto_msgs.RawImu} RawImu
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        Header.decode = function decode(reader, length, error) {
+        RawImu.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Header();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RawImu();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.seq = reader.uint32();
+                        message.mcu_stamp_nsec = reader.int64();
+                        break;
+                    }
+                case 2: {
+                        message.gx = reader.float();
                         break;
                     }
                 case 3: {
-                        message.stamp_nsec = reader.uint64();
+                        message.gy = reader.float();
                         break;
                     }
                 case 4: {
-                        message.frame_id = reader.string();
+                        message.gz = reader.float();
+                        break;
+                    }
+                case 5: {
+                        message.ax = reader.float();
+                        break;
+                    }
+                case 6: {
+                        message.ay = reader.float();
+                        break;
+                    }
+                case 7: {
+                        message.az = reader.float();
                         break;
                     }
                 default:
@@ -2915,58 +6478,962 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         };
 
         /**
-         * Decodes a Header message from the specified reader or buffer, length delimited.
+         * Decodes a RawImu message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ax_proto_msgs.Header} Header
+         * @returns {ax_proto_msgs.RawImu} RawImu
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        Header.decodeDelimited = function decodeDelimited(reader) {
+        RawImu.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a Header message.
+         * Verifies a RawImu message.
          * @function verify
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        Header.verify = function verify(message) {
+        RawImu.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.seq != null && message.hasOwnProperty("seq"))
-                if (!$util.isInteger(message.seq))
-                    return "seq: integer expected";
-            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
-                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
-                    return "stamp_nsec: integer|Long expected";
-            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
-                if (!$util.isString(message.frame_id))
-                    return "frame_id: string expected";
+            if (message.mcu_stamp_nsec != null && message.hasOwnProperty("mcu_stamp_nsec"))
+                if (!$util.isInteger(message.mcu_stamp_nsec) && !(message.mcu_stamp_nsec && $util.isInteger(message.mcu_stamp_nsec.low) && $util.isInteger(message.mcu_stamp_nsec.high)))
+                    return "mcu_stamp_nsec: integer|Long expected";
+            if (message.gx != null && message.hasOwnProperty("gx"))
+                if (typeof message.gx !== "number")
+                    return "gx: number expected";
+            if (message.gy != null && message.hasOwnProperty("gy"))
+                if (typeof message.gy !== "number")
+                    return "gy: number expected";
+            if (message.gz != null && message.hasOwnProperty("gz"))
+                if (typeof message.gz !== "number")
+                    return "gz: number expected";
+            if (message.ax != null && message.hasOwnProperty("ax"))
+                if (typeof message.ax !== "number")
+                    return "ax: number expected";
+            if (message.ay != null && message.hasOwnProperty("ay"))
+                if (typeof message.ay !== "number")
+                    return "ay: number expected";
+            if (message.az != null && message.hasOwnProperty("az"))
+                if (typeof message.az !== "number")
+                    return "az: number expected";
             return null;
         };
 
         /**
-         * Creates a Header message from a plain object. Also converts values to their respective internal types.
+         * Creates a RawImu message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.RawImu
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ax_proto_msgs.Header} Header
+         * @returns {ax_proto_msgs.RawImu} RawImu
          */
-        Header.fromObject = function fromObject(object) {
-            if (object instanceof $root.ax_proto_msgs.Header)
+        RawImu.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RawImu)
                 return object;
-            let message = new $root.ax_proto_msgs.Header();
-            if (object.seq != null)
-                message.seq = object.seq >>> 0;
+            let message = new $root.ax_proto_msgs.RawImu();
+            if (object.mcu_stamp_nsec != null)
+                if ($util.Long)
+                    (message.mcu_stamp_nsec = $util.Long.fromValue(object.mcu_stamp_nsec)).unsigned = false;
+                else if (typeof object.mcu_stamp_nsec === "string")
+                    message.mcu_stamp_nsec = parseInt(object.mcu_stamp_nsec, 10);
+                else if (typeof object.mcu_stamp_nsec === "number")
+                    message.mcu_stamp_nsec = object.mcu_stamp_nsec;
+                else if (typeof object.mcu_stamp_nsec === "object")
+                    message.mcu_stamp_nsec = new $util.LongBits(object.mcu_stamp_nsec.low >>> 0, object.mcu_stamp_nsec.high >>> 0).toNumber();
+            if (object.gx != null)
+                message.gx = Number(object.gx);
+            if (object.gy != null)
+                message.gy = Number(object.gy);
+            if (object.gz != null)
+                message.gz = Number(object.gz);
+            if (object.ax != null)
+                message.ax = Number(object.ax);
+            if (object.ay != null)
+                message.ay = Number(object.ay);
+            if (object.az != null)
+                message.az = Number(object.az);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RawImu message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RawImu
+         * @static
+         * @param {ax_proto_msgs.RawImu} message RawImu
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RawImu.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.mcu_stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.mcu_stamp_nsec = options.longs === String ? "0" : 0;
+                object.gx = 0;
+                object.gy = 0;
+                object.gz = 0;
+                object.ax = 0;
+                object.ay = 0;
+                object.az = 0;
+            }
+            if (message.mcu_stamp_nsec != null && message.hasOwnProperty("mcu_stamp_nsec"))
+                if (typeof message.mcu_stamp_nsec === "number")
+                    object.mcu_stamp_nsec = options.longs === String ? String(message.mcu_stamp_nsec) : message.mcu_stamp_nsec;
+                else
+                    object.mcu_stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.mcu_stamp_nsec) : options.longs === Number ? new $util.LongBits(message.mcu_stamp_nsec.low >>> 0, message.mcu_stamp_nsec.high >>> 0).toNumber() : message.mcu_stamp_nsec;
+            if (message.gx != null && message.hasOwnProperty("gx"))
+                object.gx = options.json && !isFinite(message.gx) ? String(message.gx) : message.gx;
+            if (message.gy != null && message.hasOwnProperty("gy"))
+                object.gy = options.json && !isFinite(message.gy) ? String(message.gy) : message.gy;
+            if (message.gz != null && message.hasOwnProperty("gz"))
+                object.gz = options.json && !isFinite(message.gz) ? String(message.gz) : message.gz;
+            if (message.ax != null && message.hasOwnProperty("ax"))
+                object.ax = options.json && !isFinite(message.ax) ? String(message.ax) : message.ax;
+            if (message.ay != null && message.hasOwnProperty("ay"))
+                object.ay = options.json && !isFinite(message.ay) ? String(message.ay) : message.ay;
+            if (message.az != null && message.hasOwnProperty("az"))
+                object.az = options.json && !isFinite(message.az) ? String(message.az) : message.az;
+            return object;
+        };
+
+        /**
+         * Converts this RawImu to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RawImu
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RawImu.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RawImu
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RawImu
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RawImu.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RawImu";
+        };
+
+        return RawImu;
+    })();
+
+    ax_proto_msgs.Imu = (function() {
+
+        /**
+         * Properties of an Imu.
+         * @memberof ax_proto_msgs
+         * @interface IImu
+         * @property {ax_proto_msgs.IHeader|null} [header] Imu header
+         * @property {number|null} [gx] Imu gx
+         * @property {number|null} [gy] Imu gy
+         * @property {number|null} [gz] Imu gz
+         * @property {number|null} [ax] Imu ax
+         * @property {number|null} [ay] Imu ay
+         * @property {number|null} [az] Imu az
+         */
+
+        /**
+         * Constructs a new Imu.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents an Imu.
+         * @implements IImu
+         * @constructor
+         * @param {ax_proto_msgs.IImu=} [properties] Properties to set
+         */
+        function Imu(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Imu header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.header = null;
+
+        /**
+         * Imu gx.
+         * @member {number} gx
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.gx = 0;
+
+        /**
+         * Imu gy.
+         * @member {number} gy
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.gy = 0;
+
+        /**
+         * Imu gz.
+         * @member {number} gz
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.gz = 0;
+
+        /**
+         * Imu ax.
+         * @member {number} ax
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.ax = 0;
+
+        /**
+         * Imu ay.
+         * @member {number} ay
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.ay = 0;
+
+        /**
+         * Imu az.
+         * @member {number} az
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         */
+        Imu.prototype.az = 0;
+
+        /**
+         * Creates a new Imu instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {ax_proto_msgs.IImu=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Imu} Imu instance
+         */
+        Imu.create = function create(properties) {
+            return new Imu(properties);
+        };
+
+        /**
+         * Encodes the specified Imu message. Does not implicitly {@link ax_proto_msgs.Imu.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {ax_proto_msgs.IImu} message Imu message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Imu.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.gx != null && Object.hasOwnProperty.call(message, "gx"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.gx);
+            if (message.gy != null && Object.hasOwnProperty.call(message, "gy"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.gy);
+            if (message.gz != null && Object.hasOwnProperty.call(message, "gz"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.gz);
+            if (message.ax != null && Object.hasOwnProperty.call(message, "ax"))
+                writer.uint32(/* id 5, wireType 5 =*/45).float(message.ax);
+            if (message.ay != null && Object.hasOwnProperty.call(message, "ay"))
+                writer.uint32(/* id 6, wireType 5 =*/53).float(message.ay);
+            if (message.az != null && Object.hasOwnProperty.call(message, "az"))
+                writer.uint32(/* id 7, wireType 5 =*/61).float(message.az);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Imu message, length delimited. Does not implicitly {@link ax_proto_msgs.Imu.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {ax_proto_msgs.IImu} message Imu message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Imu.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an Imu message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Imu} Imu
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Imu.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Imu();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.gx = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.gy = reader.float();
+                        break;
+                    }
+                case 4: {
+                        message.gz = reader.float();
+                        break;
+                    }
+                case 5: {
+                        message.ax = reader.float();
+                        break;
+                    }
+                case 6: {
+                        message.ay = reader.float();
+                        break;
+                    }
+                case 7: {
+                        message.az = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an Imu message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Imu} Imu
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Imu.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Imu message.
+         * @function verify
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Imu.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.gx != null && message.hasOwnProperty("gx"))
+                if (typeof message.gx !== "number")
+                    return "gx: number expected";
+            if (message.gy != null && message.hasOwnProperty("gy"))
+                if (typeof message.gy !== "number")
+                    return "gy: number expected";
+            if (message.gz != null && message.hasOwnProperty("gz"))
+                if (typeof message.gz !== "number")
+                    return "gz: number expected";
+            if (message.ax != null && message.hasOwnProperty("ax"))
+                if (typeof message.ax !== "number")
+                    return "ax: number expected";
+            if (message.ay != null && message.hasOwnProperty("ay"))
+                if (typeof message.ay !== "number")
+                    return "ay: number expected";
+            if (message.az != null && message.hasOwnProperty("az"))
+                if (typeof message.az !== "number")
+                    return "az: number expected";
+            return null;
+        };
+
+        /**
+         * Creates an Imu message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Imu} Imu
+         */
+        Imu.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Imu)
+                return object;
+            let message = new $root.ax_proto_msgs.Imu();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.Imu.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.gx != null)
+                message.gx = Number(object.gx);
+            if (object.gy != null)
+                message.gy = Number(object.gy);
+            if (object.gz != null)
+                message.gz = Number(object.gz);
+            if (object.ax != null)
+                message.ax = Number(object.ax);
+            if (object.ay != null)
+                message.ay = Number(object.ay);
+            if (object.az != null)
+                message.az = Number(object.az);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Imu message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {ax_proto_msgs.Imu} message Imu
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Imu.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.header = null;
+                object.gx = 0;
+                object.gy = 0;
+                object.gz = 0;
+                object.ax = 0;
+                object.ay = 0;
+                object.az = 0;
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.gx != null && message.hasOwnProperty("gx"))
+                object.gx = options.json && !isFinite(message.gx) ? String(message.gx) : message.gx;
+            if (message.gy != null && message.hasOwnProperty("gy"))
+                object.gy = options.json && !isFinite(message.gy) ? String(message.gy) : message.gy;
+            if (message.gz != null && message.hasOwnProperty("gz"))
+                object.gz = options.json && !isFinite(message.gz) ? String(message.gz) : message.gz;
+            if (message.ax != null && message.hasOwnProperty("ax"))
+                object.ax = options.json && !isFinite(message.ax) ? String(message.ax) : message.ax;
+            if (message.ay != null && message.hasOwnProperty("ay"))
+                object.ay = options.json && !isFinite(message.ay) ? String(message.ay) : message.ay;
+            if (message.az != null && message.hasOwnProperty("az"))
+                object.az = options.json && !isFinite(message.az) ? String(message.az) : message.az;
+            return object;
+        };
+
+        /**
+         * Converts this Imu to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Imu
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Imu.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Imu
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Imu
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Imu.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Imu";
+        };
+
+        return Imu;
+    })();
+
+    ax_proto_msgs.JointValue = (function() {
+
+        /**
+         * Properties of a JointValue.
+         * @memberof ax_proto_msgs
+         * @interface IJointValue
+         * @property {string|null} [name] JointValue name
+         * @property {number|null} [position] JointValue position
+         */
+
+        /**
+         * Constructs a new JointValue.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a JointValue.
+         * @implements IJointValue
+         * @constructor
+         * @param {ax_proto_msgs.IJointValue=} [properties] Properties to set
+         */
+        function JointValue(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * JointValue name.
+         * @member {string} name
+         * @memberof ax_proto_msgs.JointValue
+         * @instance
+         */
+        JointValue.prototype.name = "";
+
+        /**
+         * JointValue position.
+         * @member {number} position
+         * @memberof ax_proto_msgs.JointValue
+         * @instance
+         */
+        JointValue.prototype.position = 0;
+
+        /**
+         * Creates a new JointValue instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {ax_proto_msgs.IJointValue=} [properties] Properties to set
+         * @returns {ax_proto_msgs.JointValue} JointValue instance
+         */
+        JointValue.create = function create(properties) {
+            return new JointValue(properties);
+        };
+
+        /**
+         * Encodes the specified JointValue message. Does not implicitly {@link ax_proto_msgs.JointValue.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {ax_proto_msgs.IJointValue} message JointValue message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        JointValue.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.position != null && Object.hasOwnProperty.call(message, "position"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.position);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified JointValue message, length delimited. Does not implicitly {@link ax_proto_msgs.JointValue.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {ax_proto_msgs.IJointValue} message JointValue message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        JointValue.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a JointValue message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.JointValue} JointValue
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        JointValue.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.JointValue();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.position = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a JointValue message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.JointValue} JointValue
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        JointValue.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a JointValue message.
+         * @function verify
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        JointValue.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.position != null && message.hasOwnProperty("position"))
+                if (typeof message.position !== "number")
+                    return "position: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a JointValue message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.JointValue} JointValue
+         */
+        JointValue.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.JointValue)
+                return object;
+            let message = new $root.ax_proto_msgs.JointValue();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.position != null)
+                message.position = Number(object.position);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a JointValue message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {ax_proto_msgs.JointValue} message JointValue
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        JointValue.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.name = "";
+                object.position = 0;
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.position != null && message.hasOwnProperty("position"))
+                object.position = options.json && !isFinite(message.position) ? String(message.position) : message.position;
+            return object;
+        };
+
+        /**
+         * Converts this JointValue to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.JointValue
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        JointValue.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for JointValue
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.JointValue
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        JointValue.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.JointValue";
+        };
+
+        return JointValue;
+    })();
+
+    ax_proto_msgs.InstanceJointState = (function() {
+
+        /**
+         * Properties of an InstanceJointState.
+         * @memberof ax_proto_msgs
+         * @interface IInstanceJointState
+         * @property {string|null} [instance_id] InstanceJointState instance_id
+         * @property {number|Long|null} [stamp_nsec] InstanceJointState stamp_nsec
+         * @property {number|Long|null} [valid_for_nsec] InstanceJointState valid_for_nsec
+         * @property {Array.<ax_proto_msgs.IJointValue>|null} [joints] InstanceJointState joints
+         */
+
+        /**
+         * Constructs a new InstanceJointState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents an InstanceJointState.
+         * @implements IInstanceJointState
+         * @constructor
+         * @param {ax_proto_msgs.IInstanceJointState=} [properties] Properties to set
+         */
+        function InstanceJointState(properties) {
+            this.joints = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * InstanceJointState instance_id.
+         * @member {string} instance_id
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @instance
+         */
+        InstanceJointState.prototype.instance_id = "";
+
+        /**
+         * InstanceJointState stamp_nsec.
+         * @member {number|Long} stamp_nsec
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @instance
+         */
+        InstanceJointState.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * InstanceJointState valid_for_nsec.
+         * @member {number|Long} valid_for_nsec
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @instance
+         */
+        InstanceJointState.prototype.valid_for_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * InstanceJointState joints.
+         * @member {Array.<ax_proto_msgs.IJointValue>} joints
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @instance
+         */
+        InstanceJointState.prototype.joints = $util.emptyArray;
+
+        /**
+         * Creates a new InstanceJointState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {ax_proto_msgs.IInstanceJointState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.InstanceJointState} InstanceJointState instance
+         */
+        InstanceJointState.create = function create(properties) {
+            return new InstanceJointState(properties);
+        };
+
+        /**
+         * Encodes the specified InstanceJointState message. Does not implicitly {@link ax_proto_msgs.InstanceJointState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {ax_proto_msgs.IInstanceJointState} message InstanceJointState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        InstanceJointState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.instance_id != null && Object.hasOwnProperty.call(message, "instance_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.instance_id);
+            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.stamp_nsec);
+            if (message.valid_for_nsec != null && Object.hasOwnProperty.call(message, "valid_for_nsec"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.valid_for_nsec);
+            if (message.joints != null && message.joints.length)
+                for (let i = 0; i < message.joints.length; ++i)
+                    $root.ax_proto_msgs.JointValue.encode(message.joints[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified InstanceJointState message, length delimited. Does not implicitly {@link ax_proto_msgs.InstanceJointState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {ax_proto_msgs.IInstanceJointState} message InstanceJointState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        InstanceJointState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an InstanceJointState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.InstanceJointState} InstanceJointState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        InstanceJointState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.InstanceJointState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.instance_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.stamp_nsec = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.valid_for_nsec = reader.uint64();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.joints && message.joints.length))
+                            message.joints = [];
+                        message.joints.push($root.ax_proto_msgs.JointValue.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an InstanceJointState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.InstanceJointState} InstanceJointState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        InstanceJointState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an InstanceJointState message.
+         * @function verify
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        InstanceJointState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                if (!$util.isString(message.instance_id))
+                    return "instance_id: string expected";
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
+                    return "stamp_nsec: integer|Long expected";
+            if (message.valid_for_nsec != null && message.hasOwnProperty("valid_for_nsec"))
+                if (!$util.isInteger(message.valid_for_nsec) && !(message.valid_for_nsec && $util.isInteger(message.valid_for_nsec.low) && $util.isInteger(message.valid_for_nsec.high)))
+                    return "valid_for_nsec: integer|Long expected";
+            if (message.joints != null && message.hasOwnProperty("joints")) {
+                if (!Array.isArray(message.joints))
+                    return "joints: array expected";
+                for (let i = 0; i < message.joints.length; ++i) {
+                    let error = $root.ax_proto_msgs.JointValue.verify(message.joints[i]);
+                    if (error)
+                        return "joints." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates an InstanceJointState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.InstanceJointState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.InstanceJointState} InstanceJointState
+         */
+        InstanceJointState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.InstanceJointState)
+                return object;
+            let message = new $root.ax_proto_msgs.InstanceJointState();
+            if (object.instance_id != null)
+                message.instance_id = String(object.instance_id);
             if (object.stamp_nsec != null)
                 if ($util.Long)
                     (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
@@ -2976,98 +7443,125 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     message.stamp_nsec = object.stamp_nsec;
                 else if (typeof object.stamp_nsec === "object")
                     message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
-            if (object.frame_id != null)
-                message.frame_id = String(object.frame_id);
+            if (object.valid_for_nsec != null)
+                if ($util.Long)
+                    (message.valid_for_nsec = $util.Long.fromValue(object.valid_for_nsec)).unsigned = true;
+                else if (typeof object.valid_for_nsec === "string")
+                    message.valid_for_nsec = parseInt(object.valid_for_nsec, 10);
+                else if (typeof object.valid_for_nsec === "number")
+                    message.valid_for_nsec = object.valid_for_nsec;
+                else if (typeof object.valid_for_nsec === "object")
+                    message.valid_for_nsec = new $util.LongBits(object.valid_for_nsec.low >>> 0, object.valid_for_nsec.high >>> 0).toNumber(true);
+            if (object.joints) {
+                if (!Array.isArray(object.joints))
+                    throw TypeError(".ax_proto_msgs.InstanceJointState.joints: array expected");
+                message.joints = [];
+                for (let i = 0; i < object.joints.length; ++i) {
+                    if (typeof object.joints[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.InstanceJointState.joints: object expected");
+                    message.joints[i] = $root.ax_proto_msgs.JointValue.fromObject(object.joints[i]);
+                }
+            }
             return message;
         };
 
         /**
-         * Creates a plain object from a Header message. Also converts values to other types if specified.
+         * Creates a plain object from an InstanceJointState message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.InstanceJointState
          * @static
-         * @param {ax_proto_msgs.Header} message Header
+         * @param {ax_proto_msgs.InstanceJointState} message InstanceJointState
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
-        Header.toObject = function toObject(message, options) {
+        InstanceJointState.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
             let object = {};
+            if (options.arrays || options.defaults)
+                object.joints = [];
             if (options.defaults) {
-                object.seq = 0;
+                object.instance_id = "";
                 if ($util.Long) {
                     let long = new $util.Long(0, 0, true);
                     object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
                     object.stamp_nsec = options.longs === String ? "0" : 0;
-                object.frame_id = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.valid_for_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.valid_for_nsec = options.longs === String ? "0" : 0;
             }
-            if (message.seq != null && message.hasOwnProperty("seq"))
-                object.seq = message.seq;
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                object.instance_id = message.instance_id;
             if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
                 if (typeof message.stamp_nsec === "number")
                     object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
                 else
                     object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
-            if (message.frame_id != null && message.hasOwnProperty("frame_id"))
-                object.frame_id = message.frame_id;
+            if (message.valid_for_nsec != null && message.hasOwnProperty("valid_for_nsec"))
+                if (typeof message.valid_for_nsec === "number")
+                    object.valid_for_nsec = options.longs === String ? String(message.valid_for_nsec) : message.valid_for_nsec;
+                else
+                    object.valid_for_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.valid_for_nsec) : options.longs === Number ? new $util.LongBits(message.valid_for_nsec.low >>> 0, message.valid_for_nsec.high >>> 0).toNumber(true) : message.valid_for_nsec;
+            if (message.joints && message.joints.length) {
+                object.joints = [];
+                for (let j = 0; j < message.joints.length; ++j)
+                    object.joints[j] = $root.ax_proto_msgs.JointValue.toObject(message.joints[j], options);
+            }
             return object;
         };
 
         /**
-         * Converts this Header to JSON.
+         * Converts this InstanceJointState to JSON.
          * @function toJSON
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.InstanceJointState
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
-        Header.prototype.toJSON = function toJSON() {
+        InstanceJointState.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
 
         /**
-         * Gets the default type url for Header
+         * Gets the default type url for InstanceJointState
          * @function getTypeUrl
-         * @memberof ax_proto_msgs.Header
+         * @memberof ax_proto_msgs.InstanceJointState
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
          */
-        Header.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        InstanceJointState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ax_proto_msgs.Header";
+            return typeUrlPrefix + "/ax_proto_msgs.InstanceJointState";
         };
 
-        return Header;
+        return InstanceJointState;
     })();
 
-    ax_proto_msgs.Pose = (function() {
+    ax_proto_msgs.JointStates = (function() {
 
         /**
-         * Properties of a Pose.
+         * Properties of a JointStates.
          * @memberof ax_proto_msgs
-         * @interface IPose
-         * @property {number|null} [x] Pose x
-         * @property {number|null} [y] Pose y
-         * @property {number|null} [z] Pose z
-         * @property {number|null} [qx] Pose qx
-         * @property {number|null} [qy] Pose qy
-         * @property {number|null} [qz] Pose qz
-         * @property {number|null} [qw] Pose qw
+         * @interface IJointStates
+         * @property {string|null} [source_id] JointStates source_id
+         * @property {Array.<ax_proto_msgs.IInstanceJointState>|null} [instances] JointStates instances
          */
 
         /**
-         * Constructs a new Pose.
+         * Constructs a new JointStates.
          * @memberof ax_proto_msgs
-         * @classdesc Represents a Pose.
-         * @implements IPose
+         * @classdesc Represents a JointStates.
+         * @implements IJointStates
          * @constructor
-         * @param {ax_proto_msgs.IPose=} [properties] Properties to set
+         * @param {ax_proto_msgs.IJointStates=} [properties] Properties to set
          */
-        function Pose(properties) {
+        function JointStates(properties) {
+            this.instances = [];
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -3075,161 +7569,94 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         }
 
         /**
-         * Pose x.
-         * @member {number} x
-         * @memberof ax_proto_msgs.Pose
+         * JointStates source_id.
+         * @member {string} source_id
+         * @memberof ax_proto_msgs.JointStates
          * @instance
          */
-        Pose.prototype.x = 0;
+        JointStates.prototype.source_id = "";
 
         /**
-         * Pose y.
-         * @member {number} y
-         * @memberof ax_proto_msgs.Pose
+         * JointStates instances.
+         * @member {Array.<ax_proto_msgs.IInstanceJointState>} instances
+         * @memberof ax_proto_msgs.JointStates
          * @instance
          */
-        Pose.prototype.y = 0;
+        JointStates.prototype.instances = $util.emptyArray;
 
         /**
-         * Pose z.
-         * @member {number} z
-         * @memberof ax_proto_msgs.Pose
-         * @instance
-         */
-        Pose.prototype.z = 0;
-
-        /**
-         * Pose qx.
-         * @member {number} qx
-         * @memberof ax_proto_msgs.Pose
-         * @instance
-         */
-        Pose.prototype.qx = 0;
-
-        /**
-         * Pose qy.
-         * @member {number} qy
-         * @memberof ax_proto_msgs.Pose
-         * @instance
-         */
-        Pose.prototype.qy = 0;
-
-        /**
-         * Pose qz.
-         * @member {number} qz
-         * @memberof ax_proto_msgs.Pose
-         * @instance
-         */
-        Pose.prototype.qz = 0;
-
-        /**
-         * Pose qw.
-         * @member {number} qw
-         * @memberof ax_proto_msgs.Pose
-         * @instance
-         */
-        Pose.prototype.qw = 0;
-
-        /**
-         * Creates a new Pose instance using the specified properties.
+         * Creates a new JointStates instance using the specified properties.
          * @function create
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
-         * @param {ax_proto_msgs.IPose=} [properties] Properties to set
-         * @returns {ax_proto_msgs.Pose} Pose instance
+         * @param {ax_proto_msgs.IJointStates=} [properties] Properties to set
+         * @returns {ax_proto_msgs.JointStates} JointStates instance
          */
-        Pose.create = function create(properties) {
-            return new Pose(properties);
+        JointStates.create = function create(properties) {
+            return new JointStates(properties);
         };
 
         /**
-         * Encodes the specified Pose message. Does not implicitly {@link ax_proto_msgs.Pose.verify|verify} messages.
+         * Encodes the specified JointStates message. Does not implicitly {@link ax_proto_msgs.JointStates.verify|verify} messages.
          * @function encode
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
-         * @param {ax_proto_msgs.IPose} message Pose message or plain object to encode
+         * @param {ax_proto_msgs.IJointStates} message JointStates message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        Pose.encode = function encode(message, writer) {
+        JointStates.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
-                writer.uint32(/* id 1, wireType 1 =*/9).double(message.x);
-            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
-                writer.uint32(/* id 2, wireType 1 =*/17).double(message.y);
-            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
-                writer.uint32(/* id 3, wireType 1 =*/25).double(message.z);
-            if (message.qx != null && Object.hasOwnProperty.call(message, "qx"))
-                writer.uint32(/* id 4, wireType 1 =*/33).double(message.qx);
-            if (message.qy != null && Object.hasOwnProperty.call(message, "qy"))
-                writer.uint32(/* id 5, wireType 1 =*/41).double(message.qy);
-            if (message.qz != null && Object.hasOwnProperty.call(message, "qz"))
-                writer.uint32(/* id 6, wireType 1 =*/49).double(message.qz);
-            if (message.qw != null && Object.hasOwnProperty.call(message, "qw"))
-                writer.uint32(/* id 7, wireType 1 =*/57).double(message.qw);
+            if (message.source_id != null && Object.hasOwnProperty.call(message, "source_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.source_id);
+            if (message.instances != null && message.instances.length)
+                for (let i = 0; i < message.instances.length; ++i)
+                    $root.ax_proto_msgs.InstanceJointState.encode(message.instances[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
 
         /**
-         * Encodes the specified Pose message, length delimited. Does not implicitly {@link ax_proto_msgs.Pose.verify|verify} messages.
+         * Encodes the specified JointStates message, length delimited. Does not implicitly {@link ax_proto_msgs.JointStates.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
-         * @param {ax_proto_msgs.IPose} message Pose message or plain object to encode
+         * @param {ax_proto_msgs.IJointStates} message JointStates message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        Pose.encodeDelimited = function encodeDelimited(message, writer) {
+        JointStates.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a Pose message from the specified reader or buffer.
+         * Decodes a JointStates message from the specified reader or buffer.
          * @function decode
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ax_proto_msgs.Pose} Pose
+         * @returns {ax_proto_msgs.JointStates} JointStates
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        Pose.decode = function decode(reader, length, error) {
+        JointStates.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Pose();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.JointStates();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.x = reader.double();
+                        message.source_id = reader.string();
                         break;
                     }
                 case 2: {
-                        message.y = reader.double();
-                        break;
-                    }
-                case 3: {
-                        message.z = reader.double();
-                        break;
-                    }
-                case 4: {
-                        message.qx = reader.double();
-                        break;
-                    }
-                case 5: {
-                        message.qy = reader.double();
-                        break;
-                    }
-                case 6: {
-                        message.qz = reader.double();
-                        break;
-                    }
-                case 7: {
-                        message.qw = reader.double();
+                        if (!(message.instances && message.instances.length))
+                            message.instances = [];
+                        message.instances.push($root.ax_proto_msgs.InstanceJointState.decode(reader, reader.uint32()));
                         break;
                     }
                 default:
@@ -3241,151 +7668,1135 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         };
 
         /**
-         * Decodes a Pose message from the specified reader or buffer, length delimited.
+         * Decodes a JointStates message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ax_proto_msgs.Pose} Pose
+         * @returns {ax_proto_msgs.JointStates} JointStates
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        Pose.decodeDelimited = function decodeDelimited(reader) {
+        JointStates.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a Pose message.
+         * Verifies a JointStates message.
          * @function verify
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        Pose.verify = function verify(message) {
+        JointStates.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.x != null && message.hasOwnProperty("x"))
-                if (typeof message.x !== "number")
-                    return "x: number expected";
-            if (message.y != null && message.hasOwnProperty("y"))
-                if (typeof message.y !== "number")
-                    return "y: number expected";
-            if (message.z != null && message.hasOwnProperty("z"))
-                if (typeof message.z !== "number")
-                    return "z: number expected";
-            if (message.qx != null && message.hasOwnProperty("qx"))
-                if (typeof message.qx !== "number")
-                    return "qx: number expected";
-            if (message.qy != null && message.hasOwnProperty("qy"))
-                if (typeof message.qy !== "number")
-                    return "qy: number expected";
-            if (message.qz != null && message.hasOwnProperty("qz"))
-                if (typeof message.qz !== "number")
-                    return "qz: number expected";
-            if (message.qw != null && message.hasOwnProperty("qw"))
-                if (typeof message.qw !== "number")
-                    return "qw: number expected";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                if (!$util.isString(message.source_id))
+                    return "source_id: string expected";
+            if (message.instances != null && message.hasOwnProperty("instances")) {
+                if (!Array.isArray(message.instances))
+                    return "instances: array expected";
+                for (let i = 0; i < message.instances.length; ++i) {
+                    let error = $root.ax_proto_msgs.InstanceJointState.verify(message.instances[i]);
+                    if (error)
+                        return "instances." + error;
+                }
+            }
             return null;
         };
 
         /**
-         * Creates a Pose message from a plain object. Also converts values to their respective internal types.
+         * Creates a JointStates message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ax_proto_msgs.Pose} Pose
+         * @returns {ax_proto_msgs.JointStates} JointStates
          */
-        Pose.fromObject = function fromObject(object) {
-            if (object instanceof $root.ax_proto_msgs.Pose)
+        JointStates.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.JointStates)
                 return object;
-            let message = new $root.ax_proto_msgs.Pose();
-            if (object.x != null)
-                message.x = Number(object.x);
-            if (object.y != null)
-                message.y = Number(object.y);
-            if (object.z != null)
-                message.z = Number(object.z);
-            if (object.qx != null)
-                message.qx = Number(object.qx);
-            if (object.qy != null)
-                message.qy = Number(object.qy);
-            if (object.qz != null)
-                message.qz = Number(object.qz);
-            if (object.qw != null)
-                message.qw = Number(object.qw);
+            let message = new $root.ax_proto_msgs.JointStates();
+            if (object.source_id != null)
+                message.source_id = String(object.source_id);
+            if (object.instances) {
+                if (!Array.isArray(object.instances))
+                    throw TypeError(".ax_proto_msgs.JointStates.instances: array expected");
+                message.instances = [];
+                for (let i = 0; i < object.instances.length; ++i) {
+                    if (typeof object.instances[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.JointStates.instances: object expected");
+                    message.instances[i] = $root.ax_proto_msgs.InstanceJointState.fromObject(object.instances[i]);
+                }
+            }
             return message;
         };
 
         /**
-         * Creates a plain object from a Pose message. Also converts values to other types if specified.
+         * Creates a plain object from a JointStates message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
-         * @param {ax_proto_msgs.Pose} message Pose
+         * @param {ax_proto_msgs.JointStates} message JointStates
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
-        Pose.toObject = function toObject(message, options) {
+        JointStates.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
             let object = {};
-            if (options.defaults) {
-                object.x = 0;
-                object.y = 0;
-                object.z = 0;
-                object.qx = 0;
-                object.qy = 0;
-                object.qz = 0;
-                object.qw = 0;
+            if (options.arrays || options.defaults)
+                object.instances = [];
+            if (options.defaults)
+                object.source_id = "";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                object.source_id = message.source_id;
+            if (message.instances && message.instances.length) {
+                object.instances = [];
+                for (let j = 0; j < message.instances.length; ++j)
+                    object.instances[j] = $root.ax_proto_msgs.InstanceJointState.toObject(message.instances[j], options);
             }
-            if (message.x != null && message.hasOwnProperty("x"))
-                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
-            if (message.y != null && message.hasOwnProperty("y"))
-                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
-            if (message.z != null && message.hasOwnProperty("z"))
-                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
-            if (message.qx != null && message.hasOwnProperty("qx"))
-                object.qx = options.json && !isFinite(message.qx) ? String(message.qx) : message.qx;
-            if (message.qy != null && message.hasOwnProperty("qy"))
-                object.qy = options.json && !isFinite(message.qy) ? String(message.qy) : message.qy;
-            if (message.qz != null && message.hasOwnProperty("qz"))
-                object.qz = options.json && !isFinite(message.qz) ? String(message.qz) : message.qz;
-            if (message.qw != null && message.hasOwnProperty("qw"))
-                object.qw = options.json && !isFinite(message.qw) ? String(message.qw) : message.qw;
             return object;
         };
 
         /**
-         * Converts this Pose to JSON.
+         * Converts this JointStates to JSON.
          * @function toJSON
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
-        Pose.prototype.toJSON = function toJSON() {
+        JointStates.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
 
         /**
-         * Gets the default type url for Pose
+         * Gets the default type url for JointStates
          * @function getTypeUrl
-         * @memberof ax_proto_msgs.Pose
+         * @memberof ax_proto_msgs.JointStates
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
          */
-        Pose.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        JointStates.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ax_proto_msgs.Pose";
+            return typeUrlPrefix + "/ax_proto_msgs.JointStates";
         };
 
-        return Pose;
+        return JointStates;
+    })();
+
+    ax_proto_msgs.LiftgateState = (function() {
+
+        /**
+         * Properties of a LiftgateState.
+         * @memberof ax_proto_msgs
+         * @interface ILiftgateState
+         * @property {ax_proto_msgs.LiftgateState.State.Type|null} [current_state] LiftgateState current_state
+         * @property {ax_proto_msgs.LiftgateState.State.Type|null} [target_state] LiftgateState target_state
+         * @property {string|null} [error_message] LiftgateState error_message
+         * @property {boolean|null} [has_error] LiftgateState has_error
+         * @property {boolean|null} [controller_offline] LiftgateState controller_offline
+         * @property {boolean|null} [gyro_offline] LiftgateState gyro_offline
+         * @property {boolean|null} [controller_fault] LiftgateState controller_fault
+         * @property {boolean|null} [gyro_fault] LiftgateState gyro_fault
+         * @property {boolean|null} [motion_timed_out] LiftgateState motion_timed_out
+         * @property {ax_proto_msgs.LiftgateState.SignalLight.Type|null} [signal_light] LiftgateState signal_light
+         * @property {number|null} [signal_light_countdown] LiftgateState signal_light_countdown
+         * @property {number|null} [pitch] LiftgateState pitch
+         * @property {number|null} [height] LiftgateState height
+         */
+
+        /**
+         * Constructs a new LiftgateState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a LiftgateState.
+         * @implements ILiftgateState
+         * @constructor
+         * @param {ax_proto_msgs.ILiftgateState=} [properties] Properties to set
+         */
+        function LiftgateState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * LiftgateState current_state.
+         * @member {ax_proto_msgs.LiftgateState.State.Type} current_state
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.current_state = 0;
+
+        /**
+         * LiftgateState target_state.
+         * @member {ax_proto_msgs.LiftgateState.State.Type} target_state
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.target_state = 0;
+
+        /**
+         * LiftgateState error_message.
+         * @member {string} error_message
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.error_message = "";
+
+        /**
+         * LiftgateState has_error.
+         * @member {boolean} has_error
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.has_error = false;
+
+        /**
+         * LiftgateState controller_offline.
+         * @member {boolean} controller_offline
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.controller_offline = false;
+
+        /**
+         * LiftgateState gyro_offline.
+         * @member {boolean} gyro_offline
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.gyro_offline = false;
+
+        /**
+         * LiftgateState controller_fault.
+         * @member {boolean} controller_fault
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.controller_fault = false;
+
+        /**
+         * LiftgateState gyro_fault.
+         * @member {boolean} gyro_fault
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.gyro_fault = false;
+
+        /**
+         * LiftgateState motion_timed_out.
+         * @member {boolean} motion_timed_out
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.motion_timed_out = false;
+
+        /**
+         * LiftgateState signal_light.
+         * @member {ax_proto_msgs.LiftgateState.SignalLight.Type} signal_light
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.signal_light = 0;
+
+        /**
+         * LiftgateState signal_light_countdown.
+         * @member {number} signal_light_countdown
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.signal_light_countdown = 0;
+
+        /**
+         * LiftgateState pitch.
+         * @member {number} pitch
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.pitch = 0;
+
+        /**
+         * LiftgateState height.
+         * @member {number} height
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         */
+        LiftgateState.prototype.height = 0;
+
+        /**
+         * Creates a new LiftgateState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {ax_proto_msgs.ILiftgateState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.LiftgateState} LiftgateState instance
+         */
+        LiftgateState.create = function create(properties) {
+            return new LiftgateState(properties);
+        };
+
+        /**
+         * Encodes the specified LiftgateState message. Does not implicitly {@link ax_proto_msgs.LiftgateState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {ax_proto_msgs.ILiftgateState} message LiftgateState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        LiftgateState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.current_state != null && Object.hasOwnProperty.call(message, "current_state"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.current_state);
+            if (message.target_state != null && Object.hasOwnProperty.call(message, "target_state"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.target_state);
+            if (message.error_message != null && Object.hasOwnProperty.call(message, "error_message"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.error_message);
+            if (message.has_error != null && Object.hasOwnProperty.call(message, "has_error"))
+                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.has_error);
+            if (message.controller_offline != null && Object.hasOwnProperty.call(message, "controller_offline"))
+                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.controller_offline);
+            if (message.gyro_offline != null && Object.hasOwnProperty.call(message, "gyro_offline"))
+                writer.uint32(/* id 9, wireType 0 =*/72).bool(message.gyro_offline);
+            if (message.controller_fault != null && Object.hasOwnProperty.call(message, "controller_fault"))
+                writer.uint32(/* id 10, wireType 0 =*/80).bool(message.controller_fault);
+            if (message.gyro_fault != null && Object.hasOwnProperty.call(message, "gyro_fault"))
+                writer.uint32(/* id 11, wireType 0 =*/88).bool(message.gyro_fault);
+            if (message.motion_timed_out != null && Object.hasOwnProperty.call(message, "motion_timed_out"))
+                writer.uint32(/* id 12, wireType 0 =*/96).bool(message.motion_timed_out);
+            if (message.signal_light != null && Object.hasOwnProperty.call(message, "signal_light"))
+                writer.uint32(/* id 13, wireType 0 =*/104).int32(message.signal_light);
+            if (message.signal_light_countdown != null && Object.hasOwnProperty.call(message, "signal_light_countdown"))
+                writer.uint32(/* id 14, wireType 0 =*/112).int32(message.signal_light_countdown);
+            if (message.pitch != null && Object.hasOwnProperty.call(message, "pitch"))
+                writer.uint32(/* id 15, wireType 5 =*/125).float(message.pitch);
+            if (message.height != null && Object.hasOwnProperty.call(message, "height"))
+                writer.uint32(/* id 16, wireType 5 =*/133).float(message.height);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified LiftgateState message, length delimited. Does not implicitly {@link ax_proto_msgs.LiftgateState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {ax_proto_msgs.ILiftgateState} message LiftgateState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        LiftgateState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a LiftgateState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.LiftgateState} LiftgateState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        LiftgateState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.LiftgateState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 2: {
+                        message.current_state = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.target_state = reader.int32();
+                        break;
+                    }
+                case 6: {
+                        message.error_message = reader.string();
+                        break;
+                    }
+                case 7: {
+                        message.has_error = reader.bool();
+                        break;
+                    }
+                case 8: {
+                        message.controller_offline = reader.bool();
+                        break;
+                    }
+                case 9: {
+                        message.gyro_offline = reader.bool();
+                        break;
+                    }
+                case 10: {
+                        message.controller_fault = reader.bool();
+                        break;
+                    }
+                case 11: {
+                        message.gyro_fault = reader.bool();
+                        break;
+                    }
+                case 12: {
+                        message.motion_timed_out = reader.bool();
+                        break;
+                    }
+                case 13: {
+                        message.signal_light = reader.int32();
+                        break;
+                    }
+                case 14: {
+                        message.signal_light_countdown = reader.int32();
+                        break;
+                    }
+                case 15: {
+                        message.pitch = reader.float();
+                        break;
+                    }
+                case 16: {
+                        message.height = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a LiftgateState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.LiftgateState} LiftgateState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        LiftgateState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a LiftgateState message.
+         * @function verify
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        LiftgateState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.current_state != null && message.hasOwnProperty("current_state"))
+                switch (message.current_state) {
+                default:
+                    return "current_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    break;
+                }
+            if (message.target_state != null && message.hasOwnProperty("target_state"))
+                switch (message.target_state) {
+                default:
+                    return "target_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    break;
+                }
+            if (message.error_message != null && message.hasOwnProperty("error_message"))
+                if (!$util.isString(message.error_message))
+                    return "error_message: string expected";
+            if (message.has_error != null && message.hasOwnProperty("has_error"))
+                if (typeof message.has_error !== "boolean")
+                    return "has_error: boolean expected";
+            if (message.controller_offline != null && message.hasOwnProperty("controller_offline"))
+                if (typeof message.controller_offline !== "boolean")
+                    return "controller_offline: boolean expected";
+            if (message.gyro_offline != null && message.hasOwnProperty("gyro_offline"))
+                if (typeof message.gyro_offline !== "boolean")
+                    return "gyro_offline: boolean expected";
+            if (message.controller_fault != null && message.hasOwnProperty("controller_fault"))
+                if (typeof message.controller_fault !== "boolean")
+                    return "controller_fault: boolean expected";
+            if (message.gyro_fault != null && message.hasOwnProperty("gyro_fault"))
+                if (typeof message.gyro_fault !== "boolean")
+                    return "gyro_fault: boolean expected";
+            if (message.motion_timed_out != null && message.hasOwnProperty("motion_timed_out"))
+                if (typeof message.motion_timed_out !== "boolean")
+                    return "motion_timed_out: boolean expected";
+            if (message.signal_light != null && message.hasOwnProperty("signal_light"))
+                switch (message.signal_light) {
+                default:
+                    return "signal_light: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            if (message.signal_light_countdown != null && message.hasOwnProperty("signal_light_countdown"))
+                if (!$util.isInteger(message.signal_light_countdown))
+                    return "signal_light_countdown: integer expected";
+            if (message.pitch != null && message.hasOwnProperty("pitch"))
+                if (typeof message.pitch !== "number")
+                    return "pitch: number expected";
+            if (message.height != null && message.hasOwnProperty("height"))
+                if (typeof message.height !== "number")
+                    return "height: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a LiftgateState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.LiftgateState} LiftgateState
+         */
+        LiftgateState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.LiftgateState)
+                return object;
+            let message = new $root.ax_proto_msgs.LiftgateState();
+            switch (object.current_state) {
+            default:
+                if (typeof object.current_state === "number") {
+                    message.current_state = object.current_state;
+                    break;
+                }
+                break;
+            case "UNKNOWN":
+            case 0:
+                message.current_state = 0;
+                break;
+            case "CLOSED":
+            case 1:
+                message.current_state = 1;
+                break;
+            case "RAISED":
+            case 2:
+                message.current_state = 2;
+                break;
+            case "LOWERED":
+            case 3:
+                message.current_state = 3;
+                break;
+            case "OPENING":
+            case 4:
+                message.current_state = 4;
+                break;
+            case "CLOSING":
+            case 5:
+                message.current_state = 5;
+                break;
+            case "RAISING":
+            case 6:
+                message.current_state = 6;
+                break;
+            case "LOWERING":
+            case 7:
+                message.current_state = 7;
+                break;
+            }
+            switch (object.target_state) {
+            default:
+                if (typeof object.target_state === "number") {
+                    message.target_state = object.target_state;
+                    break;
+                }
+                break;
+            case "UNKNOWN":
+            case 0:
+                message.target_state = 0;
+                break;
+            case "CLOSED":
+            case 1:
+                message.target_state = 1;
+                break;
+            case "RAISED":
+            case 2:
+                message.target_state = 2;
+                break;
+            case "LOWERED":
+            case 3:
+                message.target_state = 3;
+                break;
+            case "OPENING":
+            case 4:
+                message.target_state = 4;
+                break;
+            case "CLOSING":
+            case 5:
+                message.target_state = 5;
+                break;
+            case "RAISING":
+            case 6:
+                message.target_state = 6;
+                break;
+            case "LOWERING":
+            case 7:
+                message.target_state = 7;
+                break;
+            }
+            if (object.error_message != null)
+                message.error_message = String(object.error_message);
+            if (object.has_error != null)
+                message.has_error = Boolean(object.has_error);
+            if (object.controller_offline != null)
+                message.controller_offline = Boolean(object.controller_offline);
+            if (object.gyro_offline != null)
+                message.gyro_offline = Boolean(object.gyro_offline);
+            if (object.controller_fault != null)
+                message.controller_fault = Boolean(object.controller_fault);
+            if (object.gyro_fault != null)
+                message.gyro_fault = Boolean(object.gyro_fault);
+            if (object.motion_timed_out != null)
+                message.motion_timed_out = Boolean(object.motion_timed_out);
+            switch (object.signal_light) {
+            default:
+                if (typeof object.signal_light === "number") {
+                    message.signal_light = object.signal_light;
+                    break;
+                }
+                break;
+            case "UNKNOWN":
+            case 0:
+                message.signal_light = 0;
+                break;
+            case "RED":
+            case 1:
+                message.signal_light = 1;
+                break;
+            case "GREEN":
+            case 2:
+                message.signal_light = 2;
+                break;
+            case "YELLOW":
+            case 3:
+                message.signal_light = 3;
+                break;
+            }
+            if (object.signal_light_countdown != null)
+                message.signal_light_countdown = object.signal_light_countdown | 0;
+            if (object.pitch != null)
+                message.pitch = Number(object.pitch);
+            if (object.height != null)
+                message.height = Number(object.height);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a LiftgateState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {ax_proto_msgs.LiftgateState} message LiftgateState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        LiftgateState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.current_state = options.enums === String ? "UNKNOWN" : 0;
+                object.target_state = options.enums === String ? "UNKNOWN" : 0;
+                object.error_message = "";
+                object.has_error = false;
+                object.controller_offline = false;
+                object.gyro_offline = false;
+                object.controller_fault = false;
+                object.gyro_fault = false;
+                object.motion_timed_out = false;
+                object.signal_light = options.enums === String ? "UNKNOWN" : 0;
+                object.signal_light_countdown = 0;
+                object.pitch = 0;
+                object.height = 0;
+            }
+            if (message.current_state != null && message.hasOwnProperty("current_state"))
+                object.current_state = options.enums === String ? $root.ax_proto_msgs.LiftgateState.State.Type[message.current_state] === undefined ? message.current_state : $root.ax_proto_msgs.LiftgateState.State.Type[message.current_state] : message.current_state;
+            if (message.target_state != null && message.hasOwnProperty("target_state"))
+                object.target_state = options.enums === String ? $root.ax_proto_msgs.LiftgateState.State.Type[message.target_state] === undefined ? message.target_state : $root.ax_proto_msgs.LiftgateState.State.Type[message.target_state] : message.target_state;
+            if (message.error_message != null && message.hasOwnProperty("error_message"))
+                object.error_message = message.error_message;
+            if (message.has_error != null && message.hasOwnProperty("has_error"))
+                object.has_error = message.has_error;
+            if (message.controller_offline != null && message.hasOwnProperty("controller_offline"))
+                object.controller_offline = message.controller_offline;
+            if (message.gyro_offline != null && message.hasOwnProperty("gyro_offline"))
+                object.gyro_offline = message.gyro_offline;
+            if (message.controller_fault != null && message.hasOwnProperty("controller_fault"))
+                object.controller_fault = message.controller_fault;
+            if (message.gyro_fault != null && message.hasOwnProperty("gyro_fault"))
+                object.gyro_fault = message.gyro_fault;
+            if (message.motion_timed_out != null && message.hasOwnProperty("motion_timed_out"))
+                object.motion_timed_out = message.motion_timed_out;
+            if (message.signal_light != null && message.hasOwnProperty("signal_light"))
+                object.signal_light = options.enums === String ? $root.ax_proto_msgs.LiftgateState.SignalLight.Type[message.signal_light] === undefined ? message.signal_light : $root.ax_proto_msgs.LiftgateState.SignalLight.Type[message.signal_light] : message.signal_light;
+            if (message.signal_light_countdown != null && message.hasOwnProperty("signal_light_countdown"))
+                object.signal_light_countdown = message.signal_light_countdown;
+            if (message.pitch != null && message.hasOwnProperty("pitch"))
+                object.pitch = options.json && !isFinite(message.pitch) ? String(message.pitch) : message.pitch;
+            if (message.height != null && message.hasOwnProperty("height"))
+                object.height = options.json && !isFinite(message.height) ? String(message.height) : message.height;
+            return object;
+        };
+
+        /**
+         * Converts this LiftgateState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.LiftgateState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        LiftgateState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for LiftgateState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.LiftgateState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        LiftgateState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.LiftgateState";
+        };
+
+        LiftgateState.State = (function() {
+
+            /**
+             * Properties of a State.
+             * @memberof ax_proto_msgs.LiftgateState
+             * @interface IState
+             */
+
+            /**
+             * Constructs a new State.
+             * @memberof ax_proto_msgs.LiftgateState
+             * @classdesc Represents a State.
+             * @implements IState
+             * @constructor
+             * @param {ax_proto_msgs.LiftgateState.IState=} [properties] Properties to set
+             */
+            function State(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new State instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.IState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.LiftgateState.State} State instance
+             */
+            State.create = function create(properties) {
+                return new State(properties);
+            };
+
+            /**
+             * Encodes the specified State message. Does not implicitly {@link ax_proto_msgs.LiftgateState.State.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.IState} message State message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            State.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified State message, length delimited. Does not implicitly {@link ax_proto_msgs.LiftgateState.State.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.IState} message State message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            State.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a State message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.LiftgateState.State} State
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            State.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.LiftgateState.State();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a State message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.LiftgateState.State} State
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            State.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a State message.
+             * @function verify
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            State.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a State message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.LiftgateState.State} State
+             */
+            State.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.LiftgateState.State)
+                    return object;
+                return new $root.ax_proto_msgs.LiftgateState.State();
+            };
+
+            /**
+             * Creates a plain object from a State message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.State} message State
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            State.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this State to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            State.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for State
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.LiftgateState.State
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            State.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.LiftgateState.State";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.LiftgateState.State.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} CLOSED=1 CLOSED value
+             * @property {number} RAISED=2 RAISED value
+             * @property {number} LOWERED=3 LOWERED value
+             * @property {number} OPENING=4 OPENING value
+             * @property {number} CLOSING=5 CLOSING value
+             * @property {number} RAISING=6 RAISING value
+             * @property {number} LOWERING=7 LOWERING value
+             */
+            State.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "CLOSED"] = 1;
+                values[valuesById[2] = "RAISED"] = 2;
+                values[valuesById[3] = "LOWERED"] = 3;
+                values[valuesById[4] = "OPENING"] = 4;
+                values[valuesById[5] = "CLOSING"] = 5;
+                values[valuesById[6] = "RAISING"] = 6;
+                values[valuesById[7] = "LOWERING"] = 7;
+                return values;
+            })();
+
+            return State;
+        })();
+
+        LiftgateState.SignalLight = (function() {
+
+            /**
+             * Properties of a SignalLight.
+             * @memberof ax_proto_msgs.LiftgateState
+             * @interface ISignalLight
+             */
+
+            /**
+             * Constructs a new SignalLight.
+             * @memberof ax_proto_msgs.LiftgateState
+             * @classdesc Represents a SignalLight.
+             * @implements ISignalLight
+             * @constructor
+             * @param {ax_proto_msgs.LiftgateState.ISignalLight=} [properties] Properties to set
+             */
+            function SignalLight(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new SignalLight instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.ISignalLight=} [properties] Properties to set
+             * @returns {ax_proto_msgs.LiftgateState.SignalLight} SignalLight instance
+             */
+            SignalLight.create = function create(properties) {
+                return new SignalLight(properties);
+            };
+
+            /**
+             * Encodes the specified SignalLight message. Does not implicitly {@link ax_proto_msgs.LiftgateState.SignalLight.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.ISignalLight} message SignalLight message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SignalLight.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SignalLight message, length delimited. Does not implicitly {@link ax_proto_msgs.LiftgateState.SignalLight.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.ISignalLight} message SignalLight message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SignalLight.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SignalLight message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.LiftgateState.SignalLight} SignalLight
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SignalLight.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.LiftgateState.SignalLight();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SignalLight message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.LiftgateState.SignalLight} SignalLight
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SignalLight.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SignalLight message.
+             * @function verify
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SignalLight.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a SignalLight message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.LiftgateState.SignalLight} SignalLight
+             */
+            SignalLight.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.LiftgateState.SignalLight)
+                    return object;
+                return new $root.ax_proto_msgs.LiftgateState.SignalLight();
+            };
+
+            /**
+             * Creates a plain object from a SignalLight message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {ax_proto_msgs.LiftgateState.SignalLight} message SignalLight
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SignalLight.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this SignalLight to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SignalLight.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SignalLight
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.LiftgateState.SignalLight
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SignalLight.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.LiftgateState.SignalLight";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.LiftgateState.SignalLight.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} RED=1 RED value
+             * @property {number} GREEN=2 GREEN value
+             * @property {number} YELLOW=3 YELLOW value
+             */
+            SignalLight.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "RED"] = 1;
+                values[valuesById[2] = "GREEN"] = 2;
+                values[valuesById[3] = "YELLOW"] = 3;
+                return values;
+            })();
+
+            return SignalLight;
+        })();
+
+        return LiftgateState;
     })();
 
     ax_proto_msgs.MastState = (function() {
@@ -6378,6 +11789,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number} POI_DETECTION_ERROR=700 POI_DETECTION_ERROR value
          * @property {number} POI_UNREACHABLE=701 POI_UNREACHABLE value
          * @property {number} BARCODE_DETECTION_ERROR=702 BARCODE_DETECTION_ERROR value
+         * @property {number} NOT_AT_TRUCK_GROUND_POINT=800 NOT_AT_TRUCK_GROUND_POINT value
+         * @property {number} LIFTGATE_WAIT_TIMEOUT=801 LIFTGATE_WAIT_TIMEOUT value
+         * @property {number} JACK_OPERATION_FAILED=802 JACK_OPERATION_FAILED value
+         * @property {number} LOAD_IN_JACK_DOWN_STATE=803 LOAD_IN_JACK_DOWN_STATE value
+         * @property {number} UNLOAD_IN_JACK_UP_STATE=804 UNLOAD_IN_JACK_UP_STATE value
          * @property {number} PLATFORM_ALERT_ERROR=1000 PLATFORM_ALERT_ERROR value
          * @property {number} SERVICE_CALL_ERROR=1001 SERVICE_CALL_ERROR value
          * @property {number} INTERNAL_ERROR=1002 INTERNAL_ERROR value
@@ -6449,6 +11865,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             values[valuesById[700] = "POI_DETECTION_ERROR"] = 700;
             values[valuesById[701] = "POI_UNREACHABLE"] = 701;
             values[valuesById[702] = "BARCODE_DETECTION_ERROR"] = 702;
+            values[valuesById[800] = "NOT_AT_TRUCK_GROUND_POINT"] = 800;
+            values[valuesById[801] = "LIFTGATE_WAIT_TIMEOUT"] = 801;
+            values[valuesById[802] = "JACK_OPERATION_FAILED"] = 802;
+            values[valuesById[803] = "LOAD_IN_JACK_DOWN_STATE"] = 803;
+            values[valuesById[804] = "UNLOAD_IN_JACK_UP_STATE"] = 804;
             values[valuesById[1000] = "PLATFORM_ALERT_ERROR"] = 1000;
             values[valuesById[1001] = "SERVICE_CALL_ERROR"] = 1001;
             values[valuesById[1002] = "INTERNAL_ERROR"] = 1002;
@@ -7316,6 +12737,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 case 700:
                 case 701:
                 case 702:
+                case 800:
+                case 801:
+                case 802:
+                case 803:
+                case 804:
                 case 1000:
                 case 1001:
                 case 1002:
@@ -7393,6 +12819,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     case 700:
                     case 701:
                     case 702:
+                    case 800:
+                    case 801:
+                    case 802:
+                    case 803:
+                    case 804:
                     case 1000:
                     case 1001:
                     case 1002:
@@ -7823,6 +13254,26 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             case 702:
                 message.fail_reason = 702;
                 break;
+            case "NOT_AT_TRUCK_GROUND_POINT":
+            case 800:
+                message.fail_reason = 800;
+                break;
+            case "LIFTGATE_WAIT_TIMEOUT":
+            case 801:
+                message.fail_reason = 801;
+                break;
+            case "JACK_OPERATION_FAILED":
+            case 802:
+                message.fail_reason = 802;
+                break;
+            case "LOAD_IN_JACK_DOWN_STATE":
+            case 803:
+                message.fail_reason = 803;
+                break;
+            case "UNLOAD_IN_JACK_UP_STATE":
+            case 804:
+                message.fail_reason = 804;
+                break;
             case "PLATFORM_ALERT_ERROR":
             case 1000:
                 message.fail_reason = 1000;
@@ -8106,6 +13557,26 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     case "BARCODE_DETECTION_ERROR":
                     case 702:
                         message.fail_reasons[i] = 702;
+                        break;
+                    case "NOT_AT_TRUCK_GROUND_POINT":
+                    case 800:
+                        message.fail_reasons[i] = 800;
+                        break;
+                    case "LIFTGATE_WAIT_TIMEOUT":
+                    case 801:
+                        message.fail_reasons[i] = 801;
+                        break;
+                    case "JACK_OPERATION_FAILED":
+                    case 802:
+                        message.fail_reasons[i] = 802;
+                        break;
+                    case "LOAD_IN_JACK_DOWN_STATE":
+                    case 803:
+                        message.fail_reasons[i] = 803;
+                        break;
+                    case "UNLOAD_IN_JACK_UP_STATE":
+                    case 804:
+                        message.fail_reasons[i] = 804;
                         break;
                     case "PLATFORM_ALERT_ERROR":
                     case 1000:
@@ -10027,6 +15498,727 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return PointCloud;
     })();
 
+    ax_proto_msgs.RawPointCloud = (function() {
+
+        /**
+         * Properties of a RawPointCloud.
+         * @memberof ax_proto_msgs
+         * @interface IRawPointCloud
+         * @property {ax_proto_msgs.IHeader|null} [header] RawPointCloud header
+         * @property {number|null} [point_number] RawPointCloud point_number
+         * @property {Array.<ax_proto_msgs.IRawPointCloudPack>|null} [packs] RawPointCloud packs
+         */
+
+        /**
+         * Constructs a new RawPointCloud.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RawPointCloud.
+         * @implements IRawPointCloud
+         * @constructor
+         * @param {ax_proto_msgs.IRawPointCloud=} [properties] Properties to set
+         */
+        function RawPointCloud(properties) {
+            this.packs = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RawPointCloud header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @instance
+         */
+        RawPointCloud.prototype.header = null;
+
+        /**
+         * RawPointCloud point_number.
+         * @member {number} point_number
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @instance
+         */
+        RawPointCloud.prototype.point_number = 0;
+
+        /**
+         * RawPointCloud packs.
+         * @member {Array.<ax_proto_msgs.IRawPointCloudPack>} packs
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @instance
+         */
+        RawPointCloud.prototype.packs = $util.emptyArray;
+
+        /**
+         * Creates a new RawPointCloud instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {ax_proto_msgs.IRawPointCloud=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RawPointCloud} RawPointCloud instance
+         */
+        RawPointCloud.create = function create(properties) {
+            return new RawPointCloud(properties);
+        };
+
+        /**
+         * Encodes the specified RawPointCloud message. Does not implicitly {@link ax_proto_msgs.RawPointCloud.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {ax_proto_msgs.IRawPointCloud} message RawPointCloud message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RawPointCloud.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.point_number != null && Object.hasOwnProperty.call(message, "point_number"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.point_number);
+            if (message.packs != null && message.packs.length)
+                for (let i = 0; i < message.packs.length; ++i)
+                    $root.ax_proto_msgs.RawPointCloudPack.encode(message.packs[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RawPointCloud message, length delimited. Does not implicitly {@link ax_proto_msgs.RawPointCloud.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {ax_proto_msgs.IRawPointCloud} message RawPointCloud message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RawPointCloud.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RawPointCloud message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RawPointCloud} RawPointCloud
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RawPointCloud.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RawPointCloud();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.point_number = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        if (!(message.packs && message.packs.length))
+                            message.packs = [];
+                        message.packs.push($root.ax_proto_msgs.RawPointCloudPack.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RawPointCloud message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RawPointCloud} RawPointCloud
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RawPointCloud.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RawPointCloud message.
+         * @function verify
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RawPointCloud.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.point_number != null && message.hasOwnProperty("point_number"))
+                if (!$util.isInteger(message.point_number))
+                    return "point_number: integer expected";
+            if (message.packs != null && message.hasOwnProperty("packs")) {
+                if (!Array.isArray(message.packs))
+                    return "packs: array expected";
+                for (let i = 0; i < message.packs.length; ++i) {
+                    let error = $root.ax_proto_msgs.RawPointCloudPack.verify(message.packs[i]);
+                    if (error)
+                        return "packs." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RawPointCloud message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RawPointCloud} RawPointCloud
+         */
+        RawPointCloud.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RawPointCloud)
+                return object;
+            let message = new $root.ax_proto_msgs.RawPointCloud();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.RawPointCloud.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.point_number != null)
+                message.point_number = object.point_number >>> 0;
+            if (object.packs) {
+                if (!Array.isArray(object.packs))
+                    throw TypeError(".ax_proto_msgs.RawPointCloud.packs: array expected");
+                message.packs = [];
+                for (let i = 0; i < object.packs.length; ++i) {
+                    if (typeof object.packs[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.RawPointCloud.packs: object expected");
+                    message.packs[i] = $root.ax_proto_msgs.RawPointCloudPack.fromObject(object.packs[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RawPointCloud message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {ax_proto_msgs.RawPointCloud} message RawPointCloud
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RawPointCloud.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.packs = [];
+            if (options.defaults) {
+                object.header = null;
+                object.point_number = 0;
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.point_number != null && message.hasOwnProperty("point_number"))
+                object.point_number = message.point_number;
+            if (message.packs && message.packs.length) {
+                object.packs = [];
+                for (let j = 0; j < message.packs.length; ++j)
+                    object.packs[j] = $root.ax_proto_msgs.RawPointCloudPack.toObject(message.packs[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RawPointCloud to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RawPointCloud.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RawPointCloud
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RawPointCloud
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RawPointCloud.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RawPointCloud";
+        };
+
+        return RawPointCloud;
+    })();
+
+    ax_proto_msgs.RawPointCloudPack = (function() {
+
+        /**
+         * Properties of a RawPointCloudPack.
+         * @memberof ax_proto_msgs
+         * @interface IRawPointCloudPack
+         * @property {number|Long|null} [stamp_nsec] RawPointCloudPack stamp_nsec
+         * @property {Array.<number>|null} [xs] RawPointCloudPack xs
+         * @property {Array.<number>|null} [ys] RawPointCloudPack ys
+         * @property {Array.<number>|null} [zs] RawPointCloudPack zs
+         * @property {Array.<number>|null} [dt_nsec] RawPointCloudPack dt_nsec
+         * @property {Uint8Array|null} [intensities] RawPointCloudPack intensities
+         */
+
+        /**
+         * Constructs a new RawPointCloudPack.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RawPointCloudPack.
+         * @implements IRawPointCloudPack
+         * @constructor
+         * @param {ax_proto_msgs.IRawPointCloudPack=} [properties] Properties to set
+         */
+        function RawPointCloudPack(properties) {
+            this.xs = [];
+            this.ys = [];
+            this.zs = [];
+            this.dt_nsec = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RawPointCloudPack stamp_nsec.
+         * @member {number|Long} stamp_nsec
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         */
+        RawPointCloudPack.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * RawPointCloudPack xs.
+         * @member {Array.<number>} xs
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         */
+        RawPointCloudPack.prototype.xs = $util.emptyArray;
+
+        /**
+         * RawPointCloudPack ys.
+         * @member {Array.<number>} ys
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         */
+        RawPointCloudPack.prototype.ys = $util.emptyArray;
+
+        /**
+         * RawPointCloudPack zs.
+         * @member {Array.<number>} zs
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         */
+        RawPointCloudPack.prototype.zs = $util.emptyArray;
+
+        /**
+         * RawPointCloudPack dt_nsec.
+         * @member {Array.<number>} dt_nsec
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         */
+        RawPointCloudPack.prototype.dt_nsec = $util.emptyArray;
+
+        /**
+         * RawPointCloudPack intensities.
+         * @member {Uint8Array} intensities
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         */
+        RawPointCloudPack.prototype.intensities = $util.newBuffer([]);
+
+        /**
+         * Creates a new RawPointCloudPack instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {ax_proto_msgs.IRawPointCloudPack=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RawPointCloudPack} RawPointCloudPack instance
+         */
+        RawPointCloudPack.create = function create(properties) {
+            return new RawPointCloudPack(properties);
+        };
+
+        /**
+         * Encodes the specified RawPointCloudPack message. Does not implicitly {@link ax_proto_msgs.RawPointCloudPack.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {ax_proto_msgs.IRawPointCloudPack} message RawPointCloudPack message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RawPointCloudPack.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.stamp_nsec);
+            if (message.xs != null && message.xs.length) {
+                writer.uint32(/* id 2, wireType 2 =*/18).fork();
+                for (let i = 0; i < message.xs.length; ++i)
+                    writer.float(message.xs[i]);
+                writer.ldelim();
+            }
+            if (message.ys != null && message.ys.length) {
+                writer.uint32(/* id 3, wireType 2 =*/26).fork();
+                for (let i = 0; i < message.ys.length; ++i)
+                    writer.float(message.ys[i]);
+                writer.ldelim();
+            }
+            if (message.zs != null && message.zs.length) {
+                writer.uint32(/* id 4, wireType 2 =*/34).fork();
+                for (let i = 0; i < message.zs.length; ++i)
+                    writer.float(message.zs[i]);
+                writer.ldelim();
+            }
+            if (message.dt_nsec != null && message.dt_nsec.length) {
+                writer.uint32(/* id 5, wireType 2 =*/42).fork();
+                for (let i = 0; i < message.dt_nsec.length; ++i)
+                    writer.uint32(message.dt_nsec[i]);
+                writer.ldelim();
+            }
+            if (message.intensities != null && Object.hasOwnProperty.call(message, "intensities"))
+                writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.intensities);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RawPointCloudPack message, length delimited. Does not implicitly {@link ax_proto_msgs.RawPointCloudPack.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {ax_proto_msgs.IRawPointCloudPack} message RawPointCloudPack message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RawPointCloudPack.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RawPointCloudPack message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RawPointCloudPack} RawPointCloudPack
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RawPointCloudPack.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RawPointCloudPack();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.stamp_nsec = reader.uint64();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.xs && message.xs.length))
+                            message.xs = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.xs.push(reader.float());
+                        } else
+                            message.xs.push(reader.float());
+                        break;
+                    }
+                case 3: {
+                        if (!(message.ys && message.ys.length))
+                            message.ys = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.ys.push(reader.float());
+                        } else
+                            message.ys.push(reader.float());
+                        break;
+                    }
+                case 4: {
+                        if (!(message.zs && message.zs.length))
+                            message.zs = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.zs.push(reader.float());
+                        } else
+                            message.zs.push(reader.float());
+                        break;
+                    }
+                case 5: {
+                        if (!(message.dt_nsec && message.dt_nsec.length))
+                            message.dt_nsec = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.dt_nsec.push(reader.uint32());
+                        } else
+                            message.dt_nsec.push(reader.uint32());
+                        break;
+                    }
+                case 6: {
+                        message.intensities = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RawPointCloudPack message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RawPointCloudPack} RawPointCloudPack
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RawPointCloudPack.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RawPointCloudPack message.
+         * @function verify
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RawPointCloudPack.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
+                    return "stamp_nsec: integer|Long expected";
+            if (message.xs != null && message.hasOwnProperty("xs")) {
+                if (!Array.isArray(message.xs))
+                    return "xs: array expected";
+                for (let i = 0; i < message.xs.length; ++i)
+                    if (typeof message.xs[i] !== "number")
+                        return "xs: number[] expected";
+            }
+            if (message.ys != null && message.hasOwnProperty("ys")) {
+                if (!Array.isArray(message.ys))
+                    return "ys: array expected";
+                for (let i = 0; i < message.ys.length; ++i)
+                    if (typeof message.ys[i] !== "number")
+                        return "ys: number[] expected";
+            }
+            if (message.zs != null && message.hasOwnProperty("zs")) {
+                if (!Array.isArray(message.zs))
+                    return "zs: array expected";
+                for (let i = 0; i < message.zs.length; ++i)
+                    if (typeof message.zs[i] !== "number")
+                        return "zs: number[] expected";
+            }
+            if (message.dt_nsec != null && message.hasOwnProperty("dt_nsec")) {
+                if (!Array.isArray(message.dt_nsec))
+                    return "dt_nsec: array expected";
+                for (let i = 0; i < message.dt_nsec.length; ++i)
+                    if (!$util.isInteger(message.dt_nsec[i]))
+                        return "dt_nsec: integer[] expected";
+            }
+            if (message.intensities != null && message.hasOwnProperty("intensities"))
+                if (!(message.intensities && typeof message.intensities.length === "number" || $util.isString(message.intensities)))
+                    return "intensities: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a RawPointCloudPack message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RawPointCloudPack} RawPointCloudPack
+         */
+        RawPointCloudPack.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RawPointCloudPack)
+                return object;
+            let message = new $root.ax_proto_msgs.RawPointCloudPack();
+            if (object.stamp_nsec != null)
+                if ($util.Long)
+                    (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
+                else if (typeof object.stamp_nsec === "string")
+                    message.stamp_nsec = parseInt(object.stamp_nsec, 10);
+                else if (typeof object.stamp_nsec === "number")
+                    message.stamp_nsec = object.stamp_nsec;
+                else if (typeof object.stamp_nsec === "object")
+                    message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
+            if (object.xs) {
+                if (!Array.isArray(object.xs))
+                    throw TypeError(".ax_proto_msgs.RawPointCloudPack.xs: array expected");
+                message.xs = [];
+                for (let i = 0; i < object.xs.length; ++i)
+                    message.xs[i] = Number(object.xs[i]);
+            }
+            if (object.ys) {
+                if (!Array.isArray(object.ys))
+                    throw TypeError(".ax_proto_msgs.RawPointCloudPack.ys: array expected");
+                message.ys = [];
+                for (let i = 0; i < object.ys.length; ++i)
+                    message.ys[i] = Number(object.ys[i]);
+            }
+            if (object.zs) {
+                if (!Array.isArray(object.zs))
+                    throw TypeError(".ax_proto_msgs.RawPointCloudPack.zs: array expected");
+                message.zs = [];
+                for (let i = 0; i < object.zs.length; ++i)
+                    message.zs[i] = Number(object.zs[i]);
+            }
+            if (object.dt_nsec) {
+                if (!Array.isArray(object.dt_nsec))
+                    throw TypeError(".ax_proto_msgs.RawPointCloudPack.dt_nsec: array expected");
+                message.dt_nsec = [];
+                for (let i = 0; i < object.dt_nsec.length; ++i)
+                    message.dt_nsec[i] = object.dt_nsec[i] >>> 0;
+            }
+            if (object.intensities != null)
+                if (typeof object.intensities === "string")
+                    $util.base64.decode(object.intensities, message.intensities = $util.newBuffer($util.base64.length(object.intensities)), 0);
+                else if (object.intensities.length >= 0)
+                    message.intensities = object.intensities;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RawPointCloudPack message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {ax_proto_msgs.RawPointCloudPack} message RawPointCloudPack
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RawPointCloudPack.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults) {
+                object.xs = [];
+                object.ys = [];
+                object.zs = [];
+                object.dt_nsec = [];
+            }
+            if (options.defaults) {
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.stamp_nsec = options.longs === String ? "0" : 0;
+                if (options.bytes === String)
+                    object.intensities = "";
+                else {
+                    object.intensities = [];
+                    if (options.bytes !== Array)
+                        object.intensities = $util.newBuffer(object.intensities);
+                }
+            }
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (typeof message.stamp_nsec === "number")
+                    object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
+                else
+                    object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
+            if (message.xs && message.xs.length) {
+                object.xs = [];
+                for (let j = 0; j < message.xs.length; ++j)
+                    object.xs[j] = options.json && !isFinite(message.xs[j]) ? String(message.xs[j]) : message.xs[j];
+            }
+            if (message.ys && message.ys.length) {
+                object.ys = [];
+                for (let j = 0; j < message.ys.length; ++j)
+                    object.ys[j] = options.json && !isFinite(message.ys[j]) ? String(message.ys[j]) : message.ys[j];
+            }
+            if (message.zs && message.zs.length) {
+                object.zs = [];
+                for (let j = 0; j < message.zs.length; ++j)
+                    object.zs[j] = options.json && !isFinite(message.zs[j]) ? String(message.zs[j]) : message.zs[j];
+            }
+            if (message.dt_nsec && message.dt_nsec.length) {
+                object.dt_nsec = [];
+                for (let j = 0; j < message.dt_nsec.length; ++j)
+                    object.dt_nsec[j] = message.dt_nsec[j];
+            }
+            if (message.intensities != null && message.hasOwnProperty("intensities"))
+                object.intensities = options.bytes === String ? $util.base64.encode(message.intensities, 0, message.intensities.length) : options.bytes === Array ? Array.prototype.slice.call(message.intensities) : message.intensities;
+            return object;
+        };
+
+        /**
+         * Converts this RawPointCloudPack to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RawPointCloudPack.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RawPointCloudPack
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RawPointCloudPack
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RawPointCloudPack.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RawPointCloudPack";
+        };
+
+        return RawPointCloudPack;
+    })();
+
     ax_proto_msgs.RackStates = (function() {
 
         /**
@@ -10833,6 +17025,3224 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return RackStates;
     })();
 
+    ax_proto_msgs.RobotDescription = (function() {
+
+        /**
+         * Properties of a RobotDescription.
+         * @memberof ax_proto_msgs
+         * @interface IRobotDescription
+         * @property {string|null} [type] RobotDescription type
+         * @property {string|null} [yaml] RobotDescription yaml
+         */
+
+        /**
+         * Constructs a new RobotDescription.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotDescription.
+         * @implements IRobotDescription
+         * @constructor
+         * @param {ax_proto_msgs.IRobotDescription=} [properties] Properties to set
+         */
+        function RobotDescription(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotDescription type.
+         * @member {string} type
+         * @memberof ax_proto_msgs.RobotDescription
+         * @instance
+         */
+        RobotDescription.prototype.type = "";
+
+        /**
+         * RobotDescription yaml.
+         * @member {string} yaml
+         * @memberof ax_proto_msgs.RobotDescription
+         * @instance
+         */
+        RobotDescription.prototype.yaml = "";
+
+        /**
+         * Creates a new RobotDescription instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {ax_proto_msgs.IRobotDescription=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotDescription} RobotDescription instance
+         */
+        RobotDescription.create = function create(properties) {
+            return new RobotDescription(properties);
+        };
+
+        /**
+         * Encodes the specified RobotDescription message. Does not implicitly {@link ax_proto_msgs.RobotDescription.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {ax_proto_msgs.IRobotDescription} message RobotDescription message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotDescription.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.type != null && Object.hasOwnProperty.call(message, "type"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.type);
+            if (message.yaml != null && Object.hasOwnProperty.call(message, "yaml"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.yaml);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotDescription message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotDescription.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {ax_proto_msgs.IRobotDescription} message RobotDescription message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotDescription.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotDescription message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotDescription} RobotDescription
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotDescription.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotDescription();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.type = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.yaml = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotDescription message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotDescription} RobotDescription
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotDescription.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotDescription message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotDescription.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.type != null && message.hasOwnProperty("type"))
+                if (!$util.isString(message.type))
+                    return "type: string expected";
+            if (message.yaml != null && message.hasOwnProperty("yaml"))
+                if (!$util.isString(message.yaml))
+                    return "yaml: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a RobotDescription message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotDescription} RobotDescription
+         */
+        RobotDescription.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotDescription)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotDescription();
+            if (object.type != null)
+                message.type = String(object.type);
+            if (object.yaml != null)
+                message.yaml = String(object.yaml);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotDescription message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {ax_proto_msgs.RobotDescription} message RobotDescription
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotDescription.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.type = "";
+                object.yaml = "";
+            }
+            if (message.type != null && message.hasOwnProperty("type"))
+                object.type = message.type;
+            if (message.yaml != null && message.hasOwnProperty("yaml"))
+                object.yaml = message.yaml;
+            return object;
+        };
+
+        /**
+         * Converts this RobotDescription to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotDescription
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotDescription.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotDescription
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotDescription
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotDescription.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotDescription";
+        };
+
+        return RobotDescription;
+    })();
+
+    ax_proto_msgs.RobotDescriptions = (function() {
+
+        /**
+         * Properties of a RobotDescriptions.
+         * @memberof ax_proto_msgs
+         * @interface IRobotDescriptions
+         * @property {string|null} [source_id] RobotDescriptions source_id
+         * @property {Array.<ax_proto_msgs.IRobotDescription>|null} [models] RobotDescriptions models
+         */
+
+        /**
+         * Constructs a new RobotDescriptions.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotDescriptions.
+         * @implements IRobotDescriptions
+         * @constructor
+         * @param {ax_proto_msgs.IRobotDescriptions=} [properties] Properties to set
+         */
+        function RobotDescriptions(properties) {
+            this.models = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotDescriptions source_id.
+         * @member {string} source_id
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @instance
+         */
+        RobotDescriptions.prototype.source_id = "";
+
+        /**
+         * RobotDescriptions models.
+         * @member {Array.<ax_proto_msgs.IRobotDescription>} models
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @instance
+         */
+        RobotDescriptions.prototype.models = $util.emptyArray;
+
+        /**
+         * Creates a new RobotDescriptions instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {ax_proto_msgs.IRobotDescriptions=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotDescriptions} RobotDescriptions instance
+         */
+        RobotDescriptions.create = function create(properties) {
+            return new RobotDescriptions(properties);
+        };
+
+        /**
+         * Encodes the specified RobotDescriptions message. Does not implicitly {@link ax_proto_msgs.RobotDescriptions.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {ax_proto_msgs.IRobotDescriptions} message RobotDescriptions message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotDescriptions.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.source_id != null && Object.hasOwnProperty.call(message, "source_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.source_id);
+            if (message.models != null && message.models.length)
+                for (let i = 0; i < message.models.length; ++i)
+                    $root.ax_proto_msgs.RobotDescription.encode(message.models[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotDescriptions message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotDescriptions.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {ax_proto_msgs.IRobotDescriptions} message RobotDescriptions message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotDescriptions.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotDescriptions message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotDescriptions} RobotDescriptions
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotDescriptions.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotDescriptions();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.source_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.models && message.models.length))
+                            message.models = [];
+                        message.models.push($root.ax_proto_msgs.RobotDescription.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotDescriptions message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotDescriptions} RobotDescriptions
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotDescriptions.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotDescriptions message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotDescriptions.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                if (!$util.isString(message.source_id))
+                    return "source_id: string expected";
+            if (message.models != null && message.hasOwnProperty("models")) {
+                if (!Array.isArray(message.models))
+                    return "models: array expected";
+                for (let i = 0; i < message.models.length; ++i) {
+                    let error = $root.ax_proto_msgs.RobotDescription.verify(message.models[i]);
+                    if (error)
+                        return "models." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RobotDescriptions message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotDescriptions} RobotDescriptions
+         */
+        RobotDescriptions.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotDescriptions)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotDescriptions();
+            if (object.source_id != null)
+                message.source_id = String(object.source_id);
+            if (object.models) {
+                if (!Array.isArray(object.models))
+                    throw TypeError(".ax_proto_msgs.RobotDescriptions.models: array expected");
+                message.models = [];
+                for (let i = 0; i < object.models.length; ++i) {
+                    if (typeof object.models[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.RobotDescriptions.models: object expected");
+                    message.models[i] = $root.ax_proto_msgs.RobotDescription.fromObject(object.models[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotDescriptions message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {ax_proto_msgs.RobotDescriptions} message RobotDescriptions
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotDescriptions.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.models = [];
+            if (options.defaults)
+                object.source_id = "";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                object.source_id = message.source_id;
+            if (message.models && message.models.length) {
+                object.models = [];
+                for (let j = 0; j < message.models.length; ++j)
+                    object.models[j] = $root.ax_proto_msgs.RobotDescription.toObject(message.models[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RobotDescriptions to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotDescriptions.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotDescriptions
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotDescriptions
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotDescriptions.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotDescriptions";
+        };
+
+        return RobotDescriptions;
+    })();
+
+    ax_proto_msgs.RobotInstance = (function() {
+
+        /**
+         * Properties of a RobotInstance.
+         * @memberof ax_proto_msgs
+         * @interface IRobotInstance
+         * @property {string|null} [instance_id] RobotInstance instance_id
+         * @property {string|null} [type] RobotInstance type
+         */
+
+        /**
+         * Constructs a new RobotInstance.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotInstance.
+         * @implements IRobotInstance
+         * @constructor
+         * @param {ax_proto_msgs.IRobotInstance=} [properties] Properties to set
+         */
+        function RobotInstance(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotInstance instance_id.
+         * @member {string} instance_id
+         * @memberof ax_proto_msgs.RobotInstance
+         * @instance
+         */
+        RobotInstance.prototype.instance_id = "";
+
+        /**
+         * RobotInstance type.
+         * @member {string} type
+         * @memberof ax_proto_msgs.RobotInstance
+         * @instance
+         */
+        RobotInstance.prototype.type = "";
+
+        /**
+         * Creates a new RobotInstance instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {ax_proto_msgs.IRobotInstance=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotInstance} RobotInstance instance
+         */
+        RobotInstance.create = function create(properties) {
+            return new RobotInstance(properties);
+        };
+
+        /**
+         * Encodes the specified RobotInstance message. Does not implicitly {@link ax_proto_msgs.RobotInstance.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {ax_proto_msgs.IRobotInstance} message RobotInstance message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotInstance.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.instance_id != null && Object.hasOwnProperty.call(message, "instance_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.instance_id);
+            if (message.type != null && Object.hasOwnProperty.call(message, "type"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.type);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotInstance message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotInstance.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {ax_proto_msgs.IRobotInstance} message RobotInstance message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotInstance.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotInstance message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotInstance} RobotInstance
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotInstance.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotInstance();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.instance_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.type = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotInstance message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotInstance} RobotInstance
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotInstance.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotInstance message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotInstance.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                if (!$util.isString(message.instance_id))
+                    return "instance_id: string expected";
+            if (message.type != null && message.hasOwnProperty("type"))
+                if (!$util.isString(message.type))
+                    return "type: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a RobotInstance message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotInstance} RobotInstance
+         */
+        RobotInstance.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotInstance)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotInstance();
+            if (object.instance_id != null)
+                message.instance_id = String(object.instance_id);
+            if (object.type != null)
+                message.type = String(object.type);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotInstance message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {ax_proto_msgs.RobotInstance} message RobotInstance
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotInstance.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.instance_id = "";
+                object.type = "";
+            }
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                object.instance_id = message.instance_id;
+            if (message.type != null && message.hasOwnProperty("type"))
+                object.type = message.type;
+            return object;
+        };
+
+        /**
+         * Converts this RobotInstance to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotInstance
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotInstance.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotInstance
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotInstance
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotInstance.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotInstance";
+        };
+
+        return RobotInstance;
+    })();
+
+    ax_proto_msgs.RobotInstances = (function() {
+
+        /**
+         * Properties of a RobotInstances.
+         * @memberof ax_proto_msgs
+         * @interface IRobotInstances
+         * @property {string|null} [source_id] RobotInstances source_id
+         * @property {Array.<ax_proto_msgs.IRobotInstance>|null} [instances] RobotInstances instances
+         */
+
+        /**
+         * Constructs a new RobotInstances.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotInstances.
+         * @implements IRobotInstances
+         * @constructor
+         * @param {ax_proto_msgs.IRobotInstances=} [properties] Properties to set
+         */
+        function RobotInstances(properties) {
+            this.instances = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotInstances source_id.
+         * @member {string} source_id
+         * @memberof ax_proto_msgs.RobotInstances
+         * @instance
+         */
+        RobotInstances.prototype.source_id = "";
+
+        /**
+         * RobotInstances instances.
+         * @member {Array.<ax_proto_msgs.IRobotInstance>} instances
+         * @memberof ax_proto_msgs.RobotInstances
+         * @instance
+         */
+        RobotInstances.prototype.instances = $util.emptyArray;
+
+        /**
+         * Creates a new RobotInstances instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {ax_proto_msgs.IRobotInstances=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotInstances} RobotInstances instance
+         */
+        RobotInstances.create = function create(properties) {
+            return new RobotInstances(properties);
+        };
+
+        /**
+         * Encodes the specified RobotInstances message. Does not implicitly {@link ax_proto_msgs.RobotInstances.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {ax_proto_msgs.IRobotInstances} message RobotInstances message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotInstances.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.source_id != null && Object.hasOwnProperty.call(message, "source_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.source_id);
+            if (message.instances != null && message.instances.length)
+                for (let i = 0; i < message.instances.length; ++i)
+                    $root.ax_proto_msgs.RobotInstance.encode(message.instances[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotInstances message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotInstances.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {ax_proto_msgs.IRobotInstances} message RobotInstances message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotInstances.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotInstances message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotInstances} RobotInstances
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotInstances.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotInstances();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.source_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.instances && message.instances.length))
+                            message.instances = [];
+                        message.instances.push($root.ax_proto_msgs.RobotInstance.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotInstances message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotInstances} RobotInstances
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotInstances.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotInstances message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotInstances.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                if (!$util.isString(message.source_id))
+                    return "source_id: string expected";
+            if (message.instances != null && message.hasOwnProperty("instances")) {
+                if (!Array.isArray(message.instances))
+                    return "instances: array expected";
+                for (let i = 0; i < message.instances.length; ++i) {
+                    let error = $root.ax_proto_msgs.RobotInstance.verify(message.instances[i]);
+                    if (error)
+                        return "instances." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RobotInstances message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotInstances} RobotInstances
+         */
+        RobotInstances.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotInstances)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotInstances();
+            if (object.source_id != null)
+                message.source_id = String(object.source_id);
+            if (object.instances) {
+                if (!Array.isArray(object.instances))
+                    throw TypeError(".ax_proto_msgs.RobotInstances.instances: array expected");
+                message.instances = [];
+                for (let i = 0; i < object.instances.length; ++i) {
+                    if (typeof object.instances[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.RobotInstances.instances: object expected");
+                    message.instances[i] = $root.ax_proto_msgs.RobotInstance.fromObject(object.instances[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotInstances message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {ax_proto_msgs.RobotInstances} message RobotInstances
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotInstances.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.instances = [];
+            if (options.defaults)
+                object.source_id = "";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                object.source_id = message.source_id;
+            if (message.instances && message.instances.length) {
+                object.instances = [];
+                for (let j = 0; j < message.instances.length; ++j)
+                    object.instances[j] = $root.ax_proto_msgs.RobotInstance.toObject(message.instances[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RobotInstances to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotInstances
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotInstances.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotInstances
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotInstances
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotInstances.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotInstances";
+        };
+
+        return RobotInstances;
+    })();
+
+    ax_proto_msgs.BindingTranslation = (function() {
+
+        /**
+         * Properties of a BindingTranslation.
+         * @memberof ax_proto_msgs
+         * @interface IBindingTranslation
+         * @property {number|null} [x] BindingTranslation x
+         * @property {number|null} [y] BindingTranslation y
+         * @property {number|null} [z] BindingTranslation z
+         */
+
+        /**
+         * Constructs a new BindingTranslation.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a BindingTranslation.
+         * @implements IBindingTranslation
+         * @constructor
+         * @param {ax_proto_msgs.IBindingTranslation=} [properties] Properties to set
+         */
+        function BindingTranslation(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BindingTranslation x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @instance
+         */
+        BindingTranslation.prototype.x = 0;
+
+        /**
+         * BindingTranslation y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @instance
+         */
+        BindingTranslation.prototype.y = 0;
+
+        /**
+         * BindingTranslation z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @instance
+         */
+        BindingTranslation.prototype.z = 0;
+
+        /**
+         * Creates a new BindingTranslation instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {ax_proto_msgs.IBindingTranslation=} [properties] Properties to set
+         * @returns {ax_proto_msgs.BindingTranslation} BindingTranslation instance
+         */
+        BindingTranslation.create = function create(properties) {
+            return new BindingTranslation(properties);
+        };
+
+        /**
+         * Encodes the specified BindingTranslation message. Does not implicitly {@link ax_proto_msgs.BindingTranslation.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {ax_proto_msgs.IBindingTranslation} message BindingTranslation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BindingTranslation.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.z);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BindingTranslation message, length delimited. Does not implicitly {@link ax_proto_msgs.BindingTranslation.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {ax_proto_msgs.IBindingTranslation} message BindingTranslation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BindingTranslation.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BindingTranslation message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.BindingTranslation} BindingTranslation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BindingTranslation.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.BindingTranslation();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BindingTranslation message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.BindingTranslation} BindingTranslation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BindingTranslation.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BindingTranslation message.
+         * @function verify
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BindingTranslation.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a BindingTranslation message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.BindingTranslation} BindingTranslation
+         */
+        BindingTranslation.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.BindingTranslation)
+                return object;
+            let message = new $root.ax_proto_msgs.BindingTranslation();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BindingTranslation message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {ax_proto_msgs.BindingTranslation} message BindingTranslation
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BindingTranslation.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            return object;
+        };
+
+        /**
+         * Converts this BindingTranslation to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BindingTranslation.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BindingTranslation
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.BindingTranslation
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BindingTranslation.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.BindingTranslation";
+        };
+
+        return BindingTranslation;
+    })();
+
+    ax_proto_msgs.BindingRotation = (function() {
+
+        /**
+         * Properties of a BindingRotation.
+         * @memberof ax_proto_msgs
+         * @interface IBindingRotation
+         * @property {number|null} [x] BindingRotation x
+         * @property {number|null} [y] BindingRotation y
+         * @property {number|null} [z] BindingRotation z
+         * @property {number|null} [w] BindingRotation w
+         */
+
+        /**
+         * Constructs a new BindingRotation.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a BindingRotation.
+         * @implements IBindingRotation
+         * @constructor
+         * @param {ax_proto_msgs.IBindingRotation=} [properties] Properties to set
+         */
+        function BindingRotation(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BindingRotation x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.BindingRotation
+         * @instance
+         */
+        BindingRotation.prototype.x = 0;
+
+        /**
+         * BindingRotation y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.BindingRotation
+         * @instance
+         */
+        BindingRotation.prototype.y = 0;
+
+        /**
+         * BindingRotation z.
+         * @member {number} z
+         * @memberof ax_proto_msgs.BindingRotation
+         * @instance
+         */
+        BindingRotation.prototype.z = 0;
+
+        /**
+         * BindingRotation w.
+         * @member {number} w
+         * @memberof ax_proto_msgs.BindingRotation
+         * @instance
+         */
+        BindingRotation.prototype.w = 0;
+
+        /**
+         * Creates a new BindingRotation instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {ax_proto_msgs.IBindingRotation=} [properties] Properties to set
+         * @returns {ax_proto_msgs.BindingRotation} BindingRotation instance
+         */
+        BindingRotation.create = function create(properties) {
+            return new BindingRotation(properties);
+        };
+
+        /**
+         * Encodes the specified BindingRotation message. Does not implicitly {@link ax_proto_msgs.BindingRotation.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {ax_proto_msgs.IBindingRotation} message BindingRotation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BindingRotation.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
+            if (message.z != null && Object.hasOwnProperty.call(message, "z"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.z);
+            if (message.w != null && Object.hasOwnProperty.call(message, "w"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.w);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BindingRotation message, length delimited. Does not implicitly {@link ax_proto_msgs.BindingRotation.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {ax_proto_msgs.IBindingRotation} message BindingRotation message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BindingRotation.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BindingRotation message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.BindingRotation} BindingRotation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BindingRotation.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.BindingRotation();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.z = reader.float();
+                        break;
+                    }
+                case 4: {
+                        message.w = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BindingRotation message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.BindingRotation} BindingRotation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BindingRotation.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BindingRotation message.
+         * @function verify
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BindingRotation.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.z != null && message.hasOwnProperty("z"))
+                if (typeof message.z !== "number")
+                    return "z: number expected";
+            if (message.w != null && message.hasOwnProperty("w"))
+                if (typeof message.w !== "number")
+                    return "w: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a BindingRotation message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.BindingRotation} BindingRotation
+         */
+        BindingRotation.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.BindingRotation)
+                return object;
+            let message = new $root.ax_proto_msgs.BindingRotation();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.z != null)
+                message.z = Number(object.z);
+            if (object.w != null)
+                message.w = Number(object.w);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BindingRotation message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {ax_proto_msgs.BindingRotation} message BindingRotation
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BindingRotation.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.z = 0;
+                object.w = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.z != null && message.hasOwnProperty("z"))
+                object.z = options.json && !isFinite(message.z) ? String(message.z) : message.z;
+            if (message.w != null && message.hasOwnProperty("w"))
+                object.w = options.json && !isFinite(message.w) ? String(message.w) : message.w;
+            return object;
+        };
+
+        /**
+         * Converts this BindingRotation to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.BindingRotation
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BindingRotation.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BindingRotation
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.BindingRotation
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BindingRotation.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.BindingRotation";
+        };
+
+        return BindingRotation;
+    })();
+
+    ax_proto_msgs.BindingPose = (function() {
+
+        /**
+         * Properties of a BindingPose.
+         * @memberof ax_proto_msgs
+         * @interface IBindingPose
+         * @property {ax_proto_msgs.IBindingTranslation|null} [translation] BindingPose translation
+         * @property {ax_proto_msgs.IBindingRotation|null} [rotation] BindingPose rotation
+         */
+
+        /**
+         * Constructs a new BindingPose.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a BindingPose.
+         * @implements IBindingPose
+         * @constructor
+         * @param {ax_proto_msgs.IBindingPose=} [properties] Properties to set
+         */
+        function BindingPose(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BindingPose translation.
+         * @member {ax_proto_msgs.IBindingTranslation|null|undefined} translation
+         * @memberof ax_proto_msgs.BindingPose
+         * @instance
+         */
+        BindingPose.prototype.translation = null;
+
+        /**
+         * BindingPose rotation.
+         * @member {ax_proto_msgs.IBindingRotation|null|undefined} rotation
+         * @memberof ax_proto_msgs.BindingPose
+         * @instance
+         */
+        BindingPose.prototype.rotation = null;
+
+        /**
+         * Creates a new BindingPose instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {ax_proto_msgs.IBindingPose=} [properties] Properties to set
+         * @returns {ax_proto_msgs.BindingPose} BindingPose instance
+         */
+        BindingPose.create = function create(properties) {
+            return new BindingPose(properties);
+        };
+
+        /**
+         * Encodes the specified BindingPose message. Does not implicitly {@link ax_proto_msgs.BindingPose.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {ax_proto_msgs.IBindingPose} message BindingPose message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BindingPose.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.translation != null && Object.hasOwnProperty.call(message, "translation"))
+                $root.ax_proto_msgs.BindingTranslation.encode(message.translation, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.rotation != null && Object.hasOwnProperty.call(message, "rotation"))
+                $root.ax_proto_msgs.BindingRotation.encode(message.rotation, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BindingPose message, length delimited. Does not implicitly {@link ax_proto_msgs.BindingPose.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {ax_proto_msgs.IBindingPose} message BindingPose message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BindingPose.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a BindingPose message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.BindingPose} BindingPose
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BindingPose.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.BindingPose();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.translation = $root.ax_proto_msgs.BindingTranslation.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.rotation = $root.ax_proto_msgs.BindingRotation.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BindingPose message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.BindingPose} BindingPose
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BindingPose.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BindingPose message.
+         * @function verify
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BindingPose.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.translation != null && message.hasOwnProperty("translation")) {
+                let error = $root.ax_proto_msgs.BindingTranslation.verify(message.translation);
+                if (error)
+                    return "translation." + error;
+            }
+            if (message.rotation != null && message.hasOwnProperty("rotation")) {
+                let error = $root.ax_proto_msgs.BindingRotation.verify(message.rotation);
+                if (error)
+                    return "rotation." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BindingPose message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.BindingPose} BindingPose
+         */
+        BindingPose.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.BindingPose)
+                return object;
+            let message = new $root.ax_proto_msgs.BindingPose();
+            if (object.translation != null) {
+                if (typeof object.translation !== "object")
+                    throw TypeError(".ax_proto_msgs.BindingPose.translation: object expected");
+                message.translation = $root.ax_proto_msgs.BindingTranslation.fromObject(object.translation);
+            }
+            if (object.rotation != null) {
+                if (typeof object.rotation !== "object")
+                    throw TypeError(".ax_proto_msgs.BindingPose.rotation: object expected");
+                message.rotation = $root.ax_proto_msgs.BindingRotation.fromObject(object.rotation);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BindingPose message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {ax_proto_msgs.BindingPose} message BindingPose
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BindingPose.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.translation = null;
+                object.rotation = null;
+            }
+            if (message.translation != null && message.hasOwnProperty("translation"))
+                object.translation = $root.ax_proto_msgs.BindingTranslation.toObject(message.translation, options);
+            if (message.rotation != null && message.hasOwnProperty("rotation"))
+                object.rotation = $root.ax_proto_msgs.BindingRotation.toObject(message.rotation, options);
+            return object;
+        };
+
+        /**
+         * Converts this BindingPose to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.BindingPose
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BindingPose.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BindingPose
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.BindingPose
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BindingPose.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.BindingPose";
+        };
+
+        return BindingPose;
+    })();
+
+    ax_proto_msgs.RobotJointBinding = (function() {
+
+        /**
+         * Properties of a RobotJointBinding.
+         * @memberof ax_proto_msgs
+         * @interface IRobotJointBinding
+         * @property {string|null} [instance_id] RobotJointBinding instance_id
+         * @property {number|Long|null} [stamp_nsec] RobotJointBinding stamp_nsec
+         * @property {number|Long|null} [valid_for_nsec] RobotJointBinding valid_for_nsec
+         * @property {ax_proto_msgs.RobotJointBinding.Mode|null} [mode] RobotJointBinding mode
+         * @property {string|null} [parent_instance_id] RobotJointBinding parent_instance_id
+         * @property {string|null} [parent_joint] RobotJointBinding parent_joint
+         * @property {string|null} [child_link] RobotJointBinding child_link
+         * @property {ax_proto_msgs.IBindingPose|null} [pose] RobotJointBinding pose
+         */
+
+        /**
+         * Constructs a new RobotJointBinding.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotJointBinding.
+         * @implements IRobotJointBinding
+         * @constructor
+         * @param {ax_proto_msgs.IRobotJointBinding=} [properties] Properties to set
+         */
+        function RobotJointBinding(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotJointBinding instance_id.
+         * @member {string} instance_id
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.instance_id = "";
+
+        /**
+         * RobotJointBinding stamp_nsec.
+         * @member {number|Long} stamp_nsec
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * RobotJointBinding valid_for_nsec.
+         * @member {number|Long} valid_for_nsec
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.valid_for_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * RobotJointBinding mode.
+         * @member {ax_proto_msgs.RobotJointBinding.Mode} mode
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.mode = 0;
+
+        /**
+         * RobotJointBinding parent_instance_id.
+         * @member {string} parent_instance_id
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.parent_instance_id = "";
+
+        /**
+         * RobotJointBinding parent_joint.
+         * @member {string} parent_joint
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.parent_joint = "";
+
+        /**
+         * RobotJointBinding child_link.
+         * @member {string} child_link
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.child_link = "";
+
+        /**
+         * RobotJointBinding pose.
+         * @member {ax_proto_msgs.IBindingPose|null|undefined} pose
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         */
+        RobotJointBinding.prototype.pose = null;
+
+        /**
+         * Creates a new RobotJointBinding instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {ax_proto_msgs.IRobotJointBinding=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotJointBinding} RobotJointBinding instance
+         */
+        RobotJointBinding.create = function create(properties) {
+            return new RobotJointBinding(properties);
+        };
+
+        /**
+         * Encodes the specified RobotJointBinding message. Does not implicitly {@link ax_proto_msgs.RobotJointBinding.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {ax_proto_msgs.IRobotJointBinding} message RobotJointBinding message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotJointBinding.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.instance_id != null && Object.hasOwnProperty.call(message, "instance_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.instance_id);
+            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.stamp_nsec);
+            if (message.valid_for_nsec != null && Object.hasOwnProperty.call(message, "valid_for_nsec"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.valid_for_nsec);
+            if (message.mode != null && Object.hasOwnProperty.call(message, "mode"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.mode);
+            if (message.parent_instance_id != null && Object.hasOwnProperty.call(message, "parent_instance_id"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.parent_instance_id);
+            if (message.parent_joint != null && Object.hasOwnProperty.call(message, "parent_joint"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.parent_joint);
+            if (message.child_link != null && Object.hasOwnProperty.call(message, "child_link"))
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.child_link);
+            if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
+                $root.ax_proto_msgs.BindingPose.encode(message.pose, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotJointBinding message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotJointBinding.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {ax_proto_msgs.IRobotJointBinding} message RobotJointBinding message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotJointBinding.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotJointBinding message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotJointBinding} RobotJointBinding
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotJointBinding.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotJointBinding();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.instance_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.stamp_nsec = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.valid_for_nsec = reader.uint64();
+                        break;
+                    }
+                case 4: {
+                        message.mode = reader.int32();
+                        break;
+                    }
+                case 5: {
+                        message.parent_instance_id = reader.string();
+                        break;
+                    }
+                case 6: {
+                        message.parent_joint = reader.string();
+                        break;
+                    }
+                case 7: {
+                        message.child_link = reader.string();
+                        break;
+                    }
+                case 8: {
+                        message.pose = $root.ax_proto_msgs.BindingPose.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotJointBinding message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotJointBinding} RobotJointBinding
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotJointBinding.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotJointBinding message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotJointBinding.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                if (!$util.isString(message.instance_id))
+                    return "instance_id: string expected";
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
+                    return "stamp_nsec: integer|Long expected";
+            if (message.valid_for_nsec != null && message.hasOwnProperty("valid_for_nsec"))
+                if (!$util.isInteger(message.valid_for_nsec) && !(message.valid_for_nsec && $util.isInteger(message.valid_for_nsec.low) && $util.isInteger(message.valid_for_nsec.high)))
+                    return "valid_for_nsec: integer|Long expected";
+            if (message.mode != null && message.hasOwnProperty("mode"))
+                switch (message.mode) {
+                default:
+                    return "mode: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            if (message.parent_instance_id != null && message.hasOwnProperty("parent_instance_id"))
+                if (!$util.isString(message.parent_instance_id))
+                    return "parent_instance_id: string expected";
+            if (message.parent_joint != null && message.hasOwnProperty("parent_joint"))
+                if (!$util.isString(message.parent_joint))
+                    return "parent_joint: string expected";
+            if (message.child_link != null && message.hasOwnProperty("child_link"))
+                if (!$util.isString(message.child_link))
+                    return "child_link: string expected";
+            if (message.pose != null && message.hasOwnProperty("pose")) {
+                let error = $root.ax_proto_msgs.BindingPose.verify(message.pose);
+                if (error)
+                    return "pose." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RobotJointBinding message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotJointBinding} RobotJointBinding
+         */
+        RobotJointBinding.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotJointBinding)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotJointBinding();
+            if (object.instance_id != null)
+                message.instance_id = String(object.instance_id);
+            if (object.stamp_nsec != null)
+                if ($util.Long)
+                    (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
+                else if (typeof object.stamp_nsec === "string")
+                    message.stamp_nsec = parseInt(object.stamp_nsec, 10);
+                else if (typeof object.stamp_nsec === "number")
+                    message.stamp_nsec = object.stamp_nsec;
+                else if (typeof object.stamp_nsec === "object")
+                    message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
+            if (object.valid_for_nsec != null)
+                if ($util.Long)
+                    (message.valid_for_nsec = $util.Long.fromValue(object.valid_for_nsec)).unsigned = true;
+                else if (typeof object.valid_for_nsec === "string")
+                    message.valid_for_nsec = parseInt(object.valid_for_nsec, 10);
+                else if (typeof object.valid_for_nsec === "number")
+                    message.valid_for_nsec = object.valid_for_nsec;
+                else if (typeof object.valid_for_nsec === "object")
+                    message.valid_for_nsec = new $util.LongBits(object.valid_for_nsec.low >>> 0, object.valid_for_nsec.high >>> 0).toNumber(true);
+            switch (object.mode) {
+            default:
+                if (typeof object.mode === "number") {
+                    message.mode = object.mode;
+                    break;
+                }
+                break;
+            case "UNSPECIFIED":
+            case 0:
+                message.mode = 0;
+                break;
+            case "JOINT":
+            case 1:
+                message.mode = 1;
+                break;
+            case "TF":
+            case 2:
+                message.mode = 2;
+                break;
+            }
+            if (object.parent_instance_id != null)
+                message.parent_instance_id = String(object.parent_instance_id);
+            if (object.parent_joint != null)
+                message.parent_joint = String(object.parent_joint);
+            if (object.child_link != null)
+                message.child_link = String(object.child_link);
+            if (object.pose != null) {
+                if (typeof object.pose !== "object")
+                    throw TypeError(".ax_proto_msgs.RobotJointBinding.pose: object expected");
+                message.pose = $root.ax_proto_msgs.BindingPose.fromObject(object.pose);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotJointBinding message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {ax_proto_msgs.RobotJointBinding} message RobotJointBinding
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotJointBinding.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.instance_id = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.stamp_nsec = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.valid_for_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.valid_for_nsec = options.longs === String ? "0" : 0;
+                object.mode = options.enums === String ? "UNSPECIFIED" : 0;
+                object.parent_instance_id = "";
+                object.parent_joint = "";
+                object.child_link = "";
+                object.pose = null;
+            }
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                object.instance_id = message.instance_id;
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (typeof message.stamp_nsec === "number")
+                    object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
+                else
+                    object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
+            if (message.valid_for_nsec != null && message.hasOwnProperty("valid_for_nsec"))
+                if (typeof message.valid_for_nsec === "number")
+                    object.valid_for_nsec = options.longs === String ? String(message.valid_for_nsec) : message.valid_for_nsec;
+                else
+                    object.valid_for_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.valid_for_nsec) : options.longs === Number ? new $util.LongBits(message.valid_for_nsec.low >>> 0, message.valid_for_nsec.high >>> 0).toNumber(true) : message.valid_for_nsec;
+            if (message.mode != null && message.hasOwnProperty("mode"))
+                object.mode = options.enums === String ? $root.ax_proto_msgs.RobotJointBinding.Mode[message.mode] === undefined ? message.mode : $root.ax_proto_msgs.RobotJointBinding.Mode[message.mode] : message.mode;
+            if (message.parent_instance_id != null && message.hasOwnProperty("parent_instance_id"))
+                object.parent_instance_id = message.parent_instance_id;
+            if (message.parent_joint != null && message.hasOwnProperty("parent_joint"))
+                object.parent_joint = message.parent_joint;
+            if (message.child_link != null && message.hasOwnProperty("child_link"))
+                object.child_link = message.child_link;
+            if (message.pose != null && message.hasOwnProperty("pose"))
+                object.pose = $root.ax_proto_msgs.BindingPose.toObject(message.pose, options);
+            return object;
+        };
+
+        /**
+         * Converts this RobotJointBinding to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotJointBinding.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotJointBinding
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotJointBinding
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotJointBinding.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotJointBinding";
+        };
+
+        /**
+         * Mode enum.
+         * @name ax_proto_msgs.RobotJointBinding.Mode
+         * @enum {number}
+         * @property {number} UNSPECIFIED=0 UNSPECIFIED value
+         * @property {number} JOINT=1 JOINT value
+         * @property {number} TF=2 TF value
+         */
+        RobotJointBinding.Mode = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "UNSPECIFIED"] = 0;
+            values[valuesById[1] = "JOINT"] = 1;
+            values[valuesById[2] = "TF"] = 2;
+            return values;
+        })();
+
+        return RobotJointBinding;
+    })();
+
+    ax_proto_msgs.RobotJointBindings = (function() {
+
+        /**
+         * Properties of a RobotJointBindings.
+         * @memberof ax_proto_msgs
+         * @interface IRobotJointBindings
+         * @property {string|null} [source_id] RobotJointBindings source_id
+         * @property {Array.<ax_proto_msgs.IRobotJointBinding>|null} [bindings] RobotJointBindings bindings
+         */
+
+        /**
+         * Constructs a new RobotJointBindings.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotJointBindings.
+         * @implements IRobotJointBindings
+         * @constructor
+         * @param {ax_proto_msgs.IRobotJointBindings=} [properties] Properties to set
+         */
+        function RobotJointBindings(properties) {
+            this.bindings = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotJointBindings source_id.
+         * @member {string} source_id
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @instance
+         */
+        RobotJointBindings.prototype.source_id = "";
+
+        /**
+         * RobotJointBindings bindings.
+         * @member {Array.<ax_proto_msgs.IRobotJointBinding>} bindings
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @instance
+         */
+        RobotJointBindings.prototype.bindings = $util.emptyArray;
+
+        /**
+         * Creates a new RobotJointBindings instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {ax_proto_msgs.IRobotJointBindings=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotJointBindings} RobotJointBindings instance
+         */
+        RobotJointBindings.create = function create(properties) {
+            return new RobotJointBindings(properties);
+        };
+
+        /**
+         * Encodes the specified RobotJointBindings message. Does not implicitly {@link ax_proto_msgs.RobotJointBindings.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {ax_proto_msgs.IRobotJointBindings} message RobotJointBindings message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotJointBindings.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.source_id != null && Object.hasOwnProperty.call(message, "source_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.source_id);
+            if (message.bindings != null && message.bindings.length)
+                for (let i = 0; i < message.bindings.length; ++i)
+                    $root.ax_proto_msgs.RobotJointBinding.encode(message.bindings[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotJointBindings message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotJointBindings.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {ax_proto_msgs.IRobotJointBindings} message RobotJointBindings message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotJointBindings.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotJointBindings message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotJointBindings} RobotJointBindings
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotJointBindings.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotJointBindings();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.source_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.bindings && message.bindings.length))
+                            message.bindings = [];
+                        message.bindings.push($root.ax_proto_msgs.RobotJointBinding.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotJointBindings message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotJointBindings} RobotJointBindings
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotJointBindings.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotJointBindings message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotJointBindings.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                if (!$util.isString(message.source_id))
+                    return "source_id: string expected";
+            if (message.bindings != null && message.hasOwnProperty("bindings")) {
+                if (!Array.isArray(message.bindings))
+                    return "bindings: array expected";
+                for (let i = 0; i < message.bindings.length; ++i) {
+                    let error = $root.ax_proto_msgs.RobotJointBinding.verify(message.bindings[i]);
+                    if (error)
+                        return "bindings." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RobotJointBindings message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotJointBindings} RobotJointBindings
+         */
+        RobotJointBindings.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotJointBindings)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotJointBindings();
+            if (object.source_id != null)
+                message.source_id = String(object.source_id);
+            if (object.bindings) {
+                if (!Array.isArray(object.bindings))
+                    throw TypeError(".ax_proto_msgs.RobotJointBindings.bindings: array expected");
+                message.bindings = [];
+                for (let i = 0; i < object.bindings.length; ++i) {
+                    if (typeof object.bindings[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.RobotJointBindings.bindings: object expected");
+                    message.bindings[i] = $root.ax_proto_msgs.RobotJointBinding.fromObject(object.bindings[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotJointBindings message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {ax_proto_msgs.RobotJointBindings} message RobotJointBindings
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotJointBindings.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.bindings = [];
+            if (options.defaults)
+                object.source_id = "";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                object.source_id = message.source_id;
+            if (message.bindings && message.bindings.length) {
+                object.bindings = [];
+                for (let j = 0; j < message.bindings.length; ++j)
+                    object.bindings[j] = $root.ax_proto_msgs.RobotJointBinding.toObject(message.bindings[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RobotJointBindings to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotJointBindings.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotJointBindings
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotJointBindings
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotJointBindings.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotJointBindings";
+        };
+
+        return RobotJointBindings;
+    })();
+
+    ax_proto_msgs.ParameterValue = (function() {
+
+        /**
+         * Properties of a ParameterValue.
+         * @memberof ax_proto_msgs
+         * @interface IParameterValue
+         * @property {string|null} [name] ParameterValue name
+         * @property {number|null} [value] ParameterValue value
+         */
+
+        /**
+         * Constructs a new ParameterValue.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a ParameterValue.
+         * @implements IParameterValue
+         * @constructor
+         * @param {ax_proto_msgs.IParameterValue=} [properties] Properties to set
+         */
+        function ParameterValue(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ParameterValue name.
+         * @member {string} name
+         * @memberof ax_proto_msgs.ParameterValue
+         * @instance
+         */
+        ParameterValue.prototype.name = "";
+
+        /**
+         * ParameterValue value.
+         * @member {number} value
+         * @memberof ax_proto_msgs.ParameterValue
+         * @instance
+         */
+        ParameterValue.prototype.value = 0;
+
+        /**
+         * Creates a new ParameterValue instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {ax_proto_msgs.IParameterValue=} [properties] Properties to set
+         * @returns {ax_proto_msgs.ParameterValue} ParameterValue instance
+         */
+        ParameterValue.create = function create(properties) {
+            return new ParameterValue(properties);
+        };
+
+        /**
+         * Encodes the specified ParameterValue message. Does not implicitly {@link ax_proto_msgs.ParameterValue.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {ax_proto_msgs.IParameterValue} message ParameterValue message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ParameterValue.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.value != null && Object.hasOwnProperty.call(message, "value"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.value);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ParameterValue message, length delimited. Does not implicitly {@link ax_proto_msgs.ParameterValue.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {ax_proto_msgs.IParameterValue} message ParameterValue message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ParameterValue.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ParameterValue message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.ParameterValue} ParameterValue
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ParameterValue.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.ParameterValue();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.name = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.value = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ParameterValue message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.ParameterValue} ParameterValue
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ParameterValue.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ParameterValue message.
+         * @function verify
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ParameterValue.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.value != null && message.hasOwnProperty("value"))
+                if (typeof message.value !== "number")
+                    return "value: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a ParameterValue message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.ParameterValue} ParameterValue
+         */
+        ParameterValue.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.ParameterValue)
+                return object;
+            let message = new $root.ax_proto_msgs.ParameterValue();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.value != null)
+                message.value = Number(object.value);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ParameterValue message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {ax_proto_msgs.ParameterValue} message ParameterValue
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ParameterValue.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.name = "";
+                object.value = 0;
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.value != null && message.hasOwnProperty("value"))
+                object.value = options.json && !isFinite(message.value) ? String(message.value) : message.value;
+            return object;
+        };
+
+        /**
+         * Converts this ParameterValue to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.ParameterValue
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ParameterValue.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ParameterValue
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.ParameterValue
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ParameterValue.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.ParameterValue";
+        };
+
+        return ParameterValue;
+    })();
+
+    ax_proto_msgs.InstanceRobotParameters = (function() {
+
+        /**
+         * Properties of an InstanceRobotParameters.
+         * @memberof ax_proto_msgs
+         * @interface IInstanceRobotParameters
+         * @property {string|null} [instance_id] InstanceRobotParameters instance_id
+         * @property {number|Long|null} [stamp_nsec] InstanceRobotParameters stamp_nsec
+         * @property {number|Long|null} [valid_for_nsec] InstanceRobotParameters valid_for_nsec
+         * @property {Array.<ax_proto_msgs.IParameterValue>|null} [parameters] InstanceRobotParameters parameters
+         */
+
+        /**
+         * Constructs a new InstanceRobotParameters.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents an InstanceRobotParameters.
+         * @implements IInstanceRobotParameters
+         * @constructor
+         * @param {ax_proto_msgs.IInstanceRobotParameters=} [properties] Properties to set
+         */
+        function InstanceRobotParameters(properties) {
+            this.parameters = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * InstanceRobotParameters instance_id.
+         * @member {string} instance_id
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @instance
+         */
+        InstanceRobotParameters.prototype.instance_id = "";
+
+        /**
+         * InstanceRobotParameters stamp_nsec.
+         * @member {number|Long} stamp_nsec
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @instance
+         */
+        InstanceRobotParameters.prototype.stamp_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * InstanceRobotParameters valid_for_nsec.
+         * @member {number|Long} valid_for_nsec
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @instance
+         */
+        InstanceRobotParameters.prototype.valid_for_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * InstanceRobotParameters parameters.
+         * @member {Array.<ax_proto_msgs.IParameterValue>} parameters
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @instance
+         */
+        InstanceRobotParameters.prototype.parameters = $util.emptyArray;
+
+        /**
+         * Creates a new InstanceRobotParameters instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {ax_proto_msgs.IInstanceRobotParameters=} [properties] Properties to set
+         * @returns {ax_proto_msgs.InstanceRobotParameters} InstanceRobotParameters instance
+         */
+        InstanceRobotParameters.create = function create(properties) {
+            return new InstanceRobotParameters(properties);
+        };
+
+        /**
+         * Encodes the specified InstanceRobotParameters message. Does not implicitly {@link ax_proto_msgs.InstanceRobotParameters.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {ax_proto_msgs.IInstanceRobotParameters} message InstanceRobotParameters message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        InstanceRobotParameters.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.instance_id != null && Object.hasOwnProperty.call(message, "instance_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.instance_id);
+            if (message.stamp_nsec != null && Object.hasOwnProperty.call(message, "stamp_nsec"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.stamp_nsec);
+            if (message.valid_for_nsec != null && Object.hasOwnProperty.call(message, "valid_for_nsec"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.valid_for_nsec);
+            if (message.parameters != null && message.parameters.length)
+                for (let i = 0; i < message.parameters.length; ++i)
+                    $root.ax_proto_msgs.ParameterValue.encode(message.parameters[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified InstanceRobotParameters message, length delimited. Does not implicitly {@link ax_proto_msgs.InstanceRobotParameters.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {ax_proto_msgs.IInstanceRobotParameters} message InstanceRobotParameters message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        InstanceRobotParameters.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an InstanceRobotParameters message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.InstanceRobotParameters} InstanceRobotParameters
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        InstanceRobotParameters.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.InstanceRobotParameters();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.instance_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.stamp_nsec = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.valid_for_nsec = reader.uint64();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.parameters && message.parameters.length))
+                            message.parameters = [];
+                        message.parameters.push($root.ax_proto_msgs.ParameterValue.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an InstanceRobotParameters message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.InstanceRobotParameters} InstanceRobotParameters
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        InstanceRobotParameters.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an InstanceRobotParameters message.
+         * @function verify
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        InstanceRobotParameters.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                if (!$util.isString(message.instance_id))
+                    return "instance_id: string expected";
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (!$util.isInteger(message.stamp_nsec) && !(message.stamp_nsec && $util.isInteger(message.stamp_nsec.low) && $util.isInteger(message.stamp_nsec.high)))
+                    return "stamp_nsec: integer|Long expected";
+            if (message.valid_for_nsec != null && message.hasOwnProperty("valid_for_nsec"))
+                if (!$util.isInteger(message.valid_for_nsec) && !(message.valid_for_nsec && $util.isInteger(message.valid_for_nsec.low) && $util.isInteger(message.valid_for_nsec.high)))
+                    return "valid_for_nsec: integer|Long expected";
+            if (message.parameters != null && message.hasOwnProperty("parameters")) {
+                if (!Array.isArray(message.parameters))
+                    return "parameters: array expected";
+                for (let i = 0; i < message.parameters.length; ++i) {
+                    let error = $root.ax_proto_msgs.ParameterValue.verify(message.parameters[i]);
+                    if (error)
+                        return "parameters." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates an InstanceRobotParameters message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.InstanceRobotParameters} InstanceRobotParameters
+         */
+        InstanceRobotParameters.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.InstanceRobotParameters)
+                return object;
+            let message = new $root.ax_proto_msgs.InstanceRobotParameters();
+            if (object.instance_id != null)
+                message.instance_id = String(object.instance_id);
+            if (object.stamp_nsec != null)
+                if ($util.Long)
+                    (message.stamp_nsec = $util.Long.fromValue(object.stamp_nsec)).unsigned = true;
+                else if (typeof object.stamp_nsec === "string")
+                    message.stamp_nsec = parseInt(object.stamp_nsec, 10);
+                else if (typeof object.stamp_nsec === "number")
+                    message.stamp_nsec = object.stamp_nsec;
+                else if (typeof object.stamp_nsec === "object")
+                    message.stamp_nsec = new $util.LongBits(object.stamp_nsec.low >>> 0, object.stamp_nsec.high >>> 0).toNumber(true);
+            if (object.valid_for_nsec != null)
+                if ($util.Long)
+                    (message.valid_for_nsec = $util.Long.fromValue(object.valid_for_nsec)).unsigned = true;
+                else if (typeof object.valid_for_nsec === "string")
+                    message.valid_for_nsec = parseInt(object.valid_for_nsec, 10);
+                else if (typeof object.valid_for_nsec === "number")
+                    message.valid_for_nsec = object.valid_for_nsec;
+                else if (typeof object.valid_for_nsec === "object")
+                    message.valid_for_nsec = new $util.LongBits(object.valid_for_nsec.low >>> 0, object.valid_for_nsec.high >>> 0).toNumber(true);
+            if (object.parameters) {
+                if (!Array.isArray(object.parameters))
+                    throw TypeError(".ax_proto_msgs.InstanceRobotParameters.parameters: array expected");
+                message.parameters = [];
+                for (let i = 0; i < object.parameters.length; ++i) {
+                    if (typeof object.parameters[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.InstanceRobotParameters.parameters: object expected");
+                    message.parameters[i] = $root.ax_proto_msgs.ParameterValue.fromObject(object.parameters[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an InstanceRobotParameters message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {ax_proto_msgs.InstanceRobotParameters} message InstanceRobotParameters
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        InstanceRobotParameters.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.parameters = [];
+            if (options.defaults) {
+                object.instance_id = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.stamp_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.stamp_nsec = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.valid_for_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.valid_for_nsec = options.longs === String ? "0" : 0;
+            }
+            if (message.instance_id != null && message.hasOwnProperty("instance_id"))
+                object.instance_id = message.instance_id;
+            if (message.stamp_nsec != null && message.hasOwnProperty("stamp_nsec"))
+                if (typeof message.stamp_nsec === "number")
+                    object.stamp_nsec = options.longs === String ? String(message.stamp_nsec) : message.stamp_nsec;
+                else
+                    object.stamp_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_nsec) : options.longs === Number ? new $util.LongBits(message.stamp_nsec.low >>> 0, message.stamp_nsec.high >>> 0).toNumber(true) : message.stamp_nsec;
+            if (message.valid_for_nsec != null && message.hasOwnProperty("valid_for_nsec"))
+                if (typeof message.valid_for_nsec === "number")
+                    object.valid_for_nsec = options.longs === String ? String(message.valid_for_nsec) : message.valid_for_nsec;
+                else
+                    object.valid_for_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.valid_for_nsec) : options.longs === Number ? new $util.LongBits(message.valid_for_nsec.low >>> 0, message.valid_for_nsec.high >>> 0).toNumber(true) : message.valid_for_nsec;
+            if (message.parameters && message.parameters.length) {
+                object.parameters = [];
+                for (let j = 0; j < message.parameters.length; ++j)
+                    object.parameters[j] = $root.ax_proto_msgs.ParameterValue.toObject(message.parameters[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this InstanceRobotParameters to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        InstanceRobotParameters.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for InstanceRobotParameters
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.InstanceRobotParameters
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        InstanceRobotParameters.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.InstanceRobotParameters";
+        };
+
+        return InstanceRobotParameters;
+    })();
+
+    ax_proto_msgs.RobotParameters = (function() {
+
+        /**
+         * Properties of a RobotParameters.
+         * @memberof ax_proto_msgs
+         * @interface IRobotParameters
+         * @property {string|null} [source_id] RobotParameters source_id
+         * @property {Array.<ax_proto_msgs.IInstanceRobotParameters>|null} [instances] RobotParameters instances
+         */
+
+        /**
+         * Constructs a new RobotParameters.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RobotParameters.
+         * @implements IRobotParameters
+         * @constructor
+         * @param {ax_proto_msgs.IRobotParameters=} [properties] Properties to set
+         */
+        function RobotParameters(properties) {
+            this.instances = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RobotParameters source_id.
+         * @member {string} source_id
+         * @memberof ax_proto_msgs.RobotParameters
+         * @instance
+         */
+        RobotParameters.prototype.source_id = "";
+
+        /**
+         * RobotParameters instances.
+         * @member {Array.<ax_proto_msgs.IInstanceRobotParameters>} instances
+         * @memberof ax_proto_msgs.RobotParameters
+         * @instance
+         */
+        RobotParameters.prototype.instances = $util.emptyArray;
+
+        /**
+         * Creates a new RobotParameters instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {ax_proto_msgs.IRobotParameters=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RobotParameters} RobotParameters instance
+         */
+        RobotParameters.create = function create(properties) {
+            return new RobotParameters(properties);
+        };
+
+        /**
+         * Encodes the specified RobotParameters message. Does not implicitly {@link ax_proto_msgs.RobotParameters.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {ax_proto_msgs.IRobotParameters} message RobotParameters message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotParameters.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.source_id != null && Object.hasOwnProperty.call(message, "source_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.source_id);
+            if (message.instances != null && message.instances.length)
+                for (let i = 0; i < message.instances.length; ++i)
+                    $root.ax_proto_msgs.InstanceRobotParameters.encode(message.instances[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RobotParameters message, length delimited. Does not implicitly {@link ax_proto_msgs.RobotParameters.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {ax_proto_msgs.IRobotParameters} message RobotParameters message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RobotParameters.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RobotParameters message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RobotParameters} RobotParameters
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotParameters.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RobotParameters();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.source_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.instances && message.instances.length))
+                            message.instances = [];
+                        message.instances.push($root.ax_proto_msgs.InstanceRobotParameters.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RobotParameters message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RobotParameters} RobotParameters
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RobotParameters.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RobotParameters message.
+         * @function verify
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RobotParameters.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                if (!$util.isString(message.source_id))
+                    return "source_id: string expected";
+            if (message.instances != null && message.hasOwnProperty("instances")) {
+                if (!Array.isArray(message.instances))
+                    return "instances: array expected";
+                for (let i = 0; i < message.instances.length; ++i) {
+                    let error = $root.ax_proto_msgs.InstanceRobotParameters.verify(message.instances[i]);
+                    if (error)
+                        return "instances." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RobotParameters message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RobotParameters} RobotParameters
+         */
+        RobotParameters.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RobotParameters)
+                return object;
+            let message = new $root.ax_proto_msgs.RobotParameters();
+            if (object.source_id != null)
+                message.source_id = String(object.source_id);
+            if (object.instances) {
+                if (!Array.isArray(object.instances))
+                    throw TypeError(".ax_proto_msgs.RobotParameters.instances: array expected");
+                message.instances = [];
+                for (let i = 0; i < object.instances.length; ++i) {
+                    if (typeof object.instances[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.RobotParameters.instances: object expected");
+                    message.instances[i] = $root.ax_proto_msgs.InstanceRobotParameters.fromObject(object.instances[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RobotParameters message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {ax_proto_msgs.RobotParameters} message RobotParameters
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RobotParameters.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.instances = [];
+            if (options.defaults)
+                object.source_id = "";
+            if (message.source_id != null && message.hasOwnProperty("source_id"))
+                object.source_id = message.source_id;
+            if (message.instances && message.instances.length) {
+                object.instances = [];
+                for (let j = 0; j < message.instances.length; ++j)
+                    object.instances[j] = $root.ax_proto_msgs.InstanceRobotParameters.toObject(message.instances[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RobotParameters to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RobotParameters
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RobotParameters.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RobotParameters
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RobotParameters
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RobotParameters.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RobotParameters";
+        };
+
+        return RobotParameters;
+    })();
+
     ax_proto_msgs.RosMessageWrapper = (function() {
 
         /**
@@ -10851,6 +20261,21 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {ax_proto_msgs.IDwaCandidatePathSet|null} [dwa_candidate_path_set] RosMessageWrapper dwa_candidate_path_set
          * @property {ax_proto_msgs.ISlamState|null} [slam_state] RosMessageWrapper slam_state
          * @property {ax_proto_msgs.IPlanningState|null} [planning_state] RosMessageWrapper planning_state
+         * @property {ax_proto_msgs.ILiftgateState|null} [liftgate_state] RosMessageWrapper liftgate_state
+         * @property {ax_proto_msgs.IWheelControlCommand|null} [wheel_control_command] RosMessageWrapper wheel_control_command
+         * @property {ax_proto_msgs.IWheelControlState|null} [wheel_control_state] RosMessageWrapper wheel_control_state
+         * @property {ax_proto_msgs.IImu|null} [imu] RosMessageWrapper imu
+         * @property {ax_proto_msgs.IRawImu|null} [raw_imu] RosMessageWrapper raw_imu
+         * @property {ax_proto_msgs.IRawPointCloud|null} [raw_point_cloud] RosMessageWrapper raw_point_cloud
+         * @property {ax_proto_msgs.IDetection2DArray|null} [detection_2d_array] RosMessageWrapper detection_2d_array
+         * @property {ax_proto_msgs.IDetection3DArray|null} [detection_3d_array] RosMessageWrapper detection_3d_array
+         * @property {ax_proto_msgs.IJointStates|null} [joint_states] RosMessageWrapper joint_states
+         * @property {ax_proto_msgs.IRobotInstances|null} [robot_instances] RosMessageWrapper robot_instances
+         * @property {ax_proto_msgs.IRobotDescriptions|null} [robot_descriptions] RosMessageWrapper robot_descriptions
+         * @property {ax_proto_msgs.IRobotParameters|null} [robot_parameters] RosMessageWrapper robot_parameters
+         * @property {ax_proto_msgs.IRobotJointBindings|null} [robot_joint_bindings] RosMessageWrapper robot_joint_bindings
+         * @property {ax_proto_msgs.IBotControlState|null} [bot_control_state] RosMessageWrapper bot_control_state
+         * @property {ax_proto_msgs.ITFMessage|null} [tf_message] RosMessageWrapper tf_message
          */
 
         /**
@@ -10964,17 +20389,137 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          */
         RosMessageWrapper.prototype.planning_state = null;
 
+        /**
+         * RosMessageWrapper liftgate_state.
+         * @member {ax_proto_msgs.ILiftgateState|null|undefined} liftgate_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.liftgate_state = null;
+
+        /**
+         * RosMessageWrapper wheel_control_command.
+         * @member {ax_proto_msgs.IWheelControlCommand|null|undefined} wheel_control_command
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.wheel_control_command = null;
+
+        /**
+         * RosMessageWrapper wheel_control_state.
+         * @member {ax_proto_msgs.IWheelControlState|null|undefined} wheel_control_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.wheel_control_state = null;
+
+        /**
+         * RosMessageWrapper imu.
+         * @member {ax_proto_msgs.IImu|null|undefined} imu
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.imu = null;
+
+        /**
+         * RosMessageWrapper raw_imu.
+         * @member {ax_proto_msgs.IRawImu|null|undefined} raw_imu
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.raw_imu = null;
+
+        /**
+         * RosMessageWrapper raw_point_cloud.
+         * @member {ax_proto_msgs.IRawPointCloud|null|undefined} raw_point_cloud
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.raw_point_cloud = null;
+
+        /**
+         * RosMessageWrapper detection_2d_array.
+         * @member {ax_proto_msgs.IDetection2DArray|null|undefined} detection_2d_array
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.detection_2d_array = null;
+
+        /**
+         * RosMessageWrapper detection_3d_array.
+         * @member {ax_proto_msgs.IDetection3DArray|null|undefined} detection_3d_array
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.detection_3d_array = null;
+
+        /**
+         * RosMessageWrapper joint_states.
+         * @member {ax_proto_msgs.IJointStates|null|undefined} joint_states
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.joint_states = null;
+
+        /**
+         * RosMessageWrapper robot_instances.
+         * @member {ax_proto_msgs.IRobotInstances|null|undefined} robot_instances
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.robot_instances = null;
+
+        /**
+         * RosMessageWrapper robot_descriptions.
+         * @member {ax_proto_msgs.IRobotDescriptions|null|undefined} robot_descriptions
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.robot_descriptions = null;
+
+        /**
+         * RosMessageWrapper robot_parameters.
+         * @member {ax_proto_msgs.IRobotParameters|null|undefined} robot_parameters
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.robot_parameters = null;
+
+        /**
+         * RosMessageWrapper robot_joint_bindings.
+         * @member {ax_proto_msgs.IRobotJointBindings|null|undefined} robot_joint_bindings
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.robot_joint_bindings = null;
+
+        /**
+         * RosMessageWrapper bot_control_state.
+         * @member {ax_proto_msgs.IBotControlState|null|undefined} bot_control_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.bot_control_state = null;
+
+        /**
+         * RosMessageWrapper tf_message.
+         * @member {ax_proto_msgs.ITFMessage|null|undefined} tf_message
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.tf_message = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|undefined} payload
+         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|undefined} payload
          * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set", "slam_state", "planning_state"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set", "slam_state", "planning_state", "liftgate_state", "wheel_control_command", "wheel_control_state", "imu", "raw_imu", "raw_point_cloud", "detection_2d_array", "detection_3d_array", "joint_states", "robot_instances", "robot_descriptions", "robot_parameters", "robot_joint_bindings", "bot_control_state", "tf_message"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -11026,6 +20571,36 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 $root.ax_proto_msgs.SlamState.encode(message.slam_state, writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
             if (message.planning_state != null && Object.hasOwnProperty.call(message, "planning_state"))
                 $root.ax_proto_msgs.PlanningState.encode(message.planning_state, writer.uint32(/* id 21, wireType 2 =*/170).fork()).ldelim();
+            if (message.liftgate_state != null && Object.hasOwnProperty.call(message, "liftgate_state"))
+                $root.ax_proto_msgs.LiftgateState.encode(message.liftgate_state, writer.uint32(/* id 22, wireType 2 =*/178).fork()).ldelim();
+            if (message.wheel_control_command != null && Object.hasOwnProperty.call(message, "wheel_control_command"))
+                $root.ax_proto_msgs.WheelControlCommand.encode(message.wheel_control_command, writer.uint32(/* id 23, wireType 2 =*/186).fork()).ldelim();
+            if (message.wheel_control_state != null && Object.hasOwnProperty.call(message, "wheel_control_state"))
+                $root.ax_proto_msgs.WheelControlState.encode(message.wheel_control_state, writer.uint32(/* id 24, wireType 2 =*/194).fork()).ldelim();
+            if (message.imu != null && Object.hasOwnProperty.call(message, "imu"))
+                $root.ax_proto_msgs.Imu.encode(message.imu, writer.uint32(/* id 25, wireType 2 =*/202).fork()).ldelim();
+            if (message.raw_imu != null && Object.hasOwnProperty.call(message, "raw_imu"))
+                $root.ax_proto_msgs.RawImu.encode(message.raw_imu, writer.uint32(/* id 26, wireType 2 =*/210).fork()).ldelim();
+            if (message.raw_point_cloud != null && Object.hasOwnProperty.call(message, "raw_point_cloud"))
+                $root.ax_proto_msgs.RawPointCloud.encode(message.raw_point_cloud, writer.uint32(/* id 27, wireType 2 =*/218).fork()).ldelim();
+            if (message.detection_2d_array != null && Object.hasOwnProperty.call(message, "detection_2d_array"))
+                $root.ax_proto_msgs.Detection2DArray.encode(message.detection_2d_array, writer.uint32(/* id 28, wireType 2 =*/226).fork()).ldelim();
+            if (message.detection_3d_array != null && Object.hasOwnProperty.call(message, "detection_3d_array"))
+                $root.ax_proto_msgs.Detection3DArray.encode(message.detection_3d_array, writer.uint32(/* id 29, wireType 2 =*/234).fork()).ldelim();
+            if (message.joint_states != null && Object.hasOwnProperty.call(message, "joint_states"))
+                $root.ax_proto_msgs.JointStates.encode(message.joint_states, writer.uint32(/* id 30, wireType 2 =*/242).fork()).ldelim();
+            if (message.robot_instances != null && Object.hasOwnProperty.call(message, "robot_instances"))
+                $root.ax_proto_msgs.RobotInstances.encode(message.robot_instances, writer.uint32(/* id 31, wireType 2 =*/250).fork()).ldelim();
+            if (message.robot_descriptions != null && Object.hasOwnProperty.call(message, "robot_descriptions"))
+                $root.ax_proto_msgs.RobotDescriptions.encode(message.robot_descriptions, writer.uint32(/* id 32, wireType 2 =*/258).fork()).ldelim();
+            if (message.robot_parameters != null && Object.hasOwnProperty.call(message, "robot_parameters"))
+                $root.ax_proto_msgs.RobotParameters.encode(message.robot_parameters, writer.uint32(/* id 33, wireType 2 =*/266).fork()).ldelim();
+            if (message.robot_joint_bindings != null && Object.hasOwnProperty.call(message, "robot_joint_bindings"))
+                $root.ax_proto_msgs.RobotJointBindings.encode(message.robot_joint_bindings, writer.uint32(/* id 34, wireType 2 =*/274).fork()).ldelim();
+            if (message.bot_control_state != null && Object.hasOwnProperty.call(message, "bot_control_state"))
+                $root.ax_proto_msgs.BotControlState.encode(message.bot_control_state, writer.uint32(/* id 35, wireType 2 =*/282).fork()).ldelim();
+            if (message.tf_message != null && Object.hasOwnProperty.call(message, "tf_message"))
+                $root.ax_proto_msgs.TFMessage.encode(message.tf_message, writer.uint32(/* id 36, wireType 2 =*/290).fork()).ldelim();
             return writer;
         };
 
@@ -11110,6 +20685,66 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         message.planning_state = $root.ax_proto_msgs.PlanningState.decode(reader, reader.uint32());
                         break;
                     }
+                case 22: {
+                        message.liftgate_state = $root.ax_proto_msgs.LiftgateState.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 23: {
+                        message.wheel_control_command = $root.ax_proto_msgs.WheelControlCommand.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 24: {
+                        message.wheel_control_state = $root.ax_proto_msgs.WheelControlState.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 25: {
+                        message.imu = $root.ax_proto_msgs.Imu.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 26: {
+                        message.raw_imu = $root.ax_proto_msgs.RawImu.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 27: {
+                        message.raw_point_cloud = $root.ax_proto_msgs.RawPointCloud.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 28: {
+                        message.detection_2d_array = $root.ax_proto_msgs.Detection2DArray.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 29: {
+                        message.detection_3d_array = $root.ax_proto_msgs.Detection3DArray.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 30: {
+                        message.joint_states = $root.ax_proto_msgs.JointStates.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 31: {
+                        message.robot_instances = $root.ax_proto_msgs.RobotInstances.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 32: {
+                        message.robot_descriptions = $root.ax_proto_msgs.RobotDescriptions.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 33: {
+                        message.robot_parameters = $root.ax_proto_msgs.RobotParameters.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 34: {
+                        message.robot_joint_bindings = $root.ax_proto_msgs.RobotJointBindings.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 35: {
+                        message.bot_control_state = $root.ax_proto_msgs.BotControlState.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 36: {
+                        message.tf_message = $root.ax_proto_msgs.TFMessage.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -11162,6 +20797,21 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 case 9:
                 case 10:
                 case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
                     break;
                 }
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
@@ -11272,6 +20922,156 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         return "planning_state." + error;
                 }
             }
+            if (message.liftgate_state != null && message.hasOwnProperty("liftgate_state")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.LiftgateState.verify(message.liftgate_state);
+                    if (error)
+                        return "liftgate_state." + error;
+                }
+            }
+            if (message.wheel_control_command != null && message.hasOwnProperty("wheel_control_command")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.WheelControlCommand.verify(message.wheel_control_command);
+                    if (error)
+                        return "wheel_control_command." + error;
+                }
+            }
+            if (message.wheel_control_state != null && message.hasOwnProperty("wheel_control_state")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.WheelControlState.verify(message.wheel_control_state);
+                    if (error)
+                        return "wheel_control_state." + error;
+                }
+            }
+            if (message.imu != null && message.hasOwnProperty("imu")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.Imu.verify(message.imu);
+                    if (error)
+                        return "imu." + error;
+                }
+            }
+            if (message.raw_imu != null && message.hasOwnProperty("raw_imu")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RawImu.verify(message.raw_imu);
+                    if (error)
+                        return "raw_imu." + error;
+                }
+            }
+            if (message.raw_point_cloud != null && message.hasOwnProperty("raw_point_cloud")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RawPointCloud.verify(message.raw_point_cloud);
+                    if (error)
+                        return "raw_point_cloud." + error;
+                }
+            }
+            if (message.detection_2d_array != null && message.hasOwnProperty("detection_2d_array")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.Detection2DArray.verify(message.detection_2d_array);
+                    if (error)
+                        return "detection_2d_array." + error;
+                }
+            }
+            if (message.detection_3d_array != null && message.hasOwnProperty("detection_3d_array")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.Detection3DArray.verify(message.detection_3d_array);
+                    if (error)
+                        return "detection_3d_array." + error;
+                }
+            }
+            if (message.joint_states != null && message.hasOwnProperty("joint_states")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.JointStates.verify(message.joint_states);
+                    if (error)
+                        return "joint_states." + error;
+                }
+            }
+            if (message.robot_instances != null && message.hasOwnProperty("robot_instances")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RobotInstances.verify(message.robot_instances);
+                    if (error)
+                        return "robot_instances." + error;
+                }
+            }
+            if (message.robot_descriptions != null && message.hasOwnProperty("robot_descriptions")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RobotDescriptions.verify(message.robot_descriptions);
+                    if (error)
+                        return "robot_descriptions." + error;
+                }
+            }
+            if (message.robot_parameters != null && message.hasOwnProperty("robot_parameters")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RobotParameters.verify(message.robot_parameters);
+                    if (error)
+                        return "robot_parameters." + error;
+                }
+            }
+            if (message.robot_joint_bindings != null && message.hasOwnProperty("robot_joint_bindings")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RobotJointBindings.verify(message.robot_joint_bindings);
+                    if (error)
+                        return "robot_joint_bindings." + error;
+                }
+            }
+            if (message.bot_control_state != null && message.hasOwnProperty("bot_control_state")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.BotControlState.verify(message.bot_control_state);
+                    if (error)
+                        return "bot_control_state." + error;
+                }
+            }
+            if (message.tf_message != null && message.hasOwnProperty("tf_message")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.TFMessage.verify(message.tf_message);
+                    if (error)
+                        return "tf_message." + error;
+                }
+            }
             return null;
         };
 
@@ -11342,6 +21142,66 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             case 11:
                 message.type = 11;
                 break;
+            case "LIFTGATE_STATE":
+            case 12:
+                message.type = 12;
+                break;
+            case "WHEEL_CONTROL_COMMAND":
+            case 13:
+                message.type = 13;
+                break;
+            case "WHEEL_CONTROL_STATE":
+            case 14:
+                message.type = 14;
+                break;
+            case "IMU":
+            case 15:
+                message.type = 15;
+                break;
+            case "RAW_IMU":
+            case 16:
+                message.type = 16;
+                break;
+            case "RAW_POINT_CLOUD":
+            case 17:
+                message.type = 17;
+                break;
+            case "DETECTION_2D_ARRAY":
+            case 18:
+                message.type = 18;
+                break;
+            case "DETECTION_3D_ARRAY":
+            case 19:
+                message.type = 19;
+                break;
+            case "JOINT_STATES":
+            case 20:
+                message.type = 20;
+                break;
+            case "ROBOT_INSTANCES":
+            case 21:
+                message.type = 21;
+                break;
+            case "ROBOT_DESCRIPTIONS":
+            case 22:
+                message.type = 22;
+                break;
+            case "ROBOT_PARAMETERS":
+            case 23:
+                message.type = 23;
+                break;
+            case "ROBOT_JOINT_BINDINGS":
+            case 24:
+                message.type = 24;
+                break;
+            case "BOT_CONTROL_STATE":
+            case 25:
+                message.type = 25;
+                break;
+            case "TF_MESSAGE":
+            case 26:
+                message.type = 26;
+                break;
             }
             if (object.point_cloud != null) {
                 if (typeof object.point_cloud !== "object")
@@ -11397,6 +21257,81 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (typeof object.planning_state !== "object")
                     throw TypeError(".ax_proto_msgs.RosMessageWrapper.planning_state: object expected");
                 message.planning_state = $root.ax_proto_msgs.PlanningState.fromObject(object.planning_state);
+            }
+            if (object.liftgate_state != null) {
+                if (typeof object.liftgate_state !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.liftgate_state: object expected");
+                message.liftgate_state = $root.ax_proto_msgs.LiftgateState.fromObject(object.liftgate_state);
+            }
+            if (object.wheel_control_command != null) {
+                if (typeof object.wheel_control_command !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.wheel_control_command: object expected");
+                message.wheel_control_command = $root.ax_proto_msgs.WheelControlCommand.fromObject(object.wheel_control_command);
+            }
+            if (object.wheel_control_state != null) {
+                if (typeof object.wheel_control_state !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.wheel_control_state: object expected");
+                message.wheel_control_state = $root.ax_proto_msgs.WheelControlState.fromObject(object.wheel_control_state);
+            }
+            if (object.imu != null) {
+                if (typeof object.imu !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.imu: object expected");
+                message.imu = $root.ax_proto_msgs.Imu.fromObject(object.imu);
+            }
+            if (object.raw_imu != null) {
+                if (typeof object.raw_imu !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.raw_imu: object expected");
+                message.raw_imu = $root.ax_proto_msgs.RawImu.fromObject(object.raw_imu);
+            }
+            if (object.raw_point_cloud != null) {
+                if (typeof object.raw_point_cloud !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.raw_point_cloud: object expected");
+                message.raw_point_cloud = $root.ax_proto_msgs.RawPointCloud.fromObject(object.raw_point_cloud);
+            }
+            if (object.detection_2d_array != null) {
+                if (typeof object.detection_2d_array !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.detection_2d_array: object expected");
+                message.detection_2d_array = $root.ax_proto_msgs.Detection2DArray.fromObject(object.detection_2d_array);
+            }
+            if (object.detection_3d_array != null) {
+                if (typeof object.detection_3d_array !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.detection_3d_array: object expected");
+                message.detection_3d_array = $root.ax_proto_msgs.Detection3DArray.fromObject(object.detection_3d_array);
+            }
+            if (object.joint_states != null) {
+                if (typeof object.joint_states !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.joint_states: object expected");
+                message.joint_states = $root.ax_proto_msgs.JointStates.fromObject(object.joint_states);
+            }
+            if (object.robot_instances != null) {
+                if (typeof object.robot_instances !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.robot_instances: object expected");
+                message.robot_instances = $root.ax_proto_msgs.RobotInstances.fromObject(object.robot_instances);
+            }
+            if (object.robot_descriptions != null) {
+                if (typeof object.robot_descriptions !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.robot_descriptions: object expected");
+                message.robot_descriptions = $root.ax_proto_msgs.RobotDescriptions.fromObject(object.robot_descriptions);
+            }
+            if (object.robot_parameters != null) {
+                if (typeof object.robot_parameters !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.robot_parameters: object expected");
+                message.robot_parameters = $root.ax_proto_msgs.RobotParameters.fromObject(object.robot_parameters);
+            }
+            if (object.robot_joint_bindings != null) {
+                if (typeof object.robot_joint_bindings !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.robot_joint_bindings: object expected");
+                message.robot_joint_bindings = $root.ax_proto_msgs.RobotJointBindings.fromObject(object.robot_joint_bindings);
+            }
+            if (object.bot_control_state != null) {
+                if (typeof object.bot_control_state !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.bot_control_state: object expected");
+                message.bot_control_state = $root.ax_proto_msgs.BotControlState.fromObject(object.bot_control_state);
+            }
+            if (object.tf_message != null) {
+                if (typeof object.tf_message !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.tf_message: object expected");
+                message.tf_message = $root.ax_proto_msgs.TFMessage.fromObject(object.tf_message);
             }
             return message;
         };
@@ -11473,6 +21408,81 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (options.oneofs)
                     object.payload = "planning_state";
             }
+            if (message.liftgate_state != null && message.hasOwnProperty("liftgate_state")) {
+                object.liftgate_state = $root.ax_proto_msgs.LiftgateState.toObject(message.liftgate_state, options);
+                if (options.oneofs)
+                    object.payload = "liftgate_state";
+            }
+            if (message.wheel_control_command != null && message.hasOwnProperty("wheel_control_command")) {
+                object.wheel_control_command = $root.ax_proto_msgs.WheelControlCommand.toObject(message.wheel_control_command, options);
+                if (options.oneofs)
+                    object.payload = "wheel_control_command";
+            }
+            if (message.wheel_control_state != null && message.hasOwnProperty("wheel_control_state")) {
+                object.wheel_control_state = $root.ax_proto_msgs.WheelControlState.toObject(message.wheel_control_state, options);
+                if (options.oneofs)
+                    object.payload = "wheel_control_state";
+            }
+            if (message.imu != null && message.hasOwnProperty("imu")) {
+                object.imu = $root.ax_proto_msgs.Imu.toObject(message.imu, options);
+                if (options.oneofs)
+                    object.payload = "imu";
+            }
+            if (message.raw_imu != null && message.hasOwnProperty("raw_imu")) {
+                object.raw_imu = $root.ax_proto_msgs.RawImu.toObject(message.raw_imu, options);
+                if (options.oneofs)
+                    object.payload = "raw_imu";
+            }
+            if (message.raw_point_cloud != null && message.hasOwnProperty("raw_point_cloud")) {
+                object.raw_point_cloud = $root.ax_proto_msgs.RawPointCloud.toObject(message.raw_point_cloud, options);
+                if (options.oneofs)
+                    object.payload = "raw_point_cloud";
+            }
+            if (message.detection_2d_array != null && message.hasOwnProperty("detection_2d_array")) {
+                object.detection_2d_array = $root.ax_proto_msgs.Detection2DArray.toObject(message.detection_2d_array, options);
+                if (options.oneofs)
+                    object.payload = "detection_2d_array";
+            }
+            if (message.detection_3d_array != null && message.hasOwnProperty("detection_3d_array")) {
+                object.detection_3d_array = $root.ax_proto_msgs.Detection3DArray.toObject(message.detection_3d_array, options);
+                if (options.oneofs)
+                    object.payload = "detection_3d_array";
+            }
+            if (message.joint_states != null && message.hasOwnProperty("joint_states")) {
+                object.joint_states = $root.ax_proto_msgs.JointStates.toObject(message.joint_states, options);
+                if (options.oneofs)
+                    object.payload = "joint_states";
+            }
+            if (message.robot_instances != null && message.hasOwnProperty("robot_instances")) {
+                object.robot_instances = $root.ax_proto_msgs.RobotInstances.toObject(message.robot_instances, options);
+                if (options.oneofs)
+                    object.payload = "robot_instances";
+            }
+            if (message.robot_descriptions != null && message.hasOwnProperty("robot_descriptions")) {
+                object.robot_descriptions = $root.ax_proto_msgs.RobotDescriptions.toObject(message.robot_descriptions, options);
+                if (options.oneofs)
+                    object.payload = "robot_descriptions";
+            }
+            if (message.robot_parameters != null && message.hasOwnProperty("robot_parameters")) {
+                object.robot_parameters = $root.ax_proto_msgs.RobotParameters.toObject(message.robot_parameters, options);
+                if (options.oneofs)
+                    object.payload = "robot_parameters";
+            }
+            if (message.robot_joint_bindings != null && message.hasOwnProperty("robot_joint_bindings")) {
+                object.robot_joint_bindings = $root.ax_proto_msgs.RobotJointBindings.toObject(message.robot_joint_bindings, options);
+                if (options.oneofs)
+                    object.payload = "robot_joint_bindings";
+            }
+            if (message.bot_control_state != null && message.hasOwnProperty("bot_control_state")) {
+                object.bot_control_state = $root.ax_proto_msgs.BotControlState.toObject(message.bot_control_state, options);
+                if (options.oneofs)
+                    object.payload = "bot_control_state";
+            }
+            if (message.tf_message != null && message.hasOwnProperty("tf_message")) {
+                object.tf_message = $root.ax_proto_msgs.TFMessage.toObject(message.tf_message, options);
+                if (options.oneofs)
+                    object.payload = "tf_message";
+            }
             return object;
         };
 
@@ -11518,6 +21528,21 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number} DWA_CANDIDATE_PATH_SET=9 DWA_CANDIDATE_PATH_SET value
          * @property {number} SLAM_STATE=10 SLAM_STATE value
          * @property {number} PLANNING_STATE=11 PLANNING_STATE value
+         * @property {number} LIFTGATE_STATE=12 LIFTGATE_STATE value
+         * @property {number} WHEEL_CONTROL_COMMAND=13 WHEEL_CONTROL_COMMAND value
+         * @property {number} WHEEL_CONTROL_STATE=14 WHEEL_CONTROL_STATE value
+         * @property {number} IMU=15 IMU value
+         * @property {number} RAW_IMU=16 RAW_IMU value
+         * @property {number} RAW_POINT_CLOUD=17 RAW_POINT_CLOUD value
+         * @property {number} DETECTION_2D_ARRAY=18 DETECTION_2D_ARRAY value
+         * @property {number} DETECTION_3D_ARRAY=19 DETECTION_3D_ARRAY value
+         * @property {number} JOINT_STATES=20 JOINT_STATES value
+         * @property {number} ROBOT_INSTANCES=21 ROBOT_INSTANCES value
+         * @property {number} ROBOT_DESCRIPTIONS=22 ROBOT_DESCRIPTIONS value
+         * @property {number} ROBOT_PARAMETERS=23 ROBOT_PARAMETERS value
+         * @property {number} ROBOT_JOINT_BINDINGS=24 ROBOT_JOINT_BINDINGS value
+         * @property {number} BOT_CONTROL_STATE=25 BOT_CONTROL_STATE value
+         * @property {number} TF_MESSAGE=26 TF_MESSAGE value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -11533,10 +21558,1407 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             values[valuesById[9] = "DWA_CANDIDATE_PATH_SET"] = 9;
             values[valuesById[10] = "SLAM_STATE"] = 10;
             values[valuesById[11] = "PLANNING_STATE"] = 11;
+            values[valuesById[12] = "LIFTGATE_STATE"] = 12;
+            values[valuesById[13] = "WHEEL_CONTROL_COMMAND"] = 13;
+            values[valuesById[14] = "WHEEL_CONTROL_STATE"] = 14;
+            values[valuesById[15] = "IMU"] = 15;
+            values[valuesById[16] = "RAW_IMU"] = 16;
+            values[valuesById[17] = "RAW_POINT_CLOUD"] = 17;
+            values[valuesById[18] = "DETECTION_2D_ARRAY"] = 18;
+            values[valuesById[19] = "DETECTION_3D_ARRAY"] = 19;
+            values[valuesById[20] = "JOINT_STATES"] = 20;
+            values[valuesById[21] = "ROBOT_INSTANCES"] = 21;
+            values[valuesById[22] = "ROBOT_DESCRIPTIONS"] = 22;
+            values[valuesById[23] = "ROBOT_PARAMETERS"] = 23;
+            values[valuesById[24] = "ROBOT_JOINT_BINDINGS"] = 24;
+            values[valuesById[25] = "BOT_CONTROL_STATE"] = 25;
+            values[valuesById[26] = "TF_MESSAGE"] = 26;
             return values;
         })();
 
         return RosMessageWrapper;
+    })();
+
+    ax_proto_msgs.SlamState = (function() {
+
+        /**
+         * Properties of a SlamState.
+         * @memberof ax_proto_msgs
+         * @interface ISlamState
+         * @property {ax_proto_msgs.SlamState.State.Type|null} [state] SlamState state
+         * @property {ax_proto_msgs.SlamState.NavSatState.Type|null} [nav_sat_state] SlamState nav_sat_state
+         * @property {boolean|null} [reliable] SlamState reliable
+         * @property {ax_proto_msgs.SlamState.PositionQuality.Type|null} [position_quality] SlamState position_quality
+         * @property {boolean|null} [relocating] SlamState relocating
+         * @property {boolean|null} [wheel_slipping] SlamState wheel_slipping
+         * @property {boolean|null} [wheel_major_slipping] SlamState wheel_major_slipping
+         * @property {boolean|null} [move_cautiously] SlamState move_cautiously
+         * @property {number|null} [uncertainty_radius] SlamState uncertainty_radius
+         * @property {number|null} [search_window_radius] SlamState search_window_radius
+         * @property {number|null} [position_loss_progress] SlamState position_loss_progress
+         * @property {number|null} [cov_major_axis_length] SlamState cov_major_axis_length
+         * @property {number|null} [dynamic_translation_weight] SlamState dynamic_translation_weight
+         * @property {boolean|null} [lidar_reliable] SlamState lidar_reliable
+         * @property {number|null} [inter_constraint_count] SlamState inter_constraint_count
+         * @property {number|null} [good_constraint_count] SlamState good_constraint_count
+         * @property {number|null} [submap_count] SlamState submap_count
+         * @property {number|null} [latest_trajectory_id] SlamState latest_trajectory_id
+         * @property {number|null} [latest_submap_index] SlamState latest_submap_index
+         * @property {boolean|null} [lidar_matched] SlamState lidar_matched
+         * @property {number|null} [lidar_matching_score] SlamState lidar_matching_score
+         * @property {number|Long|null} [last_pose_update_time_nsec] SlamState last_pose_update_time_nsec
+         */
+
+        /**
+         * Constructs a new SlamState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a SlamState.
+         * @implements ISlamState
+         * @constructor
+         * @param {ax_proto_msgs.ISlamState=} [properties] Properties to set
+         */
+        function SlamState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SlamState state.
+         * @member {ax_proto_msgs.SlamState.State.Type} state
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.state = 0;
+
+        /**
+         * SlamState nav_sat_state.
+         * @member {ax_proto_msgs.SlamState.NavSatState.Type} nav_sat_state
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.nav_sat_state = 0;
+
+        /**
+         * SlamState reliable.
+         * @member {boolean} reliable
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.reliable = false;
+
+        /**
+         * SlamState position_quality.
+         * @member {ax_proto_msgs.SlamState.PositionQuality.Type} position_quality
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.position_quality = 0;
+
+        /**
+         * SlamState relocating.
+         * @member {boolean} relocating
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.relocating = false;
+
+        /**
+         * SlamState wheel_slipping.
+         * @member {boolean} wheel_slipping
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.wheel_slipping = false;
+
+        /**
+         * SlamState wheel_major_slipping.
+         * @member {boolean} wheel_major_slipping
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.wheel_major_slipping = false;
+
+        /**
+         * SlamState move_cautiously.
+         * @member {boolean} move_cautiously
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.move_cautiously = false;
+
+        /**
+         * SlamState uncertainty_radius.
+         * @member {number} uncertainty_radius
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.uncertainty_radius = 0;
+
+        /**
+         * SlamState search_window_radius.
+         * @member {number} search_window_radius
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.search_window_radius = 0;
+
+        /**
+         * SlamState position_loss_progress.
+         * @member {number} position_loss_progress
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.position_loss_progress = 0;
+
+        /**
+         * SlamState cov_major_axis_length.
+         * @member {number} cov_major_axis_length
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.cov_major_axis_length = 0;
+
+        /**
+         * SlamState dynamic_translation_weight.
+         * @member {number} dynamic_translation_weight
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.dynamic_translation_weight = 0;
+
+        /**
+         * SlamState lidar_reliable.
+         * @member {boolean} lidar_reliable
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.lidar_reliable = false;
+
+        /**
+         * SlamState inter_constraint_count.
+         * @member {number} inter_constraint_count
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.inter_constraint_count = 0;
+
+        /**
+         * SlamState good_constraint_count.
+         * @member {number} good_constraint_count
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.good_constraint_count = 0;
+
+        /**
+         * SlamState submap_count.
+         * @member {number} submap_count
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.submap_count = 0;
+
+        /**
+         * SlamState latest_trajectory_id.
+         * @member {number} latest_trajectory_id
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.latest_trajectory_id = 0;
+
+        /**
+         * SlamState latest_submap_index.
+         * @member {number} latest_submap_index
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.latest_submap_index = 0;
+
+        /**
+         * SlamState lidar_matched.
+         * @member {boolean} lidar_matched
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.lidar_matched = false;
+
+        /**
+         * SlamState lidar_matching_score.
+         * @member {number} lidar_matching_score
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.lidar_matching_score = 0;
+
+        /**
+         * SlamState last_pose_update_time_nsec.
+         * @member {number|Long} last_pose_update_time_nsec
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         */
+        SlamState.prototype.last_pose_update_time_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new SlamState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {ax_proto_msgs.ISlamState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.SlamState} SlamState instance
+         */
+        SlamState.create = function create(properties) {
+            return new SlamState(properties);
+        };
+
+        /**
+         * Encodes the specified SlamState message. Does not implicitly {@link ax_proto_msgs.SlamState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {ax_proto_msgs.ISlamState} message SlamState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SlamState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.state);
+            if (message.nav_sat_state != null && Object.hasOwnProperty.call(message, "nav_sat_state"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.nav_sat_state);
+            if (message.reliable != null && Object.hasOwnProperty.call(message, "reliable"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.reliable);
+            if (message.position_quality != null && Object.hasOwnProperty.call(message, "position_quality"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.position_quality);
+            if (message.relocating != null && Object.hasOwnProperty.call(message, "relocating"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.relocating);
+            if (message.wheel_slipping != null && Object.hasOwnProperty.call(message, "wheel_slipping"))
+                writer.uint32(/* id 20, wireType 0 =*/160).bool(message.wheel_slipping);
+            if (message.wheel_major_slipping != null && Object.hasOwnProperty.call(message, "wheel_major_slipping"))
+                writer.uint32(/* id 21, wireType 0 =*/168).bool(message.wheel_major_slipping);
+            if (message.move_cautiously != null && Object.hasOwnProperty.call(message, "move_cautiously"))
+                writer.uint32(/* id 22, wireType 0 =*/176).bool(message.move_cautiously);
+            if (message.uncertainty_radius != null && Object.hasOwnProperty.call(message, "uncertainty_radius"))
+                writer.uint32(/* id 50, wireType 5 =*/405).float(message.uncertainty_radius);
+            if (message.search_window_radius != null && Object.hasOwnProperty.call(message, "search_window_radius"))
+                writer.uint32(/* id 51, wireType 5 =*/413).float(message.search_window_radius);
+            if (message.position_loss_progress != null && Object.hasOwnProperty.call(message, "position_loss_progress"))
+                writer.uint32(/* id 52, wireType 5 =*/421).float(message.position_loss_progress);
+            if (message.cov_major_axis_length != null && Object.hasOwnProperty.call(message, "cov_major_axis_length"))
+                writer.uint32(/* id 53, wireType 5 =*/429).float(message.cov_major_axis_length);
+            if (message.dynamic_translation_weight != null && Object.hasOwnProperty.call(message, "dynamic_translation_weight"))
+                writer.uint32(/* id 54, wireType 5 =*/437).float(message.dynamic_translation_weight);
+            if (message.lidar_reliable != null && Object.hasOwnProperty.call(message, "lidar_reliable"))
+                writer.uint32(/* id 55, wireType 0 =*/440).bool(message.lidar_reliable);
+            if (message.inter_constraint_count != null && Object.hasOwnProperty.call(message, "inter_constraint_count"))
+                writer.uint32(/* id 56, wireType 0 =*/448).int32(message.inter_constraint_count);
+            if (message.good_constraint_count != null && Object.hasOwnProperty.call(message, "good_constraint_count"))
+                writer.uint32(/* id 57, wireType 0 =*/456).int32(message.good_constraint_count);
+            if (message.submap_count != null && Object.hasOwnProperty.call(message, "submap_count"))
+                writer.uint32(/* id 58, wireType 0 =*/464).int32(message.submap_count);
+            if (message.latest_trajectory_id != null && Object.hasOwnProperty.call(message, "latest_trajectory_id"))
+                writer.uint32(/* id 59, wireType 0 =*/472).int32(message.latest_trajectory_id);
+            if (message.latest_submap_index != null && Object.hasOwnProperty.call(message, "latest_submap_index"))
+                writer.uint32(/* id 60, wireType 0 =*/480).int32(message.latest_submap_index);
+            if (message.lidar_matched != null && Object.hasOwnProperty.call(message, "lidar_matched"))
+                writer.uint32(/* id 61, wireType 0 =*/488).bool(message.lidar_matched);
+            if (message.lidar_matching_score != null && Object.hasOwnProperty.call(message, "lidar_matching_score"))
+                writer.uint32(/* id 62, wireType 5 =*/501).float(message.lidar_matching_score);
+            if (message.last_pose_update_time_nsec != null && Object.hasOwnProperty.call(message, "last_pose_update_time_nsec"))
+                writer.uint32(/* id 63, wireType 0 =*/504).uint64(message.last_pose_update_time_nsec);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SlamState message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {ax_proto_msgs.ISlamState} message SlamState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SlamState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SlamState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.SlamState} SlamState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SlamState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.state = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.nav_sat_state = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.reliable = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.position_quality = reader.int32();
+                        break;
+                    }
+                case 5: {
+                        message.relocating = reader.bool();
+                        break;
+                    }
+                case 20: {
+                        message.wheel_slipping = reader.bool();
+                        break;
+                    }
+                case 21: {
+                        message.wheel_major_slipping = reader.bool();
+                        break;
+                    }
+                case 22: {
+                        message.move_cautiously = reader.bool();
+                        break;
+                    }
+                case 50: {
+                        message.uncertainty_radius = reader.float();
+                        break;
+                    }
+                case 51: {
+                        message.search_window_radius = reader.float();
+                        break;
+                    }
+                case 52: {
+                        message.position_loss_progress = reader.float();
+                        break;
+                    }
+                case 53: {
+                        message.cov_major_axis_length = reader.float();
+                        break;
+                    }
+                case 54: {
+                        message.dynamic_translation_weight = reader.float();
+                        break;
+                    }
+                case 55: {
+                        message.lidar_reliable = reader.bool();
+                        break;
+                    }
+                case 56: {
+                        message.inter_constraint_count = reader.int32();
+                        break;
+                    }
+                case 57: {
+                        message.good_constraint_count = reader.int32();
+                        break;
+                    }
+                case 58: {
+                        message.submap_count = reader.int32();
+                        break;
+                    }
+                case 59: {
+                        message.latest_trajectory_id = reader.int32();
+                        break;
+                    }
+                case 60: {
+                        message.latest_submap_index = reader.int32();
+                        break;
+                    }
+                case 61: {
+                        message.lidar_matched = reader.bool();
+                        break;
+                    }
+                case 62: {
+                        message.lidar_matching_score = reader.float();
+                        break;
+                    }
+                case 63: {
+                        message.last_pose_update_time_nsec = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SlamState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.SlamState} SlamState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SlamState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SlamState message.
+         * @function verify
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SlamState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.state != null && message.hasOwnProperty("state"))
+                switch (message.state) {
+                default:
+                    return "state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            if (message.nav_sat_state != null && message.hasOwnProperty("nav_sat_state"))
+                switch (message.nav_sat_state) {
+                default:
+                    return "nav_sat_state: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    break;
+                }
+            if (message.reliable != null && message.hasOwnProperty("reliable"))
+                if (typeof message.reliable !== "boolean")
+                    return "reliable: boolean expected";
+            if (message.position_quality != null && message.hasOwnProperty("position_quality"))
+                switch (message.position_quality) {
+                default:
+                    return "position_quality: enum value expected";
+                case 0:
+                case 1:
+                case 3:
+                case 8:
+                case 10:
+                    break;
+                }
+            if (message.relocating != null && message.hasOwnProperty("relocating"))
+                if (typeof message.relocating !== "boolean")
+                    return "relocating: boolean expected";
+            if (message.wheel_slipping != null && message.hasOwnProperty("wheel_slipping"))
+                if (typeof message.wheel_slipping !== "boolean")
+                    return "wheel_slipping: boolean expected";
+            if (message.wheel_major_slipping != null && message.hasOwnProperty("wheel_major_slipping"))
+                if (typeof message.wheel_major_slipping !== "boolean")
+                    return "wheel_major_slipping: boolean expected";
+            if (message.move_cautiously != null && message.hasOwnProperty("move_cautiously"))
+                if (typeof message.move_cautiously !== "boolean")
+                    return "move_cautiously: boolean expected";
+            if (message.uncertainty_radius != null && message.hasOwnProperty("uncertainty_radius"))
+                if (typeof message.uncertainty_radius !== "number")
+                    return "uncertainty_radius: number expected";
+            if (message.search_window_radius != null && message.hasOwnProperty("search_window_radius"))
+                if (typeof message.search_window_radius !== "number")
+                    return "search_window_radius: number expected";
+            if (message.position_loss_progress != null && message.hasOwnProperty("position_loss_progress"))
+                if (typeof message.position_loss_progress !== "number")
+                    return "position_loss_progress: number expected";
+            if (message.cov_major_axis_length != null && message.hasOwnProperty("cov_major_axis_length"))
+                if (typeof message.cov_major_axis_length !== "number")
+                    return "cov_major_axis_length: number expected";
+            if (message.dynamic_translation_weight != null && message.hasOwnProperty("dynamic_translation_weight"))
+                if (typeof message.dynamic_translation_weight !== "number")
+                    return "dynamic_translation_weight: number expected";
+            if (message.lidar_reliable != null && message.hasOwnProperty("lidar_reliable"))
+                if (typeof message.lidar_reliable !== "boolean")
+                    return "lidar_reliable: boolean expected";
+            if (message.inter_constraint_count != null && message.hasOwnProperty("inter_constraint_count"))
+                if (!$util.isInteger(message.inter_constraint_count))
+                    return "inter_constraint_count: integer expected";
+            if (message.good_constraint_count != null && message.hasOwnProperty("good_constraint_count"))
+                if (!$util.isInteger(message.good_constraint_count))
+                    return "good_constraint_count: integer expected";
+            if (message.submap_count != null && message.hasOwnProperty("submap_count"))
+                if (!$util.isInteger(message.submap_count))
+                    return "submap_count: integer expected";
+            if (message.latest_trajectory_id != null && message.hasOwnProperty("latest_trajectory_id"))
+                if (!$util.isInteger(message.latest_trajectory_id))
+                    return "latest_trajectory_id: integer expected";
+            if (message.latest_submap_index != null && message.hasOwnProperty("latest_submap_index"))
+                if (!$util.isInteger(message.latest_submap_index))
+                    return "latest_submap_index: integer expected";
+            if (message.lidar_matched != null && message.hasOwnProperty("lidar_matched"))
+                if (typeof message.lidar_matched !== "boolean")
+                    return "lidar_matched: boolean expected";
+            if (message.lidar_matching_score != null && message.hasOwnProperty("lidar_matching_score"))
+                if (typeof message.lidar_matching_score !== "number")
+                    return "lidar_matching_score: number expected";
+            if (message.last_pose_update_time_nsec != null && message.hasOwnProperty("last_pose_update_time_nsec"))
+                if (!$util.isInteger(message.last_pose_update_time_nsec) && !(message.last_pose_update_time_nsec && $util.isInteger(message.last_pose_update_time_nsec.low) && $util.isInteger(message.last_pose_update_time_nsec.high)))
+                    return "last_pose_update_time_nsec: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a SlamState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.SlamState} SlamState
+         */
+        SlamState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.SlamState)
+                return object;
+            let message = new $root.ax_proto_msgs.SlamState();
+            switch (object.state) {
+            default:
+                if (typeof object.state === "number") {
+                    message.state = object.state;
+                    break;
+                }
+                break;
+            case "INACTIVE":
+            case 0:
+                message.state = 0;
+                break;
+            case "SLAM":
+            case 1:
+                message.state = 1;
+                break;
+            case "POSITIONING":
+            case 2:
+                message.state = 2;
+                break;
+            }
+            switch (object.nav_sat_state) {
+            default:
+                if (typeof object.nav_sat_state === "number") {
+                    message.nav_sat_state = object.nav_sat_state;
+                    break;
+                }
+                break;
+            case "NO_FIX":
+            case 0:
+                message.nav_sat_state = 0;
+                break;
+            case "SAT_BASE":
+            case 1:
+                message.nav_sat_state = 1;
+                break;
+            case "RTK_FIXED":
+            case 2:
+                message.nav_sat_state = 2;
+                break;
+            case "RTK_FIXED_IN_GPS_UNRELIABLE_ZONE":
+            case 3:
+                message.nav_sat_state = 3;
+                break;
+            case "TIMEOUT":
+            case 4:
+                message.nav_sat_state = 4;
+                break;
+            }
+            if (object.reliable != null)
+                message.reliable = Boolean(object.reliable);
+            switch (object.position_quality) {
+            default:
+                if (typeof object.position_quality === "number") {
+                    message.position_quality = object.position_quality;
+                    break;
+                }
+                break;
+            case "NONE":
+            case 0:
+                message.position_quality = 0;
+                break;
+            case "LOST":
+            case 1:
+                message.position_quality = 1;
+                break;
+            case "POOR":
+            case 3:
+                message.position_quality = 3;
+                break;
+            case "GOOD":
+            case 8:
+                message.position_quality = 8;
+                break;
+            case "EXCELLENT":
+            case 10:
+                message.position_quality = 10;
+                break;
+            }
+            if (object.relocating != null)
+                message.relocating = Boolean(object.relocating);
+            if (object.wheel_slipping != null)
+                message.wheel_slipping = Boolean(object.wheel_slipping);
+            if (object.wheel_major_slipping != null)
+                message.wheel_major_slipping = Boolean(object.wheel_major_slipping);
+            if (object.move_cautiously != null)
+                message.move_cautiously = Boolean(object.move_cautiously);
+            if (object.uncertainty_radius != null)
+                message.uncertainty_radius = Number(object.uncertainty_radius);
+            if (object.search_window_radius != null)
+                message.search_window_radius = Number(object.search_window_radius);
+            if (object.position_loss_progress != null)
+                message.position_loss_progress = Number(object.position_loss_progress);
+            if (object.cov_major_axis_length != null)
+                message.cov_major_axis_length = Number(object.cov_major_axis_length);
+            if (object.dynamic_translation_weight != null)
+                message.dynamic_translation_weight = Number(object.dynamic_translation_weight);
+            if (object.lidar_reliable != null)
+                message.lidar_reliable = Boolean(object.lidar_reliable);
+            if (object.inter_constraint_count != null)
+                message.inter_constraint_count = object.inter_constraint_count | 0;
+            if (object.good_constraint_count != null)
+                message.good_constraint_count = object.good_constraint_count | 0;
+            if (object.submap_count != null)
+                message.submap_count = object.submap_count | 0;
+            if (object.latest_trajectory_id != null)
+                message.latest_trajectory_id = object.latest_trajectory_id | 0;
+            if (object.latest_submap_index != null)
+                message.latest_submap_index = object.latest_submap_index | 0;
+            if (object.lidar_matched != null)
+                message.lidar_matched = Boolean(object.lidar_matched);
+            if (object.lidar_matching_score != null)
+                message.lidar_matching_score = Number(object.lidar_matching_score);
+            if (object.last_pose_update_time_nsec != null)
+                if ($util.Long)
+                    (message.last_pose_update_time_nsec = $util.Long.fromValue(object.last_pose_update_time_nsec)).unsigned = true;
+                else if (typeof object.last_pose_update_time_nsec === "string")
+                    message.last_pose_update_time_nsec = parseInt(object.last_pose_update_time_nsec, 10);
+                else if (typeof object.last_pose_update_time_nsec === "number")
+                    message.last_pose_update_time_nsec = object.last_pose_update_time_nsec;
+                else if (typeof object.last_pose_update_time_nsec === "object")
+                    message.last_pose_update_time_nsec = new $util.LongBits(object.last_pose_update_time_nsec.low >>> 0, object.last_pose_update_time_nsec.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SlamState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {ax_proto_msgs.SlamState} message SlamState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SlamState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.state = options.enums === String ? "INACTIVE" : 0;
+                object.nav_sat_state = options.enums === String ? "NO_FIX" : 0;
+                object.reliable = false;
+                object.position_quality = options.enums === String ? "NONE" : 0;
+                object.relocating = false;
+                object.wheel_slipping = false;
+                object.wheel_major_slipping = false;
+                object.move_cautiously = false;
+                object.uncertainty_radius = 0;
+                object.search_window_radius = 0;
+                object.position_loss_progress = 0;
+                object.cov_major_axis_length = 0;
+                object.dynamic_translation_weight = 0;
+                object.lidar_reliable = false;
+                object.inter_constraint_count = 0;
+                object.good_constraint_count = 0;
+                object.submap_count = 0;
+                object.latest_trajectory_id = 0;
+                object.latest_submap_index = 0;
+                object.lidar_matched = false;
+                object.lidar_matching_score = 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.last_pose_update_time_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.last_pose_update_time_nsec = options.longs === String ? "0" : 0;
+            }
+            if (message.state != null && message.hasOwnProperty("state"))
+                object.state = options.enums === String ? $root.ax_proto_msgs.SlamState.State.Type[message.state] === undefined ? message.state : $root.ax_proto_msgs.SlamState.State.Type[message.state] : message.state;
+            if (message.nav_sat_state != null && message.hasOwnProperty("nav_sat_state"))
+                object.nav_sat_state = options.enums === String ? $root.ax_proto_msgs.SlamState.NavSatState.Type[message.nav_sat_state] === undefined ? message.nav_sat_state : $root.ax_proto_msgs.SlamState.NavSatState.Type[message.nav_sat_state] : message.nav_sat_state;
+            if (message.reliable != null && message.hasOwnProperty("reliable"))
+                object.reliable = message.reliable;
+            if (message.position_quality != null && message.hasOwnProperty("position_quality"))
+                object.position_quality = options.enums === String ? $root.ax_proto_msgs.SlamState.PositionQuality.Type[message.position_quality] === undefined ? message.position_quality : $root.ax_proto_msgs.SlamState.PositionQuality.Type[message.position_quality] : message.position_quality;
+            if (message.relocating != null && message.hasOwnProperty("relocating"))
+                object.relocating = message.relocating;
+            if (message.wheel_slipping != null && message.hasOwnProperty("wheel_slipping"))
+                object.wheel_slipping = message.wheel_slipping;
+            if (message.wheel_major_slipping != null && message.hasOwnProperty("wheel_major_slipping"))
+                object.wheel_major_slipping = message.wheel_major_slipping;
+            if (message.move_cautiously != null && message.hasOwnProperty("move_cautiously"))
+                object.move_cautiously = message.move_cautiously;
+            if (message.uncertainty_radius != null && message.hasOwnProperty("uncertainty_radius"))
+                object.uncertainty_radius = options.json && !isFinite(message.uncertainty_radius) ? String(message.uncertainty_radius) : message.uncertainty_radius;
+            if (message.search_window_radius != null && message.hasOwnProperty("search_window_radius"))
+                object.search_window_radius = options.json && !isFinite(message.search_window_radius) ? String(message.search_window_radius) : message.search_window_radius;
+            if (message.position_loss_progress != null && message.hasOwnProperty("position_loss_progress"))
+                object.position_loss_progress = options.json && !isFinite(message.position_loss_progress) ? String(message.position_loss_progress) : message.position_loss_progress;
+            if (message.cov_major_axis_length != null && message.hasOwnProperty("cov_major_axis_length"))
+                object.cov_major_axis_length = options.json && !isFinite(message.cov_major_axis_length) ? String(message.cov_major_axis_length) : message.cov_major_axis_length;
+            if (message.dynamic_translation_weight != null && message.hasOwnProperty("dynamic_translation_weight"))
+                object.dynamic_translation_weight = options.json && !isFinite(message.dynamic_translation_weight) ? String(message.dynamic_translation_weight) : message.dynamic_translation_weight;
+            if (message.lidar_reliable != null && message.hasOwnProperty("lidar_reliable"))
+                object.lidar_reliable = message.lidar_reliable;
+            if (message.inter_constraint_count != null && message.hasOwnProperty("inter_constraint_count"))
+                object.inter_constraint_count = message.inter_constraint_count;
+            if (message.good_constraint_count != null && message.hasOwnProperty("good_constraint_count"))
+                object.good_constraint_count = message.good_constraint_count;
+            if (message.submap_count != null && message.hasOwnProperty("submap_count"))
+                object.submap_count = message.submap_count;
+            if (message.latest_trajectory_id != null && message.hasOwnProperty("latest_trajectory_id"))
+                object.latest_trajectory_id = message.latest_trajectory_id;
+            if (message.latest_submap_index != null && message.hasOwnProperty("latest_submap_index"))
+                object.latest_submap_index = message.latest_submap_index;
+            if (message.lidar_matched != null && message.hasOwnProperty("lidar_matched"))
+                object.lidar_matched = message.lidar_matched;
+            if (message.lidar_matching_score != null && message.hasOwnProperty("lidar_matching_score"))
+                object.lidar_matching_score = options.json && !isFinite(message.lidar_matching_score) ? String(message.lidar_matching_score) : message.lidar_matching_score;
+            if (message.last_pose_update_time_nsec != null && message.hasOwnProperty("last_pose_update_time_nsec"))
+                if (typeof message.last_pose_update_time_nsec === "number")
+                    object.last_pose_update_time_nsec = options.longs === String ? String(message.last_pose_update_time_nsec) : message.last_pose_update_time_nsec;
+                else
+                    object.last_pose_update_time_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.last_pose_update_time_nsec) : options.longs === Number ? new $util.LongBits(message.last_pose_update_time_nsec.low >>> 0, message.last_pose_update_time_nsec.high >>> 0).toNumber(true) : message.last_pose_update_time_nsec;
+            return object;
+        };
+
+        /**
+         * Converts this SlamState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.SlamState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SlamState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SlamState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.SlamState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SlamState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.SlamState";
+        };
+
+        SlamState.State = (function() {
+
+            /**
+             * Properties of a State.
+             * @memberof ax_proto_msgs.SlamState
+             * @interface IState
+             */
+
+            /**
+             * Constructs a new State.
+             * @memberof ax_proto_msgs.SlamState
+             * @classdesc Represents a State.
+             * @implements IState
+             * @constructor
+             * @param {ax_proto_msgs.SlamState.IState=} [properties] Properties to set
+             */
+            function State(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new State instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {ax_proto_msgs.SlamState.IState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.SlamState.State} State instance
+             */
+            State.create = function create(properties) {
+                return new State(properties);
+            };
+
+            /**
+             * Encodes the specified State message. Does not implicitly {@link ax_proto_msgs.SlamState.State.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {ax_proto_msgs.SlamState.IState} message State message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            State.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified State message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.State.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {ax_proto_msgs.SlamState.IState} message State message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            State.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a State message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.SlamState.State} State
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            State.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState.State();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a State message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.SlamState.State} State
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            State.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a State message.
+             * @function verify
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            State.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a State message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.SlamState.State} State
+             */
+            State.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.SlamState.State)
+                    return object;
+                return new $root.ax_proto_msgs.SlamState.State();
+            };
+
+            /**
+             * Creates a plain object from a State message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {ax_proto_msgs.SlamState.State} message State
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            State.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this State to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.SlamState.State
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            State.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for State
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.SlamState.State
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            State.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.SlamState.State";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.SlamState.State.Type
+             * @enum {number}
+             * @property {number} INACTIVE=0 INACTIVE value
+             * @property {number} SLAM=1 SLAM value
+             * @property {number} POSITIONING=2 POSITIONING value
+             */
+            State.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "INACTIVE"] = 0;
+                values[valuesById[1] = "SLAM"] = 1;
+                values[valuesById[2] = "POSITIONING"] = 2;
+                return values;
+            })();
+
+            return State;
+        })();
+
+        SlamState.NavSatState = (function() {
+
+            /**
+             * Properties of a NavSatState.
+             * @memberof ax_proto_msgs.SlamState
+             * @interface INavSatState
+             */
+
+            /**
+             * Constructs a new NavSatState.
+             * @memberof ax_proto_msgs.SlamState
+             * @classdesc Represents a NavSatState.
+             * @implements INavSatState
+             * @constructor
+             * @param {ax_proto_msgs.SlamState.INavSatState=} [properties] Properties to set
+             */
+            function NavSatState(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new NavSatState instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {ax_proto_msgs.SlamState.INavSatState=} [properties] Properties to set
+             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState instance
+             */
+            NavSatState.create = function create(properties) {
+                return new NavSatState(properties);
+            };
+
+            /**
+             * Encodes the specified NavSatState message. Does not implicitly {@link ax_proto_msgs.SlamState.NavSatState.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {ax_proto_msgs.SlamState.INavSatState} message NavSatState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            NavSatState.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified NavSatState message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.NavSatState.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {ax_proto_msgs.SlamState.INavSatState} message NavSatState message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            NavSatState.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a NavSatState message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            NavSatState.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState.NavSatState();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a NavSatState message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            NavSatState.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a NavSatState message.
+             * @function verify
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            NavSatState.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a NavSatState message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState
+             */
+            NavSatState.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.SlamState.NavSatState)
+                    return object;
+                return new $root.ax_proto_msgs.SlamState.NavSatState();
+            };
+
+            /**
+             * Creates a plain object from a NavSatState message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {ax_proto_msgs.SlamState.NavSatState} message NavSatState
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            NavSatState.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this NavSatState to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            NavSatState.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for NavSatState
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.SlamState.NavSatState
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            NavSatState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.SlamState.NavSatState";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.SlamState.NavSatState.Type
+             * @enum {number}
+             * @property {number} NO_FIX=0 NO_FIX value
+             * @property {number} SAT_BASE=1 SAT_BASE value
+             * @property {number} RTK_FIXED=2 RTK_FIXED value
+             * @property {number} RTK_FIXED_IN_GPS_UNRELIABLE_ZONE=3 RTK_FIXED_IN_GPS_UNRELIABLE_ZONE value
+             * @property {number} TIMEOUT=4 TIMEOUT value
+             */
+            NavSatState.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "NO_FIX"] = 0;
+                values[valuesById[1] = "SAT_BASE"] = 1;
+                values[valuesById[2] = "RTK_FIXED"] = 2;
+                values[valuesById[3] = "RTK_FIXED_IN_GPS_UNRELIABLE_ZONE"] = 3;
+                values[valuesById[4] = "TIMEOUT"] = 4;
+                return values;
+            })();
+
+            return NavSatState;
+        })();
+
+        SlamState.PositionQuality = (function() {
+
+            /**
+             * Properties of a PositionQuality.
+             * @memberof ax_proto_msgs.SlamState
+             * @interface IPositionQuality
+             */
+
+            /**
+             * Constructs a new PositionQuality.
+             * @memberof ax_proto_msgs.SlamState
+             * @classdesc Represents a PositionQuality.
+             * @implements IPositionQuality
+             * @constructor
+             * @param {ax_proto_msgs.SlamState.IPositionQuality=} [properties] Properties to set
+             */
+            function PositionQuality(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new PositionQuality instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {ax_proto_msgs.SlamState.IPositionQuality=} [properties] Properties to set
+             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality instance
+             */
+            PositionQuality.create = function create(properties) {
+                return new PositionQuality(properties);
+            };
+
+            /**
+             * Encodes the specified PositionQuality message. Does not implicitly {@link ax_proto_msgs.SlamState.PositionQuality.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {ax_proto_msgs.SlamState.IPositionQuality} message PositionQuality message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PositionQuality.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PositionQuality message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.PositionQuality.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {ax_proto_msgs.SlamState.IPositionQuality} message PositionQuality message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PositionQuality.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a PositionQuality message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PositionQuality.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState.PositionQuality();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a PositionQuality message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PositionQuality.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a PositionQuality message.
+             * @function verify
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PositionQuality.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a PositionQuality message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality
+             */
+            PositionQuality.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.SlamState.PositionQuality)
+                    return object;
+                return new $root.ax_proto_msgs.SlamState.PositionQuality();
+            };
+
+            /**
+             * Creates a plain object from a PositionQuality message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {ax_proto_msgs.SlamState.PositionQuality} message PositionQuality
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PositionQuality.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this PositionQuality to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PositionQuality.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for PositionQuality
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.SlamState.PositionQuality
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PositionQuality.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.SlamState.PositionQuality";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.SlamState.PositionQuality.Type
+             * @enum {number}
+             * @property {number} NONE=0 NONE value
+             * @property {number} LOST=1 LOST value
+             * @property {number} POOR=3 POOR value
+             * @property {number} GOOD=8 GOOD value
+             * @property {number} EXCELLENT=10 EXCELLENT value
+             */
+            PositionQuality.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "NONE"] = 0;
+                values[valuesById[1] = "LOST"] = 1;
+                values[valuesById[3] = "POOR"] = 3;
+                values[valuesById[8] = "GOOD"] = 8;
+                values[valuesById[10] = "EXCELLENT"] = 10;
+                return values;
+            })();
+
+            return PositionQuality;
+        })();
+
+        return SlamState;
     })();
 
     ax_proto_msgs.slam = (function() {
@@ -13642,6 +25064,494 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return slam;
     })();
 
+    ax_proto_msgs.TFMessage = (function() {
+
+        /**
+         * Properties of a TFMessage.
+         * @memberof ax_proto_msgs
+         * @interface ITFMessage
+         * @property {Array.<ax_proto_msgs.ITransformStamped>|null} [transforms] TFMessage transforms
+         */
+
+        /**
+         * Constructs a new TFMessage.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a TFMessage.
+         * @implements ITFMessage
+         * @constructor
+         * @param {ax_proto_msgs.ITFMessage=} [properties] Properties to set
+         */
+        function TFMessage(properties) {
+            this.transforms = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * TFMessage transforms.
+         * @member {Array.<ax_proto_msgs.ITransformStamped>} transforms
+         * @memberof ax_proto_msgs.TFMessage
+         * @instance
+         */
+        TFMessage.prototype.transforms = $util.emptyArray;
+
+        /**
+         * Creates a new TFMessage instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {ax_proto_msgs.ITFMessage=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TFMessage} TFMessage instance
+         */
+        TFMessage.create = function create(properties) {
+            return new TFMessage(properties);
+        };
+
+        /**
+         * Encodes the specified TFMessage message. Does not implicitly {@link ax_proto_msgs.TFMessage.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {ax_proto_msgs.ITFMessage} message TFMessage message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TFMessage.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.transforms != null && message.transforms.length)
+                for (let i = 0; i < message.transforms.length; ++i)
+                    $root.ax_proto_msgs.TransformStamped.encode(message.transforms[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified TFMessage message, length delimited. Does not implicitly {@link ax_proto_msgs.TFMessage.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {ax_proto_msgs.ITFMessage} message TFMessage message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TFMessage.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a TFMessage message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.TFMessage} TFMessage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TFMessage.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TFMessage();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        if (!(message.transforms && message.transforms.length))
+                            message.transforms = [];
+                        message.transforms.push($root.ax_proto_msgs.TransformStamped.decode(reader, reader.uint32()));
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a TFMessage message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.TFMessage} TFMessage
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TFMessage.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a TFMessage message.
+         * @function verify
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        TFMessage.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.transforms != null && message.hasOwnProperty("transforms")) {
+                if (!Array.isArray(message.transforms))
+                    return "transforms: array expected";
+                for (let i = 0; i < message.transforms.length; ++i) {
+                    let error = $root.ax_proto_msgs.TransformStamped.verify(message.transforms[i]);
+                    if (error)
+                        return "transforms." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a TFMessage message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.TFMessage} TFMessage
+         */
+        TFMessage.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.TFMessage)
+                return object;
+            let message = new $root.ax_proto_msgs.TFMessage();
+            if (object.transforms) {
+                if (!Array.isArray(object.transforms))
+                    throw TypeError(".ax_proto_msgs.TFMessage.transforms: array expected");
+                message.transforms = [];
+                for (let i = 0; i < object.transforms.length; ++i) {
+                    if (typeof object.transforms[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.TFMessage.transforms: object expected");
+                    message.transforms[i] = $root.ax_proto_msgs.TransformStamped.fromObject(object.transforms[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a TFMessage message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {ax_proto_msgs.TFMessage} message TFMessage
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        TFMessage.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.transforms = [];
+            if (message.transforms && message.transforms.length) {
+                object.transforms = [];
+                for (let j = 0; j < message.transforms.length; ++j)
+                    object.transforms[j] = $root.ax_proto_msgs.TransformStamped.toObject(message.transforms[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this TFMessage to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.TFMessage
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        TFMessage.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for TFMessage
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.TFMessage
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        TFMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.TFMessage";
+        };
+
+        return TFMessage;
+    })();
+
+    ax_proto_msgs.TransformStamped = (function() {
+
+        /**
+         * Properties of a TransformStamped.
+         * @memberof ax_proto_msgs
+         * @interface ITransformStamped
+         * @property {ax_proto_msgs.IHeader|null} [header] TransformStamped header
+         * @property {string|null} [child_frame_id] TransformStamped child_frame_id
+         * @property {ax_proto_msgs.ITransform|null} [transform] TransformStamped transform
+         */
+
+        /**
+         * Constructs a new TransformStamped.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a TransformStamped.
+         * @implements ITransformStamped
+         * @constructor
+         * @param {ax_proto_msgs.ITransformStamped=} [properties] Properties to set
+         */
+        function TransformStamped(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * TransformStamped header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.TransformStamped
+         * @instance
+         */
+        TransformStamped.prototype.header = null;
+
+        /**
+         * TransformStamped child_frame_id.
+         * @member {string} child_frame_id
+         * @memberof ax_proto_msgs.TransformStamped
+         * @instance
+         */
+        TransformStamped.prototype.child_frame_id = "";
+
+        /**
+         * TransformStamped transform.
+         * @member {ax_proto_msgs.ITransform|null|undefined} transform
+         * @memberof ax_proto_msgs.TransformStamped
+         * @instance
+         */
+        TransformStamped.prototype.transform = null;
+
+        /**
+         * Creates a new TransformStamped instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {ax_proto_msgs.ITransformStamped=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TransformStamped} TransformStamped instance
+         */
+        TransformStamped.create = function create(properties) {
+            return new TransformStamped(properties);
+        };
+
+        /**
+         * Encodes the specified TransformStamped message. Does not implicitly {@link ax_proto_msgs.TransformStamped.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {ax_proto_msgs.ITransformStamped} message TransformStamped message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TransformStamped.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.child_frame_id != null && Object.hasOwnProperty.call(message, "child_frame_id"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.child_frame_id);
+            if (message.transform != null && Object.hasOwnProperty.call(message, "transform"))
+                $root.ax_proto_msgs.Transform.encode(message.transform, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified TransformStamped message, length delimited. Does not implicitly {@link ax_proto_msgs.TransformStamped.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {ax_proto_msgs.ITransformStamped} message TransformStamped message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TransformStamped.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a TransformStamped message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.TransformStamped} TransformStamped
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TransformStamped.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TransformStamped();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.child_frame_id = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.transform = $root.ax_proto_msgs.Transform.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a TransformStamped message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.TransformStamped} TransformStamped
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TransformStamped.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a TransformStamped message.
+         * @function verify
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        TransformStamped.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.child_frame_id != null && message.hasOwnProperty("child_frame_id"))
+                if (!$util.isString(message.child_frame_id))
+                    return "child_frame_id: string expected";
+            if (message.transform != null && message.hasOwnProperty("transform")) {
+                let error = $root.ax_proto_msgs.Transform.verify(message.transform);
+                if (error)
+                    return "transform." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a TransformStamped message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.TransformStamped} TransformStamped
+         */
+        TransformStamped.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.TransformStamped)
+                return object;
+            let message = new $root.ax_proto_msgs.TransformStamped();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.TransformStamped.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.child_frame_id != null)
+                message.child_frame_id = String(object.child_frame_id);
+            if (object.transform != null) {
+                if (typeof object.transform !== "object")
+                    throw TypeError(".ax_proto_msgs.TransformStamped.transform: object expected");
+                message.transform = $root.ax_proto_msgs.Transform.fromObject(object.transform);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a TransformStamped message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {ax_proto_msgs.TransformStamped} message TransformStamped
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        TransformStamped.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.header = null;
+                object.child_frame_id = "";
+                object.transform = null;
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.child_frame_id != null && message.hasOwnProperty("child_frame_id"))
+                object.child_frame_id = message.child_frame_id;
+            if (message.transform != null && message.hasOwnProperty("transform"))
+                object.transform = $root.ax_proto_msgs.Transform.toObject(message.transform, options);
+            return object;
+        };
+
+        /**
+         * Converts this TransformStamped to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.TransformStamped
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        TransformStamped.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for TransformStamped
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.TransformStamped
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        TransformStamped.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.TransformStamped";
+        };
+
+        return TransformStamped;
+    })();
+
     ax_proto_msgs.TowingState = (function() {
 
         /**
@@ -14502,45 +26412,27 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return VideoData;
     })();
 
-    ax_proto_msgs.SlamState = (function() {
+    ax_proto_msgs.WheelControlCommand = (function() {
 
         /**
-         * Properties of a SlamState.
+         * Properties of a WheelControlCommand.
          * @memberof ax_proto_msgs
-         * @interface ISlamState
-         * @property {ax_proto_msgs.SlamState.State.Type|null} [state] SlamState state
-         * @property {ax_proto_msgs.SlamState.NavSatState.Type|null} [nav_sat_state] SlamState nav_sat_state
-         * @property {boolean|null} [reliable] SlamState reliable
-         * @property {ax_proto_msgs.SlamState.PositionQuality.Type|null} [position_quality] SlamState position_quality
-         * @property {boolean|null} [relocating] SlamState relocating
-         * @property {boolean|null} [wheel_slipping] SlamState wheel_slipping
-         * @property {boolean|null} [wheel_major_slipping] SlamState wheel_major_slipping
-         * @property {boolean|null} [move_cautiously] SlamState move_cautiously
-         * @property {number|null} [uncertainty_radius] SlamState uncertainty_radius
-         * @property {number|null} [search_window_radius] SlamState search_window_radius
-         * @property {number|null} [position_loss_progress] SlamState position_loss_progress
-         * @property {number|null} [cov_major_axis_length] SlamState cov_major_axis_length
-         * @property {number|null} [dynamic_translation_weight] SlamState dynamic_translation_weight
-         * @property {boolean|null} [lidar_reliable] SlamState lidar_reliable
-         * @property {number|null} [inter_constraint_count] SlamState inter_constraint_count
-         * @property {number|null} [good_constraint_count] SlamState good_constraint_count
-         * @property {number|null} [submap_count] SlamState submap_count
-         * @property {number|null} [latest_trajectory_id] SlamState latest_trajectory_id
-         * @property {number|null} [latest_submap_index] SlamState latest_submap_index
-         * @property {boolean|null} [lidar_matched] SlamState lidar_matched
-         * @property {number|null} [lidar_matching_score] SlamState lidar_matching_score
-         * @property {number|Long|null} [last_pose_update_time_nsec] SlamState last_pose_update_time_nsec
+         * @interface IWheelControlCommand
+         * @property {ax_proto_msgs.IHeader|null} [header] WheelControlCommand header
+         * @property {boolean|null} [wheel_enabled] WheelControlCommand wheel_enabled
+         * @property {ax_proto_msgs.IDifferentialDriveCommand|null} [differential] WheelControlCommand differential
+         * @property {ax_proto_msgs.ITricycleDriveCommand|null} [tricycle] WheelControlCommand tricycle
          */
 
         /**
-         * Constructs a new SlamState.
+         * Constructs a new WheelControlCommand.
          * @memberof ax_proto_msgs
-         * @classdesc Represents a SlamState.
-         * @implements ISlamState
+         * @classdesc Represents a WheelControlCommand.
+         * @implements IWheelControlCommand
          * @constructor
-         * @param {ax_proto_msgs.ISlamState=} [properties] Properties to set
+         * @param {ax_proto_msgs.IWheelControlCommand=} [properties] Properties to set
          */
-        function SlamState(properties) {
+        function WheelControlCommand(properties) {
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -14548,371 +26440,133 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         }
 
         /**
-         * SlamState state.
-         * @member {ax_proto_msgs.SlamState.State.Type} state
-         * @memberof ax_proto_msgs.SlamState
+         * WheelControlCommand header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @instance
          */
-        SlamState.prototype.state = 0;
+        WheelControlCommand.prototype.header = null;
 
         /**
-         * SlamState nav_sat_state.
-         * @member {ax_proto_msgs.SlamState.NavSatState.Type} nav_sat_state
-         * @memberof ax_proto_msgs.SlamState
+         * WheelControlCommand wheel_enabled.
+         * @member {boolean} wheel_enabled
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @instance
          */
-        SlamState.prototype.nav_sat_state = 0;
+        WheelControlCommand.prototype.wheel_enabled = false;
 
         /**
-         * SlamState reliable.
-         * @member {boolean} reliable
-         * @memberof ax_proto_msgs.SlamState
+         * WheelControlCommand differential.
+         * @member {ax_proto_msgs.IDifferentialDriveCommand|null|undefined} differential
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @instance
          */
-        SlamState.prototype.reliable = false;
+        WheelControlCommand.prototype.differential = null;
 
         /**
-         * SlamState position_quality.
-         * @member {ax_proto_msgs.SlamState.PositionQuality.Type} position_quality
-         * @memberof ax_proto_msgs.SlamState
+         * WheelControlCommand tricycle.
+         * @member {ax_proto_msgs.ITricycleDriveCommand|null|undefined} tricycle
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @instance
          */
-        SlamState.prototype.position_quality = 0;
+        WheelControlCommand.prototype.tricycle = null;
+
+        // OneOf field names bound to virtual getters and setters
+        let $oneOfFields;
 
         /**
-         * SlamState relocating.
-         * @member {boolean} relocating
-         * @memberof ax_proto_msgs.SlamState
+         * WheelControlCommand model.
+         * @member {"differential"|"tricycle"|undefined} model
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @instance
          */
-        SlamState.prototype.relocating = false;
+        Object.defineProperty(WheelControlCommand.prototype, "model", {
+            get: $util.oneOfGetter($oneOfFields = ["differential", "tricycle"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
 
         /**
-         * SlamState wheel_slipping.
-         * @member {boolean} wheel_slipping
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.wheel_slipping = false;
-
-        /**
-         * SlamState wheel_major_slipping.
-         * @member {boolean} wheel_major_slipping
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.wheel_major_slipping = false;
-
-        /**
-         * SlamState move_cautiously.
-         * @member {boolean} move_cautiously
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.move_cautiously = false;
-
-        /**
-         * SlamState uncertainty_radius.
-         * @member {number} uncertainty_radius
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.uncertainty_radius = 0;
-
-        /**
-         * SlamState search_window_radius.
-         * @member {number} search_window_radius
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.search_window_radius = 0;
-
-        /**
-         * SlamState position_loss_progress.
-         * @member {number} position_loss_progress
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.position_loss_progress = 0;
-
-        /**
-         * SlamState cov_major_axis_length.
-         * @member {number} cov_major_axis_length
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.cov_major_axis_length = 0;
-
-        /**
-         * SlamState dynamic_translation_weight.
-         * @member {number} dynamic_translation_weight
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.dynamic_translation_weight = 0;
-
-        /**
-         * SlamState lidar_reliable.
-         * @member {boolean} lidar_reliable
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.lidar_reliable = false;
-
-        /**
-         * SlamState inter_constraint_count.
-         * @member {number} inter_constraint_count
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.inter_constraint_count = 0;
-
-        /**
-         * SlamState good_constraint_count.
-         * @member {number} good_constraint_count
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.good_constraint_count = 0;
-
-        /**
-         * SlamState submap_count.
-         * @member {number} submap_count
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.submap_count = 0;
-
-        /**
-         * SlamState latest_trajectory_id.
-         * @member {number} latest_trajectory_id
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.latest_trajectory_id = 0;
-
-        /**
-         * SlamState latest_submap_index.
-         * @member {number} latest_submap_index
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.latest_submap_index = 0;
-
-        /**
-         * SlamState lidar_matched.
-         * @member {boolean} lidar_matched
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.lidar_matched = false;
-
-        /**
-         * SlamState lidar_matching_score.
-         * @member {number} lidar_matching_score
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.lidar_matching_score = 0;
-
-        /**
-         * SlamState last_pose_update_time_nsec.
-         * @member {number|Long} last_pose_update_time_nsec
-         * @memberof ax_proto_msgs.SlamState
-         * @instance
-         */
-        SlamState.prototype.last_pose_update_time_nsec = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-        /**
-         * Creates a new SlamState instance using the specified properties.
+         * Creates a new WheelControlCommand instance using the specified properties.
          * @function create
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
-         * @param {ax_proto_msgs.ISlamState=} [properties] Properties to set
-         * @returns {ax_proto_msgs.SlamState} SlamState instance
+         * @param {ax_proto_msgs.IWheelControlCommand=} [properties] Properties to set
+         * @returns {ax_proto_msgs.WheelControlCommand} WheelControlCommand instance
          */
-        SlamState.create = function create(properties) {
-            return new SlamState(properties);
+        WheelControlCommand.create = function create(properties) {
+            return new WheelControlCommand(properties);
         };
 
         /**
-         * Encodes the specified SlamState message. Does not implicitly {@link ax_proto_msgs.SlamState.verify|verify} messages.
+         * Encodes the specified WheelControlCommand message. Does not implicitly {@link ax_proto_msgs.WheelControlCommand.verify|verify} messages.
          * @function encode
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
-         * @param {ax_proto_msgs.ISlamState} message SlamState message or plain object to encode
+         * @param {ax_proto_msgs.IWheelControlCommand} message WheelControlCommand message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        SlamState.encode = function encode(message, writer) {
+        WheelControlCommand.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.state);
-            if (message.nav_sat_state != null && Object.hasOwnProperty.call(message, "nav_sat_state"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.nav_sat_state);
-            if (message.reliable != null && Object.hasOwnProperty.call(message, "reliable"))
-                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.reliable);
-            if (message.position_quality != null && Object.hasOwnProperty.call(message, "position_quality"))
-                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.position_quality);
-            if (message.relocating != null && Object.hasOwnProperty.call(message, "relocating"))
-                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.relocating);
-            if (message.wheel_slipping != null && Object.hasOwnProperty.call(message, "wheel_slipping"))
-                writer.uint32(/* id 20, wireType 0 =*/160).bool(message.wheel_slipping);
-            if (message.wheel_major_slipping != null && Object.hasOwnProperty.call(message, "wheel_major_slipping"))
-                writer.uint32(/* id 21, wireType 0 =*/168).bool(message.wheel_major_slipping);
-            if (message.move_cautiously != null && Object.hasOwnProperty.call(message, "move_cautiously"))
-                writer.uint32(/* id 22, wireType 0 =*/176).bool(message.move_cautiously);
-            if (message.uncertainty_radius != null && Object.hasOwnProperty.call(message, "uncertainty_radius"))
-                writer.uint32(/* id 50, wireType 5 =*/405).float(message.uncertainty_radius);
-            if (message.search_window_radius != null && Object.hasOwnProperty.call(message, "search_window_radius"))
-                writer.uint32(/* id 51, wireType 5 =*/413).float(message.search_window_radius);
-            if (message.position_loss_progress != null && Object.hasOwnProperty.call(message, "position_loss_progress"))
-                writer.uint32(/* id 52, wireType 5 =*/421).float(message.position_loss_progress);
-            if (message.cov_major_axis_length != null && Object.hasOwnProperty.call(message, "cov_major_axis_length"))
-                writer.uint32(/* id 53, wireType 5 =*/429).float(message.cov_major_axis_length);
-            if (message.dynamic_translation_weight != null && Object.hasOwnProperty.call(message, "dynamic_translation_weight"))
-                writer.uint32(/* id 54, wireType 5 =*/437).float(message.dynamic_translation_weight);
-            if (message.lidar_reliable != null && Object.hasOwnProperty.call(message, "lidar_reliable"))
-                writer.uint32(/* id 55, wireType 0 =*/440).bool(message.lidar_reliable);
-            if (message.inter_constraint_count != null && Object.hasOwnProperty.call(message, "inter_constraint_count"))
-                writer.uint32(/* id 56, wireType 0 =*/448).int32(message.inter_constraint_count);
-            if (message.good_constraint_count != null && Object.hasOwnProperty.call(message, "good_constraint_count"))
-                writer.uint32(/* id 57, wireType 0 =*/456).int32(message.good_constraint_count);
-            if (message.submap_count != null && Object.hasOwnProperty.call(message, "submap_count"))
-                writer.uint32(/* id 58, wireType 0 =*/464).int32(message.submap_count);
-            if (message.latest_trajectory_id != null && Object.hasOwnProperty.call(message, "latest_trajectory_id"))
-                writer.uint32(/* id 59, wireType 0 =*/472).int32(message.latest_trajectory_id);
-            if (message.latest_submap_index != null && Object.hasOwnProperty.call(message, "latest_submap_index"))
-                writer.uint32(/* id 60, wireType 0 =*/480).int32(message.latest_submap_index);
-            if (message.lidar_matched != null && Object.hasOwnProperty.call(message, "lidar_matched"))
-                writer.uint32(/* id 61, wireType 0 =*/488).bool(message.lidar_matched);
-            if (message.lidar_matching_score != null && Object.hasOwnProperty.call(message, "lidar_matching_score"))
-                writer.uint32(/* id 62, wireType 5 =*/501).float(message.lidar_matching_score);
-            if (message.last_pose_update_time_nsec != null && Object.hasOwnProperty.call(message, "last_pose_update_time_nsec"))
-                writer.uint32(/* id 63, wireType 0 =*/504).uint64(message.last_pose_update_time_nsec);
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.wheel_enabled != null && Object.hasOwnProperty.call(message, "wheel_enabled"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.wheel_enabled);
+            if (message.differential != null && Object.hasOwnProperty.call(message, "differential"))
+                $root.ax_proto_msgs.DifferentialDriveCommand.encode(message.differential, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.tricycle != null && Object.hasOwnProperty.call(message, "tricycle"))
+                $root.ax_proto_msgs.TricycleDriveCommand.encode(message.tricycle, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
             return writer;
         };
 
         /**
-         * Encodes the specified SlamState message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.verify|verify} messages.
+         * Encodes the specified WheelControlCommand message, length delimited. Does not implicitly {@link ax_proto_msgs.WheelControlCommand.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
-         * @param {ax_proto_msgs.ISlamState} message SlamState message or plain object to encode
+         * @param {ax_proto_msgs.IWheelControlCommand} message WheelControlCommand message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        SlamState.encodeDelimited = function encodeDelimited(message, writer) {
+        WheelControlCommand.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a SlamState message from the specified reader or buffer.
+         * Decodes a WheelControlCommand message from the specified reader or buffer.
          * @function decode
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {ax_proto_msgs.SlamState} SlamState
+         * @returns {ax_proto_msgs.WheelControlCommand} WheelControlCommand
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        SlamState.decode = function decode(reader, length, error) {
+        WheelControlCommand.decode = function decode(reader, length, error) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.WheelControlCommand();
             while (reader.pos < end) {
                 let tag = reader.uint32();
                 if (tag === error)
                     break;
                 switch (tag >>> 3) {
                 case 1: {
-                        message.state = reader.int32();
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
                         break;
                     }
                 case 2: {
-                        message.nav_sat_state = reader.int32();
+                        message.wheel_enabled = reader.bool();
                         break;
                     }
                 case 3: {
-                        message.reliable = reader.bool();
+                        message.differential = $root.ax_proto_msgs.DifferentialDriveCommand.decode(reader, reader.uint32());
                         break;
                     }
                 case 4: {
-                        message.position_quality = reader.int32();
-                        break;
-                    }
-                case 5: {
-                        message.relocating = reader.bool();
-                        break;
-                    }
-                case 20: {
-                        message.wheel_slipping = reader.bool();
-                        break;
-                    }
-                case 21: {
-                        message.wheel_major_slipping = reader.bool();
-                        break;
-                    }
-                case 22: {
-                        message.move_cautiously = reader.bool();
-                        break;
-                    }
-                case 50: {
-                        message.uncertainty_radius = reader.float();
-                        break;
-                    }
-                case 51: {
-                        message.search_window_radius = reader.float();
-                        break;
-                    }
-                case 52: {
-                        message.position_loss_progress = reader.float();
-                        break;
-                    }
-                case 53: {
-                        message.cov_major_axis_length = reader.float();
-                        break;
-                    }
-                case 54: {
-                        message.dynamic_translation_weight = reader.float();
-                        break;
-                    }
-                case 55: {
-                        message.lidar_reliable = reader.bool();
-                        break;
-                    }
-                case 56: {
-                        message.inter_constraint_count = reader.int32();
-                        break;
-                    }
-                case 57: {
-                        message.good_constraint_count = reader.int32();
-                        break;
-                    }
-                case 58: {
-                        message.submap_count = reader.int32();
-                        break;
-                    }
-                case 59: {
-                        message.latest_trajectory_id = reader.int32();
-                        break;
-                    }
-                case 60: {
-                        message.latest_submap_index = reader.int32();
-                        break;
-                    }
-                case 61: {
-                        message.lidar_matched = reader.bool();
-                        break;
-                    }
-                case 62: {
-                        message.lidar_matching_score = reader.float();
-                        break;
-                    }
-                case 63: {
-                        message.last_pose_update_time_nsec = reader.uint64();
+                        message.tricycle = $root.ax_proto_msgs.TricycleDriveCommand.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -14924,964 +26578,1411 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         };
 
         /**
-         * Decodes a SlamState message from the specified reader or buffer, length delimited.
+         * Decodes a WheelControlCommand message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ax_proto_msgs.SlamState} SlamState
+         * @returns {ax_proto_msgs.WheelControlCommand} WheelControlCommand
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        SlamState.decodeDelimited = function decodeDelimited(reader) {
+        WheelControlCommand.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a SlamState message.
+         * Verifies a WheelControlCommand message.
          * @function verify
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        SlamState.verify = function verify(message) {
+        WheelControlCommand.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.state != null && message.hasOwnProperty("state"))
-                switch (message.state) {
-                default:
-                    return "state: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                    break;
+            let properties = {};
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.wheel_enabled != null && message.hasOwnProperty("wheel_enabled"))
+                if (typeof message.wheel_enabled !== "boolean")
+                    return "wheel_enabled: boolean expected";
+            if (message.differential != null && message.hasOwnProperty("differential")) {
+                properties.model = 1;
+                {
+                    let error = $root.ax_proto_msgs.DifferentialDriveCommand.verify(message.differential);
+                    if (error)
+                        return "differential." + error;
                 }
-            if (message.nav_sat_state != null && message.hasOwnProperty("nav_sat_state"))
-                switch (message.nav_sat_state) {
-                default:
-                    return "nav_sat_state: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    break;
+            }
+            if (message.tricycle != null && message.hasOwnProperty("tricycle")) {
+                if (properties.model === 1)
+                    return "model: multiple values";
+                properties.model = 1;
+                {
+                    let error = $root.ax_proto_msgs.TricycleDriveCommand.verify(message.tricycle);
+                    if (error)
+                        return "tricycle." + error;
                 }
-            if (message.reliable != null && message.hasOwnProperty("reliable"))
-                if (typeof message.reliable !== "boolean")
-                    return "reliable: boolean expected";
-            if (message.position_quality != null && message.hasOwnProperty("position_quality"))
-                switch (message.position_quality) {
-                default:
-                    return "position_quality: enum value expected";
-                case 0:
-                case 1:
-                case 3:
-                case 8:
-                case 10:
-                    break;
-                }
-            if (message.relocating != null && message.hasOwnProperty("relocating"))
-                if (typeof message.relocating !== "boolean")
-                    return "relocating: boolean expected";
-            if (message.wheel_slipping != null && message.hasOwnProperty("wheel_slipping"))
-                if (typeof message.wheel_slipping !== "boolean")
-                    return "wheel_slipping: boolean expected";
-            if (message.wheel_major_slipping != null && message.hasOwnProperty("wheel_major_slipping"))
-                if (typeof message.wheel_major_slipping !== "boolean")
-                    return "wheel_major_slipping: boolean expected";
-            if (message.move_cautiously != null && message.hasOwnProperty("move_cautiously"))
-                if (typeof message.move_cautiously !== "boolean")
-                    return "move_cautiously: boolean expected";
-            if (message.uncertainty_radius != null && message.hasOwnProperty("uncertainty_radius"))
-                if (typeof message.uncertainty_radius !== "number")
-                    return "uncertainty_radius: number expected";
-            if (message.search_window_radius != null && message.hasOwnProperty("search_window_radius"))
-                if (typeof message.search_window_radius !== "number")
-                    return "search_window_radius: number expected";
-            if (message.position_loss_progress != null && message.hasOwnProperty("position_loss_progress"))
-                if (typeof message.position_loss_progress !== "number")
-                    return "position_loss_progress: number expected";
-            if (message.cov_major_axis_length != null && message.hasOwnProperty("cov_major_axis_length"))
-                if (typeof message.cov_major_axis_length !== "number")
-                    return "cov_major_axis_length: number expected";
-            if (message.dynamic_translation_weight != null && message.hasOwnProperty("dynamic_translation_weight"))
-                if (typeof message.dynamic_translation_weight !== "number")
-                    return "dynamic_translation_weight: number expected";
-            if (message.lidar_reliable != null && message.hasOwnProperty("lidar_reliable"))
-                if (typeof message.lidar_reliable !== "boolean")
-                    return "lidar_reliable: boolean expected";
-            if (message.inter_constraint_count != null && message.hasOwnProperty("inter_constraint_count"))
-                if (!$util.isInteger(message.inter_constraint_count))
-                    return "inter_constraint_count: integer expected";
-            if (message.good_constraint_count != null && message.hasOwnProperty("good_constraint_count"))
-                if (!$util.isInteger(message.good_constraint_count))
-                    return "good_constraint_count: integer expected";
-            if (message.submap_count != null && message.hasOwnProperty("submap_count"))
-                if (!$util.isInteger(message.submap_count))
-                    return "submap_count: integer expected";
-            if (message.latest_trajectory_id != null && message.hasOwnProperty("latest_trajectory_id"))
-                if (!$util.isInteger(message.latest_trajectory_id))
-                    return "latest_trajectory_id: integer expected";
-            if (message.latest_submap_index != null && message.hasOwnProperty("latest_submap_index"))
-                if (!$util.isInteger(message.latest_submap_index))
-                    return "latest_submap_index: integer expected";
-            if (message.lidar_matched != null && message.hasOwnProperty("lidar_matched"))
-                if (typeof message.lidar_matched !== "boolean")
-                    return "lidar_matched: boolean expected";
-            if (message.lidar_matching_score != null && message.hasOwnProperty("lidar_matching_score"))
-                if (typeof message.lidar_matching_score !== "number")
-                    return "lidar_matching_score: number expected";
-            if (message.last_pose_update_time_nsec != null && message.hasOwnProperty("last_pose_update_time_nsec"))
-                if (!$util.isInteger(message.last_pose_update_time_nsec) && !(message.last_pose_update_time_nsec && $util.isInteger(message.last_pose_update_time_nsec.low) && $util.isInteger(message.last_pose_update_time_nsec.high)))
-                    return "last_pose_update_time_nsec: integer|Long expected";
+            }
             return null;
         };
 
         /**
-         * Creates a SlamState message from a plain object. Also converts values to their respective internal types.
+         * Creates a WheelControlCommand message from a plain object. Also converts values to their respective internal types.
          * @function fromObject
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
          * @param {Object.<string,*>} object Plain object
-         * @returns {ax_proto_msgs.SlamState} SlamState
+         * @returns {ax_proto_msgs.WheelControlCommand} WheelControlCommand
          */
-        SlamState.fromObject = function fromObject(object) {
-            if (object instanceof $root.ax_proto_msgs.SlamState)
+        WheelControlCommand.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.WheelControlCommand)
                 return object;
-            let message = new $root.ax_proto_msgs.SlamState();
-            switch (object.state) {
-            default:
-                if (typeof object.state === "number") {
-                    message.state = object.state;
-                    break;
-                }
-                break;
-            case "INACTIVE":
-            case 0:
-                message.state = 0;
-                break;
-            case "SLAM":
-            case 1:
-                message.state = 1;
-                break;
-            case "POSITIONING":
-            case 2:
-                message.state = 2;
-                break;
+            let message = new $root.ax_proto_msgs.WheelControlCommand();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.WheelControlCommand.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
             }
-            switch (object.nav_sat_state) {
-            default:
-                if (typeof object.nav_sat_state === "number") {
-                    message.nav_sat_state = object.nav_sat_state;
-                    break;
-                }
-                break;
-            case "NO_FIX":
-            case 0:
-                message.nav_sat_state = 0;
-                break;
-            case "SAT_BASE":
-            case 1:
-                message.nav_sat_state = 1;
-                break;
-            case "RTK_FIXED":
-            case 2:
-                message.nav_sat_state = 2;
-                break;
-            case "RTK_FIXED_IN_GPS_UNRELIABLE_ZONE":
-            case 3:
-                message.nav_sat_state = 3;
-                break;
-            case "TIMEOUT":
-            case 4:
-                message.nav_sat_state = 4;
-                break;
+            if (object.wheel_enabled != null)
+                message.wheel_enabled = Boolean(object.wheel_enabled);
+            if (object.differential != null) {
+                if (typeof object.differential !== "object")
+                    throw TypeError(".ax_proto_msgs.WheelControlCommand.differential: object expected");
+                message.differential = $root.ax_proto_msgs.DifferentialDriveCommand.fromObject(object.differential);
             }
-            if (object.reliable != null)
-                message.reliable = Boolean(object.reliable);
-            switch (object.position_quality) {
-            default:
-                if (typeof object.position_quality === "number") {
-                    message.position_quality = object.position_quality;
-                    break;
-                }
-                break;
-            case "NONE":
-            case 0:
-                message.position_quality = 0;
-                break;
-            case "LOST":
-            case 1:
-                message.position_quality = 1;
-                break;
-            case "POOR":
-            case 3:
-                message.position_quality = 3;
-                break;
-            case "GOOD":
-            case 8:
-                message.position_quality = 8;
-                break;
-            case "EXCELLENT":
-            case 10:
-                message.position_quality = 10;
-                break;
+            if (object.tricycle != null) {
+                if (typeof object.tricycle !== "object")
+                    throw TypeError(".ax_proto_msgs.WheelControlCommand.tricycle: object expected");
+                message.tricycle = $root.ax_proto_msgs.TricycleDriveCommand.fromObject(object.tricycle);
             }
-            if (object.relocating != null)
-                message.relocating = Boolean(object.relocating);
-            if (object.wheel_slipping != null)
-                message.wheel_slipping = Boolean(object.wheel_slipping);
-            if (object.wheel_major_slipping != null)
-                message.wheel_major_slipping = Boolean(object.wheel_major_slipping);
-            if (object.move_cautiously != null)
-                message.move_cautiously = Boolean(object.move_cautiously);
-            if (object.uncertainty_radius != null)
-                message.uncertainty_radius = Number(object.uncertainty_radius);
-            if (object.search_window_radius != null)
-                message.search_window_radius = Number(object.search_window_radius);
-            if (object.position_loss_progress != null)
-                message.position_loss_progress = Number(object.position_loss_progress);
-            if (object.cov_major_axis_length != null)
-                message.cov_major_axis_length = Number(object.cov_major_axis_length);
-            if (object.dynamic_translation_weight != null)
-                message.dynamic_translation_weight = Number(object.dynamic_translation_weight);
-            if (object.lidar_reliable != null)
-                message.lidar_reliable = Boolean(object.lidar_reliable);
-            if (object.inter_constraint_count != null)
-                message.inter_constraint_count = object.inter_constraint_count | 0;
-            if (object.good_constraint_count != null)
-                message.good_constraint_count = object.good_constraint_count | 0;
-            if (object.submap_count != null)
-                message.submap_count = object.submap_count | 0;
-            if (object.latest_trajectory_id != null)
-                message.latest_trajectory_id = object.latest_trajectory_id | 0;
-            if (object.latest_submap_index != null)
-                message.latest_submap_index = object.latest_submap_index | 0;
-            if (object.lidar_matched != null)
-                message.lidar_matched = Boolean(object.lidar_matched);
-            if (object.lidar_matching_score != null)
-                message.lidar_matching_score = Number(object.lidar_matching_score);
-            if (object.last_pose_update_time_nsec != null)
-                if ($util.Long)
-                    (message.last_pose_update_time_nsec = $util.Long.fromValue(object.last_pose_update_time_nsec)).unsigned = true;
-                else if (typeof object.last_pose_update_time_nsec === "string")
-                    message.last_pose_update_time_nsec = parseInt(object.last_pose_update_time_nsec, 10);
-                else if (typeof object.last_pose_update_time_nsec === "number")
-                    message.last_pose_update_time_nsec = object.last_pose_update_time_nsec;
-                else if (typeof object.last_pose_update_time_nsec === "object")
-                    message.last_pose_update_time_nsec = new $util.LongBits(object.last_pose_update_time_nsec.low >>> 0, object.last_pose_update_time_nsec.high >>> 0).toNumber(true);
             return message;
         };
 
         /**
-         * Creates a plain object from a SlamState message. Also converts values to other types if specified.
+         * Creates a plain object from a WheelControlCommand message. Also converts values to other types if specified.
          * @function toObject
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
-         * @param {ax_proto_msgs.SlamState} message SlamState
+         * @param {ax_proto_msgs.WheelControlCommand} message WheelControlCommand
          * @param {$protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
-        SlamState.toObject = function toObject(message, options) {
+        WheelControlCommand.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
             let object = {};
             if (options.defaults) {
-                object.state = options.enums === String ? "INACTIVE" : 0;
-                object.nav_sat_state = options.enums === String ? "NO_FIX" : 0;
-                object.reliable = false;
-                object.position_quality = options.enums === String ? "NONE" : 0;
-                object.relocating = false;
-                object.wheel_slipping = false;
-                object.wheel_major_slipping = false;
-                object.move_cautiously = false;
-                object.uncertainty_radius = 0;
-                object.search_window_radius = 0;
-                object.position_loss_progress = 0;
-                object.cov_major_axis_length = 0;
-                object.dynamic_translation_weight = 0;
-                object.lidar_reliable = false;
-                object.inter_constraint_count = 0;
-                object.good_constraint_count = 0;
-                object.submap_count = 0;
-                object.latest_trajectory_id = 0;
-                object.latest_submap_index = 0;
-                object.lidar_matched = false;
-                object.lidar_matching_score = 0;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, true);
-                    object.last_pose_update_time_nsec = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.last_pose_update_time_nsec = options.longs === String ? "0" : 0;
+                object.header = null;
+                object.wheel_enabled = false;
             }
-            if (message.state != null && message.hasOwnProperty("state"))
-                object.state = options.enums === String ? $root.ax_proto_msgs.SlamState.State.Type[message.state] === undefined ? message.state : $root.ax_proto_msgs.SlamState.State.Type[message.state] : message.state;
-            if (message.nav_sat_state != null && message.hasOwnProperty("nav_sat_state"))
-                object.nav_sat_state = options.enums === String ? $root.ax_proto_msgs.SlamState.NavSatState.Type[message.nav_sat_state] === undefined ? message.nav_sat_state : $root.ax_proto_msgs.SlamState.NavSatState.Type[message.nav_sat_state] : message.nav_sat_state;
-            if (message.reliable != null && message.hasOwnProperty("reliable"))
-                object.reliable = message.reliable;
-            if (message.position_quality != null && message.hasOwnProperty("position_quality"))
-                object.position_quality = options.enums === String ? $root.ax_proto_msgs.SlamState.PositionQuality.Type[message.position_quality] === undefined ? message.position_quality : $root.ax_proto_msgs.SlamState.PositionQuality.Type[message.position_quality] : message.position_quality;
-            if (message.relocating != null && message.hasOwnProperty("relocating"))
-                object.relocating = message.relocating;
-            if (message.wheel_slipping != null && message.hasOwnProperty("wheel_slipping"))
-                object.wheel_slipping = message.wheel_slipping;
-            if (message.wheel_major_slipping != null && message.hasOwnProperty("wheel_major_slipping"))
-                object.wheel_major_slipping = message.wheel_major_slipping;
-            if (message.move_cautiously != null && message.hasOwnProperty("move_cautiously"))
-                object.move_cautiously = message.move_cautiously;
-            if (message.uncertainty_radius != null && message.hasOwnProperty("uncertainty_radius"))
-                object.uncertainty_radius = options.json && !isFinite(message.uncertainty_radius) ? String(message.uncertainty_radius) : message.uncertainty_radius;
-            if (message.search_window_radius != null && message.hasOwnProperty("search_window_radius"))
-                object.search_window_radius = options.json && !isFinite(message.search_window_radius) ? String(message.search_window_radius) : message.search_window_radius;
-            if (message.position_loss_progress != null && message.hasOwnProperty("position_loss_progress"))
-                object.position_loss_progress = options.json && !isFinite(message.position_loss_progress) ? String(message.position_loss_progress) : message.position_loss_progress;
-            if (message.cov_major_axis_length != null && message.hasOwnProperty("cov_major_axis_length"))
-                object.cov_major_axis_length = options.json && !isFinite(message.cov_major_axis_length) ? String(message.cov_major_axis_length) : message.cov_major_axis_length;
-            if (message.dynamic_translation_weight != null && message.hasOwnProperty("dynamic_translation_weight"))
-                object.dynamic_translation_weight = options.json && !isFinite(message.dynamic_translation_weight) ? String(message.dynamic_translation_weight) : message.dynamic_translation_weight;
-            if (message.lidar_reliable != null && message.hasOwnProperty("lidar_reliable"))
-                object.lidar_reliable = message.lidar_reliable;
-            if (message.inter_constraint_count != null && message.hasOwnProperty("inter_constraint_count"))
-                object.inter_constraint_count = message.inter_constraint_count;
-            if (message.good_constraint_count != null && message.hasOwnProperty("good_constraint_count"))
-                object.good_constraint_count = message.good_constraint_count;
-            if (message.submap_count != null && message.hasOwnProperty("submap_count"))
-                object.submap_count = message.submap_count;
-            if (message.latest_trajectory_id != null && message.hasOwnProperty("latest_trajectory_id"))
-                object.latest_trajectory_id = message.latest_trajectory_id;
-            if (message.latest_submap_index != null && message.hasOwnProperty("latest_submap_index"))
-                object.latest_submap_index = message.latest_submap_index;
-            if (message.lidar_matched != null && message.hasOwnProperty("lidar_matched"))
-                object.lidar_matched = message.lidar_matched;
-            if (message.lidar_matching_score != null && message.hasOwnProperty("lidar_matching_score"))
-                object.lidar_matching_score = options.json && !isFinite(message.lidar_matching_score) ? String(message.lidar_matching_score) : message.lidar_matching_score;
-            if (message.last_pose_update_time_nsec != null && message.hasOwnProperty("last_pose_update_time_nsec"))
-                if (typeof message.last_pose_update_time_nsec === "number")
-                    object.last_pose_update_time_nsec = options.longs === String ? String(message.last_pose_update_time_nsec) : message.last_pose_update_time_nsec;
-                else
-                    object.last_pose_update_time_nsec = options.longs === String ? $util.Long.prototype.toString.call(message.last_pose_update_time_nsec) : options.longs === Number ? new $util.LongBits(message.last_pose_update_time_nsec.low >>> 0, message.last_pose_update_time_nsec.high >>> 0).toNumber(true) : message.last_pose_update_time_nsec;
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.wheel_enabled != null && message.hasOwnProperty("wheel_enabled"))
+                object.wheel_enabled = message.wheel_enabled;
+            if (message.differential != null && message.hasOwnProperty("differential")) {
+                object.differential = $root.ax_proto_msgs.DifferentialDriveCommand.toObject(message.differential, options);
+                if (options.oneofs)
+                    object.model = "differential";
+            }
+            if (message.tricycle != null && message.hasOwnProperty("tricycle")) {
+                object.tricycle = $root.ax_proto_msgs.TricycleDriveCommand.toObject(message.tricycle, options);
+                if (options.oneofs)
+                    object.model = "tricycle";
+            }
             return object;
         };
 
         /**
-         * Converts this SlamState to JSON.
+         * Converts this WheelControlCommand to JSON.
          * @function toJSON
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @instance
          * @returns {Object.<string,*>} JSON object
          */
-        SlamState.prototype.toJSON = function toJSON() {
+        WheelControlCommand.prototype.toJSON = function toJSON() {
             return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
         };
 
         /**
-         * Gets the default type url for SlamState
+         * Gets the default type url for WheelControlCommand
          * @function getTypeUrl
-         * @memberof ax_proto_msgs.SlamState
+         * @memberof ax_proto_msgs.WheelControlCommand
          * @static
          * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns {string} The default type url
          */
-        SlamState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        WheelControlCommand.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
             if (typeUrlPrefix === undefined) {
                 typeUrlPrefix = "type.googleapis.com";
             }
-            return typeUrlPrefix + "/ax_proto_msgs.SlamState";
+            return typeUrlPrefix + "/ax_proto_msgs.WheelControlCommand";
         };
 
-        SlamState.State = (function() {
+        return WheelControlCommand;
+    })();
 
-            /**
-             * Properties of a State.
-             * @memberof ax_proto_msgs.SlamState
-             * @interface IState
-             */
+    ax_proto_msgs.WheelControlState = (function() {
 
-            /**
-             * Constructs a new State.
-             * @memberof ax_proto_msgs.SlamState
-             * @classdesc Represents a State.
-             * @implements IState
-             * @constructor
-             * @param {ax_proto_msgs.SlamState.IState=} [properties] Properties to set
-             */
-            function State(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
+        /**
+         * Properties of a WheelControlState.
+         * @memberof ax_proto_msgs
+         * @interface IWheelControlState
+         * @property {ax_proto_msgs.IHeader|null} [header] WheelControlState header
+         * @property {boolean|null} [wheel_enabled] WheelControlState wheel_enabled
+         * @property {boolean|null} [emergency_stop] WheelControlState emergency_stop
+         * @property {ax_proto_msgs.IDifferentialDriveState|null} [differential] WheelControlState differential
+         * @property {ax_proto_msgs.ITricycleDriveState|null} [tricycle] WheelControlState tricycle
+         */
 
-            /**
-             * Creates a new State instance using the specified properties.
-             * @function create
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {ax_proto_msgs.SlamState.IState=} [properties] Properties to set
-             * @returns {ax_proto_msgs.SlamState.State} State instance
-             */
-            State.create = function create(properties) {
-                return new State(properties);
-            };
+        /**
+         * Constructs a new WheelControlState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a WheelControlState.
+         * @implements IWheelControlState
+         * @constructor
+         * @param {ax_proto_msgs.IWheelControlState=} [properties] Properties to set
+         */
+        function WheelControlState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
 
-            /**
-             * Encodes the specified State message. Does not implicitly {@link ax_proto_msgs.SlamState.State.verify|verify} messages.
-             * @function encode
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {ax_proto_msgs.SlamState.IState} message State message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            State.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                return writer;
-            };
+        /**
+         * WheelControlState header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         */
+        WheelControlState.prototype.header = null;
 
-            /**
-             * Encodes the specified State message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.State.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {ax_proto_msgs.SlamState.IState} message State message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            State.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
+        /**
+         * WheelControlState wheel_enabled.
+         * @member {boolean} wheel_enabled
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         */
+        WheelControlState.prototype.wheel_enabled = false;
 
-            /**
-             * Decodes a State message from the specified reader or buffer.
-             * @function decode
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {ax_proto_msgs.SlamState.State} State
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            State.decode = function decode(reader, length, error) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState.State();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    if (tag === error)
-                        break;
-                    switch (tag >>> 3) {
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
+        /**
+         * WheelControlState emergency_stop.
+         * @member {boolean} emergency_stop
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         */
+        WheelControlState.prototype.emergency_stop = false;
 
-            /**
-             * Decodes a State message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ax_proto_msgs.SlamState.State} State
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            State.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
+        /**
+         * WheelControlState differential.
+         * @member {ax_proto_msgs.IDifferentialDriveState|null|undefined} differential
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         */
+        WheelControlState.prototype.differential = null;
 
-            /**
-             * Verifies a State message.
-             * @function verify
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            State.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                return null;
-            };
+        /**
+         * WheelControlState tricycle.
+         * @member {ax_proto_msgs.ITricycleDriveState|null|undefined} tricycle
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         */
+        WheelControlState.prototype.tricycle = null;
 
-            /**
-             * Creates a State message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {ax_proto_msgs.SlamState.State} State
-             */
-            State.fromObject = function fromObject(object) {
-                if (object instanceof $root.ax_proto_msgs.SlamState.State)
-                    return object;
-                return new $root.ax_proto_msgs.SlamState.State();
-            };
+        // OneOf field names bound to virtual getters and setters
+        let $oneOfFields;
 
-            /**
-             * Creates a plain object from a State message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {ax_proto_msgs.SlamState.State} message State
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            State.toObject = function toObject() {
-                return {};
-            };
+        /**
+         * WheelControlState model.
+         * @member {"differential"|"tricycle"|undefined} model
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         */
+        Object.defineProperty(WheelControlState.prototype, "model", {
+            get: $util.oneOfGetter($oneOfFields = ["differential", "tricycle"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
 
-            /**
-             * Converts this State to JSON.
-             * @function toJSON
-             * @memberof ax_proto_msgs.SlamState.State
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            State.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
+        /**
+         * Creates a new WheelControlState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {ax_proto_msgs.IWheelControlState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.WheelControlState} WheelControlState instance
+         */
+        WheelControlState.create = function create(properties) {
+            return new WheelControlState(properties);
+        };
 
-            /**
-             * Gets the default type url for State
-             * @function getTypeUrl
-             * @memberof ax_proto_msgs.SlamState.State
-             * @static
-             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns {string} The default type url
-             */
-            State.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                if (typeUrlPrefix === undefined) {
-                    typeUrlPrefix = "type.googleapis.com";
-                }
-                return typeUrlPrefix + "/ax_proto_msgs.SlamState.State";
-            };
+        /**
+         * Encodes the specified WheelControlState message. Does not implicitly {@link ax_proto_msgs.WheelControlState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {ax_proto_msgs.IWheelControlState} message WheelControlState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        WheelControlState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.wheel_enabled != null && Object.hasOwnProperty.call(message, "wheel_enabled"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.wheel_enabled);
+            if (message.emergency_stop != null && Object.hasOwnProperty.call(message, "emergency_stop"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.emergency_stop);
+            if (message.differential != null && Object.hasOwnProperty.call(message, "differential"))
+                $root.ax_proto_msgs.DifferentialDriveState.encode(message.differential, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            if (message.tricycle != null && Object.hasOwnProperty.call(message, "tricycle"))
+                $root.ax_proto_msgs.TricycleDriveState.encode(message.tricycle, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+            return writer;
+        };
 
-            /**
-             * Type enum.
-             * @name ax_proto_msgs.SlamState.State.Type
-             * @enum {number}
-             * @property {number} INACTIVE=0 INACTIVE value
-             * @property {number} SLAM=1 SLAM value
-             * @property {number} POSITIONING=2 POSITIONING value
-             */
-            State.Type = (function() {
-                const valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "INACTIVE"] = 0;
-                values[valuesById[1] = "SLAM"] = 1;
-                values[valuesById[2] = "POSITIONING"] = 2;
-                return values;
-            })();
+        /**
+         * Encodes the specified WheelControlState message, length delimited. Does not implicitly {@link ax_proto_msgs.WheelControlState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {ax_proto_msgs.IWheelControlState} message WheelControlState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        WheelControlState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
 
-            return State;
-        })();
-
-        SlamState.NavSatState = (function() {
-
-            /**
-             * Properties of a NavSatState.
-             * @memberof ax_proto_msgs.SlamState
-             * @interface INavSatState
-             */
-
-            /**
-             * Constructs a new NavSatState.
-             * @memberof ax_proto_msgs.SlamState
-             * @classdesc Represents a NavSatState.
-             * @implements INavSatState
-             * @constructor
-             * @param {ax_proto_msgs.SlamState.INavSatState=} [properties] Properties to set
-             */
-            function NavSatState(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * Creates a new NavSatState instance using the specified properties.
-             * @function create
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {ax_proto_msgs.SlamState.INavSatState=} [properties] Properties to set
-             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState instance
-             */
-            NavSatState.create = function create(properties) {
-                return new NavSatState(properties);
-            };
-
-            /**
-             * Encodes the specified NavSatState message. Does not implicitly {@link ax_proto_msgs.SlamState.NavSatState.verify|verify} messages.
-             * @function encode
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {ax_proto_msgs.SlamState.INavSatState} message NavSatState message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            NavSatState.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                return writer;
-            };
-
-            /**
-             * Encodes the specified NavSatState message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.NavSatState.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {ax_proto_msgs.SlamState.INavSatState} message NavSatState message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            NavSatState.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a NavSatState message from the specified reader or buffer.
-             * @function decode
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            NavSatState.decode = function decode(reader, length, error) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState.NavSatState();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    if (tag === error)
-                        break;
-                    switch (tag >>> 3) {
-                    default:
-                        reader.skipType(tag & 7);
+        /**
+         * Decodes a WheelControlState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.WheelControlState} WheelControlState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        WheelControlState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.WheelControlState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
                         break;
                     }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a NavSatState message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            NavSatState.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a NavSatState message.
-             * @function verify
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            NavSatState.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                return null;
-            };
-
-            /**
-             * Creates a NavSatState message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {ax_proto_msgs.SlamState.NavSatState} NavSatState
-             */
-            NavSatState.fromObject = function fromObject(object) {
-                if (object instanceof $root.ax_proto_msgs.SlamState.NavSatState)
-                    return object;
-                return new $root.ax_proto_msgs.SlamState.NavSatState();
-            };
-
-            /**
-             * Creates a plain object from a NavSatState message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {ax_proto_msgs.SlamState.NavSatState} message NavSatState
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            NavSatState.toObject = function toObject() {
-                return {};
-            };
-
-            /**
-             * Converts this NavSatState to JSON.
-             * @function toJSON
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            NavSatState.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            /**
-             * Gets the default type url for NavSatState
-             * @function getTypeUrl
-             * @memberof ax_proto_msgs.SlamState.NavSatState
-             * @static
-             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns {string} The default type url
-             */
-            NavSatState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                if (typeUrlPrefix === undefined) {
-                    typeUrlPrefix = "type.googleapis.com";
-                }
-                return typeUrlPrefix + "/ax_proto_msgs.SlamState.NavSatState";
-            };
-
-            /**
-             * Type enum.
-             * @name ax_proto_msgs.SlamState.NavSatState.Type
-             * @enum {number}
-             * @property {number} NO_FIX=0 NO_FIX value
-             * @property {number} SAT_BASE=1 SAT_BASE value
-             * @property {number} RTK_FIXED=2 RTK_FIXED value
-             * @property {number} RTK_FIXED_IN_GPS_UNRELIABLE_ZONE=3 RTK_FIXED_IN_GPS_UNRELIABLE_ZONE value
-             * @property {number} TIMEOUT=4 TIMEOUT value
-             */
-            NavSatState.Type = (function() {
-                const valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "NO_FIX"] = 0;
-                values[valuesById[1] = "SAT_BASE"] = 1;
-                values[valuesById[2] = "RTK_FIXED"] = 2;
-                values[valuesById[3] = "RTK_FIXED_IN_GPS_UNRELIABLE_ZONE"] = 3;
-                values[valuesById[4] = "TIMEOUT"] = 4;
-                return values;
-            })();
-
-            return NavSatState;
-        })();
-
-        SlamState.PositionQuality = (function() {
-
-            /**
-             * Properties of a PositionQuality.
-             * @memberof ax_proto_msgs.SlamState
-             * @interface IPositionQuality
-             */
-
-            /**
-             * Constructs a new PositionQuality.
-             * @memberof ax_proto_msgs.SlamState
-             * @classdesc Represents a PositionQuality.
-             * @implements IPositionQuality
-             * @constructor
-             * @param {ax_proto_msgs.SlamState.IPositionQuality=} [properties] Properties to set
-             */
-            function PositionQuality(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * Creates a new PositionQuality instance using the specified properties.
-             * @function create
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {ax_proto_msgs.SlamState.IPositionQuality=} [properties] Properties to set
-             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality instance
-             */
-            PositionQuality.create = function create(properties) {
-                return new PositionQuality(properties);
-            };
-
-            /**
-             * Encodes the specified PositionQuality message. Does not implicitly {@link ax_proto_msgs.SlamState.PositionQuality.verify|verify} messages.
-             * @function encode
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {ax_proto_msgs.SlamState.IPositionQuality} message PositionQuality message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            PositionQuality.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                return writer;
-            };
-
-            /**
-             * Encodes the specified PositionQuality message, length delimited. Does not implicitly {@link ax_proto_msgs.SlamState.PositionQuality.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {ax_proto_msgs.SlamState.IPositionQuality} message PositionQuality message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            PositionQuality.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a PositionQuality message from the specified reader or buffer.
-             * @function decode
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            PositionQuality.decode = function decode(reader, length, error) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.SlamState.PositionQuality();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    if (tag === error)
-                        break;
-                    switch (tag >>> 3) {
-                    default:
-                        reader.skipType(tag & 7);
+                case 2: {
+                        message.wheel_enabled = reader.bool();
                         break;
                     }
+                case 3: {
+                        message.emergency_stop = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.differential = $root.ax_proto_msgs.DifferentialDriveState.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 5: {
+                        message.tricycle = $root.ax_proto_msgs.TricycleDriveState.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
                 }
-                return message;
-            };
+            }
+            return message;
+        };
 
-            /**
-             * Decodes a PositionQuality message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            PositionQuality.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
+        /**
+         * Decodes a WheelControlState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.WheelControlState} WheelControlState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        WheelControlState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
 
-            /**
-             * Verifies a PositionQuality message.
-             * @function verify
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            PositionQuality.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                return null;
-            };
-
-            /**
-             * Creates a PositionQuality message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {ax_proto_msgs.SlamState.PositionQuality} PositionQuality
-             */
-            PositionQuality.fromObject = function fromObject(object) {
-                if (object instanceof $root.ax_proto_msgs.SlamState.PositionQuality)
-                    return object;
-                return new $root.ax_proto_msgs.SlamState.PositionQuality();
-            };
-
-            /**
-             * Creates a plain object from a PositionQuality message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {ax_proto_msgs.SlamState.PositionQuality} message PositionQuality
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            PositionQuality.toObject = function toObject() {
-                return {};
-            };
-
-            /**
-             * Converts this PositionQuality to JSON.
-             * @function toJSON
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            PositionQuality.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            /**
-             * Gets the default type url for PositionQuality
-             * @function getTypeUrl
-             * @memberof ax_proto_msgs.SlamState.PositionQuality
-             * @static
-             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns {string} The default type url
-             */
-            PositionQuality.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                if (typeUrlPrefix === undefined) {
-                    typeUrlPrefix = "type.googleapis.com";
+        /**
+         * Verifies a WheelControlState message.
+         * @function verify
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        WheelControlState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            let properties = {};
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.wheel_enabled != null && message.hasOwnProperty("wheel_enabled"))
+                if (typeof message.wheel_enabled !== "boolean")
+                    return "wheel_enabled: boolean expected";
+            if (message.emergency_stop != null && message.hasOwnProperty("emergency_stop"))
+                if (typeof message.emergency_stop !== "boolean")
+                    return "emergency_stop: boolean expected";
+            if (message.differential != null && message.hasOwnProperty("differential")) {
+                properties.model = 1;
+                {
+                    let error = $root.ax_proto_msgs.DifferentialDriveState.verify(message.differential);
+                    if (error)
+                        return "differential." + error;
                 }
-                return typeUrlPrefix + "/ax_proto_msgs.SlamState.PositionQuality";
-            };
+            }
+            if (message.tricycle != null && message.hasOwnProperty("tricycle")) {
+                if (properties.model === 1)
+                    return "model: multiple values";
+                properties.model = 1;
+                {
+                    let error = $root.ax_proto_msgs.TricycleDriveState.verify(message.tricycle);
+                    if (error)
+                        return "tricycle." + error;
+                }
+            }
+            return null;
+        };
 
-            /**
-             * Type enum.
-             * @name ax_proto_msgs.SlamState.PositionQuality.Type
-             * @enum {number}
-             * @property {number} NONE=0 NONE value
-             * @property {number} LOST=1 LOST value
-             * @property {number} POOR=3 POOR value
-             * @property {number} GOOD=8 GOOD value
-             * @property {number} EXCELLENT=10 EXCELLENT value
-             */
-            PositionQuality.Type = (function() {
-                const valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "NONE"] = 0;
-                values[valuesById[1] = "LOST"] = 1;
-                values[valuesById[3] = "POOR"] = 3;
-                values[valuesById[8] = "GOOD"] = 8;
-                values[valuesById[10] = "EXCELLENT"] = 10;
-                return values;
-            })();
+        /**
+         * Creates a WheelControlState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.WheelControlState} WheelControlState
+         */
+        WheelControlState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.WheelControlState)
+                return object;
+            let message = new $root.ax_proto_msgs.WheelControlState();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.WheelControlState.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.wheel_enabled != null)
+                message.wheel_enabled = Boolean(object.wheel_enabled);
+            if (object.emergency_stop != null)
+                message.emergency_stop = Boolean(object.emergency_stop);
+            if (object.differential != null) {
+                if (typeof object.differential !== "object")
+                    throw TypeError(".ax_proto_msgs.WheelControlState.differential: object expected");
+                message.differential = $root.ax_proto_msgs.DifferentialDriveState.fromObject(object.differential);
+            }
+            if (object.tricycle != null) {
+                if (typeof object.tricycle !== "object")
+                    throw TypeError(".ax_proto_msgs.WheelControlState.tricycle: object expected");
+                message.tricycle = $root.ax_proto_msgs.TricycleDriveState.fromObject(object.tricycle);
+            }
+            return message;
+        };
 
-            return PositionQuality;
-        })();
+        /**
+         * Creates a plain object from a WheelControlState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {ax_proto_msgs.WheelControlState} message WheelControlState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        WheelControlState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.header = null;
+                object.wheel_enabled = false;
+                object.emergency_stop = false;
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.wheel_enabled != null && message.hasOwnProperty("wheel_enabled"))
+                object.wheel_enabled = message.wheel_enabled;
+            if (message.emergency_stop != null && message.hasOwnProperty("emergency_stop"))
+                object.emergency_stop = message.emergency_stop;
+            if (message.differential != null && message.hasOwnProperty("differential")) {
+                object.differential = $root.ax_proto_msgs.DifferentialDriveState.toObject(message.differential, options);
+                if (options.oneofs)
+                    object.model = "differential";
+            }
+            if (message.tricycle != null && message.hasOwnProperty("tricycle")) {
+                object.tricycle = $root.ax_proto_msgs.TricycleDriveState.toObject(message.tricycle, options);
+                if (options.oneofs)
+                    object.model = "tricycle";
+            }
+            return object;
+        };
 
-        return SlamState;
+        /**
+         * Converts this WheelControlState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.WheelControlState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        WheelControlState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for WheelControlState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.WheelControlState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        WheelControlState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.WheelControlState";
+        };
+
+        return WheelControlState;
+    })();
+
+    ax_proto_msgs.DifferentialDriveCommand = (function() {
+
+        /**
+         * Properties of a DifferentialDriveCommand.
+         * @memberof ax_proto_msgs
+         * @interface IDifferentialDriveCommand
+         * @property {number|null} [target_left_rpm] DifferentialDriveCommand target_left_rpm
+         * @property {number|null} [target_right_rpm] DifferentialDriveCommand target_right_rpm
+         */
+
+        /**
+         * Constructs a new DifferentialDriveCommand.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a DifferentialDriveCommand.
+         * @implements IDifferentialDriveCommand
+         * @constructor
+         * @param {ax_proto_msgs.IDifferentialDriveCommand=} [properties] Properties to set
+         */
+        function DifferentialDriveCommand(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DifferentialDriveCommand target_left_rpm.
+         * @member {number} target_left_rpm
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @instance
+         */
+        DifferentialDriveCommand.prototype.target_left_rpm = 0;
+
+        /**
+         * DifferentialDriveCommand target_right_rpm.
+         * @member {number} target_right_rpm
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @instance
+         */
+        DifferentialDriveCommand.prototype.target_right_rpm = 0;
+
+        /**
+         * Creates a new DifferentialDriveCommand instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {ax_proto_msgs.IDifferentialDriveCommand=} [properties] Properties to set
+         * @returns {ax_proto_msgs.DifferentialDriveCommand} DifferentialDriveCommand instance
+         */
+        DifferentialDriveCommand.create = function create(properties) {
+            return new DifferentialDriveCommand(properties);
+        };
+
+        /**
+         * Encodes the specified DifferentialDriveCommand message. Does not implicitly {@link ax_proto_msgs.DifferentialDriveCommand.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {ax_proto_msgs.IDifferentialDriveCommand} message DifferentialDriveCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DifferentialDriveCommand.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.target_left_rpm != null && Object.hasOwnProperty.call(message, "target_left_rpm"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.target_left_rpm);
+            if (message.target_right_rpm != null && Object.hasOwnProperty.call(message, "target_right_rpm"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.target_right_rpm);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DifferentialDriveCommand message, length delimited. Does not implicitly {@link ax_proto_msgs.DifferentialDriveCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {ax_proto_msgs.IDifferentialDriveCommand} message DifferentialDriveCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DifferentialDriveCommand.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DifferentialDriveCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.DifferentialDriveCommand} DifferentialDriveCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DifferentialDriveCommand.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.DifferentialDriveCommand();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.target_left_rpm = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.target_right_rpm = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DifferentialDriveCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.DifferentialDriveCommand} DifferentialDriveCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DifferentialDriveCommand.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DifferentialDriveCommand message.
+         * @function verify
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DifferentialDriveCommand.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.target_left_rpm != null && message.hasOwnProperty("target_left_rpm"))
+                if (typeof message.target_left_rpm !== "number")
+                    return "target_left_rpm: number expected";
+            if (message.target_right_rpm != null && message.hasOwnProperty("target_right_rpm"))
+                if (typeof message.target_right_rpm !== "number")
+                    return "target_right_rpm: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a DifferentialDriveCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.DifferentialDriveCommand} DifferentialDriveCommand
+         */
+        DifferentialDriveCommand.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.DifferentialDriveCommand)
+                return object;
+            let message = new $root.ax_proto_msgs.DifferentialDriveCommand();
+            if (object.target_left_rpm != null)
+                message.target_left_rpm = Number(object.target_left_rpm);
+            if (object.target_right_rpm != null)
+                message.target_right_rpm = Number(object.target_right_rpm);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DifferentialDriveCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {ax_proto_msgs.DifferentialDriveCommand} message DifferentialDriveCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DifferentialDriveCommand.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.target_left_rpm = 0;
+                object.target_right_rpm = 0;
+            }
+            if (message.target_left_rpm != null && message.hasOwnProperty("target_left_rpm"))
+                object.target_left_rpm = options.json && !isFinite(message.target_left_rpm) ? String(message.target_left_rpm) : message.target_left_rpm;
+            if (message.target_right_rpm != null && message.hasOwnProperty("target_right_rpm"))
+                object.target_right_rpm = options.json && !isFinite(message.target_right_rpm) ? String(message.target_right_rpm) : message.target_right_rpm;
+            return object;
+        };
+
+        /**
+         * Converts this DifferentialDriveCommand to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DifferentialDriveCommand.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DifferentialDriveCommand
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.DifferentialDriveCommand
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DifferentialDriveCommand.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.DifferentialDriveCommand";
+        };
+
+        return DifferentialDriveCommand;
+    })();
+
+    ax_proto_msgs.DifferentialDriveState = (function() {
+
+        /**
+         * Properties of a DifferentialDriveState.
+         * @memberof ax_proto_msgs
+         * @interface IDifferentialDriveState
+         * @property {number|null} [left_rpm] DifferentialDriveState left_rpm
+         * @property {number|null} [right_rpm] DifferentialDriveState right_rpm
+         */
+
+        /**
+         * Constructs a new DifferentialDriveState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a DifferentialDriveState.
+         * @implements IDifferentialDriveState
+         * @constructor
+         * @param {ax_proto_msgs.IDifferentialDriveState=} [properties] Properties to set
+         */
+        function DifferentialDriveState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DifferentialDriveState left_rpm.
+         * @member {number} left_rpm
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @instance
+         */
+        DifferentialDriveState.prototype.left_rpm = 0;
+
+        /**
+         * DifferentialDriveState right_rpm.
+         * @member {number} right_rpm
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @instance
+         */
+        DifferentialDriveState.prototype.right_rpm = 0;
+
+        /**
+         * Creates a new DifferentialDriveState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {ax_proto_msgs.IDifferentialDriveState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.DifferentialDriveState} DifferentialDriveState instance
+         */
+        DifferentialDriveState.create = function create(properties) {
+            return new DifferentialDriveState(properties);
+        };
+
+        /**
+         * Encodes the specified DifferentialDriveState message. Does not implicitly {@link ax_proto_msgs.DifferentialDriveState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {ax_proto_msgs.IDifferentialDriveState} message DifferentialDriveState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DifferentialDriveState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.left_rpm != null && Object.hasOwnProperty.call(message, "left_rpm"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.left_rpm);
+            if (message.right_rpm != null && Object.hasOwnProperty.call(message, "right_rpm"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.right_rpm);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DifferentialDriveState message, length delimited. Does not implicitly {@link ax_proto_msgs.DifferentialDriveState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {ax_proto_msgs.IDifferentialDriveState} message DifferentialDriveState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DifferentialDriveState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DifferentialDriveState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.DifferentialDriveState} DifferentialDriveState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DifferentialDriveState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.DifferentialDriveState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.left_rpm = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.right_rpm = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DifferentialDriveState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.DifferentialDriveState} DifferentialDriveState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DifferentialDriveState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DifferentialDriveState message.
+         * @function verify
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DifferentialDriveState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.left_rpm != null && message.hasOwnProperty("left_rpm"))
+                if (typeof message.left_rpm !== "number")
+                    return "left_rpm: number expected";
+            if (message.right_rpm != null && message.hasOwnProperty("right_rpm"))
+                if (typeof message.right_rpm !== "number")
+                    return "right_rpm: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a DifferentialDriveState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.DifferentialDriveState} DifferentialDriveState
+         */
+        DifferentialDriveState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.DifferentialDriveState)
+                return object;
+            let message = new $root.ax_proto_msgs.DifferentialDriveState();
+            if (object.left_rpm != null)
+                message.left_rpm = Number(object.left_rpm);
+            if (object.right_rpm != null)
+                message.right_rpm = Number(object.right_rpm);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DifferentialDriveState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {ax_proto_msgs.DifferentialDriveState} message DifferentialDriveState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DifferentialDriveState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.left_rpm = 0;
+                object.right_rpm = 0;
+            }
+            if (message.left_rpm != null && message.hasOwnProperty("left_rpm"))
+                object.left_rpm = options.json && !isFinite(message.left_rpm) ? String(message.left_rpm) : message.left_rpm;
+            if (message.right_rpm != null && message.hasOwnProperty("right_rpm"))
+                object.right_rpm = options.json && !isFinite(message.right_rpm) ? String(message.right_rpm) : message.right_rpm;
+            return object;
+        };
+
+        /**
+         * Converts this DifferentialDriveState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DifferentialDriveState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for DifferentialDriveState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.DifferentialDriveState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        DifferentialDriveState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.DifferentialDriveState";
+        };
+
+        return DifferentialDriveState;
+    })();
+
+    ax_proto_msgs.TricycleDriveCommand = (function() {
+
+        /**
+         * Properties of a TricycleDriveCommand.
+         * @memberof ax_proto_msgs
+         * @interface ITricycleDriveCommand
+         * @property {number|null} [target_steer_angle_rad] TricycleDriveCommand target_steer_angle_rad
+         * @property {number|null} [target_rpm] TricycleDriveCommand target_rpm
+         */
+
+        /**
+         * Constructs a new TricycleDriveCommand.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a TricycleDriveCommand.
+         * @implements ITricycleDriveCommand
+         * @constructor
+         * @param {ax_proto_msgs.ITricycleDriveCommand=} [properties] Properties to set
+         */
+        function TricycleDriveCommand(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * TricycleDriveCommand target_steer_angle_rad.
+         * @member {number} target_steer_angle_rad
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @instance
+         */
+        TricycleDriveCommand.prototype.target_steer_angle_rad = 0;
+
+        /**
+         * TricycleDriveCommand target_rpm.
+         * @member {number} target_rpm
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @instance
+         */
+        TricycleDriveCommand.prototype.target_rpm = 0;
+
+        /**
+         * Creates a new TricycleDriveCommand instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {ax_proto_msgs.ITricycleDriveCommand=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TricycleDriveCommand} TricycleDriveCommand instance
+         */
+        TricycleDriveCommand.create = function create(properties) {
+            return new TricycleDriveCommand(properties);
+        };
+
+        /**
+         * Encodes the specified TricycleDriveCommand message. Does not implicitly {@link ax_proto_msgs.TricycleDriveCommand.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {ax_proto_msgs.ITricycleDriveCommand} message TricycleDriveCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TricycleDriveCommand.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.target_steer_angle_rad != null && Object.hasOwnProperty.call(message, "target_steer_angle_rad"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.target_steer_angle_rad);
+            if (message.target_rpm != null && Object.hasOwnProperty.call(message, "target_rpm"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.target_rpm);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified TricycleDriveCommand message, length delimited. Does not implicitly {@link ax_proto_msgs.TricycleDriveCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {ax_proto_msgs.ITricycleDriveCommand} message TricycleDriveCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TricycleDriveCommand.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a TricycleDriveCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.TricycleDriveCommand} TricycleDriveCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TricycleDriveCommand.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TricycleDriveCommand();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.target_steer_angle_rad = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.target_rpm = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a TricycleDriveCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.TricycleDriveCommand} TricycleDriveCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TricycleDriveCommand.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a TricycleDriveCommand message.
+         * @function verify
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        TricycleDriveCommand.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.target_steer_angle_rad != null && message.hasOwnProperty("target_steer_angle_rad"))
+                if (typeof message.target_steer_angle_rad !== "number")
+                    return "target_steer_angle_rad: number expected";
+            if (message.target_rpm != null && message.hasOwnProperty("target_rpm"))
+                if (typeof message.target_rpm !== "number")
+                    return "target_rpm: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a TricycleDriveCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.TricycleDriveCommand} TricycleDriveCommand
+         */
+        TricycleDriveCommand.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.TricycleDriveCommand)
+                return object;
+            let message = new $root.ax_proto_msgs.TricycleDriveCommand();
+            if (object.target_steer_angle_rad != null)
+                message.target_steer_angle_rad = Number(object.target_steer_angle_rad);
+            if (object.target_rpm != null)
+                message.target_rpm = Number(object.target_rpm);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a TricycleDriveCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {ax_proto_msgs.TricycleDriveCommand} message TricycleDriveCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        TricycleDriveCommand.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.target_steer_angle_rad = 0;
+                object.target_rpm = 0;
+            }
+            if (message.target_steer_angle_rad != null && message.hasOwnProperty("target_steer_angle_rad"))
+                object.target_steer_angle_rad = options.json && !isFinite(message.target_steer_angle_rad) ? String(message.target_steer_angle_rad) : message.target_steer_angle_rad;
+            if (message.target_rpm != null && message.hasOwnProperty("target_rpm"))
+                object.target_rpm = options.json && !isFinite(message.target_rpm) ? String(message.target_rpm) : message.target_rpm;
+            return object;
+        };
+
+        /**
+         * Converts this TricycleDriveCommand to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        TricycleDriveCommand.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for TricycleDriveCommand
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.TricycleDriveCommand
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        TricycleDriveCommand.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.TricycleDriveCommand";
+        };
+
+        return TricycleDriveCommand;
+    })();
+
+    ax_proto_msgs.TricycleDriveState = (function() {
+
+        /**
+         * Properties of a TricycleDriveState.
+         * @memberof ax_proto_msgs
+         * @interface ITricycleDriveState
+         * @property {number|null} [steer_angle_rad] TricycleDriveState steer_angle_rad
+         * @property {number|null} [rpm] TricycleDriveState rpm
+         */
+
+        /**
+         * Constructs a new TricycleDriveState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a TricycleDriveState.
+         * @implements ITricycleDriveState
+         * @constructor
+         * @param {ax_proto_msgs.ITricycleDriveState=} [properties] Properties to set
+         */
+        function TricycleDriveState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * TricycleDriveState steer_angle_rad.
+         * @member {number} steer_angle_rad
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @instance
+         */
+        TricycleDriveState.prototype.steer_angle_rad = 0;
+
+        /**
+         * TricycleDriveState rpm.
+         * @member {number} rpm
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @instance
+         */
+        TricycleDriveState.prototype.rpm = 0;
+
+        /**
+         * Creates a new TricycleDriveState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {ax_proto_msgs.ITricycleDriveState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.TricycleDriveState} TricycleDriveState instance
+         */
+        TricycleDriveState.create = function create(properties) {
+            return new TricycleDriveState(properties);
+        };
+
+        /**
+         * Encodes the specified TricycleDriveState message. Does not implicitly {@link ax_proto_msgs.TricycleDriveState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {ax_proto_msgs.ITricycleDriveState} message TricycleDriveState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TricycleDriveState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.steer_angle_rad != null && Object.hasOwnProperty.call(message, "steer_angle_rad"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.steer_angle_rad);
+            if (message.rpm != null && Object.hasOwnProperty.call(message, "rpm"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.rpm);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified TricycleDriveState message, length delimited. Does not implicitly {@link ax_proto_msgs.TricycleDriveState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {ax_proto_msgs.ITricycleDriveState} message TricycleDriveState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TricycleDriveState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a TricycleDriveState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.TricycleDriveState} TricycleDriveState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TricycleDriveState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.TricycleDriveState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.steer_angle_rad = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.rpm = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a TricycleDriveState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.TricycleDriveState} TricycleDriveState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TricycleDriveState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a TricycleDriveState message.
+         * @function verify
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        TricycleDriveState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.steer_angle_rad != null && message.hasOwnProperty("steer_angle_rad"))
+                if (typeof message.steer_angle_rad !== "number")
+                    return "steer_angle_rad: number expected";
+            if (message.rpm != null && message.hasOwnProperty("rpm"))
+                if (typeof message.rpm !== "number")
+                    return "rpm: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a TricycleDriveState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.TricycleDriveState} TricycleDriveState
+         */
+        TricycleDriveState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.TricycleDriveState)
+                return object;
+            let message = new $root.ax_proto_msgs.TricycleDriveState();
+            if (object.steer_angle_rad != null)
+                message.steer_angle_rad = Number(object.steer_angle_rad);
+            if (object.rpm != null)
+                message.rpm = Number(object.rpm);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a TricycleDriveState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {ax_proto_msgs.TricycleDriveState} message TricycleDriveState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        TricycleDriveState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.steer_angle_rad = 0;
+                object.rpm = 0;
+            }
+            if (message.steer_angle_rad != null && message.hasOwnProperty("steer_angle_rad"))
+                object.steer_angle_rad = options.json && !isFinite(message.steer_angle_rad) ? String(message.steer_angle_rad) : message.steer_angle_rad;
+            if (message.rpm != null && message.hasOwnProperty("rpm"))
+                object.rpm = options.json && !isFinite(message.rpm) ? String(message.rpm) : message.rpm;
+            return object;
+        };
+
+        /**
+         * Converts this TricycleDriveState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        TricycleDriveState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for TricycleDriveState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.TricycleDriveState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        TricycleDriveState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.TricycleDriveState";
+        };
+
+        return TricycleDriveState;
     })();
 
     ax_proto_msgs.TopicInfo = (function() {

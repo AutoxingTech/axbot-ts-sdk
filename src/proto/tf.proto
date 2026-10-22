@@ -1,0 +1,21 @@
+syntax = "proto3";
+package ax_proto_msgs;
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+import "geometry.proto";
+import "header.proto";
+
+// Mirrors tf2_msgs/TFMessage, so `/tf` and `/tf_static` reach a frontend as a
+// typed payload instead of raw ROS bytes. The two topics share this message:
+// what separates a dynamic transform from a fixed one is the topic the frame
+// arrived on. `Transform` itself lives in geometry.proto, next to the vector
+// and rotation types it is built from.
+message TFMessage {
+    repeated TransformStamped transforms = 1;
+}
+message TransformStamped {
+    Header header = 1;
+    string child_frame_id = 2;
+    Transform transform = 3;
+}

@@ -26,3 +26,33 @@ message PointCloud {
     bytes oris = 13;                // orientation values 0-255, one byte per point
     bytes speeds = 14;              // speed values 0-255, one byte per point
 }
+
+// Raw LiDAR points that keep their acquisition timing, for cases where PointCloud's
+// quantized coordinates and single cloud-level stamp are not enough.
+//
+// Each pack has an absolute base timestamp and per-point acquisition offsets.
+// A pack is one firing group of the device; its size is not fixed.
+// Omit missing returns and empty packs; do not emit an empty cloud.
+message RawPointCloud {
+    // stamp_nsec is the acquisition time of the first point, i.e. packs[0].stamp_nsec.
+    Header header = 1;
+    uint32 point_number = 2;              // total points over all packs
+    repeated RawPointCloudPack packs = 3; // in acquisition order
+}
+
+message RawPointCloudPack {
+    // Absolute acquisition time of this pack's first point, full epoch nanoseconds
+    // (same domain as Header.stamp_nsec).
+    uint64 stamp_nsec = 1;
+
+    // Meters in header.frame_id at each point's acquisition time; not deskewed.
+    // xs, ys, zs and dt_nsec must have equal lengths.
+    repeated float xs = 2 [packed=true];
+    repeated float ys = 3 [packed=true];
+    repeated float zs = 4 [packed=true];
+
+    // Nanoseconds after stamp_nsec; starts at zero and is nondecreasing.
+    repeated uint32 dt_nsec = 5 [packed=true];
+
+    bytes intensities = 6;                // 0-255, one byte per point
+}

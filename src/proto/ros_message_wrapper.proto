@@ -2,24 +2,38 @@ syntax = "proto3";
 
 package ax_proto_msgs;
 
-import "point_cloud.proto";
-import "mast_state.proto";
-import "slam/submap_list.proto";
-import "rack_states.proto";
-import "towing_state.proto";
-import "mobile_network_state.proto";
-import "video_data.proto";
+import "bot_control_state.proto";
 import "depth_image.proto";
+import "detection_2d.proto";
+import "detection_3d.proto";
 import "dwa_candidate_paths.proto";
-import "slam_state.proto";
+import "imu.proto";
+import "joint_states.proto";
+import "liftgate_state.proto";
+import "mast_state.proto";
+import "mobile_network_state.proto";
 import "planning_state.proto";
+import "point_cloud.proto";
+import "rack_states.proto";
+import "robot_descriptions.proto";
+import "robot_instances.proto";
+import "robot_joint_bindings.proto";
+import "robot_parameters.proto";
+import "slam_state.proto";
+import "slam/submap_list.proto";
+import "tf.proto";
+import "towing_state.proto";
+import "video_data.proto";
+import "wheel_control.proto";
 
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
 
 // Generic ROS message wrapper for extensibility
-message RosMessageWrapper {
-    enum MessageType {
+message RosMessageWrapper
+{
+    enum MessageType
+    {
         UNKNOWN = 0;
         POINT_CLOUD = 1;
         MAST_STATE = 2;
@@ -32,13 +46,29 @@ message RosMessageWrapper {
         DWA_CANDIDATE_PATH_SET = 9;
         SLAM_STATE = 10;
         PLANNING_STATE = 11;
+        LIFTGATE_STATE = 12;
+        WHEEL_CONTROL_COMMAND = 13;
+        WHEEL_CONTROL_STATE = 14;
+        IMU = 15;
+        RAW_IMU = 16;
+        RAW_POINT_CLOUD = 17;
+        DETECTION_2D_ARRAY = 18;
+        DETECTION_3D_ARRAY = 19;
+        JOINT_STATES = 20;
+        ROBOT_INSTANCES = 21;
+        ROBOT_DESCRIPTIONS = 22;
+        ROBOT_PARAMETERS = 23;
+        ROBOT_JOINT_BINDINGS = 24;
+        BOT_CONTROL_STATE = 25;
+        TF_MESSAGE = 26;
     }
-    
+
     MessageType type = 1;
     // 2, 3 were once timestamp_ns and sequence_id; never reuse them.
     reserved 2, 3, 11;
 
-    oneof payload {
+    oneof payload
+    {
         PointCloud point_cloud = 10;
         MastState mast_state = 12;
         ax_proto_msgs.slam.SubmapList submap_list = 13;
@@ -50,5 +80,20 @@ message RosMessageWrapper {
         DwaCandidatePathSet dwa_candidate_path_set = 19;
         SlamState slam_state = 20;
         PlanningState planning_state = 21;
+        LiftgateState liftgate_state = 22;
+        WheelControlCommand wheel_control_command = 23;
+        WheelControlState wheel_control_state = 24;
+        Imu imu = 25;
+        RawImu raw_imu = 26;
+        RawPointCloud raw_point_cloud = 27;
+        Detection2DArray detection_2d_array = 28;
+        Detection3DArray detection_3d_array = 29;
+        JointStates joint_states = 30;
+        RobotInstances robot_instances = 31;
+        RobotDescriptions robot_descriptions = 32;
+        RobotParameters robot_parameters = 33;
+        RobotJointBindings robot_joint_bindings = 34;
+        BotControlState bot_control_state = 35;
+        TFMessage tf_message = 36;
     }
 }

@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+// Truck tail-lift status feedback
+message LiftgateState {
+    message State {
+        enum Type {
+            UNKNOWN = 0;
+
+            // Stable states.
+            CLOSED  = 1;  // folded up vertically; the truck may drive
+            RAISED  = 2;  // level with the bed; cargo can be moved across
+            LOWERED = 3;  // on the ground; can be boarded
+
+            // Transitional states (from -> to).
+            OPENING  = 4;  // CLOSED -> RAISED
+            CLOSING  = 5;  // RAISED -> CLOSED
+            RAISING  = 6;  // LOWERED -> RAISED
+            LOWERING = 7;  // RAISED -> LOWERED
+
+        }
+    }
+
+    // Truck-side boarding signal light.
+    message SignalLight {
+        enum Type {
+            UNKNOWN = 0;  // no feedback: boarding is not allowed
+            RED     = 1;  // boarding is not allowed
+            GREEN   = 2;  // boarding is allowed
+            YELLOW  = 3;  // boarding is not allowed; turns RED within
+                          // signal_light_countdown seconds
+        }
+    }
+
+    reserved 1;                    // was Header header; no timestamp is published
+
+    State.Type current_state = 2;  // UNKNOWN while the device is offline
+    State.Type target_state  = 3;  // only CLOSED/RAISED/LOWERED; equals current_state when idle
+
+    string error_message = 6;      // human-readable detail; several conditions are joined
+
+    bool has_error            = 7;  // derived OR of all fault flags below; lets older
+                                    // consumers notice newly added flags
+
+    // Feedback streams (independent: a silent StateFrame must not mask a fault
+    // reported by the GyroFrame).
+    bool controller_offline   = 8;  // StateFrame silent: no commands can be sent
+    bool gyro_offline         = 9;  // GyroFrame silent: position feedback untrustworthy
+
+    // Device-reported faults; only meaningful while that stream is fresh.
+    bool controller_fault     = 10;  // StateFrame fault bits non-zero
+    bool gyro_fault           = 11;  // GyroFrame status bits (host disconnected / imu read failed)
+
+    bool motion_timed_out     = 12;  // a commanded move was not confirmed within its budget
+
+    // Boarding permission. Only GREEN allows boarding; UNKNOWN/RED/YELLOW all
+    // deny it. On YELLOW the robot must abort any boarding motion in progress
+    // (calling /liftgate_to is still allowed) and wait for GREEN.
+    SignalLight.Type signal_light           = 13;
+    int32            signal_light_countdown = 14;  // seconds left until YELLOW
+                                                   // turns RED; 0 in every other colour
+
+    // Deck (flap) pose. Both stay 0.0 while their feedback is unavailable.
+    float pitch  = 15;  // deck angle from the gyro, in radians; only meaningful
+                        // while `gyro_offline` is false (the gyro never reports 0)
+    float height = 16;  // deck height above the ground, in metres; an estimate
+                        // integrated from commanded motion time, not a measurement
+}
