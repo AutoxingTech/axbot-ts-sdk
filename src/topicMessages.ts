@@ -546,6 +546,8 @@ export class ProtoMessage<T = unknown> implements TopicMsg {
     public topic: string,
     /** Raw proto instance (e.g. a MobileNetworkState or VideoData). */
     public data: T,
+    /** Publisher index the frame named, on a connection whose layout carries one. */
+    public publisherIndex?: number,
   ) { }
 }
 

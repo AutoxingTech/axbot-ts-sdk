@@ -76,6 +76,10 @@
     "./ws": {
       "import": "./dist/ws.js",
       "types": "./dist/ws.d.ts"
+    },
+    "./worldWs": {
+      "import": "./dist/worldWs.js",
+      "types": "./dist/worldWs.d.ts"
     }
   },
   "typesVersions": {

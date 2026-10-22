@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-10-22 worldWs: Add RobotWorldWsClient for the publisher-index world endpoint
 - 2026-09-23 robotApi: Add calibrateMastTickBase API for POST /ros/jack_mast/calibrate_mast_tick_base
 - 2026-09-20 proto: pnpm proto now mirrors the ax_msgs protos before recompiling, and gains a --check mode for drift gating
 - 2026-09-19 robotApi: Add clearGyroScale API for POST /ros/imu/clear_gyro_scale
