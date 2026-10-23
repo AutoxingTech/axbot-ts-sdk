@@ -4,17 +4,23 @@
 /**
  * Binary WebSocket frame decoder for ros_message_forward.
  *
- * Two endpoints frame the same protobuf payload differently:
+ * One self-describing layout carries the data frames of both endpoints:
  *
- *   topics endpoint  (Django → Browser)
- *     [topic_len: 1 byte] [topic_name: topic_len bytes] [gzipped?: 1 byte] [protobuf: remaining]
+ *   [topic_len: 1 byte] [topic_name: topic_len bytes] [flags: 1 byte]
+ *   [publisher_index: 1 byte (optional)] [protobuf: remaining]
  *
- *   world endpoint   (browser endpoint, protocol version 1)
- *     [topic_len: 1 byte] [topic_name: L] [publisher_index: 1 byte] [gzipped?: 1 byte] [protobuf: N]
+ * The flags byte is a bit set:
  *
- * The layouts differ by one byte, in the position where the other layout keeps
- * its gzip flag, so a frame cannot say which one it is: the layout belongs to
- * the connection and is passed in by the client that owns it.
+ *   bit 0  gzipped              the payload is gzip-compressed
+ *   bit 1  has_publisher_index  a publisher index byte follows the flags
+ *   bit 2+ reserved             ignored, so a later bit needs no new decoder
+ *
+ * A frame whose publisher-index bit is clear is the layout the dispatcher sent
+ * before the flags byte existed, where that byte carried the gzip flag alone:
+ * 0 or 1, which are also valid flags bytes with the index bit clear. A frame
+ * with the bit set names the publisher it came from, so several publishers of
+ * one topic stay distinguishable. The flags byte decides the layout, so the
+ * decoder needs no per-connection layout argument.
  *
  * The gzipped protobuf is a RosMessageWrapper containing one of several payload types.
  */
@@ -23,36 +29,37 @@ import { gunzipSync } from 'fflate';
 import { ax_proto_msgs } from './proto/generated.js';
 import { ProtoMessage } from './topicMessages.js';
 
-/** Wire layout of a connection's data frames. */
-export type FrameLayout = 'topics' | 'world';
+/** The payload is gzip-compressed. */
+const FLAG_GZIPPED = 1 << 0;
+/** A publisher index byte follows the flags byte. */
+const FLAG_HAS_PUBLISHER_INDEX = 1 << 1;
 
 /**
  * Decode a binary WebSocket frame into a topic name and typed payload.
  * Returns null if the frame is malformed or contains an unsupported message type.
  *
  * @param buffer Raw frame bytes.
- * @param layout Layout of the connection the frame arrived on.
  */
-export function decodeBinaryFrame(buffer: ArrayBuffer, layout: FrameLayout = 'topics'): ProtoMessage | null {
+export function decodeBinaryFrame(buffer: ArrayBuffer): ProtoMessage | null {
   const bytes = new Uint8Array(buffer);
   if (bytes.length < 2) return null;
 
   // 1. Parse header: topic_len (1 byte) + topic_name (topic_len bytes)
   const topicLen = bytes[0];
-  if (bytes.length < 1 + topicLen) return null;
+  const flagsOffset = 1 + topicLen;
+  if (bytes.length < flagsOffset + 1) return null;
 
-  const topicBytes = bytes.subarray(1, 1 + topicLen);
-  const topic = new TextDecoder().decode(topicBytes);
+  const topic = new TextDecoder().decode(bytes.subarray(1, flagsOffset));
 
-  // 2. The world layout names the publisher between the topic and the gzip flag
-  const hasPublisher = layout === 'world';
-  const flagOffset = 1 + topicLen + (hasPublisher ? 1 : 0);
-  if (bytes.length < flagOffset + 1) return null;
+  // 2. The flags byte decides the rest of the layout
+  const flags = bytes[flagsOffset];
+  const hasPublisherIndex = (flags & FLAG_HAS_PUBLISHER_INDEX) !== 0;
+  const payloadOffset = flagsOffset + 1 + (hasPublisherIndex ? 1 : 0);
+  if (bytes.length < payloadOffset + 1) return null;
 
-  const publisherIndex = hasPublisher ? bytes[1 + topicLen] : undefined;
-  const isGzipped = bytes[flagOffset] !== 0;
-  const rawPayload = bytes.subarray(flagOffset + 1);
-  if (rawPayload.length === 0) return null;
+  const publisherIndex = hasPublisherIndex ? bytes[flagsOffset + 1] : undefined;
+  const isGzipped = (flags & FLAG_GZIPPED) !== 0;
+  const rawPayload = bytes.subarray(payloadOffset);
 
   let protobufBytes: Uint8Array;
   if (isGzipped) {

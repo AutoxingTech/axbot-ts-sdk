@@ -15,6 +15,13 @@ export interface PoseType {
 
 export interface TopicMsg {
   topic: string;
+
+  /**
+   * Publisher index of the frame's author, on a connection that attributes
+   * frames to publishers. Only legacy JSON frames carry it, as `__pid`; a
+   * protobuf frame names the same index in its binary header instead.
+   */
+  __pid?: number;
 }
 
 export interface OccupancyGridMsg extends TopicMsg {
@@ -546,7 +553,7 @@ export class ProtoMessage<T = unknown> implements TopicMsg {
     public topic: string,
     /** Raw proto instance (e.g. a MobileNetworkState or VideoData). */
     public data: T,
-    /** Publisher index the frame named, on a connection whose layout carries one. */
+    /** Publisher index a frame named, when its flags byte marks one as present. */
     public publisherIndex?: number,
   ) { }
 }

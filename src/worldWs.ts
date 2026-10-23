@@ -7,13 +7,15 @@
  * This endpoint serves the robot world (RFC-6) rather than the dispatcher's
  * topic set, and its frames name the publisher they came from:
  *
- *   [topic_len: 1B][topic: L][publisher_index: 1B][gzipped: 1B][protobuf: N]
+ *   [topic_len: 1B][topic: L][flags: 1B][publisher_index: 1B][protobuf: N]
  *
- * One byte separates that frame from the topics endpoint's, in the position
- * where the other layout keeps its gzip flag, so the layout is fixed here and a
- * frame never decides it. The control vocabulary is the dispatcher's, with one
- * difference: `enable_topic` replaces the connection's whole set instead of
- * adding to it.
+ * The flags byte is self-describing: bit 0 marks a gzipped payload and bit 1
+ * says the publisher index byte is present, which the endpoint sets on every
+ * data frame. A frame with bit 1 clear carries no publisher index, which is
+ * the shape the dispatcher's connection sends, so one decoder reads either
+ * without being told the connection. The control vocabulary is the
+ * dispatcher's: `enable_topic` adds to the connection's set and `disable_topic`
+ * removes from it, and `enabled_topics` reports the resulting set.
  */
 
 import { decodeBinaryFrame } from './binaryMessageDecoder';
@@ -72,8 +74,8 @@ export class RobotWorldWsClient {
 
     this.ws.onopen = () => {
       this.setState('connected');
-      // The greeting announces the layout contract; the set is sent again once
-      // it arrives, filtered against what this endpoint serves.
+      // The greeting announces the supported set; the desired topics are
+      // diffed again once it arrives, so anything it does not serve is skipped.
       this.sendTopics(this.desiredTopics);
     };
 
@@ -112,8 +114,9 @@ export class RobotWorldWsClient {
   /**
    * Replace the set of topics this connection wants.
    *
-   * The endpoint replaces its set rather than adding to it, so the whole set is
-   * always sent: sending only the newly wanted topic would drop the rest.
+   * The endpoint's commands are incremental, so the wanted set is diffed
+   * against the set it confirmed: what is missing is enabled, what is extra is
+   * disabled, and a topic that is already active is not sent again.
    */
   public setDesiredTopics(topics: string[]): void {
     this.desiredTopics = [...new Set(topics)];
@@ -156,8 +159,13 @@ export class RobotWorldWsClient {
     if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
 
     const supported = this.greeting?.supportedTopics;
-    const wanted = supported ? topics.filter((topic) => supported.includes(topic)) : topics;
-    this.ws.send(JSON.stringify({ enable_topic: wanted }));
+    const wanted = new Set(supported ? topics.filter((topic) => supported.includes(topic)) : topics);
+
+    const toEnable = [...wanted].filter((topic) => !this.enabledTopics.has(topic));
+    const toDisable = [...this.enabledTopics].filter((topic) => !wanted.has(topic));
+
+    if (toEnable.length > 0) this.ws.send(JSON.stringify({ enable_topic: toEnable }));
+    if (toDisable.length > 0) this.ws.send(JSON.stringify({ disable_topic: toDisable }));
   }
 
   private async onMessage(ev: MessageEvent): Promise<void> {
@@ -167,7 +175,7 @@ export class RobotWorldWsClient {
         return;
       }
       const buffer = ev.data instanceof Blob ? await ev.data.arrayBuffer() : (ev.data as ArrayBuffer);
-      const decoded = decodeBinaryFrame(buffer, 'world');
+      const decoded = decodeBinaryFrame(buffer);
       if (decoded) {
         this.dispatch(decoded.topic, decoded);
       }
@@ -208,7 +216,18 @@ export class RobotWorldWsClient {
 
     if (Array.isArray(parsed.enabled_topics)) {
       this.enabledTopics = new Set(parsed.enabled_topics.filter((t: unknown) => typeof t === 'string'));
+      // A disabled topic announces no publisher list again, so its stale one is
+      // dropped here rather than left to be read as if it were current.
+      for (const topic of this.publishersByTopic.keys()) {
+        if (!this.enabledTopics.has(topic)) this.publishersByTopic.delete(topic);
+      }
+      return;
     }
+
+    // A text frame carrying `topic` is a legacy JSON data frame, which this
+    // client does not consume: it enables only the world's protobuf topics, and
+    // their consumers read `WsClient`. Ignored deliberately rather than emitted,
+    // so a topic handler never receives a payload of the wrong shape.
   }
 
   private onGreeting_(protocolVersion: number, supportedTopics: unknown): void {
@@ -217,9 +236,9 @@ export class RobotWorldWsClient {
       : [];
 
     if (protocolVersion !== WORLD_PROTOCOL_VERSION) {
-      // The connect frame is the layout contract for the whole connection, so a
-      // version this client does not know means every later frame would be
-      // mis-read. Close now rather than decode one.
+      // The connect frame is the vocabulary contract for the whole connection: a
+      // version this client does not know means the control frames and payloads
+      // after it would be mis-read. Close now rather than decode one.
       this.lastError = `unsupported protocol version ${protocolVersion} (this client speaks ${WORLD_PROTOCOL_VERSION})`;
       this.ws?.close();
       return;

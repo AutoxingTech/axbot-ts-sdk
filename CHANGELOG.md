@@ -1,5 +1,8 @@
 # CHANGELOG
 
+- 2026-10-23 **API-BREAK** binaryMessageDecoder: Read the frame's flags byte, which states whether the payload is gzipped and whether a publisher index follows
+- 2026-10-23 worldWs: Enable and disable topics incrementally instead of sending the whole set
+- 2026-10-23 topicMessages: Add `__pid` to `TopicMsg` for the publisher index of a legacy JSON frame
 - 2026-10-22 worldWs: Add RobotWorldWsClient for the publisher-index world endpoint
 - 2026-09-23 robotApi: Add calibrateMastTickBase API for POST /ros/jack_mast/calibrate_mast_tick_base
 - 2026-09-20 proto: pnpm proto now mirrors the ax_msgs protos before recompiling, and gains a --check mode for drift gating
