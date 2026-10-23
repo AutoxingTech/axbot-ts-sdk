@@ -85,6 +85,8 @@ export enum MapPointType {
   dockingPoint = 36, // 对接点
   barcode = 37, // 反光板，用于辅助定位
   landmark = 39, // 地标，用于辅助定位
+  truckPoint = 42, // 卡车车位点
+  liftgateWaitingPoint = 43, // 尾板等待点
 
   // 酒店
   lobby = 16, // 大堂
@@ -166,6 +168,16 @@ export const POI_CATEGORIES: { key: string; types: MapPointType[]; color?: strin
     key: 'sanitation',
     types: [MapPointType.disinfectPoint],
     color: '#27ae60',
+  },
+  {
+    key: 'truck',
+    types: [MapPointType.truckPoint],
+    color: '#b45309',
+  },
+  {
+    key: 'liftgate',
+    types: [MapPointType.liftgateWaitingPoint],
+    color: '#be185d',
   },
 ];
 
