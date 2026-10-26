@@ -166,6 +166,10 @@ import { ax_proto_msgs } from './proto/generated.js';
 const laserScanEventsByTopic = new Map<string, WsEventEmitter<PointCloudMsg>>();
 const LASER_SCAN_TOPIC_PATTERN = /^\/(?:[^/]+\/)*[^/]+_laser_[23]d\/scan$/;
 const HORIZONTAL_LASER_SCAN_TOPIC = '/horizontal_laser_2d/scan';
+const depthCameraPoints2EventsByTopic = new Map<string, WsEventEmitter<PointCloudMsg>>();
+const depthCameraImageEventsByTopic = new Map<string, WsEventEmitter<DepthCameraImageMsg>>();
+const DEPTH_CAMERA_POINTS2_PATTERN = /^\/depth_camera\/[^/]+\/points2$/;
+const DEPTH_CAMERA_IMAGE_PATTERN = /^\/depth_camera\/[^/]+\/image$/;
 
 export function isDynamicLaserScanTopic(topic: string): boolean {
   return topic !== HORIZONTAL_LASER_SCAN_TOPIC && LASER_SCAN_TOPIC_PATTERN.test(topic);
@@ -181,6 +185,40 @@ export function getLaserScanEvents(topic: string): WsEventEmitter<PointCloudMsg>
   if (!events) {
     events = new WsEventEmitter<PointCloudMsg>(topic);
     laserScanEventsByTopic.set(topic, events);
+  }
+  return events;
+}
+
+export function isDynamicDepthCameraPoints2Topic(topic: string): boolean {
+  return DEPTH_CAMERA_POINTS2_PATTERN.test(topic);
+}
+
+export function getDepthCameraPoints2Events(topic: string): WsEventEmitter<PointCloudMsg> {
+  if (!isDynamicDepthCameraPoints2Topic(topic)) {
+    throw new Error(`Unsupported dynamic depth camera point cloud topic: ${topic}`);
+  }
+
+  let events = depthCameraPoints2EventsByTopic.get(topic);
+  if (!events) {
+    events = new WsEventEmitter<PointCloudMsg>(topic);
+    depthCameraPoints2EventsByTopic.set(topic, events);
+  }
+  return events;
+}
+
+export function isDynamicDepthCameraImageTopic(topic: string): boolean {
+  return DEPTH_CAMERA_IMAGE_PATTERN.test(topic);
+}
+
+export function getDepthCameraImageEvents(topic: string): WsEventEmitter<DepthCameraImageMsg> {
+  if (!isDynamicDepthCameraImageTopic(topic)) {
+    throw new Error(`Unsupported dynamic depth camera image topic: ${topic}`);
+  }
+
+  let events = depthCameraImageEventsByTopic.get(topic);
+  if (!events) {
+    events = new WsEventEmitter<DepthCameraImageMsg>(topic);
+    depthCameraImageEventsByTopic.set(topic, events);
   }
   return events;
 }
@@ -301,57 +339,6 @@ export const matchedDepthPointsLeftwardEvents = new WsEventEmitter<PointCloudMsg
 /** Depth camera matched points — rightward */
 export const matchedDepthPointsRightwardEvents = new WsEventEmitter<PointCloudMsg>(
   '/matched_depth_points/rightward',
-);
-
-export const depthCameraForwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/forward/points2',
-);
-export const depthCameraDownwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/downward/points2',
-);
-export const depthCameraUpwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/upward/points2',
-);
-export const depthCameraBackwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/backward/points2',
-);
-export const depthCameraLeftwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/leftward/points2',
-);
-export const depthCameraRightwardPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/rightward/points2',
-);
-
-/** Depth camera image events */
-export const depthCameraForwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/forward/image',
-);
-export const depthCameraDownwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/downward/image',
-);
-export const depthCameraUpwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/upward/image',
-);
-export const depthCameraBackwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/backward/image',
-);
-export const depthCameraLeftwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/leftward/image',
-);
-export const depthCameraRightwardImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/rightward/image',
-);
-export const depthCameraForktipLPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/forktip_l/points2',
-);
-export const depthCameraForktipRPoints2Events = new WsEventEmitter<PointCloudMsg>(
-  '/depth_camera/forktip_r/points2',
-);
-export const depthCameraForktipLImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/forktip_l/image',
-);
-export const depthCameraForktipRImageEvents = new WsEventEmitter<DepthCameraImageMsg>(
-  '/depth_camera/forktip_r/image',
 );
 
 /** Planning state events */
