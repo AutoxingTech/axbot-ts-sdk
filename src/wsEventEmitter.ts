@@ -163,6 +163,28 @@ import {
 } from './msgs';
 import { ax_proto_msgs } from './proto/generated.js';
 
+const laserScanEventsByTopic = new Map<string, WsEventEmitter<PointCloudMsg>>();
+const LASER_SCAN_TOPIC_PATTERN = /^\/(?:[^/]+\/)*[^/]+_laser_[23]d\/scan$/;
+const HORIZONTAL_LASER_SCAN_TOPIC = '/horizontal_laser_2d/scan';
+
+export function isDynamicLaserScanTopic(topic: string): boolean {
+  return topic !== HORIZONTAL_LASER_SCAN_TOPIC && LASER_SCAN_TOPIC_PATTERN.test(topic);
+}
+
+/** Get the cached event emitter for a dynamically discovered laser scan topic. */
+export function getLaserScanEvents(topic: string): WsEventEmitter<PointCloudMsg> {
+  if (!isDynamicLaserScanTopic(topic)) {
+    throw new Error(`Unsupported dynamic laser scan topic: ${topic}`);
+  }
+
+  let events = laserScanEventsByTopic.get(topic);
+  if (!events) {
+    events = new WsEventEmitter<PointCloudMsg>(topic);
+    laserScanEventsByTopic.set(topic, events);
+  }
+  return events;
+}
+
 /** Global positioning state events (auto-relocate) */
 export const globalPositioningEvents = new WsEventEmitter<GlobalPositioningStateMsg>(
   '/global_positioning_state',
@@ -344,54 +366,10 @@ export const landmarksEvents = new WsEventEmitter<LandmarksMsg>('/landmarks');
 /** Tracked pose events */
 export const trackedPoseEvents = new WsEventEmitter<TrackedPoseMsg>('/tracked_pose');
 
-/** Back 2D/3D laser scan events (binary protobuf) */
-export const backLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/back_laser_2d/scan');
-export const backLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/back_laser_3d/scan');
-
-/** Bottom 2D/3D laser scan events (binary protobuf) */
-export const bottomLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/bottom_laser_2d/scan');
-export const bottomLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/bottom_laser_3d/scan');
-
-/** Front 2D/3D laser scan events (binary protobuf) */
-export const frontLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/front_laser_2d/scan');
-export const frontLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/front_laser_3d/scan');
-
-/** Head 2D/3D laser scan events (binary protobuf) */
-export const headLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_laser_2d/scan');
-export const headLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/head_laser_3d/scan');
-
 /** Horizontal 2D laser scan events (binary protobuf) */
 export const horizontalLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>(
   '/horizontal_laser_2d/scan',
 );
-
-/** LB 2D/3D laser scan events (binary protobuf) */
-export const lbLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/lb_laser_2d/scan');
-export const lbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lb_laser_3d/scan');
-
-/** Left 2D/3D laser scan events (binary protobuf) */
-export const leftLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/left_laser_2d/scan');
-export const leftLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/left_laser_3d/scan');
-
-/** LF 2D/3D laser scan events (binary protobuf) */
-export const lfLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_2d/scan');
-export const lfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/lf_laser_3d/scan');
-
-/** RB 2D/3D laser scan events (binary protobuf) */
-export const rbLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_2d/scan');
-export const rbLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rb_laser_3d/scan');
-
-/** RF 2D/3D laser scan events (binary protobuf) */
-export const rfLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/rf_laser_2d/scan');
-export const rfLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/rf_laser_3d/scan');
-
-/** Right 2D/3D laser scan events (binary protobuf) */
-export const rightLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/right_laser_2d/scan');
-export const rightLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/right_laser_3d/scan');
-
-/** Top 2D/3D laser scan events (binary protobuf) */
-export const topLaser2dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_2d/scan');
-export const topLaser3dScanEvents = new WsEventEmitter<PointCloudMsg>('/top_laser_3d/scan');
 
 /** Terrain scan events */
 export const terrainScanEvents = new WsEventEmitter<PointCloudMsg>('/terrain_scan');
