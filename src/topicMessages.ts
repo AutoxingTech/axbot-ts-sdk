@@ -340,19 +340,32 @@ export interface ConstraintListMsg extends TopicMsg {
   'Inter constraints, different trajectories': [number, number][];
 }
 
+/** A legacy JSON camera frame, carrying the H.264 stream as base64. */
 export interface RgbCameraRawMsg extends TopicMsg {
   stamp: number; // in seconds, precision to 0.001 seconds
   data: string; // base64 encoded data
 }
 
+/**
+ * A camera video frame in the one shape the renderer decodes: raw H.264 bytes.
+ *
+ * Cameras reach the browser in either of two wire formats, so both are taken here:
+ * the legacy JSON frame above, and a protobuf VideoData frame as the forwarder
+ * sends on newer robots (its payload also arrives wrapped in ProtoMessage).
+ */
 export class RgbCameraData implements TopicMsg {
   topic: string;
-  stamp: number; // in seconds, precision to 0.001 seconds
+  /** In seconds, precision to 0.001 seconds. 0 when the frame carries no stamp. */
+  stamp: number;
   data: Uint8Array;
-  constructor(msg: RgbCameraRawMsg) {
+
+  constructor(msg: RgbCameraRawMsg | VideoDataMsg) {
     this.topic = msg.topic;
-    this.stamp = msg.stamp;
-    this.data = base64ToArrayBuffer(msg.data);
+    // A legacy JSON frame has a stamp and base64 data; a protobuf frame has neither.
+    this.stamp = 'stamp' in msg ? msg.stamp : 0;
+    this.data = typeof msg.data === 'string'
+      ? base64ToArrayBuffer(msg.data)
+      : msg.data.data ?? new Uint8Array(0);
   }
 }
 

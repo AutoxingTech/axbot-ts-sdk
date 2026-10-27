@@ -368,7 +368,9 @@ export const actionEvents = new WsEventEmitter<ActionMsg>('/action');
 
 /**
  * Specialized event emitter for RGB camera topics.
- * Converts raw base64 messages to RgbCameraData with Uint8Array before dispatching.
+ *
+ * Normalizes both wire formats to RgbCameraData before dispatching: a legacy JSON
+ * frame carries base64, a protobuf VideoData frame carries the bytes already.
  */
 class RgbCameraEventEmitter {
   private handlers = new Set<EventHandler<RgbCameraData>>();
@@ -391,7 +393,7 @@ class RgbCameraEventEmitter {
               return;
             }
           }
-          const data = new RgbCameraData(obj as RgbCameraRawMsg);
+          const data = new RgbCameraData(obj as RgbCameraRawMsg | VideoDataMsg);
           for (const h of this.handlers) {
             try {
               h(data);
