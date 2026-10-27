@@ -112,4 +112,5 @@ message PlanningState {
 
     CargoAction.Type expected_cargo_action = 60;
     bool obstacle_ignored = 61;  // obstacle avoidance is currently disabled, RCSS-5652
+    string creator = 62;
 }

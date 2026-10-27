@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-10-27 **API-BREAK** proto: Sync ax_msgs, where `ParameterValue` states its type in a `bool_value` / `int_value` / `float_value` oneof instead of a bare `value`, and `Detection3D` carries its extent as `Vector3f size`
 - 2026-10-27 topicMessages: Accept protobuf VideoData frames in `RgbCameraData`, fixing camera video sent as binary by the forwarder
 - 2026-10-23 mapInfo: Add truckPoint (42) and liftgateWaitingPoint (43) POI types, truck/liftgate POI categories, and MapInfo.truckPoints
 - 2026-10-23 **API-BREAK** binaryMessageDecoder: Read the frame's flags byte, which states whether the payload is gzipped and whether a publisher index follows

@@ -25,6 +25,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number|null} [action_id] BotControlState action_id
          * @property {number|null} [level] BotControlState level
          * @property {boolean|null} [task_paused] BotControlState task_paused
+         * @property {string|null} [target_truck_sn] BotControlState target_truck_sn
          */
 
         /**
@@ -67,6 +68,14 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         BotControlState.prototype.task_paused = false;
 
         /**
+         * BotControlState target_truck_sn.
+         * @member {string} target_truck_sn
+         * @memberof ax_proto_msgs.BotControlState
+         * @instance
+         */
+        BotControlState.prototype.target_truck_sn = "";
+
+        /**
          * Creates a new BotControlState instance using the specified properties.
          * @function create
          * @memberof ax_proto_msgs.BotControlState
@@ -96,6 +105,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.level);
             if (message.task_paused != null && Object.hasOwnProperty.call(message, "task_paused"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.task_paused);
+            if (message.target_truck_sn != null && Object.hasOwnProperty.call(message, "target_truck_sn"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.target_truck_sn);
             return writer;
         };
 
@@ -144,6 +155,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         message.task_paused = reader.bool();
                         break;
                     }
+                case 4: {
+                        message.target_truck_sn = reader.string();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -188,6 +203,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             if (message.task_paused != null && message.hasOwnProperty("task_paused"))
                 if (typeof message.task_paused !== "boolean")
                     return "task_paused: boolean expected";
+            if (message.target_truck_sn != null && message.hasOwnProperty("target_truck_sn"))
+                if (!$util.isString(message.target_truck_sn))
+                    return "target_truck_sn: string expected";
             return null;
         };
 
@@ -209,6 +227,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 message.level = object.level | 0;
             if (object.task_paused != null)
                 message.task_paused = Boolean(object.task_paused);
+            if (object.target_truck_sn != null)
+                message.target_truck_sn = String(object.target_truck_sn);
             return message;
         };
 
@@ -229,6 +249,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.action_id = 0;
                 object.level = 0;
                 object.task_paused = false;
+                object.target_truck_sn = "";
             }
             if (message.action_id != null && message.hasOwnProperty("action_id"))
                 object.action_id = message.action_id;
@@ -236,6 +257,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.level = message.level;
             if (message.task_paused != null && message.hasOwnProperty("task_paused"))
                 object.task_paused = message.task_paused;
+            if (message.target_truck_sn != null && message.hasOwnProperty("target_truck_sn"))
+                object.target_truck_sn = message.target_truck_sn;
             return object;
         };
 
@@ -769,6 +792,235 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return DepthImage;
     })();
 
+    ax_proto_msgs.Velocity2D = (function() {
+
+        /**
+         * Properties of a Velocity2D.
+         * @memberof ax_proto_msgs
+         * @interface IVelocity2D
+         * @property {number|null} [x] Velocity2D x
+         * @property {number|null} [y] Velocity2D y
+         */
+
+        /**
+         * Constructs a new Velocity2D.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Velocity2D.
+         * @implements IVelocity2D
+         * @constructor
+         * @param {ax_proto_msgs.IVelocity2D=} [properties] Properties to set
+         */
+        function Velocity2D(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Velocity2D x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Velocity2D
+         * @instance
+         */
+        Velocity2D.prototype.x = 0;
+
+        /**
+         * Velocity2D y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Velocity2D
+         * @instance
+         */
+        Velocity2D.prototype.y = 0;
+
+        /**
+         * Creates a new Velocity2D instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {ax_proto_msgs.IVelocity2D=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Velocity2D} Velocity2D instance
+         */
+        Velocity2D.create = function create(properties) {
+            return new Velocity2D(properties);
+        };
+
+        /**
+         * Encodes the specified Velocity2D message. Does not implicitly {@link ax_proto_msgs.Velocity2D.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {ax_proto_msgs.IVelocity2D} message Velocity2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Velocity2D.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Velocity2D message, length delimited. Does not implicitly {@link ax_proto_msgs.Velocity2D.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {ax_proto_msgs.IVelocity2D} message Velocity2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Velocity2D.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Velocity2D message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Velocity2D} Velocity2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Velocity2D.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Velocity2D();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.float();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Velocity2D message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Velocity2D} Velocity2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Velocity2D.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Velocity2D message.
+         * @function verify
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Velocity2D.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Velocity2D message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Velocity2D} Velocity2D
+         */
+        Velocity2D.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Velocity2D)
+                return object;
+            let message = new $root.ax_proto_msgs.Velocity2D();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Velocity2D message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {ax_proto_msgs.Velocity2D} message Velocity2D
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Velocity2D.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            return object;
+        };
+
+        /**
+         * Converts this Velocity2D to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Velocity2D
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Velocity2D.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Velocity2D
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Velocity2D
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Velocity2D.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Velocity2D";
+        };
+
+        return Velocity2D;
+    })();
+
     ax_proto_msgs.Detection2D = (function() {
 
         /**
@@ -784,6 +1036,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number|null} [width] Detection2D width
          * @property {number|null} [height] Detection2D height
          * @property {number|null} [rotation_rad] Detection2D rotation_rad
+         * @property {ax_proto_msgs.IVelocity2D|null} [velocity] Detection2D velocity
          */
 
         /**
@@ -874,6 +1127,14 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         Detection2D.prototype.rotation_rad = 0;
 
         /**
+         * Detection2D velocity.
+         * @member {ax_proto_msgs.IVelocity2D|null|undefined} velocity
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.velocity = null;
+
+        /**
          * Creates a new Detection2D instance using the specified properties.
          * @function create
          * @memberof ax_proto_msgs.Detection2D
@@ -915,6 +1176,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 writer.uint32(/* id 8, wireType 5 =*/69).float(message.height);
             if (message.rotation_rad != null && Object.hasOwnProperty.call(message, "rotation_rad"))
                 writer.uint32(/* id 9, wireType 5 =*/77).float(message.rotation_rad);
+            if (message.velocity != null && Object.hasOwnProperty.call(message, "velocity"))
+                $root.ax_proto_msgs.Velocity2D.encode(message.velocity, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             return writer;
         };
 
@@ -987,6 +1250,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         message.rotation_rad = reader.float();
                         break;
                     }
+                case 10: {
+                        message.velocity = $root.ax_proto_msgs.Velocity2D.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1049,6 +1316,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             if (message.rotation_rad != null && message.hasOwnProperty("rotation_rad"))
                 if (typeof message.rotation_rad !== "number")
                     return "rotation_rad: number expected";
+            if (message.velocity != null && message.hasOwnProperty("velocity")) {
+                let error = $root.ax_proto_msgs.Velocity2D.verify(message.velocity);
+                if (error)
+                    return "velocity." + error;
+            }
             return null;
         };
 
@@ -1089,6 +1361,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 message.height = Number(object.height);
             if (object.rotation_rad != null)
                 message.rotation_rad = Number(object.rotation_rad);
+            if (object.velocity != null) {
+                if (typeof object.velocity !== "object")
+                    throw TypeError(".ax_proto_msgs.Detection2D.velocity: object expected");
+                message.velocity = $root.ax_proto_msgs.Velocity2D.fromObject(object.velocity);
+            }
             return message;
         };
 
@@ -1119,6 +1396,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.width = 0;
                 object.height = 0;
                 object.rotation_rad = 0;
+                object.velocity = null;
             }
             if (message.id != null && message.hasOwnProperty("id"))
                 if (typeof message.id === "number")
@@ -1141,6 +1419,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.height = options.json && !isFinite(message.height) ? String(message.height) : message.height;
             if (message.rotation_rad != null && message.hasOwnProperty("rotation_rad"))
                 object.rotation_rad = options.json && !isFinite(message.rotation_rad) ? String(message.rotation_rad) : message.rotation_rad;
+            if (message.velocity != null && message.hasOwnProperty("velocity"))
+                object.velocity = $root.ax_proto_msgs.Velocity2D.toObject(message.velocity, options);
             return object;
         };
 
@@ -1729,9 +2009,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {string|null} [class_name] Detection3D class_name
          * @property {number|null} [score] Detection3D score
          * @property {ax_proto_msgs.IPose|null} [pose] Detection3D pose
-         * @property {number|null} [size_x] Detection3D size_x
-         * @property {number|null} [size_y] Detection3D size_y
-         * @property {number|null} [size_z] Detection3D size_z
+         * @property {ax_proto_msgs.IVector3f|null} [size] Detection3D size
+         * @property {ax_proto_msgs.IVector3f|null} [velocity] Detection3D velocity
          */
 
         /**
@@ -1790,28 +2069,20 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         Detection3D.prototype.pose = null;
 
         /**
-         * Detection3D size_x.
-         * @member {number} size_x
+         * Detection3D size.
+         * @member {ax_proto_msgs.IVector3f|null|undefined} size
          * @memberof ax_proto_msgs.Detection3D
          * @instance
          */
-        Detection3D.prototype.size_x = 0;
+        Detection3D.prototype.size = null;
 
         /**
-         * Detection3D size_y.
-         * @member {number} size_y
+         * Detection3D velocity.
+         * @member {ax_proto_msgs.IVector3f|null|undefined} velocity
          * @memberof ax_proto_msgs.Detection3D
          * @instance
          */
-        Detection3D.prototype.size_y = 0;
-
-        /**
-         * Detection3D size_z.
-         * @member {number} size_z
-         * @memberof ax_proto_msgs.Detection3D
-         * @instance
-         */
-        Detection3D.prototype.size_z = 0;
+        Detection3D.prototype.velocity = null;
 
         /**
          * Creates a new Detection3D instance using the specified properties.
@@ -1847,12 +2118,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 writer.uint32(/* id 4, wireType 5 =*/37).float(message.score);
             if (message.pose != null && Object.hasOwnProperty.call(message, "pose"))
                 $root.ax_proto_msgs.Pose.encode(message.pose, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.size_x != null && Object.hasOwnProperty.call(message, "size_x"))
-                writer.uint32(/* id 6, wireType 5 =*/53).float(message.size_x);
-            if (message.size_y != null && Object.hasOwnProperty.call(message, "size_y"))
-                writer.uint32(/* id 7, wireType 5 =*/61).float(message.size_y);
-            if (message.size_z != null && Object.hasOwnProperty.call(message, "size_z"))
-                writer.uint32(/* id 8, wireType 5 =*/69).float(message.size_z);
+            if (message.size != null && Object.hasOwnProperty.call(message, "size"))
+                $root.ax_proto_msgs.Vector3f.encode(message.size, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+            if (message.velocity != null && Object.hasOwnProperty.call(message, "velocity"))
+                $root.ax_proto_msgs.Vector3f.encode(message.velocity, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             return writer;
         };
 
@@ -1910,15 +2179,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         break;
                     }
                 case 6: {
-                        message.size_x = reader.float();
+                        message.size = $root.ax_proto_msgs.Vector3f.decode(reader, reader.uint32());
                         break;
                     }
                 case 7: {
-                        message.size_y = reader.float();
-                        break;
-                    }
-                case 8: {
-                        message.size_z = reader.float();
+                        message.velocity = $root.ax_proto_msgs.Vector3f.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -1973,15 +2238,16 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (error)
                     return "pose." + error;
             }
-            if (message.size_x != null && message.hasOwnProperty("size_x"))
-                if (typeof message.size_x !== "number")
-                    return "size_x: number expected";
-            if (message.size_y != null && message.hasOwnProperty("size_y"))
-                if (typeof message.size_y !== "number")
-                    return "size_y: number expected";
-            if (message.size_z != null && message.hasOwnProperty("size_z"))
-                if (typeof message.size_z !== "number")
-                    return "size_z: number expected";
+            if (message.size != null && message.hasOwnProperty("size")) {
+                let error = $root.ax_proto_msgs.Vector3f.verify(message.size);
+                if (error)
+                    return "size." + error;
+            }
+            if (message.velocity != null && message.hasOwnProperty("velocity")) {
+                let error = $root.ax_proto_msgs.Vector3f.verify(message.velocity);
+                if (error)
+                    return "velocity." + error;
+            }
             return null;
         };
 
@@ -2017,12 +2283,16 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     throw TypeError(".ax_proto_msgs.Detection3D.pose: object expected");
                 message.pose = $root.ax_proto_msgs.Pose.fromObject(object.pose);
             }
-            if (object.size_x != null)
-                message.size_x = Number(object.size_x);
-            if (object.size_y != null)
-                message.size_y = Number(object.size_y);
-            if (object.size_z != null)
-                message.size_z = Number(object.size_z);
+            if (object.size != null) {
+                if (typeof object.size !== "object")
+                    throw TypeError(".ax_proto_msgs.Detection3D.size: object expected");
+                message.size = $root.ax_proto_msgs.Vector3f.fromObject(object.size);
+            }
+            if (object.velocity != null) {
+                if (typeof object.velocity !== "object")
+                    throw TypeError(".ax_proto_msgs.Detection3D.velocity: object expected");
+                message.velocity = $root.ax_proto_msgs.Vector3f.fromObject(object.velocity);
+            }
             return message;
         };
 
@@ -2049,9 +2319,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.class_name = "";
                 object.score = 0;
                 object.pose = null;
-                object.size_x = 0;
-                object.size_y = 0;
-                object.size_z = 0;
+                object.size = null;
+                object.velocity = null;
             }
             if (message.id != null && message.hasOwnProperty("id"))
                 if (typeof message.id === "number")
@@ -2066,12 +2335,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.score = options.json && !isFinite(message.score) ? String(message.score) : message.score;
             if (message.pose != null && message.hasOwnProperty("pose"))
                 object.pose = $root.ax_proto_msgs.Pose.toObject(message.pose, options);
-            if (message.size_x != null && message.hasOwnProperty("size_x"))
-                object.size_x = options.json && !isFinite(message.size_x) ? String(message.size_x) : message.size_x;
-            if (message.size_y != null && message.hasOwnProperty("size_y"))
-                object.size_y = options.json && !isFinite(message.size_y) ? String(message.size_y) : message.size_y;
-            if (message.size_z != null && message.hasOwnProperty("size_z"))
-                object.size_z = options.json && !isFinite(message.size_z) ? String(message.size_z) : message.size_z;
+            if (message.size != null && message.hasOwnProperty("size"))
+                object.size = $root.ax_proto_msgs.Vector3f.toObject(message.size, options);
+            if (message.velocity != null && message.hasOwnProperty("velocity"))
+                object.velocity = $root.ax_proto_msgs.Vector3f.toObject(message.velocity, options);
             return object;
         };
 
@@ -12118,6 +12385,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {boolean|null} [waiting_for_charge] PlanningState waiting_for_charge
          * @property {ax_proto_msgs.PlanningState.CargoAction.Type|null} [expected_cargo_action] PlanningState expected_cargo_action
          * @property {boolean|null} [obstacle_ignored] PlanningState obstacle_ignored
+         * @property {string|null} [creator] PlanningState creator
          */
 
         /**
@@ -12370,6 +12638,14 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         PlanningState.prototype.obstacle_ignored = false;
 
         /**
+         * PlanningState creator.
+         * @member {string} creator
+         * @memberof ax_proto_msgs.PlanningState
+         * @instance
+         */
+        PlanningState.prototype.creator = "";
+
+        /**
          * Creates a new PlanningState instance using the specified properties.
          * @function create
          * @memberof ax_proto_msgs.PlanningState
@@ -12456,6 +12732,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 writer.uint32(/* id 60, wireType 0 =*/480).int32(message.expected_cargo_action);
             if (message.obstacle_ignored != null && Object.hasOwnProperty.call(message, "obstacle_ignored"))
                 writer.uint32(/* id 61, wireType 0 =*/488).bool(message.obstacle_ignored);
+            if (message.creator != null && Object.hasOwnProperty.call(message, "creator"))
+                writer.uint32(/* id 62, wireType 2 =*/498).string(message.creator);
             return writer;
         };
 
@@ -12615,6 +12893,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     }
                 case 61: {
                         message.obstacle_ignored = reader.bool();
+                        break;
+                    }
+                case 62: {
+                        message.creator = reader.string();
                         break;
                     }
                 default:
@@ -12944,6 +13226,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             if (message.obstacle_ignored != null && message.hasOwnProperty("obstacle_ignored"))
                 if (typeof message.obstacle_ignored !== "boolean")
                     return "obstacle_ignored: boolean expected";
+            if (message.creator != null && message.hasOwnProperty("creator"))
+                if (!$util.isString(message.creator))
+                    return "creator: string expected";
             return null;
         };
 
@@ -13758,6 +14043,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             }
             if (object.obstacle_ignored != null)
                 message.obstacle_ignored = Boolean(object.obstacle_ignored);
+            if (object.creator != null)
+                message.creator = String(object.creator);
             return message;
         };
 
@@ -13806,6 +14093,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.waiting_for_charge = false;
                 object.expected_cargo_action = options.enums === String ? "NONE" : 0;
                 object.obstacle_ignored = false;
+                object.creator = "";
             }
             if (message.action_id != null && message.hasOwnProperty("action_id"))
                 object.action_id = message.action_id;
@@ -13871,6 +14159,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.expected_cargo_action = options.enums === String ? $root.ax_proto_msgs.PlanningState.CargoAction.Type[message.expected_cargo_action] === undefined ? message.expected_cargo_action : $root.ax_proto_msgs.PlanningState.CargoAction.Type[message.expected_cargo_action] : message.expected_cargo_action;
             if (message.obstacle_ignored != null && message.hasOwnProperty("obstacle_ignored"))
                 object.obstacle_ignored = message.obstacle_ignored;
+            if (message.creator != null && message.hasOwnProperty("creator"))
+                object.creator = message.creator;
             return object;
         };
 
@@ -19446,7 +19736,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @memberof ax_proto_msgs
          * @interface IParameterValue
          * @property {string|null} [name] ParameterValue name
-         * @property {number|null} [value] ParameterValue value
+         * @property {boolean|null} [bool_value] ParameterValue bool_value
+         * @property {number|Long|null} [int_value] ParameterValue int_value
+         * @property {number|null} [float_value] ParameterValue float_value
          */
 
         /**
@@ -19473,12 +19765,42 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         ParameterValue.prototype.name = "";
 
         /**
-         * ParameterValue value.
-         * @member {number} value
+         * ParameterValue bool_value.
+         * @member {boolean|null|undefined} bool_value
          * @memberof ax_proto_msgs.ParameterValue
          * @instance
          */
-        ParameterValue.prototype.value = 0;
+        ParameterValue.prototype.bool_value = null;
+
+        /**
+         * ParameterValue int_value.
+         * @member {number|Long|null|undefined} int_value
+         * @memberof ax_proto_msgs.ParameterValue
+         * @instance
+         */
+        ParameterValue.prototype.int_value = null;
+
+        /**
+         * ParameterValue float_value.
+         * @member {number|null|undefined} float_value
+         * @memberof ax_proto_msgs.ParameterValue
+         * @instance
+         */
+        ParameterValue.prototype.float_value = null;
+
+        // OneOf field names bound to virtual getters and setters
+        let $oneOfFields;
+
+        /**
+         * ParameterValue value.
+         * @member {"bool_value"|"int_value"|"float_value"|undefined} value
+         * @memberof ax_proto_msgs.ParameterValue
+         * @instance
+         */
+        Object.defineProperty(ParameterValue.prototype, "value", {
+            get: $util.oneOfGetter($oneOfFields = ["bool_value", "int_value", "float_value"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
 
         /**
          * Creates a new ParameterValue instance using the specified properties.
@@ -19506,8 +19828,12 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 writer = $Writer.create();
             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-            if (message.value != null && Object.hasOwnProperty.call(message, "value"))
-                writer.uint32(/* id 2, wireType 5 =*/21).float(message.value);
+            if (message.bool_value != null && Object.hasOwnProperty.call(message, "bool_value"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.bool_value);
+            if (message.int_value != null && Object.hasOwnProperty.call(message, "int_value"))
+                writer.uint32(/* id 3, wireType 0 =*/24).sint64(message.int_value);
+            if (message.float_value != null && Object.hasOwnProperty.call(message, "float_value"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.float_value);
             return writer;
         };
 
@@ -19549,7 +19875,15 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         break;
                     }
                 case 2: {
-                        message.value = reader.float();
+                        message.bool_value = reader.bool();
+                        break;
+                    }
+                case 3: {
+                        message.int_value = reader.sint64();
+                        break;
+                    }
+                case 4: {
+                        message.float_value = reader.float();
                         break;
                     }
                 default:
@@ -19587,12 +19921,29 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         ParameterValue.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
+            let properties = {};
             if (message.name != null && message.hasOwnProperty("name"))
                 if (!$util.isString(message.name))
                     return "name: string expected";
-            if (message.value != null && message.hasOwnProperty("value"))
-                if (typeof message.value !== "number")
-                    return "value: number expected";
+            if (message.bool_value != null && message.hasOwnProperty("bool_value")) {
+                properties.value = 1;
+                if (typeof message.bool_value !== "boolean")
+                    return "bool_value: boolean expected";
+            }
+            if (message.int_value != null && message.hasOwnProperty("int_value")) {
+                if (properties.value === 1)
+                    return "value: multiple values";
+                properties.value = 1;
+                if (!$util.isInteger(message.int_value) && !(message.int_value && $util.isInteger(message.int_value.low) && $util.isInteger(message.int_value.high)))
+                    return "int_value: integer|Long expected";
+            }
+            if (message.float_value != null && message.hasOwnProperty("float_value")) {
+                if (properties.value === 1)
+                    return "value: multiple values";
+                properties.value = 1;
+                if (typeof message.float_value !== "number")
+                    return "float_value: number expected";
+            }
             return null;
         };
 
@@ -19610,8 +19961,19 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             let message = new $root.ax_proto_msgs.ParameterValue();
             if (object.name != null)
                 message.name = String(object.name);
-            if (object.value != null)
-                message.value = Number(object.value);
+            if (object.bool_value != null)
+                message.bool_value = Boolean(object.bool_value);
+            if (object.int_value != null)
+                if ($util.Long)
+                    (message.int_value = $util.Long.fromValue(object.int_value)).unsigned = false;
+                else if (typeof object.int_value === "string")
+                    message.int_value = parseInt(object.int_value, 10);
+                else if (typeof object.int_value === "number")
+                    message.int_value = object.int_value;
+                else if (typeof object.int_value === "object")
+                    message.int_value = new $util.LongBits(object.int_value.low >>> 0, object.int_value.high >>> 0).toNumber();
+            if (object.float_value != null)
+                message.float_value = Number(object.float_value);
             return message;
         };
 
@@ -19628,14 +19990,28 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             if (!options)
                 options = {};
             let object = {};
-            if (options.defaults) {
+            if (options.defaults)
                 object.name = "";
-                object.value = 0;
-            }
             if (message.name != null && message.hasOwnProperty("name"))
                 object.name = message.name;
-            if (message.value != null && message.hasOwnProperty("value"))
-                object.value = options.json && !isFinite(message.value) ? String(message.value) : message.value;
+            if (message.bool_value != null && message.hasOwnProperty("bool_value")) {
+                object.bool_value = message.bool_value;
+                if (options.oneofs)
+                    object.value = "bool_value";
+            }
+            if (message.int_value != null && message.hasOwnProperty("int_value")) {
+                if (typeof message.int_value === "number")
+                    object.int_value = options.longs === String ? String(message.int_value) : message.int_value;
+                else
+                    object.int_value = options.longs === String ? $util.Long.prototype.toString.call(message.int_value) : options.longs === Number ? new $util.LongBits(message.int_value.low >>> 0, message.int_value.high >>> 0).toNumber() : message.int_value;
+                if (options.oneofs)
+                    object.value = "int_value";
+            }
+            if (message.float_value != null && message.hasOwnProperty("float_value")) {
+                object.float_value = options.json && !isFinite(message.float_value) ? String(message.float_value) : message.float_value;
+                if (options.oneofs)
+                    object.value = "float_value";
+            }
             return object;
         };
 

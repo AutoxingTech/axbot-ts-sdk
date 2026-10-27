@@ -7,9 +7,15 @@ import "header.proto";
 option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
 
-// 图像平面上的有向包围盒（OBB）：中心 + 未旋转边长 + 旋转角。
-// center_x / center_y 为框中心在图像坐标系中的位置，width / height 为未旋转时
-// 沿图像 x / y 轴的边长，单位与坐标系由 header.frame_id 指定（通常为像素）。
+// 二维地图上的线速度，沿 Detection2DArray.header.frame_id 的 x / y 轴，单位 m/s。
+message Velocity2D {
+    float x = 1;
+    float y = 2;
+}
+
+// 二维地图上的有向包围盒（OBB）：中心 + 未旋转边长 + 旋转角。
+// center_x / center_y 为框中心在 Detection2DArray.header.frame_id 坐标系中的位置，
+// width / height 为沿框自身轴的边长，单位均为米。
 message Detection2D {
     uint64 id = 1;         // 目标标识，无跨帧跟踪时可为 0
     uint32 class_id = 2;   // 类别编号，含义由 Detection2DArray.class_schema 指定的类别表定义
@@ -21,8 +27,12 @@ message Detection2D {
     float width = 7;
     float height = 8;
 
-    // 框绕自身中心的旋转角（弧度），正方向由坐标系手性约定（见 header.frame_id）。
+    // 框绕自身中心的旋转角（弧度），正方向由 Detection2DArray.header.frame_id 的坐标系手性约定。
     float rotation_rad = 9;
+
+    // Detection2DArray.header.stamp_nsec 时刻估计的线速度；未提供速度时不设置此字段。
+    // 运动方向由速度向量给出，可能与包围盒的旋转角不同。
+    Velocity2D velocity = 10;
 }
 
 message Detection2DArray {

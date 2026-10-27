@@ -9,18 +9,20 @@ option go_package = "webrtc_client/proto";
 option optimize_for = SPEED;
 
 // 三维有向包围盒（OBB）：中心位姿 + 沿框自身轴的尺寸。
-// pose 给出框中心在 header.frame_id 坐标系中的位置与朝向，
-// size_x / size_y / size_z 为沿框自身 x / y / z 轴的长度。
+// pose 给出框中心在 Detection3DArray.header.frame_id 坐标系中的位置与朝向，
+// size.x / size.y / size.z 为沿框自身 x / y / z 轴的长度，单位米。
 message Detection3D {
     uint64 id = 1;         // 目标标识，无跨帧跟踪时可为 0
     uint32 class_id = 2;   // 类别编号，含义由 Detection3DArray.class_schema 指定的类别表定义
     string class_name = 3; // 可选，便于日志与跨系统调试
     float  score = 4;
 
-    Pose  pose   = 5;
-    float size_x = 6;
-    float size_y = 7;
-    float size_z = 8;
+    Pose pose = 5;
+    Vector3f size = 6;
+
+    // Detection3DArray.header.stamp_nsec 时刻估计的线速度，沿 header.frame_id 的 x / y / z 轴，单位 m/s；未提供速度时不设置此字段。
+    // 运动方向由速度向量给出，可能与包围盒的朝向不同。
+    Vector3f velocity = 7;
 }
 
 message Detection3DArray {

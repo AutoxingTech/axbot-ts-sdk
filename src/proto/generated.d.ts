@@ -14,6 +14,9 @@ export namespace ax_proto_msgs {
 
         /** BotControlState task_paused */
         task_paused?: (boolean|null);
+
+        /** BotControlState target_truck_sn */
+        target_truck_sn?: (string|null);
     }
 
     /** Represents a BotControlState. */
@@ -33,6 +36,9 @@ export namespace ax_proto_msgs {
 
         /** BotControlState task_paused. */
         public task_paused: boolean;
+
+        /** BotControlState target_truck_sn. */
+        public target_truck_sn: string;
 
         /**
          * Creates a new BotControlState instance using the specified properties.
@@ -331,6 +337,109 @@ export namespace ax_proto_msgs {
         }
     }
 
+    /** Properties of a Velocity2D. */
+    interface IVelocity2D {
+
+        /** Velocity2D x */
+        x?: (number|null);
+
+        /** Velocity2D y */
+        y?: (number|null);
+    }
+
+    /** Represents a Velocity2D. */
+    class Velocity2D implements IVelocity2D {
+
+        /**
+         * Constructs a new Velocity2D.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IVelocity2D);
+
+        /** Velocity2D x. */
+        public x: number;
+
+        /** Velocity2D y. */
+        public y: number;
+
+        /**
+         * Creates a new Velocity2D instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Velocity2D instance
+         */
+        public static create(properties?: ax_proto_msgs.IVelocity2D): ax_proto_msgs.Velocity2D;
+
+        /**
+         * Encodes the specified Velocity2D message. Does not implicitly {@link ax_proto_msgs.Velocity2D.verify|verify} messages.
+         * @param message Velocity2D message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IVelocity2D, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Velocity2D message, length delimited. Does not implicitly {@link ax_proto_msgs.Velocity2D.verify|verify} messages.
+         * @param message Velocity2D message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IVelocity2D, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Velocity2D message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Velocity2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.Velocity2D;
+
+        /**
+         * Decodes a Velocity2D message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Velocity2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.Velocity2D;
+
+        /**
+         * Verifies a Velocity2D message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Velocity2D message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Velocity2D
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.Velocity2D;
+
+        /**
+         * Creates a plain object from a Velocity2D message. Also converts values to other types if specified.
+         * @param message Velocity2D
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.Velocity2D, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Velocity2D to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for Velocity2D
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a Detection2D. */
     interface IDetection2D {
 
@@ -360,6 +469,9 @@ export namespace ax_proto_msgs {
 
         /** Detection2D rotation_rad */
         rotation_rad?: (number|null);
+
+        /** Detection2D velocity */
+        velocity?: (ax_proto_msgs.IVelocity2D|null);
     }
 
     /** Represents a Detection2D. */
@@ -397,6 +509,9 @@ export namespace ax_proto_msgs {
 
         /** Detection2D rotation_rad. */
         public rotation_rad: number;
+
+        /** Detection2D velocity. */
+        public velocity?: (ax_proto_msgs.IVelocity2D|null);
 
         /**
          * Creates a new Detection2D instance using the specified properties.
@@ -712,14 +827,11 @@ export namespace ax_proto_msgs {
         /** Detection3D pose */
         pose?: (ax_proto_msgs.IPose|null);
 
-        /** Detection3D size_x */
-        size_x?: (number|null);
+        /** Detection3D size */
+        size?: (ax_proto_msgs.IVector3f|null);
 
-        /** Detection3D size_y */
-        size_y?: (number|null);
-
-        /** Detection3D size_z */
-        size_z?: (number|null);
+        /** Detection3D velocity */
+        velocity?: (ax_proto_msgs.IVector3f|null);
     }
 
     /** Represents a Detection3D. */
@@ -746,14 +858,11 @@ export namespace ax_proto_msgs {
         /** Detection3D pose. */
         public pose?: (ax_proto_msgs.IPose|null);
 
-        /** Detection3D size_x. */
-        public size_x: number;
+        /** Detection3D size. */
+        public size?: (ax_proto_msgs.IVector3f|null);
 
-        /** Detection3D size_y. */
-        public size_y: number;
-
-        /** Detection3D size_z. */
-        public size_z: number;
+        /** Detection3D velocity. */
+        public velocity?: (ax_proto_msgs.IVector3f|null);
 
         /**
          * Creates a new Detection3D instance using the specified properties.
@@ -4706,6 +4815,9 @@ export namespace ax_proto_msgs {
 
         /** PlanningState obstacle_ignored */
         obstacle_ignored?: (boolean|null);
+
+        /** PlanningState creator */
+        creator?: (string|null);
     }
 
     /** Represents a PlanningState. */
@@ -4803,6 +4915,9 @@ export namespace ax_proto_msgs {
 
         /** PlanningState obstacle_ignored. */
         public obstacle_ignored: boolean;
+
+        /** PlanningState creator. */
+        public creator: string;
 
         /**
          * Creates a new PlanningState instance using the specified properties.
@@ -7131,8 +7246,14 @@ export namespace ax_proto_msgs {
         /** ParameterValue name */
         name?: (string|null);
 
-        /** ParameterValue value */
-        value?: (number|null);
+        /** ParameterValue bool_value */
+        bool_value?: (boolean|null);
+
+        /** ParameterValue int_value */
+        int_value?: (number|Long|null);
+
+        /** ParameterValue float_value */
+        float_value?: (number|null);
     }
 
     /** Represents a ParameterValue. */
@@ -7147,8 +7268,17 @@ export namespace ax_proto_msgs {
         /** ParameterValue name. */
         public name: string;
 
+        /** ParameterValue bool_value. */
+        public bool_value?: (boolean|null);
+
+        /** ParameterValue int_value. */
+        public int_value?: (number|Long|null);
+
+        /** ParameterValue float_value. */
+        public float_value?: (number|null);
+
         /** ParameterValue value. */
-        public value: number;
+        public value?: ("bool_value"|"int_value"|"float_value");
 
         /**
          * Creates a new ParameterValue instance using the specified properties.

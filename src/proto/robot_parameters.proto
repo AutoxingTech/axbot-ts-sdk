@@ -5,7 +5,13 @@ option optimize_for = SPEED;
 
 message ParameterValue {
     string name = 1;
-    float value = 2;
+
+    // The value type is the case that is set; senders must set exactly one of them.
+    oneof value {
+        bool bool_value = 2;
+        sint64 int_value = 3;
+        float float_value = 4;
+    }
 }
 message InstanceRobotParameters {
     string instance_id = 1;
