@@ -211,6 +211,8 @@ export interface BootProgress {
 
 /**
  * Move type for createMove.
+ * Truck loading and unloading start at a truck ground point and return there on success.
+ * Loading requires the jack to be raised; unloading requires it to be lowered.
  */
 export type MoveType =
   | 'standard'
@@ -221,7 +223,9 @@ export type MoveType =
   | 'along_given_route' // Deprecated. Use another type with `route_coordinates` instead.
   | 'align_with_rack' // Crawl under a rack (to jack it up later).
   | 'to_unload_point' // Move to a rack unload point (to jack it down later).
-  | 'follow_target'; // Follow a moving target.
+  | 'follow_target' // Follow a moving target.
+  | 'load_onto_truck' // Load the carried rack onto a truck.
+  | 'unload_from_truck'; // Unload a rack from a truck.
 
 export type MoveState = 'idle' | 'moving' | 'succeeded' | 'failed' | 'cancelled';
 
@@ -260,6 +264,8 @@ export interface MoveActionCreate {
     inplace_rotate?: boolean;
     /** Index into the layers of a rack stack. For `align_with_rack` and `to_unload_point`. */
     rack_layer?: number;
+    /** Truck ground point in the format `<truck SN>/<point name>`. */
+    target_id?: string;
   };
 }
 
