@@ -121,6 +121,8 @@ function decodePayload(wrapper: ax_proto_msgs.RosMessageWrapper): unknown {
       return wrapper.robot_joint_bindings ?? null;
     case type.TF_MESSAGE:
       return wrapper.tf_message ?? null;
+    case type.APP_EVENT:
+      return wrapper.app_event ?? null;
     default:
       return null;
   }

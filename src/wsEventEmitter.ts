@@ -153,6 +153,7 @@ import {
   CollectedBarcodeMsg,
   BumperStateMsg,
   MastStateMsg,
+  AppEventMsg,
   SubmapListMsg,
   IoBoardStateMsg,
   DepthCameraImageMsg,
@@ -263,6 +264,8 @@ export const bumperStateEvents = new WsEventEmitter<BumperStateMsg>('/bumper_sta
 
 /** Mast state events */
 export const mastStateEvents = new WsEventEmitter<MastStateMsg>('/mast_state');
+
+export const appEvents = new WsEventEmitter<AppEventMsg>('/app_events');
 
 /** IO board state events */
 export const ioBoardStateEvents = new WsEventEmitter<IoBoardStateMsg>('/raw_io_board_state');

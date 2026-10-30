@@ -16,6 +16,272 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
      */
     const ax_proto_msgs = {};
 
+    ax_proto_msgs.AppEvent = (function() {
+
+        /**
+         * Properties of an AppEvent.
+         * @memberof ax_proto_msgs
+         * @interface IAppEvent
+         * @property {string|null} [node_id] AppEvent node_id
+         * @property {number|Long|null} [stamp_ns] AppEvent stamp_ns
+         * @property {string|null} [message] AppEvent message
+         */
+
+        /**
+         * Constructs a new AppEvent.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents an AppEvent.
+         * @implements IAppEvent
+         * @constructor
+         * @param {ax_proto_msgs.IAppEvent=} [properties] Properties to set
+         */
+        function AppEvent(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * AppEvent node_id.
+         * @member {string} node_id
+         * @memberof ax_proto_msgs.AppEvent
+         * @instance
+         */
+        AppEvent.prototype.node_id = "";
+
+        /**
+         * AppEvent stamp_ns.
+         * @member {number|Long} stamp_ns
+         * @memberof ax_proto_msgs.AppEvent
+         * @instance
+         */
+        AppEvent.prototype.stamp_ns = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * AppEvent message.
+         * @member {string} message
+         * @memberof ax_proto_msgs.AppEvent
+         * @instance
+         */
+        AppEvent.prototype.message = "";
+
+        /**
+         * Creates a new AppEvent instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {ax_proto_msgs.IAppEvent=} [properties] Properties to set
+         * @returns {ax_proto_msgs.AppEvent} AppEvent instance
+         */
+        AppEvent.create = function create(properties) {
+            return new AppEvent(properties);
+        };
+
+        /**
+         * Encodes the specified AppEvent message. Does not implicitly {@link ax_proto_msgs.AppEvent.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {ax_proto_msgs.IAppEvent} message AppEvent message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AppEvent.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.node_id != null && Object.hasOwnProperty.call(message, "node_id"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.node_id);
+            if (message.stamp_ns != null && Object.hasOwnProperty.call(message, "stamp_ns"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.stamp_ns);
+            if (message.message != null && Object.hasOwnProperty.call(message, "message"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.message);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified AppEvent message, length delimited. Does not implicitly {@link ax_proto_msgs.AppEvent.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {ax_proto_msgs.IAppEvent} message AppEvent message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        AppEvent.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an AppEvent message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.AppEvent} AppEvent
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AppEvent.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.AppEvent();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.node_id = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.stamp_ns = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.message = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an AppEvent message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.AppEvent} AppEvent
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        AppEvent.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an AppEvent message.
+         * @function verify
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        AppEvent.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.node_id != null && message.hasOwnProperty("node_id"))
+                if (!$util.isString(message.node_id))
+                    return "node_id: string expected";
+            if (message.stamp_ns != null && message.hasOwnProperty("stamp_ns"))
+                if (!$util.isInteger(message.stamp_ns) && !(message.stamp_ns && $util.isInteger(message.stamp_ns.low) && $util.isInteger(message.stamp_ns.high)))
+                    return "stamp_ns: integer|Long expected";
+            if (message.message != null && message.hasOwnProperty("message"))
+                if (!$util.isString(message.message))
+                    return "message: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an AppEvent message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.AppEvent} AppEvent
+         */
+        AppEvent.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.AppEvent)
+                return object;
+            let message = new $root.ax_proto_msgs.AppEvent();
+            if (object.node_id != null)
+                message.node_id = String(object.node_id);
+            if (object.stamp_ns != null)
+                if ($util.Long)
+                    (message.stamp_ns = $util.Long.fromValue(object.stamp_ns)).unsigned = true;
+                else if (typeof object.stamp_ns === "string")
+                    message.stamp_ns = parseInt(object.stamp_ns, 10);
+                else if (typeof object.stamp_ns === "number")
+                    message.stamp_ns = object.stamp_ns;
+                else if (typeof object.stamp_ns === "object")
+                    message.stamp_ns = new $util.LongBits(object.stamp_ns.low >>> 0, object.stamp_ns.high >>> 0).toNumber(true);
+            if (object.message != null)
+                message.message = String(object.message);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an AppEvent message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {ax_proto_msgs.AppEvent} message AppEvent
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        AppEvent.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.node_id = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.stamp_ns = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.stamp_ns = options.longs === String ? "0" : 0;
+                object.message = "";
+            }
+            if (message.node_id != null && message.hasOwnProperty("node_id"))
+                object.node_id = message.node_id;
+            if (message.stamp_ns != null && message.hasOwnProperty("stamp_ns"))
+                if (typeof message.stamp_ns === "number")
+                    object.stamp_ns = options.longs === String ? String(message.stamp_ns) : message.stamp_ns;
+                else
+                    object.stamp_ns = options.longs === String ? $util.Long.prototype.toString.call(message.stamp_ns) : options.longs === Number ? new $util.LongBits(message.stamp_ns.low >>> 0, message.stamp_ns.high >>> 0).toNumber(true) : message.stamp_ns;
+            if (message.message != null && message.hasOwnProperty("message"))
+                object.message = message.message;
+            return object;
+        };
+
+        /**
+         * Converts this AppEvent to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.AppEvent
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        AppEvent.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for AppEvent
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.AppEvent
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        AppEvent.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.AppEvent";
+        };
+
+        return AppEvent;
+    })();
+
     ax_proto_msgs.BotControlState = (function() {
 
         /**
@@ -20652,6 +20918,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {ax_proto_msgs.IRobotJointBindings|null} [robot_joint_bindings] RosMessageWrapper robot_joint_bindings
          * @property {ax_proto_msgs.IBotControlState|null} [bot_control_state] RosMessageWrapper bot_control_state
          * @property {ax_proto_msgs.ITFMessage|null} [tf_message] RosMessageWrapper tf_message
+         * @property {ax_proto_msgs.IAppEvent|null} [app_event] RosMessageWrapper app_event
          */
 
         /**
@@ -20885,17 +21152,25 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          */
         RosMessageWrapper.prototype.tf_message = null;
 
+        /**
+         * RosMessageWrapper app_event.
+         * @member {ax_proto_msgs.IAppEvent|null|undefined} app_event
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.app_event = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|undefined} payload
+         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|"app_event"|undefined} payload
          * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set", "slam_state", "planning_state", "liftgate_state", "wheel_control_command", "wheel_control_state", "imu", "raw_imu", "raw_point_cloud", "detection_2d_array", "detection_3d_array", "joint_states", "robot_instances", "robot_descriptions", "robot_parameters", "robot_joint_bindings", "bot_control_state", "tf_message"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set", "slam_state", "planning_state", "liftgate_state", "wheel_control_command", "wheel_control_state", "imu", "raw_imu", "raw_point_cloud", "detection_2d_array", "detection_3d_array", "joint_states", "robot_instances", "robot_descriptions", "robot_parameters", "robot_joint_bindings", "bot_control_state", "tf_message", "app_event"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -20977,6 +21252,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 $root.ax_proto_msgs.BotControlState.encode(message.bot_control_state, writer.uint32(/* id 35, wireType 2 =*/282).fork()).ldelim();
             if (message.tf_message != null && Object.hasOwnProperty.call(message, "tf_message"))
                 $root.ax_proto_msgs.TFMessage.encode(message.tf_message, writer.uint32(/* id 36, wireType 2 =*/290).fork()).ldelim();
+            if (message.app_event != null && Object.hasOwnProperty.call(message, "app_event"))
+                $root.ax_proto_msgs.AppEvent.encode(message.app_event, writer.uint32(/* id 37, wireType 2 =*/298).fork()).ldelim();
             return writer;
         };
 
@@ -21121,6 +21398,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         message.tf_message = $root.ax_proto_msgs.TFMessage.decode(reader, reader.uint32());
                         break;
                     }
+                case 37: {
+                        message.app_event = $root.ax_proto_msgs.AppEvent.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -21188,6 +21469,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 case 24:
                 case 25:
                 case 26:
+                case 27:
                     break;
                 }
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
@@ -21448,6 +21730,16 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         return "tf_message." + error;
                 }
             }
+            if (message.app_event != null && message.hasOwnProperty("app_event")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.AppEvent.verify(message.app_event);
+                    if (error)
+                        return "app_event." + error;
+                }
+            }
             return null;
         };
 
@@ -21577,6 +21869,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             case "TF_MESSAGE":
             case 26:
                 message.type = 26;
+                break;
+            case "APP_EVENT":
+            case 27:
+                message.type = 27;
                 break;
             }
             if (object.point_cloud != null) {
@@ -21708,6 +22004,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (typeof object.tf_message !== "object")
                     throw TypeError(".ax_proto_msgs.RosMessageWrapper.tf_message: object expected");
                 message.tf_message = $root.ax_proto_msgs.TFMessage.fromObject(object.tf_message);
+            }
+            if (object.app_event != null) {
+                if (typeof object.app_event !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.app_event: object expected");
+                message.app_event = $root.ax_proto_msgs.AppEvent.fromObject(object.app_event);
             }
             return message;
         };
@@ -21859,6 +22160,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (options.oneofs)
                     object.payload = "tf_message";
             }
+            if (message.app_event != null && message.hasOwnProperty("app_event")) {
+                object.app_event = $root.ax_proto_msgs.AppEvent.toObject(message.app_event, options);
+                if (options.oneofs)
+                    object.payload = "app_event";
+            }
             return object;
         };
 
@@ -21919,6 +22225,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number} ROBOT_JOINT_BINDINGS=24 ROBOT_JOINT_BINDINGS value
          * @property {number} BOT_CONTROL_STATE=25 BOT_CONTROL_STATE value
          * @property {number} TF_MESSAGE=26 TF_MESSAGE value
+         * @property {number} APP_EVENT=27 APP_EVENT value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -21949,6 +22256,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             values[valuesById[24] = "ROBOT_JOINT_BINDINGS"] = 24;
             values[valuesById[25] = "BOT_CONTROL_STATE"] = 25;
             values[valuesById[26] = "TF_MESSAGE"] = 26;
+            values[valuesById[27] = "APP_EVENT"] = 27;
             return values;
         })();
 

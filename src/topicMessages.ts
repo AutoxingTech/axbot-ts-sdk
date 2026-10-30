@@ -506,6 +506,8 @@ export interface BumperStateMsg extends TopicMsg {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
 export interface MastStateMsg extends ProtoMessage<ax_proto_msgs.MastState> { }
 
+export type AppEventMsg = ProtoMessage<ax_proto_msgs.AppEvent>;
+
 export interface Landmark {
   id: string;
   pos: [number, number];

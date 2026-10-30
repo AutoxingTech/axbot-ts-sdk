@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+option optimize_for = SPEED;
+
+// topic: /app_events
+message AppEvent
+{
+    string node_id = 1;
+    uint64 stamp_ns = 2;
+    string message = 3;
+}

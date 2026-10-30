@@ -3,6 +3,115 @@ import Long = require("long");
 /** Namespace ax_proto_msgs. */
 export namespace ax_proto_msgs {
 
+    /** Properties of an AppEvent. */
+    interface IAppEvent {
+
+        /** AppEvent node_id */
+        node_id?: (string|null);
+
+        /** AppEvent stamp_ns */
+        stamp_ns?: (number|Long|null);
+
+        /** AppEvent message */
+        message?: (string|null);
+    }
+
+    /** Represents an AppEvent. */
+    class AppEvent implements IAppEvent {
+
+        /**
+         * Constructs a new AppEvent.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IAppEvent);
+
+        /** AppEvent node_id. */
+        public node_id: string;
+
+        /** AppEvent stamp_ns. */
+        public stamp_ns: (number|Long);
+
+        /** AppEvent message. */
+        public message: string;
+
+        /**
+         * Creates a new AppEvent instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AppEvent instance
+         */
+        public static create(properties?: ax_proto_msgs.IAppEvent): ax_proto_msgs.AppEvent;
+
+        /**
+         * Encodes the specified AppEvent message. Does not implicitly {@link ax_proto_msgs.AppEvent.verify|verify} messages.
+         * @param message AppEvent message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IAppEvent, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AppEvent message, length delimited. Does not implicitly {@link ax_proto_msgs.AppEvent.verify|verify} messages.
+         * @param message AppEvent message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IAppEvent, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AppEvent message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AppEvent
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.AppEvent;
+
+        /**
+         * Decodes an AppEvent message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AppEvent
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.AppEvent;
+
+        /**
+         * Verifies an AppEvent message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AppEvent message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AppEvent
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.AppEvent;
+
+        /**
+         * Creates a plain object from an AppEvent message. Also converts values to other types if specified.
+         * @param message AppEvent
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.AppEvent, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AppEvent to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AppEvent
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a BotControlState. */
     interface IBotControlState {
 
@@ -7659,6 +7768,9 @@ export namespace ax_proto_msgs {
 
         /** RosMessageWrapper tf_message */
         tf_message?: (ax_proto_msgs.ITFMessage|null);
+
+        /** RosMessageWrapper app_event */
+        app_event?: (ax_proto_msgs.IAppEvent|null);
     }
 
     /** Represents a RosMessageWrapper. */
@@ -7751,8 +7863,11 @@ export namespace ax_proto_msgs {
         /** RosMessageWrapper tf_message. */
         public tf_message?: (ax_proto_msgs.ITFMessage|null);
 
+        /** RosMessageWrapper app_event. */
+        public app_event?: (ax_proto_msgs.IAppEvent|null);
+
         /** RosMessageWrapper payload. */
-        public payload?: ("point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message");
+        public payload?: ("point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|"app_event");
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
@@ -7862,7 +7977,8 @@ export namespace ax_proto_msgs {
             ROBOT_PARAMETERS = 23,
             ROBOT_JOINT_BINDINGS = 24,
             BOT_CONTROL_STATE = 25,
-            TF_MESSAGE = 26
+            TF_MESSAGE = 26,
+            APP_EVENT = 27
         }
     }
 

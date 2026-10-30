@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package ax_proto_msgs;
 
+import "app_event.proto";
 import "bot_control_state.proto";
 import "depth_image.proto";
 import "detection_2d.proto";
@@ -61,6 +62,7 @@ message RosMessageWrapper
         ROBOT_JOINT_BINDINGS = 24;
         BOT_CONTROL_STATE = 25;
         TF_MESSAGE = 26;
+        APP_EVENT = 27;
     }
 
     MessageType type = 1;
@@ -95,5 +97,6 @@ message RosMessageWrapper
         RobotJointBindings robot_joint_bindings = 34;
         BotControlState bot_control_state = 35;
         TFMessage tf_message = 36;
+        AppEvent app_event = 37;
     }
 }
