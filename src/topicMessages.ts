@@ -230,6 +230,7 @@ export interface LocalPathMsg extends TopicMsg {
 export interface DetailedBatteryStateMsg extends TopicMsg {
   current: number;
   voltage: number;
+  temperature?: number;
   percentage: number;
   power_supply_status: 'discharging' | 'charging' | 'full';
   secs: number;
