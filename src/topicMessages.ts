@@ -238,6 +238,7 @@ export interface DetailedBatteryStateMsg extends TopicMsg {
   cell_voltages: number[];
   design_capacity: number | 'nan';
   state_of_health: number;
+  contact_touched?: boolean;
 }
 
 export interface MotionMetricsMsg extends TopicMsg {
