@@ -97,8 +97,11 @@ message MoveFailReason {
         NOT_AT_TRUCK_GROUND_POINT = 800 [(display_text) = "不在货车候车点"];
         LIFTGATE_WAIT_TIMEOUT = 801 [(display_text) = "等待货车尾板超时"];
         JACK_OPERATION_FAILED = 802 [(display_text) = "顶升升降失败或超时"];
-        LOAD_IN_JACK_DOWN_STATE = 803 [(display_text) = "执行卡车装货时顶升处于降下状态"];
-        UNLOAD_IN_JACK_UP_STATE = 804 [(display_text) = "执行卡车卸货时顶升处于升起状态"];
+        LOAD_IN_JACK_DOWN_STATE = 803 [(display_text) = "执行货车装货时顶升处于降下状态"];
+        UNLOAD_IN_JACK_UP_STATE = 804 [(display_text) = "执行货车卸货时顶升处于升起状态"];
+        NO_RACK_IN_TRUCK = 805 [(display_text) = "货车上没有可用的货架"];
+        NO_FREE_SPACE_IN_TRUCK = 806 [(display_text) = "货车上没有可用的空位"];
+        TRUCK_RACK_STATE_UNKNOWN = 807 [(display_text) = "货车货架位状态未知，无法判断任务能否执行"];
 
         PLATFORM_ALERT_ERROR = 1000 [(display_text) = "系统异常"];
         SERVICE_CALL_ERROR = 1001 [(display_text) = "请求规控服务异常（restapi 使用）"];

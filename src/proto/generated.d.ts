@@ -549,6 +549,121 @@ export namespace ax_proto_msgs {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a PredictionPoint2D. */
+    interface IPredictionPoint2D {
+
+        /** PredictionPoint2D x */
+        x?: (number|null);
+
+        /** PredictionPoint2D y */
+        y?: (number|null);
+
+        /** PredictionPoint2D ori */
+        ori?: (number|null);
+
+        /** PredictionPoint2D dt_ms */
+        dt_ms?: (number|null);
+    }
+
+    /** Represents a PredictionPoint2D. */
+    class PredictionPoint2D implements IPredictionPoint2D {
+
+        /**
+         * Constructs a new PredictionPoint2D.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IPredictionPoint2D);
+
+        /** PredictionPoint2D x. */
+        public x: number;
+
+        /** PredictionPoint2D y. */
+        public y: number;
+
+        /** PredictionPoint2D ori. */
+        public ori: number;
+
+        /** PredictionPoint2D dt_ms. */
+        public dt_ms: number;
+
+        /**
+         * Creates a new PredictionPoint2D instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns PredictionPoint2D instance
+         */
+        public static create(properties?: ax_proto_msgs.IPredictionPoint2D): ax_proto_msgs.PredictionPoint2D;
+
+        /**
+         * Encodes the specified PredictionPoint2D message. Does not implicitly {@link ax_proto_msgs.PredictionPoint2D.verify|verify} messages.
+         * @param message PredictionPoint2D message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IPredictionPoint2D, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified PredictionPoint2D message, length delimited. Does not implicitly {@link ax_proto_msgs.PredictionPoint2D.verify|verify} messages.
+         * @param message PredictionPoint2D message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IPredictionPoint2D, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a PredictionPoint2D message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns PredictionPoint2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.PredictionPoint2D;
+
+        /**
+         * Decodes a PredictionPoint2D message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns PredictionPoint2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.PredictionPoint2D;
+
+        /**
+         * Verifies a PredictionPoint2D message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a PredictionPoint2D message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns PredictionPoint2D
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.PredictionPoint2D;
+
+        /**
+         * Creates a plain object from a PredictionPoint2D message. Also converts values to other types if specified.
+         * @param message PredictionPoint2D
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.PredictionPoint2D, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this PredictionPoint2D to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for PredictionPoint2D
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a Detection2D. */
     interface IDetection2D {
 
@@ -581,6 +696,9 @@ export namespace ax_proto_msgs {
 
         /** Detection2D velocity */
         velocity?: (ax_proto_msgs.IVelocity2D|null);
+
+        /** Detection2D prediction */
+        prediction?: (ax_proto_msgs.IPredictionPoint2D[]|null);
     }
 
     /** Represents a Detection2D. */
@@ -621,6 +739,9 @@ export namespace ax_proto_msgs {
 
         /** Detection2D velocity. */
         public velocity?: (ax_proto_msgs.IVelocity2D|null);
+
+        /** Detection2D prediction. */
+        public prediction: ax_proto_msgs.IPredictionPoint2D[];
 
         /**
          * Creates a new Detection2D instance using the specified properties.
@@ -4721,6 +4842,9 @@ export namespace ax_proto_msgs {
             JACK_OPERATION_FAILED = 802,
             LOAD_IN_JACK_DOWN_STATE = 803,
             UNLOAD_IN_JACK_UP_STATE = 804,
+            NO_RACK_IN_TRUCK = 805,
+            NO_FREE_SPACE_IN_TRUCK = 806,
+            TRUCK_RACK_STATE_UNKNOWN = 807,
             PLATFORM_ALERT_ERROR = 1000,
             SERVICE_CALL_ERROR = 1001,
             INTERNAL_ERROR = 1002,
@@ -5513,6 +5637,7 @@ export namespace ax_proto_msgs {
                 NOT_IN_AUTO_MODE = 1104,
                 POSITION_RELIABLE = 1105,
                 FATAL_ALERT = 1106,
+                OFF_ROUTE = 1107,
                 OTHER = 1199
             }
         }

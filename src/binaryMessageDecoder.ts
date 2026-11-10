@@ -123,6 +123,8 @@ function decodePayload(wrapper: ax_proto_msgs.RosMessageWrapper): unknown {
       return wrapper.tf_message ?? null;
     case type.APP_EVENT:
       return wrapper.app_event ?? null;
+    case type.DETECTION_2D_ARRAY:
+      return wrapper.detection_2d_array ?? null;
     default:
       return null;
   }

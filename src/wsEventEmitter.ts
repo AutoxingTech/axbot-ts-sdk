@@ -161,6 +161,7 @@ import {
   RackStatesMsg,
   MobileNetworkStateMsg,
   VideoDataMsg,
+  Detection2DArrayMsg,
 } from './msgs';
 import { ax_proto_msgs } from './proto/generated.js';
 
@@ -273,6 +274,15 @@ export const ioBoardStateEvents = new WsEventEmitter<IoBoardStateMsg>('/raw_io_b
 /** Fused sensor state events (slipping, collision, odometry source) */
 export const fusedSensorStateEvents = new WsEventEmitter<FusedSensorStateMsg>(
   '/fused_sensor_state',
+);
+
+/**
+ * 2D detections — oriented boxes with optional predicted trajectories, in the
+ * frame named by the message header. Debug/diagnostic topic, so it is only
+ * subscribed while a consumer asks for it.
+ */
+export const detection2dEvents = new WsEventEmitter<Detection2DArrayMsg>(
+  '/lidar_detected_objects',
 );
 
 /**

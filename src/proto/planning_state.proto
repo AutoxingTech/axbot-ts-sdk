@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package ax_proto_msgs;
 
+import "annotations.proto";
 import "geometry.proto";
 import "move_fail_reason.proto";
 import "move_state.proto";
@@ -42,13 +43,14 @@ message PlanningState {
     message StuckReason {
         enum Type {
             NONE              = 0;     // not stuck
-            VIRTUAL_WALL      = 1101;  // inside a virtual wall or a no-go zone
-            IMPASSABLE_AREA   = 1102;  // on an impassable area of the map, or off the map
-            EMERGENCY_BUTTON  = 1103;  // emergency stop button pressed
-            NOT_IN_AUTO_MODE  = 1104;  // not in auto mode (manual or remote control)
-            POSITION_RELIABLE = 1105;  // positioning is bad (7002, or AxCartoState.relocating)
-            FATAL_ALERT       = 1106;  // a fatal alert is active, e.g. a broken lidar
-            OTHER             = 1199;  // no known category
+            VIRTUAL_WALL      = 1101 [(display_text) = "1101: Stuck by virtual obstacles."];  // inside a virtual wall or a no-go zone
+            IMPASSABLE_AREA   = 1102 [(display_text) = "1102: Stuck in uncharted area."];  // on an impassable area of the map, or off the map
+            EMERGENCY_BUTTON  = 1103 [(display_text) = "1103: Stuck by emergency stop state."];
+            NOT_IN_AUTO_MODE  = 1104 [(display_text) = "1104: Stuck in manual/remote mode."];
+            POSITION_RELIABLE = 1105 [(display_text) = "1105: Stuck by unreliable position."];  // positioning is bad (7002, or AxCartoState.relocating)
+            FATAL_ALERT       = 1106 [(display_text) = "1106: Stuck by fatal alert."];  // a fatal alert is active, e.g. a broken lidar
+            OFF_ROUTE         = 1107 [(display_text) = "1107: Stuck by deviating from the route."];  // DWA v2 severe deviation
+            OTHER             = 1199 [(display_text) = "1199: Stuck. No progress is made for a while."];  // no known category
         }
     }
 

@@ -13,6 +13,18 @@ message Velocity2D {
     float y = 2;
 }
 
+// 预测轨迹上的一个点。
+// x / y 为点在地图上的位置，与 Detection2D.center_x / center_y 同一坐标系
+// （即 Detection2DArray.header.frame_id），单位米。
+message PredictionPoint2D {
+    float x = 1;
+    float y = 2;
+    // 此预测点处包围盒的朝向，与 Detection2D.rotation_rad 同一约定，单位弧度。
+    float ori = 3;
+    // 相对 Detection2DArray.header.stamp_nsec 的毫秒偏移，非负。
+    uint32 dt_ms = 4;
+}
+
 // 二维地图上的有向包围盒（OBB）：中心 + 未旋转边长 + 旋转角。
 // center_x / center_y 为框中心在 Detection2DArray.header.frame_id 坐标系中的位置，
 // width / height 为沿框自身轴的边长，单位均为米。
@@ -33,6 +45,12 @@ message Detection2D {
     // Detection2DArray.header.stamp_nsec 时刻估计的线速度；未提供速度时不设置此字段。
     // 运动方向由速度向量给出，可能与包围盒的旋转角不同。
     Velocity2D velocity = 10;
+
+    // 预测轨迹，按 PredictionPoint2D.dt_ms 升序；首点 dt_ms 为 0 且通常等于框中心。
+    // 首点 ori 通常等于 rotation_rad，后续点给出各预测时刻的朝向。
+    // 一条 Detection2D 至多一条预测（不区分多模态分支），空表示未提供预测。
+    // 提供预测时，velocity 应与其首点处的速度一致。
+    repeated PredictionPoint2D prediction = 11;
 }
 
 message Detection2DArray {

@@ -582,6 +582,13 @@ export interface MobileNetworkStateMsg extends ProtoMessage<ax_proto_msgs.Mobile
 export interface VideoDataMsg extends ProtoMessage<ax_proto_msgs.VideoData> { }
 
 /**
+ * 2D detections (`/detection_2d`): oriented bounding boxes plus optional
+ * per-detection predicted trajectories, expressed in `header.frame_id`.
+ */
+// eslint-disable-next-line @typescript-eslint/no-empty-interface -- intentional type alias
+export interface Detection2DArrayMsg extends ProtoMessage<ax_proto_msgs.Detection2DArray> { }
+
+/**
  * Convert any protobufjs Message instance to a plain display object with
  * human-readable enum strings and numeric longs.
  *

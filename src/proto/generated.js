@@ -1287,6 +1287,281 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return Velocity2D;
     })();
 
+    ax_proto_msgs.PredictionPoint2D = (function() {
+
+        /**
+         * Properties of a PredictionPoint2D.
+         * @memberof ax_proto_msgs
+         * @interface IPredictionPoint2D
+         * @property {number|null} [x] PredictionPoint2D x
+         * @property {number|null} [y] PredictionPoint2D y
+         * @property {number|null} [ori] PredictionPoint2D ori
+         * @property {number|null} [dt_ms] PredictionPoint2D dt_ms
+         */
+
+        /**
+         * Constructs a new PredictionPoint2D.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a PredictionPoint2D.
+         * @implements IPredictionPoint2D
+         * @constructor
+         * @param {ax_proto_msgs.IPredictionPoint2D=} [properties] Properties to set
+         */
+        function PredictionPoint2D(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * PredictionPoint2D x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @instance
+         */
+        PredictionPoint2D.prototype.x = 0;
+
+        /**
+         * PredictionPoint2D y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @instance
+         */
+        PredictionPoint2D.prototype.y = 0;
+
+        /**
+         * PredictionPoint2D ori.
+         * @member {number} ori
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @instance
+         */
+        PredictionPoint2D.prototype.ori = 0;
+
+        /**
+         * PredictionPoint2D dt_ms.
+         * @member {number} dt_ms
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @instance
+         */
+        PredictionPoint2D.prototype.dt_ms = 0;
+
+        /**
+         * Creates a new PredictionPoint2D instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {ax_proto_msgs.IPredictionPoint2D=} [properties] Properties to set
+         * @returns {ax_proto_msgs.PredictionPoint2D} PredictionPoint2D instance
+         */
+        PredictionPoint2D.create = function create(properties) {
+            return new PredictionPoint2D(properties);
+        };
+
+        /**
+         * Encodes the specified PredictionPoint2D message. Does not implicitly {@link ax_proto_msgs.PredictionPoint2D.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {ax_proto_msgs.IPredictionPoint2D} message PredictionPoint2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PredictionPoint2D.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 5 =*/13).float(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 5 =*/21).float(message.y);
+            if (message.ori != null && Object.hasOwnProperty.call(message, "ori"))
+                writer.uint32(/* id 3, wireType 5 =*/29).float(message.ori);
+            if (message.dt_ms != null && Object.hasOwnProperty.call(message, "dt_ms"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.dt_ms);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified PredictionPoint2D message, length delimited. Does not implicitly {@link ax_proto_msgs.PredictionPoint2D.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {ax_proto_msgs.IPredictionPoint2D} message PredictionPoint2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PredictionPoint2D.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a PredictionPoint2D message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.PredictionPoint2D} PredictionPoint2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PredictionPoint2D.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.PredictionPoint2D();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.float();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.float();
+                        break;
+                    }
+                case 3: {
+                        message.ori = reader.float();
+                        break;
+                    }
+                case 4: {
+                        message.dt_ms = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a PredictionPoint2D message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.PredictionPoint2D} PredictionPoint2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PredictionPoint2D.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a PredictionPoint2D message.
+         * @function verify
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        PredictionPoint2D.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.ori != null && message.hasOwnProperty("ori"))
+                if (typeof message.ori !== "number")
+                    return "ori: number expected";
+            if (message.dt_ms != null && message.hasOwnProperty("dt_ms"))
+                if (!$util.isInteger(message.dt_ms))
+                    return "dt_ms: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a PredictionPoint2D message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.PredictionPoint2D} PredictionPoint2D
+         */
+        PredictionPoint2D.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.PredictionPoint2D)
+                return object;
+            let message = new $root.ax_proto_msgs.PredictionPoint2D();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.ori != null)
+                message.ori = Number(object.ori);
+            if (object.dt_ms != null)
+                message.dt_ms = object.dt_ms >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a PredictionPoint2D message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {ax_proto_msgs.PredictionPoint2D} message PredictionPoint2D
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        PredictionPoint2D.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.ori = 0;
+                object.dt_ms = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.ori != null && message.hasOwnProperty("ori"))
+                object.ori = options.json && !isFinite(message.ori) ? String(message.ori) : message.ori;
+            if (message.dt_ms != null && message.hasOwnProperty("dt_ms"))
+                object.dt_ms = message.dt_ms;
+            return object;
+        };
+
+        /**
+         * Converts this PredictionPoint2D to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        PredictionPoint2D.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for PredictionPoint2D
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.PredictionPoint2D
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        PredictionPoint2D.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.PredictionPoint2D";
+        };
+
+        return PredictionPoint2D;
+    })();
+
     ax_proto_msgs.Detection2D = (function() {
 
         /**
@@ -1303,6 +1578,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number|null} [height] Detection2D height
          * @property {number|null} [rotation_rad] Detection2D rotation_rad
          * @property {ax_proto_msgs.IVelocity2D|null} [velocity] Detection2D velocity
+         * @property {Array.<ax_proto_msgs.IPredictionPoint2D>|null} [prediction] Detection2D prediction
          */
 
         /**
@@ -1314,6 +1590,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @param {ax_proto_msgs.IDetection2D=} [properties] Properties to set
          */
         function Detection2D(properties) {
+            this.prediction = [];
             if (properties)
                 for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -1401,6 +1678,14 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         Detection2D.prototype.velocity = null;
 
         /**
+         * Detection2D prediction.
+         * @member {Array.<ax_proto_msgs.IPredictionPoint2D>} prediction
+         * @memberof ax_proto_msgs.Detection2D
+         * @instance
+         */
+        Detection2D.prototype.prediction = $util.emptyArray;
+
+        /**
          * Creates a new Detection2D instance using the specified properties.
          * @function create
          * @memberof ax_proto_msgs.Detection2D
@@ -1444,6 +1729,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 writer.uint32(/* id 9, wireType 5 =*/77).float(message.rotation_rad);
             if (message.velocity != null && Object.hasOwnProperty.call(message, "velocity"))
                 $root.ax_proto_msgs.Velocity2D.encode(message.velocity, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+            if (message.prediction != null && message.prediction.length)
+                for (let i = 0; i < message.prediction.length; ++i)
+                    $root.ax_proto_msgs.PredictionPoint2D.encode(message.prediction[i], writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
             return writer;
         };
 
@@ -1520,6 +1808,12 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         message.velocity = $root.ax_proto_msgs.Velocity2D.decode(reader, reader.uint32());
                         break;
                     }
+                case 11: {
+                        if (!(message.prediction && message.prediction.length))
+                            message.prediction = [];
+                        message.prediction.push($root.ax_proto_msgs.PredictionPoint2D.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1587,6 +1881,15 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (error)
                     return "velocity." + error;
             }
+            if (message.prediction != null && message.hasOwnProperty("prediction")) {
+                if (!Array.isArray(message.prediction))
+                    return "prediction: array expected";
+                for (let i = 0; i < message.prediction.length; ++i) {
+                    let error = $root.ax_proto_msgs.PredictionPoint2D.verify(message.prediction[i]);
+                    if (error)
+                        return "prediction." + error;
+                }
+            }
             return null;
         };
 
@@ -1632,6 +1935,16 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     throw TypeError(".ax_proto_msgs.Detection2D.velocity: object expected");
                 message.velocity = $root.ax_proto_msgs.Velocity2D.fromObject(object.velocity);
             }
+            if (object.prediction) {
+                if (!Array.isArray(object.prediction))
+                    throw TypeError(".ax_proto_msgs.Detection2D.prediction: array expected");
+                message.prediction = [];
+                for (let i = 0; i < object.prediction.length; ++i) {
+                    if (typeof object.prediction[i] !== "object")
+                        throw TypeError(".ax_proto_msgs.Detection2D.prediction: object expected");
+                    message.prediction[i] = $root.ax_proto_msgs.PredictionPoint2D.fromObject(object.prediction[i]);
+                }
+            }
             return message;
         };
 
@@ -1648,6 +1961,8 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             if (!options)
                 options = {};
             let object = {};
+            if (options.arrays || options.defaults)
+                object.prediction = [];
             if (options.defaults) {
                 if ($util.Long) {
                     let long = new $util.Long(0, 0, true);
@@ -1687,6 +2002,11 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 object.rotation_rad = options.json && !isFinite(message.rotation_rad) ? String(message.rotation_rad) : message.rotation_rad;
             if (message.velocity != null && message.hasOwnProperty("velocity"))
                 object.velocity = $root.ax_proto_msgs.Velocity2D.toObject(message.velocity, options);
+            if (message.prediction && message.prediction.length) {
+                object.prediction = [];
+                for (let j = 0; j < message.prediction.length; ++j)
+                    object.prediction[j] = $root.ax_proto_msgs.PredictionPoint2D.toObject(message.prediction[j], options);
+            }
             return object;
         };
 
@@ -12327,6 +12647,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number} JACK_OPERATION_FAILED=802 JACK_OPERATION_FAILED value
          * @property {number} LOAD_IN_JACK_DOWN_STATE=803 LOAD_IN_JACK_DOWN_STATE value
          * @property {number} UNLOAD_IN_JACK_UP_STATE=804 UNLOAD_IN_JACK_UP_STATE value
+         * @property {number} NO_RACK_IN_TRUCK=805 NO_RACK_IN_TRUCK value
+         * @property {number} NO_FREE_SPACE_IN_TRUCK=806 NO_FREE_SPACE_IN_TRUCK value
+         * @property {number} TRUCK_RACK_STATE_UNKNOWN=807 TRUCK_RACK_STATE_UNKNOWN value
          * @property {number} PLATFORM_ALERT_ERROR=1000 PLATFORM_ALERT_ERROR value
          * @property {number} SERVICE_CALL_ERROR=1001 SERVICE_CALL_ERROR value
          * @property {number} INTERNAL_ERROR=1002 INTERNAL_ERROR value
@@ -12403,6 +12726,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             values[valuesById[802] = "JACK_OPERATION_FAILED"] = 802;
             values[valuesById[803] = "LOAD_IN_JACK_DOWN_STATE"] = 803;
             values[valuesById[804] = "UNLOAD_IN_JACK_UP_STATE"] = 804;
+            values[valuesById[805] = "NO_RACK_IN_TRUCK"] = 805;
+            values[valuesById[806] = "NO_FREE_SPACE_IN_TRUCK"] = 806;
+            values[valuesById[807] = "TRUCK_RACK_STATE_UNKNOWN"] = 807;
             values[valuesById[1000] = "PLATFORM_ALERT_ERROR"] = 1000;
             values[valuesById[1001] = "SERVICE_CALL_ERROR"] = 1001;
             values[valuesById[1002] = "INTERNAL_ERROR"] = 1002;
@@ -13290,6 +13616,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 case 802:
                 case 803:
                 case 804:
+                case 805:
+                case 806:
+                case 807:
                 case 1000:
                 case 1001:
                 case 1002:
@@ -13372,6 +13701,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     case 802:
                     case 803:
                     case 804:
+                    case 805:
+                    case 806:
+                    case 807:
                     case 1000:
                     case 1001:
                     case 1002:
@@ -13435,6 +13767,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 case 1104:
                 case 1105:
                 case 1106:
+                case 1107:
                 case 1199:
                     break;
                 }
@@ -13825,6 +14158,18 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             case 804:
                 message.fail_reason = 804;
                 break;
+            case "NO_RACK_IN_TRUCK":
+            case 805:
+                message.fail_reason = 805;
+                break;
+            case "NO_FREE_SPACE_IN_TRUCK":
+            case 806:
+                message.fail_reason = 806;
+                break;
+            case "TRUCK_RACK_STATE_UNKNOWN":
+            case 807:
+                message.fail_reason = 807;
+                break;
             case "PLATFORM_ALERT_ERROR":
             case 1000:
                 message.fail_reason = 1000;
@@ -14129,6 +14474,18 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                     case 804:
                         message.fail_reasons[i] = 804;
                         break;
+                    case "NO_RACK_IN_TRUCK":
+                    case 805:
+                        message.fail_reasons[i] = 805;
+                        break;
+                    case "NO_FREE_SPACE_IN_TRUCK":
+                    case 806:
+                        message.fail_reasons[i] = 806;
+                        break;
+                    case "TRUCK_RACK_STATE_UNKNOWN":
+                    case 807:
+                        message.fail_reasons[i] = 807;
+                        break;
                     case "PLATFORM_ALERT_ERROR":
                     case 1000:
                         message.fail_reasons[i] = 1000;
@@ -14253,6 +14610,10 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             case "FATAL_ALERT":
             case 1106:
                 message.progress_stuck_reason = 1106;
+                break;
+            case "OFF_ROUTE":
+            case 1107:
+                message.progress_stuck_reason = 1107;
                 break;
             case "OTHER":
             case 1199:
@@ -15220,6 +15581,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
              * @property {number} NOT_IN_AUTO_MODE=1104 NOT_IN_AUTO_MODE value
              * @property {number} POSITION_RELIABLE=1105 POSITION_RELIABLE value
              * @property {number} FATAL_ALERT=1106 FATAL_ALERT value
+             * @property {number} OFF_ROUTE=1107 OFF_ROUTE value
              * @property {number} OTHER=1199 OTHER value
              */
             StuckReason.Type = (function() {
@@ -15231,6 +15593,7 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 values[valuesById[1104] = "NOT_IN_AUTO_MODE"] = 1104;
                 values[valuesById[1105] = "POSITION_RELIABLE"] = 1105;
                 values[valuesById[1106] = "FATAL_ALERT"] = 1106;
+                values[valuesById[1107] = "OFF_ROUTE"] = 1107;
                 values[valuesById[1199] = "OTHER"] = 1199;
                 return values;
             })();
