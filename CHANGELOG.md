@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-11-10 wsEventEmitter: Support /lidar_detected_objects protobuf messages
 - 2026-10-30 wsEventEmitter: Support /app_events protobuf messages
 - 2026-10-29 robotApi: Support truck loading and unloading moves
 - 2026-10-27 **API-BREAK** proto: Sync ax_msgs, where `ParameterValue` states its type in a `bool_value` / `int_value` / `float_value` oneof instead of a bare `value`, and `Detection3D` carries its extent as `Vector3f size`
