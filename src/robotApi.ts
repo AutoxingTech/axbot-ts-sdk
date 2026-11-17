@@ -916,6 +916,18 @@ export class RobotApi {
     );
   }
 
+  /**
+   * Level the forklift head 3D lidar on the ground and align it with the main lidar.
+   * POST /services/calibrate_forklift_head_lidar
+   */
+  async calibrateForkliftHeadLidar(): Promise<boolean> {
+    return this.apiCall(
+      () => this.postImpl('services/calibrate_forklift_head_lidar', {}),
+      'Forklift Head Lidar Calibration',
+      false,
+    );
+  }
+
   async calibrateHeadLidar(): Promise<boolean> {
     return this.apiCall(
       () => this.postImpl('services/calibrate_head_lidar_pose', {}),
