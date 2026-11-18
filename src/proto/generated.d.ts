@@ -1414,6 +1414,115 @@ export namespace ax_proto_msgs {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a Pose2D. */
+    interface IPose2D {
+
+        /** Pose2D x */
+        x?: (number|null);
+
+        /** Pose2D y */
+        y?: (number|null);
+
+        /** Pose2D theta */
+        theta?: (number|null);
+    }
+
+    /** Represents a Pose2D. */
+    class Pose2D implements IPose2D {
+
+        /**
+         * Constructs a new Pose2D.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IPose2D);
+
+        /** Pose2D x. */
+        public x: number;
+
+        /** Pose2D y. */
+        public y: number;
+
+        /** Pose2D theta. */
+        public theta: number;
+
+        /**
+         * Creates a new Pose2D instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Pose2D instance
+         */
+        public static create(properties?: ax_proto_msgs.IPose2D): ax_proto_msgs.Pose2D;
+
+        /**
+         * Encodes the specified Pose2D message. Does not implicitly {@link ax_proto_msgs.Pose2D.verify|verify} messages.
+         * @param message Pose2D message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IPose2D, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Pose2D message, length delimited. Does not implicitly {@link ax_proto_msgs.Pose2D.verify|verify} messages.
+         * @param message Pose2D message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IPose2D, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Pose2D message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Pose2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.Pose2D;
+
+        /**
+         * Decodes a Pose2D message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Pose2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.Pose2D;
+
+        /**
+         * Verifies a Pose2D message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Pose2D message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Pose2D
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.Pose2D;
+
+        /**
+         * Creates a plain object from a Pose2D message. Also converts values to other types if specified.
+         * @param message Pose2D
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.Pose2D, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Pose2D to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for Pose2D
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a Vector3d. */
     interface IVector3d {
 
@@ -7896,6 +8005,15 @@ export namespace ax_proto_msgs {
 
         /** RosMessageWrapper app_event */
         app_event?: (ax_proto_msgs.IAppEvent|null);
+
+        /** RosMessageWrapper rtk_state */
+        rtk_state?: (ax_proto_msgs.IRtkState|null);
+
+        /** RosMessageWrapper route_plan_request */
+        route_plan_request?: (ax_proto_msgs.IRoutePlanRequest|null);
+
+        /** RosMessageWrapper route_plan_response */
+        route_plan_response?: (ax_proto_msgs.IRoutePlanResponse|null);
     }
 
     /** Represents a RosMessageWrapper. */
@@ -7991,8 +8109,17 @@ export namespace ax_proto_msgs {
         /** RosMessageWrapper app_event. */
         public app_event?: (ax_proto_msgs.IAppEvent|null);
 
+        /** RosMessageWrapper rtk_state. */
+        public rtk_state?: (ax_proto_msgs.IRtkState|null);
+
+        /** RosMessageWrapper route_plan_request. */
+        public route_plan_request?: (ax_proto_msgs.IRoutePlanRequest|null);
+
+        /** RosMessageWrapper route_plan_response. */
+        public route_plan_response?: (ax_proto_msgs.IRoutePlanResponse|null);
+
         /** RosMessageWrapper payload. */
-        public payload?: ("point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|"app_event");
+        public payload?: ("point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|"app_event"|"rtk_state"|"route_plan_request"|"route_plan_response");
 
         /**
          * Creates a new RosMessageWrapper instance using the specified properties.
@@ -8103,7 +8230,607 @@ export namespace ax_proto_msgs {
             ROBOT_JOINT_BINDINGS = 24,
             BOT_CONTROL_STATE = 25,
             TF_MESSAGE = 26,
-            APP_EVENT = 27
+            APP_EVENT = 27,
+            RTK_STATE = 28,
+            ROUTE_PLAN_REQUEST = 29,
+            ROUTE_PLAN_RESPONSE = 30
+        }
+    }
+
+    /** Properties of a RoutePlanRequest. */
+    interface IRoutePlanRequest {
+
+        /** RoutePlanRequest start */
+        start?: (ax_proto_msgs.IPose2D|null);
+
+        /** RoutePlanRequest end */
+        end?: (ax_proto_msgs.IPose2D|null);
+    }
+
+    /** Represents a RoutePlanRequest. */
+    class RoutePlanRequest implements IRoutePlanRequest {
+
+        /**
+         * Constructs a new RoutePlanRequest.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IRoutePlanRequest);
+
+        /** RoutePlanRequest start. */
+        public start?: (ax_proto_msgs.IPose2D|null);
+
+        /** RoutePlanRequest end. */
+        public end?: (ax_proto_msgs.IPose2D|null);
+
+        /**
+         * Creates a new RoutePlanRequest instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RoutePlanRequest instance
+         */
+        public static create(properties?: ax_proto_msgs.IRoutePlanRequest): ax_proto_msgs.RoutePlanRequest;
+
+        /**
+         * Encodes the specified RoutePlanRequest message. Does not implicitly {@link ax_proto_msgs.RoutePlanRequest.verify|verify} messages.
+         * @param message RoutePlanRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IRoutePlanRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RoutePlanRequest message, length delimited. Does not implicitly {@link ax_proto_msgs.RoutePlanRequest.verify|verify} messages.
+         * @param message RoutePlanRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IRoutePlanRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RoutePlanRequest message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns RoutePlanRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.RoutePlanRequest;
+
+        /**
+         * Decodes a RoutePlanRequest message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns RoutePlanRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.RoutePlanRequest;
+
+        /**
+         * Verifies a RoutePlanRequest message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RoutePlanRequest message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RoutePlanRequest
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.RoutePlanRequest;
+
+        /**
+         * Creates a plain object from a RoutePlanRequest message. Also converts values to other types if specified.
+         * @param message RoutePlanRequest
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.RoutePlanRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RoutePlanRequest to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for RoutePlanRequest
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a MotionMode. */
+    interface IMotionMode {
+    }
+
+    /** Represents a MotionMode. */
+    class MotionMode implements IMotionMode {
+
+        /**
+         * Constructs a new MotionMode.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IMotionMode);
+
+        /**
+         * Creates a new MotionMode instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MotionMode instance
+         */
+        public static create(properties?: ax_proto_msgs.IMotionMode): ax_proto_msgs.MotionMode;
+
+        /**
+         * Encodes the specified MotionMode message. Does not implicitly {@link ax_proto_msgs.MotionMode.verify|verify} messages.
+         * @param message MotionMode message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IMotionMode, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MotionMode message, length delimited. Does not implicitly {@link ax_proto_msgs.MotionMode.verify|verify} messages.
+         * @param message MotionMode message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IMotionMode, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MotionMode message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns MotionMode
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.MotionMode;
+
+        /**
+         * Decodes a MotionMode message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns MotionMode
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.MotionMode;
+
+        /**
+         * Verifies a MotionMode message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MotionMode message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MotionMode
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.MotionMode;
+
+        /**
+         * Creates a plain object from a MotionMode message. Also converts values to other types if specified.
+         * @param message MotionMode
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.MotionMode, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MotionMode to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for MotionMode
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace MotionMode {
+
+        /** Type enum. */
+        enum Type {
+            NONE = 0,
+            FORWARD = 1,
+            REVERSE = 2,
+            LATERAL_RIGHT = 3,
+            LATERAL_LEFT = 4
+        }
+    }
+
+    /** Properties of a RoutePlanResponse. */
+    interface IRoutePlanResponse {
+
+        /** RoutePlanResponse fail_reason */
+        fail_reason?: (ax_proto_msgs.MoveFailReason.Type|null);
+
+        /** RoutePlanResponse error_message */
+        error_message?: (string|null);
+
+        /** RoutePlanResponse origin */
+        origin?: (ax_proto_msgs.IPose2D|null);
+
+        /** RoutePlanResponse position_resolution */
+        position_resolution?: (number|null);
+
+        /** RoutePlanResponse angle_resolution */
+        angle_resolution?: (number|null);
+
+        /** RoutePlanResponse dx */
+        dx?: (number[]|null);
+
+        /** RoutePlanResponse dy */
+        dy?: (number[]|null);
+
+        /** RoutePlanResponse theta */
+        theta?: (number[]|null);
+
+        /** RoutePlanResponse motion_mode */
+        motion_mode?: (ax_proto_msgs.MotionMode.Type[]|null);
+
+        /** RoutePlanResponse spin_index */
+        spin_index?: (number[]|null);
+    }
+
+    /** Represents a RoutePlanResponse. */
+    class RoutePlanResponse implements IRoutePlanResponse {
+
+        /**
+         * Constructs a new RoutePlanResponse.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IRoutePlanResponse);
+
+        /** RoutePlanResponse fail_reason. */
+        public fail_reason: ax_proto_msgs.MoveFailReason.Type;
+
+        /** RoutePlanResponse error_message. */
+        public error_message: string;
+
+        /** RoutePlanResponse origin. */
+        public origin?: (ax_proto_msgs.IPose2D|null);
+
+        /** RoutePlanResponse position_resolution. */
+        public position_resolution: number;
+
+        /** RoutePlanResponse angle_resolution. */
+        public angle_resolution: number;
+
+        /** RoutePlanResponse dx. */
+        public dx: number[];
+
+        /** RoutePlanResponse dy. */
+        public dy: number[];
+
+        /** RoutePlanResponse theta. */
+        public theta: number[];
+
+        /** RoutePlanResponse motion_mode. */
+        public motion_mode: ax_proto_msgs.MotionMode.Type[];
+
+        /** RoutePlanResponse spin_index. */
+        public spin_index: number[];
+
+        /**
+         * Creates a new RoutePlanResponse instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RoutePlanResponse instance
+         */
+        public static create(properties?: ax_proto_msgs.IRoutePlanResponse): ax_proto_msgs.RoutePlanResponse;
+
+        /**
+         * Encodes the specified RoutePlanResponse message. Does not implicitly {@link ax_proto_msgs.RoutePlanResponse.verify|verify} messages.
+         * @param message RoutePlanResponse message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IRoutePlanResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RoutePlanResponse message, length delimited. Does not implicitly {@link ax_proto_msgs.RoutePlanResponse.verify|verify} messages.
+         * @param message RoutePlanResponse message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IRoutePlanResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RoutePlanResponse message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns RoutePlanResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.RoutePlanResponse;
+
+        /**
+         * Decodes a RoutePlanResponse message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns RoutePlanResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.RoutePlanResponse;
+
+        /**
+         * Verifies a RoutePlanResponse message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RoutePlanResponse message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RoutePlanResponse
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.RoutePlanResponse;
+
+        /**
+         * Creates a plain object from a RoutePlanResponse message. Also converts values to other types if specified.
+         * @param message RoutePlanResponse
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.RoutePlanResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RoutePlanResponse to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for RoutePlanResponse
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a RtkState. */
+    interface IRtkState {
+
+        /** RtkState header */
+        header?: (ax_proto_msgs.IHeader|null);
+
+        /** RtkState rtk_error */
+        rtk_error?: (number|null);
+
+        /** RtkState rtk_error_str */
+        rtk_error_str?: (string|null);
+
+        /** RtkState position_valid */
+        position_valid?: (boolean|null);
+
+        /** RtkState heading_valid */
+        heading_valid?: (boolean|null);
+
+        /** RtkState local_pose */
+        local_pose?: (ax_proto_msgs.IPose2D|null);
+
+        /** RtkState map_pose */
+        map_pose?: (ax_proto_msgs.IPose2D|null);
+    }
+
+    /** Represents a RtkState. */
+    class RtkState implements IRtkState {
+
+        /**
+         * Constructs a new RtkState.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ax_proto_msgs.IRtkState);
+
+        /** RtkState header. */
+        public header?: (ax_proto_msgs.IHeader|null);
+
+        /** RtkState rtk_error. */
+        public rtk_error: number;
+
+        /** RtkState rtk_error_str. */
+        public rtk_error_str: string;
+
+        /** RtkState position_valid. */
+        public position_valid: boolean;
+
+        /** RtkState heading_valid. */
+        public heading_valid: boolean;
+
+        /** RtkState local_pose. */
+        public local_pose?: (ax_proto_msgs.IPose2D|null);
+
+        /** RtkState map_pose. */
+        public map_pose?: (ax_proto_msgs.IPose2D|null);
+
+        /**
+         * Creates a new RtkState instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RtkState instance
+         */
+        public static create(properties?: ax_proto_msgs.IRtkState): ax_proto_msgs.RtkState;
+
+        /**
+         * Encodes the specified RtkState message. Does not implicitly {@link ax_proto_msgs.RtkState.verify|verify} messages.
+         * @param message RtkState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ax_proto_msgs.IRtkState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RtkState message, length delimited. Does not implicitly {@link ax_proto_msgs.RtkState.verify|verify} messages.
+         * @param message RtkState message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ax_proto_msgs.IRtkState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RtkState message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns RtkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.RtkState;
+
+        /**
+         * Decodes a RtkState message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns RtkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.RtkState;
+
+        /**
+         * Verifies a RtkState message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RtkState message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RtkState
+         */
+        public static fromObject(object: { [k: string]: any }): ax_proto_msgs.RtkState;
+
+        /**
+         * Creates a plain object from a RtkState message. Also converts values to other types if specified.
+         * @param message RtkState
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: ax_proto_msgs.RtkState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RtkState to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for RtkState
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace RtkState {
+
+        /** Properties of an Error. */
+        interface IError {
+        }
+
+        /** Represents an Error. */
+        class Error implements IError {
+
+            /**
+             * Constructs a new Error.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ax_proto_msgs.RtkState.IError);
+
+            /**
+             * Creates a new Error instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Error instance
+             */
+            public static create(properties?: ax_proto_msgs.RtkState.IError): ax_proto_msgs.RtkState.Error;
+
+            /**
+             * Encodes the specified Error message. Does not implicitly {@link ax_proto_msgs.RtkState.Error.verify|verify} messages.
+             * @param message Error message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ax_proto_msgs.RtkState.IError, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Error message, length delimited. Does not implicitly {@link ax_proto_msgs.RtkState.Error.verify|verify} messages.
+             * @param message Error message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ax_proto_msgs.RtkState.IError, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Error message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ax_proto_msgs.RtkState.Error;
+
+            /**
+             * Decodes an Error message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ax_proto_msgs.RtkState.Error;
+
+            /**
+             * Verifies an Error message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Error message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Error
+             */
+            public static fromObject(object: { [k: string]: any }): ax_proto_msgs.RtkState.Error;
+
+            /**
+             * Creates a plain object from an Error message. Also converts values to other types if specified.
+             * @param message Error
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ax_proto_msgs.RtkState.Error, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Error to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Error
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace Error {
+
+            /** Type enum. */
+            enum Type {
+                NONE = 0,
+                POSITION_JUMP = 1,
+                HEADING_JUMP = 2,
+                DRIFT = 4,
+                UNUSABLE = 8,
+                LEVER_MISMATCH = 16
+            }
         }
     }
 

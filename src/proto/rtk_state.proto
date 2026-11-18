@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+option go_package = "webrtc_client/proto";
+option optimize_for = SPEED;
+
+import "geometry.proto";
+import "header.proto";
+
+// topic /rtk_state，RTK 有效性验证结果
+// 状态不变时 1 Hz 发布，状态变化时立即发布
+message RtkState {
+    message Error {
+        enum Type {
+            NONE           = 0;
+            // 事件类：检出的 RTK 数据异常，只在检出的那一帧出现
+            POSITION_JUMP  = 1;   // 位置跳变：相邻帧的位置变化与 RTK 自身速度不符
+            HEADING_JUMP   = 2;   // 航向跳变：一段时间内的航向变化与 IMU 推算不符
+            DRIFT          = 4;   // 位置漂移：一段时间内的位移与 odom/IMU 推算不符
+            // 状态类：条件成立期间一直出现
+            UNUSABLE       = 8;   // 不可用：解算状态差、位置标准差超限或处于卫星不可靠区，原因见 rtk_error_str
+            LEVER_MISMATCH = 16;  // 杆臂不符：在线拟合的天线杆臂与配置不符
+        }
+    }
+
+    Header header = 1;  // 同 /devpvt
+
+    int32 rtk_error = 2;       // 错误码，Error.Type 按位或
+    string rtk_error_str = 3;  // 如 "DRIFT|UNUSABLE(HIGH_STDEV,UNRELIABLE_ZONE)"
+
+    // 这一帧的位置、航向能否使用
+    // rtk_error 为 0 时也可能为 false：跳变、漂移检出后的暂停期，或刚进入固定解、数据中断恢复后的稳定期
+    bool position_valid = 4;
+    bool heading_valid = 5;
+
+    Pose2D local_pose = 6;  // 平面系（ecef_to_local 锚点）下的 base_link 位姿，无锚点时不填
+    Pose2D map_pose = 7;    // map 系下的 base_link 位姿，无锚点时不填
+}

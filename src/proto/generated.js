@@ -3580,6 +3580,258 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
         return Pose;
     })();
 
+    ax_proto_msgs.Pose2D = (function() {
+
+        /**
+         * Properties of a Pose2D.
+         * @memberof ax_proto_msgs
+         * @interface IPose2D
+         * @property {number|null} [x] Pose2D x
+         * @property {number|null} [y] Pose2D y
+         * @property {number|null} [theta] Pose2D theta
+         */
+
+        /**
+         * Constructs a new Pose2D.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a Pose2D.
+         * @implements IPose2D
+         * @constructor
+         * @param {ax_proto_msgs.IPose2D=} [properties] Properties to set
+         */
+        function Pose2D(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Pose2D x.
+         * @member {number} x
+         * @memberof ax_proto_msgs.Pose2D
+         * @instance
+         */
+        Pose2D.prototype.x = 0;
+
+        /**
+         * Pose2D y.
+         * @member {number} y
+         * @memberof ax_proto_msgs.Pose2D
+         * @instance
+         */
+        Pose2D.prototype.y = 0;
+
+        /**
+         * Pose2D theta.
+         * @member {number} theta
+         * @memberof ax_proto_msgs.Pose2D
+         * @instance
+         */
+        Pose2D.prototype.theta = 0;
+
+        /**
+         * Creates a new Pose2D instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {ax_proto_msgs.IPose2D=} [properties] Properties to set
+         * @returns {ax_proto_msgs.Pose2D} Pose2D instance
+         */
+        Pose2D.create = function create(properties) {
+            return new Pose2D(properties);
+        };
+
+        /**
+         * Encodes the specified Pose2D message. Does not implicitly {@link ax_proto_msgs.Pose2D.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {ax_proto_msgs.IPose2D} message Pose2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Pose2D.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.x != null && Object.hasOwnProperty.call(message, "x"))
+                writer.uint32(/* id 1, wireType 1 =*/9).double(message.x);
+            if (message.y != null && Object.hasOwnProperty.call(message, "y"))
+                writer.uint32(/* id 2, wireType 1 =*/17).double(message.y);
+            if (message.theta != null && Object.hasOwnProperty.call(message, "theta"))
+                writer.uint32(/* id 3, wireType 1 =*/25).double(message.theta);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Pose2D message, length delimited. Does not implicitly {@link ax_proto_msgs.Pose2D.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {ax_proto_msgs.IPose2D} message Pose2D message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Pose2D.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Pose2D message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.Pose2D} Pose2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Pose2D.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.Pose2D();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.x = reader.double();
+                        break;
+                    }
+                case 2: {
+                        message.y = reader.double();
+                        break;
+                    }
+                case 3: {
+                        message.theta = reader.double();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Pose2D message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.Pose2D} Pose2D
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Pose2D.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Pose2D message.
+         * @function verify
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Pose2D.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.x != null && message.hasOwnProperty("x"))
+                if (typeof message.x !== "number")
+                    return "x: number expected";
+            if (message.y != null && message.hasOwnProperty("y"))
+                if (typeof message.y !== "number")
+                    return "y: number expected";
+            if (message.theta != null && message.hasOwnProperty("theta"))
+                if (typeof message.theta !== "number")
+                    return "theta: number expected";
+            return null;
+        };
+
+        /**
+         * Creates a Pose2D message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.Pose2D} Pose2D
+         */
+        Pose2D.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.Pose2D)
+                return object;
+            let message = new $root.ax_proto_msgs.Pose2D();
+            if (object.x != null)
+                message.x = Number(object.x);
+            if (object.y != null)
+                message.y = Number(object.y);
+            if (object.theta != null)
+                message.theta = Number(object.theta);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Pose2D message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {ax_proto_msgs.Pose2D} message Pose2D
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Pose2D.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.x = 0;
+                object.y = 0;
+                object.theta = 0;
+            }
+            if (message.x != null && message.hasOwnProperty("x"))
+                object.x = options.json && !isFinite(message.x) ? String(message.x) : message.x;
+            if (message.y != null && message.hasOwnProperty("y"))
+                object.y = options.json && !isFinite(message.y) ? String(message.y) : message.y;
+            if (message.theta != null && message.hasOwnProperty("theta"))
+                object.theta = options.json && !isFinite(message.theta) ? String(message.theta) : message.theta;
+            return object;
+        };
+
+        /**
+         * Converts this Pose2D to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.Pose2D
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Pose2D.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Pose2D
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.Pose2D
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Pose2D.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.Pose2D";
+        };
+
+        return Pose2D;
+    })();
+
     ax_proto_msgs.Vector3d = (function() {
 
         /**
@@ -21282,6 +21534,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {ax_proto_msgs.IBotControlState|null} [bot_control_state] RosMessageWrapper bot_control_state
          * @property {ax_proto_msgs.ITFMessage|null} [tf_message] RosMessageWrapper tf_message
          * @property {ax_proto_msgs.IAppEvent|null} [app_event] RosMessageWrapper app_event
+         * @property {ax_proto_msgs.IRtkState|null} [rtk_state] RosMessageWrapper rtk_state
+         * @property {ax_proto_msgs.IRoutePlanRequest|null} [route_plan_request] RosMessageWrapper route_plan_request
+         * @property {ax_proto_msgs.IRoutePlanResponse|null} [route_plan_response] RosMessageWrapper route_plan_response
          */
 
         /**
@@ -21523,17 +21778,41 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          */
         RosMessageWrapper.prototype.app_event = null;
 
+        /**
+         * RosMessageWrapper rtk_state.
+         * @member {ax_proto_msgs.IRtkState|null|undefined} rtk_state
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.rtk_state = null;
+
+        /**
+         * RosMessageWrapper route_plan_request.
+         * @member {ax_proto_msgs.IRoutePlanRequest|null|undefined} route_plan_request
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.route_plan_request = null;
+
+        /**
+         * RosMessageWrapper route_plan_response.
+         * @member {ax_proto_msgs.IRoutePlanResponse|null|undefined} route_plan_response
+         * @memberof ax_proto_msgs.RosMessageWrapper
+         * @instance
+         */
+        RosMessageWrapper.prototype.route_plan_response = null;
+
         // OneOf field names bound to virtual getters and setters
         let $oneOfFields;
 
         /**
          * RosMessageWrapper payload.
-         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|"app_event"|undefined} payload
+         * @member {"point_cloud"|"mast_state"|"submap_list"|"rack_states"|"towing_state"|"mobile_network_state"|"video_data"|"depth_image"|"dwa_candidate_path_set"|"slam_state"|"planning_state"|"liftgate_state"|"wheel_control_command"|"wheel_control_state"|"imu"|"raw_imu"|"raw_point_cloud"|"detection_2d_array"|"detection_3d_array"|"joint_states"|"robot_instances"|"robot_descriptions"|"robot_parameters"|"robot_joint_bindings"|"bot_control_state"|"tf_message"|"app_event"|"rtk_state"|"route_plan_request"|"route_plan_response"|undefined} payload
          * @memberof ax_proto_msgs.RosMessageWrapper
          * @instance
          */
         Object.defineProperty(RosMessageWrapper.prototype, "payload", {
-            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set", "slam_state", "planning_state", "liftgate_state", "wheel_control_command", "wheel_control_state", "imu", "raw_imu", "raw_point_cloud", "detection_2d_array", "detection_3d_array", "joint_states", "robot_instances", "robot_descriptions", "robot_parameters", "robot_joint_bindings", "bot_control_state", "tf_message", "app_event"]),
+            get: $util.oneOfGetter($oneOfFields = ["point_cloud", "mast_state", "submap_list", "rack_states", "towing_state", "mobile_network_state", "video_data", "depth_image", "dwa_candidate_path_set", "slam_state", "planning_state", "liftgate_state", "wheel_control_command", "wheel_control_state", "imu", "raw_imu", "raw_point_cloud", "detection_2d_array", "detection_3d_array", "joint_states", "robot_instances", "robot_descriptions", "robot_parameters", "robot_joint_bindings", "bot_control_state", "tf_message", "app_event", "rtk_state", "route_plan_request", "route_plan_response"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -21617,6 +21896,12 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 $root.ax_proto_msgs.TFMessage.encode(message.tf_message, writer.uint32(/* id 36, wireType 2 =*/290).fork()).ldelim();
             if (message.app_event != null && Object.hasOwnProperty.call(message, "app_event"))
                 $root.ax_proto_msgs.AppEvent.encode(message.app_event, writer.uint32(/* id 37, wireType 2 =*/298).fork()).ldelim();
+            if (message.rtk_state != null && Object.hasOwnProperty.call(message, "rtk_state"))
+                $root.ax_proto_msgs.RtkState.encode(message.rtk_state, writer.uint32(/* id 38, wireType 2 =*/306).fork()).ldelim();
+            if (message.route_plan_request != null && Object.hasOwnProperty.call(message, "route_plan_request"))
+                $root.ax_proto_msgs.RoutePlanRequest.encode(message.route_plan_request, writer.uint32(/* id 39, wireType 2 =*/314).fork()).ldelim();
+            if (message.route_plan_response != null && Object.hasOwnProperty.call(message, "route_plan_response"))
+                $root.ax_proto_msgs.RoutePlanResponse.encode(message.route_plan_response, writer.uint32(/* id 40, wireType 2 =*/322).fork()).ldelim();
             return writer;
         };
 
@@ -21765,6 +22050,18 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         message.app_event = $root.ax_proto_msgs.AppEvent.decode(reader, reader.uint32());
                         break;
                     }
+                case 38: {
+                        message.rtk_state = $root.ax_proto_msgs.RtkState.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 39: {
+                        message.route_plan_request = $root.ax_proto_msgs.RoutePlanRequest.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 40: {
+                        message.route_plan_response = $root.ax_proto_msgs.RoutePlanResponse.decode(reader, reader.uint32());
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -21833,6 +22130,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 case 25:
                 case 26:
                 case 27:
+                case 28:
+                case 29:
+                case 30:
                     break;
                 }
             if (message.point_cloud != null && message.hasOwnProperty("point_cloud")) {
@@ -22103,6 +22403,36 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                         return "app_event." + error;
                 }
             }
+            if (message.rtk_state != null && message.hasOwnProperty("rtk_state")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RtkState.verify(message.rtk_state);
+                    if (error)
+                        return "rtk_state." + error;
+                }
+            }
+            if (message.route_plan_request != null && message.hasOwnProperty("route_plan_request")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RoutePlanRequest.verify(message.route_plan_request);
+                    if (error)
+                        return "route_plan_request." + error;
+                }
+            }
+            if (message.route_plan_response != null && message.hasOwnProperty("route_plan_response")) {
+                if (properties.payload === 1)
+                    return "payload: multiple values";
+                properties.payload = 1;
+                {
+                    let error = $root.ax_proto_msgs.RoutePlanResponse.verify(message.route_plan_response);
+                    if (error)
+                        return "route_plan_response." + error;
+                }
+            }
             return null;
         };
 
@@ -22236,6 +22566,18 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             case "APP_EVENT":
             case 27:
                 message.type = 27;
+                break;
+            case "RTK_STATE":
+            case 28:
+                message.type = 28;
+                break;
+            case "ROUTE_PLAN_REQUEST":
+            case 29:
+                message.type = 29;
+                break;
+            case "ROUTE_PLAN_RESPONSE":
+            case 30:
+                message.type = 30;
                 break;
             }
             if (object.point_cloud != null) {
@@ -22372,6 +22714,21 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (typeof object.app_event !== "object")
                     throw TypeError(".ax_proto_msgs.RosMessageWrapper.app_event: object expected");
                 message.app_event = $root.ax_proto_msgs.AppEvent.fromObject(object.app_event);
+            }
+            if (object.rtk_state != null) {
+                if (typeof object.rtk_state !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.rtk_state: object expected");
+                message.rtk_state = $root.ax_proto_msgs.RtkState.fromObject(object.rtk_state);
+            }
+            if (object.route_plan_request != null) {
+                if (typeof object.route_plan_request !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.route_plan_request: object expected");
+                message.route_plan_request = $root.ax_proto_msgs.RoutePlanRequest.fromObject(object.route_plan_request);
+            }
+            if (object.route_plan_response != null) {
+                if (typeof object.route_plan_response !== "object")
+                    throw TypeError(".ax_proto_msgs.RosMessageWrapper.route_plan_response: object expected");
+                message.route_plan_response = $root.ax_proto_msgs.RoutePlanResponse.fromObject(object.route_plan_response);
             }
             return message;
         };
@@ -22528,6 +22885,21 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
                 if (options.oneofs)
                     object.payload = "app_event";
             }
+            if (message.rtk_state != null && message.hasOwnProperty("rtk_state")) {
+                object.rtk_state = $root.ax_proto_msgs.RtkState.toObject(message.rtk_state, options);
+                if (options.oneofs)
+                    object.payload = "rtk_state";
+            }
+            if (message.route_plan_request != null && message.hasOwnProperty("route_plan_request")) {
+                object.route_plan_request = $root.ax_proto_msgs.RoutePlanRequest.toObject(message.route_plan_request, options);
+                if (options.oneofs)
+                    object.payload = "route_plan_request";
+            }
+            if (message.route_plan_response != null && message.hasOwnProperty("route_plan_response")) {
+                object.route_plan_response = $root.ax_proto_msgs.RoutePlanResponse.toObject(message.route_plan_response, options);
+                if (options.oneofs)
+                    object.payload = "route_plan_response";
+            }
             return object;
         };
 
@@ -22589,6 +22961,9 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
          * @property {number} BOT_CONTROL_STATE=25 BOT_CONTROL_STATE value
          * @property {number} TF_MESSAGE=26 TF_MESSAGE value
          * @property {number} APP_EVENT=27 APP_EVENT value
+         * @property {number} RTK_STATE=28 RTK_STATE value
+         * @property {number} ROUTE_PLAN_REQUEST=29 ROUTE_PLAN_REQUEST value
+         * @property {number} ROUTE_PLAN_RESPONSE=30 ROUTE_PLAN_RESPONSE value
          */
         RosMessageWrapper.MessageType = (function() {
             const valuesById = {}, values = Object.create(valuesById);
@@ -22620,10 +22995,1970 @@ export const ax_proto_msgs = $root.ax_proto_msgs = (() => {
             values[valuesById[25] = "BOT_CONTROL_STATE"] = 25;
             values[valuesById[26] = "TF_MESSAGE"] = 26;
             values[valuesById[27] = "APP_EVENT"] = 27;
+            values[valuesById[28] = "RTK_STATE"] = 28;
+            values[valuesById[29] = "ROUTE_PLAN_REQUEST"] = 29;
+            values[valuesById[30] = "ROUTE_PLAN_RESPONSE"] = 30;
             return values;
         })();
 
         return RosMessageWrapper;
+    })();
+
+    ax_proto_msgs.RoutePlanRequest = (function() {
+
+        /**
+         * Properties of a RoutePlanRequest.
+         * @memberof ax_proto_msgs
+         * @interface IRoutePlanRequest
+         * @property {ax_proto_msgs.IPose2D|null} [start] RoutePlanRequest start
+         * @property {ax_proto_msgs.IPose2D|null} [end] RoutePlanRequest end
+         */
+
+        /**
+         * Constructs a new RoutePlanRequest.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RoutePlanRequest.
+         * @implements IRoutePlanRequest
+         * @constructor
+         * @param {ax_proto_msgs.IRoutePlanRequest=} [properties] Properties to set
+         */
+        function RoutePlanRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RoutePlanRequest start.
+         * @member {ax_proto_msgs.IPose2D|null|undefined} start
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @instance
+         */
+        RoutePlanRequest.prototype.start = null;
+
+        /**
+         * RoutePlanRequest end.
+         * @member {ax_proto_msgs.IPose2D|null|undefined} end
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @instance
+         */
+        RoutePlanRequest.prototype.end = null;
+
+        /**
+         * Creates a new RoutePlanRequest instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {ax_proto_msgs.IRoutePlanRequest=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RoutePlanRequest} RoutePlanRequest instance
+         */
+        RoutePlanRequest.create = function create(properties) {
+            return new RoutePlanRequest(properties);
+        };
+
+        /**
+         * Encodes the specified RoutePlanRequest message. Does not implicitly {@link ax_proto_msgs.RoutePlanRequest.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {ax_proto_msgs.IRoutePlanRequest} message RoutePlanRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RoutePlanRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.start != null && Object.hasOwnProperty.call(message, "start"))
+                $root.ax_proto_msgs.Pose2D.encode(message.start, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.end != null && Object.hasOwnProperty.call(message, "end"))
+                $root.ax_proto_msgs.Pose2D.encode(message.end, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RoutePlanRequest message, length delimited. Does not implicitly {@link ax_proto_msgs.RoutePlanRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {ax_proto_msgs.IRoutePlanRequest} message RoutePlanRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RoutePlanRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RoutePlanRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RoutePlanRequest} RoutePlanRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RoutePlanRequest.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RoutePlanRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.start = $root.ax_proto_msgs.Pose2D.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.end = $root.ax_proto_msgs.Pose2D.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RoutePlanRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RoutePlanRequest} RoutePlanRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RoutePlanRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RoutePlanRequest message.
+         * @function verify
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RoutePlanRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.start != null && message.hasOwnProperty("start")) {
+                let error = $root.ax_proto_msgs.Pose2D.verify(message.start);
+                if (error)
+                    return "start." + error;
+            }
+            if (message.end != null && message.hasOwnProperty("end")) {
+                let error = $root.ax_proto_msgs.Pose2D.verify(message.end);
+                if (error)
+                    return "end." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RoutePlanRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RoutePlanRequest} RoutePlanRequest
+         */
+        RoutePlanRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RoutePlanRequest)
+                return object;
+            let message = new $root.ax_proto_msgs.RoutePlanRequest();
+            if (object.start != null) {
+                if (typeof object.start !== "object")
+                    throw TypeError(".ax_proto_msgs.RoutePlanRequest.start: object expected");
+                message.start = $root.ax_proto_msgs.Pose2D.fromObject(object.start);
+            }
+            if (object.end != null) {
+                if (typeof object.end !== "object")
+                    throw TypeError(".ax_proto_msgs.RoutePlanRequest.end: object expected");
+                message.end = $root.ax_proto_msgs.Pose2D.fromObject(object.end);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RoutePlanRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {ax_proto_msgs.RoutePlanRequest} message RoutePlanRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RoutePlanRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.start = null;
+                object.end = null;
+            }
+            if (message.start != null && message.hasOwnProperty("start"))
+                object.start = $root.ax_proto_msgs.Pose2D.toObject(message.start, options);
+            if (message.end != null && message.hasOwnProperty("end"))
+                object.end = $root.ax_proto_msgs.Pose2D.toObject(message.end, options);
+            return object;
+        };
+
+        /**
+         * Converts this RoutePlanRequest to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RoutePlanRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RoutePlanRequest
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RoutePlanRequest
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RoutePlanRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RoutePlanRequest";
+        };
+
+        return RoutePlanRequest;
+    })();
+
+    ax_proto_msgs.MotionMode = (function() {
+
+        /**
+         * Properties of a MotionMode.
+         * @memberof ax_proto_msgs
+         * @interface IMotionMode
+         */
+
+        /**
+         * Constructs a new MotionMode.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a MotionMode.
+         * @implements IMotionMode
+         * @constructor
+         * @param {ax_proto_msgs.IMotionMode=} [properties] Properties to set
+         */
+        function MotionMode(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new MotionMode instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {ax_proto_msgs.IMotionMode=} [properties] Properties to set
+         * @returns {ax_proto_msgs.MotionMode} MotionMode instance
+         */
+        MotionMode.create = function create(properties) {
+            return new MotionMode(properties);
+        };
+
+        /**
+         * Encodes the specified MotionMode message. Does not implicitly {@link ax_proto_msgs.MotionMode.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {ax_proto_msgs.IMotionMode} message MotionMode message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MotionMode.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MotionMode message, length delimited. Does not implicitly {@link ax_proto_msgs.MotionMode.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {ax_proto_msgs.IMotionMode} message MotionMode message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MotionMode.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a MotionMode message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.MotionMode} MotionMode
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MotionMode.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.MotionMode();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a MotionMode message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.MotionMode} MotionMode
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MotionMode.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MotionMode message.
+         * @function verify
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MotionMode.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a MotionMode message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.MotionMode} MotionMode
+         */
+        MotionMode.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.MotionMode)
+                return object;
+            return new $root.ax_proto_msgs.MotionMode();
+        };
+
+        /**
+         * Creates a plain object from a MotionMode message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {ax_proto_msgs.MotionMode} message MotionMode
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MotionMode.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this MotionMode to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.MotionMode
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MotionMode.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for MotionMode
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.MotionMode
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        MotionMode.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.MotionMode";
+        };
+
+        /**
+         * Type enum.
+         * @name ax_proto_msgs.MotionMode.Type
+         * @enum {number}
+         * @property {number} NONE=0 NONE value
+         * @property {number} FORWARD=1 FORWARD value
+         * @property {number} REVERSE=2 REVERSE value
+         * @property {number} LATERAL_RIGHT=3 LATERAL_RIGHT value
+         * @property {number} LATERAL_LEFT=4 LATERAL_LEFT value
+         */
+        MotionMode.Type = (function() {
+            const valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "NONE"] = 0;
+            values[valuesById[1] = "FORWARD"] = 1;
+            values[valuesById[2] = "REVERSE"] = 2;
+            values[valuesById[3] = "LATERAL_RIGHT"] = 3;
+            values[valuesById[4] = "LATERAL_LEFT"] = 4;
+            return values;
+        })();
+
+        return MotionMode;
+    })();
+
+    ax_proto_msgs.RoutePlanResponse = (function() {
+
+        /**
+         * Properties of a RoutePlanResponse.
+         * @memberof ax_proto_msgs
+         * @interface IRoutePlanResponse
+         * @property {ax_proto_msgs.MoveFailReason.Type|null} [fail_reason] RoutePlanResponse fail_reason
+         * @property {string|null} [error_message] RoutePlanResponse error_message
+         * @property {ax_proto_msgs.IPose2D|null} [origin] RoutePlanResponse origin
+         * @property {number|null} [position_resolution] RoutePlanResponse position_resolution
+         * @property {number|null} [angle_resolution] RoutePlanResponse angle_resolution
+         * @property {Array.<number>|null} [dx] RoutePlanResponse dx
+         * @property {Array.<number>|null} [dy] RoutePlanResponse dy
+         * @property {Array.<number>|null} [theta] RoutePlanResponse theta
+         * @property {Array.<ax_proto_msgs.MotionMode.Type>|null} [motion_mode] RoutePlanResponse motion_mode
+         * @property {Array.<number>|null} [spin_index] RoutePlanResponse spin_index
+         */
+
+        /**
+         * Constructs a new RoutePlanResponse.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RoutePlanResponse.
+         * @implements IRoutePlanResponse
+         * @constructor
+         * @param {ax_proto_msgs.IRoutePlanResponse=} [properties] Properties to set
+         */
+        function RoutePlanResponse(properties) {
+            this.dx = [];
+            this.dy = [];
+            this.theta = [];
+            this.motion_mode = [];
+            this.spin_index = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RoutePlanResponse fail_reason.
+         * @member {ax_proto_msgs.MoveFailReason.Type} fail_reason
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.fail_reason = 0;
+
+        /**
+         * RoutePlanResponse error_message.
+         * @member {string} error_message
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.error_message = "";
+
+        /**
+         * RoutePlanResponse origin.
+         * @member {ax_proto_msgs.IPose2D|null|undefined} origin
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.origin = null;
+
+        /**
+         * RoutePlanResponse position_resolution.
+         * @member {number} position_resolution
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.position_resolution = 0;
+
+        /**
+         * RoutePlanResponse angle_resolution.
+         * @member {number} angle_resolution
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.angle_resolution = 0;
+
+        /**
+         * RoutePlanResponse dx.
+         * @member {Array.<number>} dx
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.dx = $util.emptyArray;
+
+        /**
+         * RoutePlanResponse dy.
+         * @member {Array.<number>} dy
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.dy = $util.emptyArray;
+
+        /**
+         * RoutePlanResponse theta.
+         * @member {Array.<number>} theta
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.theta = $util.emptyArray;
+
+        /**
+         * RoutePlanResponse motion_mode.
+         * @member {Array.<ax_proto_msgs.MotionMode.Type>} motion_mode
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.motion_mode = $util.emptyArray;
+
+        /**
+         * RoutePlanResponse spin_index.
+         * @member {Array.<number>} spin_index
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         */
+        RoutePlanResponse.prototype.spin_index = $util.emptyArray;
+
+        /**
+         * Creates a new RoutePlanResponse instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {ax_proto_msgs.IRoutePlanResponse=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RoutePlanResponse} RoutePlanResponse instance
+         */
+        RoutePlanResponse.create = function create(properties) {
+            return new RoutePlanResponse(properties);
+        };
+
+        /**
+         * Encodes the specified RoutePlanResponse message. Does not implicitly {@link ax_proto_msgs.RoutePlanResponse.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {ax_proto_msgs.IRoutePlanResponse} message RoutePlanResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RoutePlanResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.fail_reason != null && Object.hasOwnProperty.call(message, "fail_reason"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.fail_reason);
+            if (message.error_message != null && Object.hasOwnProperty.call(message, "error_message"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error_message);
+            if (message.origin != null && Object.hasOwnProperty.call(message, "origin"))
+                $root.ax_proto_msgs.Pose2D.encode(message.origin, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.position_resolution != null && Object.hasOwnProperty.call(message, "position_resolution"))
+                writer.uint32(/* id 4, wireType 5 =*/37).float(message.position_resolution);
+            if (message.angle_resolution != null && Object.hasOwnProperty.call(message, "angle_resolution"))
+                writer.uint32(/* id 5, wireType 5 =*/45).float(message.angle_resolution);
+            if (message.dx != null && message.dx.length) {
+                writer.uint32(/* id 6, wireType 2 =*/50).fork();
+                for (let i = 0; i < message.dx.length; ++i)
+                    writer.sint32(message.dx[i]);
+                writer.ldelim();
+            }
+            if (message.dy != null && message.dy.length) {
+                writer.uint32(/* id 7, wireType 2 =*/58).fork();
+                for (let i = 0; i < message.dy.length; ++i)
+                    writer.sint32(message.dy[i]);
+                writer.ldelim();
+            }
+            if (message.theta != null && message.theta.length) {
+                writer.uint32(/* id 8, wireType 2 =*/66).fork();
+                for (let i = 0; i < message.theta.length; ++i)
+                    writer.sint32(message.theta[i]);
+                writer.ldelim();
+            }
+            if (message.motion_mode != null && message.motion_mode.length) {
+                writer.uint32(/* id 9, wireType 2 =*/74).fork();
+                for (let i = 0; i < message.motion_mode.length; ++i)
+                    writer.int32(message.motion_mode[i]);
+                writer.ldelim();
+            }
+            if (message.spin_index != null && message.spin_index.length) {
+                writer.uint32(/* id 10, wireType 2 =*/82).fork();
+                for (let i = 0; i < message.spin_index.length; ++i)
+                    writer.uint32(message.spin_index[i]);
+                writer.ldelim();
+            }
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RoutePlanResponse message, length delimited. Does not implicitly {@link ax_proto_msgs.RoutePlanResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {ax_proto_msgs.IRoutePlanResponse} message RoutePlanResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RoutePlanResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RoutePlanResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RoutePlanResponse} RoutePlanResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RoutePlanResponse.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RoutePlanResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.fail_reason = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.error_message = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.origin = $root.ax_proto_msgs.Pose2D.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 4: {
+                        message.position_resolution = reader.float();
+                        break;
+                    }
+                case 5: {
+                        message.angle_resolution = reader.float();
+                        break;
+                    }
+                case 6: {
+                        if (!(message.dx && message.dx.length))
+                            message.dx = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.dx.push(reader.sint32());
+                        } else
+                            message.dx.push(reader.sint32());
+                        break;
+                    }
+                case 7: {
+                        if (!(message.dy && message.dy.length))
+                            message.dy = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.dy.push(reader.sint32());
+                        } else
+                            message.dy.push(reader.sint32());
+                        break;
+                    }
+                case 8: {
+                        if (!(message.theta && message.theta.length))
+                            message.theta = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.theta.push(reader.sint32());
+                        } else
+                            message.theta.push(reader.sint32());
+                        break;
+                    }
+                case 9: {
+                        if (!(message.motion_mode && message.motion_mode.length))
+                            message.motion_mode = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.motion_mode.push(reader.int32());
+                        } else
+                            message.motion_mode.push(reader.int32());
+                        break;
+                    }
+                case 10: {
+                        if (!(message.spin_index && message.spin_index.length))
+                            message.spin_index = [];
+                        if ((tag & 7) === 2) {
+                            let end2 = reader.uint32() + reader.pos;
+                            while (reader.pos < end2)
+                                message.spin_index.push(reader.uint32());
+                        } else
+                            message.spin_index.push(reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RoutePlanResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RoutePlanResponse} RoutePlanResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RoutePlanResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RoutePlanResponse message.
+         * @function verify
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RoutePlanResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.fail_reason != null && message.hasOwnProperty("fail_reason"))
+                switch (message.fail_reason) {
+                default:
+                    return "fail_reason: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 100:
+                case 101:
+                case 102:
+                case 103:
+                case 104:
+                case 105:
+                case 200:
+                case 201:
+                case 202:
+                case 203:
+                case 300:
+                case 301:
+                case 302:
+                case 303:
+                case 304:
+                case 400:
+                case 401:
+                case 500:
+                case 501:
+                case 502:
+                case 503:
+                case 504:
+                case 505:
+                case 506:
+                case 507:
+                case 508:
+                case 509:
+                case 510:
+                case 511:
+                case 512:
+                case 513:
+                case 514:
+                case 515:
+                case 516:
+                case 517:
+                case 600:
+                case 601:
+                case 700:
+                case 701:
+                case 702:
+                case 800:
+                case 801:
+                case 802:
+                case 803:
+                case 804:
+                case 805:
+                case 806:
+                case 807:
+                case 1000:
+                case 1001:
+                case 1002:
+                case 1003:
+                case 1004:
+                case 1005:
+                    break;
+                }
+            if (message.error_message != null && message.hasOwnProperty("error_message"))
+                if (!$util.isString(message.error_message))
+                    return "error_message: string expected";
+            if (message.origin != null && message.hasOwnProperty("origin")) {
+                let error = $root.ax_proto_msgs.Pose2D.verify(message.origin);
+                if (error)
+                    return "origin." + error;
+            }
+            if (message.position_resolution != null && message.hasOwnProperty("position_resolution"))
+                if (typeof message.position_resolution !== "number")
+                    return "position_resolution: number expected";
+            if (message.angle_resolution != null && message.hasOwnProperty("angle_resolution"))
+                if (typeof message.angle_resolution !== "number")
+                    return "angle_resolution: number expected";
+            if (message.dx != null && message.hasOwnProperty("dx")) {
+                if (!Array.isArray(message.dx))
+                    return "dx: array expected";
+                for (let i = 0; i < message.dx.length; ++i)
+                    if (!$util.isInteger(message.dx[i]))
+                        return "dx: integer[] expected";
+            }
+            if (message.dy != null && message.hasOwnProperty("dy")) {
+                if (!Array.isArray(message.dy))
+                    return "dy: array expected";
+                for (let i = 0; i < message.dy.length; ++i)
+                    if (!$util.isInteger(message.dy[i]))
+                        return "dy: integer[] expected";
+            }
+            if (message.theta != null && message.hasOwnProperty("theta")) {
+                if (!Array.isArray(message.theta))
+                    return "theta: array expected";
+                for (let i = 0; i < message.theta.length; ++i)
+                    if (!$util.isInteger(message.theta[i]))
+                        return "theta: integer[] expected";
+            }
+            if (message.motion_mode != null && message.hasOwnProperty("motion_mode")) {
+                if (!Array.isArray(message.motion_mode))
+                    return "motion_mode: array expected";
+                for (let i = 0; i < message.motion_mode.length; ++i)
+                    switch (message.motion_mode[i]) {
+                    default:
+                        return "motion_mode: enum value[] expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                        break;
+                    }
+            }
+            if (message.spin_index != null && message.hasOwnProperty("spin_index")) {
+                if (!Array.isArray(message.spin_index))
+                    return "spin_index: array expected";
+                for (let i = 0; i < message.spin_index.length; ++i)
+                    if (!$util.isInteger(message.spin_index[i]))
+                        return "spin_index: integer[] expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RoutePlanResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RoutePlanResponse} RoutePlanResponse
+         */
+        RoutePlanResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RoutePlanResponse)
+                return object;
+            let message = new $root.ax_proto_msgs.RoutePlanResponse();
+            switch (object.fail_reason) {
+            default:
+                if (typeof object.fail_reason === "number") {
+                    message.fail_reason = object.fail_reason;
+                    break;
+                }
+                break;
+            case "NONE":
+            case 0:
+                message.fail_reason = 0;
+                break;
+            case "UNKNOWN":
+            case 1:
+                message.fail_reason = 1;
+                break;
+            case "GET_MAP_FAILED":
+            case 2:
+                message.fail_reason = 2;
+                break;
+            case "STARTING_POINT_OUT_OF_MAP":
+            case 3:
+                message.fail_reason = 3;
+                break;
+            case "ENDING_POINT_OUT_OF_MAP":
+            case 4:
+                message.fail_reason = 4;
+                break;
+            case "STARTING_POINT_NOT_IN_GROUND":
+            case 5:
+                message.fail_reason = 5;
+                break;
+            case "ENDING_POINT_NOT_IN_GROUND":
+            case 6:
+                message.fail_reason = 6;
+                break;
+            case "STARTING_EQUAL_ENDING":
+            case 7:
+                message.fail_reason = 7;
+                break;
+            case "CALCULATE_GLOBAL_PATH_EXTENDED_DATA_ERROR":
+            case 8:
+                message.fail_reason = 8;
+                break;
+            case "CALCULATION_FAILED":
+            case 9:
+                message.fail_reason = 9;
+                break;
+            case "CALCULATION_TIMEOUT":
+            case 10:
+                message.fail_reason = 10;
+                break;
+            case "NO_GLOBAL_PATH":
+            case 11:
+                message.fail_reason = 11;
+                break;
+            case "NOT_GRAB_START_INDEX_ON_GLOBAL_PATH":
+            case 12:
+                message.fail_reason = 12;
+                break;
+            case "NOT_GRAB_END_INDEX_ON_GLOBAL_PATH":
+            case 13:
+                message.fail_reason = 13;
+                break;
+            case "PLANNING_TIMEOUT":
+            case 14:
+                message.fail_reason = 14;
+                break;
+            case "MOVE_TIMEOUT":
+            case 15:
+                message.fail_reason = 15;
+                break;
+            case "CONTROL_COSTMAP_ERROR":
+            case 16:
+                message.fail_reason = 16;
+                break;
+            case "POWER_CABLE_CONNECTED":
+            case 17:
+                message.fail_reason = 17;
+                break;
+            case "ROTATE_TIMEOUT":
+            case 18:
+                message.fail_reason = 18;
+                break;
+            case "ENDING_POINT_NOT_SIGNIFICANTLY_CHANGED":
+            case 19:
+                message.fail_reason = 19;
+                break;
+            case "ENDING_POINT_APPROACHING":
+            case 20:
+                message.fail_reason = 20;
+                break;
+            case "ENDING_POINT_NOT_SPECIFIED":
+            case 21:
+                message.fail_reason = 21;
+                break;
+            case "CHARGE_RETRY_COUNT_EXCEEDED":
+            case 100:
+                message.fail_reason = 100;
+                break;
+            case "CHARGE_DOCK_DETECTION_ERROR":
+            case 101:
+                message.fail_reason = 101;
+                break;
+            case "CHARGE_DOCK_SIGNAL_ERROR":
+            case 102:
+                message.fail_reason = 102;
+                break;
+            case "INVALID_CHARGE_DOCK":
+            case 103:
+                message.fail_reason = 103;
+                break;
+            case "ALREADY_IN_CHARGING":
+            case 104:
+                message.fail_reason = 104;
+                break;
+            case "NO_CHARGE_CURRENT":
+            case 105:
+                message.fail_reason = 105;
+                break;
+            case "INVALID_CABINET_POS":
+            case 200:
+                message.fail_reason = 200;
+                break;
+            case "CABINET_DETECTION_ERROR":
+            case 201:
+                message.fail_reason = 201;
+                break;
+            case "NO_DOCK_WITH_CONVEYER":
+            case 202:
+                message.fail_reason = 202;
+                break;
+            case "NO_APPROACH_CONVEYER":
+            case 203:
+                message.fail_reason = 203;
+                break;
+            case "ELEVATOR_POINT_OCCUPIED":
+            case 300:
+                message.fail_reason = 300;
+                break;
+            case "ELEVATOR_CLOSED":
+            case 301:
+                message.fail_reason = 301;
+                break;
+            case "ELEVATOR_POINT_OBSCURED_TIMEOUT":
+            case 302:
+                message.fail_reason = 302;
+                break;
+            case "ELEVATOR_POINT_OCCUPANCY_DETECTION_TIMEOUT":
+            case 303:
+                message.fail_reason = 303;
+                break;
+            case "ELEVATOR_ENTER_PROGRESS_UPDATE_TIMEOUT":
+            case 304:
+                message.fail_reason = 304;
+                break;
+            case "INVALID_TRACK_POINTS":
+            case 400:
+                message.fail_reason = 400;
+                break;
+            case "TOO_FAR_FROM_START_OF_TRACK":
+            case 401:
+                message.fail_reason = 401;
+                break;
+            case "INVALID_RACK_DETECTION_POS":
+            case 500:
+                message.fail_reason = 500;
+                break;
+            case "RACK_DETECTION_ERROR":
+            case 501:
+                message.fail_reason = 501;
+                break;
+            case "RACK_RETRY_COUNT_EXCEEDED":
+            case 502:
+                message.fail_reason = 502;
+                break;
+            case "UNLOAD_POINT_OCCUPIED":
+            case 503:
+                message.fail_reason = 503;
+                break;
+            case "UNLOAD_POINT_UNREACHABLE":
+            case 504:
+                message.fail_reason = 504;
+                break;
+            case "RACK_MOVED":
+            case 505:
+                message.fail_reason = 505;
+                break;
+            case "JACK_IN_UP_STATE":
+            case 506:
+                message.fail_reason = 506;
+                break;
+            case "INVALID_RACK_AREA_ID":
+            case 507:
+                message.fail_reason = 507;
+                break;
+            case "INVALID_RACK_AREA":
+            case 508:
+                message.fail_reason = 508;
+                break;
+            case "UNKNOWN_RACK_SPACE_STATE":
+            case 509:
+                message.fail_reason = 509;
+                break;
+            case "NO_RACK_IN_RACK_AREA":
+            case 510:
+                message.fail_reason = 510;
+                break;
+            case "ALIGN_FAILED_IN_RACK_AREA":
+            case 511:
+                message.fail_reason = 511;
+                break;
+            case "NO_FREE_SPACE_IN_RACK_AREA":
+            case 512:
+                message.fail_reason = 512;
+                break;
+            case "FAILED_TO_UNLOAD_IN_RACK_AREA":
+            case 513:
+                message.fail_reason = 513;
+                break;
+            case "RACK_SUBTYPE_INCOMPATIBLE":
+            case 514:
+                message.fail_reason = 514;
+                break;
+            case "TOWING_HOOK_IN_LOCKED_STATE":
+            case 515:
+                message.fail_reason = 515;
+                break;
+            case "CARGO_READY_LIMIT_SWITCH_FAULT":
+            case 516:
+                message.fail_reason = 516;
+                break;
+            case "CARGO_READY_NOT_TRIGGERED":
+            case 517:
+                message.fail_reason = 517;
+                break;
+            case "FOLLOW_FAILED":
+            case 600:
+                message.fail_reason = 600;
+                break;
+            case "FOLLOW_PATH_TOO_CIRCUITOUS":
+            case 601:
+                message.fail_reason = 601;
+                break;
+            case "POI_DETECTION_ERROR":
+            case 700:
+                message.fail_reason = 700;
+                break;
+            case "POI_UNREACHABLE":
+            case 701:
+                message.fail_reason = 701;
+                break;
+            case "BARCODE_DETECTION_ERROR":
+            case 702:
+                message.fail_reason = 702;
+                break;
+            case "NOT_AT_TRUCK_GROUND_POINT":
+            case 800:
+                message.fail_reason = 800;
+                break;
+            case "LIFTGATE_WAIT_TIMEOUT":
+            case 801:
+                message.fail_reason = 801;
+                break;
+            case "JACK_OPERATION_FAILED":
+            case 802:
+                message.fail_reason = 802;
+                break;
+            case "LOAD_IN_JACK_DOWN_STATE":
+            case 803:
+                message.fail_reason = 803;
+                break;
+            case "UNLOAD_IN_JACK_UP_STATE":
+            case 804:
+                message.fail_reason = 804;
+                break;
+            case "NO_RACK_IN_TRUCK":
+            case 805:
+                message.fail_reason = 805;
+                break;
+            case "NO_FREE_SPACE_IN_TRUCK":
+            case 806:
+                message.fail_reason = 806;
+                break;
+            case "TRUCK_RACK_STATE_UNKNOWN":
+            case 807:
+                message.fail_reason = 807;
+                break;
+            case "PLATFORM_ALERT_ERROR":
+            case 1000:
+                message.fail_reason = 1000;
+                break;
+            case "SERVICE_CALL_ERROR":
+            case 1001:
+                message.fail_reason = 1001;
+                break;
+            case "INTERNAL_ERROR":
+            case 1002:
+                message.fail_reason = 1002;
+                break;
+            case "MAP_CHANGED":
+            case 1003:
+                message.fail_reason = 1003;
+                break;
+            case "MOVE_ACTION_TYPE_DEPRECATED":
+            case 1004:
+                message.fail_reason = 1004;
+                break;
+            case "CONFIGURATION_ERROR":
+            case 1005:
+                message.fail_reason = 1005;
+                break;
+            }
+            if (object.error_message != null)
+                message.error_message = String(object.error_message);
+            if (object.origin != null) {
+                if (typeof object.origin !== "object")
+                    throw TypeError(".ax_proto_msgs.RoutePlanResponse.origin: object expected");
+                message.origin = $root.ax_proto_msgs.Pose2D.fromObject(object.origin);
+            }
+            if (object.position_resolution != null)
+                message.position_resolution = Number(object.position_resolution);
+            if (object.angle_resolution != null)
+                message.angle_resolution = Number(object.angle_resolution);
+            if (object.dx) {
+                if (!Array.isArray(object.dx))
+                    throw TypeError(".ax_proto_msgs.RoutePlanResponse.dx: array expected");
+                message.dx = [];
+                for (let i = 0; i < object.dx.length; ++i)
+                    message.dx[i] = object.dx[i] | 0;
+            }
+            if (object.dy) {
+                if (!Array.isArray(object.dy))
+                    throw TypeError(".ax_proto_msgs.RoutePlanResponse.dy: array expected");
+                message.dy = [];
+                for (let i = 0; i < object.dy.length; ++i)
+                    message.dy[i] = object.dy[i] | 0;
+            }
+            if (object.theta) {
+                if (!Array.isArray(object.theta))
+                    throw TypeError(".ax_proto_msgs.RoutePlanResponse.theta: array expected");
+                message.theta = [];
+                for (let i = 0; i < object.theta.length; ++i)
+                    message.theta[i] = object.theta[i] | 0;
+            }
+            if (object.motion_mode) {
+                if (!Array.isArray(object.motion_mode))
+                    throw TypeError(".ax_proto_msgs.RoutePlanResponse.motion_mode: array expected");
+                message.motion_mode = [];
+                for (let i = 0; i < object.motion_mode.length; ++i)
+                    switch (object.motion_mode[i]) {
+                    default:
+                        if (typeof object.motion_mode[i] === "number") {
+                            message.motion_mode[i] = object.motion_mode[i];
+                            break;
+                        }
+                    case "NONE":
+                    case 0:
+                        message.motion_mode[i] = 0;
+                        break;
+                    case "FORWARD":
+                    case 1:
+                        message.motion_mode[i] = 1;
+                        break;
+                    case "REVERSE":
+                    case 2:
+                        message.motion_mode[i] = 2;
+                        break;
+                    case "LATERAL_RIGHT":
+                    case 3:
+                        message.motion_mode[i] = 3;
+                        break;
+                    case "LATERAL_LEFT":
+                    case 4:
+                        message.motion_mode[i] = 4;
+                        break;
+                    }
+            }
+            if (object.spin_index) {
+                if (!Array.isArray(object.spin_index))
+                    throw TypeError(".ax_proto_msgs.RoutePlanResponse.spin_index: array expected");
+                message.spin_index = [];
+                for (let i = 0; i < object.spin_index.length; ++i)
+                    message.spin_index[i] = object.spin_index[i] >>> 0;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RoutePlanResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {ax_proto_msgs.RoutePlanResponse} message RoutePlanResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RoutePlanResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults) {
+                object.dx = [];
+                object.dy = [];
+                object.theta = [];
+                object.motion_mode = [];
+                object.spin_index = [];
+            }
+            if (options.defaults) {
+                object.fail_reason = options.enums === String ? "NONE" : 0;
+                object.error_message = "";
+                object.origin = null;
+                object.position_resolution = 0;
+                object.angle_resolution = 0;
+            }
+            if (message.fail_reason != null && message.hasOwnProperty("fail_reason"))
+                object.fail_reason = options.enums === String ? $root.ax_proto_msgs.MoveFailReason.Type[message.fail_reason] === undefined ? message.fail_reason : $root.ax_proto_msgs.MoveFailReason.Type[message.fail_reason] : message.fail_reason;
+            if (message.error_message != null && message.hasOwnProperty("error_message"))
+                object.error_message = message.error_message;
+            if (message.origin != null && message.hasOwnProperty("origin"))
+                object.origin = $root.ax_proto_msgs.Pose2D.toObject(message.origin, options);
+            if (message.position_resolution != null && message.hasOwnProperty("position_resolution"))
+                object.position_resolution = options.json && !isFinite(message.position_resolution) ? String(message.position_resolution) : message.position_resolution;
+            if (message.angle_resolution != null && message.hasOwnProperty("angle_resolution"))
+                object.angle_resolution = options.json && !isFinite(message.angle_resolution) ? String(message.angle_resolution) : message.angle_resolution;
+            if (message.dx && message.dx.length) {
+                object.dx = [];
+                for (let j = 0; j < message.dx.length; ++j)
+                    object.dx[j] = message.dx[j];
+            }
+            if (message.dy && message.dy.length) {
+                object.dy = [];
+                for (let j = 0; j < message.dy.length; ++j)
+                    object.dy[j] = message.dy[j];
+            }
+            if (message.theta && message.theta.length) {
+                object.theta = [];
+                for (let j = 0; j < message.theta.length; ++j)
+                    object.theta[j] = message.theta[j];
+            }
+            if (message.motion_mode && message.motion_mode.length) {
+                object.motion_mode = [];
+                for (let j = 0; j < message.motion_mode.length; ++j)
+                    object.motion_mode[j] = options.enums === String ? $root.ax_proto_msgs.MotionMode.Type[message.motion_mode[j]] === undefined ? message.motion_mode[j] : $root.ax_proto_msgs.MotionMode.Type[message.motion_mode[j]] : message.motion_mode[j];
+            }
+            if (message.spin_index && message.spin_index.length) {
+                object.spin_index = [];
+                for (let j = 0; j < message.spin_index.length; ++j)
+                    object.spin_index[j] = message.spin_index[j];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RoutePlanResponse to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RoutePlanResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RoutePlanResponse
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RoutePlanResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RoutePlanResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RoutePlanResponse";
+        };
+
+        return RoutePlanResponse;
+    })();
+
+    ax_proto_msgs.RtkState = (function() {
+
+        /**
+         * Properties of a RtkState.
+         * @memberof ax_proto_msgs
+         * @interface IRtkState
+         * @property {ax_proto_msgs.IHeader|null} [header] RtkState header
+         * @property {number|null} [rtk_error] RtkState rtk_error
+         * @property {string|null} [rtk_error_str] RtkState rtk_error_str
+         * @property {boolean|null} [position_valid] RtkState position_valid
+         * @property {boolean|null} [heading_valid] RtkState heading_valid
+         * @property {ax_proto_msgs.IPose2D|null} [local_pose] RtkState local_pose
+         * @property {ax_proto_msgs.IPose2D|null} [map_pose] RtkState map_pose
+         */
+
+        /**
+         * Constructs a new RtkState.
+         * @memberof ax_proto_msgs
+         * @classdesc Represents a RtkState.
+         * @implements IRtkState
+         * @constructor
+         * @param {ax_proto_msgs.IRtkState=} [properties] Properties to set
+         */
+        function RtkState(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RtkState header.
+         * @member {ax_proto_msgs.IHeader|null|undefined} header
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.header = null;
+
+        /**
+         * RtkState rtk_error.
+         * @member {number} rtk_error
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.rtk_error = 0;
+
+        /**
+         * RtkState rtk_error_str.
+         * @member {string} rtk_error_str
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.rtk_error_str = "";
+
+        /**
+         * RtkState position_valid.
+         * @member {boolean} position_valid
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.position_valid = false;
+
+        /**
+         * RtkState heading_valid.
+         * @member {boolean} heading_valid
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.heading_valid = false;
+
+        /**
+         * RtkState local_pose.
+         * @member {ax_proto_msgs.IPose2D|null|undefined} local_pose
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.local_pose = null;
+
+        /**
+         * RtkState map_pose.
+         * @member {ax_proto_msgs.IPose2D|null|undefined} map_pose
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         */
+        RtkState.prototype.map_pose = null;
+
+        /**
+         * Creates a new RtkState instance using the specified properties.
+         * @function create
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {ax_proto_msgs.IRtkState=} [properties] Properties to set
+         * @returns {ax_proto_msgs.RtkState} RtkState instance
+         */
+        RtkState.create = function create(properties) {
+            return new RtkState(properties);
+        };
+
+        /**
+         * Encodes the specified RtkState message. Does not implicitly {@link ax_proto_msgs.RtkState.verify|verify} messages.
+         * @function encode
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {ax_proto_msgs.IRtkState} message RtkState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RtkState.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.header != null && Object.hasOwnProperty.call(message, "header"))
+                $root.ax_proto_msgs.Header.encode(message.header, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.rtk_error != null && Object.hasOwnProperty.call(message, "rtk_error"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.rtk_error);
+            if (message.rtk_error_str != null && Object.hasOwnProperty.call(message, "rtk_error_str"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.rtk_error_str);
+            if (message.position_valid != null && Object.hasOwnProperty.call(message, "position_valid"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.position_valid);
+            if (message.heading_valid != null && Object.hasOwnProperty.call(message, "heading_valid"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.heading_valid);
+            if (message.local_pose != null && Object.hasOwnProperty.call(message, "local_pose"))
+                $root.ax_proto_msgs.Pose2D.encode(message.local_pose, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+            if (message.map_pose != null && Object.hasOwnProperty.call(message, "map_pose"))
+                $root.ax_proto_msgs.Pose2D.encode(message.map_pose, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RtkState message, length delimited. Does not implicitly {@link ax_proto_msgs.RtkState.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {ax_proto_msgs.IRtkState} message RtkState message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RtkState.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RtkState message from the specified reader or buffer.
+         * @function decode
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ax_proto_msgs.RtkState} RtkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RtkState.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RtkState();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.header = $root.ax_proto_msgs.Header.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.rtk_error = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.rtk_error_str = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.position_valid = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.heading_valid = reader.bool();
+                        break;
+                    }
+                case 6: {
+                        message.local_pose = $root.ax_proto_msgs.Pose2D.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 7: {
+                        message.map_pose = $root.ax_proto_msgs.Pose2D.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RtkState message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ax_proto_msgs.RtkState} RtkState
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RtkState.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RtkState message.
+         * @function verify
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RtkState.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.header != null && message.hasOwnProperty("header")) {
+                let error = $root.ax_proto_msgs.Header.verify(message.header);
+                if (error)
+                    return "header." + error;
+            }
+            if (message.rtk_error != null && message.hasOwnProperty("rtk_error"))
+                if (!$util.isInteger(message.rtk_error))
+                    return "rtk_error: integer expected";
+            if (message.rtk_error_str != null && message.hasOwnProperty("rtk_error_str"))
+                if (!$util.isString(message.rtk_error_str))
+                    return "rtk_error_str: string expected";
+            if (message.position_valid != null && message.hasOwnProperty("position_valid"))
+                if (typeof message.position_valid !== "boolean")
+                    return "position_valid: boolean expected";
+            if (message.heading_valid != null && message.hasOwnProperty("heading_valid"))
+                if (typeof message.heading_valid !== "boolean")
+                    return "heading_valid: boolean expected";
+            if (message.local_pose != null && message.hasOwnProperty("local_pose")) {
+                let error = $root.ax_proto_msgs.Pose2D.verify(message.local_pose);
+                if (error)
+                    return "local_pose." + error;
+            }
+            if (message.map_pose != null && message.hasOwnProperty("map_pose")) {
+                let error = $root.ax_proto_msgs.Pose2D.verify(message.map_pose);
+                if (error)
+                    return "map_pose." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RtkState message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {ax_proto_msgs.RtkState} RtkState
+         */
+        RtkState.fromObject = function fromObject(object) {
+            if (object instanceof $root.ax_proto_msgs.RtkState)
+                return object;
+            let message = new $root.ax_proto_msgs.RtkState();
+            if (object.header != null) {
+                if (typeof object.header !== "object")
+                    throw TypeError(".ax_proto_msgs.RtkState.header: object expected");
+                message.header = $root.ax_proto_msgs.Header.fromObject(object.header);
+            }
+            if (object.rtk_error != null)
+                message.rtk_error = object.rtk_error | 0;
+            if (object.rtk_error_str != null)
+                message.rtk_error_str = String(object.rtk_error_str);
+            if (object.position_valid != null)
+                message.position_valid = Boolean(object.position_valid);
+            if (object.heading_valid != null)
+                message.heading_valid = Boolean(object.heading_valid);
+            if (object.local_pose != null) {
+                if (typeof object.local_pose !== "object")
+                    throw TypeError(".ax_proto_msgs.RtkState.local_pose: object expected");
+                message.local_pose = $root.ax_proto_msgs.Pose2D.fromObject(object.local_pose);
+            }
+            if (object.map_pose != null) {
+                if (typeof object.map_pose !== "object")
+                    throw TypeError(".ax_proto_msgs.RtkState.map_pose: object expected");
+                message.map_pose = $root.ax_proto_msgs.Pose2D.fromObject(object.map_pose);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RtkState message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {ax_proto_msgs.RtkState} message RtkState
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RtkState.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.header = null;
+                object.rtk_error = 0;
+                object.rtk_error_str = "";
+                object.position_valid = false;
+                object.heading_valid = false;
+                object.local_pose = null;
+                object.map_pose = null;
+            }
+            if (message.header != null && message.hasOwnProperty("header"))
+                object.header = $root.ax_proto_msgs.Header.toObject(message.header, options);
+            if (message.rtk_error != null && message.hasOwnProperty("rtk_error"))
+                object.rtk_error = message.rtk_error;
+            if (message.rtk_error_str != null && message.hasOwnProperty("rtk_error_str"))
+                object.rtk_error_str = message.rtk_error_str;
+            if (message.position_valid != null && message.hasOwnProperty("position_valid"))
+                object.position_valid = message.position_valid;
+            if (message.heading_valid != null && message.hasOwnProperty("heading_valid"))
+                object.heading_valid = message.heading_valid;
+            if (message.local_pose != null && message.hasOwnProperty("local_pose"))
+                object.local_pose = $root.ax_proto_msgs.Pose2D.toObject(message.local_pose, options);
+            if (message.map_pose != null && message.hasOwnProperty("map_pose"))
+                object.map_pose = $root.ax_proto_msgs.Pose2D.toObject(message.map_pose, options);
+            return object;
+        };
+
+        /**
+         * Converts this RtkState to JSON.
+         * @function toJSON
+         * @memberof ax_proto_msgs.RtkState
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RtkState.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RtkState
+         * @function getTypeUrl
+         * @memberof ax_proto_msgs.RtkState
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RtkState.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/ax_proto_msgs.RtkState";
+        };
+
+        RtkState.Error = (function() {
+
+            /**
+             * Properties of an Error.
+             * @memberof ax_proto_msgs.RtkState
+             * @interface IError
+             */
+
+            /**
+             * Constructs a new Error.
+             * @memberof ax_proto_msgs.RtkState
+             * @classdesc Represents an Error.
+             * @implements IError
+             * @constructor
+             * @param {ax_proto_msgs.RtkState.IError=} [properties] Properties to set
+             */
+            function Error(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Creates a new Error instance using the specified properties.
+             * @function create
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {ax_proto_msgs.RtkState.IError=} [properties] Properties to set
+             * @returns {ax_proto_msgs.RtkState.Error} Error instance
+             */
+            Error.create = function create(properties) {
+                return new Error(properties);
+            };
+
+            /**
+             * Encodes the specified Error message. Does not implicitly {@link ax_proto_msgs.RtkState.Error.verify|verify} messages.
+             * @function encode
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {ax_proto_msgs.RtkState.IError} message Error message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Error.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Error message, length delimited. Does not implicitly {@link ax_proto_msgs.RtkState.Error.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {ax_proto_msgs.RtkState.IError} message Error message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Error.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an Error message from the specified reader or buffer.
+             * @function decode
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {ax_proto_msgs.RtkState.Error} Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Error.decode = function decode(reader, length, error) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.ax_proto_msgs.RtkState.Error();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an Error message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {ax_proto_msgs.RtkState.Error} Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Error.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an Error message.
+             * @function verify
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Error.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates an Error message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {ax_proto_msgs.RtkState.Error} Error
+             */
+            Error.fromObject = function fromObject(object) {
+                if (object instanceof $root.ax_proto_msgs.RtkState.Error)
+                    return object;
+                return new $root.ax_proto_msgs.RtkState.Error();
+            };
+
+            /**
+             * Creates a plain object from an Error message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {ax_proto_msgs.RtkState.Error} message Error
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Error.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this Error to JSON.
+             * @function toJSON
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Error.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for Error
+             * @function getTypeUrl
+             * @memberof ax_proto_msgs.RtkState.Error
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            Error.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/ax_proto_msgs.RtkState.Error";
+            };
+
+            /**
+             * Type enum.
+             * @name ax_proto_msgs.RtkState.Error.Type
+             * @enum {number}
+             * @property {number} NONE=0 NONE value
+             * @property {number} POSITION_JUMP=1 POSITION_JUMP value
+             * @property {number} HEADING_JUMP=2 HEADING_JUMP value
+             * @property {number} DRIFT=4 DRIFT value
+             * @property {number} UNUSABLE=8 UNUSABLE value
+             * @property {number} LEVER_MISMATCH=16 LEVER_MISMATCH value
+             */
+            Error.Type = (function() {
+                const valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "NONE"] = 0;
+                values[valuesById[1] = "POSITION_JUMP"] = 1;
+                values[valuesById[2] = "HEADING_JUMP"] = 2;
+                values[valuesById[4] = "DRIFT"] = 4;
+                values[valuesById[8] = "UNUSABLE"] = 8;
+                values[valuesById[16] = "LEVER_MISMATCH"] = 16;
+                return values;
+            })();
+
+            return Error;
+        })();
+
+        return RtkState;
     })();
 
     ax_proto_msgs.SlamState = (function() {

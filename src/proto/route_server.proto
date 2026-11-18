@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package ax_proto_msgs;
+
+import "geometry.proto";
+import "move_fail_reason.proto";
+
+option optimize_for = SPEED;
+
+// 路线规划（一级规划）请求。由 ax_navi_ros 的 route_server 节点的 /plan_route service 处理。
+message RoutePlanRequest {
+    Pose2D start = 1; // 起点位姿，必填
+    Pose2D end = 2;   // 终点位姿，必填
+}
+
+// 机器人的运动模式。数值与 ax::PlannerResultPoint::MotionMode 保持一致。
+message MotionMode {
+    enum Type {
+        NONE =          0;
+        FORWARD =       1; // 前进
+        REVERSE =       2; // 倒车
+        LATERAL_RIGHT = 3; // 向右横移
+        LATERAL_LEFT =  4; // 向左横移
+    }
+}
+
+// 路线规划（一级规划）响应。
+// 路线的点按下标在各 repeated 字段间一一对应，长度均为点个数（spin_index 除外）。
+// 与 navi_base 的 ax::PlannerResultPoint 对应：pose 由 origin + (dx, dy, theta) 还原，
+// 其余字段按下标直接取。坐标量化规则见各字段注释。
+message RoutePlanResponse {
+    MoveFailReason.Type fail_reason = 1; // NONE 表示成功
+    string error_message = 2;            // 失败时的文字说明，仅供开发者调试，不用于产品逻辑
+
+    // 以下字段仅 fail_reason == NONE 时填充。
+    Pose2D origin = 3;              // 第一个点的绝对位姿。theta 为该点车头朝向，已归一化到 [-π, π)
+    float position_resolution = 4; // 位置量化单位，米。当前取 0.001
+    float angle_resolution = 5;    // 朝向量化单位，弧度。当前取 0.0001
+
+    // 位置增量，相对前一个点，第一个点相对 origin。解码需按顺序累加。
+    //   qx[i] = round((x[i] - origin.x) / position_resolution)，qx[-1] = 0
+    //   dx[i] = qx[i] - qx[i - 1]
+    // 用相邻量化值之差而非相邻实值之差，误差才不随点数累积。
+    repeated sint32 dx = 6 [packed = true];
+    repeated sint32 dy = 7 [packed = true];
+
+    // 朝向的绝对量化值：round(wrapToPi(ori) / angle_resolution)。
+    // 非增量，避免原地旋转点处相邻朝向跳变 π 时的差分绕回问题。
+    repeated sint32 theta = 8 [packed = true];
+
+    repeated MotionMode.Type motion_mode = 9 [packed = true]; // 从该点到下一个点的运动模式
+
+    // 需要原地旋转的点的下标，升序且不重复。原地旋转是罕见事件，
+    // 用异常下标而非逐点 bool 数组。
+    repeated uint32 spin_index = 10 [packed = true];
+}

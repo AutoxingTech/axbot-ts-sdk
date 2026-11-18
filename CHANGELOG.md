@@ -1,5 +1,6 @@
 # CHANGELOG
 
+- 2026-11-18 robotApi: Add planRoute API for POST /ros/navi/plan_route, with decodeRoutePlanPoints to restore the delta-encoded route
 - 2026-11-17 robotApi: Add calibrateForkliftHeadLidar API for POST /services/calibrate_forklift_head_lidar
 - 2026-11-10 wsEventEmitter: Support /lidar_detected_objects protobuf messages
 - 2026-10-30 wsEventEmitter: Support /app_events protobuf messages

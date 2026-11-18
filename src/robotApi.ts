@@ -72,6 +72,67 @@ export interface GetMapImageFetchResult {
   payloadLength: number;
 }
 
+/** A planar pose in the map frame: metres and radians. */
+export interface RoutePlanPose {
+  x: number;
+  y: number;
+  theta: number;
+}
+
+/** One restored point of a planned route. */
+export interface RoutePlanPoint {
+  x: number;
+  y: number;
+  theta: number;
+  /** Motion mode from this point to the next one; `NONE` on the last point. */
+  motionMode: ax_proto_msgs.MotionMode.Type;
+  /** True when the robot rotates in place at this point. */
+  spin: boolean;
+}
+
+export interface RoutePlanFetchResult {
+  message: ax_proto_msgs.RoutePlanResponse;
+  /** Route points restored from the delta-encoded payload; empty on failure. */
+  points: RoutePlanPoint[];
+  payloadLength: number;
+}
+
+/**
+ * Restore the absolute route points of a `RoutePlanResponse`.
+ *
+ * The response stores positions as per-point deltas of quantized coordinates and
+ * orientations as absolute quantized angles, so the points have to be summed in
+ * order (see `route_server.proto`).
+ */
+export function decodeRoutePlanPoints(
+  response: ax_proto_msgs.IRoutePlanResponse,
+): RoutePlanPoint[] {
+  const origin = response.origin ?? {};
+  const positionResolution = response.position_resolution ?? 0;
+  const angleResolution = response.angle_resolution ?? 0;
+  const dx = response.dx ?? [];
+  const dy = response.dy ?? [];
+  const theta = response.theta ?? [];
+  const motionMode = response.motion_mode ?? [];
+  const spinIndex = new Set(response.spin_index ?? []);
+
+  const points: RoutePlanPoint[] = [];
+  let quantizedX = 0;
+  let quantizedY = 0;
+  for (let i = 0; i < dx.length; i++) {
+    quantizedX += dx[i];
+    quantizedY += dy[i];
+    points.push({
+      x: (origin.x ?? 0) + quantizedX * positionResolution,
+      y: (origin.y ?? 0) + quantizedY * positionResolution,
+      theta: (theta[i] ?? 0) * angleResolution,
+      motionMode: motionMode[i] ?? ax_proto_msgs.MotionMode.Type.NONE,
+      spin: spinIndex.has(i),
+    });
+  }
+  return points;
+}
+
 /**
  * Desired response content type for REST API calls.
  * - `'json'`: application/json (default)
@@ -1290,6 +1351,39 @@ export class RobotApi {
 
     return {
       message,
+      payloadLength: buf.byteLength,
+    };
+  }
+
+  /**
+   * Plan a primary route between two poses.
+   * POST /ros/navi/plan_route — proxies to the `/plan_route` ROS service.
+   *
+   * Available since version 2.16.0. Older robots answer `404`.
+   *
+   * Planning failures (start or end out of map, unreachable goal, map not ready)
+   * are business results: they resolve with `message.fail_reason` other than
+   * `NONE`, an `error_message`, and no points. Only transport failures throw.
+   */
+  async planRoute(
+    start: RoutePlanPose,
+    end: RoutePlanPose,
+    signal?: AbortSignal,
+  ): Promise<RoutePlanFetchResult> {
+    const res = await this.doRequest('POST', 'ros/navi/plan_route', { start, end }, signal, {
+      accept: 'protobuf',
+    });
+    if (!res.ok) {
+      const detail = await this.extractErrorMessage(res);
+      throw new ApiError(detail, res.status);
+    }
+
+    const buf = new Uint8Array(await res.arrayBuffer());
+    const message = ax_proto_msgs.RoutePlanResponse.decode(buf);
+
+    return {
+      message,
+      points: decodeRoutePlanPoints(message),
       payloadLength: buf.byteLength,
     };
   }

@@ -20,6 +20,8 @@ import "robot_descriptions.proto";
 import "robot_instances.proto";
 import "robot_joint_bindings.proto";
 import "robot_parameters.proto";
+import "route_server.proto";
+import "rtk_state.proto";
 import "slam_state.proto";
 import "slam/submap_list.proto";
 import "tf.proto";
@@ -63,6 +65,9 @@ message RosMessageWrapper
         BOT_CONTROL_STATE = 25;
         TF_MESSAGE = 26;
         APP_EVENT = 27;
+        RTK_STATE = 28;
+        ROUTE_PLAN_REQUEST = 29;
+        ROUTE_PLAN_RESPONSE = 30;
     }
 
     MessageType type = 1;
@@ -98,5 +103,8 @@ message RosMessageWrapper
         BotControlState bot_control_state = 35;
         TFMessage tf_message = 36;
         AppEvent app_event = 37;
+        RtkState rtk_state = 38;
+        RoutePlanRequest route_plan_request = 39;
+        RoutePlanResponse route_plan_response = 40;
     }
 }
